@@ -1,4 +1,0 @@
-Sitemap: https://nagordon.github.io/nickolitest/sitemapindex.xml
-
-User-Agent: *
-Host: nagordon.github.io
