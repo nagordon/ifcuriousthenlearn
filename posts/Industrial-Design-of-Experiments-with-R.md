@@ -25,11 +25,11 @@ To get started, I am using Windows 7. To install R, check out [R-Base Package](h
 
 R does not come with a GUI. It is just a command line for executing R-code that is an ascii file with the extension ***.r**
 
-![R_GUI](/images/R_GUI.png "Default R Interface")
+![R_GUI](/images/Industrial-Design-of-Experiments-with-R/R_GUI.png "Default R Interface")
 
 Fortunately some awesome GUI's already exist. [rkward](https://rkward.kde.org/) is cool, but I prefer [Rstudio](https://www.rstudio.com/). RStudio has a built in script editor, a console for running commands, a plot window, a file explorer, and a help window. What more could you ask for? Take some time and familiarize yourself with RStudio.
 
-![R_Studio](/images/R_Studio.png "Awesome RGUI RStudio")
+![R_Studio](/images/Industrial-Design-of-Experiments-with-R/R_Studio.png "Awesome RGUI RStudio")
 
 For more information on the R DOE package we will be using, check out [Prof. Dr. Ulrike Grömpings page](http://prof.beuth-hochschule.de/groemping/software/design-of-experiments/project-industrial-doe-in-r/). The walk-through here is derived from [this document](http://www1.beuth-hochschule.de/FB_II/reports/Report-2011-004.pdf).
 
@@ -109,15 +109,15 @@ require(RcmdrPlugin.DoE)
 
 This should launch RCommander, which will run alongside RStudio and use the console for output.
 
-![Rcmdr](/images/Rcmdr.png "Rcommander DOE interface")
+![Rcmdr](/images/Industrial-Design-of-Experiments-with-R/Rcmdr.png "Rcommander DOE interface")
 
 From the RCommander menu. we will be using the **Design** menu for the DOE setup, experiment, and analysis. Lets setup our experiment.
 
-![doe_create](/images/doe_create.png "DOE Setup")
+![doe_create](/images/Industrial-Design-of-Experiments-with-R/doe_create.png "DOE Setup")
 
 From the interface here, filling the information manually or use the provided csv file.
 
-![doe_setup](/images/doe_setup.png "DOE Setup")
+![doe_setup](/images/Industrial-Design-of-Experiments-with-R/doe_setup.png "DOE Setup")
 
 This will generate a randomized screening experiemnt experiement with 12 runs. There are 3 dummy factors, e1,e2,e3 which are necessary for screening experiments. They can be ignored or see the manual for more details.
 
@@ -139,7 +139,7 @@ This will generate a randomized screening experiemnt experiement with 12 runs. T
 ## DOE Experiment
 
 To run your experiment, go through each run, set-up the system as prescribed by the factors, and record the response. Once you run the experiment and enter your results in the csv, re-import the csv to analyze.
-![doe_reimport](/images/import_results.png "DOE Reimport")
+![doe_reimport](/images/Industrial-Design-of-Experiments-with-R/import_results.png "DOE Reimport")
 
 ## DOE Results
 
@@ -151,7 +151,7 @@ Without going into great detail, here are some examples.
 **Design -> Analyze design -> Effects (Half) Normal Plots**  
 
 Ensure the dummy factors e1,e2,e3 are included
-![half-normal-plot](/images/half-normal-plot.png "half-normal-plot")
+![half-normal-plot](/images/Industrial-Design-of-Experiments-with-R/half-normal-plot.png "half-normal-plot")
 Observe that Pressure, Airvolume, Angle, WadType have the largest absolute effect, respectivley
 
 
@@ -184,7 +184,7 @@ Again the Pressure, Airvolume, Angle, WadType have the largest absolute effect, 
 
 ## Main-Effects Plot
 **Design -> Analyze design -> Main Effects and Interactions Plots**
-![main-effects-plot](/images/main-effects-plot.png "main-effects-plot")
+![main-effects-plot](/images/Industrial-Design-of-Experiments-with-R/main-effects-plot.png "main-effects-plot")
 
 The main effects plot is a great visual to qualitativley grasp the results of the experiment. We can tell the how much the factor contributes to the response by the slope and whether it is positive or negative by the slope. Flat lines indicate that the factor with the selected levels is insignificant in the model we have created.
 
