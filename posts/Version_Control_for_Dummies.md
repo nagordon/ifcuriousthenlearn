@@ -1,10 +1,13 @@
-Title: Pyver, Version Control For Dummies
-Date: 2016-05-06
-Category: Computing
-Tags: Computing
-Slug: pyver-version-control
-Authors: Neal Gordon
-Summary: My simple version control system for storing binary files
+<!--
+.. title: Pyver, Version Control For Dummies
+.. slug: pyver-version-control
+.. date: 2016-05-06 00:00:00 UTC-08:00
+.. tags: Computing
+.. category: 
+.. link: 
+.. description: My simple version control system for storing binary files
+.. type: text
+-->
 
 ## Why pyver?  
 The movtiation behind pyver, which is to creating a version control method which is very, very simple to track the history of files. The work-flow of pyver is something I do anyway when working on something simple that uses binary files, especially ones that are linked through the software that is required to read them (eg CAD designs). I will create multiple directories, eg v1, v2 and copy the entire contents of my in-progress files in it that I want to preserve the history. The issue with this is that when file names are changed, it can break links to dependent files, so keeping a file identical is important for tracking files. It was also a goal to use this tool over a network drive where multiple users can archive files as they wish

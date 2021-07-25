@@ -1,6 +1,6 @@
 <!--
 .. title: Windows package management with Chocolatey
-.. slug: testing-markdown
+.. slug: windows-chocolatey
 .. date: 2016-05-06 00:00:00 UTC-08:00
 .. tags: Windows, software
 .. category: 
