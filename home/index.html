@@ -1,0 +1,1390 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="description" content="a blog of engineering and technology">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>home (page 2) | ifcuriousthenlearn</title>
+<link href="../assets/css/all-nocdn.css" rel="stylesheet" type="text/css">
+<link href="../assets/css/ipython.min.css" rel="stylesheet" type="text/css">
+<link href="../assets/css/nikola_ipython.css" rel="stylesheet" type="text/css">
+<meta name="theme-color" content="#5670d4">
+<meta name="generator" content="Nikola (getnikola.com)">
+<link rel="alternate" type="application/rss+xml" title="RSS" hreflang="en" href="../rss.xml">
+<link rel="canonical" href="https://nagordon.github.io/ifcuriousthenlearn/home/">
+<link rel="next" href="index-1.html" type="text/html">
+<!--[if lt IE 9]><script src="../assets/js/html5.js"></script><![endif]-->
+</head>
+<body>
+<a href="#content" class="sr-only sr-only-focusable">Skip to main content</a>
+
+<!-- Menubar -->
+
+<nav class="navbar navbar-inverse navbar-static-top"><div class="container">
+<!-- This keeps the margins nice -->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-navbar" aria-controls="bs-navbar" aria-expanded="false">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="https://nagordon.github.io/ifcuriousthenlearn/">
+
+                <span id="blog-title">ifcuriousthenlearn</span>
+            </a>
+        </div>
+<!-- /.navbar-header -->
+        <div class="collapse navbar-collapse" id="bs-navbar" aria-expanded="false">
+            <ul class="nav navbar-nav">
+<li class="active">
+<a href=".">Home <span class="sr-only">(active)</span></a>
+                </li>
+<li>
+<a href="../about/">About</a>
+                </li>
+<li>
+<a href="../archive/">Archive</a>
+                </li>
+<li>
+<a href="../categories/">Tags</a>
+
+                
+            </li>
+</ul>
+<ul class="nav navbar-nav navbar-right"></ul>
+</div>
+<!-- /.navbar-collapse -->
+    </div>
+<!-- /.container -->
+</nav><!-- End of Menubar --><div class="container" id="content" role="main">
+    <div class="body-content">
+        <!--Body content-->
+        <div class="row">
+            
+            
+
+    
+
+
+    
+<div class="postindex">
+    <article class="h-entry post-text" itemscope="itemscope" itemtype="http://schema.org/Article"><header><h1 class="p-name entry-title"><a href="brick-stacking/" class="u-url">An investigation of the Brick Stacking Problem</a></h1>
+        <div class="metadata">
+            <p class="byline author vcard"><span class="byline-name fn" itemprop="author">
+                neal
+            </span></p>
+            <p class="dateline">
+            <a href="brick-stacking/" rel="bookmark">
+            <time class="published dt-published" datetime="2017-05-29T14:05:06-07:00" itemprop="datePublished" title="2017-05-29 14:05">2017-05-29 14:05</time></a>
+            </p>
+        </div>
+    </header><div class="e-content entry-content">
+    <div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>The original question I posed to myself is this. Can you stack bricks of equal dimensions and mass such that the top-most brick does not overlap the bottom-most brick? Or more generally, how far can bricks be stacked to generate the largest overhang?</p>
+<p>I pondered the problem and deliberately avoided finding solutions. I struggled through a few hand-calculations and hacked out a bit of python code to visualize my solution.</p>
+<p>The math of the problem is seemingly simple, just basic statics, but it becomes tricky as the problem is worked. We eventually find that the bricks stack according to a harmonic series!</p>
+<p>$ overhang = \sum_{i=1}^{n} \frac{1}{2i} $</p>
+<p>OK, lets get started. First run the code to create the <code>brick_balance</code> function that accepts total bricks, length of brick and thickness of brick and let's explore the solutions.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [1]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">matplotlib.patches</span> <span class="k">as</span> <span class="nn">patches</span>
+<span class="kn">import</span> <span class="nn">sys</span>
+
+<span class="k">def</span> <span class="nf">brick_balance</span><span class="p">(</span><span class="n">ntot</span><span class="o">=</span><span class="mi">52</span><span class="p">,</span> <span class="n">L</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">t</span><span class="o">=</span><span class="mf">0.1</span><span class="p">):</span>
+    <span class="sd">'''</span>
+<span class="sd">    This program calcuates bricks stacked on one another to maximize overhang</span>
+<span class="sd">    </span>
+<span class="sd">    # number of bricks, minimum 2</span>
+<span class="sd">    ntot = 7</span>
+<span class="sd">    </span>
+<span class="sd">    # length of brick</span>
+<span class="sd">    L = 1</span>
+<span class="sd">    </span>
+<span class="sd">    # thickness of brick</span>
+<span class="sd">    t = 0.15</span>
+<span class="sd">    </span>
+<span class="sd">    '''</span>
+    <span class="c1"># force variables to be integers and floats</span>
+    <span class="n">ntot</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">ntot</span><span class="p">)</span>
+    <span class="n">L</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">L</span><span class="p">)</span>
+    <span class="n">t</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
+    
+    <span class="n">plt</span><span class="o">.</span><span class="n">close</span><span class="p">(</span><span class="s1">'all'</span><span class="p">)</span>
+    
+    <span class="c1">#overhang</span>
+    <span class="n">v</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="o">/</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">k</span><span class="p">)</span> <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">ntot</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">)]</span>
+    <span class="c1">#print('overhang=',v)</span>
+    
+    <span class="n">x</span> <span class="o">=</span> <span class="p">[</span><span class="nb">sum</span><span class="p">([</span><span class="n">k</span> <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">v</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="n">n</span><span class="p">]])</span> <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="n">ntot</span><span class="o">+</span><span class="mi">1</span><span class="p">)]</span>
+    <span class="c1">#print('x location = ',x)</span>
+         
+    <span class="n">x</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span>
+    
+    <span class="n">x</span> <span class="o">=</span> <span class="p">[</span><span class="n">x1</span><span class="o">*</span><span class="n">L</span> <span class="k">for</span> <span class="n">x1</span> <span class="ow">in</span> <span class="n">x</span><span class="p">]</span>
+    
+    <span class="c1">#y = arange(t/2,(ntot+1)*t,t)</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="p">[</span><span class="n">z</span><span class="o">*</span><span class="n">t</span><span class="o">+</span><span class="n">t</span><span class="o">/</span><span class="mi">2</span> <span class="k">for</span> <span class="n">z</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">ntot</span><span class="o">+</span><span class="mi">1</span><span class="p">)]</span>
+    
+    <span class="c1"># center of gravity</span>
+    <span class="n">C</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">:])</span><span class="o">/</span><span class="p">(</span><span class="n">ntot</span><span class="p">)</span>
+    
+    <span class="n">maxoverhang</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">+</span><span class="n">L</span><span class="o">/</span><span class="mi">2</span> <span class="o">-</span> <span class="n">C</span> 
+    
+    <span class="c1"># plotting</span>
+    <span class="n">fig2</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+    <span class="n">ax2</span> <span class="o">=</span> <span class="n">fig2</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">111</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">xi</span><span class="p">,</span><span class="n">yi</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">):</span>
+        <span class="n">ax2</span><span class="o">.</span><span class="n">add_patch</span><span class="p">(</span><span class="n">patches</span><span class="o">.</span><span class="n">Rectangle</span><span class="p">((</span><span class="n">xi</span><span class="o">-</span><span class="n">L</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="n">yi</span><span class="o">-</span><span class="n">t</span><span class="o">/</span><span class="mi">2</span><span class="p">),</span><span class="n">L</span><span class="p">,</span><span class="n">t</span><span class="p">,</span><span class="n">fill</span><span class="o">=</span><span class="kc">False</span><span class="p">))</span>    
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="s1">'-o'</span><span class="p">,[</span><span class="n">C</span><span class="p">,</span><span class="n">C</span><span class="p">],[</span><span class="mi">0</span><span class="p">,</span><span class="nb">max</span><span class="p">(</span><span class="n">y</span><span class="p">)],</span><span class="s1">'--'</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s1">'equal'</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">'n=</span><span class="si">{}</span><span class="s1">, L=</span><span class="si">{}</span><span class="s1">", t=</span><span class="si">{}</span><span class="s1">", max overhang=</span><span class="si">{:0.2f}</span><span class="s1">"'</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">ntot</span><span class="p">,</span><span class="n">L</span><span class="p">,</span><span class="n">t</span><span class="p">,</span><span class="n">maxoverhang</span><span class="p">))</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">'height, in'</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="k">if</span> <span class="vm">__name__</span><span class="o">==</span><span class="s1">'__main__'</span><span class="p">:</span>
+    
+    <span class="c1">## can use as a command line tool by uncommenting out the following 2 lines</span>
+    <span class="c1">#user_args = sys.argv[1:]</span>
+    <span class="c1">#n,L,t = user_args</span>
+    
+    
+    <span class="c1">#brick_balance(ntot=4,L=1,t=0.1)</span>
+    
+    <span class="nb">print</span><span class="p">(</span><span class="s1">'brick_balance function created'</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>brick_balance function created
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>The simplest example is 2 bricks. Adults and children know that you cannot go more than half-way the length before the brick will topple off. For a brick of length 1 inch, the max overhang is 0.5 inches</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [2]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">brick_balance</span><span class="p">(</span><span class="n">ntot</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">L</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">t</span><span class="o">=</span><span class="mf">0.1</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+
+
+<div class="output_png output_subarea ">
+<img src="data:image/png;base64,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%0Ahoh4hOwT9rJ890nDZ1VFxM/JjivdRbbr5gngq4Xab5P05cJL7siX7RhgZv78T3tbey98BviapI3A%0A35EFQLdLgZURcWVEvEJ2evYlkvarnElELMmnfwd4Fvgg8MGI2FxodgNwPG9sbXQ7m+wf/mKyv+FP%0Agb17szARsRH463w5nicLwlkJszifbFfQ08APydaDV3pRSo/rZPeWd0XbpWS7n64DLouIaxuZ1/aq%0A+ywH245IuoPsYOPDZdfSG5JGkJ39dGhEvFp2PSnyXT0/iYhjyq5lMJD0dbKD7ufUbWz9xsFhZgNG%0AvntqBNlZZO8mOz7yyYi4pdTCBpmB8i1PMzPIjvn8mOwssbVkZ5LdWmpFg5C3OMzMLIkPjpuZWZLt%0AclfV2LFjY/LkyWWXYWY2YMybN+/ZiGjo4ozbZXBMnjyZuXPnll2GmdmAIWlF/VYZ76oyM7MkDg4z%0AM0tSanBIOknZ3dWWSrqwhzZTJD2UX4PmV62u0czMtlXaMQ5lN4K5guwSzquAOZJmRcTiQpsxwHfJ%0ALoP9pKS3VJ+bmZm1SplbHEeSXbN/WX69nBuBaRVtzgBu7r5AXUQ80+IazcysQpnB0cG219JfxRv3%0ABui2P7BbfrXReZLOxszMStXup+MOA94FHEd2S8r/lnRffinjbUiaAcwA6OzsrJxsZmb9pMwtjtVs%0AexOWCbxxU5luq4DbI+KliHgW+DXb3oTndRExMyK6IqJr3LiGvsNiZma9UGZwzAH2k7RPfhnt03nz%0AdflvBY6VNEzSKOAoYEBeKtzMbHtR2q6qiNgi6XyymxANBa6OiEWSuu/SdVVEPCzp58B8YCvw/YhY%0AWFbNZma2nV4dt6urK3zJETOzxkmaFxFdjbT1N8fNzCyJg8PMzJI4OMzMLImDw8zMkjg4zMwsiYPD%0AzMySODjMzCyJg8PMzJI4OMzMLImDw8zMkjg4zMwsiYPDzMySODjMzCyJg8PMzJI4OMzMLImDw8zM%0Akjg4zMwsiYPDzMySODjMzCyJg8PMzJI4OMzMLImDw8zMkjg4zMwsiYPDzMySODjMzCyJg8PMzJI4%0AOMzMLImDw8zMkjg4zMwsiYPDzMySODjMzCyJg8PMzJKUGhySTpK0RNJSSRfWaPduSVskndbK+szM%0A7M1KCw5JQ4ErgJOBA4GPSjqwh3ZfB+5obYVmZlZNmVscRwJLI2JZRGwGbgSmVWn3WeAm4JlWFmdm%0A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%0AJU2vzga1Uw/vcFC0q/v/lU93+XTcwarWrqpu/wpcBLwKEBHzyb4EaGaD1aJb+B8HOTgGq0aCY1T3%0AdzgKvJFqZjZINRIcz0ral/x6VZJOA9b0R+eSTpK0RNJSSRdWmS5J386nz5d0RLX5mJlZ6zTyBcC/%0AAmYCb5e0GngC6POlRiQNBa4ATgBWAXMkzYqIxYVmJwP75Y+jyI61HNXXvs3MrPca+QLgMuD4/Jvi%0AQyJiYz/1fSSwNJ8/km4EppHd27zbNOC6yK5zfp+kMZL2joh+2eIxM7N0jZxVtQPwEWAyMKzwBcCv%0A9bHvDmBlYXgVb96aqNamgyq7yiTNAGYAdHZ29rqoSZMmDYz7W5uVbNKkSSwvuwgrRSO7qm4lu//G%0APNr4vuMRMZNslxpdXV29vlHA8uXL+6skM7PtUiPBMSEiTmpC36uBicV+8nGpbczMrIUaOavqXkmH%0ANKHvOcB+kvaRNILsuyGV9zafBZydn111NLDBxzfMzMpV6yKH3beMHQZMl7SMbFeVgIiIQ/vScURs%0AkXQ+cDvZ/T2ujohFks7Lp18FzAamAkuBl4HpfenTzMz6rtauqg80u/OImE0WDsVxVxWeB9npwGZm%0A1iZqXeRwRSsLMTOzgaGRYxxmZmavc3CYmVkSB4eZmSVxcJiZWRIHh5mZJXFwmJlZEgeHmZklcXCY%0AmVkSB4eZmSVxcJiZWRIHh5mZJXFwmJlZEgeHmZklcXCYmVkSB4eZmSVxcJiZWRIHh5mZJXFwmJlZ%0AEgeHmZklcXCYmVkSB4eZmSVxcJiZWRIHh5mZJXFwmJlZEgeHmZklcXCYmVkSB4eZmSVxcJiZWRIH%0Ah5mZJXFwmJlZEgeHmZklKSU4JO0u6ReSHst/7lalzURJd0laLGmRpAvKqNXMzLZV1hbHhcCdEbEf%0AcGc+XGkL8PmIOBA4GvgrSQe2sEYzM6uirOCYBlybP78WOLWyQUSsiYgH8ucbgYeBjpZVaGZmVZUV%0AHHtGxJr8+dPAnrUaS5oMHA78rkabGZLmSpq7bt26/qrTzMwqDGvWjCX9EtiryqSvFAciIiRFjfns%0ADNwE/E1EvNhTu4iYCcwE6Orq6nF+ZmbWN00Ljog4vqdpktZK2jsi1kjaG3imh3bDyULj+oi4uUml%0AmplZgrJ2Vc0CzsmfnwPcWtlAkoAfAA9HxD+1sDYzM6uhrOC4DDhB0mPA8fkwksZLmp23eQ/wMeD9%0A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">
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>So far so good. Now lets see if we can answer our question of if it is possible to allow the top brick to clear the bottom brick. After playing around the the total bricks, we arrive at 4 bricks. This solution is independent of brick length, thickness and weight! I thought this was very interesting!</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [3]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">brick_balance</span><span class="p">(</span><span class="n">ntot</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">L</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">t</span><span class="o">=</span><span class="mf">0.1</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+
+
+<div class="output_png output_subarea ">
+<img src="data:image/png;base64,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%0AAElFTkSuQmCC">
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Lastly, I was curious about how far you could theoretically overhang a deck of cards. Simply enter the parameters for a deck of cards, and voila, an overhang of nearly  8 inches! That was a bit mind-blowing.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [4]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">brick_balance</span><span class="p">(</span><span class="n">ntot</span><span class="o">=</span><span class="mi">52</span><span class="p">,</span> <span class="n">L</span><span class="o">=</span><span class="mf">3.5</span><span class="p">,</span> <span class="n">t</span><span class="o">=</span><span class="mf">0.0115</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+
+
+<div class="output_png output_subarea ">
+<img src="data:image/png;base64,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">
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>The python code was a handy was to explore this puzzle once the initial math was figured out, and once the plotting is figured out, can help debug the math and create neat visuals. Once I got the answer (and tried a few real blocks stacked and measured and compared to my calculated results), I started searching online and here are some resources I found.</p>
+<p>Quanta has a great article here about the problem <a href="https://www.quantamagazine.org/20161117-overhang-insights-puzzle/">https://www.quantamagazine.org/20161117-overhang-insights-puzzle/</a> with solution <a href="https://www.quantamagazine.org/20161202-overhang-puzzle-solution/">https://www.quantamagazine.org/20161202-overhang-puzzle-solution/</a></p>
+<p>Another explanation can be found here
+<a href="http://datagenetics.com/blog/may32013/index.html">http://datagenetics.com/blog/may32013/index.html</a> and <a href="http://mathworld.wolfram.com/BookStackingProblem.html">http://mathworld.wolfram.com/BookStackingProblem.html</a></p>
+<p>For more fun math puzzles, check out <a href="http://mathworld.wolfram.com/topics/Puzzles.html">http://mathworld.wolfram.com/topics/Puzzles.html</a></p>
+<p>Stay Curious!</p>
+
+</div>
+</div>
+</div>
+</div>
+    </div>
+    </article><article class="h-entry post-text" itemscope="itemscope" itemtype="http://schema.org/Article"><header><h1 class="p-name entry-title"><a href="pythoncode-vs-excel/" class="u-url">Calculations with Python Code or Excel Spreadsheets</a></h1>
+        <div class="metadata">
+            <p class="byline author vcard"><span class="byline-name fn" itemprop="author">
+                neal
+            </span></p>
+            <p class="dateline">
+            <a href="pythoncode-vs-excel/" rel="bookmark">
+            <time class="published dt-published" datetime="2016-08-20T00:00:00-07:00" itemprop="datePublished" title="2016-08-20 00:00">2016-08-20 00:00</time></a>
+            </p>
+        </div>
+    </header><div class="e-content entry-content">
+    <div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="To-code-or-not-to-code">To code or not to code<a class="anchor-link" href="pythoncode-vs-excel/#To-code-or-not-to-code">¶</a>
+</h2>
+<p>When faced with a technical challenge or problem solving, conceptual understanding is an important first step, and I almost always start with hand calculations. Once I feel that I have a grasp of the concept, then I turn to a digital approach which often involves using excel or python and running some numbers, and re-running them, and fiddling until I really understand. I always feel like, especially in engineering, that using the right tool for the right job can make a big difference in the results. <a href="https://products.office.com/en-us/excel">Microsoft Excel</a> or <a href="https://www.libreoffice.org/discover/calc/">Libre Calc</a> spreadsheet programs are a great way to plug some numbers in and perform simple calculations with nearly no learning curve to get an answer. But as the complexity and quantity of the data and compuation increases, spreadsheets start to not make sense. That's where I feel a code based calculation method is important tool in everyones analysis toolbox. Classicaly, good old pencil and paper was the only way to model and work out problems. But, with the availability of the personal computer, software has allowed us to do more work with less effort. I find it very fascinating to see how people solve problems. This post will explore that idea and hopefully give you an idea to go beyond excel the next time you need to run some numbers.</p>
+<p>There are many ways to solve engineering problems. The main tools that I have found critical  are:</p>
+<ul>
+<li>
+<strong>hand calculations</strong>  <ul>
+<li>no learning curve</li>
+<li>low cost</li>
+<li>slow, tedious and can be error prone (me and algebra :( )</li>
+<li>forces you to understand </li>
+</ul>
+</li>
+<li>
+<strong>spreadsheets</strong>  <ul>
+<li>medium learning curve</li>
+<li>great at simple data storage</li>
+<li>great for simple calcualtions</li>
+<li>non-linear / confusing thought process</li>
+<li>not great at large scale date storage </li>
+<li>not repeatable</li>
+</ul>
+</li>
+<li>
+<strong>code</strong>  <ul>
+<li>linear thought process (usually)</li>
+<li>most powerful for calculations </li>
+<li>not great at simple data storage</li>
+<li>great for large scale data storage and processing </li>
+<li>powerful version control (<a href="https://git-scm.com/">git</a>)</li>
+<li>very repeatable</li>
+</ul>
+</li>
+</ul>
+<p>These are a few methods for solving computational problems. Each one has a time and place, but recognizing when you are trying to put a square peg in a round hole can help keep you sane.</p>
+<h2 id="An-Example---python-and-Excel-to-understand-loans">An Example - python and Excel to understand loans<a class="anchor-link" href="pythoncode-vs-excel/#An-Example---python-and-Excel-to-understand-loans">¶</a>
+</h2>
+<p>OK, so we discussed some different approaches to problem solving. Lets look at an example of using an spreadsheet and python code to understand and determine the cost of an loan. Some terms are listed below if you aren't familiar with a compound interest loan.</p>
+<blockquote>
+<p>apr - annual percentage rate<br>
+r   - monthly percentge rate, apr/12<br>
+per - the peroid for which you want to find an interest<br>
+nper - number of payment<br>
+pv - present value, the loan amount
+pmt - payment for a loan<br>
+payments due at the end of the period</p>
+</blockquote>
+<p>Let's throw some numbers at this. Here I will define some variables that define our loan parameters</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [1]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">############# define input variables #############</span>
+<span class="n">n</span> <span class="o">=</span> <span class="mi">24</span>   <span class="c1"># term in months</span>
+<span class="n">apr</span> <span class="o">=</span> <span class="mf">0.0250</span>   <span class="c1"># annual percentage rate</span>
+<span class="n">r</span> <span class="o">=</span> <span class="n">apr</span><span class="o">/</span><span class="mi">12</span>     <span class="c1"># monthly percentage rate</span>
+<span class="n">baseloan</span> <span class="o">=</span> <span class="mi">30000</span>   <span class="c1"># principal amount of loan</span>
+<span class="n">downpayment</span> <span class="o">=</span> <span class="mi">5000</span> 
+<span class="n">PV</span> <span class="o">=</span> <span class="n">baseloan</span> <span class="o">-</span> <span class="n">downpayment</span>  <span class="c1"># present value of the loan</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Hand-Calculation">Hand Calculation<a class="anchor-link" href="pythoncode-vs-excel/#Hand-Calculation">¶</a>
+</h3>
+<p>If we are to hand calculate our loan payments, we can use the following equation (found in Engineering Economy, Blank et al, pg 58)</p>
+$$
+payment = PV \bigg[  \frac{r(1+r)^n}{(1+r)^n-1} \bigg]
+$$
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [2]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># monthly payments assuming compounding interest</span>
+<span class="n">payment</span> <span class="o">=</span> <span class="o">-</span><span class="n">PV</span><span class="o">*</span><span class="p">((</span><span class="n">r</span><span class="o">*</span><span class="p">(</span><span class="mi">1</span><span class="o">+</span><span class="n">r</span><span class="p">)</span><span class="o">**</span><span class="n">n</span><span class="p">)</span><span class="o">/</span><span class="p">((</span><span class="mi">1</span><span class="o">+</span><span class="n">r</span><span class="p">)</span><span class="o">**</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">))</span>
+<span class="n">payment</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[2]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>-1069.0098055421547</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Easy enough, but what if you want to make a payment table, it would be very tedious by hand. Fortuantley, we have a computer. Since I understand the equation being used, I have no issues with automating this a little more. We can make an spreadsheet table. which is nice visually, didn't take very much time, and allows me to change some parameters.</p>
+<p><strong>Update</strong> - I found out that Excel has a great Loan Amortization spreadsheet built in, and it even includes early payoff, which is not that easy to calculate. I have included it in the spreadsheet below or you can make a new one by doing the following.</p>
+<blockquote>
+<p><em>right-click on a new sheet -&gt; Insert -&gt; Spreadsheet Solutions -&gt; Loan Amortization</em></p>
+</blockquote>
+<h3 id="Spreadsheet">Spreadsheet<a class="anchor-link" href="pythoncode-vs-excel/#Spreadsheet">¶</a>
+</h3>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<iframe width="700" height="807" frameborder="0" scrolling="no" src="https://onedrive.live.com/embed?cid=2DAE54F5236205EE&amp;resid=2DAE54F5236205EE%2125844&amp;authkey=AMSdq_7Zcg_mK_g&amp;em=2&amp;wdAllowInteractivity=False&amp;AllowTyping=True&amp;ActiveCell='loan'!E2&amp;Item='loan'!A1%3AI38&amp;wdHideGridlines=True&amp;wdDownloadButton=True"></iframe>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>But, if we want to change, say the term length, well then we have to change the layout of the table and mess with it, so the spreadsheet isn't as robust as we had hoped. How about a code solution? Here are the steps to get some python code going to do the same exact calcuation, and being very robust, and can be used for many different finanical applications.</p>
+<h3 id="Code">Code<a class="anchor-link" href="pythoncode-vs-excel/#Code">¶</a>
+</h3>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [3]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">############# import python libraries #############</span>
+<span class="kn">from</span> <span class="nn">numpy</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="kn">from</span> <span class="nn">pandas</span> <span class="kn">import</span> <span class="n">DataFrame</span><span class="p">,</span> <span class="n">date_range</span><span class="p">,</span> <span class="n">set_option</span><span class="p">,</span> <span class="n">options</span>
+<span class="n">options</span><span class="o">.</span><span class="n">display</span><span class="o">.</span><span class="n">float_format</span> <span class="o">=</span> <span class="s1">'$</span><span class="si">{:10,.2f}</span><span class="s1">'</span><span class="o">.</span><span class="n">format</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [4]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">############# calculate output #############</span>
+<span class="n">per</span> <span class="o">=</span>              <span class="n">arange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>  <span class="c1"># months</span>
+<span class="n">payment</span> <span class="o">=</span>          <span class="n">pmt</span><span class="p">(</span><span class="n">r</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">PV</span><span class="p">)</span>  <span class="c1"># monthly payment</span>
+<span class="n">interestpayment</span> <span class="o">=</span>  <span class="n">ipmt</span><span class="p">(</span><span class="n">r</span><span class="p">,</span> <span class="n">per</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">PV</span><span class="p">)</span>  <span class="c1"># monthly interest</span>
+<span class="n">principalpayment</span> <span class="o">=</span> <span class="n">ppmt</span><span class="p">(</span><span class="n">r</span><span class="p">,</span> <span class="n">per</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">PV</span><span class="p">)</span>  <span class="c1"># monthly principal</span>
+<span class="n">balance</span> <span class="o">=</span>          <span class="n">PV</span> <span class="o">+</span> <span class="n">per</span><span class="o">*</span><span class="n">payment</span> <span class="o">-</span> <span class="nb">sum</span><span class="p">(</span><span class="n">interestpayment</span><span class="p">)</span> <span class="c1"># monthly balance</span>
+<span class="n">dates</span> <span class="o">=</span>            <span class="n">date_range</span><span class="p">(</span><span class="s1">'20160101'</span><span class="p">,</span> <span class="n">periods</span><span class="o">=</span><span class="n">n</span><span class="p">,</span> <span class="n">freq</span><span class="o">=</span><span class="s1">'M'</span><span class="p">)</span>
+
+<span class="c1">############# create a table with the output #############</span>
+<span class="c1"># create a dataframe for simple data management and output</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">DataFrame</span><span class="p">({</span><span class="s1">'date'</span><span class="p">:</span><span class="n">dates</span><span class="p">,</span>
+                <span class="s1">'month'</span><span class="p">:</span><span class="n">per</span><span class="p">,</span>
+                <span class="s1">'balance'</span><span class="p">:</span><span class="n">balance</span><span class="p">,</span>
+                <span class="s1">'payment'</span><span class="p">:</span><span class="n">ones</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">per</span><span class="p">))</span><span class="o">*</span><span class="n">payment</span><span class="p">,</span>
+                <span class="s1">'interest'</span><span class="p">:</span><span class="n">interestpayment</span><span class="p">,</span>
+                <span class="s1">'principal'</span><span class="p">:</span><span class="n">principalpayment</span><span class="p">})</span>
+<span class="c1"># reorder the columns to match the spreadsheet</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="p">[[</span><span class="s1">'date'</span><span class="p">,</span><span class="s1">'month'</span><span class="p">,</span><span class="s1">'balance'</span><span class="p">,</span><span class="s1">'payment'</span><span class="p">,</span><span class="s1">'interest'</span><span class="p">,</span><span class="s1">'principal'</span><span class="p">]]</span>
+
+<span class="c1">############# print output #############</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">' monthly payment     = </span><span class="si">%f</span><span class="s1">'</span> <span class="o">%</span> <span class="n">payment</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">' total interest cost = </span><span class="si">%f</span><span class="se">\n</span><span class="s1">'</span> <span class="o">%</span> <span class="nb">sum</span><span class="p">(</span><span class="n">interestpayment</span><span class="p">))</span>   
+<span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre> monthly payment     = -1069.009806
+ total interest cost = -656.235333
+
+         date  month     balance     payment    interest   principal
+0  2016-01-31      1 $ 24,587.23 $ -1,069.01 $    -52.08 $ -1,016.93
+1  2016-02-29      2 $ 23,518.22 $ -1,069.01 $    -49.96 $ -1,019.05
+2  2016-03-31      3 $ 22,449.21 $ -1,069.01 $    -47.84 $ -1,021.17
+3  2016-04-30      4 $ 21,380.20 $ -1,069.01 $    -45.71 $ -1,023.30
+4  2016-05-31      5 $ 20,311.19 $ -1,069.01 $    -43.58 $ -1,025.43
+5  2016-06-30      6 $ 19,242.18 $ -1,069.01 $    -41.45 $ -1,027.56
+6  2016-07-31      7 $ 18,173.17 $ -1,069.01 $    -39.31 $ -1,029.70
+7  2016-08-31      8 $ 17,104.16 $ -1,069.01 $    -37.16 $ -1,031.85
+8  2016-09-30      9 $ 16,035.15 $ -1,069.01 $    -35.01 $ -1,034.00
+9  2016-10-31     10 $ 14,966.14 $ -1,069.01 $    -32.86 $ -1,036.15
+10 2016-11-30     11 $ 13,897.13 $ -1,069.01 $    -30.70 $ -1,038.31
+11 2016-12-31     12 $ 12,828.12 $ -1,069.01 $    -28.53 $ -1,040.48
+12 2017-01-31     13 $ 11,759.11 $ -1,069.01 $    -26.37 $ -1,042.64
+13 2017-02-28     14 $ 10,690.10 $ -1,069.01 $    -24.19 $ -1,044.82
+14 2017-03-31     15 $  9,621.09 $ -1,069.01 $    -22.02 $ -1,046.99
+15 2017-04-30     16 $  8,552.08 $ -1,069.01 $    -19.84 $ -1,049.17
+16 2017-05-31     17 $  7,483.07 $ -1,069.01 $    -17.65 $ -1,051.36
+17 2017-06-30     18 $  6,414.06 $ -1,069.01 $    -15.46 $ -1,053.55
+18 2017-07-31     19 $  5,345.05 $ -1,069.01 $    -13.27 $ -1,055.74
+19 2017-08-31     20 $  4,276.04 $ -1,069.01 $    -11.07 $ -1,057.94
+20 2017-09-30     21 $  3,207.03 $ -1,069.01 $     -8.86 $ -1,060.15
+21 2017-10-31     22 $  2,138.02 $ -1,069.01 $     -6.65 $ -1,062.36
+22 2017-11-30     23 $  1,069.01 $ -1,069.01 $     -4.44 $ -1,064.57
+23 2017-12-31     24 $      0.00 $ -1,069.01 $     -2.22 $ -1,066.79
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Assuming the user has a basic understanding of how to write a computer program, code is(should be) very straightforward to read. Spreadsheets, like the one shown above can be nebulus and requires a fair bit of digging to see what calcualtions are being made. 
+If you need any help with the functions, use the help function to show the inputs</p>
+<div class="highlight"><pre><span></span><span class="n">help</span><span class="p">(</span><span class="n">pmt</span><span class="p">)</span>
+<span class="n">help</span><span class="p">(</span><span class="n">ipmt</span><span class="p">)</span>
+<span class="n">help</span><span class="p">(</span><span class="n">ppmt</span><span class="p">)</span>
+</pre></div>
+<p>Try playing around with the code and see what happens when the terms of the loan are changed. The code is more robust to changes, where the spreadsheet has to be reworked</p>
+<h2 id="Summary">Summary<a class="anchor-link" href="pythoncode-vs-excel/#Summary">¶</a>
+</h2>
+<p>A simple demo compared spreadsheets versus code with an example of a common calcualtion problem, loans! When pursuing future projects, think about what tools would be the best for the given problem, as well as you, and possibly your team.</p>
+<p>Stay curious!</p>
+
+</div>
+</div>
+</div>
+</div>
+    </div>
+    </article><article class="h-entry post-text" itemscope="itemscope" itemtype="http://schema.org/Article"><header><h1 class="p-name entry-title"><a href="sage-embed/" class="u-url">Sage Math Tool</a></h1>
+        <div class="metadata">
+            <p class="byline author vcard"><span class="byline-name fn" itemprop="author">
+                neal
+            </span></p>
+            <p class="dateline">
+            <a href="sage-embed/" rel="bookmark">
+            <time class="published dt-published" datetime="2016-06-05T00:00:00-08:00" itemprop="datePublished" title="2016-06-05 00:00">2016-06-05 00:00</time></a>
+            </p>
+        </div>
+    </header><div class="e-content entry-content">
+    <div>
+<p>I have been really impressed with the sage math application. It's based on python and is very powerful. Check out the documentation <a href="http://www.sagemath.org/">here</a> or try out the cloud service <a href="https://cloud.sagemath.com/">here</a></p>
+<script src="https://sagecell.sagemath.org/static/jquery.min.js"></script><script src="https://sagecell.sagemath.org/static/embedded_sagecell.js"></script><script>sagecell.makeSagecell({"inputLocation": ".sage"});</script><p><link rel="stylesheet" type="text/css" href="https://sagecell.sagemath.org/static/sagecell_embed.css"></p>
+<div class="sage">
+  <script type="text/x-sage">x = var('x') ; parametric_plot((cos(x),sin(x)^3),(x,0,2*pi),rgbcolor=hue(0.6))</script>
+</div>
+</div>
+    </div>
+    </article><article class="h-entry post-text" itemscope="itemscope" itemtype="http://schema.org/Article"><header><h1 class="p-name entry-title"><a href="what-open-source-means/" class="u-url">Understanding and using technology</a></h1>
+        <div class="metadata">
+            <p class="byline author vcard"><span class="byline-name fn" itemprop="author">
+                neal
+            </span></p>
+            <p class="dateline">
+            <a href="what-open-source-means/" rel="bookmark">
+            <time class="published dt-published" datetime="2016-05-07T00:00:00-08:00" itemprop="datePublished" title="2016-05-07 00:00">2016-05-07 00:00</time></a>
+            </p>
+        </div>
+    </header><div class="e-content entry-content">
+    <div>
+<p>The book <a href="http://www.catb.org/~esr/">The Cathedral and the Bazaar</a></p>
+<p><img alt="cathedralandbazaar" src="../images/cathedralandbazaar.jpg"></p>
+<h2>What open-source means to me</h2>
+<p>The ideas expressed in this article are generally not my own, however, all the opinions are. And, those opinions are mostly a response from the book/manifesto of open-source, called The Cathedral and the Bazaar, by Eric Raymond.
+I stumbled across this book in my many random searches on the internet, and as I started reading it out of pure curiosity, and I immediately began correlating ideas behind the open software development strategies to many various activities in my life, including some epistemological interests in economics and philosophy. Being a US citizen, it is difficult to deny our ingrained capitalistic ideologies where companies are created and destroyed based on profit, and when you ask a typical person what their worth is, they often will give you a dollar value. It is a very slippery slope to think in terms of starting a company with a great idea with the hopes of one day making it big, but the open-source world says something different. It is a more humanitarian approach to creating great technology, rather than seeking fortunes through innovations.</p>
+<p>Let me side-track for a moment to address the obvious opposite to the open-source ideology , closed-source, enter Bill Gates. In his book, "The Road Ahead", his insatiable hunger for technology, and how the lack on innovation and implementation in the electronics industry drove him to share his interests with the world by providing software to make computers more accessible to the not-so-tech-savvy. His business model was to make software, and sell it. The world at that time needed someone with the impetus of profit to get the ball rolling. Although, I do not think there are more people interested in technology now than there were in the 1970's, but technology is certainly more accessible, and learning has never been easier (although motivation is still hard for everyone to find). Don't get me wrong, Microsoft has fine products, but they just don't serve society the way we need.</p>
+<p>The fundamental flaw with closed-source software is that it inherently forces the user to be a pure consumer, rather than a consumer <em>and</em> creator. This, unfortunately, leaves us in a world where the hottest pieces of software are apps that blindly allow us to seemingly(and laughably) "hide" our data. The only solution to securing your data is to understand, and you cannot understand if what you seek is not accessible. It is in societies' best interest that users stay curious, and the demand to understand persists.</p>
+<p>Using technology is humanity's greatest ability(we are also apparently very good at <a href="http://www.amazon.com/Born-Run-Hidden-Superathletes-Greatest/dp/0307279189">endurance running</a> :) . However, we only create technology when a few criteria are met:</p>
+<ul>
+<li>curiosity</li>
+<li>profitability (financial et al)</li>
+<li>insanity</li>
+</ul>
+<p>I prefer <strong>curiosity</strong> out of my other options, mostly because I eat every day and have a house to sleep in. This is the first item of the open-source. Other explanations exist, of which are common among many technologist, such as boosting ones own ego. A very exciting idea of why open-source works can be found in nature. I case you forgot, humans are animals too, and are subject to the laws of nature, just like any other beast out there. I really like how this is put:<br><em>"To operate and compete effectively, open-source participants who want to lead collaborative projects have to learn how to recruit and energize effective communities of interest...The open-source world operates in much the same way as an economic, or ecologic system, where a collection of selfish agents attempt to maximize utility, which in the process produces a self-correcting spontaneous order more elaborate and efficient than any amount of central planning could have achieved. The "utility function" that open-source participants are trying to maximize is not the classically economic [and may vary from person to person, ] but is the intangible of their own ego satisfaction with other participants(I have accepted that altruism is just another form of ego-satisfaction)...Many people (especially those who politcally distrust "free markets") would expect a culture of self-directed egoists to be fragmented, territorial, wasteful, secretive, and hostile. But these expectations are clearly falsified by the incredible success of Linux (which one of the most successfully open source projects and arguably ignited the entire open-source culture or problem solving ideology )...Perhaps in the end the open-source culture will triumph not because cooperation is morally right or software hoarding is morally wrong (which I do not think it is), but simply because the closed-software world cannot win the evolutionary arms race with the open-source communities"</em> </p>
+<p>_    - The Cathedral and the Bazaar, by Eric Raymond. pg 52. ISBN 978-0-596-00108-7_  </p>
+<p>I really appreciate how that was written, which is obviously why I included it. I think it is both insightful into why open-source works on a practical level, as well as biological. It also brings the topic of why Microsoft is what is it(recap: because a few people wrote the whole darn OS in the beginning), and why that method of software development will no longer work.  </p>
+<blockquote>
+<p>1) Every good work of software starts by scratching a developer's personal itch</p>
+</blockquote>
+<p>If you don't program, but want to learn, this is THE EASIEST WAY TO STAR. Find a project that is interesting to see, so that there is a goal in mind and you have the drive and curiosity to finish it. This leads me to the second point.  </p>
+<blockquote>
+<p>2) Good Programmers know what to write. Great ones know what to rewrite.</p>
+</blockquote>
+<p>Do not try to reinvent the wheel, the whole idea of sharing your code is to help everyone, so use everyone elses code, and if it doesn't work, then make it yourself.</p>
+<blockquote>
+<p>3) You don't really understand a problem until you attempt to solve it, and by then you probably want to start over, and you should</p>
+</blockquote>
+<p>Be willing and happy to change things when you can and still have motivation, because it is always for the better</p>
+<blockquote>
+<p>13) "Perfection (in design) is achieved not when there is nothing more to add, but rather when there is nothing more to take away." - Antoine de Satin-Exupery</p>
+</blockquote>
+<p>Don't hesitate to throw away features, just keep the essentials and do them well</p>
+<blockquote>
+<p>14) Any tool should be useful in the expected way, but a truly great tool lends itself to unexpected uses</p>
+</blockquote>
+<p>Whatever you set out to do, it <em>must</em> work how you intended it to, and if you did it well enough, it will work for many other things as well. That is a great feeling!</p>
+<blockquote>
+<p>18) To solve an interesting problem, start with a problem that is interesting to you</p>
+</blockquote>
+<h2>How to begin to learn about 21st century technology.</h2>
+<p>As I mentioned, in order to really understand the technology that runs our modern world, it needs to be open-source, so that the curious seeking can dig as deep as they need to appreciate what is happening. Be forewarned, following this list may show you the light, but possibly at great expense to your time(but that doesn't matter, because we are having fun!) So, leads us to my first point.</p>
+<blockquote>
+<p>1) Learn an open-source operating system, such as linux</p>
+</blockquote>
+<p>There are so many options when it comes to interacting with your computer check out <a href="http://distrowatch.com/">distrowatch</a> to find an operating system that matches your needs. I like anything debian, mostly because the packages are ubiquitous and I really like my Raspberry Pi. Also, installing an operating system has become user error proof with the modern Windows install, so challenge yourself by installing something that makes you think a little and gives you choices.</p>
+<blockquote>
+<p>2) learn how to use a terminal, like bash or powershell</p>
+</blockquote>
+<p>Everything you do in linux can be done through the terminal, but the opposite it not true for the user-interface. Although the terminal has a much steeper learning curve, it is the segue to picking up a scripting/programming language, which is my next point.</p>
+<blockquote>
+<p>3) Learn a programming language.</p>
+</blockquote>
+<p>I don't want to overstate this, but nearly every job you will ever have can utilize this skill and it can be fun! I first learned visual basic because I wanted to roll a dice 1000 times but didn't want to take all day to do it.</p>
+<blockquote>
+<p>4) Embrace open-source when you use software <em>and</em> when you create it</p>
+</blockquote>
+<p>I have had my share of downloading shady windows programs to do silly tasks (eg music organization) and caught a virus along the way. Once I discovered the open-source community, I get better software, without malware that I can customize however I want. It is a beautiful thing.
+I cannot stress enough how important I have found it to eliminate my ego as a science enthusiast and remove territories from my ideas and share with the communities of the for peer-review and sharing my thoughts. That is the number one reason that I wanted to create this blog (the other is to help me write more, which is pleasantly cathartic for me and keeps my wandering brain on task, rather than keeping a personal journal (check out <a href="http://rednotebook.sourceforge.net/">Red Notebook</a>, which I would recommend, but doesn't have the accountability a published blog does.)</p>
+<p>I hope you get a chance to explore the ideas of open-source, because they go well beyond just computing.</p>
+<p>Stay Curious!</p>
+</div>
+    </div>
+    </article><article class="h-entry post-text" itemscope="itemscope" itemtype="http://schema.org/Article"><header><h1 class="p-name entry-title"><a href="Industrial-Design-of-Experiments-with-r/" class="u-url">Industrial Design of Experiments with R</a></h1>
+        <div class="metadata">
+            <p class="byline author vcard"><span class="byline-name fn" itemprop="author">
+                neal
+            </span></p>
+            <p class="dateline">
+            <a href="Industrial-Design-of-Experiments-with-r/" rel="bookmark">
+            <time class="published dt-published" datetime="2016-05-06T00:00:00-08:00" itemprop="datePublished" title="2016-05-06 00:00">2016-05-06 00:00</time><span class="updated"> (updated
+                    <time class="dt-updated" datetime="2017-05-29T00:00:00-08:00" itemprop="dateUpdated" title="2017-05-29 00:00">2017-05-29 00:00</time>)</span>
+            </a>
+            </p>
+        </div>
+    </header><div class="e-content entry-content">
+    <div>
+<h2>Motivation</h2>
+<p>Python is my favorite language. But, I also practice polyglottery(using multiple languages...I know, I had to use that word!). For the years of using python, I have rarely come across a problem that I haven't been able to solve or hasn't been solved yet in python. Well, today is the day.</p>
+<p>I enjoy statistics, and a very useful tool in the statisticians toolbox is the Experimental Design, or DOE (Design of Experiments). I searched for hours trying to find an open-source alternative to the Minitab DOE package, which is nice if you have a license, and found limited options. I evaluated <a href="http://pythonhosted.org/pyDOE/">pyDOE</a>, but it only designs experiments, not analyzes them. There are a couple open-source statistics packages, such as <a href="http://www.sofastatistics.com/home.php">sofa</a>, but why would you use anything other than R? Yes, I know the answer, because it is a programming language, not a nice GUI. Well, I encourage you to make the plunge, because I haven't been impressed with a programming language in a long time, and R has impressed me.</p>
+<p>I assume you are familiar with DOE principles. If not, check out a <a href="https://www.crcpress.com/Design-and-Analysis-of-Experiments-with-R/Lawson/9781439868133">R-DOE-book</a> or for theory, <a href="http://www.wiley.com/WileyCDA/WileyTitle/productCd-EHEP002024.html">Design and Analysis of Experiments by Montgomery</a> is a classic. As for R, you don't need to be an expert, but it helps to play around with it, perhaps some <a href="http://codegolf.stackexchange.com/questions/tagged/r">golf</a>.</p>
+<h2>Installation</h2>
+<h3>R Base install and RStudio</h3>
+<p>To get started, I am using Windows 7. To install R, check out <a href="https://cran.r-project.org/bin/windows/base/">R-Base Package</a>.</p>
+<p>R does not come with a GUI. It is just a command line for executing R-code that is an ascii file with the extension <strong>*.r</strong></p>
+<p><img alt="R_GUI" src="../images/Industrial-Design-of-Experiments-with-R/R_GUI.png" title="Default R Interface"></p>
+<p>Fortunately some awesome GUI's already exist. <a href="https://rkward.kde.org/">rkward</a> is cool, but I prefer <a href="https://www.rstudio.com/">Rstudio</a>. RStudio has a built in script editor, a console for running commands, a plot window, a file explorer, and a help window. What more could you ask for? Take some time and familiarize yourself with RStudio.</p>
+<p><img alt="R_Studio" src="../images/Industrial-Design-of-Experiments-with-R/R_Studio.png" title="Awesome RGUI RStudio"></p>
+<p>For more information on the R DOE package we will be using, check out <a href="http://prof.beuth-hochschule.de/groemping/software/design-of-experiments/project-industrial-doe-in-r/">Prof. Dr. Ulrike Grömpings page</a>. The walk-through here is derived from <a href="http://www1.beuth-hochschule.de/FB_II/reports/Report-2011-004.pdf">this document</a>.</p>
+<p>Open up RStudio and familiarze yourself with the tools. I am really impressed with all the extra features with reporting and html/markdown exporting, and am excited to check those features out in the future.
+I found three hotkeys that I use all the time are:<br>
+To restart the R console <strong>ctrl+shift+F10</strong><br>
+To run the current line, <strong>ctrl+enter</strong><br>
+To run the script, <strong>ctrl+alt+r</strong>  </p>
+<p>If the installtion gives you trouble, or you want to start using R immediatley, check out the <a href="http://www.r-fiddle.org/#/">R-Fiddle</a></p>
+<h3>R Packages</h3>
+<p>Custom R packages are really easy to install if you know how. The packages are stored and managed by users in the CRAN(The Comprehensive R Archive Network). For example, the <a href="https://cran.r-project.org/web/views/ExperimentalDesign.html">DOE Package</a> website shows information on the package. Luckily, we don't need to read all of that. We can install all the packages from our R program.</p>
+<p>For the DOE we will create and analze, we need to first install the required packages. I don't know if all these packages are needed, but I pulled these from the CRAN site. Once you have RStudio open, copy and paste these install commands in a new script and hit <strong>ctrl+alt+r</strong></p>
+<pre class="code literal-block"><span></span><code><span class="nf">install.packages</span><span class="p">(</span><span class="s">"DoE.base"</span><span class="p">)</span>
+<span class="nf">install.packages</span><span class="p">(</span><span class="s">"FrF2"</span><span class="p">)</span>
+<span class="nf">install.packages</span><span class="p">(</span><span class="s">"DoE.wrapper"</span><span class="p">)</span>
+<span class="nf">install.packages</span><span class="p">(</span><span class="s">"RcmdrPlugin.DoE"</span><span class="p">)</span>
+<span class="nf">install.packages</span><span class="p">(</span><span class="s">"RcmdrPlugin.Export"</span><span class="p">)</span> <span class="c1"># Graphically export objects to LaTeX or HTML</span>
+<span class="nf">install.packages</span><span class="p">(</span><span class="s">"RcmdrPlugin.FactoMineR"</span><span class="p">)</span> <span class="c1"># Graphical User Interface for FactoMineR</span>
+<span class="nf">install.packages</span><span class="p">(</span><span class="s">"RcmdrPlugin.HH"</span><span class="p">)</span> <span class="c1"># Rcmdr support for the HH package</span>
+<span class="nf">install.packages</span><span class="p">(</span><span class="s">"RcmdrPlugin.IPSUR"</span><span class="p">)</span> <span class="c1"># Introduction to Probability and Statistics Using R</span>
+<span class="nf">install.packages</span><span class="p">(</span><span class="s">"RcmdrPlugin.SurvivalT"</span><span class="p">)</span> <span class="c1"># Rcmdr Survival Plug-In</span>
+<span class="nf">install.packages</span><span class="p">(</span><span class="s">"RcmdrPlugin.TeachingDemos"</span><span class="p">)</span> <span class="c1"># Rcmdr Teaching Demos Plug-In</span>
+<span class="nf">install.packages</span><span class="p">(</span><span class="s">"RcmdrPlugin.epack"</span><span class="p">)</span> <span class="c1"># Rcmdr plugin for time series</span>
+<span class="nf">install.packages</span><span class="p">(</span><span class="s">"RcmdrPlugin.orloca"</span><span class="p">)</span> <span class="c1"># orloca Rcmdr Plug-in</span>
+<span class="nf">install.packages</span><span class="p">(</span><span class="s">"Rcmdr"</span><span class="p">)</span> <span class="c1"># at the R prompt</span>
+<span class="nf">install.packages</span><span class="p">(</span><span class="s">"conf.design"</span><span class="p">)</span>
+<span class="nf">install.packages</span><span class="p">(</span><span class="s">"lhs"</span><span class="p">)</span>
+<span class="nf">install.packages</span><span class="p">(</span><span class="s">"AlgDesign"</span><span class="p">)</span>
+<span class="nf">install.packages</span><span class="p">(</span><span class="s">"DiceDesign"</span><span class="p">)</span>
+<span class="nf">install.packages</span><span class="p">(</span><span class="s">"rsm"</span><span class="p">)</span>
+</code></pre>
+
+
+<p>Once that finishes, you will need to restart the R console, so hit <strong>ctrl+shift+F10</strong> or just restart RStudio.</p>
+<h2>Design of Experiements</h2>
+<p>For the total newbie, a experimental design is a statical method for modeling a system, especially a complex system that is not easily analytically modeled. The system will have some given inputs, or factors, and outputs, or responses. The goal is to determine what factors are significant in the contribution to the effect of the response(s). Since our experiment is empirical, we expect some error, but that is OK because the statistical significance will be one of the results we will obtain.
+For DOE experts, sorry about my simple explaination. I am an engineer, not a statistician.  </p>
+<p>The screening experiment we will be running is to model the factors or variables when operating a potato gun to functionally understand the distance it can shoot. We will do a handful of runs, or shots with the gun, and see what is contributing to the distance, positivley or negatively. This allows us to run as few runs as possible to find any significant factors. We will start with 8 factors, with 2 levels, and one response, distance. That may seem like a lot of runs to the naive experimenter, actually $2^8=256$ combinations, or full-factorial. If that is done, you will quickly lose interest, money, or supporters by taking so long. So, before we run an experiment that detailed, we should screen out the insignificant factors first. The details of screening experiments can be found in the help documents in Rstudio or any DOE textbook.</p>
+<table>
+<thead><tr>
+<th>Factor</th>
+<th>Low Setting</th>
+<th>High Setting</th>
+</tr></thead>
+<tbody>
+<tr>
+<td>AirVolume</td>
+<td>198</td>
+<td>672</td>
+</tr>
+<tr>
+<td>Valve</td>
+<td>1</td>
+<td>2</td>
+</tr>
+<tr>
+<td>Barrel</td>
+<td>4</td>
+<td>6</td>
+</tr>
+<tr>
+<td>Angle</td>
+<td>45</td>
+<td>60</td>
+</tr>
+<tr>
+<td>Pressure</td>
+<td>20</td>
+<td>40</td>
+</tr>
+<tr>
+<td>WadType</td>
+<td>paper</td>
+<td>cloth</td>
+</tr>
+<tr>
+<td>Voltage</td>
+<td>9</td>
+<td>27</td>
+</tr>
+<tr>
+<td>BallType</td>
+<td>pink</td>
+<td>white</td>
+</tr>
+</tbody>
+</table>
+<p>The general workflow (with menu paths) when doing experiments in R is:
+* <strong>Design -&gt; Create Deasign -&gt; Screening Design</strong>
+ * Set Name, number of runs, factors, and factor details
+* Select Button View data set and review the experiment
+* <strong>Design -&gt; Export -&gt; Export Experiment</strong>
+ * Export a rda, html, and csv file.
+* In a spreadsheet application, eg <a href="https://www.libreoffice.org/download/libreoffice-fresh/">Libreoffice</a>, add a column to the csv file with the response variable(s)
+* <strong>Design -&gt; Re-import experiment from csv and rda</strong>
+ * perform analysis and generate plots and report</p>
+<h3>DOE Setup</h3>
+<p>Now we can start our DOE! We can do everything with the R command line or a script, but lets use RCommander to create the DOE. To launch RCommander, which is the GUI designed to be used with the DOE package, in the RStudio console, type:</p>
+<pre class="code literal-block"><span></span><code><span class="nf">require</span><span class="p">(</span><span class="n">RcmdrPlugin.DoE</span><span class="p">)</span>
+</code></pre>
+
+
+<p>This should launch RCommander, which will run alongside RStudio and use the console for output.</p>
+<p><img alt="Rcmdr" src="../images/Industrial-Design-of-Experiments-with-R/Rcmdr.png" title="Rcommander DOE interface"></p>
+<p>From the RCommander menu. we will be using the <strong>Design</strong> menu for the DOE setup, experiment, and analysis. Lets setup our experiment.</p>
+<p><img alt="doe_create" src="../images/Industrial-Design-of-Experiments-with-R/doe_create.png" title="DOE Setup"></p>
+<p>From the interface here, filling the information manually or use the provided csv file.</p>
+<p><img alt="doe_setup" src="../images/Industrial-Design-of-Experiments-with-R/doe_setup.png" title="DOE Setup"></p>
+<p>This will generate a randomized screening experiemnt experiement with 12 runs. There are 3 dummy factors, e1,e2,e3 which are necessary for screening experiments. They can be ignored or see the manual for more details.</p>
+<table>
+<thead><tr>
+<th>Run</th>
+<th>AirVolume</th>
+<th>Valve</th>
+<th>Barrel</th>
+<th>Angle</th>
+<th>Pressure</th>
+<th>WadType</th>
+<th>Voltage</th>
+<th>BallType</th>
+<th>e1</th>
+<th>e2</th>
+<th>e3</th>
+<th>distance</th>
+</tr></thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>198</td>
+<td>2</td>
+<td>4ft</td>
+<td>60</td>
+<td>40</td>
+<td>paper</td>
+<td>27</td>
+<td>pink</td>
+<td>-1</td>
+<td>-1</td>
+<td>1</td>
+<td>203.771</td>
+</tr>
+<tr>
+<td>2</td>
+<td>672</td>
+<td>1</td>
+<td>6ft</td>
+<td>60</td>
+<td>20</td>
+<td>paper</td>
+<td>27</td>
+<td>pink</td>
+<td>-1</td>
+<td>1</td>
+<td>-1</td>
+<td>140.046</td>
+</tr>
+<tr>
+<td>3</td>
+<td>672</td>
+<td>2</td>
+<td>4ft</td>
+<td>45</td>
+<td>40</td>
+<td>paper</td>
+<td>27</td>
+<td>white</td>
+<td>1</td>
+<td>1</td>
+<td>-1</td>
+<td>424.479</td>
+</tr>
+<tr>
+<td>4</td>
+<td>198</td>
+<td>1</td>
+<td>4ft</td>
+<td>45</td>
+<td>20</td>
+<td>cloth</td>
+<td>27</td>
+<td>pink</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>127.875</td>
+</tr>
+<tr>
+<td>5</td>
+<td>198</td>
+<td>2</td>
+<td>6ft</td>
+<td>60</td>
+<td>20</td>
+<td>cloth</td>
+<td>27</td>
+<td>white</td>
+<td>1</td>
+<td>-1</td>
+<td>-1</td>
+<td>78.667</td>
+</tr>
+<tr>
+<td>6</td>
+<td>672</td>
+<td>2</td>
+<td>6ft</td>
+<td>45</td>
+<td>20</td>
+<td>paper</td>
+<td>9</td>
+<td>pink</td>
+<td>1</td>
+<td>-1</td>
+<td>1</td>
+<td>167.979</td>
+</tr>
+<tr>
+<td>7</td>
+<td>198</td>
+<td>1</td>
+<td>4ft</td>
+<td>45</td>
+<td>20</td>
+<td>paper</td>
+<td>9</td>
+<td>white</td>
+<td>-1</td>
+<td>-1</td>
+<td>-1</td>
+<td>85.521</td>
+</tr>
+<tr>
+<td>8</td>
+<td>198</td>
+<td>1</td>
+<td>6ft</td>
+<td>60</td>
+<td>40</td>
+<td>paper</td>
+<td>9</td>
+<td>white</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>208</td>
+</tr>
+<tr>
+<td>9</td>
+<td>198</td>
+<td>2</td>
+<td>6ft</td>
+<td>45</td>
+<td>40</td>
+<td>cloth</td>
+<td>9</td>
+<td>pink</td>
+<td>-1</td>
+<td>1</td>
+<td>-1</td>
+<td>313.813</td>
+</tr>
+<tr>
+<td>10</td>
+<td>672</td>
+<td>2</td>
+<td>4ft</td>
+<td>60</td>
+<td>20</td>
+<td>cloth</td>
+<td>9</td>
+<td>white</td>
+<td>-1</td>
+<td>1</td>
+<td>1</td>
+<td>166.021</td>
+</tr>
+<tr>
+<td>11</td>
+<td>672</td>
+<td>1</td>
+<td>6ft</td>
+<td>45</td>
+<td>40</td>
+<td>cloth</td>
+<td>27</td>
+<td>white</td>
+<td>-1</td>
+<td>-1</td>
+<td>1</td>
+<td>466.771</td>
+</tr>
+<tr>
+<td>12</td>
+<td>672</td>
+<td>1</td>
+<td>4ft</td>
+<td>60</td>
+<td>40</td>
+<td>cloth</td>
+<td>9</td>
+<td>pink</td>
+<td>1</td>
+<td>-1</td>
+<td>-1</td>
+<td>389.958</td>
+</tr>
+</tbody>
+</table>
+<h3>DOE Experiment</h3>
+<p>To run your experiment, go through each run, set-up the system as prescribed by the factors, and record the response. Once you run the experiment and enter your results in the csv, re-import the csv to analyze.
+<img alt="doe_reimport" src="../images/Industrial-Design-of-Experiments-with-R/import_results.png" title="DOE Reimport"></p>
+<h3>DOE Results</h3>
+<p>The visualizations that are generated using R for DOE are great! The results should tell us which factors should be studied with higher fidelity, and which factors are not necessary to continue studying.</p>
+<p>Without going into great detail, here are some examples.</p>
+<h4>Half-Normal Plot</h4>
+<p><strong>Design -&gt; Analyze design -&gt; Effects (Half) Normal Plots</strong>  </p>
+<p>Ensure the dummy factors e1,e2,e3 are included
+<img alt="half-normal-plot" src="../images/Industrial-Design-of-Experiments-with-R/half-normal-plot.png" title="half-normal-plot">
+Observe that Pressure, Airvolume, Angle, WadType have the largest absolute effect, respectivley</p>
+<h4>Linear-Model</h4>
+<p><strong>Design -&gt; Analyze design -&gt; Default Linear Model</strong>  </p>
+<p>Ensure the dummy factors e1,e2,e3 are removed</p>
+<pre class="code literal-block"><span></span><code><span class="n">Coefficients</span><span class="o">:</span>
+            <span class="n">Estimate</span> <span class="n">Std</span><span class="o">.</span> <span class="n">Error</span> <span class="n">t</span> <span class="n">value</span> <span class="n">Pr</span><span class="o">(&gt;|</span><span class="n">t</span><span class="o">|)</span>    
+<span class="o">(</span><span class="n">Intercept</span><span class="o">)</span>  <span class="mf">231.075</span>      <span class="mf">4.583</span>  <span class="mf">50.423</span> <span class="mf">1.72</span><span class="n">e</span><span class="o">-</span><span class="mi">05</span> <span class="o">***</span>
+<span class="n">AirVolume1</span>    <span class="mf">61.467</span>      <span class="mf">4.583</span>  <span class="mf">13.413</span> <span class="mf">0.000896</span> <span class="o">***</span>
+<span class="n">Valve1</span>        <span class="o">-</span><span class="mf">5.287</span>      <span class="mf">4.583</span>  <span class="o">-</span><span class="mf">1.154</span> <span class="mf">0.332219</span>    
+<span class="n">Barrel1</span>       <span class="o">-</span><span class="mf">1.862</span>      <span class="mf">4.583</span>  <span class="o">-</span><span class="mf">0.406</span> <span class="mf">0.711701</span>    
+<span class="n">Angle1</span>       <span class="o">-</span><span class="mf">33.331</span>      <span class="mf">4.583</span>  <span class="o">-</span><span class="mf">7.273</span> <span class="mf">0.005364</span> <span class="o">**</span>
+<span class="n">Pressure1</span>    <span class="mf">103.390</span>      <span class="mf">4.583</span>  <span class="mf">22.561</span> <span class="mf">0.000191</span> <span class="o">***</span>
+<span class="n">WadType1</span>      <span class="mf">26.109</span>      <span class="mf">4.583</span>   <span class="mf">5.697</span> <span class="mf">0.010722</span> <span class="o">*</span>  
+<span class="n">Voltage1</span>       <span class="mf">9.193</span>      <span class="mf">4.583</span>   <span class="mf">2.006</span> <span class="mf">0.138514</span>    
+<span class="n">BallType1</span>     <span class="o">-</span><span class="mf">7.168</span>      <span class="mf">4.583</span>  <span class="o">-</span><span class="mf">1.564</span> <span class="mf">0.215736</span>    
+<span class="o">---</span>
+<span class="n">Signif</span><span class="o">.</span> <span class="n">codes</span><span class="o">:</span>  <span class="mi">0</span> <span class="s1">'***'</span> <span class="mf">0.001</span> <span class="s1">'**'</span> <span class="mf">0.01</span> <span class="s1">'*'</span> <span class="mf">0.05</span> <span class="s1">'.'</span> <span class="mf">0.1</span> <span class="s1">' '</span> <span class="mi">1</span>
+
+<span class="n">Residual</span> <span class="n">standard</span> <span class="n">error</span><span class="o">:</span> <span class="mf">15.87</span> <span class="n">on</span> <span class="mi">3</span> <span class="n">degrees</span> <span class="n">of</span> <span class="n">freedom</span>
+<span class="n">Multiple</span> <span class="n">R</span><span class="o">-</span><span class="n">squared</span><span class="o">:</span>  <span class="mf">0.9962</span><span class="o">,</span>    <span class="n">Adjusted</span> <span class="n">R</span><span class="o">-</span><span class="n">squared</span><span class="o">:</span>  <span class="mf">0.986</span>
+<span class="n">F</span><span class="o">-</span><span class="n">statistic</span><span class="o">:</span> <span class="mf">97.78</span> <span class="n">on</span> <span class="mi">8</span> <span class="n">and</span> <span class="mi">3</span> <span class="n">DF</span><span class="o">,</span>  <span class="n">p</span><span class="o">-</span><span class="n">value</span><span class="o">:</span> <span class="mf">0.001539</span>
+</code></pre>
+
+
+<p>Again the Pressure, Airvolume, Angle, WadType have the largest absolute effect, respectivley. Those factors are also less than our p-value, which we defined as 0.1, which tells us that the results are significant. Since this is a screening experiment, interactions are not computed.</p>
+<h3>Main-Effects Plot</h3>
+<p><strong>Design -&gt; Analyze design -&gt; Main Effects and Interactions Plots</strong>
+<img alt="main-effects-plot" src="../images/Industrial-Design-of-Experiments-with-R/main-effects-plot.png" title="main-effects-plot"></p>
+<p>The main effects plot is a great visual to qualitativley grasp the results of the experiment. We can tell the how much the factor contributes to the response by the slope and whether it is positive or negative by the slope. Flat lines indicate that the factor with the selected levels is insignificant in the model we have created.</p>
+<h2>Conclusion</h2>
+<p>A simple example was shown how to use an open-source solution for creating and analzying statistical experiments using R. This is the only open-source tool I have found, so if anyone knows of another, please let me know. I have found R to be a great lanugage to know. The syntax is fine, the packages are numerous, and the community is good.
+Running experiments with DOE methods can be a great tool to have in nearly any industry. My background in Industrial and Systems Engineering exposed me to DOE for traditional manufacturing studies, but the concepts can be used in nearly any situation where understand of cause-and-effect is desired.</p>
+<p>Stay Curious!</p>
+</div>
+    </div>
+    </article><article class="h-entry post-text" itemscope="itemscope" itemtype="http://schema.org/Article"><header><h1 class="p-name entry-title"><a href="python-tutor/" class="u-url">Python Tutor, and interactive execution tool</a></h1>
+        <div class="metadata">
+            <p class="byline author vcard"><span class="byline-name fn" itemprop="author">
+                neal
+            </span></p>
+            <p class="dateline">
+            <a href="python-tutor/" rel="bookmark">
+            <time class="published dt-published" datetime="2016-05-06T00:00:00-08:00" itemprop="datePublished" title="2016-05-06 00:00">2016-05-06 00:00</time></a>
+            </p>
+        </div>
+    </header><div class="e-content entry-content">
+    <div>
+<p>yet another neat tool I found online for understanding python execution</p>
+<iframe width="800" height="600" frameborder="0" src="http://pythontutor.com/iframe-embed.html#code=x+%3D+%5B1,+2,+3%5D%0Ay+%3D+%5B4,+5,+6%5D%0Az+%3D+y%0Ay+%3D+x%0Ax+%3D+z%0A%0Ax+%3D+%5B1,+2,+3%5D+%23+a+different+%5B1,+2,+3%5D+list!%0Ay+%3D+x%0Ax.append(4%29%0Ay.append(5%29%0Az+%3D+%5B1,+2,+3,+4,+5%5D+%23+a+different+list!%0Ax.append(6%29%0Ay.append(7%29%0Ay+%3D+%22hello%22%0A%0A%0Adef+foo(lst%29%3A%0A++++lst.append(%22hello%22%29%0A++++bar(lst%29%0A%0Adef+bar(myLst%29%3A%0A++++print(myLst%29%0A%0Afoo(x%29%0Afoo(z%29&amp;origin=opt-frontend.js&amp;cumulative=false&amp;heapPrimitives=false&amp;textReferences=false&amp;py=2&amp;rawInputLstJSON=%5B%5D&amp;curInstr=0&amp;codeDivWidth=350&amp;codeDivHeight=400"> </iframe>
+</div>
+    </div>
+    </article><article class="h-entry post-text" itemscope="itemscope" itemtype="http://schema.org/Article"><header><h1 class="p-name entry-title"><a href="pyver-version-control/" class="u-url">Pyver, Version Control For Dummies</a></h1>
+        <div class="metadata">
+            <p class="byline author vcard"><span class="byline-name fn" itemprop="author">
+                neal
+            </span></p>
+            <p class="dateline">
+            <a href="pyver-version-control/" rel="bookmark">
+            <time class="published dt-published" datetime="2016-05-06T00:00:00-08:00" itemprop="datePublished" title="2016-05-06 00:00">2016-05-06 00:00</time></a>
+            </p>
+        </div>
+    </header><div class="e-content entry-content">
+    <div>
+<h3>Why pyver?</h3>
+<p>The movtiation behind pyver, which is to creating a version control method which is very, very simple to track the history of files. The work-flow of pyver is something I do anyway when working on something simple that uses binary files, especially ones that are linked through the software that is required to read them (eg CAD designs). I will create multiple directories, eg v1, v2 and copy the entire contents of my in-progress files in it that I want to preserve the history. The issue with this is that when file names are changed, it can break links to dependent files, so keeping a file identical is important for tracking files. It was also a goal to use this tool over a network drive where multiple users can archive files as they wish
+There are a couple of other excellent options, but have a steep learning curve and some do not perform well with large binary files. Also, most version control systems are designed for code or text files, not large binanry files, like word documents or cad files. If you need more functionality, I'd recommend checking out these programs in order os simplicity. <a href="https://bitbucket.org/mats_ekberg/boar/wiki/Home">boar VCS</a>, <a href="https://www.mercurial-scm.org/">mercurial SCM</a>, <a href="https://git-scm.com/">git</a> with the <a href="https://git-lfs.github.com/">large file extension</a></p>
+<h3>The basic operation of this program goes like this</h3>
+<p>1) create some files<br>
+2) run pyver and make a copy of your files<br>
+3) make as many revisions as you want<br>
+4) if you want to revert back to an older revision, grab files out of the dated .archive directories and put them in your current directory  </p>
+<h4>Criteria for design</h4>
+<ul>
+<li>Simplicity is your friend, obscurity is your enemy</li>
+<li>It is unacceptable to rename files to track versions. This accomplishes this by putting the files in different directories and keep your current file with the desired, persistent filename</li>
+<li>Can be used over a network drive. Does not require a central server.</li>
+<li>Be OS agnostic (written in Python)</li>
+<li>know when the changes were made, with a comment and who did it</li>
+</ul>
+<h2>Tutorial</h2>
+<p>To get started, lets do a quick demo in windows. Brace yourself, you are going to have to use the command line. In your current directory with the pyver.py file, open a command line with <code>shift+right_click</code> and in the menu select <code>Open command window here</code>. Another way to get a command window in your current directory is to type <code>alt+D</code> and type <code>powershell</code> or <code>cmd</code>.
+Now type</p>
+<pre class="code literal-block"><span></span><code><span class="err">python pyver.py</span>
+</code></pre>
+
+
+<p>Done. That's it. We have created a pyver repository and made a backup of all the files in our current directory in an archive naming year-month-day-hour-minute-second. Anytime we need to make another backup, just repeat the last step.</p>
+<p>OK, lets add a bit more work upfront to save us some typing for years to come. I would recommend having a windows folder that is added to the user PATH system variable where you can keep test or production scripts that you want to access from the command line. For example, I have <code>C:\Users\Neal\bin</code> that is in the system PATH variable which I can dump python scripts with the *.bat file. Now, all we have to type is <code>pyver</code> to get the same result as <code>python pyver.py</code>
+To add this path variable, type</p>
+<blockquote>
+<p>1) Start <br>
+2) search "variables" and select "Edit Enviornmental variables for your account"<br>
+3) Add PATH variable or append with the path to the folder with your scripts    </p>
+</blockquote>
+<p>There are a few built in commands to interrogate the repository. The first is log, which shows the contents of a text file that keeps track of the commits that are made</p>
+<pre class="code literal-block"><span></span><code><span class="err">pyver log</span>
+<span class="err">Neal , 20160125210812 , 7kb ,  , pyver.py|README.md|pyver.bat</span>
+<span class="err">Neal , 20160125210814 , 7kb ,  , pyver.py|README.md|pyver.bat</span>
+<span class="err">Neal , 20160125210817 , 7kb ,  , pyver.py|README.md|pyver.bat</span>
+<span class="err">Neal , 20160125210854 , 7kb , making a comment for this commit , pyver.py|README.md|pyver.bat</span>
+<span class="err">Neal , 20160125210912 , 4kb , only adding one file , pyver.py</span>
+</code></pre>
+
+
+<p>The next is tree, which shows all the files in the repo.</p>
+<pre class="code literal-block"><span></span><code><span class="n">pyver</span> <span class="n">tree</span>
+
+<span class="p">.</span><span class="o">/</span><span class="p">.</span><span class="n">archive</span>
+<span class="o">|</span>  <span class="p">.</span><span class="o">/</span><span class="mi">20160125210812</span>
+<span class="o">|</span>   <span class="o">|</span>     <span class="n">pyver</span><span class="p">.</span><span class="n">py</span>  
+<span class="o">|</span>   <span class="o">|</span>     <span class="n">README</span><span class="p">.</span><span class="n">md</span>  
+<span class="o">|</span>   <span class="o">|</span>     <span class="n">pyver</span><span class="p">.</span><span class="n">bat</span>  
+<span class="o">|</span>     <span class="n">pyver</span><span class="p">.</span><span class="n">log</span>  
+<span class="o">|</span>  <span class="p">.</span><span class="o">/</span><span class="mi">20160125210814</span>
+<span class="o">|</span>   <span class="o">|</span>     <span class="n">pyver</span><span class="p">.</span><span class="n">py</span>  
+<span class="o">|</span>   <span class="o">|</span>     <span class="n">README</span><span class="p">.</span><span class="n">md</span>  
+<span class="o">|</span>   <span class="o">|</span>     <span class="n">pyver</span><span class="p">.</span><span class="n">bat</span>  
+<span class="o">|</span>  <span class="p">.</span><span class="o">/</span><span class="mi">20160125210817</span>
+<span class="o">|</span>   <span class="o">|</span>     <span class="n">pyver</span><span class="p">.</span><span class="n">py</span>  
+<span class="o">|</span>   <span class="o">|</span>     <span class="n">README</span><span class="p">.</span><span class="n">md</span>  
+<span class="o">|</span>   <span class="o">|</span>     <span class="n">pyver</span><span class="p">.</span><span class="n">bat</span>  
+<span class="o">|</span>  <span class="p">.</span><span class="o">/</span><span class="mi">20160125210854</span>
+<span class="o">|</span>   <span class="o">|</span>     <span class="n">pyver</span><span class="p">.</span><span class="n">py</span>  
+<span class="o">|</span>   <span class="o">|</span>     <span class="n">README</span><span class="p">.</span><span class="n">md</span>  
+<span class="o">|</span>   <span class="o">|</span>     <span class="n">pyver</span><span class="p">.</span><span class="n">bat</span>  
+<span class="o">|</span>  <span class="p">.</span><span class="o">/</span><span class="mi">20160125210912</span>
+<span class="o">|</span>   <span class="o">|</span>     <span class="n">pyver</span><span class="p">.</span><span class="n">py</span>  
+  <span class="n">pyver</span><span class="p">.</span><span class="n">py</span>  
+  <span class="n">README</span><span class="p">.</span><span class="n">md</span>  
+  <span class="n">pyver</span><span class="p">.</span><span class="n">bat</span>  
+</code></pre>
+
+
+<p>We also have some flags we can use to customize our commits. This commit adds only the files file1.txt and file2.docx and adds a comment. Note-none of the flag inputs can have spaces, so files are seperated by <code>|</code> and comments are written without spaces using <code>-</code></p>
+<pre class="code literal-block"><span></span><code><span class="err">pyver -f "file1.txt|file2.docx" -c "making a comment for this commit"</span>
+</code></pre>
+
+
+<p>We can also use wildcards to add groups of files rather than listing each individual file.</p>
+<pre class="code literal-block"><span></span><code><span class="err">pyver -f "*.txt|*.docx" -c "I added all the txt and docx files to my archive"</span>
+</code></pre>
+
+
+<p>Also, by default, pyver will skip all files and directories that start with . and ~. These files are typically temporary, backup, or configuration files.</p>
+<p>I used pyinstaller to build my own windows executable</p>
+<pre class="code literal-block"><span></span><code><span class="err">pyinstaller pyver.py --onefile</span>
+</code></pre>
+
+
+<p>There you have it. The worlds easiest version control system that multiple users can use over a network, retrieving your old files is trivial, and now you don't have to change your file names to all the silly things people come up with.</p>
+<p>You can find the source code here. <a href="https://github.com/nagordon/pyver">https://github.com/nagordon/pyver</a></p>
+<p>This was a fun project to learn more about file manipulation with python and in the end, I now have a handy tool!</p>
+<p>Stay Curious!</p>
+</div>
+    </div>
+    </article><article class="h-entry post-text" itemscope="itemscope" itemtype="http://schema.org/Article"><header><h1 class="p-name entry-title"><a href="windows-chocolatey/" class="u-url">Windows package management with Chocolatey</a></h1>
+        <div class="metadata">
+            <p class="byline author vcard"><span class="byline-name fn" itemprop="author">
+                neal
+            </span></p>
+            <p class="dateline">
+            <a href="windows-chocolatey/" rel="bookmark">
+            <time class="published dt-published" datetime="2016-05-06T00:00:00-08:00" itemprop="datePublished" title="2016-05-06 00:00">2016-05-06 00:00</time></a>
+            </p>
+        </div>
+    </header><div class="e-content entry-content">
+    <div>
+<p>For most of us, using software is an everyday activity. Many of us use lots of different packages of software, especially those that does not come pre-installed, like notepad++, chrome or firefox, ebook managers, your favorite video player, etc. Installing that software every time you get a new computer or keeping all those packages up-to-date can be a challenge. Being a Windows user for most of my life, I've accepted the tedious, risky business of finding, installing and not getting viruses from Windows software. Not until I started using Linux did I realize that it can be easier and safer. Linux uses package management, that changes from distribution, but the popular Debian based Linux uses <code>apt-get</code> to install software from the command line. Installing software can be as easy as <code>apt-get install firefox</code>, and updating all software on the computing can be done with <code>apt-get update</code>. Really easy right?</p>
+<p>Well, I still use Windows a lot, and installating and managing software on Windows can be be much easier using <a href="https://github.com/chocolatey/choco/wiki">chocolatey</a>. Chocolatey is a Windows command line tool to manage software, including searching, installing, updataing and removing.</p>
+<p>Installation is a cinch. Copy and paste this code into a windows command line access by searching for <code>cmd</code> in the windows start. If possible, run as administrator (cmd, right-click, run as administrator)</p>
+<pre class="code literal-block"><span></span><code><span class="err">@powershell -NoProfile -ExecutionPolicy Bypass -Command "iex ((new-object net.webclient).DownloadString('https://chocolatey.org/install.ps1'))" &amp;&amp; SET PATH=%PATH%;%ALLUSERSPROFILE%\chocolatey\bin</span>
+</code></pre>
+
+
+<p>I typically just search the chocolatey website for the package I want to install and type that into the command line. The example I want to share is my favorite ebook manager, calibre. One of the reasons I enjoy chocolatey with calibre is because calibre is updated a lot, and to keep up with them, you have to go download the calibre exe, and follow the prompts for the installation. Or a simple command will do it all! The <code>-y</code> is a flag to indicate <code>yes</code> to eliminate the need to confirm the installation.</p>
+<pre class="code literal-block"><span></span><code><span class="err">choco install calibre -y</span>
+</code></pre>
+
+
+<p>Updating calibre is as easy as this</p>
+<pre class="code literal-block"><span></span><code><span class="err">choco update calibre -y</span>
+</code></pre>
+
+
+<p>Multiple packages can be installed by leaving a space between the names</p>
+<pre class="code literal-block"><span></span><code><span class="err">choco install notepadplusplus googlechrome atom 7zip</span>
+</code></pre>
+
+
+<p>And to update all the packages that were install with chocolatey, this command will take care of it all</p>
+<pre class="code literal-block"><span></span><code><span class="err">choco upgrade all -y</span>
+</code></pre>
+
+
+<p>I think chocolatey is a really neat, useful package that has saved me a lot of time, and I hope it helps alleviate some of your windows woes.</p>
+</div>
+    </div>
+    </article><article class="h-entry post-text" itemscope="itemscope" itemtype="http://schema.org/Article"><header><h1 class="p-name entry-title"><a href="USMC-Pilot-Ground-School/" class="u-url">US Marine Corps Private Pilot Ground School</a></h1>
+        <div class="metadata">
+            <p class="byline author vcard"><span class="byline-name fn" itemprop="author">
+                neal
+            </span></p>
+            <p class="dateline">
+            <a href="USMC-Pilot-Ground-School/" rel="bookmark">
+            <time class="published dt-published" datetime="2016-04-22T00:00:00-08:00" itemprop="datePublished" title="2016-04-22 00:00">2016-04-22 00:00</time></a>
+            </p>
+        </div>
+    </header><div class="e-content entry-content">
+    <div>
+<h5>Airplane Instruments and Accessories-Part 1</h5>
+<h5>Airplane Instruments and Accessories-Part 2</h5>
+<h5>Decimals</h5>
+<h5>Elementary Aerodynamics</h5>
+<h5>Elements of Arithmetic</h5>
+<h5>Formulas</h5>
+<h5>Fractions</h5>
+<h5>History of Aviation</h5>
+<h5>Mechanical Principles_Part 1</h5>
+<h5>Mechanical Principles_Part 2</h5>
+<h5>Mensuration</h5>
+<h5>Meteorology_Part 1</h5>
+<h5>Meteorology_Part 2</h5>
+<h5>Powers and Roots</h5>
+<h5>Practical Flying_Part 1</h5>
+<h5>Practical Flying_Part 2</h5>
+<h5>Ratio and Proportion</h5>
+<h5>Structural Details of Airplanes_Part 1</h5>
+<h5>Structural Details of Airplanes_Part 2</h5>
+<h5>The Airplane and Its Parts_Part 1</h5>
+<h5>The Airplane and Its Parts_Part 2</h5>
+<h5>Theory of Flight</h5>
+<h5>Weights and Measures</h5>
+<iframe src="https://onedrive.live.com/embed?cid=2DAE54F5236205EE&amp;resid=2DAE54F5236205EE%2124246&amp;authkey=AHI4RioYWU3Y3ps&amp;em=2" width="300" height="450" frameborder="0" scrolling="yes"></iframe>
+
+<iframe src="https://onedrive.live.com/embed?cid=2DAE54F5236205EE&amp;resid=2DAE54F5236205EE%2124247&amp;authkey=ALcfjfgcvs67qQQ&amp;em=2" width="300" height="450" frameborder="0" scrolling="yes"></iframe>
+
+<iframe src="https://onedrive.live.com/embed?cid=2DAE54F5236205EE&amp;resid=2DAE54F5236205EE%2124245&amp;authkey=AHUR_uGI23fVDmA&amp;em=2" width="300" height="450" frameborder="0" scrolling="yes"></iframe>
+
+<iframe src="https://onedrive.live.com/embed?cid=2DAE54F5236205EE&amp;resid=2DAE54F5236205EE%2124273&amp;authkey=AEt_JlmbRq9cLAg&amp;em=2" width="300" height="450" frameborder="0" scrolling="yes"></iframe>
+
+<iframe src="https://onedrive.live.com/embed?cid=2DAE54F5236205EE&amp;resid=2DAE54F5236205EE%2124269&amp;authkey=ACuMBpcmQqxCInc&amp;em=2" width="300" height="450" frameborder="0" scrolling="yes"></iframe>
+
+<iframe src="https://onedrive.live.com/embed?cid=2DAE54F5236205EE&amp;resid=2DAE54F5236205EE%2124263&amp;authkey=AKA9iSDZZH_ID2c&amp;em=2" width="300" height="450" frameborder="0" scrolling="yes"></iframe>
+
+<iframe src="https://onedrive.live.com/embed?cid=2DAE54F5236205EE&amp;resid=2DAE54F5236205EE%2124261&amp;authkey=ALy8PveLLzCBvRM&amp;em=2" width="300" height="450" frameborder="0" scrolling="yes"></iframe>
+
+<iframe src="https://onedrive.live.com/embed?cid=2DAE54F5236205EE&amp;resid=2DAE54F5236205EE%2124266&amp;authkey=APzotkC29sMc3J8&amp;em=2" width="300" height="450" frameborder="0" scrolling="yes"></iframe>
+
+<iframe src="https://onedrive.live.com/embed?cid=2DAE54F5236205EE&amp;resid=2DAE54F5236205EE%2124265&amp;authkey=AK36q21xncfs6PM&amp;em=2" width="300" height="450" frameborder="0" scrolling="yes"></iframe>
+
+<iframe src="https://onedrive.live.com/embed?cid=2DAE54F5236205EE&amp;resid=2DAE54F5236205EE%2124248&amp;authkey=ABrk8n9F9vkNbdQ&amp;em=2" width="300" height="450" frameborder="0" scrolling="yes"></iframe>
+
+<iframe src="https://onedrive.live.com/embed?cid=2DAE54F5236205EE&amp;resid=2DAE54F5236205EE%2124249&amp;authkey=AFxPe-Bm1iDVlWI&amp;em=2" width="300" height="450" frameborder="0" scrolling="yes"></iframe>
+
+<iframe src="https://onedrive.live.com/embed?cid=2DAE54F5236205EE&amp;resid=2DAE54F5236205EE%2124252&amp;authkey=ADTj7bo5CT0ylUE&amp;em=2" width="300" height="450" frameborder="0" scrolling="yes"></iframe>
+
+<iframe src="https://onedrive.live.com/embed?cid=2DAE54F5236205EE&amp;resid=2DAE54F5236205EE%2124250&amp;authkey=APsefBW6PpxItyE&amp;em=2" width="300" height="450" frameborder="0" scrolling="yes"></iframe>
+
+<iframe src="https://onedrive.live.com/embed?cid=2DAE54F5236205EE&amp;resid=2DAE54F5236205EE%2124251&amp;authkey=AKDMlpnocaBlESI&amp;em=2" width="300" height="450" frameborder="0" scrolling="yes"></iframe>
+
+<iframe src="https://onedrive.live.com/embed?cid=2DAE54F5236205EE&amp;resid=2DAE54F5236205EE%2124253&amp;authkey=AAvySDkz-3ajP58&amp;em=2" width="300" height="450" frameborder="0" scrolling="yes"></iframe>
+
+<iframe src="https://onedrive.live.com/embed?cid=2DAE54F5236205EE&amp;resid=2DAE54F5236205EE%2124254&amp;authkey=AKvEdeopCbqbgzM&amp;em=2" width="300" height="450" frameborder="0" scrolling="yes"></iframe>
+
+<iframe src="https://onedrive.live.com/embed?cid=2DAE54F5236205EE&amp;resid=2DAE54F5236205EE%2124256&amp;authkey=AIyq8fs6cU56-aE&amp;em=2" width="300" height="450" frameborder="0" scrolling="yes"></iframe>
+
+<iframe src="https://onedrive.live.com/embed?cid=2DAE54F5236205EE&amp;resid=2DAE54F5236205EE%2124255&amp;authkey=AEqQ_tWvbzBTfcc&amp;em=2" width="300" height="450" frameborder="0" scrolling="yes"></iframe>
+
+<iframe src="https://onedrive.live.com/embed?cid=2DAE54F5236205EE&amp;resid=2DAE54F5236205EE%2124257&amp;authkey=AExMwGGiReNWXVs&amp;em=2" width="300" height="450" frameborder="0" scrolling="yes"></iframe>
+
+<iframe src="https://onedrive.live.com/embed?cid=2DAE54F5236205EE&amp;resid=2DAE54F5236205EE%2124259&amp;authkey=ACKXmoZKnJ98EUs&amp;em=2" width="300" height="450" frameborder="0" scrolling="yes"></iframe>
+
+<iframe src="https://onedrive.live.com/embed?cid=2DAE54F5236205EE&amp;resid=2DAE54F5236205EE%2124258&amp;authkey=AF7EjLETjciFlC8&amp;em=2" width="300" height="450" frameborder="0" scrolling="yes"></iframe>
+
+<iframe src="https://onedrive.live.com/embed?cid=2DAE54F5236205EE&amp;resid=2DAE54F5236205EE%2124260&amp;authkey=APDI5r4YDPpU2jw&amp;em=2" width="300" height="450" frameborder="0" scrolling="yes"></iframe>
+</div>
+    </div>
+    </article><article class="h-entry post-text" itemscope="itemscope" itemtype="http://schema.org/Article"><header><h1 class="p-name entry-title"><a href="weight-balance-cherokee-140/" class="u-url">Weight and Balance Calculations for a Piper Cherokee 140</a></h1>
+        <div class="metadata">
+            <p class="byline author vcard"><span class="byline-name fn" itemprop="author">
+                neal
+            </span></p>
+            <p class="dateline">
+            <a href="weight-balance-cherokee-140/" rel="bookmark">
+            <time class="published dt-published" datetime="2016-04-17T00:00:00-08:00" itemprop="datePublished" title="2016-04-17 00:00">2016-04-17 00:00</time></a>
+            </p>
+        </div>
+    </header><div class="e-content entry-content">
+    <div>
+<p>When flying a general aviation aircraft, such as a 4 seat Piper Cherokee 140, it is important to calculate the total weight and the center of gravity of the airplane before takeoff. The weight can vary depending on how much fuel is on board, luggage, and passengers. The center of gravity (CG), or balance, of the aircraft is important because the aircraft will handle very differently if the CG is outside of the designed envelope. This tool automates those calculations to ensure the aircraft is safe to fly.</p>
+<p>WARNING-THIS TOOL SHOULD ONLY BE USED TO CHECK YOUR OWN HAND CALCULATIONS. THE AUTHOR OF THIS ARTICLE IS NOT RESPONSIBLE FOR ANY ERRORS THAT EXIST IN THIS TOOL OR ERRORS IN ITS OPERATION. USE AT YOUR OWN RISK!</p>
+<p>To use, simply enter the weights you wish to compute in the green cells and confirm you are still within the designed operating envelope of the aircraft. Be especially careful of aft CG and being overweight.
+<iframe width="648" height="720" frameborder="0" scrolling="no" src="https://onedrive.live.com/embed?cid=2DAE54F5236205EE&amp;resid=2DAE54F5236205EE%2124281&amp;authkey=ABSSvc0HDQUivF4&amp;em=2&amp;wdAllowInteractivity=False&amp;AllowTyping=True&amp;Item='PA28_W%26B'!A1%3AE32&amp;wdHideGridlines=True&amp;wdDownloadButton=True"></iframe></p>
+</div>
+    </div>
+    </article>
+</div>
+
+        <nav class="postindexpager"><ul class="pager">
+<li class="next">
+                <a href="index-1.html" rel="next">Older posts</a>
+            </li>
+        </ul></nav><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML" integrity="sha384-3lJUsx1TJHt7BA4udB5KPnDrlkO8T6J6v/op7ui0BbCjvZ9WqV4Xm6DTP6kQ/iBH" crossorigin="anonymous"></script><script type="text/x-mathjax-config">
+        MathJax.Hub.Config({tex2jax: {inlineMath: [['$latex ','$'], ['\\(','\\)']]}});
+        </script>
+</div>
+        <!--End of body content-->
+
+        <footer id="footer">
+            Contents © 2021         <a href="mailto:">neal</a> - Powered by         <a href="https://getnikola.com" rel="nofollow">Nikola</a>         
+            
+        </footer>
+</div>
+</div>
+
+
+            <script src="../assets/js/all-nocdn.js"></script><!-- fancy dates --><script>
+    moment.locale("en");
+    fancydates(0, "YYYY-MM-DD HH:mm");
+    </script><!-- end fancy dates --><script>
+    baguetteBox.run('div#content', {
+        ignoreClass: 'islink',
+        captions: function(element) {
+            return element.getElementsByTagName('img')[0].alt;
+    }});
+    </script>
+</body>
+</html>
