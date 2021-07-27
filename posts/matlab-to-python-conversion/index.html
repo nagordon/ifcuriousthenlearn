@@ -1,0 +1,1331 @@
+<!DOCTYPE html>
+<html prefix="og: http://ogp.me/ns# article: http://ogp.me/ns/article# " lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="description" content="A review of converting MATLAB code to python">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MATLAB to python conversion | ifcuriousthenlearn</title>
+<link href="../../assets/css/all-nocdn.css" rel="stylesheet" type="text/css">
+<link href="../../assets/css/ipython.min.css" rel="stylesheet" type="text/css">
+<link href="../../assets/css/nikola_ipython.css" rel="stylesheet" type="text/css">
+<link href="https://fonts.googleapis.com/css?family=Playfair+Display:700,900" rel="stylesheet">
+<meta name="theme-color" content="#5670d4">
+<meta name="generator" content="Nikola (getnikola.com)">
+<link rel="alternate" type="application/rss+xml" title="RSS" hreflang="en" href="../../rss.xml">
+<link rel="canonical" href="https://nagordon.github.io/ifcuriousthenlearn/posts/matlab-to-python-conversion/">
+<!--[if lt IE 9]><script src="../../assets/js/html5.js"></script><![endif]--><meta name="author" content="neal">
+<link rel="prev" href="../tf2-server-setup/" title="Team Fortress 2 Server Install for Dummies" type="text/html">
+<link rel="next" href="../doconce-intro/" title="Learn Latex, markdown and html with doconce" type="text/html">
+<meta property="og:site_name" content="ifcuriousthenlearn">
+<meta property="og:title" content="MATLAB to python conversion">
+<meta property="og:url" content="https://nagordon.github.io/ifcuriousthenlearn/posts/matlab-to-python-conversion/">
+<meta property="og:description" content="A review of converting MATLAB code to python">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2015-05-05T14:05:06-07:00">
+<meta property="article:tag" content="math">
+<meta property="article:tag" content="matlab">
+<meta property="article:tag" content="python">
+</head>
+<body>
+<a href="#content" class="sr-only sr-only-focusable">Skip to main content</a>
+
+<!-- Header and menu bar -->
+<div class="container">
+      <header class="blog-header py-3"><div class="row nbb-header align-items-center">
+          <div class="col-md-3 col-xs-2 col-sm-2" style="width: auto;">
+            <button class="navbar-toggler navbar-light bg-light nbb-navbar-toggler" type="button" data-toggle="collapse" data-target=".bs-nav-collapsible" aria-controls="bs-navbar" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse bs-nav-collapsible bootblog4-search-form-holder">
+                
+            </div>
+        </div>
+          <div class="col-md-6 col-xs-10 col-sm-10 bootblog4-brand" style="width: auto;">
+            <a class="navbar-brand blog-header-logo text-dark" href="../../">
+
+            <span id="blog-title">ifcuriousthenlearn</span>
+        </a>
+          </div>
+            <div class="col-md-3 justify-content-end align-items-center bs-nav-collapsible collapse flex-collapse bootblog4-right-nav">
+            <nav class="navbar navbar-light bg-white"><ul class="navbar-nav bootblog4-right-nav">
+<li class="nav-item">
+    <a href="index.ipynb" id="sourcelink" class="nav-link">Source</a>
+    </li>
+
+
+                    
+            </ul></nav>
+</div>
+    </div>
+</header><nav class="navbar navbar-expand-md navbar-light bg-white static-top"><div class="collapse navbar-collapse bs-nav-collapsible" id="bs-navbar">
+            <ul class="navbar-nav nav-fill d-flex w-100">
+<li class="nav-item">
+<a href="../../about/" class="nav-link">About</a>
+                </li>
+<li class="nav-item">
+<a href="../../archive/" class="nav-link">Archive</a>
+                </li>
+<li class="nav-item">
+<a href="../../categories/" class="nav-link">Tags</a>
+                </li>
+<li class="nav-item">
+<a href="../../rss.xml" class="nav-link">RSS feed</a>
+
+                
+            </li>
+</ul>
+</div>
+<!-- /.navbar-collapse -->
+</nav>
+</div>
+
+<div class="container" id="content" role="main">
+    <div class="body-content">
+        <!--Body content-->
+        
+        
+        
+<article class="post-text h-entry hentry postpage" itemscope="itemscope" itemtype="http://schema.org/Article"><header><h1 class="p-name entry-title" itemprop="headline name"><a href="." class="u-url">MATLAB to python conversion</a></h1>
+
+        <div class="metadata">
+            <p class="byline author vcard p-author h-card"><span class="byline-name fn p-name" itemprop="author">
+                    neal
+            </span></p>
+            <p class="dateline">
+            <a href="." rel="bookmark">
+            <time class="published dt-published" datetime="2015-05-05T14:05:06-07:00" itemprop="datePublished" title="2015-05-05 14:05">2015-05-05 14:05</time></a>
+            </p>
+            
+        <p class="sourceline"><a href="index.ipynb" class="sourcelink">Source</a></p>
+
+        </div>
+        
+
+    </header><div class="e-content entry-content" itemprop="articleBody text">
+    <div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Matlab-to-Python-conversion">Matlab to Python conversion<a class="anchor-link" href="#Matlab-to-Python-conversion">¶</a>
+</h2>
+<p>There seems to be an natural progression that occurs for users of data anaylsis programs. I believe the forces guiding those changes are not coincidental, but out of necessity based on the ease of learning, functionality, extensibility, scalability and cost. In my opinion, the best method for theory is still handwritten, but when more advanced concepts are learned, more powerful tools make those concepts easier to understand.</p>
+<p>Anectdotally, everyone seems to start with a spreadsheet application for data analysis and plotting, which, at least 3 or 4 years ago would have been a Microsoft product. Excel works well for simple plotting, small datasets, and the software is ubiqutous but not free.</p>
+<p>Some users may have had the curosity to investigate the macro tool and discovered programming by way of Visual Basic for Applications (VBA) in Excel. This gives the user a bit more control over data creation and processing with loops.</p>
+<p>Once at a university, many students, especially engineering students, will discover MATLAB, and realized that VBA is very tedious compared to MATLAB syntax. The student will spend hundreds of hours learning programming fundamentals with this great new tool, and create many programs with it.</p>
+<p>The crux of the programmers life so far will be when that MATLAB license expires and, not resorting to any illegal software copyright infringement, will be left out in the cold world of computing for data anaylsis and engineering.</p>
+<p>Until, one day, when that recent graduate discovers that the road does not end with MATLAB, but is just the beginning. The realization that real programming languages exist and are used every day for data anaylsis that do not cost a dime and work very well, but may have a bit of a learning curve.</p>
+<p>That is where we are now, how do I get all my old excel, matlab and vba projects into python? The first step is to install python. The really important library is <a href="http://www.scipy.org/">scipy</a>, which has nearly all the libraries one would need to perform basic scientific work.</p>
+<p>Note this work was done on a Windows 7 machine with Anaconda 2.7 installed</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Option-1---Manual-Conversion">Option 1 - Manual Conversion<a class="anchor-link" href="#Option-1---Manual-Conversion">¶</a>
+</h3>
+<p>There are a few options for converting code. The most reliable is probably by hand. To covert by hand requires a through understanding of python and matlab. I am assuming matlab syntax is well understood, but python less so. scipy provides a <a href="http://wiki.scipy.org/NumPy_for_Matlab_Users">python for matlab users</a> which describes to similarities and differences well, but the devil is in the details. Many other comparisions exist for python and matlab, like <a href="http://www.pyzo.org/python_vs_matlab.html">here on pyzo's website</a></p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Option-2---Reuse-old-code-with-Octave">Option 2 - Reuse old code with Octave<a class="anchor-link" href="#Option-2---Reuse-old-code-with-Octave">¶</a>
+</h3>
+<h3 id="oct2py-,-source-code">
+<a href="https://pypi.python.org/pypi/oct2py">oct2py</a> , <a href="http://blink1073.github.io/oct2py/">source code</a><a class="anchor-link" href="#oct2py-,-source-code">¶</a>
+</h3>
+<p>This is a neat module that is based on <a href="http://www.gnu.org/software/octave/">octave</a>, which is an open-source matlab clone. It allows a simple translation of matlab/octave syntax to python directly.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [1]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">%</span><span class="k">matplotlib</span> inline
+<span class="kn">from</span> <span class="nn">oct2py</span> <span class="kn">import</span> <span class="n">octave</span>
+<span class="kn">from</span> <span class="nn">oct2py</span> <span class="kn">import</span> <span class="n">Oct2Py</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Instantiate the Oct2Py object as oc</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [3]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">oc</span> <span class="o">=</span> <span class="n">Oct2Py</span><span class="p">()</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h4 id="Matrix-creation">Matrix creation<a class="anchor-link" href="#Matrix-creation">¶</a>
+</h4>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>First, lets remind ourselves of matlab sytnax of matrix/array creation (which I happen to prefer over python, but hey, beggers can't be choosers')</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [4]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">y</span> <span class="o">=</span> <span class="n">oc</span><span class="o">.</span><span class="n">eval</span><span class="p">(</span><span class="s2">"[1 2 3];"</span><span class="p">)</span>
+<span class="n">y</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[4]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>array([[ 1.,  2.,  3.]])</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Not bad. For me, the difference in slicing arrays and matrices is a tough transition, but this makes it much easier than learning the fundamentals</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [5]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">y</span> <span class="o">=</span> <span class="n">oc</span><span class="o">.</span><span class="n">eval</span><span class="p">(</span><span class="s2">"[1 2 3;4 5 6];"</span><span class="p">)</span>
+<span class="n">y</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[5]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>array([[ 1.,  2.,  3.],
+       [ 4.,  5.,  6.]])</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>We can see it creates a matlab matrix and converts it exactly how we would need it in numpy</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [6]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">type</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[6]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>numpy.ndarray</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Lets try something a bit more complex with analaogous syntax. Here is a matrix define natively in python</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [7]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">numpyarr</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">],</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">8</span><span class="p">],[</span><span class="mi">9</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mi">11</span><span class="p">,</span><span class="mi">12</span><span class="p">],[</span><span class="mi">13</span><span class="p">,</span><span class="mi">14</span><span class="p">,</span><span class="mi">15</span><span class="p">,</span><span class="mi">16</span><span class="p">]],</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">)</span>
+<span class="n">numpyarr</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[7]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>array([[  1.,   2.,   3.,   4.],
+       [  5.,   6.,   7.,   8.],
+       [  9.,  10.,  11.,  12.],
+       [ 13.,  14.,  15.,  16.]])</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>and here is the same matrix defined in matlab/octave syntax</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [8]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">matlabarr</span> <span class="o">=</span> <span class="n">oc</span><span class="o">.</span><span class="n">eval</span><span class="p">(</span><span class="s2">"[1 2 3 4; 5 6 7 8; 9 10 11 12; 13 14 15 16];"</span><span class="p">)</span> 
+<span class="n">matlabarr</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[8]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>array([[  1.,   2.,   3.,   4.],
+       [  5.,   6.,   7.,   8.],
+       [  9.,  10.,  11.,  12.],
+       [ 13.,  14.,  15.,  16.]])</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>clearly, they are the same!</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [9]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">matlabarr</span> <span class="o">==</span> <span class="n">numpyarr</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[9]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>array([[ True,  True,  True,  True],
+       [ True,  True,  True,  True],
+       [ True,  True,  True,  True],
+       [ True,  True,  True,  True]], dtype=bool)</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h4 id="Plotting-with-oct2py">Plotting with oct2py<a class="anchor-link" href="#Plotting-with-oct2py">¶</a>
+</h4>
+<p>Just using oct2py, we can plot using <a href="http://www.gnuplot.info/">gnuplot</a>, I haven't been able to find a way to plot them inline, but they still look good in the gnuplot window</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [14]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="o">-</span><span class="mi">2</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">,</span> <span class="mi">2</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">)</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<span class="n">oc</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="s1">'-o'</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><img src="../../notebooks/matlab-to-python-conversion/octave.png"></p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>We can see that is uses wxpython, which is another gui package. I am not 100% sure when that package was installed, but I am guess it was installed along with Octave</p>
+<p><img src="../../notebooks/matlab-to-python-conversion/plotting_window.png"></p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="More-matlab-execution">More matlab execution<a class="anchor-link" href="#More-matlab-execution">¶</a>
+</h3>
+<p>Although this doesn't convert the code to python, it executes it very well. Here is a MATLAB code snippet for LU Decomposition. We can create a python string with the contents of this and evaluate it as octave code</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+
+<pre><code>% function [L,U] = LUCrout(A)
+% Decomposes matrix A into a Lower matrix L and Upper matrix U
+% A = LU
+A = [1,5,3,5;  2,5,6,7; 9,0,3,4; 9,4,7,6]
+A
+[R,C] = size(A);
+for i = 1:R
+    L(i,1) = A(i,1);
+    U(i,i) = 1;
+end
+for j = 2:R
+    U(1,j) = A(1,j)/L(1,1);
+end
+for i = 2:R
+    for j = 2:i
+        L(i,j) = A(i,j) - L(i,1:j-1)*U(1:j-1,j);
+    end
+    for j = i+1:R
+        U(i,j) = (A(i,j) - L(i,1:i-1)*U(1:i-1,j))/L(i,i);
+    end
+end
+L
+U</code></pre>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [15]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="s1">'''</span>
+<span class="si">% f</span><span class="s1">unction [L,U] = LUCrout(A)</span>
+<span class="s1">% Decomposes matrix A into a Lower matrix L and Upper matrix U</span>
+<span class="s1">% A = LU</span>
+<span class="s1">A = [1,5,3,5;  2,5,6,7; 9,0,3,4; 9,4,7,6]</span>
+<span class="s1">A</span>
+<span class="s1">[R,C] = size(A);</span>
+<span class="s1">for i = 1:R</span>
+<span class="s1">    L(i,1) = A(i,1);</span>
+<span class="s1">    U(i,i) = 1;</span>
+<span class="s1">end</span>
+<span class="s1">for j = 2:R</span>
+<span class="s1">    U(1,j) = A(1,j)/L(1,1);</span>
+<span class="s1">end</span>
+<span class="s1">for i = 2:R</span>
+<span class="s1">    for j = 2:i</span>
+<span class="s1">        L(i,j) = A(i,j) - L(i,1:j-1)*U(1:j-1,j);</span>
+<span class="s1">    end</span>
+<span class="s1">    for j = i+1:R</span>
+<span class="s1">        U(i,j) = (A(i,j) - L(i,1:i-1)*U(1:i-1,j))/L(i,i);</span>
+<span class="s1">    end</span>
+<span class="s1">end</span>
+<span class="s1">L</span>
+<span class="s1">U</span>
+<span class="s1">'''</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [16]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">oc</span><span class="o">.</span><span class="n">eval</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>A =
+
+        1        5        3        5
+        2        5        6        7
+        9        0        3        4
+        9        4        7        6
+
+A =
+
+        1        5        3        5
+        2        5        6        7
+        9        0        3        4
+        9        4        7        6
+
+L =
+
+  1.0e+001 *
+
+  0.10000  0.00000  0.00000  0.00000
+  0.20000  -0.50000  0.00000  0.00000
+  0.90000  -4.50000  -2.40000  0.00000
+  0.90000  -4.10000  -2.00000  -0.27333
+
+U =
+
+  1.00000  5.00000  3.00000  5.00000
+  0.00000  1.00000  -0.00000  0.60000
+  0.00000  0.00000  1.00000  0.58333
+  0.00000  0.00000  0.00000  1.00000
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>If you are using an ipython notebook, we can take advantage of the magic functions and execute Octave/MATLAB code directly in the cells. To activate this functionality, we need to install Octave first, then install oct2py.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [17]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">%</span><span class="k">load_ext</span> oct2py.ipython
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>For single line octave code, we can use this syntax</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [18]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="o">%</span><span class="k">octave</span> [1 2 3 4; 5 6 7 8; 9 10 11 12; 13 14 15 16];
+<span class="n">x</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+
+
+<div class="output_text output_subarea ">
+<pre></pre>
+</div>
+
+</div>
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[18]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>array([[  1.,   2.,   3.,   4.],
+       [  5.,   6.,   7.,   8.],
+       [  9.,  10.,  11.,  12.],
+       [ 13.,  14.,  15.,  16.]])</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>This is very similar to the example earlier, except that is it running the code rather than evaluating a string. We can see that it creates a numpy array just like before</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [19]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">type</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[19]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>numpy.ndarray</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>If we want multi-line MATLAB/Octave sytax, we can use this syntax</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [20]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c">%%octave</span>
+<span class="n">x</span> <span class="p">=</span> <span class="p">[</span><span class="mi">1</span> <span class="mi">2</span> <span class="mi">3</span> <span class="mi">4</span><span class="p">;</span> <span class="mi">5</span> <span class="mi">6</span> <span class="mi">7</span> <span class="mi">8</span><span class="p">;</span> <span class="mi">9</span> <span class="mi">10</span> <span class="mi">11</span> <span class="mi">12</span><span class="p">;</span> <span class="mi">13</span> <span class="mi">14</span> <span class="mi">15</span> <span class="mi">16</span><span class="p">];</span>
+<span class="n">x</span>
+<span class="nb">typeinfo</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+
+
+<div class="output_text output_subarea ">
+<pre>x =
+
+        1        2        3        4
+        5        6        7        8
+        9       10       11       12
+       13       14       15       16
+
+ans = matrix</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>in that cell, x is still a matlab matrix, but when we show 'x' in the next cell, it is now a numpy array</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [21]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">x</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[21]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>array([[  1.,   2.,   3.,   4.],
+       [  5.,   6.,   7.,   8.],
+       [  9.,  10.,  11.,  12.],
+       [ 13.,  14.,  15.,  16.]])</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Lets try our LU function by loading the file, and replacing adding the octave magic function. execute</p>
+
+<pre><code>%load LU.m</code></pre>
+<p>and then add</p>
+
+<pre><code>%%octave</code></pre>
+<p>to the very top and delete</p>
+
+<pre><code>#%load LU.m</code></pre>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [22]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c">%%octave</span>
+<span class="c">% function [L,U] = LUCrout(A)</span>
+<span class="c">% Decomposes matrix A into a Lower matrix L and Upper matrix U</span>
+<span class="c">% A = LU</span>
+<span class="n">A</span> <span class="p">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">5</span><span class="p">;</span>  <span class="mi">2</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">7</span><span class="p">;</span> <span class="mi">9</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">;</span> <span class="mi">9</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">6</span><span class="p">]</span>
+<span class="n">A</span>
+<span class="p">[</span><span class="n">R</span><span class="p">,</span><span class="n">C</span><span class="p">]</span> <span class="p">=</span> <span class="nb">size</span><span class="p">(</span><span class="n">A</span><span class="p">);</span>
+<span class="k">for</span> <span class="n">i</span> <span class="p">=</span> <span class="mi">1</span><span class="p">:</span><span class="n">R</span>
+    <span class="n">L</span><span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span> <span class="p">=</span> <span class="n">A</span><span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="mi">1</span><span class="p">);</span>
+    <span class="n">U</span><span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="n">i</span><span class="p">)</span> <span class="p">=</span> <span class="mi">1</span><span class="p">;</span>
+<span class="k">end</span>
+<span class="k">for</span> <span class="n">j</span> <span class="p">=</span> <span class="mi">2</span><span class="p">:</span><span class="n">R</span>
+    <span class="n">U</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="n">j</span><span class="p">)</span> <span class="p">=</span> <span class="n">A</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="n">j</span><span class="p">)</span><span class="o">/</span><span class="n">L</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">);</span>
+<span class="k">end</span>
+<span class="k">for</span> <span class="n">i</span> <span class="p">=</span> <span class="mi">2</span><span class="p">:</span><span class="n">R</span>
+    <span class="k">for</span> <span class="n">j</span> <span class="p">=</span> <span class="mi">2</span><span class="p">:</span><span class="n">i</span>
+        <span class="n">L</span><span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="p">)</span> <span class="p">=</span> <span class="n">A</span><span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="p">)</span> <span class="o">-</span> <span class="n">L</span><span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="mi">1</span><span class="p">:</span><span class="n">j</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="o">*</span><span class="n">U</span><span class="p">(</span><span class="mi">1</span><span class="p">:</span><span class="n">j</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="n">j</span><span class="p">);</span>
+    <span class="k">end</span>
+    <span class="k">for</span> <span class="n">j</span> <span class="p">=</span> <span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">:</span><span class="n">R</span>
+        <span class="n">U</span><span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="p">)</span> <span class="p">=</span> <span class="p">(</span><span class="n">A</span><span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="p">)</span> <span class="o">-</span> <span class="n">L</span><span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="mi">1</span><span class="p">:</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="o">*</span><span class="n">U</span><span class="p">(</span><span class="mi">1</span><span class="p">:</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="n">j</span><span class="p">))</span><span class="o">/</span><span class="n">L</span><span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="n">i</span><span class="p">);</span>
+    <span class="k">end</span>
+<span class="k">end</span>
+<span class="n">L</span>
+<span class="n">U</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+
+
+<div class="output_text output_subarea ">
+<pre>A =
+
+        1        5        3        5
+        2        5        6        7
+        9        0        3        4
+        9        4        7        6
+
+A =
+
+        1        5        3        5
+        2        5        6        7
+        9        0        3        4
+        9        4        7        6
+
+L =
+
+  1.0e+001 *
+
+  0.10000  0.00000  0.00000  0.00000
+  0.20000  -0.50000  0.00000  0.00000
+  0.90000  -4.50000  -2.40000  0.00000
+  0.90000  -4.10000  -2.00000  -0.27333
+
+U =
+
+  1.00000  5.00000  3.00000  5.00000
+  0.00000  1.00000  -0.00000  0.60000
+  0.00000  0.00000  1.00000  0.58333
+  0.00000  0.00000  0.00000  1.00000</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Excellent. This appraoch keeps the code more native than having the copy and paste the code and create a string to be evalauted. And just for fun we can plot inline also!!!</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [23]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c">%%octave</span>
+<span class="n">p</span> <span class="p">=</span> <span class="p">[</span><span class="mi">12</span> <span class="o">-</span><span class="mf">2.5</span> <span class="o">-</span><span class="mi">8</span> <span class="o">-</span><span class="mf">0.1</span> <span class="mi">8</span><span class="p">];</span>
+<span class="n">x</span> <span class="p">=</span> <span class="mi">0</span><span class="p">:</span><span class="mf">0.01</span><span class="p">:</span><span class="mi">1</span><span class="p">;</span>
+
+<span class="nb">polyout</span><span class="p">(</span><span class="n">p</span><span class="p">,</span> <span class="s">'x'</span><span class="p">)</span>
+<span class="nb">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="nb">polyval</span><span class="p">(</span><span class="n">p</span><span class="p">,</span> <span class="n">x</span><span class="p">));</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+
+
+<div class="output_text output_subarea ">
+<pre>12*x^4 - 2.5*x^3 - 8*x^2 - 0.1*x^1 + 8</pre>
+</div>
+
+</div>
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+
+<div class="output_svg output_subarea ">
+<svg height="201px" viewbox="0 0 268 201" width="268px" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><title>gnuplot</title>
+<desc>Produced by GNUPLOT 4.4 patchlevel 4 </desc><defs><circle id="gpDot" r="0.5" stroke-width="0.5"></circle><path d="M-1,0 h2 M0,-1 v2" id="gpPt0" stroke="currentColor" stroke-width="0.333"></path><path d="M-1,-1 L1,1 M1,-1 L-1,1" id="gpPt1" stroke="currentColor" stroke-width="0.333"></path><path d="M-1,0 L1,0 M0,-1 L0,1 M-1,-1 L1,1 M-1,1 L1,-1" id="gpPt2" stroke="currentColor" stroke-width="0.333"></path><rect height="2" id="gpPt3" stroke="currentColor" stroke-width="0.333" width="2" x="-1" y="-1"></rect><rect fill="currentColor" height="2" id="gpPt4" stroke="currentColor" stroke-width="0.333" width="2" x="-1" y="-1"></rect><circle cx="0" cy="0" id="gpPt5" r="1" stroke="currentColor" stroke-width="0.333"></circle><use fill="currentColor" id="gpPt6" stroke="none" xlink:href="#gpPt5"></use><path d="M0,-1.33 L-1.33,0.67 L1.33,0.67 z" id="gpPt7" stroke="currentColor" stroke-width="0.333"></path><use fill="currentColor" id="gpPt8" stroke="none" xlink:href="#gpPt7"></use><use id="gpPt9" stroke="currentColor" transform="rotate(180)" xlink:href="#gpPt7"></use><use fill="currentColor" id="gpPt10" stroke="none" xlink:href="#gpPt9"></use><use id="gpPt11" stroke="currentColor" transform="rotate(45)" xlink:href="#gpPt3"></use><use fill="currentColor" id="gpPt12" stroke="none" xlink:href="#gpPt11"></use></defs><g style="fill:none; color:white; stroke:currentColor; stroke-width:1.00; stroke-linecap:butt; stroke-linejoin:miter"></g><g style="fill:none; color:white; stroke:currentColor; stroke-width:0.50; stroke-linecap:butt; stroke-linejoin:miter"></g><g style="fill:none; color:black; stroke:currentColor; stroke-width:0.50; stroke-linecap:butt; stroke-linejoin:miter"><path d="M30.8,177.6 L39.2,177.6 M251.9,177.6 L243.5,177.6 "></path><g style="stroke:none; fill:rgb(0,0,0); font-family:{}; font-size:10.00pt; text-anchor:end" transform="translate(25.2,180.6)"><text><tspan>6</tspan></text></g><path d="M30.8,153.8 L39.2,153.8 M251.9,153.8 L243.5,153.8 "></path><g style="stroke:none; fill:rgb(0,0,0); font-family:{}; font-size:10.00pt; text-anchor:end" transform="translate(25.2,156.8)"><text><tspan>6.5</tspan></text></g><path d="M30.8,130.1 L39.2,130.1 M251.9,130.1 L243.5,130.1 "></path><g style="stroke:none; fill:rgb(0,0,0); font-family:{}; font-size:10.00pt; text-anchor:end" transform="translate(25.2,133.1)"><text><tspan>7</tspan></text></g><path d="M30.8,106.3 L39.2,106.3 M251.9,106.3 L243.5,106.3 "></path><g style="stroke:none; fill:rgb(0,0,0); font-family:{}; font-size:10.00pt; text-anchor:end" transform="translate(25.2,109.3)"><text><tspan>7.5</tspan></text></g><path d="M30.8,82.6 L39.2,82.6 M251.9,82.6 L243.5,82.6 "></path><g style="stroke:none; fill:rgb(0,0,0); font-family:{}; font-size:10.00pt; text-anchor:end" transform="translate(25.2,85.6)"><text><tspan>8</tspan></text></g><path d="M30.8,58.8 L39.2,58.8 M251.9,58.8 L243.5,58.8 "></path><g style="stroke:none; fill:rgb(0,0,0); font-family:{}; font-size:10.00pt; text-anchor:end" transform="translate(25.2,61.8)"><text><tspan>8.5</tspan></text></g><path d="M30.8,35.1 L39.2,35.1 M251.9,35.1 L243.5,35.1 "></path><g style="stroke:none; fill:rgb(0,0,0); font-family:{}; font-size:10.00pt; text-anchor:end" transform="translate(25.2,38.1)"><text><tspan>9</tspan></text></g><path d="M30.8,11.3 L39.2,11.3 M251.9,11.3 L243.5,11.3 "></path><g style="stroke:none; fill:rgb(0,0,0); font-family:{}; font-size:10.00pt; text-anchor:end" transform="translate(25.2,14.3)"><text><tspan>9.5</tspan></text></g><path d="M30.8,177.6 L30.8,169.2 M30.8,11.3 L30.8,19.7 "></path><g style="stroke:none; fill:rgb(0,0,0); font-family:{}; font-size:10.00pt; text-anchor:middle" transform="translate(30.8,192.6)"><text><tspan>0</tspan></text></g><path d="M75.0,177.6 L75.0,169.2 M75.0,11.3 L75.0,19.7 "></path><g style="stroke:none; fill:rgb(0,0,0); font-family:{}; font-size:10.00pt; text-anchor:middle" transform="translate(75.0,192.6)"><text><tspan>0.2</tspan></text></g><path d="M119.2,177.6 L119.2,169.2 M119.2,11.3 L119.2,19.7 "></path><g style="stroke:none; fill:rgb(0,0,0); font-family:{}; font-size:10.00pt; text-anchor:middle" transform="translate(119.2,192.6)"><text><tspan>0.4</tspan></text></g><path d="M163.5,177.6 L163.5,169.2 M163.5,11.3 L163.5,19.7 "></path><g style="stroke:none; fill:rgb(0,0,0); font-family:{}; font-size:10.00pt; text-anchor:middle" transform="translate(163.5,192.6)"><text><tspan>0.6</tspan></text></g><path d="M207.7,177.6 L207.7,169.2 M207.7,11.3 L207.7,19.7 "></path><g style="stroke:none; fill:rgb(0,0,0); font-family:{}; font-size:10.00pt; text-anchor:middle" transform="translate(207.7,192.6)"><text><tspan>0.8</tspan></text></g><path d="M251.9,177.6 L251.9,169.2 M251.9,11.3 L251.9,19.7 "></path><g style="stroke:none; fill:rgb(0,0,0); font-family:{}; font-size:10.00pt; text-anchor:middle" transform="translate(251.9,192.6)"><text><tspan>1</tspan></text></g><path d="M30.8,11.3 L30.8,177.6 L251.9,177.6 L251.9,11.3 L30.8,11.3 Z "></path></g><g id="Plot_1"><title>Plot_1</title>
+<g style="fill:none; color:red; stroke:currentColor; stroke-width:0.50; stroke-linecap:butt; stroke-linejoin:miter"><path d="M30.8,82.6 L33.0,82.7 L35.2,82.8 L37.4,83.1 L39.6,83.4 L41.9,83.8 L44.1,84.2 L46.3,84.8    L48.5,85.4 L50.7,86.1 L52.9,86.9 L55.1,87.8 L57.3,88.7 L59.5,89.7 L61.8,90.8 L64.0,91.9    L66.2,93.2 L68.4,94.5 L70.6,95.8 L72.8,97.3 L75.0,98.8 L77.2,100.3 L79.4,101.9 L81.7,103.6    L83.9,105.4 L86.1,107.1 L88.3,109.0 L90.5,110.9 L92.7,112.8 L94.9,114.8 L97.1,116.8 L99.3,118.8    L101.6,120.9 L103.8,123.0 L106.0,125.2 L108.2,127.3 L110.4,129.5 L112.6,131.7 L114.8,133.9 L117.0,136.1    L119.2,138.3 L121.5,140.5 L123.7,142.7 L125.9,144.8 L128.1,147.0 L130.3,149.1 L132.5,151.2 L134.7,153.3    L136.9,155.3 L139.1,157.3 L141.4,159.2 L143.6,161.0 L145.8,162.8 L148.0,164.6 L150.2,166.2 L152.4,167.8    L154.6,169.2 L156.8,170.6 L159.0,171.9 L161.2,173.0 L163.5,174.0 L165.7,174.9 L167.9,175.7 L170.1,176.3    L172.3,176.8 L174.5,177.1 L176.7,177.2 L178.9,177.2 L181.1,177.0 L183.4,176.6 L185.6,176.0 L187.8,175.2    L190.0,174.2 L192.2,172.9 L194.4,171.4 L196.6,169.7 L198.8,167.7 L201.0,165.4 L203.3,162.9 L205.5,160.0    L207.7,156.9 L209.9,153.5 L212.1,149.8 L214.3,145.7 L216.5,141.3 L218.7,136.6 L220.9,131.5 L223.2,126.0    L225.4,120.1 L227.6,113.9 L229.8,107.2 L232.0,100.2 L234.2,92.7 L236.4,84.8 L238.6,76.4 L240.8,67.6    L243.1,58.3 L245.3,48.5 L247.5,38.2 L249.7,27.4 L251.9,16.1 " stroke="rgb(  0,   0, 255)"></path></g></g><g style="fill:none; color:black; stroke:currentColor; stroke-width:0.50; stroke-linecap:butt; stroke-linejoin:miter"></g></svg>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [24]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c">%%octave</span>
+<span class="n">x</span> <span class="p">=</span> <span class="mi">1</span><span class="p">:</span><span class="mi">10</span><span class="p">;</span>
+<span class="n">y</span> <span class="p">=</span> <span class="nb">exp</span><span class="p">(</span><span class="n">x</span><span class="p">);</span>
+<span class="nb">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">)</span>
+<span class="nb">xlabel</span><span class="p">(</span><span class="s">'x'</span><span class="p">)</span>
+<span class="nb">ylabel</span><span class="p">(</span><span class="s">'y'</span><span class="p">)</span>
+<span class="nb">title</span><span class="p">(</span><span class="s">'testing MATLAB/OCTAVE in python!'</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+
+
+<div class="output_text output_subarea ">
+<pre></pre>
+</div>
+
+</div>
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+
+<div class="output_svg output_subarea ">
+<svg height="201px" viewbox="0 0 268 201" width="268px" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><title>gnuplot</title>
+<desc>Produced by GNUPLOT 4.4 patchlevel 4 </desc><defs><circle id="gpDot" r="0.5" stroke-width="0.5"></circle><path d="M-1,0 h2 M0,-1 v2" id="gpPt0" stroke="currentColor" stroke-width="0.333"></path><path d="M-1,-1 L1,1 M1,-1 L-1,1" id="gpPt1" stroke="currentColor" stroke-width="0.333"></path><path d="M-1,0 L1,0 M0,-1 L0,1 M-1,-1 L1,1 M-1,1 L1,-1" id="gpPt2" stroke="currentColor" stroke-width="0.333"></path><rect height="2" id="gpPt3" stroke="currentColor" stroke-width="0.333" width="2" x="-1" y="-1"></rect><rect fill="currentColor" height="2" id="gpPt4" stroke="currentColor" stroke-width="0.333" width="2" x="-1" y="-1"></rect><circle cx="0" cy="0" id="gpPt5" r="1" stroke="currentColor" stroke-width="0.333"></circle><use fill="currentColor" id="gpPt6" stroke="none" xlink:href="#gpPt5"></use><path d="M0,-1.33 L-1.33,0.67 L1.33,0.67 z" id="gpPt7" stroke="currentColor" stroke-width="0.333"></path><use fill="currentColor" id="gpPt8" stroke="none" xlink:href="#gpPt7"></use><use id="gpPt9" stroke="currentColor" transform="rotate(180)" xlink:href="#gpPt7"></use><use fill="currentColor" id="gpPt10" stroke="none" xlink:href="#gpPt9"></use><use id="gpPt11" stroke="currentColor" transform="rotate(45)" xlink:href="#gpPt3"></use><use fill="currentColor" id="gpPt12" stroke="none" xlink:href="#gpPt11"></use></defs><g style="fill:none; color:white; stroke:currentColor; stroke-width:1.00; stroke-linecap:butt; stroke-linejoin:miter"></g><g style="fill:none; color:white; stroke:currentColor; stroke-width:0.50; stroke-linecap:butt; stroke-linejoin:miter"></g><g style="fill:none; color:black; stroke:currentColor; stroke-width:0.50; stroke-linecap:butt; stroke-linejoin:miter"><path d="M54.0,163.2 L62.4,163.2 M251.9,163.2 L243.5,163.2 "></path><g style="stroke:none; fill:rgb(0,0,0); font-family:{}; font-size:10.00pt; text-anchor:end" transform="translate(48.4,166.2)"><text><tspan>0</tspan></text></g><path d="M54.0,137.8 L62.4,137.8 M251.9,137.8 L243.5,137.8 "></path><g style="stroke:none; fill:rgb(0,0,0); font-family:{}; font-size:10.00pt; text-anchor:end" transform="translate(48.4,140.8)"><text><tspan>5000</tspan></text></g><path d="M54.0,112.4 L62.4,112.4 M251.9,112.4 L243.5,112.4 "></path><g style="stroke:none; fill:rgb(0,0,0); font-family:{}; font-size:10.00pt; text-anchor:end" transform="translate(48.4,115.4)"><text><tspan>10000</tspan></text></g><path d="M54.0,86.9 L62.4,86.9 M251.9,86.9 L243.5,86.9 "></path><g style="stroke:none; fill:rgb(0,0,0); font-family:{}; font-size:10.00pt; text-anchor:end" transform="translate(48.4,89.9)"><text><tspan>15000</tspan></text></g><path d="M54.0,61.5 L62.4,61.5 M251.9,61.5 L243.5,61.5 "></path><g style="stroke:none; fill:rgb(0,0,0); font-family:{}; font-size:10.00pt; text-anchor:end" transform="translate(48.4,64.5)"><text><tspan>20000</tspan></text></g><path d="M54.0,36.1 L62.4,36.1 M251.9,36.1 L243.5,36.1 "></path><g style="stroke:none; fill:rgb(0,0,0); font-family:{}; font-size:10.00pt; text-anchor:end" transform="translate(48.4,39.1)"><text><tspan>25000</tspan></text></g><path d="M54.0,163.2 L54.0,154.8 M54.0,36.1 L54.0,44.5 "></path><g style="stroke:none; fill:rgb(0,0,0); font-family:{}; font-size:10.00pt; text-anchor:middle" transform="translate(54.0,178.2)"><text><tspan>0</tspan></text></g><path d="M93.6,163.2 L93.6,154.8 M93.6,36.1 L93.6,44.5 "></path><g style="stroke:none; fill:rgb(0,0,0); font-family:{}; font-size:10.00pt; text-anchor:middle" transform="translate(93.6,178.2)"><text><tspan>2</tspan></text></g><path d="M133.2,163.2 L133.2,154.8 M133.2,36.1 L133.2,44.5 "></path><g style="stroke:none; fill:rgb(0,0,0); font-family:{}; font-size:10.00pt; text-anchor:middle" transform="translate(133.2,178.2)"><text><tspan>4</tspan></text></g><path d="M172.7,163.2 L172.7,154.8 M172.7,36.1 L172.7,44.5 "></path><g style="stroke:none; fill:rgb(0,0,0); font-family:{}; font-size:10.00pt; text-anchor:middle" transform="translate(172.7,178.2)"><text><tspan>6</tspan></text></g><path d="M212.3,163.2 L212.3,154.8 M212.3,36.1 L212.3,44.5 "></path><g style="stroke:none; fill:rgb(0,0,0); font-family:{}; font-size:10.00pt; text-anchor:middle" transform="translate(212.3,178.2)"><text><tspan>8</tspan></text></g><path d="M251.9,163.2 L251.9,154.8 M251.9,36.1 L251.9,44.5 "></path><g style="stroke:none; fill:rgb(0,0,0); font-family:{}; font-size:10.00pt; text-anchor:middle" transform="translate(251.9,178.2)"><text><tspan>10</tspan></text></g><path d="M54.0,36.1 L54.0,163.2 L251.9,163.2 L251.9,36.1 L54.0,36.1 Z "></path><g style="stroke:none; fill:rgb(0,0,0); font-family:{}; font-size:10.00pt; text-anchor:middle" transform="translate(11.8,99.7) rotate(-90)"><text><tspan>y</tspan></text></g><g style="stroke:none; fill:rgb(0,0,0); font-family:{}; font-size:10.00pt; text-anchor:middle" transform="translate(152.9,196.2)"><text><tspan>x</tspan></text></g><g style="stroke:none; fill:black; font-family:{}; font-size:10.00pt; text-anchor:middle" transform="translate(152.9,21.1)"><text><tspan>testing MATLAB/OCTAVE in python!</tspan></text></g></g><g id="Plot_1"><title>Plot_1</title>
+<g style="fill:none; color:red; stroke:currentColor; stroke-width:0.50; stroke-linecap:butt; stroke-linejoin:miter"><path d="M73.8,163.2 L93.6,163.2 L113.4,163.1 L133.2,162.9 L153.0,162.4 L172.7,161.1 L192.5,157.6 L212.3,148.0    L232.1,122.0 L251.9,51.2 " stroke="rgb(  0,   0, 255)"></path></g></g><g style="fill:none; color:black; stroke:currentColor; stroke-width:0.50; stroke-linecap:butt; stroke-linejoin:miter"></g></svg>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Not bad for a few minutes of work. Lets take a look at what other options we have</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Option-3---SMOP">Option 3 - SMOP<a class="anchor-link" href="#Option-3---SMOP">¶</a>
+</h3>
+<h4 id="SMOP-(Small-Matlab-and-Octave-to-Python-Converter)-or-here">
+<a href="https://pypi.python.org/pypi/smop">SMOP</a> (Small Matlab and Octave to Python Converter) or <a href="https://github.com/victorlei/smop">here</a><a class="anchor-link" href="#SMOP-(Small-Matlab-and-Octave-to-Python-Converter)-or-here">¶</a>
+</h4>
+<p>The smop package seems impressive, and works well for an actual conversion of MATLAB code. Lets see how it works</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>To convert a MATLAB file named LU.m, follow the sytanx here</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [117]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">!</span>python smop-0.26.2/smop/main.py LU.m
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>the resulting file is 'a.py', which is the python equivalent. Lets have a peek and see how we did. load the file directly in ipython by</p>
+
+<pre><code>%load a.py</code></pre>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [127]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># %load a.py</span>
+<span class="c1"># Autogenerated with SMOP version </span>
+<span class="c1"># smop-0.26.2/smop/main.py LU.m</span>
+
+<span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">division</span>
+<span class="k">try</span><span class="p">:</span>
+    <span class="kn">from</span> <span class="nn">runtime</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>
+    <span class="kn">from</span> <span class="nn">smop.runtime</span> <span class="kn">import</span> <span class="o">*</span>
+
+<span class="n">A</span><span class="o">=</span><span class="p">[[</span><span class="mi">1</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">5</span><span class="p">],[</span><span class="mi">2</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">7</span><span class="p">],[</span><span class="mi">9</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">],[</span><span class="mi">9</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">6</span><span class="p">]]</span>
+<span class="n">R</span><span class="p">,</span><span class="n">C</span><span class="o">=</span><span class="n">size</span><span class="p">(</span><span class="n">A</span><span class="p">,</span><span class="n">nargout</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">arange_</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="n">R</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">):</span>
+    <span class="n">L</span><span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span><span class="o">=</span><span class="n">A</span><span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">U</span><span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="n">i</span><span class="p">]</span><span class="o">=</span><span class="mi">1</span>
+<span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="n">arange_</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="n">R</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">):</span>
+    <span class="n">U</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="n">j</span><span class="p">]</span><span class="o">=</span><span class="n">A</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="n">j</span><span class="p">)</span> <span class="o">/</span> <span class="n">L</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">arange_</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="n">R</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="n">arange_</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="n">i</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">):</span>
+        <span class="n">L</span><span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="p">]</span><span class="o">=</span><span class="n">A</span><span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="p">)</span> <span class="o">-</span> <span class="n">L</span><span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="n">arange_</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="n">j</span> <span class="o">-</span> <span class="mi">1</span><span class="p">))</span> <span class="o">*</span> <span class="n">U</span><span class="p">(</span><span class="n">arange_</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="n">j</span> <span class="o">-</span> <span class="mi">1</span><span class="p">),</span><span class="n">j</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="n">arange_</span><span class="p">(</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span><span class="n">R</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">):</span>
+        <span class="n">U</span><span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="p">]</span><span class="o">=</span><span class="p">(</span><span class="n">A</span><span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="p">)</span> <span class="o">-</span> <span class="n">L</span><span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="n">arange_</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="n">i</span> <span class="o">-</span> <span class="mi">1</span><span class="p">))</span> <span class="o">*</span> <span class="n">U</span><span class="p">(</span><span class="n">arange_</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="n">i</span> <span class="o">-</span> <span class="mi">1</span><span class="p">),</span><span class="n">j</span><span class="p">))</span> <span class="o">/</span> <span class="n">L</span><span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="n">i</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_text output_error">
+<pre>
+<span class="ansi-red-intense-fg ansi-bold">---------------------------------------------------------------------------</span>
+<span class="ansi-red-intense-fg ansi-bold">ImportError</span>                               Traceback (most recent call last)
+<span class="ansi-green-intense-fg ansi-bold">&lt;ipython-input-127-98149b72d69c&gt;</span> in <span class="ansi-cyan-fg">&lt;module&gt;</span><span class="ansi-blue-intense-fg ansi-bold">()</span>
+<span class="ansi-green-fg">      7</span>     <span class="ansi-green-intense-fg ansi-bold">from</span> runtime <span class="ansi-green-intense-fg ansi-bold">import</span> <span class="ansi-yellow-intense-fg ansi-bold">*</span>
+<span class="ansi-green-fg">      8</span> <span class="ansi-green-intense-fg ansi-bold">except</span> ImportError<span class="ansi-yellow-intense-fg ansi-bold">:</span>
+<span class="ansi-green-intense-fg ansi-bold">----&gt; 9</span><span class="ansi-yellow-intense-fg ansi-bold">     </span><span class="ansi-green-intense-fg ansi-bold">from</span> smop<span class="ansi-yellow-intense-fg ansi-bold">.</span>runtime <span class="ansi-green-intense-fg ansi-bold">import</span> <span class="ansi-yellow-intense-fg ansi-bold">*</span>
+<span class="ansi-green-fg">     10</span> 
+<span class="ansi-green-fg">     11</span> A<span class="ansi-yellow-intense-fg ansi-bold">=</span><span class="ansi-yellow-intense-fg ansi-bold">[</span><span class="ansi-yellow-intense-fg ansi-bold">[</span><span class="ansi-cyan-intense-fg ansi-bold">1</span><span class="ansi-yellow-intense-fg ansi-bold">,</span><span class="ansi-cyan-intense-fg ansi-bold">5</span><span class="ansi-yellow-intense-fg ansi-bold">,</span><span class="ansi-cyan-intense-fg ansi-bold">3</span><span class="ansi-yellow-intense-fg ansi-bold">,</span><span class="ansi-cyan-intense-fg ansi-bold">5</span><span class="ansi-yellow-intense-fg ansi-bold">]</span><span class="ansi-yellow-intense-fg ansi-bold">,</span><span class="ansi-yellow-intense-fg ansi-bold">[</span><span class="ansi-cyan-intense-fg ansi-bold">2</span><span class="ansi-yellow-intense-fg ansi-bold">,</span><span class="ansi-cyan-intense-fg ansi-bold">5</span><span class="ansi-yellow-intense-fg ansi-bold">,</span><span class="ansi-cyan-intense-fg ansi-bold">6</span><span class="ansi-yellow-intense-fg ansi-bold">,</span><span class="ansi-cyan-intense-fg ansi-bold">7</span><span class="ansi-yellow-intense-fg ansi-bold">]</span><span class="ansi-yellow-intense-fg ansi-bold">,</span><span class="ansi-yellow-intense-fg ansi-bold">[</span><span class="ansi-cyan-intense-fg ansi-bold">9</span><span class="ansi-yellow-intense-fg ansi-bold">,</span><span class="ansi-cyan-intense-fg ansi-bold">0</span><span class="ansi-yellow-intense-fg ansi-bold">,</span><span class="ansi-cyan-intense-fg ansi-bold">3</span><span class="ansi-yellow-intense-fg ansi-bold">,</span><span class="ansi-cyan-intense-fg ansi-bold">4</span><span class="ansi-yellow-intense-fg ansi-bold">]</span><span class="ansi-yellow-intense-fg ansi-bold">,</span><span class="ansi-yellow-intense-fg ansi-bold">[</span><span class="ansi-cyan-intense-fg ansi-bold">9</span><span class="ansi-yellow-intense-fg ansi-bold">,</span><span class="ansi-cyan-intense-fg ansi-bold">4</span><span class="ansi-yellow-intense-fg ansi-bold">,</span><span class="ansi-cyan-intense-fg ansi-bold">7</span><span class="ansi-yellow-intense-fg ansi-bold">,</span><span class="ansi-cyan-intense-fg ansi-bold">6</span><span class="ansi-yellow-intense-fg ansi-bold">]</span><span class="ansi-yellow-intense-fg ansi-bold">]</span>
+
+<span class="ansi-red-intense-fg ansi-bold">ImportError</span>: No module named smop.runtime</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Yikes, not great. Looks like some info got lost in translation. I tried fixing it up a bit but didn't get anything worth while</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Option-4---LibreMat">Option 4 - LibreMat<a class="anchor-link" href="#Option-4---LibreMat">¶</a>
+</h3>
+<h4 id="LibreMate">
+<a href="http://sourceforge.net/projects/libermate/">LibreMate</a><a class="anchor-link" href="#LibreMate">¶</a>
+</h4>
+<p>I didn't install LibreMat because of the dependent packages, so I'll leave a review to someone else</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Option-5---OMPC">Option 5 - OMPC<a class="anchor-link" href="#Option-5---OMPC">¶</a>
+</h3>
+<h4 id="OMPC-(open-source-matlab-to-python-converter)">
+<a href="http://ompc.juricap.com/">OMPC</a> (open-source matlab to python converter)<a class="anchor-link" href="#OMPC-(open-source-matlab-to-python-converter)">¶</a>
+</h4>
+<p>The <a href="http://ompc.juricap.com/Examples">examples</a> are descriptive and explain many user cases. When you are ready to convert, check out the <a href="http://ompclib.appspot.com/m2py">live web converter</a> which is great for processing snippets. However, when I tried to convert the LU function above, I get this, which creates a wierd A array and an undeclared vector mslice. There may be an explanation of this in the documentation, but it isn't obvious I didn't look very much</p>
+
+<pre><code>A = mcat([1, 5, 3, 5, OMPCSEMI, 2, 5, 6, 7, OMPCSEMI, 9, 0, 3, 4, OMPCSEMI, 9, 4, 7, 6])
+A()
+[R, C] = size(A)
+for i in mslice[1:R]:
+    L(i, 1).lvalue = A(i, 1)
+    U(i, i).lvalue = 1
+    end
+    for j in mslice[2:R]:
+        U(1, j).lvalue = A(1, j) / L(1, 1)
+        end
+        for i in mslice[2:R]:
+            for j in mslice[2:i]:
+                L(i, j).lvalue = A(i, j) - L(i, mslice[1:j - 1]) * U(mslice[1:j - 1], j)
+                end
+                for j in mslice[i + 1:R]:
+                    U(i, j).lvalue = (A(i, j) - L(i, mslice[1:i - 1]) * U(mslice[1:i - 1], j)) / L(i, i)
+                    end
+                    end
+                    U()
+                    L()</code></pre>
+<p>The conversion generate non-usable code, so well scratch this one also</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Summary">Summary<a class="anchor-link" href="#Summary">¶</a>
+</h3>
+<p>I definitely prefer the oct2py package, I can run my native MATLAB code in a python environment, and surely there will be support for other languages in the ipython notebook (bash, R, Julia, etc)</p>
+<p>Now that we have some options for running MATLAB/Octave code in python, the conversion process should be easier. I will be posting projects as I convert them, so stay tuned.</p>
+
+</div>
+</div>
+</div>
+</div>
+    </div>
+    <aside class="postpromonav"><nav><ul itemprop="keywords" class="tags">
+<li><a class="tag p-category" href="../../categories/math/" rel="tag">math</a></li>
+            <li><a class="tag p-category" href="../../categories/matlab/" rel="tag">matlab</a></li>
+            <li><a class="tag p-category" href="../../categories/python/" rel="tag">python</a></li>
+        </ul>
+<ul class="pager hidden-print">
+<li class="previous">
+                <a href="../tf2-server-setup/" rel="prev" title="Team Fortress 2 Server Install for Dummies">Previous post</a>
+            </li>
+            <li class="next">
+                <a href="../doconce-intro/" rel="next" title="Learn Latex, markdown and html with doconce">Next post</a>
+            </li>
+        </ul></nav></aside><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML" integrity="sha384-3lJUsx1TJHt7BA4udB5KPnDrlkO8T6J6v/op7ui0BbCjvZ9WqV4Xm6DTP6kQ/iBH" crossorigin="anonymous"></script><script type="text/x-mathjax-config">
+        MathJax.Hub.Config({tex2jax: {inlineMath: [['$latex ','$'], ['\\(','\\)']]}});
+        </script></article><!--End of body content--><footer id="footer">
+            Contents © 2021         <a href="mailto:">neal</a> - Powered by         <a href="https://getnikola.com" rel="nofollow">Nikola</a>         
+            
+            
+        </footer>
+</div>
+</div>
+
+
+        <script src="../../assets/js/all-nocdn.js"></script><script>
+    baguetteBox.run('div#content', {
+        ignoreClass: 'islink',
+        captions: function(element){var i=element.getElementsByTagName('img')[0];return i===undefined?'':i.alt;}});
+    </script>
+</body>
+</html>

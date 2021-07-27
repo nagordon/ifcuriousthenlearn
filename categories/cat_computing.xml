@@ -1,0 +1,1526 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet type="text/xsl" href="../assets/xml/rss.xsl" media="all"?><rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>ifcuriousthenlearn (Posts about computing)</title><link>https://nagordon.github.io/ifcuriousthenlearn/</link><description></description><atom:link href="https://nagordon.github.io/ifcuriousthenlearn/categories/cat_computing.xml" rel="self" type="application/rss+xml"></atom:link><language>en</language><copyright>Contents © 2021 &lt;a href="mailto:"&gt;neal&lt;/a&gt; </copyright><lastBuildDate>Tue, 27 Jul 2021 04:15:45 GMT</lastBuildDate><generator>Nikola (getnikola.com)</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>Calculations with Python Code or Excel Spreadsheets</title><link>https://nagordon.github.io/ifcuriousthenlearn/posts/pythoncode-vs-excel/</link><dc:creator>neal</dc:creator><description>&lt;div&gt;&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;h2 id="To-code-or-not-to-code"&gt;To code or not to code&lt;a class="anchor-link" href="https://nagordon.github.io/ifcuriousthenlearn/posts/pythoncode-vs-excel/#To-code-or-not-to-code"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;When faced with a technical challenge or problem solving, conceptual understanding is an important first step, and I almost always start with hand calculations. Once I feel that I have a grasp of the concept, then I turn to a digital approach which often involves using excel or python and running some numbers, and re-running them, and fiddling until I really understand. I always feel like, especially in engineering, that using the right tool for the right job can make a big difference in the results. &lt;a href="https://products.office.com/en-us/excel"&gt;Microsoft Excel&lt;/a&gt; or &lt;a href="https://www.libreoffice.org/discover/calc/"&gt;Libre Calc&lt;/a&gt; spreadsheet programs are a great way to plug some numbers in and perform simple calculations with nearly no learning curve to get an answer. But as the complexity and quantity of the data and compuation increases, spreadsheets start to not make sense. That's where I feel a code based calculation method is important tool in everyones analysis toolbox. Classicaly, good old pencil and paper was the only way to model and work out problems. But, with the availability of the personal computer, software has allowed us to do more work with less effort. I find it very fascinating to see how people solve problems. This post will explore that idea and hopefully give you an idea to go beyond excel the next time you need to run some numbers.&lt;/p&gt;
+&lt;p&gt;There are many ways to solve engineering problems. The main tools that I have found critical  are:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;hand calculations&lt;/strong&gt;  &lt;ul&gt;
+&lt;li&gt;no learning curve&lt;/li&gt;
+&lt;li&gt;low cost&lt;/li&gt;
+&lt;li&gt;slow, tedious and can be error prone (me and algebra :( )&lt;/li&gt;
+&lt;li&gt;forces you to understand &lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;spreadsheets&lt;/strong&gt;  &lt;ul&gt;
+&lt;li&gt;medium learning curve&lt;/li&gt;
+&lt;li&gt;great at simple data storage&lt;/li&gt;
+&lt;li&gt;great for simple calcualtions&lt;/li&gt;
+&lt;li&gt;non-linear / confusing thought process&lt;/li&gt;
+&lt;li&gt;not great at large scale date storage &lt;/li&gt;
+&lt;li&gt;not repeatable&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;code&lt;/strong&gt;  &lt;ul&gt;
+&lt;li&gt;linear thought process (usually)&lt;/li&gt;
+&lt;li&gt;most powerful for calculations &lt;/li&gt;
+&lt;li&gt;not great at simple data storage&lt;/li&gt;
+&lt;li&gt;great for large scale data storage and processing &lt;/li&gt;
+&lt;li&gt;powerful version control (&lt;a href="https://git-scm.com/"&gt;git&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;very repeatable&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;These are a few methods for solving computational problems. Each one has a time and place, but recognizing when you are trying to put a square peg in a round hole can help keep you sane.&lt;/p&gt;
+&lt;h2 id="An-Example---python-and-Excel-to-understand-loans"&gt;An Example - python and Excel to understand loans&lt;a class="anchor-link" href="https://nagordon.github.io/ifcuriousthenlearn/posts/pythoncode-vs-excel/#An-Example---python-and-Excel-to-understand-loans"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;OK, so we discussed some different approaches to problem solving. Lets look at an example of using an spreadsheet and python code to understand and determine the cost of an loan. Some terms are listed below if you aren't familiar with a compound interest loan.&lt;/p&gt;
+&lt;blockquote&gt;&lt;p&gt;apr - annual percentage rate&lt;br&gt;
+r   - monthly percentge rate, apr/12&lt;br&gt;
+per - the peroid for which you want to find an interest&lt;br&gt;
+nper - number of payment&lt;br&gt;
+pv - present value, the loan amount
+pmt - payment for a loan&lt;br&gt;
+payments due at the end of the period&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Let's throw some numbers at this. Here I will define some variables that define our loan parameters&lt;/p&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing code_cell rendered"&gt;
+&lt;div class="input"&gt;
+&lt;div class="prompt input_prompt"&gt;In [1]:&lt;/div&gt;
+&lt;div class="inner_cell"&gt;
+    &lt;div class="input_area"&gt;
+&lt;div class=" highlight hl-ipython3"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c1"&gt;############# define input variables #############&lt;/span&gt;
+&lt;span class="n"&gt;n&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;24&lt;/span&gt;   &lt;span class="c1"&gt;# term in months&lt;/span&gt;
+&lt;span class="n"&gt;apr&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mf"&gt;0.0250&lt;/span&gt;   &lt;span class="c1"&gt;# annual percentage rate&lt;/span&gt;
+&lt;span class="n"&gt;r&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;apr&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="mi"&gt;12&lt;/span&gt;     &lt;span class="c1"&gt;# monthly percentage rate&lt;/span&gt;
+&lt;span class="n"&gt;baseloan&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;30000&lt;/span&gt;   &lt;span class="c1"&gt;# principal amount of loan&lt;/span&gt;
+&lt;span class="n"&gt;downpayment&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;5000&lt;/span&gt; 
+&lt;span class="n"&gt;PV&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;baseloan&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt; &lt;span class="n"&gt;downpayment&lt;/span&gt;  &lt;span class="c1"&gt;# present value of the loan&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+    &lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;h3 id="Hand-Calculation"&gt;Hand Calculation&lt;a class="anchor-link" href="https://nagordon.github.io/ifcuriousthenlearn/posts/pythoncode-vs-excel/#Hand-Calculation"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;If we are to hand calculate our loan payments, we can use the following equation (found in Engineering Economy, Blank et al, pg 58)&lt;/p&gt;
+$$
+payment = PV \bigg[  \frac{r(1+r)^n}{(1+r)^n-1} \bigg]
+$$
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing code_cell rendered"&gt;
+&lt;div class="input"&gt;
+&lt;div class="prompt input_prompt"&gt;In [2]:&lt;/div&gt;
+&lt;div class="inner_cell"&gt;
+    &lt;div class="input_area"&gt;
+&lt;div class=" highlight hl-ipython3"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c1"&gt;# monthly payments assuming compounding interest&lt;/span&gt;
+&lt;span class="n"&gt;payment&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;PV&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="p"&gt;((&lt;/span&gt;&lt;span class="n"&gt;r&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="o"&gt;+&lt;/span&gt;&lt;span class="n"&gt;r&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;**&lt;/span&gt;&lt;span class="n"&gt;n&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="p"&gt;((&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="o"&gt;+&lt;/span&gt;&lt;span class="n"&gt;r&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;**&lt;/span&gt;&lt;span class="n"&gt;n&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+&lt;span class="n"&gt;payment&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+    &lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class="output_wrapper"&gt;
+&lt;div class="output"&gt;
+
+
+&lt;div class="output_area"&gt;
+
+    &lt;div class="prompt output_prompt"&gt;Out[2]:&lt;/div&gt;
+
+
+
+
+&lt;div class="output_text output_subarea output_execute_result"&gt;
+&lt;pre&gt;-1069.0098055421547&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;/div&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;p&gt;Easy enough, but what if you want to make a payment table, it would be very tedious by hand. Fortuantley, we have a computer. Since I understand the equation being used, I have no issues with automating this a little more. We can make an spreadsheet table. which is nice visually, didn't take very much time, and allows me to change some parameters.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Update&lt;/strong&gt; - I found out that Excel has a great Loan Amortization spreadsheet built in, and it even includes early payoff, which is not that easy to calculate. I have included it in the spreadsheet below or you can make a new one by doing the following.&lt;/p&gt;
+&lt;blockquote&gt;&lt;p&gt;&lt;em&gt;right-click on a new sheet -&amp;gt; Insert -&amp;gt; Spreadsheet Solutions -&amp;gt; Loan Amortization&lt;/em&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3 id="Spreadsheet"&gt;Spreadsheet&lt;a class="anchor-link" href="https://nagordon.github.io/ifcuriousthenlearn/posts/pythoncode-vs-excel/#Spreadsheet"&gt;¶&lt;/a&gt;&lt;/h3&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;iframe width="700" height="807" frameborder="0" scrolling="no" src="https://onedrive.live.com/embed?cid=2DAE54F5236205EE&amp;amp;resid=2DAE54F5236205EE%2125844&amp;amp;authkey=AMSdq_7Zcg_mK_g&amp;amp;em=2&amp;amp;wdAllowInteractivity=False&amp;amp;AllowTyping=True&amp;amp;ActiveCell='loan'!E2&amp;amp;Item='loan'!A1%3AI38&amp;amp;wdHideGridlines=True&amp;amp;wdDownloadButton=True"&gt;&lt;/iframe&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;p&gt;But, if we want to change, say the term length, well then we have to change the layout of the table and mess with it, so the spreadsheet isn't as robust as we had hoped. How about a code solution? Here are the steps to get some python code going to do the same exact calcuation, and being very robust, and can be used for many different finanical applications.&lt;/p&gt;
+&lt;h3 id="Code"&gt;Code&lt;a class="anchor-link" href="https://nagordon.github.io/ifcuriousthenlearn/posts/pythoncode-vs-excel/#Code"&gt;¶&lt;/a&gt;&lt;/h3&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing code_cell rendered"&gt;
+&lt;div class="input"&gt;
+&lt;div class="prompt input_prompt"&gt;In [3]:&lt;/div&gt;
+&lt;div class="inner_cell"&gt;
+    &lt;div class="input_area"&gt;
+&lt;div class=" highlight hl-ipython3"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c1"&gt;############# import python libraries #############&lt;/span&gt;
+&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;numpy&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt;
+&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;pandas&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;DataFrame&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;date_range&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;set_option&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;options&lt;/span&gt;
+&lt;span class="n"&gt;options&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;display&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;float_format&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s1"&gt;'$&lt;/span&gt;&lt;span class="si"&gt;{:10,.2f}&lt;/span&gt;&lt;span class="s1"&gt;'&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;format&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+    &lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing code_cell rendered"&gt;
+&lt;div class="input"&gt;
+&lt;div class="prompt input_prompt"&gt;In [4]:&lt;/div&gt;
+&lt;div class="inner_cell"&gt;
+    &lt;div class="input_area"&gt;
+&lt;div class=" highlight hl-ipython3"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c1"&gt;############# calculate output #############&lt;/span&gt;
+&lt;span class="n"&gt;per&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt;              &lt;span class="n"&gt;arange&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;n&lt;/span&gt;&lt;span class="o"&gt;+&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;  &lt;span class="c1"&gt;# months&lt;/span&gt;
+&lt;span class="n"&gt;payment&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt;          &lt;span class="n"&gt;pmt&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;r&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;n&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;PV&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;  &lt;span class="c1"&gt;# monthly payment&lt;/span&gt;
+&lt;span class="n"&gt;interestpayment&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt;  &lt;span class="n"&gt;ipmt&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;r&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;per&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;n&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;PV&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;  &lt;span class="c1"&gt;# monthly interest&lt;/span&gt;
+&lt;span class="n"&gt;principalpayment&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;ppmt&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;r&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;per&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;n&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;PV&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;  &lt;span class="c1"&gt;# monthly principal&lt;/span&gt;
+&lt;span class="n"&gt;balance&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt;          &lt;span class="n"&gt;PV&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="n"&gt;per&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="n"&gt;payment&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt; &lt;span class="nb"&gt;sum&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;interestpayment&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="c1"&gt;# monthly balance&lt;/span&gt;
+&lt;span class="n"&gt;dates&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt;            &lt;span class="n"&gt;date_range&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;'20160101'&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;periods&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;n&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;freq&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;'M'&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+&lt;span class="c1"&gt;############# create a table with the output #############&lt;/span&gt;
+&lt;span class="c1"&gt;# create a dataframe for simple data management and output&lt;/span&gt;
+&lt;span class="n"&gt;df&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;DataFrame&lt;/span&gt;&lt;span class="p"&gt;({&lt;/span&gt;&lt;span class="s1"&gt;'date'&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="n"&gt;dates&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+                &lt;span class="s1"&gt;'month'&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="n"&gt;per&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+                &lt;span class="s1"&gt;'balance'&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="n"&gt;balance&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+                &lt;span class="s1"&gt;'payment'&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="n"&gt;ones&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;len&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;per&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="n"&gt;payment&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+                &lt;span class="s1"&gt;'interest'&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="n"&gt;interestpayment&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+                &lt;span class="s1"&gt;'principal'&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="n"&gt;principalpayment&lt;/span&gt;&lt;span class="p"&gt;})&lt;/span&gt;
+&lt;span class="c1"&gt;# reorder the columns to match the spreadsheet&lt;/span&gt;
+&lt;span class="n"&gt;df&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;df&lt;/span&gt;&lt;span class="p"&gt;[[&lt;/span&gt;&lt;span class="s1"&gt;'date'&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="s1"&gt;'month'&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="s1"&gt;'balance'&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="s1"&gt;'payment'&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="s1"&gt;'interest'&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="s1"&gt;'principal'&lt;/span&gt;&lt;span class="p"&gt;]]&lt;/span&gt;
+
+&lt;span class="c1"&gt;############# print output #############&lt;/span&gt;
+&lt;span class="nb"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;' monthly payment     = &lt;/span&gt;&lt;span class="si"&gt;%f&lt;/span&gt;&lt;span class="s1"&gt;'&lt;/span&gt; &lt;span class="o"&gt;%&lt;/span&gt; &lt;span class="n"&gt;payment&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="nb"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;' total interest cost = &lt;/span&gt;&lt;span class="si"&gt;%f&lt;/span&gt;&lt;span class="se"&gt;\n&lt;/span&gt;&lt;span class="s1"&gt;'&lt;/span&gt; &lt;span class="o"&gt;%&lt;/span&gt; &lt;span class="nb"&gt;sum&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;interestpayment&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;   
+&lt;span class="nb"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;df&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+    &lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class="output_wrapper"&gt;
+&lt;div class="output"&gt;
+
+
+&lt;div class="output_area"&gt;
+
+    &lt;div class="prompt"&gt;&lt;/div&gt;
+
+
+&lt;div class="output_subarea output_stream output_stdout output_text"&gt;
+&lt;pre&gt; monthly payment     = -1069.009806
+ total interest cost = -656.235333
+
+         date  month     balance     payment    interest   principal
+0  2016-01-31      1 $ 24,587.23 $ -1,069.01 $    -52.08 $ -1,016.93
+1  2016-02-29      2 $ 23,518.22 $ -1,069.01 $    -49.96 $ -1,019.05
+2  2016-03-31      3 $ 22,449.21 $ -1,069.01 $    -47.84 $ -1,021.17
+3  2016-04-30      4 $ 21,380.20 $ -1,069.01 $    -45.71 $ -1,023.30
+4  2016-05-31      5 $ 20,311.19 $ -1,069.01 $    -43.58 $ -1,025.43
+5  2016-06-30      6 $ 19,242.18 $ -1,069.01 $    -41.45 $ -1,027.56
+6  2016-07-31      7 $ 18,173.17 $ -1,069.01 $    -39.31 $ -1,029.70
+7  2016-08-31      8 $ 17,104.16 $ -1,069.01 $    -37.16 $ -1,031.85
+8  2016-09-30      9 $ 16,035.15 $ -1,069.01 $    -35.01 $ -1,034.00
+9  2016-10-31     10 $ 14,966.14 $ -1,069.01 $    -32.86 $ -1,036.15
+10 2016-11-30     11 $ 13,897.13 $ -1,069.01 $    -30.70 $ -1,038.31
+11 2016-12-31     12 $ 12,828.12 $ -1,069.01 $    -28.53 $ -1,040.48
+12 2017-01-31     13 $ 11,759.11 $ -1,069.01 $    -26.37 $ -1,042.64
+13 2017-02-28     14 $ 10,690.10 $ -1,069.01 $    -24.19 $ -1,044.82
+14 2017-03-31     15 $  9,621.09 $ -1,069.01 $    -22.02 $ -1,046.99
+15 2017-04-30     16 $  8,552.08 $ -1,069.01 $    -19.84 $ -1,049.17
+16 2017-05-31     17 $  7,483.07 $ -1,069.01 $    -17.65 $ -1,051.36
+17 2017-06-30     18 $  6,414.06 $ -1,069.01 $    -15.46 $ -1,053.55
+18 2017-07-31     19 $  5,345.05 $ -1,069.01 $    -13.27 $ -1,055.74
+19 2017-08-31     20 $  4,276.04 $ -1,069.01 $    -11.07 $ -1,057.94
+20 2017-09-30     21 $  3,207.03 $ -1,069.01 $     -8.86 $ -1,060.15
+21 2017-10-31     22 $  2,138.02 $ -1,069.01 $     -6.65 $ -1,062.36
+22 2017-11-30     23 $  1,069.01 $ -1,069.01 $     -4.44 $ -1,064.57
+23 2017-12-31     24 $      0.00 $ -1,069.01 $     -2.22 $ -1,066.79
+&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;p&gt;Assuming the user has a basic understanding of how to write a computer program, code is(should be) very straightforward to read. Spreadsheets, like the one shown above can be nebulus and requires a fair bit of digging to see what calcualtions are being made. 
+If you need any help with the functions, use the help function to show the inputs&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;help&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;pmt&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;help&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;ipmt&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;help&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;ppmt&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Try playing around with the code and see what happens when the terms of the loan are changed. The code is more robust to changes, where the spreadsheet has to be reworked&lt;/p&gt;
+&lt;h2 id="Summary"&gt;Summary&lt;a class="anchor-link" href="https://nagordon.github.io/ifcuriousthenlearn/posts/pythoncode-vs-excel/#Summary"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;A simple demo compared spreadsheets versus code with an example of a common calcualtion problem, loans! When pursuing future projects, think about what tools would be the best for the given problem, as well as you, and possibly your team.&lt;/p&gt;
+&lt;p&gt;Stay curious!&lt;/p&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;/div&gt;</description><category>excel</category><category>python</category><guid>https://nagordon.github.io/ifcuriousthenlearn/posts/pythoncode-vs-excel/</guid><pubDate>Sat, 20 Aug 2016 07:00:00 GMT</pubDate></item><item><title>Understanding and using technology</title><link>https://nagordon.github.io/ifcuriousthenlearn/posts/what-open-source-means/</link><dc:creator>neal</dc:creator><description>&lt;div&gt;&lt;p&gt;The book &lt;a href="http://www.catb.org/~esr/"&gt;The Cathedral and the Bazaar&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="cathedralandbazaar" src="https://nagordon.github.io/ifcuriousthenlearn/images/cathedralandbazaar.jpg"&gt;&lt;/p&gt;
+&lt;h2&gt;What open-source means to me&lt;/h2&gt;
+&lt;p&gt;The ideas expressed in this article are generally not my own, however, all the opinions are. And, those opinions are mostly a response from the book/manifesto of open-source, called The Cathedral and the Bazaar, by Eric Raymond.
+I stumbled across this book in my many random searches on the internet, and as I started reading it out of pure curiosity, and I immediately began correlating ideas behind the open software development strategies to many various activities in my life, including some epistemological interests in economics and philosophy. Being a US citizen, it is difficult to deny our ingrained capitalistic ideologies where companies are created and destroyed based on profit, and when you ask a typical person what their worth is, they often will give you a dollar value. It is a very slippery slope to think in terms of starting a company with a great idea with the hopes of one day making it big, but the open-source world says something different. It is a more humanitarian approach to creating great technology, rather than seeking fortunes through innovations.&lt;/p&gt;
+&lt;p&gt;Let me side-track for a moment to address the obvious opposite to the open-source ideology , closed-source, enter Bill Gates. In his book, "The Road Ahead", his insatiable hunger for technology, and how the lack on innovation and implementation in the electronics industry drove him to share his interests with the world by providing software to make computers more accessible to the not-so-tech-savvy. His business model was to make software, and sell it. The world at that time needed someone with the impetus of profit to get the ball rolling. Although, I do not think there are more people interested in technology now than there were in the 1970's, but technology is certainly more accessible, and learning has never been easier (although motivation is still hard for everyone to find). Don't get me wrong, Microsoft has fine products, but they just don't serve society the way we need.&lt;/p&gt;
+&lt;p&gt;The fundamental flaw with closed-source software is that it inherently forces the user to be a pure consumer, rather than a consumer &lt;em&gt;and&lt;/em&gt; creator. This, unfortunately, leaves us in a world where the hottest pieces of software are apps that blindly allow us to seemingly(and laughably) "hide" our data. The only solution to securing your data is to understand, and you cannot understand if what you seek is not accessible. It is in societies' best interest that users stay curious, and the demand to understand persists.&lt;/p&gt;
+&lt;p&gt;Using technology is humanity's greatest ability(we are also apparently very good at &lt;a href="http://www.amazon.com/Born-Run-Hidden-Superathletes-Greatest/dp/0307279189"&gt;endurance running&lt;/a&gt; :) . However, we only create technology when a few criteria are met:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;curiosity&lt;/li&gt;
+&lt;li&gt;profitability (financial et al)&lt;/li&gt;
+&lt;li&gt;insanity&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;I prefer &lt;strong&gt;curiosity&lt;/strong&gt; out of my other options, mostly because I eat every day and have a house to sleep in. This is the first item of the open-source. Other explanations exist, of which are common among many technologist, such as boosting ones own ego. A very exciting idea of why open-source works can be found in nature. I case you forgot, humans are animals too, and are subject to the laws of nature, just like any other beast out there. I really like how this is put:&lt;br&gt;
+&lt;em&gt;"To operate and compete effectively, open-source participants who want to lead collaborative projects have to learn how to recruit and energize effective communities of interest...The open-source world operates in much the same way as an economic, or ecologic system, where a collection of selfish agents attempt to maximize utility, which in the process produces a self-correcting spontaneous order more elaborate and efficient than any amount of central planning could have achieved. The "utility function" that open-source participants are trying to maximize is not the classically economic [and may vary from person to person, ] but is the intangible of their own ego satisfaction with other participants(I have accepted that altruism is just another form of ego-satisfaction)...Many people (especially those who politcally distrust "free markets") would expect a culture of self-directed egoists to be fragmented, territorial, wasteful, secretive, and hostile. But these expectations are clearly falsified by the incredible success of Linux (which one of the most successfully open source projects and arguably ignited the entire open-source culture or problem solving ideology )...Perhaps in the end the open-source culture will triumph not because cooperation is morally right or software hoarding is morally wrong (which I do not think it is), but simply because the closed-software world cannot win the evolutionary arms race with the open-source communities"&lt;/em&gt; &lt;/p&gt;
+&lt;p&gt;_    - The Cathedral and the Bazaar, by Eric Raymond. pg 52. ISBN 978-0-596-00108-7_  &lt;/p&gt;
+&lt;p&gt;I really appreciate how that was written, which is obviously why I included it. I think it is both insightful into why open-source works on a practical level, as well as biological. It also brings the topic of why Microsoft is what is it(recap: because a few people wrote the whole darn OS in the beginning), and why that method of software development will no longer work.  &lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;1) Every good work of software starts by scratching a developer's personal itch&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;If you don't program, but want to learn, this is THE EASIEST WAY TO STAR. Find a project that is interesting to see, so that there is a goal in mind and you have the drive and curiosity to finish it. This leads me to the second point.  &lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;2) Good Programmers know what to write. Great ones know what to rewrite.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Do not try to reinvent the wheel, the whole idea of sharing your code is to help everyone, so use everyone elses code, and if it doesn't work, then make it yourself.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;3) You don't really understand a problem until you attempt to solve it, and by then you probably want to start over, and you should&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Be willing and happy to change things when you can and still have motivation, because it is always for the better&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;13) "Perfection (in design) is achieved not when there is nothing more to add, but rather when there is nothing more to take away." - Antoine de Satin-Exupery&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Don't hesitate to throw away features, just keep the essentials and do them well&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;14) Any tool should be useful in the expected way, but a truly great tool lends itself to unexpected uses&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Whatever you set out to do, it &lt;em&gt;must&lt;/em&gt; work how you intended it to, and if you did it well enough, it will work for many other things as well. That is a great feeling!&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;18) To solve an interesting problem, start with a problem that is interesting to you&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2&gt;How to begin to learn about 21st century technology.&lt;/h2&gt;
+&lt;p&gt;As I mentioned, in order to really understand the technology that runs our modern world, it needs to be open-source, so that the curious seeking can dig as deep as they need to appreciate what is happening. Be forewarned, following this list may show you the light, but possibly at great expense to your time(but that doesn't matter, because we are having fun!) So, leads us to my first point.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;1) Learn an open-source operating system, such as linux&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;There are so many options when it comes to interacting with your computer check out &lt;a href="http://distrowatch.com/"&gt;distrowatch&lt;/a&gt; to find an operating system that matches your needs. I like anything debian, mostly because the packages are ubiquitous and I really like my Raspberry Pi. Also, installing an operating system has become user error proof with the modern Windows install, so challenge yourself by installing something that makes you think a little and gives you choices.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;2) learn how to use a terminal, like bash or powershell&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Everything you do in linux can be done through the terminal, but the opposite it not true for the user-interface. Although the terminal has a much steeper learning curve, it is the segue to picking up a scripting/programming language, which is my next point.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;3) Learn a programming language.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;I don't want to overstate this, but nearly every job you will ever have can utilize this skill and it can be fun! I first learned visual basic because I wanted to roll a dice 1000 times but didn't want to take all day to do it.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;4) Embrace open-source when you use software &lt;em&gt;and&lt;/em&gt; when you create it&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;I have had my share of downloading shady windows programs to do silly tasks (eg music organization) and caught a virus along the way. Once I discovered the open-source community, I get better software, without malware that I can customize however I want. It is a beautiful thing.
+I cannot stress enough how important I have found it to eliminate my ego as a science enthusiast and remove territories from my ideas and share with the communities of the for peer-review and sharing my thoughts. That is the number one reason that I wanted to create this blog (the other is to help me write more, which is pleasantly cathartic for me and keeps my wandering brain on task, rather than keeping a personal journal (check out &lt;a href="http://rednotebook.sourceforge.net/"&gt;Red Notebook&lt;/a&gt;, which I would recommend, but doesn't have the accountability a published blog does.)&lt;/p&gt;
+&lt;p&gt;I hope you get a chance to explore the ideas of open-source, because they go well beyond just computing.&lt;/p&gt;
+&lt;p&gt;Stay Curious!&lt;/p&gt;&lt;/div&gt;</description><category>opensource</category><guid>https://nagordon.github.io/ifcuriousthenlearn/posts/what-open-source-means/</guid><pubDate>Sat, 07 May 2016 08:00:00 GMT</pubDate></item><item><title>Intro to the Windows Command Line</title><link>https://nagordon.github.io/ifcuriousthenlearn/posts/intro-to-the-windows-command-line/</link><dc:creator>neal</dc:creator><description>&lt;div&gt;&lt;h3&gt;Introduction&lt;/h3&gt;
+&lt;p&gt;Side Note - I've searched online to find info on many things related to technology. A typical search will yield a lot of blogs and tutorials, and way down the list there is documentation from the company/team that created the product. All this is OK, but i've found if you really want to learn something, the best way is a good old-fashioned book (pdf or print). The ideas are whole and complete, and the quality is much higher than a typical blog post (..yea, I know, this is a blog, and no it is not as good as a book).
+And now for the big surprise. Most of my content is from books. I did not invent this stuff. And I think it is important to give credit where credit is due. For more information, check out an  A+ certification book (I got mine from goodwill for 3 bucks, isnb-9780071745154).&lt;/p&gt;
+&lt;p&gt;Ok, on to the post. This tutorial only applies to the windows command line, not powershell. To start out, I am not a huge Windows fan. It is expensive, and I am often disappointed in the stability. But, most of us use it at work and home, so we should be using to the best of our ability. So this should help extend your skills at doing basic stuff. There are a few things that I will show you that I prefer to use a mouse and keyboard with, but there are a few things I would rather use the command line with (eg, moving files, mouse, finding the ip address of the computer, keyboard). Also, I am using Windows 7.&lt;/p&gt;
+&lt;p&gt;Lets get started. To get to a command prompt, we can &lt;strong&gt;hold shift and right-click&lt;/strong&gt; and select &lt;strong&gt;open command window here&lt;/strong&gt;. This is nice because we do not have to change the directory to the our directory we want to work from. You can also just type &lt;code&gt;cmd&lt;/code&gt; in the start menu.&lt;/p&gt;
+&lt;p&gt;If you ever run a command and it is taking forever to finish, we can terminate the command with &lt;strong&gt;ctrl+c&lt;/strong&gt; while in the command prompt.&lt;/p&gt;
+&lt;p&gt;if you need general help on any command, use&lt;/p&gt;
+&lt;pre class="code literal-block"&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="err"&gt;help&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+
+&lt;p&gt;Now, lets get our keyboard hands "dirty".&lt;/p&gt;
+&lt;h3&gt;File Information&lt;/h3&gt;
+&lt;p&gt;The first command is &lt;strong&gt;dir&lt;/strong&gt;. This shows the content of the directory (dir) you are in.&lt;/p&gt;
+&lt;pre class="code literal-block"&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt; dir
+
+ Volume in drive C has no label.
+ Volume Serial Number is 5033-5C23
+
+ Directory of C:\Users\ngordon\Desktop\test
+
+08/28/2015  07:44 AM    &lt;span class="p"&gt;&amp;lt;&lt;/span&gt;DIR&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;          .
+08/28/2015  07:44 AM    &lt;span class="p"&gt;&amp;lt;&lt;/span&gt;DIR&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;          ..
+08/28/2015  07:44 AM    &lt;span class="p"&gt;&amp;lt;&lt;/span&gt;DIR&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;          another-test
+08/28/2015  07:44 AM                 0 file1.txt
+08/28/2015  07:44 AM             8,746 file2.xlsx
+08/28/2015  07:44 AM                72 tmp.txt
+               3 File(s)          8,818 bytes
+               3 Dir(s)  38,038,937,600 bytes free
+&lt;/code&gt;&lt;/pre&gt;
+
+
+&lt;p&gt;This is an easy way to see all the files and folders in our current directory. If you want to preserve this information, we can redirect the output to a file &lt;em&gt;tmp.txt&lt;/em&gt; with&lt;/p&gt;
+&lt;pre class="code literal-block"&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="k"&gt;dir&lt;/span&gt; &lt;span class="p"&gt;&amp;gt;&lt;/span&gt; tmp.txt
+&lt;/code&gt;&lt;/pre&gt;
+
+
+&lt;p&gt;To get help on the command dir, use&lt;/p&gt;
+&lt;pre class="code literal-block"&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="err"&gt;dir /?&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+
+&lt;p&gt;If you just want to see the filenames in 5 columns, we can use a &lt;em&gt;switch&lt;/em&gt; with the syntax &lt;em&gt;/W&lt;/em&gt;, which looks like this&lt;/p&gt;
+&lt;pre class="code literal-block"&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;dir&lt;/span&gt; &lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;W&lt;/span&gt;
+ &lt;span class="n"&gt;Volume&lt;/span&gt; &lt;span class="k"&gt;in&lt;/span&gt; &lt;span class="n"&gt;drive&lt;/span&gt; &lt;span class="k"&gt;C&lt;/span&gt; &lt;span class="n"&gt;has&lt;/span&gt; &lt;span class="k"&gt;no&lt;/span&gt; &lt;span class="n"&gt;label&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;
+ &lt;span class="n"&gt;Volume&lt;/span&gt; &lt;span class="nb"&gt;Serial&lt;/span&gt; &lt;span class="nb"&gt;Number&lt;/span&gt; &lt;span class="k"&gt;is&lt;/span&gt; &lt;span class="mi"&gt;5033&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;5&lt;/span&gt;&lt;span class="n"&gt;C23&lt;/span&gt;
+
+ &lt;span class="n"&gt;Directory&lt;/span&gt; &lt;span class="k"&gt;of&lt;/span&gt; &lt;span class="k"&gt;C&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="err"&gt;\&lt;/span&gt;&lt;span class="n"&gt;Users&lt;/span&gt;&lt;span class="err"&gt;\&lt;/span&gt;&lt;span class="n"&gt;ngordon&lt;/span&gt;&lt;span class="err"&gt;\&lt;/span&gt;&lt;span class="n"&gt;Desktop&lt;/span&gt;&lt;span class="err"&gt;\&lt;/span&gt;&lt;span class="n"&gt;test&lt;/span&gt;
+
+&lt;span class="p"&gt;[.]&lt;/span&gt;            &lt;span class="p"&gt;[..]&lt;/span&gt;           &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;another&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;test&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="n"&gt;file1&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;txt&lt;/span&gt;      &lt;span class="n"&gt;file2&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;xlsx&lt;/span&gt;      &lt;span class="n"&gt;tmp&lt;/span&gt;            &lt;span class="n"&gt;tmp&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;txt&lt;/span&gt;        
+               &lt;span class="mi"&gt;4&lt;/span&gt; &lt;span class="n"&gt;File&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;s&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;          &lt;span class="mi"&gt;9&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;187&lt;/span&gt; &lt;span class="n"&gt;bytes&lt;/span&gt;
+               &lt;span class="mi"&gt;3&lt;/span&gt; &lt;span class="n"&gt;Dir&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;s&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;  &lt;span class="mi"&gt;38&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;019&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;055&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;616&lt;/span&gt; &lt;span class="n"&gt;bytes&lt;/span&gt; &lt;span class="k"&gt;free&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+
+&lt;h4&gt;Wildcards&lt;/h4&gt;
+&lt;p&gt;If there are alot of files, using wildcards can reduce the clutter. Also note the &lt;code&gt;::&lt;/code&gt; are commets.&lt;/p&gt;
+&lt;pre class="code literal-block"&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="p"&gt;::&lt;/span&gt; &lt;span class="n"&gt;finds&lt;/span&gt; &lt;span class="k"&gt;all&lt;/span&gt; &lt;span class="n"&gt;files&lt;/span&gt;
+&lt;span class="n"&gt;dir&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;
+
+&lt;span class="p"&gt;::&lt;/span&gt; &lt;span class="n"&gt;finds&lt;/span&gt; &lt;span class="k"&gt;all&lt;/span&gt; &lt;span class="n"&gt;files&lt;/span&gt; &lt;span class="k"&gt;with&lt;/span&gt; &lt;span class="n"&gt;the&lt;/span&gt; &lt;span class="n"&gt;extension&lt;/span&gt; &lt;span class="n"&gt;xlsx&lt;/span&gt;
+&lt;span class="n"&gt;dir&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;xlsx&lt;/span&gt;
+
+&lt;span class="p"&gt;::&lt;/span&gt; &lt;span class="n"&gt;finds&lt;/span&gt; &lt;span class="k"&gt;all&lt;/span&gt; &lt;span class="n"&gt;files&lt;/span&gt; &lt;span class="n"&gt;that&lt;/span&gt; &lt;span class="k"&gt;start&lt;/span&gt; &lt;span class="k"&gt;with&lt;/span&gt; &lt;span class="n"&gt;a&lt;/span&gt;
+&lt;span class="n"&gt;dir&lt;/span&gt; &lt;span class="n"&gt;a&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;
+
+&lt;span class="p"&gt;::&lt;/span&gt; &lt;span class="n"&gt;finds&lt;/span&gt; &lt;span class="n"&gt;an&lt;/span&gt; &lt;span class="n"&gt;exact&lt;/span&gt; &lt;span class="n"&gt;file&lt;/span&gt;
+&lt;span class="n"&gt;dir&lt;/span&gt; &lt;span class="n"&gt;file1&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;txt&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+
+&lt;h4&gt;Tree&lt;/h4&gt;
+&lt;p&gt;Another cool visual is with the &lt;strong&gt;tree&lt;/strong&gt; command. Just using the tree command only shows the folders in the current directory, which shows up fine in the command window, but is not ascii text.&lt;/p&gt;
+&lt;pre class="code literal-block"&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="err"&gt;&amp;gt; tree&lt;/span&gt;
+&lt;span class="err"&gt;Folder PATH listing&lt;/span&gt;
+&lt;span class="err"&gt;Volume serial number is 5033-5C23&lt;/span&gt;
+&lt;span class="c"&gt;C:.&lt;/span&gt;
+&lt;span class="err"&gt;\---another-test&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+
+&lt;p&gt;If you want to see ALL the files on your current disk, use the backslash. This may take a while to run on your system drive (C), so remember &lt;strong&gt;ctrl+c&lt;/strong&gt; to cancel&lt;/p&gt;
+&lt;pre class="code literal-block"&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="err"&gt;tree \&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+
+&lt;p&gt;I prefer being able to copy and paste those results into documents. Lets try and figure out how to change the command to give me ascii characters.&lt;/p&gt;
+&lt;pre class="code literal-block"&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;tree&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="vm"&gt;?&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="nl"&gt;C&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="vm"&gt;?&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="n"&gt;Graphically&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;displays&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;the&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;folder&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;structure&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;of&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;a&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;drive&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="ow"&gt;or&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;path&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+
+&lt;span class="n"&gt;TREE&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;[&lt;/span&gt;&lt;span class="n"&gt;drive:&lt;/span&gt;&lt;span class="o"&gt;][&lt;/span&gt;&lt;span class="n"&gt;path&lt;/span&gt;&lt;span class="o"&gt;]&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;[&lt;/span&gt;&lt;span class="n"&gt;/F&lt;/span&gt;&lt;span class="o"&gt;]&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;[&lt;/span&gt;&lt;span class="n"&gt;/A&lt;/span&gt;&lt;span class="o"&gt;]&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+
+&lt;span class="w"&gt;   &lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;F&lt;/span&gt;&lt;span class="w"&gt;   &lt;/span&gt;&lt;span class="n"&gt;Display&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;the&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;names&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;of&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;the&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;files&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="ow"&gt;in&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;each&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;folder&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="w"&gt;   &lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;A&lt;/span&gt;&lt;span class="w"&gt;   &lt;/span&gt;&lt;span class="k"&gt;Use&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nf"&gt;ASCII&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;instead&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;of&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;extended&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;characters&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+
+&lt;p&gt;Ah ha. We need to add switches to do that. If you want to see the folders and files in the current directory, try&lt;/p&gt;
+&lt;pre class="code literal-block"&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;tree&lt;/span&gt; &lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;F&lt;/span&gt;
+
+&lt;span class="n"&gt;Folder&lt;/span&gt; &lt;span class="n"&gt;PATH&lt;/span&gt; &lt;span class="n"&gt;listing&lt;/span&gt;
+&lt;span class="n"&gt;Volume&lt;/span&gt; &lt;span class="nb"&gt;serial&lt;/span&gt; &lt;span class="nb"&gt;number&lt;/span&gt; &lt;span class="k"&gt;is&lt;/span&gt; &lt;span class="mi"&gt;5033&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;5&lt;/span&gt;&lt;span class="n"&gt;C23&lt;/span&gt;
+&lt;span class="k"&gt;C&lt;/span&gt;&lt;span class="p"&gt;:.&lt;/span&gt;
+&lt;span class="err"&gt;│&lt;/span&gt;   &lt;span class="n"&gt;file1&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;txt&lt;/span&gt;
+&lt;span class="err"&gt;│&lt;/span&gt;   &lt;span class="n"&gt;file2&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;xlsx&lt;/span&gt;
+&lt;span class="err"&gt;│&lt;/span&gt;   &lt;span class="n"&gt;tmp&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;txt&lt;/span&gt;
+&lt;span class="err"&gt;│&lt;/span&gt;
+&lt;span class="err"&gt;└───&lt;/span&gt;&lt;span class="n"&gt;another&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;test&lt;/span&gt;
+        &lt;span class="n"&gt;file3&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;txt&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+
+&lt;p&gt;Lastly, to create an ascii format list of all files and folders and dump it to a text file, try&lt;/p&gt;
+&lt;pre class="code literal-block"&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="err"&gt;tree /F /A &amp;gt; tree.txt&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+
+&lt;h4&gt;attrib&lt;/h4&gt;
+&lt;p&gt;We can also use &lt;strong&gt;attrib&lt;/strong&gt; to get file information in the current directory. The &lt;em&gt;A&lt;/em&gt; stands for archive.&lt;/p&gt;
+&lt;pre class="code literal-block"&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;attrib&lt;/span&gt;
+
+&lt;span class="n"&gt;A&lt;/span&gt;            &lt;span class="k"&gt;C&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="err"&gt;\&lt;/span&gt;&lt;span class="n"&gt;Users&lt;/span&gt;&lt;span class="err"&gt;\&lt;/span&gt;&lt;span class="n"&gt;ngordon&lt;/span&gt;&lt;span class="err"&gt;\&lt;/span&gt;&lt;span class="n"&gt;Desktop&lt;/span&gt;&lt;span class="err"&gt;\&lt;/span&gt;&lt;span class="n"&gt;test&lt;/span&gt;&lt;span class="err"&gt;\&lt;/span&gt;&lt;span class="n"&gt;file1&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;txt&lt;/span&gt;
+&lt;span class="n"&gt;A&lt;/span&gt;            &lt;span class="k"&gt;C&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="err"&gt;\&lt;/span&gt;&lt;span class="n"&gt;Users&lt;/span&gt;&lt;span class="err"&gt;\&lt;/span&gt;&lt;span class="n"&gt;ngordon&lt;/span&gt;&lt;span class="err"&gt;\&lt;/span&gt;&lt;span class="n"&gt;Desktop&lt;/span&gt;&lt;span class="err"&gt;\&lt;/span&gt;&lt;span class="n"&gt;test&lt;/span&gt;&lt;span class="err"&gt;\&lt;/span&gt;&lt;span class="n"&gt;file2&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;xlsx&lt;/span&gt;
+&lt;span class="n"&gt;A&lt;/span&gt;            &lt;span class="k"&gt;C&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="err"&gt;\&lt;/span&gt;&lt;span class="n"&gt;Users&lt;/span&gt;&lt;span class="err"&gt;\&lt;/span&gt;&lt;span class="n"&gt;ngordon&lt;/span&gt;&lt;span class="err"&gt;\&lt;/span&gt;&lt;span class="n"&gt;Desktop&lt;/span&gt;&lt;span class="err"&gt;\&lt;/span&gt;&lt;span class="n"&gt;test&lt;/span&gt;&lt;span class="err"&gt;\&lt;/span&gt;&lt;span class="n"&gt;tmp&lt;/span&gt;
+&lt;span class="n"&gt;A&lt;/span&gt;            &lt;span class="k"&gt;C&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="err"&gt;\&lt;/span&gt;&lt;span class="n"&gt;Users&lt;/span&gt;&lt;span class="err"&gt;\&lt;/span&gt;&lt;span class="n"&gt;ngordon&lt;/span&gt;&lt;span class="err"&gt;\&lt;/span&gt;&lt;span class="n"&gt;Desktop&lt;/span&gt;&lt;span class="err"&gt;\&lt;/span&gt;&lt;span class="n"&gt;test&lt;/span&gt;&lt;span class="err"&gt;\&lt;/span&gt;&lt;span class="n"&gt;tmp&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;txt&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+
+&lt;h3&gt;Navigating&lt;/h3&gt;
+&lt;p&gt;If you want to navigate your system, the cd command is the ticket, to go towards the root of the drive, use &lt;strong&gt;cd&lt;/strong&gt;&lt;/p&gt;
+&lt;pre class="code literal-block"&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="n"&gt;cd&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;..&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+
+&lt;span class="o"&gt;::&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="ow"&gt;or&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;to&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;go&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;directly&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;to&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;the&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;root&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+
+&lt;span class="n"&gt;cd&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="err"&gt;\&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+
+&lt;span class="o"&gt;::&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="ow"&gt;or&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;for&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;multiple&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;traverses&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+
+&lt;span class="n"&gt;cd&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;..&lt;/span&gt;&lt;span class="err"&gt;\&lt;/span&gt;&lt;span class="p"&gt;..&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+
+&lt;p&gt;and to go into another folder use&lt;/p&gt;
+&lt;pre class="code literal-block"&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="n"&gt;cd&lt;/span&gt; &lt;span class="n"&gt;test&lt;/span&gt;
+
+&lt;span class="p"&gt;::&lt;/span&gt; &lt;span class="k"&gt;or&lt;/span&gt; &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;multiple&lt;/span&gt; &lt;span class="n"&gt;folders&lt;/span&gt;
+
+&lt;span class="n"&gt;cd&lt;/span&gt; &lt;span class="n"&gt;Desktop&lt;/span&gt;&lt;span class="err"&gt;\&lt;/span&gt;&lt;span class="n"&gt;test&lt;/span&gt;&lt;span class="err"&gt;\&lt;/span&gt;&lt;span class="n"&gt;another&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;test&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+
+&lt;p&gt;This can become tedious, so I'd recommend using &lt;strong&gt;tab&lt;/strong&gt; when typing out names. It not only reduces the amount of typing you have to do but also reduced typos.&lt;/p&gt;
+&lt;p&gt;Lets say you want to search your usb drive. To switch to a different drive other than the default &lt;strong&gt;C:&lt;/strong&gt;, just type&lt;/p&gt;
+&lt;pre class="code literal-block"&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="c"&gt;E:&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+
+&lt;p&gt;Another modern and handy way to navigate is typing &lt;code&gt;cd&lt;/code&gt; and dragging and dropping a folder into the command prompt and hitting enter. This can save some time on those deep folder structures.&lt;/p&gt;
+&lt;h3&gt;Managing Folders and Files&lt;/h3&gt;
+&lt;p&gt;OK, lets make some stuff. To create and destroy a new directory, use &lt;strong&gt;md&lt;/strong&gt; and &lt;strong&gt;rd&lt;/strong&gt;&lt;/p&gt;
+&lt;pre class="code literal-block"&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="p"&gt;::&lt;/span&gt; &lt;span class="k"&gt;create&lt;/span&gt; &lt;span class="n"&gt;directory&lt;/span&gt;
+&lt;span class="n"&gt;md&lt;/span&gt; &lt;span class="n"&gt;newfolder&lt;/span&gt;
+
+
+&lt;span class="p"&gt;::&lt;/span&gt; &lt;span class="n"&gt;destory&lt;/span&gt; &lt;span class="n"&gt;an&lt;/span&gt; &lt;span class="n"&gt;empty&lt;/span&gt; &lt;span class="n"&gt;directory&lt;/span&gt;
+&lt;span class="n"&gt;rd&lt;/span&gt; &lt;span class="n"&gt;newfolder&lt;/span&gt;
+
+&lt;span class="p"&gt;::&lt;/span&gt; &lt;span class="n"&gt;BE&lt;/span&gt; &lt;span class="n"&gt;CAREFUL&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt; &lt;span class="n"&gt;recursively&lt;/span&gt; &lt;span class="k"&gt;destroy&lt;/span&gt; &lt;span class="n"&gt;directory&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="k"&gt;and&lt;/span&gt; &lt;span class="k"&gt;all&lt;/span&gt; &lt;span class="n"&gt;files&lt;/span&gt; &lt;span class="k"&gt;and&lt;/span&gt; &lt;span class="n"&gt;subfolders&lt;/span&gt;
+&lt;span class="n"&gt;rd&lt;/span&gt; &lt;span class="n"&gt;newfolder&lt;/span&gt; &lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;S&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+
+&lt;p&gt;To copy a single file or groups of files, use &lt;strong&gt;copy&lt;/strong&gt;&lt;/p&gt;
+&lt;pre class="code literal-block"&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="k"&gt;copy&lt;/span&gt; &lt;span class="n"&gt;file1&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;txt&lt;/span&gt; &lt;span class="n"&gt;file10&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;txt&lt;/span&gt;
+
+&lt;span class="p"&gt;::&lt;/span&gt; &lt;span class="k"&gt;or&lt;/span&gt; &lt;span class="k"&gt;to&lt;/span&gt; &lt;span class="k"&gt;copy&lt;/span&gt; &lt;span class="k"&gt;to&lt;/span&gt; &lt;span class="n"&gt;a&lt;/span&gt; &lt;span class="n"&gt;different&lt;/span&gt; &lt;span class="n"&gt;folder&lt;/span&gt;
+
+&lt;span class="k"&gt;copy&lt;/span&gt; &lt;span class="n"&gt;file1&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;txt&lt;/span&gt; &lt;span class="n"&gt;another&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;test&lt;/span&gt;&lt;span class="err"&gt;\&lt;/span&gt;&lt;span class="n"&gt;file1&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;txt&lt;/span&gt;
+
+&lt;span class="p"&gt;::&lt;/span&gt; &lt;span class="k"&gt;or&lt;/span&gt; &lt;span class="k"&gt;copy&lt;/span&gt; &lt;span class="k"&gt;all&lt;/span&gt; &lt;span class="n"&gt;txt&lt;/span&gt; &lt;span class="n"&gt;files&lt;/span&gt; &lt;span class="k"&gt;to&lt;/span&gt; &lt;span class="n"&gt;the&lt;/span&gt; &lt;span class="n"&gt;subdirectory&lt;/span&gt; &lt;span class="n"&gt;another&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;test&lt;/span&gt;
+
+&lt;span class="k"&gt;copy&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;txt&lt;/span&gt; &lt;span class="n"&gt;another&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;test&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+
+&lt;p&gt;To copy an entire directory, we can use &lt;strong&gt;xcopy&lt;/strong&gt;&lt;/p&gt;
+&lt;pre class="code literal-block"&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="p"&gt;::&lt;/span&gt; &lt;span class="k"&gt;copy&lt;/span&gt; &lt;span class="n"&gt;directory&lt;/span&gt; &lt;span class="n"&gt;another&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;test&lt;/span&gt; &lt;span class="k"&gt;and&lt;/span&gt; &lt;span class="n"&gt;skips&lt;/span&gt; &lt;span class="n"&gt;empty&lt;/span&gt; &lt;span class="n"&gt;subdirectories&lt;/span&gt; &lt;span class="k"&gt;to&lt;/span&gt; &lt;span class="n"&gt;another&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;test2&lt;/span&gt;
+&lt;span class="n"&gt;xcopy&lt;/span&gt; &lt;span class="n"&gt;another&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;test&lt;/span&gt; &lt;span class="n"&gt;another&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;test2&lt;/span&gt;
+
+&lt;span class="p"&gt;::&lt;/span&gt; &lt;span class="k"&gt;to&lt;/span&gt; &lt;span class="n"&gt;include&lt;/span&gt; &lt;span class="n"&gt;empty&lt;/span&gt; &lt;span class="n"&gt;subdirectories&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;use&lt;/span&gt; &lt;span class="n"&gt;switch&lt;/span&gt;
+&lt;span class="n"&gt;xcopy&lt;/span&gt; &lt;span class="n"&gt;another&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;test&lt;/span&gt; &lt;span class="n"&gt;another&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;test3&lt;/span&gt; &lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;E&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+
+&lt;p&gt;We can rename files or folders with &lt;strong&gt;ren&lt;/strong&gt;&lt;/p&gt;
+&lt;pre class="code literal-block"&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="n"&gt;ren&lt;/span&gt; &lt;span class="n"&gt;file1&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;txt&lt;/span&gt; &lt;span class="n"&gt;text1&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;txt&lt;/span&gt;
+
+&lt;span class="p"&gt;::&lt;/span&gt; &lt;span class="k"&gt;or&lt;/span&gt; &lt;span class="k"&gt;more&lt;/span&gt; &lt;span class="n"&gt;complicated&lt;/span&gt; &lt;span class="k"&gt;names&lt;/span&gt; &lt;span class="k"&gt;with&lt;/span&gt; &lt;span class="n"&gt;spaces&lt;/span&gt;
+&lt;span class="n"&gt;ren&lt;/span&gt; &lt;span class="n"&gt;text1&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;txt&lt;/span&gt; &lt;span class="ss"&gt;"text 1.txt"&lt;/span&gt;
+
+&lt;span class="p"&gt;::&lt;/span&gt;&lt;span class="n"&gt;change&lt;/span&gt; &lt;span class="n"&gt;directory&lt;/span&gt; &lt;span class="n"&gt;name&lt;/span&gt;
+&lt;span class="n"&gt;ren&lt;/span&gt; &lt;span class="n"&gt;another&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;test&lt;/span&gt; &lt;span class="n"&gt;another&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;test5&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+
+&lt;p&gt;To delete a file or files, use &lt;strong&gt;del&lt;/strong&gt;&lt;/p&gt;
+&lt;pre class="code literal-block"&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="n"&gt;del&lt;/span&gt; &lt;span class="n"&gt;tmp&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;txt&lt;/span&gt;
+
+&lt;span class="p"&gt;::&lt;/span&gt; &lt;span class="n"&gt;deletes&lt;/span&gt; &lt;span class="k"&gt;all&lt;/span&gt; &lt;span class="nb"&gt;text&lt;/span&gt; &lt;span class="n"&gt;files&lt;/span&gt; &lt;span class="k"&gt;in&lt;/span&gt; &lt;span class="n"&gt;the&lt;/span&gt; &lt;span class="k"&gt;current&lt;/span&gt; &lt;span class="n"&gt;directory&lt;/span&gt;
+&lt;span class="n"&gt;del&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;txt&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+
+&lt;h3&gt;Creating New files&lt;/h3&gt;
+&lt;p&gt;It appears that Microsoft deprecated &lt;em&gt;edit&lt;/em&gt;, the command line editor. For those of you familiar with &lt;a href="http://www.openvim.com/"&gt;vim&lt;/a&gt; or &lt;a href="http://www.nano-editor.org/"&gt;nano&lt;/a&gt;, this are available on windows, so check them out. But for now, we can use the echo command, to create text files and append them&lt;/p&gt;
+&lt;p&gt;We can use &lt;strong&gt;echo&lt;/strong&gt; to print text to the command window&lt;/p&gt;
+&lt;pre class="code literal-block"&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="err"&gt;echo hi there&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+
+&lt;p&gt;Or we can redirect the text to a file&lt;/p&gt;
+&lt;pre class="code literal-block"&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="err"&gt;echo this is my first command line text file &amp;gt; file8.txt&lt;/span&gt;
+&lt;span class="err"&gt;echo this is the second line &amp;gt;&amp;gt; file8.txt&lt;/span&gt;
+&lt;span class="err"&gt;echo this is the third line &amp;gt;&amp;gt; file8.txt&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+
+&lt;p&gt;for more complicated stuff, we can always open the file with the default text editor notepad.&lt;/p&gt;
+&lt;pre class="code literal-block"&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="err"&gt;notepad file8.txt&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+
+&lt;h3&gt;Automating commands with a batch file&lt;/h3&gt;
+&lt;p&gt;A batch file (*.bat) is a simple windows script that can automate simple tasks.&lt;/p&gt;
+&lt;pre class="code literal-block"&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="k"&gt;echo&lt;/span&gt; echo hi there &lt;span class="p"&gt;&amp;gt;&lt;/span&gt; hello.bat
+&lt;/code&gt;&lt;/pre&gt;
+
+
+&lt;p&gt;Now we can run the batch file by simply typing the name and executing it&lt;/p&gt;
+&lt;pre class="code literal-block"&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="err"&gt;hello.bat&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+
+&lt;p&gt;To pause to execution of a bat file, add &lt;strong&gt;pause&lt;/strong&gt; to the end. This is nice if you have an error in the file and want to see what the error is, otherwise it will just close the window&lt;/p&gt;
+&lt;pre class="code literal-block"&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="err"&gt;:: waits for keyboard input from user&lt;/span&gt;
+&lt;span class="err"&gt;pause&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+
+&lt;h3&gt;Advanced command line&lt;/h3&gt;
+&lt;p&gt;To see all the settings Windows loads by default, use&lt;/p&gt;
+&lt;pre class="code literal-block"&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="err"&gt;&amp;gt; set&lt;/span&gt;
+&lt;span class="err"&gt;ALLUSERSPROFILE=C:\ProgramData&lt;/span&gt;
+&lt;span class="err"&gt;CommonProgramFiles=C:\Program Files\Common Files&lt;/span&gt;
+&lt;span class="err"&gt;CommonProgramFiles(x86)=C:\Program Files (x86)\Common Files&lt;/span&gt;
+&lt;span class="err"&gt;CommonProgramW6432=C:\Program Files\Common Files&lt;/span&gt;
+&lt;span class="err"&gt;HOME=C:\Users\ngordon&lt;/span&gt;
+&lt;span class="err"&gt;HOMEDRIVE=C:&lt;/span&gt;
+&lt;span class="err"&gt;HOMEPATH=\&lt;/span&gt;
+&lt;span class="err"&gt;Path=C:\Program Files\Common Files\Microsoft Shared\Windows Live&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+
+&lt;p&gt;A common task is adding a program, exe or other, to the default list windows looks for when running. If we want to be able to run a program without executing the command from that directory, we have to add it to the path variable&lt;/p&gt;
+&lt;p&gt;Lets switch to the root of our c drive and create a folder called batch, and create a batch file that says &lt;em&gt;hi there&lt;/em&gt;, and add it to the path so we can be greeted anywhere we are&lt;/p&gt;
+&lt;pre class="code literal-block"&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="p"&gt;::&lt;/span&gt; &lt;span class="k"&gt;go&lt;/span&gt; &lt;span class="nx"&gt;to&lt;/span&gt; &lt;span class="nx"&gt;the&lt;/span&gt; &lt;span class="nx"&gt;root&lt;/span&gt; &lt;span class="nx"&gt;of&lt;/span&gt; &lt;span class="nx"&gt;the&lt;/span&gt; &lt;span class="nx"&gt;c&lt;/span&gt; &lt;span class="nx"&gt;drive&lt;/span&gt;
+&lt;span class="nx"&gt;cd&lt;/span&gt; \
+
+&lt;span class="p"&gt;::&lt;/span&gt; &lt;span class="nx"&gt;make&lt;/span&gt; &lt;span class="nx"&gt;a&lt;/span&gt; &lt;span class="nx"&gt;new&lt;/span&gt; &lt;span class="nx"&gt;directory&lt;/span&gt;
+&lt;span class="nx"&gt;md&lt;/span&gt; &lt;span class="nx"&gt;batch&lt;/span&gt;
+
+&lt;span class="p"&gt;::&lt;/span&gt; &lt;span class="k"&gt;go&lt;/span&gt; &lt;span class="nx"&gt;into&lt;/span&gt; &lt;span class="nx"&gt;the&lt;/span&gt; &lt;span class="nx"&gt;directory&lt;/span&gt;
+&lt;span class="nx"&gt;cd&lt;/span&gt; &lt;span class="nx"&gt;batch&lt;/span&gt;
+
+&lt;span class="p"&gt;::&lt;/span&gt; &lt;span class="nx"&gt;create&lt;/span&gt; &lt;span class="nx"&gt;a&lt;/span&gt; &lt;span class="nx"&gt;new&lt;/span&gt; &lt;span class="nx"&gt;batch&lt;/span&gt; &lt;span class="nx"&gt;file&lt;/span&gt; &lt;span class="nx"&gt;that&lt;/span&gt; &lt;span class="nx"&gt;says&lt;/span&gt; &lt;span class="nx"&gt;hi&lt;/span&gt; &lt;span class="nx"&gt;there&lt;/span&gt;
+&lt;span class="nx"&gt;echo&lt;/span&gt; &lt;span class="nx"&gt;echo&lt;/span&gt; &lt;span class="nx"&gt;hi&lt;/span&gt; &lt;span class="nx"&gt;there&lt;/span&gt; &lt;span class="p"&gt;&amp;gt;&lt;/span&gt; &lt;span class="nx"&gt;hello&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;bat&lt;/span&gt;
+
+&lt;span class="p"&gt;::&lt;/span&gt; &lt;span class="nx"&gt;add&lt;/span&gt; &lt;span class="nx"&gt;this&lt;/span&gt; &lt;span class="nx"&gt;new&lt;/span&gt; &lt;span class="nx"&gt;folder&lt;/span&gt; &lt;span class="nx"&gt;to&lt;/span&gt; &lt;span class="nx"&gt;the&lt;/span&gt; &lt;span class="nx"&gt;system&lt;/span&gt; &lt;span class="nx"&gt;path&lt;/span&gt;
+&lt;span class="nx"&gt;path&lt;/span&gt;&lt;span class="p"&gt;=&lt;/span&gt;&lt;span class="o"&gt;%&lt;/span&gt;&lt;span class="nx"&gt;PATH&lt;/span&gt;&lt;span class="o"&gt;%&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;&lt;span class="nx"&gt;c&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="err"&gt;\&lt;/span&gt;&lt;span class="nx"&gt;batch&lt;/span&gt;
+
+&lt;span class="p"&gt;::&lt;/span&gt; &lt;span class="nx"&gt;move&lt;/span&gt; &lt;span class="nx"&gt;out&lt;/span&gt; &lt;span class="nx"&gt;of&lt;/span&gt; &lt;span class="nx"&gt;the&lt;/span&gt; &lt;span class="nx"&gt;directory&lt;/span&gt; &lt;span class="nx"&gt;and&lt;/span&gt; &lt;span class="nx"&gt;check&lt;/span&gt; &lt;span class="nx"&gt;and&lt;/span&gt; &lt;span class="nx"&gt;make&lt;/span&gt; &lt;span class="nx"&gt;sure&lt;/span&gt; &lt;span class="nx"&gt;the&lt;/span&gt; &lt;span class="nx"&gt;system&lt;/span&gt; &lt;span class="nx"&gt;path&lt;/span&gt; &lt;span class="nx"&gt;works&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt; &lt;span class="nx"&gt;This&lt;/span&gt; &lt;span class="nx"&gt;moves&lt;/span&gt; &lt;span class="nx"&gt;us&lt;/span&gt; &lt;span class="nx"&gt;to&lt;/span&gt; &lt;span class="nx"&gt;our&lt;/span&gt; &lt;span class="nx"&gt;home&lt;/span&gt; &lt;span class="nx"&gt;directory&lt;/span&gt;
+&lt;span class="nx"&gt;cd&lt;/span&gt; &lt;span class="o"&gt;%&lt;/span&gt;&lt;span class="nx"&gt;HOME&lt;/span&gt;&lt;span class="o"&gt;%&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+
+&lt;p&gt;Now lets test and make sure the system knows where to look for my custom batch scripts.&lt;/p&gt;
+&lt;pre class="code literal-block"&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="err"&gt;&amp;gt; hello&lt;/span&gt;
+&lt;span class="err"&gt;hi there&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+
+&lt;p&gt;Excellent. We have covered the basics.&lt;/p&gt;
+&lt;h3&gt;Networking Information&lt;/h3&gt;
+&lt;p&gt;I have found myself using the command line alot when learning about networking. Here are some commands to help you get started with networking info.&lt;/p&gt;
+&lt;pre class="code literal-block"&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="p"&gt;::&lt;/span&gt; &lt;span class="n"&gt;robust&lt;/span&gt; &lt;span class="n"&gt;command&lt;/span&gt; &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;networking&lt;/span&gt; &lt;span class="k"&gt;options&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;such&lt;/span&gt; &lt;span class="k"&gt;as&lt;/span&gt; &lt;span class="n"&gt;seeing&lt;/span&gt; &lt;span class="n"&gt;things&lt;/span&gt; &lt;span class="k"&gt;on&lt;/span&gt; &lt;span class="n"&gt;the&lt;/span&gt; &lt;span class="n"&gt;network&lt;/span&gt;
+&lt;span class="n"&gt;net&lt;/span&gt; &lt;span class="k"&gt;view&lt;/span&gt;
+
+&lt;span class="p"&gt;::&lt;/span&gt; &lt;span class="n"&gt;test&lt;/span&gt; &lt;span class="n"&gt;the&lt;/span&gt; &lt;span class="n"&gt;communication&lt;/span&gt; &lt;span class="k"&gt;of&lt;/span&gt; &lt;span class="n"&gt;another&lt;/span&gt; &lt;span class="n"&gt;ip&lt;/span&gt; &lt;span class="n"&gt;address&lt;/span&gt;
+&lt;span class="n"&gt;ping&lt;/span&gt; &lt;span class="n"&gt;www&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;ifcuriousthenlearn&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;com&lt;/span&gt;
+
+&lt;span class="p"&gt;::&lt;/span&gt; &lt;span class="k"&gt;show&lt;/span&gt; &lt;span class="n"&gt;network&lt;/span&gt; &lt;span class="n"&gt;settings&lt;/span&gt;
+&lt;span class="n"&gt;ipconfig&lt;/span&gt;
+
+&lt;span class="p"&gt;::&lt;/span&gt; &lt;span class="n"&gt;tool&lt;/span&gt; &lt;span class="k"&gt;to&lt;/span&gt; &lt;span class="n"&gt;find&lt;/span&gt; &lt;span class="n"&gt;networking&lt;/span&gt; &lt;span class="n"&gt;information&lt;/span&gt;
+&lt;span class="n"&gt;nslookup&lt;/span&gt; &lt;span class="n"&gt;www&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;ifcuriousthenlearn&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;com&lt;/span&gt;
+
+&lt;span class="p"&gt;::&lt;/span&gt; &lt;span class="n"&gt;traces&lt;/span&gt; &lt;span class="n"&gt;the&lt;/span&gt; &lt;span class="n"&gt;path&lt;/span&gt; &lt;span class="n"&gt;a&lt;/span&gt; &lt;span class="n"&gt;packet&lt;/span&gt; &lt;span class="n"&gt;takes&lt;/span&gt; &lt;span class="k"&gt;to&lt;/span&gt; &lt;span class="k"&gt;get&lt;/span&gt; &lt;span class="k"&gt;to&lt;/span&gt; &lt;span class="n"&gt;the&lt;/span&gt; &lt;span class="n"&gt;destination&lt;/span&gt;
+&lt;span class="n"&gt;tracert&lt;/span&gt; &lt;span class="n"&gt;www&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;ifcuriousthenlearn&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;com&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+
+&lt;h3&gt;Summary&lt;/h3&gt;
+&lt;p&gt;We have covered the basics to operate a windows command line. For a lot of work, it is faster than clicking a mouse around, but it takes some practice. There are also some great fundamental tools available found at the command line nearest you. Understanding what is going on in a computer is much easier when you can operate the command lines, as it is an integral part of any operating system. I hope you found this useful, and please comment with any suggestions.&lt;/p&gt;
+&lt;p&gt;Stay Curious!  &lt;/p&gt;&lt;/div&gt;</description><category>batch</category><category>commandline</category><category>windows</category><guid>https://nagordon.github.io/ifcuriousthenlearn/posts/intro-to-the-windows-command-line/</guid><pubDate>Fri, 28 Aug 2015 08:00:00 GMT</pubDate></item><item><title>Automating Website Downloads with wget</title><link>https://nagordon.github.io/ifcuriousthenlearn/posts/wget-downloads/</link><dc:creator>neal</dc:creator><description>&lt;div&gt;&lt;p&gt;Have you ever been browsing the internet and found a really cool website that has a bunch of files that you want, say pdfs or mp3s? In Windows it can be a pain to scrape through the site and download all the files. You may be able to write a slick python script to acomplish this, but why reinvent the wheel? Native in Linux is the program wget, which can also be used in windows, &lt;a href="http://www.gnu.org/software/wget/"&gt;GNU wget&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;To get started, on a Linux computer, open your terminal and type&lt;/p&gt;
+&lt;pre class="code literal-block"&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;man wget
+&lt;/code&gt;&lt;/pre&gt;
+
+
+&lt;p&gt;This shows the manual for wget for when you get stuck. But for now, we don't need it, so type &lt;code&gt;q&lt;/code&gt; to quit. OK, time for the rubber to hit the road. Enter&lt;/p&gt;
+&lt;pre class="code literal-block"&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;wget www.ifcuriousthenlearn.com
+&lt;/code&gt;&lt;/pre&gt;
+
+
+&lt;p&gt;This downloads the html file that is at that url. Easy huh? Lets try something a little more complicated, lets say download a pdf&lt;/p&gt;
+&lt;pre class="code literal-block"&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;wget http://www.aopa.org/airports/CLE/kneeboard.pdf
+&lt;/code&gt;&lt;/pre&gt;
+
+
+&lt;p&gt;And this downloads the pdf from the url. Wow, can it really be this easy? YES, yes it can. It just takes a while to find cool tools like this.&lt;/p&gt;
+&lt;p&gt;Here is a more advanced example. This wget command searches recursivley and downloads the entire website given.  &lt;/p&gt;
+&lt;pre class="code literal-block"&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;wget --recursive http://www.brown.edu/Departments/Engineering/Courses/En221/
+&lt;/code&gt;&lt;/pre&gt;
+
+
+&lt;p&gt;The problem with this is that it will follow any links as it recurses through the site, and we don't want that. So, by adding another flag, called &lt;code&gt;--domains&lt;/code&gt;, we limit the command to the domain of the main site.&lt;/p&gt;
+&lt;pre class="code literal-block"&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;wget --domains www.brown.edu --recursive http://www.brown.edu/Departments/Engineering/Courses/En221/
+&lt;/code&gt;&lt;/pre&gt;
+
+
+&lt;p&gt;What if we just want to download certain file types? Here, use the &lt;code&gt;--accept&lt;/code&gt; flag with the file extension&lt;/p&gt;
+&lt;pre class="code literal-block"&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;wget --accept .pdf --domains www.brown.edu --recursive http://www.brown.edu/Departments/Engineering/Courses/En221/
+&lt;/code&gt;&lt;/pre&gt;
+
+
+&lt;p&gt;There we have it. Have fun download the internet, saving time and exploring other awesome packages in Linux. I hope you found this useful. Please leave any comments below.&lt;/p&gt;
+&lt;p&gt;Stay Curious!&lt;/p&gt;&lt;/div&gt;</description><category>automation</category><category>linux</category><category>webscraping</category><guid>https://nagordon.github.io/ifcuriousthenlearn/posts/wget-downloads/</guid><pubDate>Wed, 19 Aug 2015 08:00:00 GMT</pubDate></item><item><title>The Fastest Way To Linux on Windows using Vagrant</title><link>https://nagordon.github.io/ifcuriousthenlearn/posts/vagrant-linux/</link><dc:creator>neal</dc:creator><description>&lt;div&gt;&lt;h3&gt;Introduction and Motivation&lt;/h3&gt;
+&lt;p&gt;This article is written for Windows users that would like to extend their skill-set to Linux and assumes you are comfortable with the command line. Go brush up before reading this if you are unsure what a command line is:)&lt;/p&gt;
+&lt;p&gt;I wish I would have spent more time as a kid learning Linux than all the time I wasted on Windows. That is my biggest regret when it comes to technology. Once I started to see all the amazing software available on Linux (for free), I realized the potential . The road to practical application wasn't easy, but it was fun. Now, with a few years under my belt, I am able to save time utilizing the tools that already exist, or having the capability to create my own without having to buy licenses for them!&lt;/p&gt;
+&lt;p&gt;This post is designed for the intermediate Windows users that are ready to start using Linux for whatever reason you have. I think the easiest way (but not the most useful) to use Linux is to install &lt;a href="http://www.linuxmint.com/edition.php?id=190"&gt;Mint&lt;/a&gt;, install on a usb drive larger than 4 GB with &lt;a href="http://sourceforge.net/projects/win32diskimager/"&gt;win32diskimager&lt;/a&gt;, &lt;a href="http://unetbootin.github.io/"&gt;unebootin&lt;/a&gt;, or &lt;a href="http://www.pendrivelinux.com/universal-usb-installer-easy-as-1-2-3/"&gt;pendrivelinux&lt;/a&gt;. Now, just boot from the USB and you are ready for action. But, this is not a practical working solution, especially at work or at home if you need other windows applications. The ideal situation is if we can use Linux and Windows along side one another. &lt;strong&gt;Enter &lt;a href="https://www.virtualbox.org/wiki/Downloads"&gt;VirtualBox&lt;/a&gt;&lt;/strong&gt;. Virtualbox is a program that allows you to &lt;em&gt;virtualize&lt;/em&gt; other operating systems on your current one, is open-source, and works great. You can collect a few ISO files of your favorite Linux operating systems (check out &lt;a href="http://distrowatch.com/"&gt;distrowatch&lt;/a&gt;), and install them on VirtualBox and use the operating system (OS) graphical user interface (GUI). This method has its time and place, like if you prefer using a GUI for everything, then there is no need to read further. But, I encourage you to learn command line operation, as it is faster and easier to operate many programs from a command line as it is to mouse-click through them. Or when you start developing your own software tools, it will become clear why command line operation is nice. Anyways, there is yet an easier way to use Linux. &lt;strong&gt;Enter &lt;a href="https://www.vagrantup.com/"&gt;Vagrant&lt;/a&gt;&lt;/strong&gt;. Vagrant is a command line tool that allows you to manage your Virtualbox operating systems from a command line and easily share files from Windows and Linux. The general workflow is:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Install Vagrant and dependencies&lt;/li&gt;
+&lt;li&gt;Download a base image called a box to be used and reused as you create new virtual Linux environments&lt;/li&gt;
+&lt;li&gt;Make a folder to store your virtual Linux settings in Windows&lt;/li&gt;
+&lt;li&gt;Initialize Vagrant in that folder&lt;/li&gt;
+&lt;li&gt;Install software and use Linux in Windows from the command line&lt;/li&gt;
+&lt;/ol&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Why Vagrant?
+There are other programs that can perform a similar task as what we are trying to accomplish  here, such as &lt;a href="https://www.docker.com/"&gt;Docker&lt;/a&gt;. Docker is an amazing tool that runs containers, rather than virtual environments. But, my goal here is to get from Windows to Linux in the fastest time possible, and I have found that Docker in Windows is a bit finicky and Vagrant is so far rock-solid.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3&gt;Getting Started&lt;/h3&gt;
+&lt;h4&gt;1. Installation&lt;/h4&gt;
+&lt;p&gt;OK, time to get our hands dirty. There are a few programs we need to install before we get to vagrant, so lets do that first.&lt;/p&gt;
+&lt;h5&gt;Git Install (~10 MB)&lt;/h5&gt;
+&lt;p&gt;git is a source control program that is awesome to use, but has a steep learning curve. All we need from this install is mysysgit, which is a windows bash terminal, which is like the windows command line for Linux. Download and install &lt;a href="https://git-scm.com/downloads"&gt;git&lt;/a&gt; and select the defaults. At the end of the install, select &lt;code&gt;[x] git bash here&lt;/code&gt; to give us an option to start a bash command prompt with a right-click of the mouse in our folder&lt;/p&gt;
+&lt;h5&gt;VirtualBox Install (~110 MB)&lt;/h5&gt;
+&lt;p&gt;Download &lt;a href="https://www.virtualbox.org/wiki/Downloads"&gt;VirtualBox&lt;/a&gt; and install with the default settings.&lt;/p&gt;
+&lt;h5&gt;Vagrant Install (~160 MB)&lt;/h5&gt;
+&lt;p&gt;Install &lt;a href="https://dl.bintray.com/mitchellh/vagrant/vagrant_1.7.4.msi"&gt;Vagrant from the Windows exe&lt;/a&gt;. Once that is complete, it will ask you to reboot your machine.&lt;/p&gt;
+&lt;h5&gt;Using gitbash and windows command line&lt;/h5&gt;
+&lt;p&gt;Now we are almost ready to try everything out!
+if you right-click on your desktop, you should have an option to &lt;code&gt;Git Bash Here.&lt;/code&gt;. Select that an you should be greeted with MINGW32 (aka gitbash) command prompt. Welcome to your first &lt;em&gt;bash-like&lt;/em&gt; command prompt. You can perform all the vagrant opertions in windows using gitbash, but we can also use windows command line for everything, but not ssh connections. We must use &lt;a href="http://www.chiark.greenend.org.uk/~sgtatham/putty/"&gt;putty&lt;/a&gt; or some other windows ssh tool.&lt;/p&gt;
+&lt;p&gt;If you really want to use the windows command line, here are some tips.
+Lets close that and try out the windows command line. My favorite way to launch the windows command line is to hold shift and right-click on the desktop and select &lt;code&gt;open command window here&lt;/code&gt;. Now we have windows command line. We can also access this by searching in Start, but then you have to use the &lt;code&gt;cd&lt;/code&gt; command to change yuor directory to your vagrant_test.  Another option is to type &lt;code&gt;cd&lt;/code&gt;, copy the folder path to the clipboard, ie &lt;em&gt;C:\Users\ngordon\Desktop\vagrant_test&lt;/em&gt; and right-click in a command prompt and paste and enter. This will take you to your folder.
+And lastly, after that nice explanation, don't use windows command line, use powershell, which is an enhanced command line for windows that has many of the same features as bash. launch from the command line with &lt;code&gt;powershell&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;I would recommend doing everything in gitbash because it is good practice for a real Linux bash terminal and we can use ssh all in the same window.&lt;/p&gt;
+&lt;h4&gt;2. Download Base Image (~1 GB)&lt;/h4&gt;
+&lt;p&gt;To make future deployments fast lets grab a base image of Linux Ubuntu 14.04. Go to your windows desktop and launch a windows command line as described previously, or, I prefer using gitbash. Note, comments in gitbash are #, so do not type those&lt;/p&gt;
+&lt;p&gt;Lets add Ubuntu Server 14.04 LTS 62-bit image to our local vagrant images. Or browse the &lt;a href="https://atlas.hashicorp.com/boxes/search"&gt;catalog&lt;/a&gt; for your preferred image&lt;/p&gt;
+&lt;pre class="code literal-block"&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;vagrant box add ubuntu/trusty64
+&lt;span class="c1"&gt;# or hashicorp/precise64 for a 12.04 LTS 64 machine&lt;/span&gt;
+&lt;span class="c1"&gt;# or chef/ubuntu-14.04  for a base 14.04 LTS 64 ubuntu machine&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+
+&lt;h4&gt;3. Set up a work folder&lt;/h4&gt;
+&lt;p&gt;This will take some time to download, but once complete. The rest of the operations are a matter of seconds.&lt;/p&gt;
+&lt;pre class="code literal-block"&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="c1"&gt;# make a new folder called vagrant_test&lt;/span&gt;
+mkdir vagrant_test
+
+&lt;span class="c1"&gt;# change directory to vagrant test&lt;/span&gt;
+&lt;span class="nb"&gt;cd&lt;/span&gt; vagrant_test
+
+&lt;span class="c1"&gt;# print working directory to check the file path&lt;/span&gt;
+&lt;span class="nb"&gt;pwd&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+
+&lt;h4&gt;4. Initialize a new Vagrant project&lt;/h4&gt;
+&lt;p&gt;Now we have everything we need to start. After running the following commands, a config text file &lt;em&gt;Vagrantfile&lt;/em&gt; will be created with a hidden file &lt;em&gt;.vagrant&lt;/em&gt;&lt;/p&gt;
+&lt;pre class="code literal-block"&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="c1"&gt;# initializes this vagrant session with the image we downloaded&lt;/span&gt;
+vagrant init ubuntu/trusty64
+
+&lt;span class="c1"&gt;# starts the virtual machine&lt;/span&gt;
+vagrant up
+&lt;/code&gt;&lt;/pre&gt;
+
+
+&lt;p&gt;Once the box is set up, make sure you have git install to access the MINGGW32 bash terminal in windows. From the &lt;em&gt;git bash&lt;/em&gt; found when you right-click in an empty space in your &lt;em&gt;vagrant_test&lt;/em&gt; folder, type&lt;/p&gt;
+&lt;h4&gt;5. Access your brand new Linux machine on Windows!&lt;/h4&gt;
+&lt;pre class="code literal-block"&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="c1"&gt;# using ssh to access the shell of your machine&lt;/span&gt;
+vagrant ssh
+
+&lt;span class="c1"&gt;# and when finished exit ssh&lt;/span&gt;
+&lt;span class="nb"&gt;exit&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+
+&lt;p&gt;and that will enter an ssh shell into the vagrant box. Finally, we have a true linux bash command line or shell!! Horray. The hardest part is over, celebrate and get ready to actually hace some fun&lt;/p&gt;
+&lt;h4&gt;6. Using File Sync&lt;/h4&gt;
+&lt;p&gt;One of the most confusing and challenging parts of Linux is networking. Vagrant does an awesome job of transferring files to and from your vagrant session, ie, The VM syncs easily with the host machine. To test the sync feature, in your current bash shell,&lt;/p&gt;
+&lt;pre class="code literal-block"&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="o"&gt;#&lt;/span&gt; &lt;span class="k"&gt;create&lt;/span&gt; &lt;span class="n"&gt;a&lt;/span&gt; &lt;span class="n"&gt;directory&lt;/span&gt; &lt;span class="k"&gt;called&lt;/span&gt; &lt;span class="n"&gt;test&lt;/span&gt;
+&lt;span class="n"&gt;mkdir&lt;/span&gt; &lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;vagrant&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;test&lt;/span&gt;
+
+&lt;span class="o"&gt;#&lt;/span&gt; &lt;span class="k"&gt;create&lt;/span&gt; &lt;span class="n"&gt;a&lt;/span&gt; &lt;span class="n"&gt;file&lt;/span&gt; &lt;span class="k"&gt;called&lt;/span&gt; &lt;span class="n"&gt;test&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;txt&lt;/span&gt; &lt;span class="k"&gt;and&lt;/span&gt; &lt;span class="k"&gt;add&lt;/span&gt; &lt;span class="n"&gt;a&lt;/span&gt; &lt;span class="n"&gt;string&lt;/span&gt; &lt;span class="k"&gt;to&lt;/span&gt; &lt;span class="n"&gt;it&lt;/span&gt;
+&lt;span class="n"&gt;echo&lt;/span&gt; &lt;span class="ss"&gt;"testing the files sync in a vagrant VM"&lt;/span&gt; &lt;span class="o"&gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;vagrant&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;test&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;test&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;txt&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+
+&lt;h4&gt;7. Reloading, Stopping, and Starting&lt;/h4&gt;
+&lt;pre class="code literal-block"&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="c1"&gt;# To reload a VM and reload any new changes in the Vagrantfile config run&lt;/span&gt;
+vagrant reload
+
+&lt;span class="c1"&gt;# When complete and want to exit, run&lt;/span&gt;
+vagrant halt
+
+&lt;span class="c1"&gt;# When you are ready to start working again and starting fresh&lt;/span&gt;
+vagrant up
+&lt;/code&gt;&lt;/pre&gt;
+
+
+&lt;h4&gt;8. Running scripts and Installing programs&lt;/h4&gt;
+&lt;h5&gt;Issues with writing bash scripts in windows&lt;/h5&gt;
+&lt;p&gt;As you start editing install scripts and the Vagrantfile, I have found that using windows text editors messes up the character encoding, so use gitbash and vim, like &lt;code&gt;vim install.sh&lt;/code&gt; to launch the in shell editor. If you do edit files in windows, you may need to convert them. I have found dos2unix to work well. To install and convert a shell script in place, use&lt;/p&gt;
+&lt;pre class="code literal-block"&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;sudo apt-get install dos2unix
+dos2unix script.sh
+&lt;/code&gt;&lt;/pre&gt;
+
+
+&lt;h5&gt;Installing python&lt;/h5&gt;
+&lt;p&gt;There are many ways to install python, but I really appreciate how well conda works. It has all the packages I want, and they just work. To get conda either install the full package &lt;a href="http://continuum.io/downloads#all"&gt;anaconda&lt;/a&gt; or, I prefer &lt;a href="http://conda.pydata.org/miniconda.html"&gt;miniconda&lt;/a&gt; because my internet is slow. Also, I attempted to create a silent install script but was not successful, so if anyone knows how to perform a silent install of miniconda on a vagrant machine, please let me know!&lt;/p&gt;
+&lt;pre class="code literal-block"&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;git clone https://github.com/nagordon/vagrant-miniconda.git
+&lt;span class="nb"&gt;cd&lt;/span&gt; vagrant-miniconda
+vagrant up
+vagrant ssh
+&lt;/code&gt;&lt;/pre&gt;
+
+
+&lt;p&gt;copy and paste these commands line by line into the vagrant shell to manually install miniconda&lt;/p&gt;
+&lt;pre class="code literal-block"&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="c1"&gt;# downloads miniconda&lt;/span&gt;
+wget http://repo.continuum.io/miniconda/Miniconda-latest-Linux-x86_64.sh
+
+&lt;span class="c1"&gt;# makes the miniconda installation executable&lt;/span&gt;
+chmod +x Miniconda-latest-Linux-x86_64.sh
+
+&lt;span class="c1"&gt;# installs miniconda manually. Make sure you select yes for adding the path. Also spacebar to skip the documentation at the beginning&lt;/span&gt;
+bash Miniconda-latest-Linux-x86_64.sh
+
+&lt;span class="c1"&gt;# remove the downloaded fil&lt;/span&gt;
+rm Miniconda-latest-Linux-x86_64.sh
+&lt;/code&gt;&lt;/pre&gt;
+
+
+&lt;p&gt;now close the ssh connection and restart to access conda&lt;/p&gt;
+&lt;pre class="code literal-block"&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="nb"&gt;exit&lt;/span&gt;
+vagrant ssh
+&lt;/code&gt;&lt;/pre&gt;
+
+
+&lt;p&gt;Run the install script to get all the packages you want&lt;/p&gt;
+&lt;pre class="code literal-block"&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;conda install pip -y
+conda install numpy -y
+conda install ipython -y
+conda install matplotlib -y
+conda install pandas -y
+conda install numpy -y
+conda install ipython-notebook -y
+&lt;/code&gt;&lt;/pre&gt;
+
+
+&lt;h4&gt;9. ENJOY&lt;/h4&gt;
+&lt;p&gt;Now that we have everything running smoothly, go out an explore all the amazing software out there on Linux and enjoy.&lt;/p&gt;
+&lt;h3&gt;Summary&lt;/h3&gt;
+&lt;p&gt;In my experience, this is the fastest and easiest way to get from Windows to a real Linux environment. Now, practicing Linux operation from the command line should be easier and fast without having to mess around with the operting system interface. I hope you enjoy your foray into Linux as much as I have. Please let me know if you have any questions, comments, or suggestions. Thanks! Stay Curious!&lt;/p&gt;&lt;/div&gt;</description><category>linux</category><guid>https://nagordon.github.io/ifcuriousthenlearn/posts/vagrant-linux/</guid><pubDate>Tue, 18 Aug 2015 08:00:00 GMT</pubDate></item><item><title>Learn Latex, markdown and html with doconce</title><link>https://nagordon.github.io/ifcuriousthenlearn/posts/doconce-intro/</link><dc:creator>neal</dc:creator><description>&lt;div&gt;&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;h2 id="Neals-First-DocOnce-Publication"&gt;Neals First DocOnce Publication&lt;a class="anchor-link" href="https://nagordon.github.io/ifcuriousthenlearn/posts/doconce-intro/#Neals-First-DocOnce-Publication"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;&lt;strong&gt;Jun 4, 2015&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Summary.&lt;/strong&gt; My goal here is to learn the package &lt;a href="http://hplgit.github.io/doconce/doc/web/index.html"&gt;doconce&lt;/a&gt;, which is a markup syntax for creating scientific documents with many different types of outputs, including markdown, html, ipython notebooks, pdfs, and docx files. What's wrong with markdown? The short answer is nothing, it is great and important to know, however, some features that a needed for more advanced features, like figure/equation references, as well as including citations is needed, and haven't any good solution for that. 
+All the up-to-date source code and various document formats can be found on the &lt;a href="https://github.com/nagordon/technotes/tree/master/doconce"&gt;github repository&lt;/a&gt;.&lt;/p&gt;
+&lt;h3 id="Introduction"&gt;Introduction&lt;a class="anchor-link" href="https://nagordon.github.io/ifcuriousthenlearn/posts/doconce-intro/#Introduction"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;div id="sec:intro"&gt;&lt;/div&gt;&lt;p&gt;DocOnce is a lightweight markup language that is pure python, tso that it will work on any OS
+the source markdown files have extension *.do.txt
+each document should have the structure with a fig and src directory to keep images and code. The make.sh file is used to generate various documents with a lot of of custom settings.&lt;/p&gt;
+&lt;h4 id="SubIntro"&gt;SubIntro&lt;a class="anchor-link" href="https://nagordon.github.io/ifcuriousthenlearn/posts/doconce-intro/#SubIntro"&gt;¶&lt;/a&gt;&lt;/h4&gt;&lt;p&gt;Since I have began blogging, I realized the importance of learning html, markdown, etc and now have been trying my best to learn tex and LaTeX. While doconce is a little buggy, it is still under active development and have found it very useful for learning how all the various markups work together. I still find microsoft products very handy, especially v2013, but when working with the web and version control systems, plain text sources files are great! So, if you haven't heard of doconce yet, check it out!&lt;/p&gt;
+&lt;h5 id="SubSubIntro"&gt;SubSubIntro&lt;a class="anchor-link" href="https://nagordon.github.io/ifcuriousthenlearn/posts/doconce-intro/#SubSubIntro"&gt;¶&lt;/a&gt;&lt;/h5&gt;&lt;p&gt;The main goal here is to generate an example document to help me learn and show you the syntax of doconce. Hopefully it will make sense and the errors are minimal! This is still a work in progress.&lt;/p&gt;
+&lt;h3 id="Headings,-Labels,-and-References"&gt;Headings, Labels, and References&lt;a class="anchor-link" href="https://nagordon.github.io/ifcuriousthenlearn/posts/doconce-intro/#Headings,-Labels,-and-References"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;div id="sec:hlr"&gt;&lt;/div&gt;&lt;p&gt;For simple documents, chapters are not necessary, so only 7= are necessary to create a header for the section.&lt;/p&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+
+&lt;pre&gt;&lt;code&gt;    chapter          ========= Heading ========= (9 =)
+    section          ======= Heading ======= (7 =)
+    subsection       ===== Heading ===== (5 =)
+    subsubsection    === Heading === (3 =)
+    paragraph        __Heading.__ (2 _)
+    abstract         __Abstract.__ Running text...
+    appendix         ======= Appendix: heading ======= (7 =)
+    appendix         ===== Appendix: heading ===== (5 =)&lt;/code&gt;&lt;/pre&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;p&gt;Labels are created with any text in curly braces and prefixed with label and then referenced with prefix ref. The ref must be enclosed with paranthesis. References can be made within the document with (&lt;a href="https://nagordon.github.io/ifcuriousthenlearn/posts/doconce-intro/#sec:intro"&gt;Introduction&lt;/a&gt;). Figures are referenced using , and to reference a section of the document like the code the section &lt;a href="https://nagordon.github.io/ifcuriousthenlearn/posts/doconce-intro/#sec:code"&gt;Code&lt;/a&gt;  or the bibliography can be created using the prefix cite. One example of what doconce can be used for is an entire book &lt;a href="https://nagordon.github.io/ifcuriousthenlearn/posts/doconce-intro/#Langtangen"&gt;[Langtangen]&lt;/a&gt;. Also, equations can be referenced in a similar fashion, such as &lt;a href="https://nagordon.github.io/ifcuriousthenlearn/posts/doconce-intro/#eqn:tsaihill"&gt;(1)&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Index of keywords can be defined with&lt;/p&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+
+&lt;pre&gt;&lt;code&gt;    index{name}&lt;/code&gt;&lt;/pre&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;p&gt;so that we have index{testindex}, and my favorite language index{python}&lt;/p&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+
+&lt;pre&gt;&lt;code&gt;    # define location label
+    \label{sec:intro}
+
+    # reference location label
+
+
+    # reference citations
+    cite{Langtangen}&lt;/code&gt;&lt;/pre&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;h4 id="my-subheading"&gt;my subheading&lt;a class="anchor-link" href="https://nagordon.github.io/ifcuriousthenlearn/posts/doconce-intro/#my-subheading"&gt;¶&lt;/a&gt;&lt;/h4&gt;&lt;p&gt;testing the subheading&lt;/p&gt;
+&lt;h5 id="my-subsubheading"&gt;my subsubheading&lt;a class="anchor-link" href="https://nagordon.github.io/ifcuriousthenlearn/posts/doconce-intro/#my-subsubheading"&gt;¶&lt;/a&gt;&lt;/h5&gt;&lt;p&gt;finally, the smallest heading we can have&lt;/p&gt;
+&lt;!-- Lines beginning with # are comment lines --&gt;
+
+&lt;h3 id="Code"&gt;Code&lt;a class="anchor-link" href="https://nagordon.github.io/ifcuriousthenlearn/posts/doconce-intro/#Code"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;div id="sec:code"&gt;&lt;/div&gt;&lt;p&gt;Code can be identified in the text by enclosing the text in single back quotes, as in&lt;/p&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+
+&lt;pre&gt;&lt;code&gt;    'sudo apt-get install numpy'&lt;/code&gt;&lt;/pre&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;p&gt;And an inline rendering of that is &lt;code&gt;sudo apt-get install numpy&lt;/code&gt;. Which is handy when you do not want to start a new line everytime.&lt;/p&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing code_cell rendered"&gt;
+&lt;div class="input"&gt;
+&lt;div class="prompt input_prompt"&gt;In [1]:&lt;/div&gt;
+&lt;div class="inner_cell"&gt;
+    &lt;div class="input_area"&gt;
+&lt;div class=" highlight hl-ipython3"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c1"&gt;# a comment in my python code&lt;/span&gt;
+&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;f&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;x&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+    &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="n"&gt;x&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+    &lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;p&gt;Also code can be inserted with this &lt;code&gt;@@@CODE src/hiwrld.py&lt;/code&gt;&lt;/p&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing code_cell rendered"&gt;
+&lt;div class="input"&gt;
+&lt;div class="prompt input_prompt"&gt;In [1]:&lt;/div&gt;
+&lt;div class="inner_cell"&gt;
+    &lt;div class="input_area"&gt;
+&lt;div class=" highlight hl-ipython3"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c1"&gt;# Here is an example python program&lt;/span&gt;
+
+&lt;span class="n"&gt;x&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s1"&gt;'hi doconce world'&lt;/span&gt;
+
+&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;hiworld&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;x&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+    &lt;span class="nb"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;x&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+&lt;span class="c1"&gt;# thats all&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+    &lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;p&gt;This way, all the code can be kept in a usable form or in inserted easily if changes&lt;/p&gt;
+&lt;p&gt;Here is the bash file that is used to generate all the various kinds of output files&lt;/p&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+
+&lt;pre&gt;&lt;code&gt;    #!/bin/sh
+
+
+    # create a variable of the doconce file
+    dofile='doconce_notes'
+
+    ########################## cleanup 
+    ####remove the pdfs and tex file that will be overwritten
+    rm $dofile.pdf
+
+    ########################## Latex 
+    #### Create a plain tex file
+    doconce format pdflatex $dofile \
+                --latex_code_style=vrb \
+                --latex_title_layout=std \
+                --tables2csv  
+                #--latex_code_style=vrb
+
+    rm -f *.aux
+    pdflatex $dofile.tex
+    bibtex $dofile
+    pdflatex $dofile.tex
+    pdflatex $dofile.tex
+    mv $dofile.pdf $dofile.simple.pdf
+
+    #### Create tex file with fancy formatting and custom latex
+    doconce format pdflatex $dofile \
+                --latex_code_style=pyg \
+                --latex_title_layout=std \
+                --latex_preamble=customization.tex
+                #--latex_todonotes  # includes inline notes
+
+    #### helps position the figures
+    doconce replace 'begin{figure}[t]' 'begin{figure}' $dofile.tex
+
+    # create the pdf of the tex file    
+    rm -f *.aux             
+    pdflatex -shell-escape -interaction=batchmode $dofile.tex
+    bibtex $dofile
+    pdflatex -shell-escape -interaction=batchmode $dofile.tex
+    pdflatex -shell-escape -interaction=batchmode $dofile.tex
+    mv $dofile.pdf $dofile.1col.pdf
+
+    #### creates a two column article
+    python insert_tex.py $dofile.tex
+    # create the pdf of the tex file    
+    rm -f *.aux             
+    pdflatex -shell-escape -interaction=batchmode $dofile.tex
+    bibtex $dofile
+    pdflatex -shell-escape -interaction=batchmode $dofile.tex
+    pdflatex -shell-escape -interaction=batchmode $dofile.tex
+    mv $dofile.pdf $dofile.2col.pdf
+
+    ########################## Markdown 
+
+    #create the github markdown from the doconce_notes.do.txt file
+    doconce format pandoc $dofile --github_md
+
+    #From markdown to docx
+    pandoc -s -S $dofile.md -o $dofile.md.docx
+
+    ########################## ipython notebook 
+
+    # create ipython notebook file
+    doconce format ipynb $dofile
+
+    # create an html file from the ipynb
+    ipython nbconvert $dofile.ipynb
+    mv $dofile.html $dofile.ipynb.html
+    wkhtmltopdf $dofile.ipynb.html $dofile.ipynb.pdf
+
+    ########################## Tables 
+    doconce format --tables2csv
+    ########################## HTML 
+
+    # create a styled html file
+    doconce format html $dofile --html_style=tactile-black
+    wkhtmltopdf $dofile.html $dofile.html.pdf
+
+
+    ########################## cleanup 
+
+    doconce clean
+
+    # remove all the files that are generated during doconce make
+    rm *.toc *.log *.aux *.out *.idx *.bbl *.blg *.gz
+
+    # removes the trash directory
+    rm -R Trash&lt;/code&gt;&lt;/pre&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;h3 id="Lists"&gt;Lists&lt;a class="anchor-link" href="https://nagordon.github.io/ifcuriousthenlearn/posts/doconce-intro/#Lists"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;Here are some examples of lists directly from the &lt;a href="http://hplgit.github.io/doconce/doc/pub/quickref/quickref.html"&gt;documentation&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Here is a bullet list:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;item1&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;item2&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;subitem1 of item2&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;subitem2 of item2,
+second line of subitem2&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;ul&gt;
+&lt;li&gt;item3&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Note that sublists are consistently indented by one or more blanks as
+shown: bullets must exactly match and continuation lines must start
+right below the line above.&lt;/p&gt;
+&lt;p&gt;Here is an enumeration list:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;item1&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;item2
+may appear on
+multiple lines&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;subitem1 of item2&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;subitem2 of item2&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;ol&gt;
+&lt;li&gt;item3&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;And finally a description list:&lt;/p&gt;
+&lt;p&gt;keyword1:
+  :&lt;br&gt;
+   followed by
+   some text
+   over multiple
+   lines&lt;/p&gt;
+&lt;p&gt;keyword2:
+  :&lt;br&gt;
+   followed by text on the next line&lt;/p&gt;
+&lt;p&gt;keyword3:
+  :&lt;br&gt;
+   and its description may fit on one line&lt;/p&gt;
+&lt;h3 id="Comments-and-Footnotes"&gt;Comments and Footnotes&lt;a class="anchor-link" href="https://nagordon.github.io/ifcuriousthenlearn/posts/doconce-intro/#Comments-and-Footnotes"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;div id="sec:com"&gt;&lt;/div&gt;&lt;p&gt;Creating comments in the text is a handy way to supplement with optional information, one way is to use an inline comment such as [hpl 1: here I will make some
+remarks to the text]. Another way to add content is to add a footnote &lt;sup class="footnote-ref" id="fnref-footnote"&gt;&lt;a href="https://nagordon.github.io/ifcuriousthenlearn/posts/doconce-intro/#fn-footnote"&gt;1&lt;/a&gt;&lt;/sup&gt; is also possible.&lt;/p&gt;
+&lt;h3 id="Math,-Latex"&gt;Math, Latex&lt;a class="anchor-link" href="https://nagordon.github.io/ifcuriousthenlearn/posts/doconce-intro/#Math,-Latex"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;div id="sec:math"&gt;&lt;/div&gt;&lt;p&gt;inline latex can look like this 
+$x = a_0 + \frac{1}{\displaystyle a_1 + \frac{1}{\displaystyle a_2 + \frac{1}{\displaystyle a_3 + a_4}}}$
+and another block&lt;/p&gt;
+&lt;div class="footnotes"&gt;
+&lt;hr&gt;
+&lt;ol&gt;&lt;li id="fn-footnote"&gt;&lt;p&gt;The syntax for footnotes is borrowed from Extended Markdown.&lt;a href="https://nagordon.github.io/ifcuriousthenlearn/posts/doconce-intro/#fnref-footnote" class="footnote"&gt;↩&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+$$
+\frac{\partial\pmb{u}}{\partial t} + \pmb{u}\cdot\nabla\pmb{u} = 0.
+$$
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;p&gt;and some inline latex,  $\frac{\partial y}{\partial x}$ everybody loves partial differentiation&lt;/p&gt;
+&lt;p&gt;and finally equations, can have a label such as&lt;/p&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;p&gt;&lt;!-- Equation labels as ordinary links --&gt;&lt;/p&gt;
+&lt;div id="eqn:tsaihill"&gt;&lt;/div&gt;$$
+\begin{equation}
+1 =  \left(\frac{\sigma_{1}}{\sigma_{1u}}\right)^{2} + \left(\frac{\sigma_{2}}{\sigma_{2u}}\right)^{2}  +  \left(\frac{\tau_{12}}{\tau_{12u}}\right)^{2}  - \left(\frac{\sigma_{1} \sigma_{2}} {\sigma_{1u} }\right) \label{eqn:tsaihill} \tag{1}  
+\end{equation}
+$$
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;h3 id="Images"&gt;Images&lt;a class="anchor-link" href="https://nagordon.github.io/ifcuriousthenlearn/posts/doconce-intro/#Images"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;div id="sec:img"&gt;&lt;/div&gt;&lt;p&gt;This section explains how to create images. The size can be adjusted with frac and the width adjusts the width when exporting to html&lt;/p&gt;
+&lt;p&gt;for a really tiny image, we can use&lt;/p&gt;
+&lt;div id="fig:myfig1"&gt;&lt;/div&gt;&lt;p&gt;&lt;/p&gt;&lt;p&gt;My favorite linux desktop with frac-0.1.&lt;/p&gt;
+&lt;img src="https://nagordon.github.io/ifcuriousthenlearn/images/Learn-Latex-markdown-and-html-with-doconce/mint.png" width="650"&gt;
+&lt;p&gt;and for a figure that is a bit bigger, we can increase the fraction size&lt;/p&gt;
+&lt;div id="fig:myfig2"&gt;&lt;/div&gt;&lt;p&gt;&lt;/p&gt;&lt;p&gt;My favorite linux desktop with frac-0.9.&lt;/p&gt;
+&lt;img src="https://nagordon.github.io/ifcuriousthenlearn/images/Learn-Latex-markdown-and-html-with-doconce/mint.png" width="650"&gt;
+&lt;h3 id="File-Structure"&gt;File Structure&lt;a class="anchor-link" href="https://nagordon.github.io/ifcuriousthenlearn/posts/doconce-intro/#File-Structure"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;div id="sec:fil"&gt;&lt;/div&gt;&lt;p&gt;each document should have the structure with a fig and src directory to keep images and code. The make.sh file is used to generate various documents with a lot of of custom settings&lt;/p&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+
+&lt;pre&gt;&lt;code&gt;    doconce_notes.do.txt
+    doconce_notes.md
+    doconce_notes.pdf
+    fig
+        mint.png
+    make.sh
+    test.do.txt
+    test.pdf&lt;/code&gt;&lt;/pre&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;h3 id="Help"&gt;Help&lt;a class="anchor-link" href="https://nagordon.github.io/ifcuriousthenlearn/posts/doconce-intro/#Help"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;help can be gotten from &lt;code&gt;doconce format --help&lt;/code&gt;&lt;/p&gt;
+&lt;h3 id="Coverting-Files"&gt;Coverting Files&lt;a class="anchor-link" href="https://nagordon.github.io/ifcuriousthenlearn/posts/doconce-intro/#Coverting-Files"&gt;¶&lt;/a&gt;&lt;/h3&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+
+&lt;pre&gt;&lt;code&gt;    doconce format html test  # creates an html document
+    doconce format pandoc test   # creates markdown
+    doconce format latex test   # creates latex document
+    doconce format ipynb mydoc  # results in mydoc.ipynb
+    doconce format mwiki mydoc.do.txt  # creates a wiki page
+    doconce format ipynb test.do  # ipython notebook&lt;/code&gt;&lt;/pre&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;p&gt;&lt;a href="http://pandoc.org/index.html"&gt;Pandoc&lt;/a&gt; is a very powerful converter that can be used with doconce&lt;/p&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+
+&lt;pre&gt;&lt;code&gt;    #From markdown to docx
+    pandoc -s -S doconce_notes.md -o doconce_notes.md.docx
+
+    #From markdown to PDF:
+    pandoc doconce_notes.md -o doconce_notes.md.pdf&lt;/code&gt;&lt;/pre&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;p&gt;For compiling and document creation, please reference the &lt;em&gt;make.sh&lt;/em&gt; file in this repository&lt;/p&gt;
+&lt;p&gt;When running the make file, make sure it is executable and run it with&lt;/p&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+
+&lt;pre&gt;&lt;code&gt;    chmod +x make.sh
+    ./make.sh&lt;/code&gt;&lt;/pre&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;h3 id="Installation"&gt;Installation&lt;a class="anchor-link" href="https://nagordon.github.io/ifcuriousthenlearn/posts/doconce-intro/#Installation"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;div id="sec:install"&gt;&lt;/div&gt;&lt;p&gt;I am using a Windows 7 laptop with&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://www.virtualbox.org/wiki/Downloads"&gt;VirtualBox&lt;/a&gt;
+&lt;a href="http://www.linuxmint.com/edition.php?id=172"&gt;Linux Mint 17.1&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Make sure your machine is up to date&lt;/p&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+
+&lt;pre&gt;&lt;code&gt;    sudo apt-get update &amp;amp;&amp;amp; sudo apt-get upgrade&lt;/code&gt;&lt;/pre&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;p&gt;Then, install python. A barebones python install with IMHO, the best python package maanger conda, the &lt;a href="http://conda.pydata.org/miniconda.html"&gt;miniconda package&lt;/a&gt; is easy and &lt;a href="https://github.com/conda/conda"&gt;open-source&lt;/a&gt;&lt;/p&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+
+&lt;pre&gt;&lt;code&gt;    # download
+    wget https://repo.continuum.io/miniconda/Miniconda-latest-Linux-x86_64.sh
+    # make sure shell file is excutable
+    chmod +x Miniconda-latest-Linux-x86_64.sh  
+
+    # Execute
+    ./Miniconda-latest-Linux-x86_64.sh  &lt;/code&gt;&lt;/pre&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;p&gt;I've gotten an error in the past with Linux Mint that conda command does not exist. This should fix it by creating a link with conda to the bin directory.&lt;/p&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+
+&lt;pre&gt;&lt;code&gt;    sudo ln ~/anaconda/bin/conda /usr/local/bin/&lt;/code&gt;&lt;/pre&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;p&gt;If miniconda is used, be sure to install the ipython notebook if you plan on using it&lt;/p&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+
+&lt;pre&gt;&lt;code&gt;    conda install ipython-notebook&lt;/code&gt;&lt;/pre&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;p&gt;Next, make sure all the dependecies are installed. Latex is an integral part of doconce, as well as pandoc for converting markdown files and the like&lt;/p&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+
+&lt;pre&gt;&lt;code&gt;    sudo apt-get install texlive-full
+    sudo apt-get install pandoc&lt;/code&gt;&lt;/pre&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;p&gt;Finally, we are ready to install doconce. There is a conda package that makes the installation very easy.&lt;/p&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+
+&lt;pre&gt;&lt;code&gt;    conda install --channel johannr doconce&lt;/code&gt;&lt;/pre&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;p&gt;Another option is to download a bash script &lt;a href="https://raw.githubusercontent.com/hplgit/doconce/master/doc/src/manual/install_doconce.sh"&gt;here&lt;/a&gt; and use it to install&lt;/p&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+
+&lt;pre&gt;&lt;code&gt;    chmod +x install_doconce.sh  
+    ./bash install_doconce.sh&lt;/code&gt;&lt;/pre&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;h3 id="Sundries"&gt;Sundries&lt;a class="anchor-link" href="https://nagordon.github.io/ifcuriousthenlearn/posts/doconce-intro/#Sundries"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;DO NOT USE UNDERSCORES IN ANY PART OF YOUR DOCUMENT, ONLY FOR MARKDOWN.&lt;/p&gt;
+&lt;h3 id="Handy-Links"&gt;Handy Links&lt;a class="anchor-link" href="https://nagordon.github.io/ifcuriousthenlearn/posts/doconce-intro/#Handy-Links"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;div id="sec:links"&gt;&lt;/div&gt;&lt;p&gt;Examples of a couple of the output files can be found here
+&lt;a href="https://github.com/nagordon/technotes/blob/master/doconce/doconce_notes.1col.pdf"&gt;doconcenotes1colpdf&lt;/a&gt; , &lt;a href="https://github.com/nagordon/technotes/blob/master/doconce/doconce_notes.2col.pdf"&gt;doconcenotes2colpdf&lt;/a&gt; , &lt;a href="https://github.com/nagordon/technotes/blob/master/doconce/doconce_notes.html.pdf"&gt;htmlblack&lt;/a&gt;, &lt;a href="https://github.com/nagordon/technotes/blob/master/doconce/doconce_notes.ipynb.pdf"&gt;htmlipynb&lt;/a&gt;, and, although not great, &lt;a href="https://github.com/nagordon/technotes/blob/master/doconce/doconce_notes.md.docx"&gt;doconcedocx&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;main site &lt;a href="https://github.com/hplgit/doconce"&gt;https://github.com/hplgit/doconce&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href="http://hplgit.github.io/doconce/doc/pub/tutorial/tutorial.html"&gt;tutorial&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href="http://hplgit.github.io/doconce/doc/pub/tutorial/html/tutorial.html"&gt;tutorial2&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href="http://hplgit.github.io/teamods/writing_reports/index.html"&gt;demo&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href="http://hplgit.github.io/doconce/doc/pub/quickref/quickref.html"&gt;quickref&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href="http://hplgit.github.io/doconce/doc/web/index.html"&gt;github website&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href="http://hplgit.github.io/doconce/doc/pub/slides/scientific_writing-1.html"&gt;scientific writing&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://github.com/hplgit/hplgit.github.com/tree/master/teamods"&gt;more examples&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id="References"&gt;References&lt;a class="anchor-link" href="https://nagordon.github.io/ifcuriousthenlearn/posts/doconce-intro/#References"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;div id="sec:ref"&gt;&lt;/div&gt;&lt;ol&gt;
+&lt;li&gt;&lt;div id="Langtangen"&gt;&lt;/div&gt; &lt;strong&gt;H. P. Langtangen&lt;/strong&gt;. 
+&lt;em&gt;A Primer on Scientific Programming With Python&lt;/em&gt;,
+4 edition,
+Springer,
+2014,
+&lt;a href="http://www.springer.com/us/book/9783642549588"&gt;http://www.springer.com/us/book/9783642549588&lt;/a&gt;.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;/div&gt;</description><category>doconce</category><category>latex</category><category>markdown</category><category>python</category><guid>https://nagordon.github.io/ifcuriousthenlearn/posts/doconce-intro/</guid><pubDate>Sat, 06 Jun 2015 07:00:00 GMT</pubDate></item><item><title>Team Fortress 2 Server Install for Dummies</title><link>https://nagordon.github.io/ifcuriousthenlearn/posts/tf2-server-setup/</link><dc:creator>neal</dc:creator><description>&lt;div&gt;&lt;p&gt;For those of us who remember playing games on dos, steam[http://store.steampowered.com/]
+is a nice program for purchasing, managing, and playing video games. I grew up playing LAN games because dial-up just wasn't fast enough for online gaming, and it is way more fun to play games in the same room with your friends rather than random people online.&lt;/p&gt;
+&lt;p&gt;Things have changed since those days. Internet speeds and just fine for online gaming, but I still prefer LAN games because, again, it is way more fun to game with your friends in the same room. So, I enjoy hosting LAN games, and I found setting up a local server a fun technical challenge, and If you are interested in doing the same, this should help you do it.&lt;/p&gt;
+&lt;p&gt;The cool things with steam servers is you don't even need an account. You can create an anonymous server that is not affiliated with you.&lt;/p&gt;
+&lt;h3&gt;&lt;strong&gt;Step 1&lt;/strong&gt; - Get a free operating system&lt;/h3&gt;
+&lt;p&gt;Get a Debain based Linux computer. I am using an older samsung laptop (6 GB, i5 processor) running &lt;a href="http://www.linuxmint.com/edition.php?id=172"&gt;mint-cinnamon&lt;/a&gt;&lt;/p&gt;
+&lt;h3&gt;&lt;strong&gt;Step 2&lt;/strong&gt; - Install dependent software&lt;/h3&gt;
+&lt;p&gt;Get to your linux terminal and install the required software by running this command
+&lt;code&gt;sudo apt-get install gdb mailutils postfix lib32gcc1&lt;/code&gt;&lt;/p&gt;
+&lt;h3&gt;&lt;strong&gt;Step 3&lt;/strong&gt; - Create server user account&lt;/h3&gt;
+&lt;p&gt;Create a user for the server admin, assign a password, and login to tf2server account&lt;/p&gt;
+&lt;pre class="code literal-block"&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;adduser tf2server
+passwd tf2server
+su tf2server
+&lt;/code&gt;&lt;/pre&gt;
+
+
+&lt;h3&gt;&lt;strong&gt;Step 4&lt;/strong&gt; - Install steam server software&lt;/h3&gt;
+&lt;p&gt;There are multiple ways of doing this. One is to follow the &lt;a href="https://wiki.teamfortress.com/wiki/Linux_dedicated_server"&gt;steam installation&lt;/a&gt; or another &lt;a href="http://stevenbenner.com/2010/11/how-to-set-up-a-team-fortress-2-dedicated-server-on-ubuntu/"&gt;tutorial&lt;/a&gt; or &lt;a href="http://danielgibbs.co.uk/lgsm/tf2server/"&gt;another tutorial&lt;/a&gt;, which is what I recommend and used.  &lt;/p&gt;
+&lt;p&gt;This will download the script, make it executable, and execute the installation&lt;/p&gt;
+&lt;pre class="code literal-block"&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;wget http://danielgibbs.co.uk/dl/tf2server
+chmod +x tf2server
+./tf2server install
+&lt;/code&gt;&lt;/pre&gt;
+
+
+&lt;h3&gt;&lt;strong&gt;Step 5&lt;/strong&gt; - Start the server&lt;/h3&gt;
+&lt;p&gt;Go to the tf2server home directory &lt;code&gt;cd ~&lt;/code&gt; which will take you to &lt;code&gt;/home/tf2server/&lt;/code&gt; and use these commands to manage your server  &lt;/p&gt;
+&lt;pre class="code literal-block"&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;./tf2server start
+./tf2server stop
+./tf2server restart
+./tf2server details
+&lt;/code&gt;&lt;/pre&gt;
+
+
+&lt;p&gt;Type &lt;code&gt;./tf2server start&lt;/code&gt; to start the server&lt;/p&gt;
+&lt;h3&gt;&lt;strong&gt;Step 6&lt;/strong&gt; - Connect via LAN&lt;/h3&gt;
+&lt;p&gt;if you run &lt;code&gt;./tf2server details&lt;/code&gt; you will see a bunch of output  &lt;/p&gt;
+&lt;pre class="code literal-block"&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="n"&gt;Team&lt;/span&gt; &lt;span class="n"&gt;Fortress&lt;/span&gt; &lt;span class="mi"&gt;2&lt;/span&gt; &lt;span class="n"&gt;Server&lt;/span&gt; &lt;span class="n"&gt;Details&lt;/span&gt;
+&lt;span class="o"&gt;================================================================================================================================================&lt;/span&gt;
+&lt;span class="n"&gt;Server&lt;/span&gt; &lt;span class="n"&gt;name&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;    &lt;span class="n"&gt;tf2&lt;/span&gt; &lt;span class="n"&gt;server&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;
+&lt;span class="n"&gt;Server&lt;/span&gt; &lt;span class="n"&gt;IP&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;      &lt;span class="mi"&gt;192&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="mi"&gt;168&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="mi"&gt;196&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="mi"&gt;27015&lt;/span&gt;
+&lt;span class="n"&gt;RCON&lt;/span&gt; &lt;span class="n"&gt;password&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;  &lt;span class="n"&gt;tf2server&lt;/span&gt;
+&lt;span class="n"&gt;Status&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;         &lt;span class="n"&gt;ONLINE&lt;/span&gt;
+
+&lt;span class="n"&gt;Command&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;line&lt;/span&gt; &lt;span class="k"&gt;Parameters&lt;/span&gt;
+&lt;span class="o"&gt;================================================================================================================================================&lt;/span&gt;
+&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;srcds_run&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;game&lt;/span&gt; &lt;span class="n"&gt;tf&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;strictportbind&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;ip&lt;/span&gt; &lt;span class="mi"&gt;192&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="mi"&gt;168&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="mi"&gt;196&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;port&lt;/span&gt; &lt;span class="mi"&gt;27015&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt;&lt;span class="n"&gt;clientport&lt;/span&gt; &lt;span class="mi"&gt;27005&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt;&lt;span class="n"&gt;tv_port&lt;/span&gt; &lt;span class="mi"&gt;27020&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;tickrate&lt;/span&gt;  &lt;span class="o"&gt;+&lt;/span&gt;&lt;span class="k"&gt;map&lt;/span&gt; &lt;span class="n"&gt;pl_goldrush&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt;&lt;span class="n"&gt;servercfgfile&lt;/span&gt; &lt;span class="n"&gt;tf2&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;server&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;cfg&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;maxplayers&lt;/span&gt; &lt;span class="mi"&gt;16&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+
+&lt;p&gt;what we want here is the local ip and port &lt;code&gt;Server IP: 192.168.1.196:27015&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;Now we can connect locally by launching Team Fortress 2, hit &lt;code&gt;~&lt;/code&gt; to drop down the console and type &lt;code&gt;connect 192.168.1.196:27015&lt;/code&gt; and that should connect you to the server locally&lt;/p&gt;
+&lt;h3&gt;&lt;strong&gt;Step 7&lt;/strong&gt; - Set up a Public Server&lt;/h3&gt;
+&lt;p&gt;If you want to make this a public server, we need to do a few more things. First, I needed to remove the &lt;code&gt;-strictportbind&lt;/code&gt; portion on the command-line properties in the file located in &lt;code&gt;/tf2server/tf2server&lt;/code&gt; file so that an unused port is chosen, so when you restart the tf2server, it may choose a different port to allow for online access.&lt;/p&gt;
+&lt;p&gt;After that, I access my default router IP via a web browser with &lt;code&gt;192.168.1.1&lt;/code&gt; and set up a port forward on the server IP and port&lt;/p&gt;
+&lt;p&gt;Now, restart the tf2server with &lt;code&gt;./tf2server restart&lt;/code&gt; and go to the console &lt;code&gt;./tf2server console&lt;/code&gt; and look at some of the output. Note, this script uses tmux, which allows us to log out of the server and keep the server running. Here, you can run all the comamnds to manage the server&lt;/p&gt;
+&lt;p&gt;You should see somewhere in the top the public ip address of the server computer&lt;/p&gt;
+&lt;pre class="code literal-block"&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="err"&gt;Connection to Steam servers successful.&lt;/span&gt;
+&lt;span class="err"&gt;   Public IP is 12.34.56.78.&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+
+&lt;p&gt;and&lt;/p&gt;
+&lt;pre class="code literal-block"&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;Network: IP &lt;span class="m"&gt;192&lt;/span&gt;.168.1.196, mode MP, dedicated Yes, ports &lt;span class="m"&gt;27015&lt;/span&gt; SV / &lt;span class="m"&gt;27005&lt;/span&gt; CL
+&lt;/code&gt;&lt;/pre&gt;
+
+
+&lt;h3&gt;&lt;strong&gt;Step 8&lt;/strong&gt; - Connect to your public server&lt;/h3&gt;
+&lt;p&gt;Now we have all the information we need to create public server, the public IP and the SV port it selected. Finally launch Steam and do&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Severs -&amp;gt; Favorites -&amp;gt; Add a Server -&amp;gt; enter &lt;code&gt;12.34.56.78:27015&lt;/code&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Now you have a public server!&lt;/p&gt;
+&lt;p&gt;if you want to play without people, add some bots. Go to your console via &lt;code&gt;./tf2server console&lt;/code&gt; and add some bots&lt;code&gt;tf_bot_add 4&lt;/code&gt; change the level to &lt;code&gt;changelevel pl_goldrush&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;I have found many maps don't work well with bots. The maps I have listed below seemed to work well.&lt;/p&gt;
+&lt;h3&gt;Server Customization&lt;/h3&gt;
+&lt;p&gt;To customize your server there are a few files you should edit. Make sure you make a backup of each in case it gets messed up&lt;/p&gt;
+&lt;p&gt;The configuration file updates the server every time a new map loads. Here is mine.
+/home/tf2server/serverfiles/tf/cfg/tf2-server.cfg&lt;/p&gt;
+&lt;pre class="code literal-block"&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="err"&gt;mp_disable_respawn_times 0&lt;/span&gt;
+&lt;span class="err"&gt;tf_bot_quota 13&lt;/span&gt;
+&lt;span class="err"&gt;tf_bot_quota_mode "fill"&lt;/span&gt;
+&lt;span class="err"&gt;tf_bot_difficulty 1&lt;/span&gt;
+&lt;span class="err"&gt;mp_timelimit 15&lt;/span&gt;
+&lt;span class="err"&gt;mp_maxrounds 5&lt;/span&gt;
+&lt;span class="err"&gt;mp_winlimit&lt;/span&gt;
+&lt;span class="err"&gt;sv_cheats 0&lt;/span&gt;
+&lt;span class="err"&gt;tf_bot_melee_only 0&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+
+&lt;p&gt;/home/tf2server/serverfiles/tf/cfg/mapcycle_default.txt
+The mapcycle file tells the server which map to go to next. if you use &lt;code&gt;changelevel pl_barnblitz&lt;/code&gt;, it will begin the cycle there&lt;/p&gt;
+&lt;pre class="code literal-block"&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="err"&gt;pl_badwater&lt;/span&gt;
+&lt;span class="err"&gt;pl_goldrush&lt;/span&gt;
+&lt;span class="err"&gt;pl_upward&lt;/span&gt;
+&lt;span class="err"&gt;pl_barnblitz&lt;/span&gt;
+&lt;span class="err"&gt;pl_hoodoo_final&lt;/span&gt;
+&lt;span class="err"&gt;koth_viaduct&lt;/span&gt;
+&lt;span class="err"&gt;koth_nucleus&lt;/span&gt;
+&lt;span class="err"&gt;koth_harvest_final&lt;/span&gt;
+&lt;span class="err"&gt;koth_lakeside_final&lt;/span&gt;
+&lt;span class="err"&gt;koth_badlands&lt;/span&gt;
+&lt;span class="err"&gt;koth_king&lt;/span&gt;
+&lt;span class="err"&gt;plr_pipeline&lt;/span&gt;
+&lt;span class="err"&gt;plr_hightower&lt;/span&gt;
+&lt;span class="err"&gt;pl_thundermountain&lt;/span&gt;
+&lt;span class="err"&gt;pl_frontier_final&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+
+&lt;p&gt;If you want to use your xbox controller, from the client computer access the console via &lt;code&gt;~&lt;/code&gt; and run &lt;code&gt;exec 260controller&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;Enjoy!&lt;/p&gt;
+&lt;p&gt;Here are some links that I found helpful &lt;br&gt;
+https://wiki.teamfortress.com/wiki/Linux_dedicated_server&lt;br&gt;
+http://danielgibbs.co.uk/lgsm/tf2server/&lt;br&gt;
+http://stevenbenner.com/2010/11/how-to-set-up-a-team-fortress-2-dedicated-server-on-ubuntu/&lt;br&gt;
+https://developer.valvesoftware.com/wiki/List_of_TF2_console_commands_and_variables&lt;br&gt;
+https://developer.valvesoftware.com/wiki/Console_Command_List&lt;br&gt;
+http://steamcommunity.com/sharedfiles/filedetails/?id=250332112&lt;br&gt;
+https://wiki.teamfortress.com/wiki/Linux_dedicated_server&lt;br&gt;
+https://wiki.teamfortress.com/wiki/Bots  &lt;/p&gt;&lt;/div&gt;</description><category>gaming</category><category>linux</category><guid>https://nagordon.github.io/ifcuriousthenlearn/posts/tf2-server-setup/</guid><pubDate>Sat, 14 Mar 2015 08:00:00 GMT</pubDate></item></channel></rss>

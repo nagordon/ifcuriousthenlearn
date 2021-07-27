@@ -1,0 +1,250 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet type="text/xsl" href="../assets/xml/rss.xsl" media="all"?><rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>ifcuriousthenlearn (Posts about excel)</title><link>https://nagordon.github.io/ifcuriousthenlearn/</link><description></description><atom:link href="https://nagordon.github.io/ifcuriousthenlearn/categories/excel.xml" rel="self" type="application/rss+xml"></atom:link><language>en</language><copyright>Contents © 2021 &lt;a href="mailto:"&gt;neal&lt;/a&gt; </copyright><lastBuildDate>Tue, 27 Jul 2021 04:15:43 GMT</lastBuildDate><generator>Nikola (getnikola.com)</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>Calculations with Python Code or Excel Spreadsheets</title><link>https://nagordon.github.io/ifcuriousthenlearn/posts/pythoncode-vs-excel/</link><dc:creator>neal</dc:creator><description>&lt;div&gt;&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;h2 id="To-code-or-not-to-code"&gt;To code or not to code&lt;a class="anchor-link" href="https://nagordon.github.io/ifcuriousthenlearn/posts/pythoncode-vs-excel/#To-code-or-not-to-code"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;When faced with a technical challenge or problem solving, conceptual understanding is an important first step, and I almost always start with hand calculations. Once I feel that I have a grasp of the concept, then I turn to a digital approach which often involves using excel or python and running some numbers, and re-running them, and fiddling until I really understand. I always feel like, especially in engineering, that using the right tool for the right job can make a big difference in the results. &lt;a href="https://products.office.com/en-us/excel"&gt;Microsoft Excel&lt;/a&gt; or &lt;a href="https://www.libreoffice.org/discover/calc/"&gt;Libre Calc&lt;/a&gt; spreadsheet programs are a great way to plug some numbers in and perform simple calculations with nearly no learning curve to get an answer. But as the complexity and quantity of the data and compuation increases, spreadsheets start to not make sense. That's where I feel a code based calculation method is important tool in everyones analysis toolbox. Classicaly, good old pencil and paper was the only way to model and work out problems. But, with the availability of the personal computer, software has allowed us to do more work with less effort. I find it very fascinating to see how people solve problems. This post will explore that idea and hopefully give you an idea to go beyond excel the next time you need to run some numbers.&lt;/p&gt;
+&lt;p&gt;There are many ways to solve engineering problems. The main tools that I have found critical  are:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;hand calculations&lt;/strong&gt;  &lt;ul&gt;
+&lt;li&gt;no learning curve&lt;/li&gt;
+&lt;li&gt;low cost&lt;/li&gt;
+&lt;li&gt;slow, tedious and can be error prone (me and algebra :( )&lt;/li&gt;
+&lt;li&gt;forces you to understand &lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;spreadsheets&lt;/strong&gt;  &lt;ul&gt;
+&lt;li&gt;medium learning curve&lt;/li&gt;
+&lt;li&gt;great at simple data storage&lt;/li&gt;
+&lt;li&gt;great for simple calcualtions&lt;/li&gt;
+&lt;li&gt;non-linear / confusing thought process&lt;/li&gt;
+&lt;li&gt;not great at large scale date storage &lt;/li&gt;
+&lt;li&gt;not repeatable&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;code&lt;/strong&gt;  &lt;ul&gt;
+&lt;li&gt;linear thought process (usually)&lt;/li&gt;
+&lt;li&gt;most powerful for calculations &lt;/li&gt;
+&lt;li&gt;not great at simple data storage&lt;/li&gt;
+&lt;li&gt;great for large scale data storage and processing &lt;/li&gt;
+&lt;li&gt;powerful version control (&lt;a href="https://git-scm.com/"&gt;git&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;very repeatable&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;These are a few methods for solving computational problems. Each one has a time and place, but recognizing when you are trying to put a square peg in a round hole can help keep you sane.&lt;/p&gt;
+&lt;h2 id="An-Example---python-and-Excel-to-understand-loans"&gt;An Example - python and Excel to understand loans&lt;a class="anchor-link" href="https://nagordon.github.io/ifcuriousthenlearn/posts/pythoncode-vs-excel/#An-Example---python-and-Excel-to-understand-loans"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;OK, so we discussed some different approaches to problem solving. Lets look at an example of using an spreadsheet and python code to understand and determine the cost of an loan. Some terms are listed below if you aren't familiar with a compound interest loan.&lt;/p&gt;
+&lt;blockquote&gt;&lt;p&gt;apr - annual percentage rate&lt;br&gt;
+r   - monthly percentge rate, apr/12&lt;br&gt;
+per - the peroid for which you want to find an interest&lt;br&gt;
+nper - number of payment&lt;br&gt;
+pv - present value, the loan amount
+pmt - payment for a loan&lt;br&gt;
+payments due at the end of the period&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Let's throw some numbers at this. Here I will define some variables that define our loan parameters&lt;/p&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing code_cell rendered"&gt;
+&lt;div class="input"&gt;
+&lt;div class="prompt input_prompt"&gt;In [1]:&lt;/div&gt;
+&lt;div class="inner_cell"&gt;
+    &lt;div class="input_area"&gt;
+&lt;div class=" highlight hl-ipython3"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c1"&gt;############# define input variables #############&lt;/span&gt;
+&lt;span class="n"&gt;n&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;24&lt;/span&gt;   &lt;span class="c1"&gt;# term in months&lt;/span&gt;
+&lt;span class="n"&gt;apr&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mf"&gt;0.0250&lt;/span&gt;   &lt;span class="c1"&gt;# annual percentage rate&lt;/span&gt;
+&lt;span class="n"&gt;r&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;apr&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="mi"&gt;12&lt;/span&gt;     &lt;span class="c1"&gt;# monthly percentage rate&lt;/span&gt;
+&lt;span class="n"&gt;baseloan&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;30000&lt;/span&gt;   &lt;span class="c1"&gt;# principal amount of loan&lt;/span&gt;
+&lt;span class="n"&gt;downpayment&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;5000&lt;/span&gt; 
+&lt;span class="n"&gt;PV&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;baseloan&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt; &lt;span class="n"&gt;downpayment&lt;/span&gt;  &lt;span class="c1"&gt;# present value of the loan&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+    &lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;h3 id="Hand-Calculation"&gt;Hand Calculation&lt;a class="anchor-link" href="https://nagordon.github.io/ifcuriousthenlearn/posts/pythoncode-vs-excel/#Hand-Calculation"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;If we are to hand calculate our loan payments, we can use the following equation (found in Engineering Economy, Blank et al, pg 58)&lt;/p&gt;
+$$
+payment = PV \bigg[  \frac{r(1+r)^n}{(1+r)^n-1} \bigg]
+$$
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing code_cell rendered"&gt;
+&lt;div class="input"&gt;
+&lt;div class="prompt input_prompt"&gt;In [2]:&lt;/div&gt;
+&lt;div class="inner_cell"&gt;
+    &lt;div class="input_area"&gt;
+&lt;div class=" highlight hl-ipython3"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c1"&gt;# monthly payments assuming compounding interest&lt;/span&gt;
+&lt;span class="n"&gt;payment&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;PV&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="p"&gt;((&lt;/span&gt;&lt;span class="n"&gt;r&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="o"&gt;+&lt;/span&gt;&lt;span class="n"&gt;r&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;**&lt;/span&gt;&lt;span class="n"&gt;n&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="p"&gt;((&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="o"&gt;+&lt;/span&gt;&lt;span class="n"&gt;r&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;**&lt;/span&gt;&lt;span class="n"&gt;n&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+&lt;span class="n"&gt;payment&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+    &lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class="output_wrapper"&gt;
+&lt;div class="output"&gt;
+
+
+&lt;div class="output_area"&gt;
+
+    &lt;div class="prompt output_prompt"&gt;Out[2]:&lt;/div&gt;
+
+
+
+
+&lt;div class="output_text output_subarea output_execute_result"&gt;
+&lt;pre&gt;-1069.0098055421547&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;/div&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;p&gt;Easy enough, but what if you want to make a payment table, it would be very tedious by hand. Fortuantley, we have a computer. Since I understand the equation being used, I have no issues with automating this a little more. We can make an spreadsheet table. which is nice visually, didn't take very much time, and allows me to change some parameters.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Update&lt;/strong&gt; - I found out that Excel has a great Loan Amortization spreadsheet built in, and it even includes early payoff, which is not that easy to calculate. I have included it in the spreadsheet below or you can make a new one by doing the following.&lt;/p&gt;
+&lt;blockquote&gt;&lt;p&gt;&lt;em&gt;right-click on a new sheet -&amp;gt; Insert -&amp;gt; Spreadsheet Solutions -&amp;gt; Loan Amortization&lt;/em&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3 id="Spreadsheet"&gt;Spreadsheet&lt;a class="anchor-link" href="https://nagordon.github.io/ifcuriousthenlearn/posts/pythoncode-vs-excel/#Spreadsheet"&gt;¶&lt;/a&gt;&lt;/h3&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;iframe width="700" height="807" frameborder="0" scrolling="no" src="https://onedrive.live.com/embed?cid=2DAE54F5236205EE&amp;amp;resid=2DAE54F5236205EE%2125844&amp;amp;authkey=AMSdq_7Zcg_mK_g&amp;amp;em=2&amp;amp;wdAllowInteractivity=False&amp;amp;AllowTyping=True&amp;amp;ActiveCell='loan'!E2&amp;amp;Item='loan'!A1%3AI38&amp;amp;wdHideGridlines=True&amp;amp;wdDownloadButton=True"&gt;&lt;/iframe&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;p&gt;But, if we want to change, say the term length, well then we have to change the layout of the table and mess with it, so the spreadsheet isn't as robust as we had hoped. How about a code solution? Here are the steps to get some python code going to do the same exact calcuation, and being very robust, and can be used for many different finanical applications.&lt;/p&gt;
+&lt;h3 id="Code"&gt;Code&lt;a class="anchor-link" href="https://nagordon.github.io/ifcuriousthenlearn/posts/pythoncode-vs-excel/#Code"&gt;¶&lt;/a&gt;&lt;/h3&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing code_cell rendered"&gt;
+&lt;div class="input"&gt;
+&lt;div class="prompt input_prompt"&gt;In [3]:&lt;/div&gt;
+&lt;div class="inner_cell"&gt;
+    &lt;div class="input_area"&gt;
+&lt;div class=" highlight hl-ipython3"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c1"&gt;############# import python libraries #############&lt;/span&gt;
+&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;numpy&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt;
+&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;pandas&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;DataFrame&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;date_range&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;set_option&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;options&lt;/span&gt;
+&lt;span class="n"&gt;options&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;display&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;float_format&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s1"&gt;'$&lt;/span&gt;&lt;span class="si"&gt;{:10,.2f}&lt;/span&gt;&lt;span class="s1"&gt;'&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;format&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+    &lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing code_cell rendered"&gt;
+&lt;div class="input"&gt;
+&lt;div class="prompt input_prompt"&gt;In [4]:&lt;/div&gt;
+&lt;div class="inner_cell"&gt;
+    &lt;div class="input_area"&gt;
+&lt;div class=" highlight hl-ipython3"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c1"&gt;############# calculate output #############&lt;/span&gt;
+&lt;span class="n"&gt;per&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt;              &lt;span class="n"&gt;arange&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;n&lt;/span&gt;&lt;span class="o"&gt;+&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;  &lt;span class="c1"&gt;# months&lt;/span&gt;
+&lt;span class="n"&gt;payment&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt;          &lt;span class="n"&gt;pmt&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;r&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;n&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;PV&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;  &lt;span class="c1"&gt;# monthly payment&lt;/span&gt;
+&lt;span class="n"&gt;interestpayment&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt;  &lt;span class="n"&gt;ipmt&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;r&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;per&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;n&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;PV&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;  &lt;span class="c1"&gt;# monthly interest&lt;/span&gt;
+&lt;span class="n"&gt;principalpayment&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;ppmt&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;r&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;per&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;n&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;PV&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;  &lt;span class="c1"&gt;# monthly principal&lt;/span&gt;
+&lt;span class="n"&gt;balance&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt;          &lt;span class="n"&gt;PV&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="n"&gt;per&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="n"&gt;payment&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt; &lt;span class="nb"&gt;sum&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;interestpayment&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="c1"&gt;# monthly balance&lt;/span&gt;
+&lt;span class="n"&gt;dates&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt;            &lt;span class="n"&gt;date_range&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;'20160101'&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;periods&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;n&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;freq&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;'M'&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+&lt;span class="c1"&gt;############# create a table with the output #############&lt;/span&gt;
+&lt;span class="c1"&gt;# create a dataframe for simple data management and output&lt;/span&gt;
+&lt;span class="n"&gt;df&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;DataFrame&lt;/span&gt;&lt;span class="p"&gt;({&lt;/span&gt;&lt;span class="s1"&gt;'date'&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="n"&gt;dates&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+                &lt;span class="s1"&gt;'month'&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="n"&gt;per&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+                &lt;span class="s1"&gt;'balance'&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="n"&gt;balance&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+                &lt;span class="s1"&gt;'payment'&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="n"&gt;ones&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;len&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;per&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="n"&gt;payment&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+                &lt;span class="s1"&gt;'interest'&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="n"&gt;interestpayment&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+                &lt;span class="s1"&gt;'principal'&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="n"&gt;principalpayment&lt;/span&gt;&lt;span class="p"&gt;})&lt;/span&gt;
+&lt;span class="c1"&gt;# reorder the columns to match the spreadsheet&lt;/span&gt;
+&lt;span class="n"&gt;df&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;df&lt;/span&gt;&lt;span class="p"&gt;[[&lt;/span&gt;&lt;span class="s1"&gt;'date'&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="s1"&gt;'month'&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="s1"&gt;'balance'&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="s1"&gt;'payment'&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="s1"&gt;'interest'&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="s1"&gt;'principal'&lt;/span&gt;&lt;span class="p"&gt;]]&lt;/span&gt;
+
+&lt;span class="c1"&gt;############# print output #############&lt;/span&gt;
+&lt;span class="nb"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;' monthly payment     = &lt;/span&gt;&lt;span class="si"&gt;%f&lt;/span&gt;&lt;span class="s1"&gt;'&lt;/span&gt; &lt;span class="o"&gt;%&lt;/span&gt; &lt;span class="n"&gt;payment&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="nb"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;' total interest cost = &lt;/span&gt;&lt;span class="si"&gt;%f&lt;/span&gt;&lt;span class="se"&gt;\n&lt;/span&gt;&lt;span class="s1"&gt;'&lt;/span&gt; &lt;span class="o"&gt;%&lt;/span&gt; &lt;span class="nb"&gt;sum&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;interestpayment&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;   
+&lt;span class="nb"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;df&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+    &lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class="output_wrapper"&gt;
+&lt;div class="output"&gt;
+
+
+&lt;div class="output_area"&gt;
+
+    &lt;div class="prompt"&gt;&lt;/div&gt;
+
+
+&lt;div class="output_subarea output_stream output_stdout output_text"&gt;
+&lt;pre&gt; monthly payment     = -1069.009806
+ total interest cost = -656.235333
+
+         date  month     balance     payment    interest   principal
+0  2016-01-31      1 $ 24,587.23 $ -1,069.01 $    -52.08 $ -1,016.93
+1  2016-02-29      2 $ 23,518.22 $ -1,069.01 $    -49.96 $ -1,019.05
+2  2016-03-31      3 $ 22,449.21 $ -1,069.01 $    -47.84 $ -1,021.17
+3  2016-04-30      4 $ 21,380.20 $ -1,069.01 $    -45.71 $ -1,023.30
+4  2016-05-31      5 $ 20,311.19 $ -1,069.01 $    -43.58 $ -1,025.43
+5  2016-06-30      6 $ 19,242.18 $ -1,069.01 $    -41.45 $ -1,027.56
+6  2016-07-31      7 $ 18,173.17 $ -1,069.01 $    -39.31 $ -1,029.70
+7  2016-08-31      8 $ 17,104.16 $ -1,069.01 $    -37.16 $ -1,031.85
+8  2016-09-30      9 $ 16,035.15 $ -1,069.01 $    -35.01 $ -1,034.00
+9  2016-10-31     10 $ 14,966.14 $ -1,069.01 $    -32.86 $ -1,036.15
+10 2016-11-30     11 $ 13,897.13 $ -1,069.01 $    -30.70 $ -1,038.31
+11 2016-12-31     12 $ 12,828.12 $ -1,069.01 $    -28.53 $ -1,040.48
+12 2017-01-31     13 $ 11,759.11 $ -1,069.01 $    -26.37 $ -1,042.64
+13 2017-02-28     14 $ 10,690.10 $ -1,069.01 $    -24.19 $ -1,044.82
+14 2017-03-31     15 $  9,621.09 $ -1,069.01 $    -22.02 $ -1,046.99
+15 2017-04-30     16 $  8,552.08 $ -1,069.01 $    -19.84 $ -1,049.17
+16 2017-05-31     17 $  7,483.07 $ -1,069.01 $    -17.65 $ -1,051.36
+17 2017-06-30     18 $  6,414.06 $ -1,069.01 $    -15.46 $ -1,053.55
+18 2017-07-31     19 $  5,345.05 $ -1,069.01 $    -13.27 $ -1,055.74
+19 2017-08-31     20 $  4,276.04 $ -1,069.01 $    -11.07 $ -1,057.94
+20 2017-09-30     21 $  3,207.03 $ -1,069.01 $     -8.86 $ -1,060.15
+21 2017-10-31     22 $  2,138.02 $ -1,069.01 $     -6.65 $ -1,062.36
+22 2017-11-30     23 $  1,069.01 $ -1,069.01 $     -4.44 $ -1,064.57
+23 2017-12-31     24 $      0.00 $ -1,069.01 $     -2.22 $ -1,066.79
+&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;p&gt;Assuming the user has a basic understanding of how to write a computer program, code is(should be) very straightforward to read. Spreadsheets, like the one shown above can be nebulus and requires a fair bit of digging to see what calcualtions are being made. 
+If you need any help with the functions, use the help function to show the inputs&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;help&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;pmt&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;help&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;ipmt&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;help&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;ppmt&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Try playing around with the code and see what happens when the terms of the loan are changed. The code is more robust to changes, where the spreadsheet has to be reworked&lt;/p&gt;
+&lt;h2 id="Summary"&gt;Summary&lt;a class="anchor-link" href="https://nagordon.github.io/ifcuriousthenlearn/posts/pythoncode-vs-excel/#Summary"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;A simple demo compared spreadsheets versus code with an example of a common calcualtion problem, loans! When pursuing future projects, think about what tools would be the best for the given problem, as well as you, and possibly your team.&lt;/p&gt;
+&lt;p&gt;Stay curious!&lt;/p&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;/div&gt;</description><category>excel</category><category>python</category><guid>https://nagordon.github.io/ifcuriousthenlearn/posts/pythoncode-vs-excel/</guid><pubDate>Sat, 20 Aug 2016 07:00:00 GMT</pubDate></item></channel></rss>

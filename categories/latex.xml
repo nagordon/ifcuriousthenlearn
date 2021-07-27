@@ -1,0 +1,601 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet type="text/xsl" href="../assets/xml/rss.xsl" media="all"?><rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>ifcuriousthenlearn (Posts about latex)</title><link>https://nagordon.github.io/ifcuriousthenlearn/</link><description></description><atom:link href="https://nagordon.github.io/ifcuriousthenlearn/categories/latex.xml" rel="self" type="application/rss+xml"></atom:link><language>en</language><copyright>Contents © 2021 &lt;a href="mailto:"&gt;neal&lt;/a&gt; </copyright><lastBuildDate>Tue, 27 Jul 2021 04:15:45 GMT</lastBuildDate><generator>Nikola (getnikola.com)</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>Learn Latex, markdown and html with doconce</title><link>https://nagordon.github.io/ifcuriousthenlearn/posts/doconce-intro/</link><dc:creator>neal</dc:creator><description>&lt;div&gt;&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;h2 id="Neals-First-DocOnce-Publication"&gt;Neals First DocOnce Publication&lt;a class="anchor-link" href="https://nagordon.github.io/ifcuriousthenlearn/posts/doconce-intro/#Neals-First-DocOnce-Publication"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;&lt;strong&gt;Jun 4, 2015&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Summary.&lt;/strong&gt; My goal here is to learn the package &lt;a href="http://hplgit.github.io/doconce/doc/web/index.html"&gt;doconce&lt;/a&gt;, which is a markup syntax for creating scientific documents with many different types of outputs, including markdown, html, ipython notebooks, pdfs, and docx files. What's wrong with markdown? The short answer is nothing, it is great and important to know, however, some features that a needed for more advanced features, like figure/equation references, as well as including citations is needed, and haven't any good solution for that. 
+All the up-to-date source code and various document formats can be found on the &lt;a href="https://github.com/nagordon/technotes/tree/master/doconce"&gt;github repository&lt;/a&gt;.&lt;/p&gt;
+&lt;h3 id="Introduction"&gt;Introduction&lt;a class="anchor-link" href="https://nagordon.github.io/ifcuriousthenlearn/posts/doconce-intro/#Introduction"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;div id="sec:intro"&gt;&lt;/div&gt;&lt;p&gt;DocOnce is a lightweight markup language that is pure python, tso that it will work on any OS
+the source markdown files have extension *.do.txt
+each document should have the structure with a fig and src directory to keep images and code. The make.sh file is used to generate various documents with a lot of of custom settings.&lt;/p&gt;
+&lt;h4 id="SubIntro"&gt;SubIntro&lt;a class="anchor-link" href="https://nagordon.github.io/ifcuriousthenlearn/posts/doconce-intro/#SubIntro"&gt;¶&lt;/a&gt;&lt;/h4&gt;&lt;p&gt;Since I have began blogging, I realized the importance of learning html, markdown, etc and now have been trying my best to learn tex and LaTeX. While doconce is a little buggy, it is still under active development and have found it very useful for learning how all the various markups work together. I still find microsoft products very handy, especially v2013, but when working with the web and version control systems, plain text sources files are great! So, if you haven't heard of doconce yet, check it out!&lt;/p&gt;
+&lt;h5 id="SubSubIntro"&gt;SubSubIntro&lt;a class="anchor-link" href="https://nagordon.github.io/ifcuriousthenlearn/posts/doconce-intro/#SubSubIntro"&gt;¶&lt;/a&gt;&lt;/h5&gt;&lt;p&gt;The main goal here is to generate an example document to help me learn and show you the syntax of doconce. Hopefully it will make sense and the errors are minimal! This is still a work in progress.&lt;/p&gt;
+&lt;h3 id="Headings,-Labels,-and-References"&gt;Headings, Labels, and References&lt;a class="anchor-link" href="https://nagordon.github.io/ifcuriousthenlearn/posts/doconce-intro/#Headings,-Labels,-and-References"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;div id="sec:hlr"&gt;&lt;/div&gt;&lt;p&gt;For simple documents, chapters are not necessary, so only 7= are necessary to create a header for the section.&lt;/p&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+
+&lt;pre&gt;&lt;code&gt;    chapter          ========= Heading ========= (9 =)
+    section          ======= Heading ======= (7 =)
+    subsection       ===== Heading ===== (5 =)
+    subsubsection    === Heading === (3 =)
+    paragraph        __Heading.__ (2 _)
+    abstract         __Abstract.__ Running text...
+    appendix         ======= Appendix: heading ======= (7 =)
+    appendix         ===== Appendix: heading ===== (5 =)&lt;/code&gt;&lt;/pre&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;p&gt;Labels are created with any text in curly braces and prefixed with label and then referenced with prefix ref. The ref must be enclosed with paranthesis. References can be made within the document with (&lt;a href="https://nagordon.github.io/ifcuriousthenlearn/posts/doconce-intro/#sec:intro"&gt;Introduction&lt;/a&gt;). Figures are referenced using , and to reference a section of the document like the code the section &lt;a href="https://nagordon.github.io/ifcuriousthenlearn/posts/doconce-intro/#sec:code"&gt;Code&lt;/a&gt;  or the bibliography can be created using the prefix cite. One example of what doconce can be used for is an entire book &lt;a href="https://nagordon.github.io/ifcuriousthenlearn/posts/doconce-intro/#Langtangen"&gt;[Langtangen]&lt;/a&gt;. Also, equations can be referenced in a similar fashion, such as &lt;a href="https://nagordon.github.io/ifcuriousthenlearn/posts/doconce-intro/#eqn:tsaihill"&gt;(1)&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Index of keywords can be defined with&lt;/p&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+
+&lt;pre&gt;&lt;code&gt;    index{name}&lt;/code&gt;&lt;/pre&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;p&gt;so that we have index{testindex}, and my favorite language index{python}&lt;/p&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+
+&lt;pre&gt;&lt;code&gt;    # define location label
+    \label{sec:intro}
+
+    # reference location label
+
+
+    # reference citations
+    cite{Langtangen}&lt;/code&gt;&lt;/pre&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;h4 id="my-subheading"&gt;my subheading&lt;a class="anchor-link" href="https://nagordon.github.io/ifcuriousthenlearn/posts/doconce-intro/#my-subheading"&gt;¶&lt;/a&gt;&lt;/h4&gt;&lt;p&gt;testing the subheading&lt;/p&gt;
+&lt;h5 id="my-subsubheading"&gt;my subsubheading&lt;a class="anchor-link" href="https://nagordon.github.io/ifcuriousthenlearn/posts/doconce-intro/#my-subsubheading"&gt;¶&lt;/a&gt;&lt;/h5&gt;&lt;p&gt;finally, the smallest heading we can have&lt;/p&gt;
+&lt;!-- Lines beginning with # are comment lines --&gt;
+
+&lt;h3 id="Code"&gt;Code&lt;a class="anchor-link" href="https://nagordon.github.io/ifcuriousthenlearn/posts/doconce-intro/#Code"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;div id="sec:code"&gt;&lt;/div&gt;&lt;p&gt;Code can be identified in the text by enclosing the text in single back quotes, as in&lt;/p&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+
+&lt;pre&gt;&lt;code&gt;    'sudo apt-get install numpy'&lt;/code&gt;&lt;/pre&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;p&gt;And an inline rendering of that is &lt;code&gt;sudo apt-get install numpy&lt;/code&gt;. Which is handy when you do not want to start a new line everytime.&lt;/p&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing code_cell rendered"&gt;
+&lt;div class="input"&gt;
+&lt;div class="prompt input_prompt"&gt;In [1]:&lt;/div&gt;
+&lt;div class="inner_cell"&gt;
+    &lt;div class="input_area"&gt;
+&lt;div class=" highlight hl-ipython3"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c1"&gt;# a comment in my python code&lt;/span&gt;
+&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;f&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;x&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+    &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="n"&gt;x&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+    &lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;p&gt;Also code can be inserted with this &lt;code&gt;@@@CODE src/hiwrld.py&lt;/code&gt;&lt;/p&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing code_cell rendered"&gt;
+&lt;div class="input"&gt;
+&lt;div class="prompt input_prompt"&gt;In [1]:&lt;/div&gt;
+&lt;div class="inner_cell"&gt;
+    &lt;div class="input_area"&gt;
+&lt;div class=" highlight hl-ipython3"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c1"&gt;# Here is an example python program&lt;/span&gt;
+
+&lt;span class="n"&gt;x&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s1"&gt;'hi doconce world'&lt;/span&gt;
+
+&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;hiworld&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;x&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+    &lt;span class="nb"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;x&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+&lt;span class="c1"&gt;# thats all&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+    &lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;p&gt;This way, all the code can be kept in a usable form or in inserted easily if changes&lt;/p&gt;
+&lt;p&gt;Here is the bash file that is used to generate all the various kinds of output files&lt;/p&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+
+&lt;pre&gt;&lt;code&gt;    #!/bin/sh
+
+
+    # create a variable of the doconce file
+    dofile='doconce_notes'
+
+    ########################## cleanup 
+    ####remove the pdfs and tex file that will be overwritten
+    rm $dofile.pdf
+
+    ########################## Latex 
+    #### Create a plain tex file
+    doconce format pdflatex $dofile \
+                --latex_code_style=vrb \
+                --latex_title_layout=std \
+                --tables2csv  
+                #--latex_code_style=vrb
+
+    rm -f *.aux
+    pdflatex $dofile.tex
+    bibtex $dofile
+    pdflatex $dofile.tex
+    pdflatex $dofile.tex
+    mv $dofile.pdf $dofile.simple.pdf
+
+    #### Create tex file with fancy formatting and custom latex
+    doconce format pdflatex $dofile \
+                --latex_code_style=pyg \
+                --latex_title_layout=std \
+                --latex_preamble=customization.tex
+                #--latex_todonotes  # includes inline notes
+
+    #### helps position the figures
+    doconce replace 'begin{figure}[t]' 'begin{figure}' $dofile.tex
+
+    # create the pdf of the tex file    
+    rm -f *.aux             
+    pdflatex -shell-escape -interaction=batchmode $dofile.tex
+    bibtex $dofile
+    pdflatex -shell-escape -interaction=batchmode $dofile.tex
+    pdflatex -shell-escape -interaction=batchmode $dofile.tex
+    mv $dofile.pdf $dofile.1col.pdf
+
+    #### creates a two column article
+    python insert_tex.py $dofile.tex
+    # create the pdf of the tex file    
+    rm -f *.aux             
+    pdflatex -shell-escape -interaction=batchmode $dofile.tex
+    bibtex $dofile
+    pdflatex -shell-escape -interaction=batchmode $dofile.tex
+    pdflatex -shell-escape -interaction=batchmode $dofile.tex
+    mv $dofile.pdf $dofile.2col.pdf
+
+    ########################## Markdown 
+
+    #create the github markdown from the doconce_notes.do.txt file
+    doconce format pandoc $dofile --github_md
+
+    #From markdown to docx
+    pandoc -s -S $dofile.md -o $dofile.md.docx
+
+    ########################## ipython notebook 
+
+    # create ipython notebook file
+    doconce format ipynb $dofile
+
+    # create an html file from the ipynb
+    ipython nbconvert $dofile.ipynb
+    mv $dofile.html $dofile.ipynb.html
+    wkhtmltopdf $dofile.ipynb.html $dofile.ipynb.pdf
+
+    ########################## Tables 
+    doconce format --tables2csv
+    ########################## HTML 
+
+    # create a styled html file
+    doconce format html $dofile --html_style=tactile-black
+    wkhtmltopdf $dofile.html $dofile.html.pdf
+
+
+    ########################## cleanup 
+
+    doconce clean
+
+    # remove all the files that are generated during doconce make
+    rm *.toc *.log *.aux *.out *.idx *.bbl *.blg *.gz
+
+    # removes the trash directory
+    rm -R Trash&lt;/code&gt;&lt;/pre&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;h3 id="Lists"&gt;Lists&lt;a class="anchor-link" href="https://nagordon.github.io/ifcuriousthenlearn/posts/doconce-intro/#Lists"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;Here are some examples of lists directly from the &lt;a href="http://hplgit.github.io/doconce/doc/pub/quickref/quickref.html"&gt;documentation&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Here is a bullet list:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;item1&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;item2&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;subitem1 of item2&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;subitem2 of item2,
+second line of subitem2&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;ul&gt;
+&lt;li&gt;item3&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Note that sublists are consistently indented by one or more blanks as
+shown: bullets must exactly match and continuation lines must start
+right below the line above.&lt;/p&gt;
+&lt;p&gt;Here is an enumeration list:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;item1&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;item2
+may appear on
+multiple lines&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;subitem1 of item2&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;subitem2 of item2&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;ol&gt;
+&lt;li&gt;item3&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;And finally a description list:&lt;/p&gt;
+&lt;p&gt;keyword1:
+  :&lt;br&gt;
+   followed by
+   some text
+   over multiple
+   lines&lt;/p&gt;
+&lt;p&gt;keyword2:
+  :&lt;br&gt;
+   followed by text on the next line&lt;/p&gt;
+&lt;p&gt;keyword3:
+  :&lt;br&gt;
+   and its description may fit on one line&lt;/p&gt;
+&lt;h3 id="Comments-and-Footnotes"&gt;Comments and Footnotes&lt;a class="anchor-link" href="https://nagordon.github.io/ifcuriousthenlearn/posts/doconce-intro/#Comments-and-Footnotes"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;div id="sec:com"&gt;&lt;/div&gt;&lt;p&gt;Creating comments in the text is a handy way to supplement with optional information, one way is to use an inline comment such as [hpl 1: here I will make some
+remarks to the text]. Another way to add content is to add a footnote &lt;sup class="footnote-ref" id="fnref-footnote"&gt;&lt;a href="https://nagordon.github.io/ifcuriousthenlearn/posts/doconce-intro/#fn-footnote"&gt;1&lt;/a&gt;&lt;/sup&gt; is also possible.&lt;/p&gt;
+&lt;h3 id="Math,-Latex"&gt;Math, Latex&lt;a class="anchor-link" href="https://nagordon.github.io/ifcuriousthenlearn/posts/doconce-intro/#Math,-Latex"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;div id="sec:math"&gt;&lt;/div&gt;&lt;p&gt;inline latex can look like this 
+$x = a_0 + \frac{1}{\displaystyle a_1 + \frac{1}{\displaystyle a_2 + \frac{1}{\displaystyle a_3 + a_4}}}$
+and another block&lt;/p&gt;
+&lt;div class="footnotes"&gt;
+&lt;hr&gt;
+&lt;ol&gt;&lt;li id="fn-footnote"&gt;&lt;p&gt;The syntax for footnotes is borrowed from Extended Markdown.&lt;a href="https://nagordon.github.io/ifcuriousthenlearn/posts/doconce-intro/#fnref-footnote" class="footnote"&gt;↩&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+$$
+\frac{\partial\pmb{u}}{\partial t} + \pmb{u}\cdot\nabla\pmb{u} = 0.
+$$
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;p&gt;and some inline latex,  $\frac{\partial y}{\partial x}$ everybody loves partial differentiation&lt;/p&gt;
+&lt;p&gt;and finally equations, can have a label such as&lt;/p&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;p&gt;&lt;!-- Equation labels as ordinary links --&gt;&lt;/p&gt;
+&lt;div id="eqn:tsaihill"&gt;&lt;/div&gt;$$
+\begin{equation}
+1 =  \left(\frac{\sigma_{1}}{\sigma_{1u}}\right)^{2} + \left(\frac{\sigma_{2}}{\sigma_{2u}}\right)^{2}  +  \left(\frac{\tau_{12}}{\tau_{12u}}\right)^{2}  - \left(\frac{\sigma_{1} \sigma_{2}} {\sigma_{1u} }\right) \label{eqn:tsaihill} \tag{1}  
+\end{equation}
+$$
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;h3 id="Images"&gt;Images&lt;a class="anchor-link" href="https://nagordon.github.io/ifcuriousthenlearn/posts/doconce-intro/#Images"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;div id="sec:img"&gt;&lt;/div&gt;&lt;p&gt;This section explains how to create images. The size can be adjusted with frac and the width adjusts the width when exporting to html&lt;/p&gt;
+&lt;p&gt;for a really tiny image, we can use&lt;/p&gt;
+&lt;div id="fig:myfig1"&gt;&lt;/div&gt;&lt;p&gt;&lt;/p&gt;&lt;p&gt;My favorite linux desktop with frac-0.1.&lt;/p&gt;
+&lt;img src="https://nagordon.github.io/ifcuriousthenlearn/images/Learn-Latex-markdown-and-html-with-doconce/mint.png" width="650"&gt;
+&lt;p&gt;and for a figure that is a bit bigger, we can increase the fraction size&lt;/p&gt;
+&lt;div id="fig:myfig2"&gt;&lt;/div&gt;&lt;p&gt;&lt;/p&gt;&lt;p&gt;My favorite linux desktop with frac-0.9.&lt;/p&gt;
+&lt;img src="https://nagordon.github.io/ifcuriousthenlearn/images/Learn-Latex-markdown-and-html-with-doconce/mint.png" width="650"&gt;
+&lt;h3 id="File-Structure"&gt;File Structure&lt;a class="anchor-link" href="https://nagordon.github.io/ifcuriousthenlearn/posts/doconce-intro/#File-Structure"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;div id="sec:fil"&gt;&lt;/div&gt;&lt;p&gt;each document should have the structure with a fig and src directory to keep images and code. The make.sh file is used to generate various documents with a lot of of custom settings&lt;/p&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+
+&lt;pre&gt;&lt;code&gt;    doconce_notes.do.txt
+    doconce_notes.md
+    doconce_notes.pdf
+    fig
+        mint.png
+    make.sh
+    test.do.txt
+    test.pdf&lt;/code&gt;&lt;/pre&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;h3 id="Help"&gt;Help&lt;a class="anchor-link" href="https://nagordon.github.io/ifcuriousthenlearn/posts/doconce-intro/#Help"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;help can be gotten from &lt;code&gt;doconce format --help&lt;/code&gt;&lt;/p&gt;
+&lt;h3 id="Coverting-Files"&gt;Coverting Files&lt;a class="anchor-link" href="https://nagordon.github.io/ifcuriousthenlearn/posts/doconce-intro/#Coverting-Files"&gt;¶&lt;/a&gt;&lt;/h3&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+
+&lt;pre&gt;&lt;code&gt;    doconce format html test  # creates an html document
+    doconce format pandoc test   # creates markdown
+    doconce format latex test   # creates latex document
+    doconce format ipynb mydoc  # results in mydoc.ipynb
+    doconce format mwiki mydoc.do.txt  # creates a wiki page
+    doconce format ipynb test.do  # ipython notebook&lt;/code&gt;&lt;/pre&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;p&gt;&lt;a href="http://pandoc.org/index.html"&gt;Pandoc&lt;/a&gt; is a very powerful converter that can be used with doconce&lt;/p&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+
+&lt;pre&gt;&lt;code&gt;    #From markdown to docx
+    pandoc -s -S doconce_notes.md -o doconce_notes.md.docx
+
+    #From markdown to PDF:
+    pandoc doconce_notes.md -o doconce_notes.md.pdf&lt;/code&gt;&lt;/pre&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;p&gt;For compiling and document creation, please reference the &lt;em&gt;make.sh&lt;/em&gt; file in this repository&lt;/p&gt;
+&lt;p&gt;When running the make file, make sure it is executable and run it with&lt;/p&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+
+&lt;pre&gt;&lt;code&gt;    chmod +x make.sh
+    ./make.sh&lt;/code&gt;&lt;/pre&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;h3 id="Installation"&gt;Installation&lt;a class="anchor-link" href="https://nagordon.github.io/ifcuriousthenlearn/posts/doconce-intro/#Installation"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;div id="sec:install"&gt;&lt;/div&gt;&lt;p&gt;I am using a Windows 7 laptop with&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://www.virtualbox.org/wiki/Downloads"&gt;VirtualBox&lt;/a&gt;
+&lt;a href="http://www.linuxmint.com/edition.php?id=172"&gt;Linux Mint 17.1&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Make sure your machine is up to date&lt;/p&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+
+&lt;pre&gt;&lt;code&gt;    sudo apt-get update &amp;amp;&amp;amp; sudo apt-get upgrade&lt;/code&gt;&lt;/pre&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;p&gt;Then, install python. A barebones python install with IMHO, the best python package maanger conda, the &lt;a href="http://conda.pydata.org/miniconda.html"&gt;miniconda package&lt;/a&gt; is easy and &lt;a href="https://github.com/conda/conda"&gt;open-source&lt;/a&gt;&lt;/p&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+
+&lt;pre&gt;&lt;code&gt;    # download
+    wget https://repo.continuum.io/miniconda/Miniconda-latest-Linux-x86_64.sh
+    # make sure shell file is excutable
+    chmod +x Miniconda-latest-Linux-x86_64.sh  
+
+    # Execute
+    ./Miniconda-latest-Linux-x86_64.sh  &lt;/code&gt;&lt;/pre&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;p&gt;I've gotten an error in the past with Linux Mint that conda command does not exist. This should fix it by creating a link with conda to the bin directory.&lt;/p&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+
+&lt;pre&gt;&lt;code&gt;    sudo ln ~/anaconda/bin/conda /usr/local/bin/&lt;/code&gt;&lt;/pre&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;p&gt;If miniconda is used, be sure to install the ipython notebook if you plan on using it&lt;/p&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+
+&lt;pre&gt;&lt;code&gt;    conda install ipython-notebook&lt;/code&gt;&lt;/pre&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;p&gt;Next, make sure all the dependecies are installed. Latex is an integral part of doconce, as well as pandoc for converting markdown files and the like&lt;/p&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+
+&lt;pre&gt;&lt;code&gt;    sudo apt-get install texlive-full
+    sudo apt-get install pandoc&lt;/code&gt;&lt;/pre&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;p&gt;Finally, we are ready to install doconce. There is a conda package that makes the installation very easy.&lt;/p&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+
+&lt;pre&gt;&lt;code&gt;    conda install --channel johannr doconce&lt;/code&gt;&lt;/pre&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;p&gt;Another option is to download a bash script &lt;a href="https://raw.githubusercontent.com/hplgit/doconce/master/doc/src/manual/install_doconce.sh"&gt;here&lt;/a&gt; and use it to install&lt;/p&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+
+&lt;pre&gt;&lt;code&gt;    chmod +x install_doconce.sh  
+    ./bash install_doconce.sh&lt;/code&gt;&lt;/pre&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;h3 id="Sundries"&gt;Sundries&lt;a class="anchor-link" href="https://nagordon.github.io/ifcuriousthenlearn/posts/doconce-intro/#Sundries"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;DO NOT USE UNDERSCORES IN ANY PART OF YOUR DOCUMENT, ONLY FOR MARKDOWN.&lt;/p&gt;
+&lt;h3 id="Handy-Links"&gt;Handy Links&lt;a class="anchor-link" href="https://nagordon.github.io/ifcuriousthenlearn/posts/doconce-intro/#Handy-Links"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;div id="sec:links"&gt;&lt;/div&gt;&lt;p&gt;Examples of a couple of the output files can be found here
+&lt;a href="https://github.com/nagordon/technotes/blob/master/doconce/doconce_notes.1col.pdf"&gt;doconcenotes1colpdf&lt;/a&gt; , &lt;a href="https://github.com/nagordon/technotes/blob/master/doconce/doconce_notes.2col.pdf"&gt;doconcenotes2colpdf&lt;/a&gt; , &lt;a href="https://github.com/nagordon/technotes/blob/master/doconce/doconce_notes.html.pdf"&gt;htmlblack&lt;/a&gt;, &lt;a href="https://github.com/nagordon/technotes/blob/master/doconce/doconce_notes.ipynb.pdf"&gt;htmlipynb&lt;/a&gt;, and, although not great, &lt;a href="https://github.com/nagordon/technotes/blob/master/doconce/doconce_notes.md.docx"&gt;doconcedocx&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;main site &lt;a href="https://github.com/hplgit/doconce"&gt;https://github.com/hplgit/doconce&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href="http://hplgit.github.io/doconce/doc/pub/tutorial/tutorial.html"&gt;tutorial&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href="http://hplgit.github.io/doconce/doc/pub/tutorial/html/tutorial.html"&gt;tutorial2&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href="http://hplgit.github.io/teamods/writing_reports/index.html"&gt;demo&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href="http://hplgit.github.io/doconce/doc/pub/quickref/quickref.html"&gt;quickref&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href="http://hplgit.github.io/doconce/doc/web/index.html"&gt;github website&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href="http://hplgit.github.io/doconce/doc/pub/slides/scientific_writing-1.html"&gt;scientific writing&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://github.com/hplgit/hplgit.github.com/tree/master/teamods"&gt;more examples&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id="References"&gt;References&lt;a class="anchor-link" href="https://nagordon.github.io/ifcuriousthenlearn/posts/doconce-intro/#References"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;div id="sec:ref"&gt;&lt;/div&gt;&lt;ol&gt;
+&lt;li&gt;&lt;div id="Langtangen"&gt;&lt;/div&gt; &lt;strong&gt;H. P. Langtangen&lt;/strong&gt;. 
+&lt;em&gt;A Primer on Scientific Programming With Python&lt;/em&gt;,
+4 edition,
+Springer,
+2014,
+&lt;a href="http://www.springer.com/us/book/9783642549588"&gt;http://www.springer.com/us/book/9783642549588&lt;/a&gt;.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;/div&gt;</description><category>doconce</category><category>latex</category><category>markdown</category><category>python</category><guid>https://nagordon.github.io/ifcuriousthenlearn/posts/doconce-intro/</guid><pubDate>Sat, 06 Jun 2015 07:00:00 GMT</pubDate></item></channel></rss>
