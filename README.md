@@ -24,7 +24,7 @@ To check all available commands::
     nikola help
 
 
-
+nikola new_post -f ipynb
     
 
 pip install -U "Nikola[extras]"
@@ -32,6 +32,9 @@ pip install -U "Nikola[extras]"
 nikola init --demo mysite
 
 nikola build
+
+# build and serve  
+nikola auto 
 
 nikola new_post
 

@@ -85,11 +85,10 @@ TRANSLATIONS_PATTERN = '{path}.{lang}.{ext}'
 
 NAVIGATION_LINKS = {
     DEFAULT_LANG: (
-        #("/home/", "Home"),
+        ("/home/", "Home"),
         ("/about/", "About"),
         ("/archive/", "Archive"),
         ("/categories/", "Tags"),
-        ("/rss.xml", "RSS feed"),
     ),
 }
 
@@ -101,7 +100,10 @@ NAVIGATION_ALT_LINKS = {
 }
 
 # Name of the theme to use.
-THEME = "bootblog4"
+# https://themes.getnikola.com/v8/
+THEME = "bootstrap3"
+
+
 
 # A theme color. In default themes, it might be displayed by some browsers as
 # the browser UI color (eg. Chrome on Android). Other themes might also use it
@@ -175,17 +177,17 @@ THEME_CONFIG = {
 #
 # Finally, note that destination can be translated, i.e. you can
 # specify a different translation folder per language. Example:
-#     PAGES = (
-#         ("pages/*.rst", {"en": "pages", "de": "seiten"}, "page.tmpl"),
-#         ("pages/*.md", {"en": "pages", "de": "seiten"}, "page.tmpl"),
-#     )
+PAGES = (
+        ("pages/*.rst", {"en": "pages", "de": "seiten"}, "page.tmpl"),
+        ("pages/*.md", {"en": "pages", "de": "seiten"}, "page.tmpl"),
+    )
 
 POSTS = (
-    ("posts/*.rst", "posts", "post.tmpl"),
-    ("posts/*.md", "posts", "post.tmpl"),
-    ("posts/*.ipynb", "posts", "post.tmpl"),    
-    ("posts/*.txt", "posts", "post.tmpl"),
-    ("posts/*.html", "posts", "post.tmpl"),
+    ("posts/*.rst", "home", "post.tmpl"),
+    ("posts/*.md", "home", "post.tmpl"),
+    ("posts/*.ipynb", "home", "post.tmpl"),    
+    ("posts/*.txt", "home", "post.tmpl"),
+    ("posts/*.html", "home", "post.tmpl"),
 )
 PAGES = (
     ("pages/*.rst", "pages", "page.tmpl"),
@@ -311,7 +313,7 @@ COMPILERS = {
 # Nikola supports logo display.  If you have one, you can put the URL here.
 # Final output is <img src="LOGO_URL" id="logo" alt="BLOG_TITLE">.
 # The URL may be relative to the site root.
-# LOGO_URL = ''
+# LOGO_URL = '/images/banner.jpg'
 
 # When linking posts to social media, Nikola provides Open Graph metadata
 # which is used to show a nice preview. This includes an image preview
@@ -521,7 +523,7 @@ HIDDEN_AUTHORS = ['Guest']
 # Final location for the main blog page and sibling paginated pages is
 # output / TRANSLATION[lang] / INDEX_PATH / index-*.html
 # (translatable)
-# INDEX_PATH = ""
+INDEX_PATH = "home"
 
 # Optional HTML that displayed on “main” blog index.html files.
 # May be used for a greeting. (translatable)
@@ -532,10 +534,10 @@ FRONT_INDEX_HEADER = {
 # Create per-month archives instead of per-year
 # CREATE_MONTHLY_ARCHIVE = False
 # Create one large archive instead of per-year
-# CREATE_SINGLE_ARCHIVE = True
+CREATE_SINGLE_ARCHIVE = True
 # Create year, month, and day archives each with a (long) list of posts
 # (overrides both CREATE_MONTHLY_ARCHIVE and CREATE_SINGLE_ARCHIVE)
-# CREATE_FULL_ARCHIVES = False
+CREATE_FULL_ARCHIVES = True
 # If monthly archives or full archives are created, adds also one archive per day
 # CREATE_DAILY_ARCHIVE = False
 # Create previous, up, next navigation links for archives
@@ -546,13 +548,13 @@ FRONT_INDEX_HEADER = {
 # output / TRANSLATION[lang] / ARCHIVE_PATH / YEAR / MONTH / index.html
 # output / TRANSLATION[lang] / ARCHIVE_PATH / YEAR / MONTH / DAY / index.html
 # (translatable)
-# ARCHIVE_PATH = ""
-# ARCHIVE_FILENAME = "archive.html"
+ARCHIVE_PATH = ""
+ARCHIVE_FILENAME = "archive.html"
 
 # If ARCHIVES_ARE_INDEXES is set to True, each archive page which contains a list
 # of posts will contain the posts themselves. If set to False, it will be just a
 # list of links.
-# ARCHIVES_ARE_INDEXES = False
+ARCHIVES_ARE_INDEXES = False
 
 # URLs to other posts/pages can take 3 forms:
 # rel_path: a relative URL to the current page/post (default)
@@ -812,14 +814,14 @@ IMAGE_FOLDERS = {'images': 'images'}
 # depending on the value of INDEXES_PAGES_MAIN.
 #
 # (translatable) If the following is empty, defaults to BLOG_TITLE:
-# INDEXES_TITLE = ""
+INDEXES_TITLE = "home"
 #
 # (translatable) If the following is empty, defaults to ' [old posts,] page %d' (see above):
 # INDEXES_PAGES = ""
 #
 # If the following is True, INDEXES_PAGES is also displayed on the main (the
 # newest) index page (index.html):
-# INDEXES_PAGES_MAIN = False
+INDEXES_PAGES_MAIN = True
 #
 # If the following is True, index-1.html has the oldest posts, index-2.html the
 # second-oldest posts, etc., and index.html has the newest posts. This ensures
@@ -853,7 +855,7 @@ IMAGE_FOLDERS = {'images': 'images'}
 # If the following is true, a page range navigation will be inserted to indices.
 # Please note that this will undo the effect of INDEXES_STATIC, as all index pages
 # must be recreated whenever the number of pages changes.
-# SHOW_INDEX_PAGE_NAVIGATION = False
+SHOW_INDEX_PAGE_NAVIGATION = False
 
 # If the following is True, a meta name="generator" tag is added to pages. The
 # generator tag is used to specify the software used to generate the page
@@ -1279,7 +1281,7 @@ MARKDOWN_EXTENSIONS = ['markdown.extensions.fenced_code',
 # Bundle JS and CSS into single files to make site loading faster in a HTTP/1.1
 # environment but is not recommended for HTTP/2.0 when caching is used.
 # Defaults to True.
-# USE_BUNDLES = True
+USE_BUNDLES = True
 
 # Plugins you don't want to use. Be careful :-)
 # DISABLED_PLUGINS = ["render_galleries"]
