@@ -2,7 +2,7 @@
 .. title: Pyver, Version Control For Dummies
 .. slug: pyver-version-control
 .. date: 2016-05-06 00:00:00 UTC-08:00
-.. tags: Computing
+.. tags: computing
 .. category: 
 .. link: 
 .. description: My simple version control system for storing binary files
