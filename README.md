@@ -34,6 +34,11 @@ nikola init --demo mysite
 nikola build
 
 # build and serve  
+
+nikola check --clean-files
+
+nikola build -a
+
 nikola auto 
 
 nikola new_post

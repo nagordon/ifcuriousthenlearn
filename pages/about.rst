@@ -1,6 +1,6 @@
 <!--
 .. title: About me
-.. slug: about-me
+.. slug: about
 .. date: 2015-02-25 00:00:00 UTC-08:00
 .. updated: 2015-5-31 00:00:00 UTC-08:00
 .. link: 

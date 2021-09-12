@@ -85,10 +85,10 @@ TRANSLATIONS_PATTERN = '{path}.{lang}.{ext}'
 
 NAVIGATION_LINKS = {
     DEFAULT_LANG: (
-        ("/home/", "Home"),
-        ("/about/", "About"),
-        ("/archive/", "Archive"),
-        ("/categories/", "Tags"),
+        ("/index.html", "Home"),
+        ("/archive.html", "Blog"),
+        ("/about/index.html", "About"),
+        ("/categories/index.html", "Tags"),
     ),
 }
 
@@ -177,26 +177,20 @@ THEME_CONFIG = {
 #
 # Finally, note that destination can be translated, i.e. you can
 # specify a different translation folder per language. Example:
-PAGES = (
-        ("pages/*.rst", {"en": "pages", "de": "seiten"}, "page.tmpl"),
-        ("pages/*.md", {"en": "pages", "de": "seiten"}, "page.tmpl"),
-    )
-
 POSTS = (
-    ("posts/*.rst", "home", "post.tmpl"),
-    ("posts/*.md", "home", "post.tmpl"),
-    ("posts/*.ipynb", "home", "post.tmpl"),    
-    ("posts/*.txt", "home", "post.tmpl"),
-    ("posts/*.html", "home", "post.tmpl"),
+    ("posts/*.rst", "blog", "post.tmpl"),
+    ("posts/*.md", "blog", "post.tmpl"),
+    ("posts/*.txt", "blog", "post.tmpl"),
+    ("posts/*.html", "blog", "post.tmpl"),
+    ("posts/*.ipynb", "blog", "post.tmpl"),
 )
 PAGES = (
-    ("pages/*.rst", "pages", "page.tmpl"),
-    ("pages/*.md", "pages", "page.tmpl"),
-    ("pages/*.txt", "pages", "page.tmpl"),
-    ("pages/*.html", "pages", "page.tmpl"),
-    ("pages/*.ipynb", "", "page.tmpl"), 
+    ("pages/*.rst", "", "page.tmpl"),
+    ("pages/*.md", "", "page.tmpl"),
+    ("pages/*.txt", "", "page.tmpl"),
+    ("pages/*.html", "", "page.tmpl"),
+    ("pages/*.ipynb", "", "page.tmpl"),
 )
-
 
 # Below this point, everything is optional
 
@@ -523,7 +517,7 @@ HIDDEN_AUTHORS = ['Guest']
 # Final location for the main blog page and sibling paginated pages is
 # output / TRANSLATION[lang] / INDEX_PATH / index-*.html
 # (translatable)
-INDEX_PATH = "home"
+INDEX_PATH = "blog"
 
 # Optional HTML that displayed on “main” blog index.html files.
 # May be used for a greeting. (translatable)
@@ -814,14 +808,14 @@ IMAGE_FOLDERS = {'images': 'images'}
 # depending on the value of INDEXES_PAGES_MAIN.
 #
 # (translatable) If the following is empty, defaults to BLOG_TITLE:
-INDEXES_TITLE = "home"
+# INDEXES_TITLE = "home"
 #
 # (translatable) If the following is empty, defaults to ' [old posts,] page %d' (see above):
 # INDEXES_PAGES = ""
 #
 # If the following is True, INDEXES_PAGES is also displayed on the main (the
 # newest) index page (index.html):
-INDEXES_PAGES_MAIN = True
+# INDEXES_PAGES_MAIN = True
 #
 # If the following is True, index-1.html has the oldest posts, index-2.html the
 # second-oldest posts, etc., and index.html has the newest posts. This ensures
@@ -855,7 +849,7 @@ INDEXES_PAGES_MAIN = True
 # If the following is true, a page range navigation will be inserted to indices.
 # Please note that this will undo the effect of INDEXES_STATIC, as all index pages
 # must be recreated whenever the number of pages changes.
-SHOW_INDEX_PAGE_NAVIGATION = False
+# SHOW_INDEX_PAGE_NAVIGATION = False
 
 # If the following is True, a meta name="generator" tag is added to pages. The
 # generator tag is used to specify the software used to generate the page
@@ -914,7 +908,7 @@ FEED_LINKS_APPEND_QUERY = False
 
 # A HTML fragment describing the license, for the sidebar.
 # (translatable)
-LICENSE = ""
+LICENSE = "copyright Neal Gordon"
 # I recommend using the Creative Commons' wizard:
 # https://creativecommons.org/choose/
 # LICENSE = """
