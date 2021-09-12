@@ -86,11 +86,14 @@
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="An-investigation-of-the-Brick-Stacking-Problem">An investigation of the Brick Stacking Problem<a class="anchor-link" href="brick-stacking/#An-investigation-of-the-Brick-Stacking-Problem">¶</a>
+</h3>
 <p>The original question I posed to myself is this. Can you stack bricks of equal dimensions and mass such that the top-most brick does not overlap the bottom-most brick? Or more generally, how far can bricks be stacked to generate the largest overhang?</p>
 <p>I pondered the problem and deliberately avoided finding solutions. I struggled through a few hand-calculations and hacked out a bit of python code to visualize my solution.</p>
 <p>The math of the problem is seemingly simple, just basic statics, but it becomes tricky as the problem is worked. We eventually find that the bricks stack according to a harmonic series!</p>
-<p>$ overhang = \sum_{i=1}^{n} \frac{1}{2i} $</p>
-<p>OK, lets get started. First run the code to create the <code>brick_balance</code> function that accepts total bricks, length of brick and thickness of brick and let's explore the solutions.</p>
+$$ 
+    overhang = \sum_{i=1}^{n} \frac{1}{2i} 
+$$<p>OK, lets get started. First run the code to create the <code>brick_balance</code> function that accepts total bricks, length of brick and thickness of brick and let's explore the solutions.</p>
 
 </div>
 </div>
@@ -626,6 +629,709 @@ If you need any help with the functions, use the help function to show the input
 </div>
 </div>
     </div>
+    </article><article class="h-entry post-text" itemscope="itemscope" itemtype="http://schema.org/Article"><header><h1 class="p-name entry-title"><a href="logical-indexing-with-python-excel/" class="u-url">Logical Indexing with Python and Excel</a></h1>
+        <div class="metadata">
+            <p class="byline author vcard"><span class="byline-name fn" itemprop="author">
+                neal
+            </span></p>
+            <p class="dateline">
+            <a href="logical-indexing-with-python-excel/" rel="bookmark">
+            <time class="published dt-published" datetime="2016-08-20T00:00:00-07:00" itemprop="datePublished" title="2016-08-20 00:00">2016-08-20 00:00</time></a>
+            </p>
+        </div>
+    </header><div class="e-content entry-content">
+    <div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>A powerful data sorting method called logical indexing can be a great way to clean up huge datasets. Programming languages Octave/MATLAB, python, and R to name a few all are capable of logical indexing.</p>
+<p>All the rules of booleans apply to logical indexing, such as stringing conditionals <code>and, or, nand, nor</code>, etc</p>
+<p>To get an idea of what I'm talking about, let's do a quick example. First let's generate an array of random numbers, and then sort for the numbers less than 0.5 and greater than 0.1</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [1]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># import python function random from the numpy library</span>
+<span class="kn">from</span> <span class="nn">numpy</span> <span class="kn">import</span> <span class="n">random</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [2]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># generate 10 random numbers</span>
+<span class="n">randnums</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">randnums</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[2]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>array([ 0.08547725,  0.27999385,  0.74051157,  0.77153143,  0.50921916,
+        0.02230907,  0.63186024,  0.89142272,  0.0963861 ,  0.66311151])</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [3]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># generate the boolnea logical index of the numbers that meet our criteria</span>
+<span class="n">ind</span> <span class="o">=</span> <span class="p">(</span><span class="n">randnums</span> <span class="o">&lt;</span> <span class="mf">0.5</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">randnums</span> <span class="o">&gt;</span> <span class="mf">0.1</span><span class="p">)</span>
+<span class="n">ind</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[3]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>array([False,  True, False, False, False, False, False, False, False, False], dtype=bool)</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [4]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># return an array of numbers with our new criteria</span>
+<span class="n">newnumbers</span> <span class="o">=</span> <span class="n">randnums</span><span class="p">[</span><span class="n">ind</span><span class="p">]</span>
+<span class="n">newnumbers</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[4]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>array([ 0.27999385])</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Now, this seems somewhat simple to do with a modern programming language such as python, but to this this in a spreadsheet where many of my day-to-day tasks are done is a little trickier. Since Excel doesn't have an explicit logical index function, similar functionality can be worked out, at some cost of clarity that a code solution has.</p>
+<p>Since everything in Excel (lets forget about VBA scripting for this tutorial) is represented in the spreadsheet and functions or values, creating arrays must be done as a new column. With python, we can either create a 2D array or have multiple variables. Creating new columns in Excel is fine, but sometimes can be difficult to understand the sorting logic. For simple analysis and data storage, spreadsheets are great, but as analysis methods become more complex (digital signal processing, mathematics, machine learning, etc) and datasets become large (gigabytes), spreadsheets just don't cut it.</p>
+<p>This tutorial is a demo of logical indexing in python using the pandas module and comparing to the simpliest solution I could figure out in excel, which isn't really logical index, but more of a multi-criteria function search. This is similar to vlookup, which is a handy Excel function, but is limited to a single return value as opposed to a logical index array. The approach here in Excel allows for multiple criteria to be met, but alas, only one return value. This still offers substantially more functionality than vlookup.</p>
+<p>To get python, I'd recommend using the <a href="https://www.continuum.io/downloads">Anaconda Python 3.5 distribution</a>, although many others will work fine. Here is the silly example data that I will be manipulating.</p>
+<p>Here is the spreadsheet that will be my example.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<iframe width="700" height="347" frameborder="0" scrolling="no" src="https://onedrive.live.com/embed?cid=2DAE54F5236205EE&amp;resid=2DAE54F5236205EE%2125836&amp;authkey=AJQnOLPVsE7IS2A&amp;em=2&amp;AllowTyping=True&amp;Item='Sheet1'!B2%3AL16&amp;wdHideGridlines=True&amp;wdDownloadButton=True"></iframe>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Since python is a general programming language, we need to import the libraries we need. <a href="http://xlwings.org/">xlwings  </a> is an awesome library!</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [5]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">xlwings</span> <span class="k">as</span> <span class="nn">xw</span>
+<span class="kn">from</span> <span class="nn">pandas</span> <span class="kn">import</span> <span class="n">DataFrame</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Next, we will use the xlwings library to load the Excel file into a dataframe where we will employ our logical indexing methods of data sorting</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [6]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># load excel file and turn into a pandas dataframe</span>
+<span class="n">xw</span><span class="o">.</span><span class="n">Book</span><span class="p">(</span><span class="sa">r</span><span class="s1">'excel_logical_indexing.xlsx'</span><span class="p">)</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">xw</span><span class="o">.</span><span class="n">sheets</span><span class="p">(</span><span class="s1">'Sheet1'</span><span class="p">)</span><span class="o">.</span><span class="n">range</span><span class="p">(</span><span class="s2">"C6:E15"</span><span class="p">)</span><span class="o">.</span><span class="n">value</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">DataFrame</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="mi">1</span><span class="p">:],</span><span class="n">columns</span><span class="o">=</span><span class="n">data</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<span class="n">df</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[6]:</div>
+
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<table border="1" class="dataframe">
+<thead><tr style="text-align: right;">
+<th></th>
+      <th>Color</th>
+      <th>Animal</th>
+      <th>Awesomeness</th>
+    </tr></thead>
+<tbody>
+<tr>
+<th>0</th>
+      <td>green</td>
+      <td>dog</td>
+      <td>75.0</td>
+    </tr>
+<tr>
+<th>1</th>
+      <td>blue</td>
+      <td>dog</td>
+      <td>95.0</td>
+    </tr>
+<tr>
+<th>2</th>
+      <td>black</td>
+      <td>dog</td>
+      <td>62.0</td>
+    </tr>
+<tr>
+<th>3</th>
+      <td>green</td>
+      <td>dog</td>
+      <td>23.0</td>
+    </tr>
+<tr>
+<th>4</th>
+      <td>blue</td>
+      <td>cat</td>
+      <td>90.0</td>
+    </tr>
+<tr>
+<th>5</th>
+      <td>black</td>
+      <td>cat</td>
+      <td>39.0</td>
+    </tr>
+<tr>
+<th>6</th>
+      <td>green</td>
+      <td>cat</td>
+      <td>22.0</td>
+    </tr>
+<tr>
+<th>7</th>
+      <td>blue</td>
+      <td>cat</td>
+      <td>59.0</td>
+    </tr>
+<tr>
+<th>8</th>
+      <td>black</td>
+      <td>cat</td>
+      <td>12.0</td>
+    </tr>
+</tbody>
+</table>
+</div>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>As a warm up, lets use a logical index to find all green items, and show only those values whose color is green</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [7]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">i</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">'Color'</span><span class="p">]</span><span class="o">==</span><span class="s1">'green'</span>
+<span class="n">i</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[7]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>0     True
+1    False
+2    False
+3     True
+4    False
+5    False
+6     True
+7    False
+8    False
+Name: Color, dtype: bool</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [8]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># here are the filtered results from the dataframe</span>
+<span class="n">df</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[8]:</div>
+
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<table border="1" class="dataframe">
+<thead><tr style="text-align: right;">
+<th></th>
+      <th>Color</th>
+      <th>Animal</th>
+      <th>Awesomeness</th>
+    </tr></thead>
+<tbody>
+<tr>
+<th>0</th>
+      <td>green</td>
+      <td>dog</td>
+      <td>75.0</td>
+    </tr>
+<tr>
+<th>3</th>
+      <td>green</td>
+      <td>dog</td>
+      <td>23.0</td>
+    </tr>
+<tr>
+<th>6</th>
+      <td>green</td>
+      <td>cat</td>
+      <td>22.0</td>
+    </tr>
+</tbody>
+</table>
+</div>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>The advantage here is that using logical indexing filtering methods can easily be automated. For our next task, we will apply the logical values directly into the dataframe instead of making a index variable. This will index of all awesomeness levels greater than 40</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [9]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="o">.</span><span class="n">Awesomeness</span> <span class="o">&gt;</span> <span class="mi">40</span><span class="p">]</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[9]:</div>
+
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<table border="1" class="dataframe">
+<thead><tr style="text-align: right;">
+<th></th>
+      <th>Color</th>
+      <th>Animal</th>
+      <th>Awesomeness</th>
+    </tr></thead>
+<tbody>
+<tr>
+<th>0</th>
+      <td>green</td>
+      <td>dog</td>
+      <td>75.0</td>
+    </tr>
+<tr>
+<th>1</th>
+      <td>blue</td>
+      <td>dog</td>
+      <td>95.0</td>
+    </tr>
+<tr>
+<th>2</th>
+      <td>black</td>
+      <td>dog</td>
+      <td>62.0</td>
+    </tr>
+<tr>
+<th>4</th>
+      <td>blue</td>
+      <td>cat</td>
+      <td>90.0</td>
+    </tr>
+<tr>
+<th>7</th>
+      <td>blue</td>
+      <td>cat</td>
+      <td>59.0</td>
+    </tr>
+</tbody>
+</table>
+</div>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Other handy features with logical indexing is we can sort by what the cells start with, in this case any color that starts with 'b'</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [10]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="o">.</span><span class="n">Color</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s1">'b'</span><span class="p">)]</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[10]:</div>
+
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<table border="1" class="dataframe">
+<thead><tr style="text-align: right;">
+<th></th>
+      <th>Color</th>
+      <th>Animal</th>
+      <th>Awesomeness</th>
+    </tr></thead>
+<tbody>
+<tr>
+<th>1</th>
+      <td>blue</td>
+      <td>dog</td>
+      <td>95.0</td>
+    </tr>
+<tr>
+<th>2</th>
+      <td>black</td>
+      <td>dog</td>
+      <td>62.0</td>
+    </tr>
+<tr>
+<th>4</th>
+      <td>blue</td>
+      <td>cat</td>
+      <td>90.0</td>
+    </tr>
+<tr>
+<th>5</th>
+      <td>black</td>
+      <td>cat</td>
+      <td>39.0</td>
+    </tr>
+<tr>
+<th>7</th>
+      <td>blue</td>
+      <td>cat</td>
+      <td>59.0</td>
+    </tr>
+<tr>
+<th>8</th>
+      <td>black</td>
+      <td>cat</td>
+      <td>12.0</td>
+    </tr>
+</tbody>
+</table>
+</div>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>For our final task as shown in a similar fashion in excel, we need to find all colors with green and animals that are dogs. This is the syntax, which is not completley obvious, but once you have it, it is your's to use. Once we have our new dataset, we can choose the first row or index and return the same value that our Excel spreadsheet did</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [11]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df1</span> <span class="o">=</span> <span class="n">df</span><span class="p">[(</span><span class="n">df</span><span class="o">.</span><span class="n">Color</span> <span class="o">==</span> <span class="s1">'green'</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">Animal</span> <span class="o">==</span> <span class="s1">'dog'</span><span class="p">)</span> <span class="p">]</span>
+<span class="n">df1</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[11]:</div>
+
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<table border="1" class="dataframe">
+<thead><tr style="text-align: right;">
+<th></th>
+      <th>Color</th>
+      <th>Animal</th>
+      <th>Awesomeness</th>
+    </tr></thead>
+<tbody>
+<tr>
+<th>0</th>
+      <td>green</td>
+      <td>dog</td>
+      <td>75.0</td>
+    </tr>
+<tr>
+<th>3</th>
+      <td>green</td>
+      <td>dog</td>
+      <td>23.0</td>
+    </tr>
+</tbody>
+</table>
+</div>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [12]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># and use the first index 0 to return the first value</span>
+<span class="n">df1</span><span class="o">.</span><span class="n">Awesomeness</span><span class="o">.</span><span class="n">ix</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[12]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>75.0</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>This was a simple intro into python's logical indexing functionality which cannot be easily replicated in Excel, but this shows that the <code>index</code> and <code>match</code> function in Excel can get you some of the way there.</p>
+<p>Excel is great for some things, python is great for others. It is handy to know what tools are out there and when to use which one. Some other great resources for using python and Excel are the book <a href="https://automatetheboringstuff.com/chapter12/">automatetheboringstuff</a> and a greate blog <a href="http://pbpython.com/">Practical Business Python</a></p>
+<p>Stay curious!</p>
+
+</div>
+</div>
+</div>
+</div>
+    </div>
     </article><article class="h-entry post-text" itemscope="itemscope" itemtype="http://schema.org/Article"><header><h1 class="p-name entry-title"><a href="sage-embed/" class="u-url">Sage Math Tool</a></h1>
         <div class="metadata">
             <p class="byline author vcard"><span class="byline-name fn" itemprop="author">
@@ -741,9 +1447,9 @@ I cannot stress enough how important I have found it to eliminate my ego as a sc
 <h3>R Base install and RStudio</h3>
 <p>To get started, I am using Windows 7. To install R, check out <a href="https://cran.r-project.org/bin/windows/base/">R-Base Package</a>.</p>
 <p>R does not come with a GUI. It is just a command line for executing R-code that is an ascii file with the extension <strong>*.r</strong></p>
-<p><img alt="R_GUI" src="../images/Industrial-Design-of-Experiments-with-R/R_GUI.png" title="Default R Interface"></p>
+<p><img alt="R_GUI" src="../files/Industrial-Design-of-Experiments-with-R/images/R_GUI.png" title="Default R Interface"></p>
 <p>Fortunately some awesome GUI's already exist. <a href="https://rkward.kde.org/">rkward</a> is cool, but I prefer <a href="https://www.rstudio.com/">Rstudio</a>. RStudio has a built in script editor, a console for running commands, a plot window, a file explorer, and a help window. What more could you ask for? Take some time and familiarize yourself with RStudio.</p>
-<p><img alt="R_Studio" src="../images/Industrial-Design-of-Experiments-with-R/R_Studio.png" title="Awesome RGUI RStudio"></p>
+<p><img alt="R_Studio" src="../files/Industrial-Design-of-Experiments-with-R/images/R_Studio.png" title="Awesome RGUI RStudio"></p>
 <p>For more information on the R DOE package we will be using, check out <a href="http://prof.beuth-hochschule.de/groemping/software/design-of-experiments/project-industrial-doe-in-r/">Prof. Dr. Ulrike Grömpings page</a>. The walk-through here is derived from <a href="http://www1.beuth-hochschule.de/FB_II/reports/Report-2011-004.pdf">this document</a>.</p>
 <p>Open up RStudio and familiarze yourself with the tools. I am really impressed with all the extra features with reporting and html/markdown exporting, and am excited to check those features out in the future.
 I found three hotkeys that I use all the time are:<br>
@@ -845,11 +1551,11 @@ For DOE experts, sorry about my simple explaination. I am an engineer, not a sta
 
 
 <p>This should launch RCommander, which will run alongside RStudio and use the console for output.</p>
-<p><img alt="Rcmdr" src="../images/Industrial-Design-of-Experiments-with-R/Rcmdr.png" title="Rcommander DOE interface"></p>
+<p><img alt="Rcmdr" src="../files/Industrial-Design-of-Experiments-with-R/images/Rcmdr.png" title="Rcommander DOE interface"></p>
 <p>From the RCommander menu. we will be using the <strong>Design</strong> menu for the DOE setup, experiment, and analysis. Lets setup our experiment.</p>
-<p><img alt="doe_create" src="../images/Industrial-Design-of-Experiments-with-R/doe_create.png" title="DOE Setup"></p>
+<p><img alt="doe_create" src="../files/Industrial-Design-of-Experiments-with-R/images/doe_create.png" title="DOE Setup"></p>
 <p>From the interface here, filling the information manually or use the provided csv file.</p>
-<p><img alt="doe_setup" src="../images/Industrial-Design-of-Experiments-with-R/doe_setup.png" title="DOE Setup"></p>
+<p><img alt="doe_setup" src="../files/Industrial-Design-of-Experiments-with-R/images/doe_setup.png" title="DOE Setup"></p>
 <p>This will generate a randomized screening experiemnt experiement with 12 runs. There are 3 dummy factors, e1,e2,e3 which are necessary for screening experiments. They can be ignored or see the manual for more details.</p>
 <table>
 <thead><tr>
@@ -1052,14 +1758,14 @@ For DOE experts, sorry about my simple explaination. I am an engineer, not a sta
 </table>
 <h3>DOE Experiment</h3>
 <p>To run your experiment, go through each run, set-up the system as prescribed by the factors, and record the response. Once you run the experiment and enter your results in the csv, re-import the csv to analyze.
-<img alt="doe_reimport" src="../images/Industrial-Design-of-Experiments-with-R/import_results.png" title="DOE Reimport"></p>
+<img alt="doe_reimport" src="../files/Industrial-Design-of-Experiments-with-R/images/import_results.png" title="DOE Reimport"></p>
 <h3>DOE Results</h3>
 <p>The visualizations that are generated using R for DOE are great! The results should tell us which factors should be studied with higher fidelity, and which factors are not necessary to continue studying.</p>
 <p>Without going into great detail, here are some examples.</p>
 <h4>Half-Normal Plot</h4>
 <p><strong>Design -&gt; Analyze design -&gt; Effects (Half) Normal Plots</strong>  </p>
 <p>Ensure the dummy factors e1,e2,e3 are included
-<img alt="half-normal-plot" src="../images/Industrial-Design-of-Experiments-with-R/half-normal-plot.png" title="half-normal-plot">
+<img alt="half-normal-plot" src="../files/Industrial-Design-of-Experiments-with-R/images/half-normal-plot.png" title="half-normal-plot">
 Observe that Pressure, Airvolume, Angle, WadType have the largest absolute effect, respectivley</p>
 <h4>Linear-Model</h4>
 <p><strong>Design -&gt; Analyze design -&gt; Default Linear Model</strong>  </p>
@@ -1087,12 +1793,28 @@ Observe that Pressure, Airvolume, Angle, WadType have the largest absolute effec
 <p>Again the Pressure, Airvolume, Angle, WadType have the largest absolute effect, respectivley. Those factors are also less than our p-value, which we defined as 0.1, which tells us that the results are significant. Since this is a screening experiment, interactions are not computed.</p>
 <h3>Main-Effects Plot</h3>
 <p><strong>Design -&gt; Analyze design -&gt; Main Effects and Interactions Plots</strong>
-<img alt="main-effects-plot" src="../images/Industrial-Design-of-Experiments-with-R/main-effects-plot.png" title="main-effects-plot"></p>
+<img alt="main-effects-plot" src="../files/Industrial-Design-of-Experiments-with-R/images/main-effects-plot.png" title="main-effects-plot"></p>
 <p>The main effects plot is a great visual to qualitativley grasp the results of the experiment. We can tell the how much the factor contributes to the response by the slope and whether it is positive or negative by the slope. Flat lines indicate that the factor with the selected levels is insignificant in the model we have created.</p>
 <h2>Conclusion</h2>
 <p>A simple example was shown how to use an open-source solution for creating and analzying statistical experiments using R. This is the only open-source tool I have found, so if anyone knows of another, please let me know. I have found R to be a great lanugage to know. The syntax is fine, the packages are numerous, and the community is good.
 Running experiments with DOE methods can be a great tool to have in nearly any industry. My background in Industrial and Systems Engineering exposed me to DOE for traditional manufacturing studies, but the concepts can be used in nearly any situation where understand of cause-and-effect is desired.</p>
 <p>Stay Curious!</p>
+</div>
+    </div>
+    </article><article class="h-entry post-text" itemscope="itemscope" itemtype="http://schema.org/Article"><header><h1 class="p-name entry-title"><a href="python-trinket/" class="u-url">Python Trinket, another interactive execution tool</a></h1>
+        <div class="metadata">
+            <p class="byline author vcard"><span class="byline-name fn" itemprop="author">
+                neal
+            </span></p>
+            <p class="dateline">
+            <a href="python-trinket/" rel="bookmark">
+            <time class="published dt-published" datetime="2016-05-06T00:00:00-08:00" itemprop="datePublished" title="2016-05-06 00:00">2016-05-06 00:00</time></a>
+            </p>
+        </div>
+    </header><div class="e-content entry-content">
+    <div>
+<p>another neat tool for debugging python code.</p>
+<iframe src="https://trinket.io/embed/python/90b0702a6a" width="100%" height="500" frameborder="0" marginwidth="0" marginheight="0" allowfullscreen></iframe>
 </div>
     </div>
     </article><article class="h-entry post-text" itemscope="itemscope" itemtype="http://schema.org/Article"><header><h1 class="p-name entry-title"><a href="python-tutor/" class="u-url">Python Tutor, and interactive execution tool</a></h1>
@@ -1255,104 +1977,6 @@ To add this path variable, type</p>
 
 
 <p>I think chocolatey is a really neat, useful package that has saved me a lot of time, and I hope it helps alleviate some of your windows woes.</p>
-</div>
-    </div>
-    </article><article class="h-entry post-text" itemscope="itemscope" itemtype="http://schema.org/Article"><header><h1 class="p-name entry-title"><a href="USMC-Pilot-Ground-School/" class="u-url">US Marine Corps Private Pilot Ground School</a></h1>
-        <div class="metadata">
-            <p class="byline author vcard"><span class="byline-name fn" itemprop="author">
-                neal
-            </span></p>
-            <p class="dateline">
-            <a href="USMC-Pilot-Ground-School/" rel="bookmark">
-            <time class="published dt-published" datetime="2016-04-22T00:00:00-08:00" itemprop="datePublished" title="2016-04-22 00:00">2016-04-22 00:00</time></a>
-            </p>
-        </div>
-    </header><div class="e-content entry-content">
-    <div>
-<h5>Airplane Instruments and Accessories-Part 1</h5>
-<h5>Airplane Instruments and Accessories-Part 2</h5>
-<h5>Decimals</h5>
-<h5>Elementary Aerodynamics</h5>
-<h5>Elements of Arithmetic</h5>
-<h5>Formulas</h5>
-<h5>Fractions</h5>
-<h5>History of Aviation</h5>
-<h5>Mechanical Principles_Part 1</h5>
-<h5>Mechanical Principles_Part 2</h5>
-<h5>Mensuration</h5>
-<h5>Meteorology_Part 1</h5>
-<h5>Meteorology_Part 2</h5>
-<h5>Powers and Roots</h5>
-<h5>Practical Flying_Part 1</h5>
-<h5>Practical Flying_Part 2</h5>
-<h5>Ratio and Proportion</h5>
-<h5>Structural Details of Airplanes_Part 1</h5>
-<h5>Structural Details of Airplanes_Part 2</h5>
-<h5>The Airplane and Its Parts_Part 1</h5>
-<h5>The Airplane and Its Parts_Part 2</h5>
-<h5>Theory of Flight</h5>
-<h5>Weights and Measures</h5>
-<iframe src="https://onedrive.live.com/embed?cid=2DAE54F5236205EE&amp;resid=2DAE54F5236205EE%2124246&amp;authkey=AHI4RioYWU3Y3ps&amp;em=2" width="300" height="450" frameborder="0" scrolling="yes"></iframe>
-
-<iframe src="https://onedrive.live.com/embed?cid=2DAE54F5236205EE&amp;resid=2DAE54F5236205EE%2124247&amp;authkey=ALcfjfgcvs67qQQ&amp;em=2" width="300" height="450" frameborder="0" scrolling="yes"></iframe>
-
-<iframe src="https://onedrive.live.com/embed?cid=2DAE54F5236205EE&amp;resid=2DAE54F5236205EE%2124245&amp;authkey=AHUR_uGI23fVDmA&amp;em=2" width="300" height="450" frameborder="0" scrolling="yes"></iframe>
-
-<iframe src="https://onedrive.live.com/embed?cid=2DAE54F5236205EE&amp;resid=2DAE54F5236205EE%2124273&amp;authkey=AEt_JlmbRq9cLAg&amp;em=2" width="300" height="450" frameborder="0" scrolling="yes"></iframe>
-
-<iframe src="https://onedrive.live.com/embed?cid=2DAE54F5236205EE&amp;resid=2DAE54F5236205EE%2124269&amp;authkey=ACuMBpcmQqxCInc&amp;em=2" width="300" height="450" frameborder="0" scrolling="yes"></iframe>
-
-<iframe src="https://onedrive.live.com/embed?cid=2DAE54F5236205EE&amp;resid=2DAE54F5236205EE%2124263&amp;authkey=AKA9iSDZZH_ID2c&amp;em=2" width="300" height="450" frameborder="0" scrolling="yes"></iframe>
-
-<iframe src="https://onedrive.live.com/embed?cid=2DAE54F5236205EE&amp;resid=2DAE54F5236205EE%2124261&amp;authkey=ALy8PveLLzCBvRM&amp;em=2" width="300" height="450" frameborder="0" scrolling="yes"></iframe>
-
-<iframe src="https://onedrive.live.com/embed?cid=2DAE54F5236205EE&amp;resid=2DAE54F5236205EE%2124266&amp;authkey=APzotkC29sMc3J8&amp;em=2" width="300" height="450" frameborder="0" scrolling="yes"></iframe>
-
-<iframe src="https://onedrive.live.com/embed?cid=2DAE54F5236205EE&amp;resid=2DAE54F5236205EE%2124265&amp;authkey=AK36q21xncfs6PM&amp;em=2" width="300" height="450" frameborder="0" scrolling="yes"></iframe>
-
-<iframe src="https://onedrive.live.com/embed?cid=2DAE54F5236205EE&amp;resid=2DAE54F5236205EE%2124248&amp;authkey=ABrk8n9F9vkNbdQ&amp;em=2" width="300" height="450" frameborder="0" scrolling="yes"></iframe>
-
-<iframe src="https://onedrive.live.com/embed?cid=2DAE54F5236205EE&amp;resid=2DAE54F5236205EE%2124249&amp;authkey=AFxPe-Bm1iDVlWI&amp;em=2" width="300" height="450" frameborder="0" scrolling="yes"></iframe>
-
-<iframe src="https://onedrive.live.com/embed?cid=2DAE54F5236205EE&amp;resid=2DAE54F5236205EE%2124252&amp;authkey=ADTj7bo5CT0ylUE&amp;em=2" width="300" height="450" frameborder="0" scrolling="yes"></iframe>
-
-<iframe src="https://onedrive.live.com/embed?cid=2DAE54F5236205EE&amp;resid=2DAE54F5236205EE%2124250&amp;authkey=APsefBW6PpxItyE&amp;em=2" width="300" height="450" frameborder="0" scrolling="yes"></iframe>
-
-<iframe src="https://onedrive.live.com/embed?cid=2DAE54F5236205EE&amp;resid=2DAE54F5236205EE%2124251&amp;authkey=AKDMlpnocaBlESI&amp;em=2" width="300" height="450" frameborder="0" scrolling="yes"></iframe>
-
-<iframe src="https://onedrive.live.com/embed?cid=2DAE54F5236205EE&amp;resid=2DAE54F5236205EE%2124253&amp;authkey=AAvySDkz-3ajP58&amp;em=2" width="300" height="450" frameborder="0" scrolling="yes"></iframe>
-
-<iframe src="https://onedrive.live.com/embed?cid=2DAE54F5236205EE&amp;resid=2DAE54F5236205EE%2124254&amp;authkey=AKvEdeopCbqbgzM&amp;em=2" width="300" height="450" frameborder="0" scrolling="yes"></iframe>
-
-<iframe src="https://onedrive.live.com/embed?cid=2DAE54F5236205EE&amp;resid=2DAE54F5236205EE%2124256&amp;authkey=AIyq8fs6cU56-aE&amp;em=2" width="300" height="450" frameborder="0" scrolling="yes"></iframe>
-
-<iframe src="https://onedrive.live.com/embed?cid=2DAE54F5236205EE&amp;resid=2DAE54F5236205EE%2124255&amp;authkey=AEqQ_tWvbzBTfcc&amp;em=2" width="300" height="450" frameborder="0" scrolling="yes"></iframe>
-
-<iframe src="https://onedrive.live.com/embed?cid=2DAE54F5236205EE&amp;resid=2DAE54F5236205EE%2124257&amp;authkey=AExMwGGiReNWXVs&amp;em=2" width="300" height="450" frameborder="0" scrolling="yes"></iframe>
-
-<iframe src="https://onedrive.live.com/embed?cid=2DAE54F5236205EE&amp;resid=2DAE54F5236205EE%2124259&amp;authkey=ACKXmoZKnJ98EUs&amp;em=2" width="300" height="450" frameborder="0" scrolling="yes"></iframe>
-
-<iframe src="https://onedrive.live.com/embed?cid=2DAE54F5236205EE&amp;resid=2DAE54F5236205EE%2124258&amp;authkey=AF7EjLETjciFlC8&amp;em=2" width="300" height="450" frameborder="0" scrolling="yes"></iframe>
-
-<iframe src="https://onedrive.live.com/embed?cid=2DAE54F5236205EE&amp;resid=2DAE54F5236205EE%2124260&amp;authkey=APDI5r4YDPpU2jw&amp;em=2" width="300" height="450" frameborder="0" scrolling="yes"></iframe>
-</div>
-    </div>
-    </article><article class="h-entry post-text" itemscope="itemscope" itemtype="http://schema.org/Article"><header><h1 class="p-name entry-title"><a href="weight-balance-cherokee-140/" class="u-url">Weight and Balance Calculations for a Piper Cherokee 140</a></h1>
-        <div class="metadata">
-            <p class="byline author vcard"><span class="byline-name fn" itemprop="author">
-                neal
-            </span></p>
-            <p class="dateline">
-            <a href="weight-balance-cherokee-140/" rel="bookmark">
-            <time class="published dt-published" datetime="2016-04-17T00:00:00-08:00" itemprop="datePublished" title="2016-04-17 00:00">2016-04-17 00:00</time></a>
-            </p>
-        </div>
-    </header><div class="e-content entry-content">
-    <div>
-<p>When flying a general aviation aircraft, such as a 4 seat Piper Cherokee 140, it is important to calculate the total weight and the center of gravity of the airplane before takeoff. The weight can vary depending on how much fuel is on board, luggage, and passengers. The center of gravity (CG), or balance, of the aircraft is important because the aircraft will handle very differently if the CG is outside of the designed envelope. This tool automates those calculations to ensure the aircraft is safe to fly.</p>
-<p>WARNING-THIS TOOL SHOULD ONLY BE USED TO CHECK YOUR OWN HAND CALCULATIONS. THE AUTHOR OF THIS ARTICLE IS NOT RESPONSIBLE FOR ANY ERRORS THAT EXIST IN THIS TOOL OR ERRORS IN ITS OPERATION. USE AT YOUR OWN RISK!</p>
-<p>To use, simply enter the weights you wish to compute in the green cells and confirm you are still within the designed operating envelope of the aircraft. Be especially careful of aft CG and being overweight.
-<iframe width="648" height="720" frameborder="0" scrolling="no" src="https://onedrive.live.com/embed?cid=2DAE54F5236205EE&amp;resid=2DAE54F5236205EE%2124281&amp;authkey=ABSSvc0HDQUivF4&amp;em=2&amp;wdAllowInteractivity=False&amp;AllowTyping=True&amp;Item='PA28_W%26B'!A1%3AE32&amp;wdHideGridlines=True&amp;wdDownloadButton=True"></iframe></p>
 </div>
     </div>
     </article>

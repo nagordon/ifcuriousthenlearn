@@ -14,7 +14,7 @@
 <link rel="canonical" href="https://nagordon.github.io/ifcuriousthenlearn/blog/matlab-to-python-conversion/">
 <!--[if lt IE 9]><script src="../../assets/js/html5.js"></script><![endif]--><meta name="author" content="neal">
 <link rel="prev" href="../tf2-server-setup/" title="Team Fortress 2 Server Install for Dummies" type="text/html">
-<link rel="next" href="../doconce-intro/" title="Learn Latex, markdown and html with doconce" type="text/html">
+<link rel="next" href="../mechanical-vibrations-with-python/" title="Mechanical Vibrations with Python" type="text/html">
 <meta property="og:site_name" content="ifcuriousthenlearn">
 <meta property="og:title" content="MATLAB to python conversion">
 <meta property="og:url" content="https://nagordon.github.io/ifcuriousthenlearn/blog/matlab-to-python-conversion/">
@@ -135,10 +135,8 @@
 <div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="Option-2---Reuse-old-code-with-Octave">Option 2 - Reuse old code with Octave<a class="anchor-link" href="#Option-2---Reuse-old-code-with-Octave">¶</a>
 </h3>
-<h3 id="oct2py-,-source-code">
-<a href="https://pypi.python.org/pypi/oct2py">oct2py</a> , <a href="http://blink1073.github.io/oct2py/">source code</a><a class="anchor-link" href="#oct2py-,-source-code">¶</a>
-</h3>
-<p>This is a neat module that is based on <a href="http://www.gnu.org/software/octave/">octave</a>, which is an open-source matlab clone. It allows a simple translation of matlab/octave syntax to python directly.</p>
+<p><a href="https://pypi.python.org/pypi/oct2py">oct2py</a> , <a href="http://blink1073.github.io/oct2py/">source code</a>
+This is a neat module that is based on <a href="http://www.gnu.org/software/octave/">octave</a>, which is an open-source matlab clone. It allows a simple translation of matlab/octave syntax to python directly.</p>
 
 </div>
 </div>
@@ -152,6 +150,8 @@
 <span class="kn">from</span> <span class="nn">oct2py</span> <span class="kn">import</span> <span class="n">octave</span>
 <span class="kn">from</span> <span class="nn">oct2py</span> <span class="kn">import</span> <span class="n">Oct2Py</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">Image</span>
+<span class="kn">from</span> <span class="nn">IPython.core.display</span> <span class="kn">import</span> <span class="n">HTML</span> 
 </pre></div>
 
     </div>
@@ -496,7 +496,7 @@
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><img src="../../notebooks/matlab-to-python-conversion/octave.png"></p>
+<p><img src="../../files/matlab-to-python-conversion/images/octave.png"></p>
 
 </div>
 </div>
@@ -507,7 +507,7 @@
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>We can see that is uses wxpython, which is another gui package. I am not 100% sure when that package was installed, but I am guess it was installed along with Octave</p>
-<p><img src="../../notebooks/matlab-to-python-conversion/plotting_window.png"></p>
+<p><img src="../../files/matlab-to-python-conversion/images/plotting_window.png"></p>
 
 </div>
 </div>
@@ -1303,7 +1303,7 @@ for i in mslice[1:R]:
                 <a href="../tf2-server-setup/" rel="prev" title="Team Fortress 2 Server Install for Dummies">Previous post</a>
             </li>
             <li class="next">
-                <a href="../doconce-intro/" rel="next" title="Learn Latex, markdown and html with doconce">Next post</a>
+                <a href="../mechanical-vibrations-with-python/" rel="next" title="Mechanical Vibrations with Python">Next post</a>
             </li>
         </ul></nav></aside><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML" integrity="sha384-3lJUsx1TJHt7BA4udB5KPnDrlkO8T6J6v/op7ui0BbCjvZ9WqV4Xm6DTP6kQ/iBH" crossorigin="anonymous"></script><script type="text/x-mathjax-config">
         MathJax.Hub.Config({tex2jax: {inlineMath: [['$latex ','$'], ['\\(','\\)']]}});

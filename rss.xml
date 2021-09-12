@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<?xml-stylesheet type="text/xsl" href="assets/xml/rss.xsl" media="all"?><rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>ifcuriousthenlearn</title><link>https://nagordon.github.io/ifcuriousthenlearn/</link><description>a blog of engineering and technology</description><atom:link href="https://nagordon.github.io/ifcuriousthenlearn/rss.xml" rel="self" type="application/rss+xml"></atom:link><language>en</language><copyright>Contents © 2021 &lt;a href="mailto:"&gt;neal&lt;/a&gt; copyright Neal Gordon</copyright><lastBuildDate>Sun, 12 Sep 2021 14:17:25 GMT</lastBuildDate><generator>Nikola (getnikola.com)</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>An investigation of the Brick Stacking Problem</title><link>https://nagordon.github.io/ifcuriousthenlearn/blog/brick-stacking/</link><dc:creator>neal</dc:creator><description>&lt;div&gt;&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+<?xml-stylesheet type="text/xsl" href="assets/xml/rss.xsl" media="all"?><rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>ifcuriousthenlearn</title><link>https://nagordon.github.io/ifcuriousthenlearn/</link><description>a blog of engineering and technology</description><atom:link href="https://nagordon.github.io/ifcuriousthenlearn/rss.xml" rel="self" type="application/rss+xml"></atom:link><language>en</language><copyright>Contents © 2021 &lt;a href="mailto:"&gt;neal&lt;/a&gt; copyright Neal Gordon</copyright><lastBuildDate>Sun, 12 Sep 2021 23:09:35 GMT</lastBuildDate><generator>Nikola (getnikola.com)</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>An investigation of the Brick Stacking Problem</title><link>https://nagordon.github.io/ifcuriousthenlearn/blog/brick-stacking/</link><dc:creator>neal</dc:creator><description>&lt;div&gt;&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
 &lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;p&gt;The original question I posed to myself is this. Can you stack bricks of equal dimensions and mass such that the top-most brick does not overlap the bottom-most brick? Or more generally, how far can bricks be stacked to generate the largest overhang?&lt;/p&gt;
+&lt;h3 id="An-investigation-of-the-Brick-Stacking-Problem"&gt;An investigation of the Brick Stacking Problem&lt;a class="anchor-link" href="https://nagordon.github.io/ifcuriousthenlearn/blog/brick-stacking/#An-investigation-of-the-Brick-Stacking-Problem"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;The original question I posed to myself is this. Can you stack bricks of equal dimensions and mass such that the top-most brick does not overlap the bottom-most brick? Or more generally, how far can bricks be stacked to generate the largest overhang?&lt;/p&gt;
 &lt;p&gt;I pondered the problem and deliberately avoided finding solutions. I struggled through a few hand-calculations and hacked out a bit of python code to visualize my solution.&lt;/p&gt;
 &lt;p&gt;The math of the problem is seemingly simple, just basic statics, but it becomes tricky as the problem is worked. We eventually find that the bricks stack according to a harmonic series!&lt;/p&gt;
-&lt;p&gt;$ overhang = \sum_{i=1}^{n} \frac{1}{2i} $&lt;/p&gt;
-&lt;p&gt;OK, lets get started. First run the code to create the &lt;code&gt;brick_balance&lt;/code&gt; function that accepts total bricks, length of brick and thickness of brick and let's explore the solutions.&lt;/p&gt;
+$$ 
+    overhang = \sum_{i=1}^{n} \frac{1}{2i} 
+$$&lt;p&gt;OK, lets get started. First run the code to create the &lt;code&gt;brick_balance&lt;/code&gt; function that accepts total bricks, length of brick and thickness of brick and let's explore the solutions.&lt;/p&gt;
 
 &lt;/div&gt;
 &lt;/div&gt;
@@ -489,7 +490,685 @@ If you need any help with the functions, use the help function to show the input
 
 &lt;/div&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;/div&gt;</description><category>excel</category><category>python</category><guid>https://nagordon.github.io/ifcuriousthenlearn/blog/pythoncode-vs-excel/</guid><pubDate>Sat, 20 Aug 2016 07:00:00 GMT</pubDate></item><item><title>Sage Math Tool</title><link>https://nagordon.github.io/ifcuriousthenlearn/blog/sage-embed/</link><dc:creator>neal</dc:creator><description>&lt;div&gt;&lt;p&gt;I have been really impressed with the sage math application. It's based on python and is very powerful. Check out the documentation &lt;a href="http://www.sagemath.org/"&gt;here&lt;/a&gt; or try out the cloud service &lt;a href="https://cloud.sagemath.com/"&gt;here&lt;/a&gt;&lt;/p&gt;
+&lt;/div&gt;&lt;/div&gt;</description><category>excel</category><category>python</category><guid>https://nagordon.github.io/ifcuriousthenlearn/blog/pythoncode-vs-excel/</guid><pubDate>Sat, 20 Aug 2016 07:00:00 GMT</pubDate></item><item><title>Logical Indexing with Python and Excel</title><link>https://nagordon.github.io/ifcuriousthenlearn/blog/logical-indexing-with-python-excel/</link><dc:creator>neal</dc:creator><description>&lt;div&gt;&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;p&gt;A powerful data sorting method called logical indexing can be a great way to clean up huge datasets. Programming languages Octave/MATLAB, python, and R to name a few all are capable of logical indexing.&lt;/p&gt;
+&lt;p&gt;All the rules of booleans apply to logical indexing, such as stringing conditionals &lt;code&gt;and, or, nand, nor&lt;/code&gt;, etc&lt;/p&gt;
+&lt;p&gt;To get an idea of what I'm talking about, let's do a quick example. First let's generate an array of random numbers, and then sort for the numbers less than 0.5 and greater than 0.1&lt;/p&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing code_cell rendered"&gt;
+&lt;div class="input"&gt;
+&lt;div class="prompt input_prompt"&gt;In [1]:&lt;/div&gt;
+&lt;div class="inner_cell"&gt;
+    &lt;div class="input_area"&gt;
+&lt;div class=" highlight hl-ipython3"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c1"&gt;# import python function random from the numpy library&lt;/span&gt;
+&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;numpy&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;random&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+    &lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing code_cell rendered"&gt;
+&lt;div class="input"&gt;
+&lt;div class="prompt input_prompt"&gt;In [2]:&lt;/div&gt;
+&lt;div class="inner_cell"&gt;
+    &lt;div class="input_area"&gt;
+&lt;div class=" highlight hl-ipython3"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c1"&gt;# generate 10 random numbers&lt;/span&gt;
+&lt;span class="n"&gt;randnums&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;random&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;random&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;10&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;randnums&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+    &lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class="output_wrapper"&gt;
+&lt;div class="output"&gt;
+
+
+&lt;div class="output_area"&gt;
+
+    &lt;div class="prompt output_prompt"&gt;Out[2]:&lt;/div&gt;
+
+
+
+
+&lt;div class="output_text output_subarea output_execute_result"&gt;
+&lt;pre&gt;array([ 0.08547725,  0.27999385,  0.74051157,  0.77153143,  0.50921916,
+        0.02230907,  0.63186024,  0.89142272,  0.0963861 ,  0.66311151])&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;/div&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing code_cell rendered"&gt;
+&lt;div class="input"&gt;
+&lt;div class="prompt input_prompt"&gt;In [3]:&lt;/div&gt;
+&lt;div class="inner_cell"&gt;
+    &lt;div class="input_area"&gt;
+&lt;div class=" highlight hl-ipython3"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c1"&gt;# generate the boolnea logical index of the numbers that meet our criteria&lt;/span&gt;
+&lt;span class="n"&gt;ind&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;randnums&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&lt;/span&gt; &lt;span class="mf"&gt;0.5&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;&amp;amp;&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;randnums&lt;/span&gt; &lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="mf"&gt;0.1&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;ind&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+    &lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class="output_wrapper"&gt;
+&lt;div class="output"&gt;
+
+
+&lt;div class="output_area"&gt;
+
+    &lt;div class="prompt output_prompt"&gt;Out[3]:&lt;/div&gt;
+
+
+
+
+&lt;div class="output_text output_subarea output_execute_result"&gt;
+&lt;pre&gt;array([False,  True, False, False, False, False, False, False, False, False], dtype=bool)&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;/div&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing code_cell rendered"&gt;
+&lt;div class="input"&gt;
+&lt;div class="prompt input_prompt"&gt;In [4]:&lt;/div&gt;
+&lt;div class="inner_cell"&gt;
+    &lt;div class="input_area"&gt;
+&lt;div class=" highlight hl-ipython3"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c1"&gt;# return an array of numbers with our new criteria&lt;/span&gt;
+&lt;span class="n"&gt;newnumbers&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;randnums&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;ind&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
+&lt;span class="n"&gt;newnumbers&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+    &lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class="output_wrapper"&gt;
+&lt;div class="output"&gt;
+
+
+&lt;div class="output_area"&gt;
+
+    &lt;div class="prompt output_prompt"&gt;Out[4]:&lt;/div&gt;
+
+
+
+
+&lt;div class="output_text output_subarea output_execute_result"&gt;
+&lt;pre&gt;array([ 0.27999385])&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;/div&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;p&gt;Now, this seems somewhat simple to do with a modern programming language such as python, but to this this in a spreadsheet where many of my day-to-day tasks are done is a little trickier. Since Excel doesn't have an explicit logical index function, similar functionality can be worked out, at some cost of clarity that a code solution has.&lt;/p&gt;
+&lt;p&gt;Since everything in Excel (lets forget about VBA scripting for this tutorial) is represented in the spreadsheet and functions or values, creating arrays must be done as a new column. With python, we can either create a 2D array or have multiple variables. Creating new columns in Excel is fine, but sometimes can be difficult to understand the sorting logic. For simple analysis and data storage, spreadsheets are great, but as analysis methods become more complex (digital signal processing, mathematics, machine learning, etc) and datasets become large (gigabytes), spreadsheets just don't cut it.&lt;/p&gt;
+&lt;p&gt;This tutorial is a demo of logical indexing in python using the pandas module and comparing to the simpliest solution I could figure out in excel, which isn't really logical index, but more of a multi-criteria function search. This is similar to vlookup, which is a handy Excel function, but is limited to a single return value as opposed to a logical index array. The approach here in Excel allows for multiple criteria to be met, but alas, only one return value. This still offers substantially more functionality than vlookup.&lt;/p&gt;
+&lt;p&gt;To get python, I'd recommend using the &lt;a href="https://www.continuum.io/downloads"&gt;Anaconda Python 3.5 distribution&lt;/a&gt;, although many others will work fine. Here is the silly example data that I will be manipulating.&lt;/p&gt;
+&lt;p&gt;Here is the spreadsheet that will be my example.&lt;/p&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;iframe width="700" height="347" frameborder="0" scrolling="no" src="https://onedrive.live.com/embed?cid=2DAE54F5236205EE&amp;amp;resid=2DAE54F5236205EE%2125836&amp;amp;authkey=AJQnOLPVsE7IS2A&amp;amp;em=2&amp;amp;AllowTyping=True&amp;amp;Item='Sheet1'!B2%3AL16&amp;amp;wdHideGridlines=True&amp;amp;wdDownloadButton=True"&gt;&lt;/iframe&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;p&gt;Since python is a general programming language, we need to import the libraries we need. &lt;a href="http://xlwings.org/"&gt;xlwings  &lt;/a&gt; is an awesome library!&lt;/p&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing code_cell rendered"&gt;
+&lt;div class="input"&gt;
+&lt;div class="prompt input_prompt"&gt;In [5]:&lt;/div&gt;
+&lt;div class="inner_cell"&gt;
+    &lt;div class="input_area"&gt;
+&lt;div class=" highlight hl-ipython3"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;xlwings&lt;/span&gt; &lt;span class="k"&gt;as&lt;/span&gt; &lt;span class="nn"&gt;xw&lt;/span&gt;
+&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;pandas&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;DataFrame&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+    &lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;p&gt;Next, we will use the xlwings library to load the Excel file into a dataframe where we will employ our logical indexing methods of data sorting&lt;/p&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing code_cell rendered"&gt;
+&lt;div class="input"&gt;
+&lt;div class="prompt input_prompt"&gt;In [6]:&lt;/div&gt;
+&lt;div class="inner_cell"&gt;
+    &lt;div class="input_area"&gt;
+&lt;div class=" highlight hl-ipython3"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c1"&gt;# load excel file and turn into a pandas dataframe&lt;/span&gt;
+&lt;span class="n"&gt;xw&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;Book&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="sa"&gt;r&lt;/span&gt;&lt;span class="s1"&gt;'excel_logical_indexing.xlsx'&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;data&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;xw&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;sheets&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;'Sheet1'&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;range&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;"C6:E15"&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;value&lt;/span&gt;
+&lt;span class="n"&gt;df&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;DataFrame&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;data&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;:],&lt;/span&gt;&lt;span class="n"&gt;columns&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;data&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;])&lt;/span&gt;
+&lt;span class="n"&gt;df&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+    &lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class="output_wrapper"&gt;
+&lt;div class="output"&gt;
+
+
+&lt;div class="output_area"&gt;
+
+    &lt;div class="prompt output_prompt"&gt;Out[6]:&lt;/div&gt;
+
+
+
+&lt;div class="output_html rendered_html output_subarea output_execute_result"&gt;
+&lt;div&gt;
+&lt;table border="1" class="dataframe"&gt;
+  &lt;thead&gt;
+    &lt;tr style="text-align: right;"&gt;
+      &lt;th&gt;&lt;/th&gt;
+      &lt;th&gt;Color&lt;/th&gt;
+      &lt;th&gt;Animal&lt;/th&gt;
+      &lt;th&gt;Awesomeness&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;th&gt;0&lt;/th&gt;
+      &lt;td&gt;green&lt;/td&gt;
+      &lt;td&gt;dog&lt;/td&gt;
+      &lt;td&gt;75.0&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th&gt;1&lt;/th&gt;
+      &lt;td&gt;blue&lt;/td&gt;
+      &lt;td&gt;dog&lt;/td&gt;
+      &lt;td&gt;95.0&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th&gt;2&lt;/th&gt;
+      &lt;td&gt;black&lt;/td&gt;
+      &lt;td&gt;dog&lt;/td&gt;
+      &lt;td&gt;62.0&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th&gt;3&lt;/th&gt;
+      &lt;td&gt;green&lt;/td&gt;
+      &lt;td&gt;dog&lt;/td&gt;
+      &lt;td&gt;23.0&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th&gt;4&lt;/th&gt;
+      &lt;td&gt;blue&lt;/td&gt;
+      &lt;td&gt;cat&lt;/td&gt;
+      &lt;td&gt;90.0&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th&gt;5&lt;/th&gt;
+      &lt;td&gt;black&lt;/td&gt;
+      &lt;td&gt;cat&lt;/td&gt;
+      &lt;td&gt;39.0&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th&gt;6&lt;/th&gt;
+      &lt;td&gt;green&lt;/td&gt;
+      &lt;td&gt;cat&lt;/td&gt;
+      &lt;td&gt;22.0&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th&gt;7&lt;/th&gt;
+      &lt;td&gt;blue&lt;/td&gt;
+      &lt;td&gt;cat&lt;/td&gt;
+      &lt;td&gt;59.0&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th&gt;8&lt;/th&gt;
+      &lt;td&gt;black&lt;/td&gt;
+      &lt;td&gt;cat&lt;/td&gt;
+      &lt;td&gt;12.0&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;/div&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;p&gt;As a warm up, lets use a logical index to find all green items, and show only those values whose color is green&lt;/p&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing code_cell rendered"&gt;
+&lt;div class="input"&gt;
+&lt;div class="prompt input_prompt"&gt;In [7]:&lt;/div&gt;
+&lt;div class="inner_cell"&gt;
+    &lt;div class="input_area"&gt;
+&lt;div class=" highlight hl-ipython3"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;i&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;df&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s1"&gt;'Color'&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;&lt;span class="o"&gt;==&lt;/span&gt;&lt;span class="s1"&gt;'green'&lt;/span&gt;
+&lt;span class="n"&gt;i&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+    &lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class="output_wrapper"&gt;
+&lt;div class="output"&gt;
+
+
+&lt;div class="output_area"&gt;
+
+    &lt;div class="prompt output_prompt"&gt;Out[7]:&lt;/div&gt;
+
+
+
+
+&lt;div class="output_text output_subarea output_execute_result"&gt;
+&lt;pre&gt;0     True
+1    False
+2    False
+3     True
+4    False
+5    False
+6     True
+7    False
+8    False
+Name: Color, dtype: bool&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;/div&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing code_cell rendered"&gt;
+&lt;div class="input"&gt;
+&lt;div class="prompt input_prompt"&gt;In [8]:&lt;/div&gt;
+&lt;div class="inner_cell"&gt;
+    &lt;div class="input_area"&gt;
+&lt;div class=" highlight hl-ipython3"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c1"&gt;# here are the filtered results from the dataframe&lt;/span&gt;
+&lt;span class="n"&gt;df&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;i&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+    &lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class="output_wrapper"&gt;
+&lt;div class="output"&gt;
+
+
+&lt;div class="output_area"&gt;
+
+    &lt;div class="prompt output_prompt"&gt;Out[8]:&lt;/div&gt;
+
+
+
+&lt;div class="output_html rendered_html output_subarea output_execute_result"&gt;
+&lt;div&gt;
+&lt;table border="1" class="dataframe"&gt;
+  &lt;thead&gt;
+    &lt;tr style="text-align: right;"&gt;
+      &lt;th&gt;&lt;/th&gt;
+      &lt;th&gt;Color&lt;/th&gt;
+      &lt;th&gt;Animal&lt;/th&gt;
+      &lt;th&gt;Awesomeness&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;th&gt;0&lt;/th&gt;
+      &lt;td&gt;green&lt;/td&gt;
+      &lt;td&gt;dog&lt;/td&gt;
+      &lt;td&gt;75.0&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th&gt;3&lt;/th&gt;
+      &lt;td&gt;green&lt;/td&gt;
+      &lt;td&gt;dog&lt;/td&gt;
+      &lt;td&gt;23.0&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th&gt;6&lt;/th&gt;
+      &lt;td&gt;green&lt;/td&gt;
+      &lt;td&gt;cat&lt;/td&gt;
+      &lt;td&gt;22.0&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;/div&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;p&gt;The advantage here is that using logical indexing filtering methods can easily be automated. For our next task, we will apply the logical values directly into the dataframe instead of making a index variable. This will index of all awesomeness levels greater than 40&lt;/p&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing code_cell rendered"&gt;
+&lt;div class="input"&gt;
+&lt;div class="prompt input_prompt"&gt;In [9]:&lt;/div&gt;
+&lt;div class="inner_cell"&gt;
+    &lt;div class="input_area"&gt;
+&lt;div class=" highlight hl-ipython3"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;df&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;df&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;Awesomeness&lt;/span&gt; &lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="mi"&gt;40&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+    &lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class="output_wrapper"&gt;
+&lt;div class="output"&gt;
+
+
+&lt;div class="output_area"&gt;
+
+    &lt;div class="prompt output_prompt"&gt;Out[9]:&lt;/div&gt;
+
+
+
+&lt;div class="output_html rendered_html output_subarea output_execute_result"&gt;
+&lt;div&gt;
+&lt;table border="1" class="dataframe"&gt;
+  &lt;thead&gt;
+    &lt;tr style="text-align: right;"&gt;
+      &lt;th&gt;&lt;/th&gt;
+      &lt;th&gt;Color&lt;/th&gt;
+      &lt;th&gt;Animal&lt;/th&gt;
+      &lt;th&gt;Awesomeness&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;th&gt;0&lt;/th&gt;
+      &lt;td&gt;green&lt;/td&gt;
+      &lt;td&gt;dog&lt;/td&gt;
+      &lt;td&gt;75.0&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th&gt;1&lt;/th&gt;
+      &lt;td&gt;blue&lt;/td&gt;
+      &lt;td&gt;dog&lt;/td&gt;
+      &lt;td&gt;95.0&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th&gt;2&lt;/th&gt;
+      &lt;td&gt;black&lt;/td&gt;
+      &lt;td&gt;dog&lt;/td&gt;
+      &lt;td&gt;62.0&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th&gt;4&lt;/th&gt;
+      &lt;td&gt;blue&lt;/td&gt;
+      &lt;td&gt;cat&lt;/td&gt;
+      &lt;td&gt;90.0&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th&gt;7&lt;/th&gt;
+      &lt;td&gt;blue&lt;/td&gt;
+      &lt;td&gt;cat&lt;/td&gt;
+      &lt;td&gt;59.0&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;/div&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;p&gt;Other handy features with logical indexing is we can sort by what the cells start with, in this case any color that starts with 'b'&lt;/p&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing code_cell rendered"&gt;
+&lt;div class="input"&gt;
+&lt;div class="prompt input_prompt"&gt;In [10]:&lt;/div&gt;
+&lt;div class="inner_cell"&gt;
+    &lt;div class="input_area"&gt;
+&lt;div class=" highlight hl-ipython3"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;df&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;df&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;Color&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;str&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;startswith&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;'b'&lt;/span&gt;&lt;span class="p"&gt;)]&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+    &lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class="output_wrapper"&gt;
+&lt;div class="output"&gt;
+
+
+&lt;div class="output_area"&gt;
+
+    &lt;div class="prompt output_prompt"&gt;Out[10]:&lt;/div&gt;
+
+
+
+&lt;div class="output_html rendered_html output_subarea output_execute_result"&gt;
+&lt;div&gt;
+&lt;table border="1" class="dataframe"&gt;
+  &lt;thead&gt;
+    &lt;tr style="text-align: right;"&gt;
+      &lt;th&gt;&lt;/th&gt;
+      &lt;th&gt;Color&lt;/th&gt;
+      &lt;th&gt;Animal&lt;/th&gt;
+      &lt;th&gt;Awesomeness&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;th&gt;1&lt;/th&gt;
+      &lt;td&gt;blue&lt;/td&gt;
+      &lt;td&gt;dog&lt;/td&gt;
+      &lt;td&gt;95.0&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th&gt;2&lt;/th&gt;
+      &lt;td&gt;black&lt;/td&gt;
+      &lt;td&gt;dog&lt;/td&gt;
+      &lt;td&gt;62.0&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th&gt;4&lt;/th&gt;
+      &lt;td&gt;blue&lt;/td&gt;
+      &lt;td&gt;cat&lt;/td&gt;
+      &lt;td&gt;90.0&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th&gt;5&lt;/th&gt;
+      &lt;td&gt;black&lt;/td&gt;
+      &lt;td&gt;cat&lt;/td&gt;
+      &lt;td&gt;39.0&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th&gt;7&lt;/th&gt;
+      &lt;td&gt;blue&lt;/td&gt;
+      &lt;td&gt;cat&lt;/td&gt;
+      &lt;td&gt;59.0&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th&gt;8&lt;/th&gt;
+      &lt;td&gt;black&lt;/td&gt;
+      &lt;td&gt;cat&lt;/td&gt;
+      &lt;td&gt;12.0&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;/div&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;p&gt;For our final task as shown in a similar fashion in excel, we need to find all colors with green and animals that are dogs. This is the syntax, which is not completley obvious, but once you have it, it is your's to use. Once we have our new dataset, we can choose the first row or index and return the same value that our Excel spreadsheet did&lt;/p&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing code_cell rendered"&gt;
+&lt;div class="input"&gt;
+&lt;div class="prompt input_prompt"&gt;In [11]:&lt;/div&gt;
+&lt;div class="inner_cell"&gt;
+    &lt;div class="input_area"&gt;
+&lt;div class=" highlight hl-ipython3"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;df1&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;df&lt;/span&gt;&lt;span class="p"&gt;[(&lt;/span&gt;&lt;span class="n"&gt;df&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;Color&lt;/span&gt; &lt;span class="o"&gt;==&lt;/span&gt; &lt;span class="s1"&gt;'green'&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;&amp;amp;&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;df&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;Animal&lt;/span&gt; &lt;span class="o"&gt;==&lt;/span&gt; &lt;span class="s1"&gt;'dog'&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;]&lt;/span&gt;
+&lt;span class="n"&gt;df1&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+    &lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class="output_wrapper"&gt;
+&lt;div class="output"&gt;
+
+
+&lt;div class="output_area"&gt;
+
+    &lt;div class="prompt output_prompt"&gt;Out[11]:&lt;/div&gt;
+
+
+
+&lt;div class="output_html rendered_html output_subarea output_execute_result"&gt;
+&lt;div&gt;
+&lt;table border="1" class="dataframe"&gt;
+  &lt;thead&gt;
+    &lt;tr style="text-align: right;"&gt;
+      &lt;th&gt;&lt;/th&gt;
+      &lt;th&gt;Color&lt;/th&gt;
+      &lt;th&gt;Animal&lt;/th&gt;
+      &lt;th&gt;Awesomeness&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;th&gt;0&lt;/th&gt;
+      &lt;td&gt;green&lt;/td&gt;
+      &lt;td&gt;dog&lt;/td&gt;
+      &lt;td&gt;75.0&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th&gt;3&lt;/th&gt;
+      &lt;td&gt;green&lt;/td&gt;
+      &lt;td&gt;dog&lt;/td&gt;
+      &lt;td&gt;23.0&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;/div&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing code_cell rendered"&gt;
+&lt;div class="input"&gt;
+&lt;div class="prompt input_prompt"&gt;In [12]:&lt;/div&gt;
+&lt;div class="inner_cell"&gt;
+    &lt;div class="input_area"&gt;
+&lt;div class=" highlight hl-ipython3"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c1"&gt;# and use the first index 0 to return the first value&lt;/span&gt;
+&lt;span class="n"&gt;df1&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;Awesomeness&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;ix&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+    &lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class="output_wrapper"&gt;
+&lt;div class="output"&gt;
+
+
+&lt;div class="output_area"&gt;
+
+    &lt;div class="prompt output_prompt"&gt;Out[12]:&lt;/div&gt;
+
+
+
+
+&lt;div class="output_text output_subarea output_execute_result"&gt;
+&lt;pre&gt;75.0&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;/div&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;p&gt;This was a simple intro into python's logical indexing functionality which cannot be easily replicated in Excel, but this shows that the &lt;code&gt;index&lt;/code&gt; and &lt;code&gt;match&lt;/code&gt; function in Excel can get you some of the way there.&lt;/p&gt;
+&lt;p&gt;Excel is great for some things, python is great for others. It is handy to know what tools are out there and when to use which one. Some other great resources for using python and Excel are the book &lt;a href="https://automatetheboringstuff.com/chapter12/"&gt;automatetheboringstuff&lt;/a&gt; and a greate blog &lt;a href="http://pbpython.com/"&gt;Practical Business Python&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Stay curious!&lt;/p&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;/div&gt;</description><category>excel</category><category>python</category><guid>https://nagordon.github.io/ifcuriousthenlearn/blog/logical-indexing-with-python-excel/</guid><pubDate>Sat, 20 Aug 2016 07:00:00 GMT</pubDate></item><item><title>Sage Math Tool</title><link>https://nagordon.github.io/ifcuriousthenlearn/blog/sage-embed/</link><dc:creator>neal</dc:creator><description>&lt;div&gt;&lt;p&gt;I have been really impressed with the sage math application. It's based on python and is very powerful. Check out the documentation &lt;a href="http://www.sagemath.org/"&gt;here&lt;/a&gt; or try out the cloud service &lt;a href="https://cloud.sagemath.com/"&gt;here&lt;/a&gt;&lt;/p&gt;
 &lt;script src="https://sagecell.sagemath.org/static/jquery.min.js"&gt;&lt;/script&gt;
 
 &lt;script src="https://sagecell.sagemath.org/static/embedded_sagecell.js"&gt;&lt;/script&gt;
@@ -567,9 +1246,9 @@ I cannot stress enough how important I have found it to eliminate my ego as a sc
 &lt;h3&gt;R Base install and RStudio&lt;/h3&gt;
 &lt;p&gt;To get started, I am using Windows 7. To install R, check out &lt;a href="https://cran.r-project.org/bin/windows/base/"&gt;R-Base Package&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;R does not come with a GUI. It is just a command line for executing R-code that is an ascii file with the extension &lt;strong&gt;*.r&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;&lt;img alt="R_GUI" src="https://nagordon.github.io/ifcuriousthenlearn/images/Industrial-Design-of-Experiments-with-R/R_GUI.png" title="Default R Interface"&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="R_GUI" src="https://nagordon.github.io/ifcuriousthenlearn/files/Industrial-Design-of-Experiments-with-R/images/R_GUI.png" title="Default R Interface"&gt;&lt;/p&gt;
 &lt;p&gt;Fortunately some awesome GUI's already exist. &lt;a href="https://rkward.kde.org/"&gt;rkward&lt;/a&gt; is cool, but I prefer &lt;a href="https://www.rstudio.com/"&gt;Rstudio&lt;/a&gt;. RStudio has a built in script editor, a console for running commands, a plot window, a file explorer, and a help window. What more could you ask for? Take some time and familiarize yourself with RStudio.&lt;/p&gt;
-&lt;p&gt;&lt;img alt="R_Studio" src="https://nagordon.github.io/ifcuriousthenlearn/images/Industrial-Design-of-Experiments-with-R/R_Studio.png" title="Awesome RGUI RStudio"&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="R_Studio" src="https://nagordon.github.io/ifcuriousthenlearn/files/Industrial-Design-of-Experiments-with-R/images/R_Studio.png" title="Awesome RGUI RStudio"&gt;&lt;/p&gt;
 &lt;p&gt;For more information on the R DOE package we will be using, check out &lt;a href="http://prof.beuth-hochschule.de/groemping/software/design-of-experiments/project-industrial-doe-in-r/"&gt;Prof. Dr. Ulrike Grömpings page&lt;/a&gt;. The walk-through here is derived from &lt;a href="http://www1.beuth-hochschule.de/FB_II/reports/Report-2011-004.pdf"&gt;this document&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;Open up RStudio and familiarze yourself with the tools. I am really impressed with all the extra features with reporting and html/markdown exporting, and am excited to check those features out in the future.
 I found three hotkeys that I use all the time are:&lt;br&gt;
@@ -673,11 +1352,11 @@ For DOE experts, sorry about my simple explaination. I am an engineer, not a sta
 
 
 &lt;p&gt;This should launch RCommander, which will run alongside RStudio and use the console for output.&lt;/p&gt;
-&lt;p&gt;&lt;img alt="Rcmdr" src="https://nagordon.github.io/ifcuriousthenlearn/images/Industrial-Design-of-Experiments-with-R/Rcmdr.png" title="Rcommander DOE interface"&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="Rcmdr" src="https://nagordon.github.io/ifcuriousthenlearn/files/Industrial-Design-of-Experiments-with-R/images/Rcmdr.png" title="Rcommander DOE interface"&gt;&lt;/p&gt;
 &lt;p&gt;From the RCommander menu. we will be using the &lt;strong&gt;Design&lt;/strong&gt; menu for the DOE setup, experiment, and analysis. Lets setup our experiment.&lt;/p&gt;
-&lt;p&gt;&lt;img alt="doe_create" src="https://nagordon.github.io/ifcuriousthenlearn/images/Industrial-Design-of-Experiments-with-R/doe_create.png" title="DOE Setup"&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="doe_create" src="https://nagordon.github.io/ifcuriousthenlearn/files/Industrial-Design-of-Experiments-with-R/images/doe_create.png" title="DOE Setup"&gt;&lt;/p&gt;
 &lt;p&gt;From the interface here, filling the information manually or use the provided csv file.&lt;/p&gt;
-&lt;p&gt;&lt;img alt="doe_setup" src="https://nagordon.github.io/ifcuriousthenlearn/images/Industrial-Design-of-Experiments-with-R/doe_setup.png" title="DOE Setup"&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="doe_setup" src="https://nagordon.github.io/ifcuriousthenlearn/files/Industrial-Design-of-Experiments-with-R/images/doe_setup.png" title="DOE Setup"&gt;&lt;/p&gt;
 &lt;p&gt;This will generate a randomized screening experiemnt experiement with 12 runs. There are 3 dummy factors, e1,e2,e3 which are necessary for screening experiments. They can be ignored or see the manual for more details.&lt;/p&gt;
 &lt;table&gt;
 &lt;thead&gt;
@@ -882,14 +1561,14 @@ For DOE experts, sorry about my simple explaination. I am an engineer, not a sta
 &lt;/table&gt;
 &lt;h3&gt;DOE Experiment&lt;/h3&gt;
 &lt;p&gt;To run your experiment, go through each run, set-up the system as prescribed by the factors, and record the response. Once you run the experiment and enter your results in the csv, re-import the csv to analyze.
-&lt;img alt="doe_reimport" src="https://nagordon.github.io/ifcuriousthenlearn/images/Industrial-Design-of-Experiments-with-R/import_results.png" title="DOE Reimport"&gt;&lt;/p&gt;
+&lt;img alt="doe_reimport" src="https://nagordon.github.io/ifcuriousthenlearn/files/Industrial-Design-of-Experiments-with-R/images/import_results.png" title="DOE Reimport"&gt;&lt;/p&gt;
 &lt;h3&gt;DOE Results&lt;/h3&gt;
 &lt;p&gt;The visualizations that are generated using R for DOE are great! The results should tell us which factors should be studied with higher fidelity, and which factors are not necessary to continue studying.&lt;/p&gt;
 &lt;p&gt;Without going into great detail, here are some examples.&lt;/p&gt;
 &lt;h4&gt;Half-Normal Plot&lt;/h4&gt;
 &lt;p&gt;&lt;strong&gt;Design -&amp;gt; Analyze design -&amp;gt; Effects (Half) Normal Plots&lt;/strong&gt;  &lt;/p&gt;
 &lt;p&gt;Ensure the dummy factors e1,e2,e3 are included
-&lt;img alt="half-normal-plot" src="https://nagordon.github.io/ifcuriousthenlearn/images/Industrial-Design-of-Experiments-with-R/half-normal-plot.png" title="half-normal-plot"&gt;
+&lt;img alt="half-normal-plot" src="https://nagordon.github.io/ifcuriousthenlearn/files/Industrial-Design-of-Experiments-with-R/images/half-normal-plot.png" title="half-normal-plot"&gt;
 Observe that Pressure, Airvolume, Angle, WadType have the largest absolute effect, respectivley&lt;/p&gt;
 &lt;h4&gt;Linear-Model&lt;/h4&gt;
 &lt;p&gt;&lt;strong&gt;Design -&amp;gt; Analyze design -&amp;gt; Default Linear Model&lt;/strong&gt;  &lt;/p&gt;
@@ -917,12 +1596,13 @@ Observe that Pressure, Airvolume, Angle, WadType have the largest absolute effec
 &lt;p&gt;Again the Pressure, Airvolume, Angle, WadType have the largest absolute effect, respectivley. Those factors are also less than our p-value, which we defined as 0.1, which tells us that the results are significant. Since this is a screening experiment, interactions are not computed.&lt;/p&gt;
 &lt;h3&gt;Main-Effects Plot&lt;/h3&gt;
 &lt;p&gt;&lt;strong&gt;Design -&amp;gt; Analyze design -&amp;gt; Main Effects and Interactions Plots&lt;/strong&gt;
-&lt;img alt="main-effects-plot" src="https://nagordon.github.io/ifcuriousthenlearn/images/Industrial-Design-of-Experiments-with-R/main-effects-plot.png" title="main-effects-plot"&gt;&lt;/p&gt;
+&lt;img alt="main-effects-plot" src="https://nagordon.github.io/ifcuriousthenlearn/files/Industrial-Design-of-Experiments-with-R/images/main-effects-plot.png" title="main-effects-plot"&gt;&lt;/p&gt;
 &lt;p&gt;The main effects plot is a great visual to qualitativley grasp the results of the experiment. We can tell the how much the factor contributes to the response by the slope and whether it is positive or negative by the slope. Flat lines indicate that the factor with the selected levels is insignificant in the model we have created.&lt;/p&gt;
 &lt;h2&gt;Conclusion&lt;/h2&gt;
 &lt;p&gt;A simple example was shown how to use an open-source solution for creating and analzying statistical experiments using R. This is the only open-source tool I have found, so if anyone knows of another, please let me know. I have found R to be a great lanugage to know. The syntax is fine, the packages are numerous, and the community is good.
 Running experiments with DOE methods can be a great tool to have in nearly any industry. My background in Industrial and Systems Engineering exposed me to DOE for traditional manufacturing studies, but the concepts can be used in nearly any situation where understand of cause-and-effect is desired.&lt;/p&gt;
-&lt;p&gt;Stay Curious!&lt;/p&gt;&lt;/div&gt;</description><category>DOE</category><category>R</category><category>statistics</category><guid>https://nagordon.github.io/ifcuriousthenlearn/blog/Industrial-Design-of-Experiments-with-r/</guid><pubDate>Fri, 06 May 2016 08:00:00 GMT</pubDate></item><item><title>Python Tutor, and interactive execution tool</title><link>https://nagordon.github.io/ifcuriousthenlearn/blog/python-tutor/</link><dc:creator>neal</dc:creator><description>&lt;div&gt;&lt;p&gt;yet another neat tool I found online for understanding python execution&lt;/p&gt;
+&lt;p&gt;Stay Curious!&lt;/p&gt;&lt;/div&gt;</description><category>DOE</category><category>R</category><category>statistics</category><guid>https://nagordon.github.io/ifcuriousthenlearn/blog/Industrial-Design-of-Experiments-with-r/</guid><pubDate>Fri, 06 May 2016 08:00:00 GMT</pubDate></item><item><title>Python Trinket, another interactive execution tool</title><link>https://nagordon.github.io/ifcuriousthenlearn/blog/python-trinket/</link><dc:creator>neal</dc:creator><description>&lt;div&gt;&lt;p&gt;another neat tool for debugging python code.&lt;/p&gt;
+&lt;iframe src="https://trinket.io/embed/python/90b0702a6a" width="100%" height="500" frameborder="0" marginwidth="0" marginheight="0" allowfullscreen&gt;&lt;/iframe&gt;&lt;/div&gt;</description><category>code</category><category>python</category><guid>https://nagordon.github.io/ifcuriousthenlearn/blog/python-trinket/</guid><pubDate>Fri, 06 May 2016 08:00:00 GMT</pubDate></item><item><title>Python Tutor, and interactive execution tool</title><link>https://nagordon.github.io/ifcuriousthenlearn/blog/python-tutor/</link><dc:creator>neal</dc:creator><description>&lt;div&gt;&lt;p&gt;yet another neat tool I found online for understanding python execution&lt;/p&gt;
 &lt;iframe width="800" height="600" frameborder="0" src="http://pythontutor.com/iframe-embed.html#code=x+%3D+%5B1,+2,+3%5D%0Ay+%3D+%5B4,+5,+6%5D%0Az+%3D+y%0Ay+%3D+x%0Ax+%3D+z%0A%0Ax+%3D+%5B1,+2,+3%5D+%23+a+different+%5B1,+2,+3%5D+list!%0Ay+%3D+x%0Ax.append(4%29%0Ay.append(5%29%0Az+%3D+%5B1,+2,+3,+4,+5%5D+%23+a+different+list!%0Ax.append(6%29%0Ay.append(7%29%0Ay+%3D+%22hello%22%0A%0A%0Adef+foo(lst%29%3A%0A++++lst.append(%22hello%22%29%0A++++bar(lst%29%0A%0Adef+bar(myLst%29%3A%0A++++print(myLst%29%0A%0Afoo(x%29%0Afoo(z%29&amp;amp;origin=opt-frontend.js&amp;amp;cumulative=false&amp;amp;heapPrimitives=false&amp;amp;textReferences=false&amp;amp;py=2&amp;amp;rawInputLstJSON=%5B%5D&amp;amp;curInstr=0&amp;amp;codeDivWidth=350&amp;amp;codeDivHeight=400"&gt; &lt;/iframe&gt;&lt;/div&gt;</description><category>code</category><category>python</category><guid>https://nagordon.github.io/ifcuriousthenlearn/blog/python-tutor/</guid><pubDate>Fri, 06 May 2016 08:00:00 GMT</pubDate></item><item><title>Pyver, Version Control For Dummies</title><link>https://nagordon.github.io/ifcuriousthenlearn/blog/pyver-version-control/</link><dc:creator>neal</dc:creator><description>&lt;div&gt;&lt;h3&gt;Why pyver?&lt;/h3&gt;
 &lt;p&gt;The movtiation behind pyver, which is to creating a version control method which is very, very simple to track the history of files. The work-flow of pyver is something I do anyway when working on something simple that uses binary files, especially ones that are linked through the software that is required to read them (eg CAD designs). I will create multiple directories, eg v1, v2 and copy the entire contents of my in-progress files in it that I want to preserve the history. The issue with this is that when file names are changed, it can break links to dependent files, so keeping a file identical is important for tracking files. It was also a goal to use this tool over a network drive where multiple users can archive files as they wish
 There are a couple of other excellent options, but have a steep learning curve and some do not perform well with large binary files. Also, most version control systems are designed for code or text files, not large binanry files, like word documents or cad files. If you need more functionality, I'd recommend checking out these programs in order os simplicity. &lt;a href="https://bitbucket.org/mats_ekberg/boar/wiki/Home"&gt;boar VCS&lt;/a&gt;, &lt;a href="https://www.mercurial-scm.org/"&gt;mercurial SCM&lt;/a&gt;, &lt;a href="https://git-scm.com/"&gt;git&lt;/a&gt; with the &lt;a href="https://git-lfs.github.com/"&gt;large file extension&lt;/a&gt;&lt;/p&gt;
@@ -1039,72 +1719,4 @@ To add this path variable, type&lt;/p&gt;
 &lt;/code&gt;&lt;/pre&gt;
 
 
-&lt;p&gt;I think chocolatey is a really neat, useful package that has saved me a lot of time, and I hope it helps alleviate some of your windows woes.&lt;/p&gt;&lt;/div&gt;</description><category>software</category><category>windows</category><guid>https://nagordon.github.io/ifcuriousthenlearn/blog/windows-chocolatey/</guid><pubDate>Fri, 06 May 2016 08:00:00 GMT</pubDate></item><item><title>US Marine Corps Private Pilot Ground School</title><link>https://nagordon.github.io/ifcuriousthenlearn/blog/USMC-Pilot-Ground-School/</link><dc:creator>neal</dc:creator><description>&lt;div&gt;&lt;h5&gt;Airplane Instruments and Accessories-Part 1&lt;/h5&gt;
-&lt;h5&gt;Airplane Instruments and Accessories-Part 2&lt;/h5&gt;
-&lt;h5&gt;Decimals&lt;/h5&gt;
-&lt;h5&gt;Elementary Aerodynamics&lt;/h5&gt;
-&lt;h5&gt;Elements of Arithmetic&lt;/h5&gt;
-&lt;h5&gt;Formulas&lt;/h5&gt;
-&lt;h5&gt;Fractions&lt;/h5&gt;
-&lt;h5&gt;History of Aviation&lt;/h5&gt;
-&lt;h5&gt;Mechanical Principles_Part 1&lt;/h5&gt;
-&lt;h5&gt;Mechanical Principles_Part 2&lt;/h5&gt;
-&lt;h5&gt;Mensuration&lt;/h5&gt;
-&lt;h5&gt;Meteorology_Part 1&lt;/h5&gt;
-&lt;h5&gt;Meteorology_Part 2&lt;/h5&gt;
-&lt;h5&gt;Powers and Roots&lt;/h5&gt;
-&lt;h5&gt;Practical Flying_Part 1&lt;/h5&gt;
-&lt;h5&gt;Practical Flying_Part 2&lt;/h5&gt;
-&lt;h5&gt;Ratio and Proportion&lt;/h5&gt;
-&lt;h5&gt;Structural Details of Airplanes_Part 1&lt;/h5&gt;
-&lt;h5&gt;Structural Details of Airplanes_Part 2&lt;/h5&gt;
-&lt;h5&gt;The Airplane and Its Parts_Part 1&lt;/h5&gt;
-&lt;h5&gt;The Airplane and Its Parts_Part 2&lt;/h5&gt;
-&lt;h5&gt;Theory of Flight&lt;/h5&gt;
-&lt;h5&gt;Weights and Measures&lt;/h5&gt;
-&lt;iframe src="https://onedrive.live.com/embed?cid=2DAE54F5236205EE&amp;amp;resid=2DAE54F5236205EE%2124246&amp;amp;authkey=AHI4RioYWU3Y3ps&amp;amp;em=2" width="300" height="450" frameborder="0" scrolling="yes"&gt;&lt;/iframe&gt;
-
-&lt;iframe src="https://onedrive.live.com/embed?cid=2DAE54F5236205EE&amp;amp;resid=2DAE54F5236205EE%2124247&amp;amp;authkey=ALcfjfgcvs67qQQ&amp;amp;em=2" width="300" height="450" frameborder="0" scrolling="yes"&gt;&lt;/iframe&gt;
-
-&lt;iframe src="https://onedrive.live.com/embed?cid=2DAE54F5236205EE&amp;amp;resid=2DAE54F5236205EE%2124245&amp;amp;authkey=AHUR_uGI23fVDmA&amp;amp;em=2" width="300" height="450" frameborder="0" scrolling="yes"&gt;&lt;/iframe&gt;
-
-&lt;iframe src="https://onedrive.live.com/embed?cid=2DAE54F5236205EE&amp;amp;resid=2DAE54F5236205EE%2124273&amp;amp;authkey=AEt_JlmbRq9cLAg&amp;amp;em=2" width="300" height="450" frameborder="0" scrolling="yes"&gt;&lt;/iframe&gt;
-
-&lt;iframe src="https://onedrive.live.com/embed?cid=2DAE54F5236205EE&amp;amp;resid=2DAE54F5236205EE%2124269&amp;amp;authkey=ACuMBpcmQqxCInc&amp;amp;em=2" width="300" height="450" frameborder="0" scrolling="yes"&gt;&lt;/iframe&gt;
-
-&lt;iframe src="https://onedrive.live.com/embed?cid=2DAE54F5236205EE&amp;amp;resid=2DAE54F5236205EE%2124263&amp;amp;authkey=AKA9iSDZZH_ID2c&amp;amp;em=2" width="300" height="450" frameborder="0" scrolling="yes"&gt;&lt;/iframe&gt;
-
-&lt;iframe src="https://onedrive.live.com/embed?cid=2DAE54F5236205EE&amp;amp;resid=2DAE54F5236205EE%2124261&amp;amp;authkey=ALy8PveLLzCBvRM&amp;amp;em=2" width="300" height="450" frameborder="0" scrolling="yes"&gt;&lt;/iframe&gt;
-
-&lt;iframe src="https://onedrive.live.com/embed?cid=2DAE54F5236205EE&amp;amp;resid=2DAE54F5236205EE%2124266&amp;amp;authkey=APzotkC29sMc3J8&amp;amp;em=2" width="300" height="450" frameborder="0" scrolling="yes"&gt;&lt;/iframe&gt;
-
-&lt;iframe src="https://onedrive.live.com/embed?cid=2DAE54F5236205EE&amp;amp;resid=2DAE54F5236205EE%2124265&amp;amp;authkey=AK36q21xncfs6PM&amp;amp;em=2" width="300" height="450" frameborder="0" scrolling="yes"&gt;&lt;/iframe&gt;
-
-&lt;iframe src="https://onedrive.live.com/embed?cid=2DAE54F5236205EE&amp;amp;resid=2DAE54F5236205EE%2124248&amp;amp;authkey=ABrk8n9F9vkNbdQ&amp;amp;em=2" width="300" height="450" frameborder="0" scrolling="yes"&gt;&lt;/iframe&gt;
-
-&lt;iframe src="https://onedrive.live.com/embed?cid=2DAE54F5236205EE&amp;amp;resid=2DAE54F5236205EE%2124249&amp;amp;authkey=AFxPe-Bm1iDVlWI&amp;amp;em=2" width="300" height="450" frameborder="0" scrolling="yes"&gt;&lt;/iframe&gt;
-
-&lt;iframe src="https://onedrive.live.com/embed?cid=2DAE54F5236205EE&amp;amp;resid=2DAE54F5236205EE%2124252&amp;amp;authkey=ADTj7bo5CT0ylUE&amp;amp;em=2" width="300" height="450" frameborder="0" scrolling="yes"&gt;&lt;/iframe&gt;
-
-&lt;iframe src="https://onedrive.live.com/embed?cid=2DAE54F5236205EE&amp;amp;resid=2DAE54F5236205EE%2124250&amp;amp;authkey=APsefBW6PpxItyE&amp;amp;em=2" width="300" height="450" frameborder="0" scrolling="yes"&gt;&lt;/iframe&gt;
-
-&lt;iframe src="https://onedrive.live.com/embed?cid=2DAE54F5236205EE&amp;amp;resid=2DAE54F5236205EE%2124251&amp;amp;authkey=AKDMlpnocaBlESI&amp;amp;em=2" width="300" height="450" frameborder="0" scrolling="yes"&gt;&lt;/iframe&gt;
-
-&lt;iframe src="https://onedrive.live.com/embed?cid=2DAE54F5236205EE&amp;amp;resid=2DAE54F5236205EE%2124253&amp;amp;authkey=AAvySDkz-3ajP58&amp;amp;em=2" width="300" height="450" frameborder="0" scrolling="yes"&gt;&lt;/iframe&gt;
-
-&lt;iframe src="https://onedrive.live.com/embed?cid=2DAE54F5236205EE&amp;amp;resid=2DAE54F5236205EE%2124254&amp;amp;authkey=AKvEdeopCbqbgzM&amp;amp;em=2" width="300" height="450" frameborder="0" scrolling="yes"&gt;&lt;/iframe&gt;
-
-&lt;iframe src="https://onedrive.live.com/embed?cid=2DAE54F5236205EE&amp;amp;resid=2DAE54F5236205EE%2124256&amp;amp;authkey=AIyq8fs6cU56-aE&amp;amp;em=2" width="300" height="450" frameborder="0" scrolling="yes"&gt;&lt;/iframe&gt;
-
-&lt;iframe src="https://onedrive.live.com/embed?cid=2DAE54F5236205EE&amp;amp;resid=2DAE54F5236205EE%2124255&amp;amp;authkey=AEqQ_tWvbzBTfcc&amp;amp;em=2" width="300" height="450" frameborder="0" scrolling="yes"&gt;&lt;/iframe&gt;
-
-&lt;iframe src="https://onedrive.live.com/embed?cid=2DAE54F5236205EE&amp;amp;resid=2DAE54F5236205EE%2124257&amp;amp;authkey=AExMwGGiReNWXVs&amp;amp;em=2" width="300" height="450" frameborder="0" scrolling="yes"&gt;&lt;/iframe&gt;
-
-&lt;iframe src="https://onedrive.live.com/embed?cid=2DAE54F5236205EE&amp;amp;resid=2DAE54F5236205EE%2124259&amp;amp;authkey=ACKXmoZKnJ98EUs&amp;amp;em=2" width="300" height="450" frameborder="0" scrolling="yes"&gt;&lt;/iframe&gt;
-
-&lt;iframe src="https://onedrive.live.com/embed?cid=2DAE54F5236205EE&amp;amp;resid=2DAE54F5236205EE%2124258&amp;amp;authkey=AF7EjLETjciFlC8&amp;amp;em=2" width="300" height="450" frameborder="0" scrolling="yes"&gt;&lt;/iframe&gt;
-
-&lt;iframe src="https://onedrive.live.com/embed?cid=2DAE54F5236205EE&amp;amp;resid=2DAE54F5236205EE%2124260&amp;amp;authkey=APDI5r4YDPpU2jw&amp;amp;em=2" width="300" height="450" frameborder="0" scrolling="yes"&gt;&lt;/iframe&gt;&lt;/div&gt;</description><category>aviation</category><guid>https://nagordon.github.io/ifcuriousthenlearn/blog/USMC-Pilot-Ground-School/</guid><pubDate>Fri, 22 Apr 2016 08:00:00 GMT</pubDate></item><item><title>Weight and Balance Calculations for a Piper Cherokee 140</title><link>https://nagordon.github.io/ifcuriousthenlearn/blog/weight-balance-cherokee-140/</link><dc:creator>neal</dc:creator><description>&lt;div&gt;&lt;p&gt;When flying a general aviation aircraft, such as a 4 seat Piper Cherokee 140, it is important to calculate the total weight and the center of gravity of the airplane before takeoff. The weight can vary depending on how much fuel is on board, luggage, and passengers. The center of gravity (CG), or balance, of the aircraft is important because the aircraft will handle very differently if the CG is outside of the designed envelope. This tool automates those calculations to ensure the aircraft is safe to fly.&lt;/p&gt;
-&lt;p&gt;WARNING-THIS TOOL SHOULD ONLY BE USED TO CHECK YOUR OWN HAND CALCULATIONS. THE AUTHOR OF THIS ARTICLE IS NOT RESPONSIBLE FOR ANY ERRORS THAT EXIST IN THIS TOOL OR ERRORS IN ITS OPERATION. USE AT YOUR OWN RISK!&lt;/p&gt;
-&lt;p&gt;To use, simply enter the weights you wish to compute in the green cells and confirm you are still within the designed operating envelope of the aircraft. Be especially careful of aft CG and being overweight.
-&lt;iframe width="648" height="720" frameborder="0" scrolling="no" src="https://onedrive.live.com/embed?cid=2DAE54F5236205EE&amp;amp;resid=2DAE54F5236205EE%2124281&amp;amp;authkey=ABSSvc0HDQUivF4&amp;amp;em=2&amp;amp;wdAllowInteractivity=False&amp;amp;AllowTyping=True&amp;amp;Item='PA28_W%26B'!A1%3AE32&amp;amp;wdHideGridlines=True&amp;amp;wdDownloadButton=True"&gt;&lt;/iframe&gt;&lt;/p&gt;&lt;/div&gt;</description><category>aviation</category><guid>https://nagordon.github.io/ifcuriousthenlearn/blog/weight-balance-cherokee-140/</guid><pubDate>Sun, 17 Apr 2016 08:00:00 GMT</pubDate></item></channel></rss>
+&lt;p&gt;I think chocolatey is a really neat, useful package that has saved me a lot of time, and I hope it helps alleviate some of your windows woes.&lt;/p&gt;&lt;/div&gt;</description><category>software</category><category>windows</category><guid>https://nagordon.github.io/ifcuriousthenlearn/blog/windows-chocolatey/</guid><pubDate>Fri, 06 May 2016 08:00:00 GMT</pubDate></item></channel></rss>

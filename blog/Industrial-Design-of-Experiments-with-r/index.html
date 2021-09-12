@@ -13,7 +13,7 @@
 <link rel="alternate" type="application/rss+xml" title="RSS" hreflang="en" href="../../rss.xml">
 <link rel="canonical" href="https://nagordon.github.io/ifcuriousthenlearn/blog/Industrial-Design-of-Experiments-with-r/">
 <!--[if lt IE 9]><script src="../../assets/js/html5.js"></script><![endif]--><meta name="author" content="neal">
-<link rel="prev" href="../python-tutor/" title="Python Tutor, and interactive execution tool" type="text/html">
+<link rel="prev" href="../python-trinket/" title="Python Trinket, another interactive execution tool" type="text/html">
 <link rel="next" href="../what-open-source-means/" title="Understanding and using technology" type="text/html">
 <meta property="og:site_name" content="ifcuriousthenlearn">
 <meta property="og:title" content="Industrial Design of Experiments with R">
@@ -107,9 +107,9 @@
 <h3>R Base install and RStudio</h3>
 <p>To get started, I am using Windows 7. To install R, check out <a href="https://cran.r-project.org/bin/windows/base/">R-Base Package</a>.</p>
 <p>R does not come with a GUI. It is just a command line for executing R-code that is an ascii file with the extension <strong>*.r</strong></p>
-<p><img alt="R_GUI" src="../../images/Industrial-Design-of-Experiments-with-R/R_GUI.png" title="Default R Interface"></p>
+<p><img alt="R_GUI" src="../../files/Industrial-Design-of-Experiments-with-R/images/R_GUI.png" title="Default R Interface"></p>
 <p>Fortunately some awesome GUI's already exist. <a href="https://rkward.kde.org/">rkward</a> is cool, but I prefer <a href="https://www.rstudio.com/">Rstudio</a>. RStudio has a built in script editor, a console for running commands, a plot window, a file explorer, and a help window. What more could you ask for? Take some time and familiarize yourself with RStudio.</p>
-<p><img alt="R_Studio" src="../../images/Industrial-Design-of-Experiments-with-R/R_Studio.png" title="Awesome RGUI RStudio"></p>
+<p><img alt="R_Studio" src="../../files/Industrial-Design-of-Experiments-with-R/images/R_Studio.png" title="Awesome RGUI RStudio"></p>
 <p>For more information on the R DOE package we will be using, check out <a href="http://prof.beuth-hochschule.de/groemping/software/design-of-experiments/project-industrial-doe-in-r/">Prof. Dr. Ulrike Grömpings page</a>. The walk-through here is derived from <a href="http://www1.beuth-hochschule.de/FB_II/reports/Report-2011-004.pdf">this document</a>.</p>
 <p>Open up RStudio and familiarze yourself with the tools. I am really impressed with all the extra features with reporting and html/markdown exporting, and am excited to check those features out in the future.
 I found three hotkeys that I use all the time are:<br>
@@ -211,11 +211,11 @@ For DOE experts, sorry about my simple explaination. I am an engineer, not a sta
 
 
 <p>This should launch RCommander, which will run alongside RStudio and use the console for output.</p>
-<p><img alt="Rcmdr" src="../../images/Industrial-Design-of-Experiments-with-R/Rcmdr.png" title="Rcommander DOE interface"></p>
+<p><img alt="Rcmdr" src="../../files/Industrial-Design-of-Experiments-with-R/images/Rcmdr.png" title="Rcommander DOE interface"></p>
 <p>From the RCommander menu. we will be using the <strong>Design</strong> menu for the DOE setup, experiment, and analysis. Lets setup our experiment.</p>
-<p><img alt="doe_create" src="../../images/Industrial-Design-of-Experiments-with-R/doe_create.png" title="DOE Setup"></p>
+<p><img alt="doe_create" src="../../files/Industrial-Design-of-Experiments-with-R/images/doe_create.png" title="DOE Setup"></p>
 <p>From the interface here, filling the information manually or use the provided csv file.</p>
-<p><img alt="doe_setup" src="../../images/Industrial-Design-of-Experiments-with-R/doe_setup.png" title="DOE Setup"></p>
+<p><img alt="doe_setup" src="../../files/Industrial-Design-of-Experiments-with-R/images/doe_setup.png" title="DOE Setup"></p>
 <p>This will generate a randomized screening experiemnt experiement with 12 runs. There are 3 dummy factors, e1,e2,e3 which are necessary for screening experiments. They can be ignored or see the manual for more details.</p>
 <table>
 <thead><tr>
@@ -418,14 +418,14 @@ For DOE experts, sorry about my simple explaination. I am an engineer, not a sta
 </table>
 <h3>DOE Experiment</h3>
 <p>To run your experiment, go through each run, set-up the system as prescribed by the factors, and record the response. Once you run the experiment and enter your results in the csv, re-import the csv to analyze.
-<img alt="doe_reimport" src="../../images/Industrial-Design-of-Experiments-with-R/import_results.png" title="DOE Reimport"></p>
+<img alt="doe_reimport" src="../../files/Industrial-Design-of-Experiments-with-R/images/import_results.png" title="DOE Reimport"></p>
 <h3>DOE Results</h3>
 <p>The visualizations that are generated using R for DOE are great! The results should tell us which factors should be studied with higher fidelity, and which factors are not necessary to continue studying.</p>
 <p>Without going into great detail, here are some examples.</p>
 <h4>Half-Normal Plot</h4>
 <p><strong>Design -&gt; Analyze design -&gt; Effects (Half) Normal Plots</strong>  </p>
 <p>Ensure the dummy factors e1,e2,e3 are included
-<img alt="half-normal-plot" src="../../images/Industrial-Design-of-Experiments-with-R/half-normal-plot.png" title="half-normal-plot">
+<img alt="half-normal-plot" src="../../files/Industrial-Design-of-Experiments-with-R/images/half-normal-plot.png" title="half-normal-plot">
 Observe that Pressure, Airvolume, Angle, WadType have the largest absolute effect, respectivley</p>
 <h4>Linear-Model</h4>
 <p><strong>Design -&gt; Analyze design -&gt; Default Linear Model</strong>  </p>
@@ -453,7 +453,7 @@ Observe that Pressure, Airvolume, Angle, WadType have the largest absolute effec
 <p>Again the Pressure, Airvolume, Angle, WadType have the largest absolute effect, respectivley. Those factors are also less than our p-value, which we defined as 0.1, which tells us that the results are significant. Since this is a screening experiment, interactions are not computed.</p>
 <h3>Main-Effects Plot</h3>
 <p><strong>Design -&gt; Analyze design -&gt; Main Effects and Interactions Plots</strong>
-<img alt="main-effects-plot" src="../../images/Industrial-Design-of-Experiments-with-R/main-effects-plot.png" title="main-effects-plot"></p>
+<img alt="main-effects-plot" src="../../files/Industrial-Design-of-Experiments-with-R/images/main-effects-plot.png" title="main-effects-plot"></p>
 <p>The main effects plot is a great visual to qualitativley grasp the results of the experiment. We can tell the how much the factor contributes to the response by the slope and whether it is positive or negative by the slope. Flat lines indicate that the factor with the selected levels is insignificant in the model we have created.</p>
 <h2>Conclusion</h2>
 <p>A simple example was shown how to use an open-source solution for creating and analzying statistical experiments using R. This is the only open-source tool I have found, so if anyone knows of another, please let me know. I have found R to be a great lanugage to know. The syntax is fine, the packages are numerous, and the community is good.
@@ -468,7 +468,7 @@ Running experiments with DOE methods can be a great tool to have in nearly any i
         </ul>
 <ul class="pager hidden-print">
 <li class="previous">
-                <a href="../python-tutor/" rel="prev" title="Python Tutor, and interactive execution tool">Previous post</a>
+                <a href="../python-trinket/" rel="prev" title="Python Trinket, another interactive execution tool">Previous post</a>
             </li>
             <li class="next">
                 <a href="../what-open-source-means/" rel="next" title="Understanding and using technology">Next post</a>

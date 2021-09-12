@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<?xml-stylesheet type="text/xsl" href="../assets/xml/rss.xsl" media="all"?><rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>ifcuriousthenlearn (Posts about engineering)</title><link>https://nagordon.github.io/ifcuriousthenlearn/</link><description></description><atom:link href="https://nagordon.github.io/ifcuriousthenlearn/categories/cat_engineering.xml" rel="self" type="application/rss+xml"></atom:link><language>en</language><copyright>Contents © 2021 &lt;a href="mailto:"&gt;neal&lt;/a&gt; copyright Neal Gordon</copyright><lastBuildDate>Sun, 12 Sep 2021 14:17:22 GMT</lastBuildDate><generator>Nikola (getnikola.com)</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>An investigation of the Brick Stacking Problem</title><link>https://nagordon.github.io/ifcuriousthenlearn/blog/brick-stacking/</link><dc:creator>neal</dc:creator><description>&lt;div&gt;&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+<?xml-stylesheet type="text/xsl" href="../assets/xml/rss.xsl" media="all"?><rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>ifcuriousthenlearn (Posts about engineering)</title><link>https://nagordon.github.io/ifcuriousthenlearn/</link><description></description><atom:link href="https://nagordon.github.io/ifcuriousthenlearn/categories/cat_engineering.xml" rel="self" type="application/rss+xml"></atom:link><language>en</language><copyright>Contents © 2021 &lt;a href="mailto:"&gt;neal&lt;/a&gt; copyright Neal Gordon</copyright><lastBuildDate>Sun, 12 Sep 2021 22:42:23 GMT</lastBuildDate><generator>Nikola (getnikola.com)</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>An investigation of the Brick Stacking Problem</title><link>https://nagordon.github.io/ifcuriousthenlearn/blog/brick-stacking/</link><dc:creator>neal</dc:creator><description>&lt;div&gt;&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
 &lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;p&gt;The original question I posed to myself is this. Can you stack bricks of equal dimensions and mass such that the top-most brick does not overlap the bottom-most brick? Or more generally, how far can bricks be stacked to generate the largest overhang?&lt;/p&gt;
+&lt;h3 id="An-investigation-of-the-Brick-Stacking-Problem"&gt;An investigation of the Brick Stacking Problem&lt;a class="anchor-link" href="https://nagordon.github.io/ifcuriousthenlearn/blog/brick-stacking/#An-investigation-of-the-Brick-Stacking-Problem"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;The original question I posed to myself is this. Can you stack bricks of equal dimensions and mass such that the top-most brick does not overlap the bottom-most brick? Or more generally, how far can bricks be stacked to generate the largest overhang?&lt;/p&gt;
 &lt;p&gt;I pondered the problem and deliberately avoided finding solutions. I struggled through a few hand-calculations and hacked out a bit of python code to visualize my solution.&lt;/p&gt;
 &lt;p&gt;The math of the problem is seemingly simple, just basic statics, but it becomes tricky as the problem is worked. We eventually find that the bricks stack according to a harmonic series!&lt;/p&gt;
-&lt;p&gt;$ overhang = \sum_{i=1}^{n} \frac{1}{2i} $&lt;/p&gt;
-&lt;p&gt;OK, lets get started. First run the code to create the &lt;code&gt;brick_balance&lt;/code&gt; function that accepts total bricks, length of brick and thickness of brick and let's explore the solutions.&lt;/p&gt;
+$$ 
+    overhang = \sum_{i=1}^{n} \frac{1}{2i} 
+$$&lt;p&gt;OK, lets get started. First run the code to create the &lt;code&gt;brick_balance&lt;/code&gt; function that accepts total bricks, length of brick and thickness of brick and let's explore the solutions.&lt;/p&gt;
 
 &lt;/div&gt;
 &lt;/div&gt;
@@ -249,9 +250,9 @@
 &lt;h3&gt;R Base install and RStudio&lt;/h3&gt;
 &lt;p&gt;To get started, I am using Windows 7. To install R, check out &lt;a href="https://cran.r-project.org/bin/windows/base/"&gt;R-Base Package&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;R does not come with a GUI. It is just a command line for executing R-code that is an ascii file with the extension &lt;strong&gt;*.r&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;&lt;img alt="R_GUI" src="https://nagordon.github.io/ifcuriousthenlearn/images/Industrial-Design-of-Experiments-with-R/R_GUI.png" title="Default R Interface"&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="R_GUI" src="https://nagordon.github.io/ifcuriousthenlearn/files/Industrial-Design-of-Experiments-with-R/images/R_GUI.png" title="Default R Interface"&gt;&lt;/p&gt;
 &lt;p&gt;Fortunately some awesome GUI's already exist. &lt;a href="https://rkward.kde.org/"&gt;rkward&lt;/a&gt; is cool, but I prefer &lt;a href="https://www.rstudio.com/"&gt;Rstudio&lt;/a&gt;. RStudio has a built in script editor, a console for running commands, a plot window, a file explorer, and a help window. What more could you ask for? Take some time and familiarize yourself with RStudio.&lt;/p&gt;
-&lt;p&gt;&lt;img alt="R_Studio" src="https://nagordon.github.io/ifcuriousthenlearn/images/Industrial-Design-of-Experiments-with-R/R_Studio.png" title="Awesome RGUI RStudio"&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="R_Studio" src="https://nagordon.github.io/ifcuriousthenlearn/files/Industrial-Design-of-Experiments-with-R/images/R_Studio.png" title="Awesome RGUI RStudio"&gt;&lt;/p&gt;
 &lt;p&gt;For more information on the R DOE package we will be using, check out &lt;a href="http://prof.beuth-hochschule.de/groemping/software/design-of-experiments/project-industrial-doe-in-r/"&gt;Prof. Dr. Ulrike Grömpings page&lt;/a&gt;. The walk-through here is derived from &lt;a href="http://www1.beuth-hochschule.de/FB_II/reports/Report-2011-004.pdf"&gt;this document&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;Open up RStudio and familiarze yourself with the tools. I am really impressed with all the extra features with reporting and html/markdown exporting, and am excited to check those features out in the future.
 I found three hotkeys that I use all the time are:&lt;br&gt;
@@ -355,11 +356,11 @@ For DOE experts, sorry about my simple explaination. I am an engineer, not a sta
 
 
 &lt;p&gt;This should launch RCommander, which will run alongside RStudio and use the console for output.&lt;/p&gt;
-&lt;p&gt;&lt;img alt="Rcmdr" src="https://nagordon.github.io/ifcuriousthenlearn/images/Industrial-Design-of-Experiments-with-R/Rcmdr.png" title="Rcommander DOE interface"&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="Rcmdr" src="https://nagordon.github.io/ifcuriousthenlearn/files/Industrial-Design-of-Experiments-with-R/images/Rcmdr.png" title="Rcommander DOE interface"&gt;&lt;/p&gt;
 &lt;p&gt;From the RCommander menu. we will be using the &lt;strong&gt;Design&lt;/strong&gt; menu for the DOE setup, experiment, and analysis. Lets setup our experiment.&lt;/p&gt;
-&lt;p&gt;&lt;img alt="doe_create" src="https://nagordon.github.io/ifcuriousthenlearn/images/Industrial-Design-of-Experiments-with-R/doe_create.png" title="DOE Setup"&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="doe_create" src="https://nagordon.github.io/ifcuriousthenlearn/files/Industrial-Design-of-Experiments-with-R/images/doe_create.png" title="DOE Setup"&gt;&lt;/p&gt;
 &lt;p&gt;From the interface here, filling the information manually or use the provided csv file.&lt;/p&gt;
-&lt;p&gt;&lt;img alt="doe_setup" src="https://nagordon.github.io/ifcuriousthenlearn/images/Industrial-Design-of-Experiments-with-R/doe_setup.png" title="DOE Setup"&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="doe_setup" src="https://nagordon.github.io/ifcuriousthenlearn/files/Industrial-Design-of-Experiments-with-R/images/doe_setup.png" title="DOE Setup"&gt;&lt;/p&gt;
 &lt;p&gt;This will generate a randomized screening experiemnt experiement with 12 runs. There are 3 dummy factors, e1,e2,e3 which are necessary for screening experiments. They can be ignored or see the manual for more details.&lt;/p&gt;
 &lt;table&gt;
 &lt;thead&gt;
@@ -564,14 +565,14 @@ For DOE experts, sorry about my simple explaination. I am an engineer, not a sta
 &lt;/table&gt;
 &lt;h3&gt;DOE Experiment&lt;/h3&gt;
 &lt;p&gt;To run your experiment, go through each run, set-up the system as prescribed by the factors, and record the response. Once you run the experiment and enter your results in the csv, re-import the csv to analyze.
-&lt;img alt="doe_reimport" src="https://nagordon.github.io/ifcuriousthenlearn/images/Industrial-Design-of-Experiments-with-R/import_results.png" title="DOE Reimport"&gt;&lt;/p&gt;
+&lt;img alt="doe_reimport" src="https://nagordon.github.io/ifcuriousthenlearn/files/Industrial-Design-of-Experiments-with-R/images/import_results.png" title="DOE Reimport"&gt;&lt;/p&gt;
 &lt;h3&gt;DOE Results&lt;/h3&gt;
 &lt;p&gt;The visualizations that are generated using R for DOE are great! The results should tell us which factors should be studied with higher fidelity, and which factors are not necessary to continue studying.&lt;/p&gt;
 &lt;p&gt;Without going into great detail, here are some examples.&lt;/p&gt;
 &lt;h4&gt;Half-Normal Plot&lt;/h4&gt;
 &lt;p&gt;&lt;strong&gt;Design -&amp;gt; Analyze design -&amp;gt; Effects (Half) Normal Plots&lt;/strong&gt;  &lt;/p&gt;
 &lt;p&gt;Ensure the dummy factors e1,e2,e3 are included
-&lt;img alt="half-normal-plot" src="https://nagordon.github.io/ifcuriousthenlearn/images/Industrial-Design-of-Experiments-with-R/half-normal-plot.png" title="half-normal-plot"&gt;
+&lt;img alt="half-normal-plot" src="https://nagordon.github.io/ifcuriousthenlearn/files/Industrial-Design-of-Experiments-with-R/images/half-normal-plot.png" title="half-normal-plot"&gt;
 Observe that Pressure, Airvolume, Angle, WadType have the largest absolute effect, respectivley&lt;/p&gt;
 &lt;h4&gt;Linear-Model&lt;/h4&gt;
 &lt;p&gt;&lt;strong&gt;Design -&amp;gt; Analyze design -&amp;gt; Default Linear Model&lt;/strong&gt;  &lt;/p&gt;
@@ -599,7 +600,7 @@ Observe that Pressure, Airvolume, Angle, WadType have the largest absolute effec
 &lt;p&gt;Again the Pressure, Airvolume, Angle, WadType have the largest absolute effect, respectivley. Those factors are also less than our p-value, which we defined as 0.1, which tells us that the results are significant. Since this is a screening experiment, interactions are not computed.&lt;/p&gt;
 &lt;h3&gt;Main-Effects Plot&lt;/h3&gt;
 &lt;p&gt;&lt;strong&gt;Design -&amp;gt; Analyze design -&amp;gt; Main Effects and Interactions Plots&lt;/strong&gt;
-&lt;img alt="main-effects-plot" src="https://nagordon.github.io/ifcuriousthenlearn/images/Industrial-Design-of-Experiments-with-R/main-effects-plot.png" title="main-effects-plot"&gt;&lt;/p&gt;
+&lt;img alt="main-effects-plot" src="https://nagordon.github.io/ifcuriousthenlearn/files/Industrial-Design-of-Experiments-with-R/images/main-effects-plot.png" title="main-effects-plot"&gt;&lt;/p&gt;
 &lt;p&gt;The main effects plot is a great visual to qualitativley grasp the results of the experiment. We can tell the how much the factor contributes to the response by the slope and whether it is positive or negative by the slope. Flat lines indicate that the factor with the selected levels is insignificant in the model we have created.&lt;/p&gt;
 &lt;h2&gt;Conclusion&lt;/h2&gt;
 &lt;p&gt;A simple example was shown how to use an open-source solution for creating and analzying statistical experiments using R. This is the only open-source tool I have found, so if anyone knows of another, please let me know. I have found R to be a great lanugage to know. The syntax is fine, the packages are numerous, and the community is good.
@@ -1381,7 +1382,8 @@ $$ \bar{x}=\frac{\sum_{i=0}^{n}{x_i*m_i}}{\sum_{i=0}^{n}{m_i}} $$$$ \bar{y}=\fra
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
 &lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;h3 id="Option-2---Reuse-old-code-with-Octave"&gt;Option 2 - Reuse old code with Octave&lt;a class="anchor-link" href="https://nagordon.github.io/ifcuriousthenlearn/blog/matlab-to-python-conversion/#Option-2---Reuse-old-code-with-Octave"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;h3 id="oct2py-,-source-code"&gt;&lt;a href="https://pypi.python.org/pypi/oct2py"&gt;oct2py&lt;/a&gt; , &lt;a href="http://blink1073.github.io/oct2py/"&gt;source code&lt;/a&gt;&lt;a class="anchor-link" href="https://nagordon.github.io/ifcuriousthenlearn/blog/matlab-to-python-conversion/#oct2py-,-source-code"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;This is a neat module that is based on &lt;a href="http://www.gnu.org/software/octave/"&gt;octave&lt;/a&gt;, which is an open-source matlab clone. It allows a simple translation of matlab/octave syntax to python directly.&lt;/p&gt;
+&lt;h3 id="Option-2---Reuse-old-code-with-Octave"&gt;Option 2 - Reuse old code with Octave&lt;a class="anchor-link" href="https://nagordon.github.io/ifcuriousthenlearn/blog/matlab-to-python-conversion/#Option-2---Reuse-old-code-with-Octave"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;&lt;a href="https://pypi.python.org/pypi/oct2py"&gt;oct2py&lt;/a&gt; , &lt;a href="http://blink1073.github.io/oct2py/"&gt;source code&lt;/a&gt;
+This is a neat module that is based on &lt;a href="http://www.gnu.org/software/octave/"&gt;octave&lt;/a&gt;, which is an open-source matlab clone. It allows a simple translation of matlab/octave syntax to python directly.&lt;/p&gt;
 
 &lt;/div&gt;
 &lt;/div&gt;
@@ -1395,6 +1397,8 @@ $$ \bar{x}=\frac{\sum_{i=0}^{n}{x_i*m_i}}{\sum_{i=0}^{n}{m_i}} $$$$ \bar{y}=\fra
 &lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;oct2py&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;octave&lt;/span&gt;
 &lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;oct2py&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;Oct2Py&lt;/span&gt;
 &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;numpy&lt;/span&gt; &lt;span class="k"&gt;as&lt;/span&gt; &lt;span class="nn"&gt;np&lt;/span&gt;
+&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;IPython.display&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;Image&lt;/span&gt;
+&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;IPython.core.display&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;HTML&lt;/span&gt; 
 &lt;/pre&gt;&lt;/div&gt;
 
     &lt;/div&gt;
@@ -1716,7 +1720,7 @@ $$ \bar{x}=\frac{\sum_{i=0}^{n}{x_i*m_i}}{\sum_{i=0}^{n}{m_i}} $$$$ \bar{y}=\fra
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
 &lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;p&gt;&lt;img src="https://nagordon.github.io/ifcuriousthenlearn/notebooks/matlab-to-python-conversion/octave.png"&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src="https://nagordon.github.io/ifcuriousthenlearn/files/matlab-to-python-conversion/images/octave.png"&gt;&lt;/p&gt;
 
 &lt;/div&gt;
 &lt;/div&gt;
@@ -1725,7 +1729,7 @@ $$ \bar{x}=\frac{\sum_{i=0}^{n}{x_i*m_i}}{\sum_{i=0}^{n}{m_i}} $$$$ \bar{y}=\fra
 &lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;We can see that is uses wxpython, which is another gui package. I am not 100% sure when that package was installed, but I am guess it was installed along with Octave&lt;/p&gt;
-&lt;p&gt;&lt;img src="https://nagordon.github.io/ifcuriousthenlearn/notebooks/matlab-to-python-conversion/plotting_window.png"&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src="https://nagordon.github.io/ifcuriousthenlearn/files/matlab-to-python-conversion/images/plotting_window.png"&gt;&lt;/p&gt;
 
 &lt;/div&gt;
 &lt;/div&gt;

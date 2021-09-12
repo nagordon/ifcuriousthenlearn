@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<?xml-stylesheet type="text/xsl" href="../assets/xml/rss.xsl" media="all"?><rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>ifcuriousthenlearn (Posts about matlab)</title><link>https://nagordon.github.io/ifcuriousthenlearn/</link><description></description><atom:link href="https://nagordon.github.io/ifcuriousthenlearn/categories/matlab.xml" rel="self" type="application/rss+xml"></atom:link><language>en</language><copyright>Contents © 2021 &lt;a href="mailto:"&gt;neal&lt;/a&gt; copyright Neal Gordon</copyright><lastBuildDate>Sun, 12 Sep 2021 14:17:21 GMT</lastBuildDate><generator>Nikola (getnikola.com)</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>MATLAB to python conversion</title><link>https://nagordon.github.io/ifcuriousthenlearn/blog/matlab-to-python-conversion/</link><dc:creator>neal</dc:creator><description>&lt;div&gt;&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+<?xml-stylesheet type="text/xsl" href="../assets/xml/rss.xsl" media="all"?><rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>ifcuriousthenlearn (Posts about matlab)</title><link>https://nagordon.github.io/ifcuriousthenlearn/</link><description></description><atom:link href="https://nagordon.github.io/ifcuriousthenlearn/categories/matlab.xml" rel="self" type="application/rss+xml"></atom:link><language>en</language><copyright>Contents © 2021 &lt;a href="mailto:"&gt;neal&lt;/a&gt; copyright Neal Gordon</copyright><lastBuildDate>Sun, 12 Sep 2021 22:20:01 GMT</lastBuildDate><generator>Nikola (getnikola.com)</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>MATLAB to python conversion</title><link>https://nagordon.github.io/ifcuriousthenlearn/blog/matlab-to-python-conversion/</link><dc:creator>neal</dc:creator><description>&lt;div&gt;&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
 &lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;h2 id="Matlab-to-Python-conversion"&gt;Matlab to Python conversion&lt;a class="anchor-link" href="https://nagordon.github.io/ifcuriousthenlearn/blog/matlab-to-python-conversion/#Matlab-to-Python-conversion"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;There seems to be an natural progression that occurs for users of data anaylsis programs. I believe the forces guiding those changes are not coincidental, but out of necessity based on the ease of learning, functionality, extensibility, scalability and cost. In my opinion, the best method for theory is still handwritten, but when more advanced concepts are learned, more powerful tools make those concepts easier to understand.&lt;/p&gt;
@@ -25,7 +25,8 @@
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
 &lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;h3 id="Option-2---Reuse-old-code-with-Octave"&gt;Option 2 - Reuse old code with Octave&lt;a class="anchor-link" href="https://nagordon.github.io/ifcuriousthenlearn/blog/matlab-to-python-conversion/#Option-2---Reuse-old-code-with-Octave"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;h3 id="oct2py-,-source-code"&gt;&lt;a href="https://pypi.python.org/pypi/oct2py"&gt;oct2py&lt;/a&gt; , &lt;a href="http://blink1073.github.io/oct2py/"&gt;source code&lt;/a&gt;&lt;a class="anchor-link" href="https://nagordon.github.io/ifcuriousthenlearn/blog/matlab-to-python-conversion/#oct2py-,-source-code"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;This is a neat module that is based on &lt;a href="http://www.gnu.org/software/octave/"&gt;octave&lt;/a&gt;, which is an open-source matlab clone. It allows a simple translation of matlab/octave syntax to python directly.&lt;/p&gt;
+&lt;h3 id="Option-2---Reuse-old-code-with-Octave"&gt;Option 2 - Reuse old code with Octave&lt;a class="anchor-link" href="https://nagordon.github.io/ifcuriousthenlearn/blog/matlab-to-python-conversion/#Option-2---Reuse-old-code-with-Octave"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;&lt;a href="https://pypi.python.org/pypi/oct2py"&gt;oct2py&lt;/a&gt; , &lt;a href="http://blink1073.github.io/oct2py/"&gt;source code&lt;/a&gt;
+This is a neat module that is based on &lt;a href="http://www.gnu.org/software/octave/"&gt;octave&lt;/a&gt;, which is an open-source matlab clone. It allows a simple translation of matlab/octave syntax to python directly.&lt;/p&gt;
 
 &lt;/div&gt;
 &lt;/div&gt;
@@ -39,6 +40,8 @@
 &lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;oct2py&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;octave&lt;/span&gt;
 &lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;oct2py&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;Oct2Py&lt;/span&gt;
 &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;numpy&lt;/span&gt; &lt;span class="k"&gt;as&lt;/span&gt; &lt;span class="nn"&gt;np&lt;/span&gt;
+&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;IPython.display&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;Image&lt;/span&gt;
+&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;IPython.core.display&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;HTML&lt;/span&gt; 
 &lt;/pre&gt;&lt;/div&gt;
 
     &lt;/div&gt;
@@ -360,7 +363,7 @@
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
 &lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;p&gt;&lt;img src="https://nagordon.github.io/ifcuriousthenlearn/notebooks/matlab-to-python-conversion/octave.png"&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src="https://nagordon.github.io/ifcuriousthenlearn/files/matlab-to-python-conversion/images/octave.png"&gt;&lt;/p&gt;
 
 &lt;/div&gt;
 &lt;/div&gt;
@@ -369,7 +372,7 @@
 &lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;We can see that is uses wxpython, which is another gui package. I am not 100% sure when that package was installed, but I am guess it was installed along with Octave&lt;/p&gt;
-&lt;p&gt;&lt;img src="https://nagordon.github.io/ifcuriousthenlearn/notebooks/matlab-to-python-conversion/plotting_window.png"&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src="https://nagordon.github.io/ifcuriousthenlearn/files/matlab-to-python-conversion/images/plotting_window.png"&gt;&lt;/p&gt;
 
 &lt;/div&gt;
 &lt;/div&gt;

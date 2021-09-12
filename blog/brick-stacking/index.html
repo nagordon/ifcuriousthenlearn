@@ -101,11 +101,14 @@
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="An-investigation-of-the-Brick-Stacking-Problem">An investigation of the Brick Stacking Problem<a class="anchor-link" href="#An-investigation-of-the-Brick-Stacking-Problem">¶</a>
+</h3>
 <p>The original question I posed to myself is this. Can you stack bricks of equal dimensions and mass such that the top-most brick does not overlap the bottom-most brick? Or more generally, how far can bricks be stacked to generate the largest overhang?</p>
 <p>I pondered the problem and deliberately avoided finding solutions. I struggled through a few hand-calculations and hacked out a bit of python code to visualize my solution.</p>
 <p>The math of the problem is seemingly simple, just basic statics, but it becomes tricky as the problem is worked. We eventually find that the bricks stack according to a harmonic series!</p>
-<p>$ overhang = \sum_{i=1}^{n} \frac{1}{2i} $</p>
-<p>OK, lets get started. First run the code to create the <code>brick_balance</code> function that accepts total bricks, length of brick and thickness of brick and let's explore the solutions.</p>
+$$ 
+    overhang = \sum_{i=1}^{n} \frac{1}{2i} 
+$$<p>OK, lets get started. First run the code to create the <code>brick_balance</code> function that accepts total bricks, length of brick and thickness of brick and let's explore the solutions.</p>
 
 </div>
 </div>
