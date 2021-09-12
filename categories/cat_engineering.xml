@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<?xml-stylesheet type="text/xsl" href="../assets/xml/rss.xsl" media="all"?><rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>ifcuriousthenlearn (Posts about engineering)</title><link>https://nagordon.github.io/ifcuriousthenlearn/</link><description></description><atom:link href="https://nagordon.github.io/ifcuriousthenlearn/categories/cat_engineering.xml" rel="self" type="application/rss+xml"></atom:link><language>en</language><copyright>Contents © 2021 &lt;a href="mailto:"&gt;neal&lt;/a&gt; </copyright><lastBuildDate>Tue, 27 Jul 2021 04:55:56 GMT</lastBuildDate><generator>Nikola (getnikola.com)</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>An investigation of the Brick Stacking Problem</title><link>https://nagordon.github.io/ifcuriousthenlearn/posts/brick-stacking/</link><dc:creator>neal</dc:creator><description>&lt;div&gt;&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+<?xml-stylesheet type="text/xsl" href="../assets/xml/rss.xsl" media="all"?><rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>ifcuriousthenlearn (Posts about engineering)</title><link>https://nagordon.github.io/ifcuriousthenlearn/</link><description></description><atom:link href="https://nagordon.github.io/ifcuriousthenlearn/categories/cat_engineering.xml" rel="self" type="application/rss+xml"></atom:link><language>en</language><copyright>Contents © 2021 &lt;a href="mailto:"&gt;neal&lt;/a&gt; copyright Neal Gordon</copyright><lastBuildDate>Sun, 12 Sep 2021 14:17:22 GMT</lastBuildDate><generator>Nikola (getnikola.com)</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>An investigation of the Brick Stacking Problem</title><link>https://nagordon.github.io/ifcuriousthenlearn/blog/brick-stacking/</link><dc:creator>neal</dc:creator><description>&lt;div&gt;&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
 &lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;The original question I posed to myself is this. Can you stack bricks of equal dimensions and mass such that the top-most brick does not overlap the bottom-most brick? Or more generally, how far can bricks be stacked to generate the largest overhang?&lt;/p&gt;
@@ -241,7 +241,7 @@
 
 &lt;/div&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;/div&gt;</description><category>engineering</category><category>python</category><category>tutorial</category><guid>https://nagordon.github.io/ifcuriousthenlearn/posts/brick-stacking/</guid><pubDate>Mon, 29 May 2017 21:05:06 GMT</pubDate></item><item><title>Industrial Design of Experiments with R</title><link>https://nagordon.github.io/ifcuriousthenlearn/posts/Industrial-Design-of-Experiments-with-r/</link><dc:creator>neal</dc:creator><description>&lt;div&gt;&lt;h2&gt;Motivation&lt;/h2&gt;
+&lt;/div&gt;&lt;/div&gt;</description><category>engineering</category><category>python</category><category>tutorial</category><guid>https://nagordon.github.io/ifcuriousthenlearn/blog/brick-stacking/</guid><pubDate>Mon, 29 May 2017 21:05:06 GMT</pubDate></item><item><title>Industrial Design of Experiments with R</title><link>https://nagordon.github.io/ifcuriousthenlearn/blog/Industrial-Design-of-Experiments-with-r/</link><dc:creator>neal</dc:creator><description>&lt;div&gt;&lt;h2&gt;Motivation&lt;/h2&gt;
 &lt;p&gt;Python is my favorite language. But, I also practice polyglottery(using multiple languages...I know, I had to use that word!). For the years of using python, I have rarely come across a problem that I haven't been able to solve or hasn't been solved yet in python. Well, today is the day.&lt;/p&gt;
 &lt;p&gt;I enjoy statistics, and a very useful tool in the statisticians toolbox is the Experimental Design, or DOE (Design of Experiments). I searched for hours trying to find an open-source alternative to the Minitab DOE package, which is nice if you have a license, and found limited options. I evaluated &lt;a href="http://pythonhosted.org/pyDOE/"&gt;pyDOE&lt;/a&gt;, but it only designs experiments, not analyzes them. There are a couple open-source statistics packages, such as &lt;a href="http://www.sofastatistics.com/home.php"&gt;sofa&lt;/a&gt;, but why would you use anything other than R? Yes, I know the answer, because it is a programming language, not a nice GUI. Well, I encourage you to make the plunge, because I haven't been impressed with a programming language in a long time, and R has impressed me.&lt;/p&gt;
 &lt;p&gt;I assume you are familiar with DOE principles. If not, check out a &lt;a href="https://www.crcpress.com/Design-and-Analysis-of-Experiments-with-R/Lawson/9781439868133"&gt;R-DOE-book&lt;/a&gt; or for theory, &lt;a href="http://www.wiley.com/WileyCDA/WileyTitle/productCd-EHEP002024.html"&gt;Design and Analysis of Experiments by Montgomery&lt;/a&gt; is a classic. As for R, you don't need to be an expert, but it helps to play around with it, perhaps some &lt;a href="http://codegolf.stackexchange.com/questions/tagged/r"&gt;golf&lt;/a&gt;.&lt;/p&gt;
@@ -604,10 +604,10 @@ Observe that Pressure, Airvolume, Angle, WadType have the largest absolute effec
 &lt;h2&gt;Conclusion&lt;/h2&gt;
 &lt;p&gt;A simple example was shown how to use an open-source solution for creating and analzying statistical experiments using R. This is the only open-source tool I have found, so if anyone knows of another, please let me know. I have found R to be a great lanugage to know. The syntax is fine, the packages are numerous, and the community is good.
 Running experiments with DOE methods can be a great tool to have in nearly any industry. My background in Industrial and Systems Engineering exposed me to DOE for traditional manufacturing studies, but the concepts can be used in nearly any situation where understand of cause-and-effect is desired.&lt;/p&gt;
-&lt;p&gt;Stay Curious!&lt;/p&gt;&lt;/div&gt;</description><category>DOE</category><category>R</category><category>statistics</category><guid>https://nagordon.github.io/ifcuriousthenlearn/posts/Industrial-Design-of-Experiments-with-r/</guid><pubDate>Fri, 06 May 2016 08:00:00 GMT</pubDate></item><item><title>Finding the Center of Mass from Point Masses with Python</title><link>https://nagordon.github.io/ifcuriousthenlearn/posts/center-of-mass/</link><dc:creator>neal</dc:creator><description>&lt;div&gt;&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;p&gt;Stay Curious!&lt;/p&gt;&lt;/div&gt;</description><category>DOE</category><category>R</category><category>statistics</category><guid>https://nagordon.github.io/ifcuriousthenlearn/blog/Industrial-Design-of-Experiments-with-r/</guid><pubDate>Fri, 06 May 2016 08:00:00 GMT</pubDate></item><item><title>Finding the Center of Mass from Point Masses with Python</title><link>https://nagordon.github.io/ifcuriousthenlearn/blog/center-of-mass/</link><dc:creator>neal</dc:creator><description>&lt;div&gt;&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
 &lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;h2 id="Finding-the-Center-of-Gravity(CG)-of-a-point-mass-in-1,-2-and-3-Dimensions"&gt;Finding the Center of Gravity(CG) of a point mass in 1, 2 and 3 Dimensions&lt;a class="anchor-link" href="https://nagordon.github.io/ifcuriousthenlearn/posts/center-of-mass/#Finding-the-Center-of-Gravity(CG)-of-a-point-mass-in-1,-2-and-3-Dimensions"&gt;¶&lt;/a&gt;&lt;/h2&gt;
+&lt;h2 id="Finding-the-Center-of-Gravity(CG)-of-a-point-mass-in-1,-2-and-3-Dimensions"&gt;Finding the Center of Gravity(CG) of a point mass in 1, 2 and 3 Dimensions&lt;a class="anchor-link" href="https://nagordon.github.io/ifcuriousthenlearn/blog/center-of-mass/#Finding-the-Center-of-Gravity(CG)-of-a-point-mass-in-1,-2-and-3-Dimensions"&gt;¶&lt;/a&gt;&lt;/h2&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
@@ -674,7 +674,7 @@ Running experiments with DOE methods can be a great tool to have in nearly any i
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
 &lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;h3 id="First,-lets-determine-the-CG-of-a-1D-space"&gt;First, lets determine the CG of a 1D space&lt;a class="anchor-link" href="https://nagordon.github.io/ifcuriousthenlearn/posts/center-of-mass/#First,-lets-determine-the-CG-of-a-1D-space"&gt;¶&lt;/a&gt;&lt;/h3&gt;
+&lt;h3 id="First,-lets-determine-the-CG-of-a-1D-space"&gt;First, lets determine the CG of a 1D space&lt;a class="anchor-link" href="https://nagordon.github.io/ifcuriousthenlearn/blog/center-of-mass/#First,-lets-determine-the-CG-of-a-1D-space"&gt;¶&lt;/a&gt;&lt;/h3&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
@@ -869,7 +869,7 @@ $$ \bar{x}=\frac{\sum_{i=0}^{n}{x_i*m_i}}{\sum_{i=0}^{n}{m_i}} $$
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
 &lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;h3 id="Now,-lets-determine-the-CG-of-a-2D-space"&gt;Now, lets determine the CG of a 2D space&lt;a class="anchor-link" href="https://nagordon.github.io/ifcuriousthenlearn/posts/center-of-mass/#Now,-lets-determine-the-CG-of-a-2D-space"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;Lets add a 2nd dimension, on the y axis&lt;/p&gt;
+&lt;h3 id="Now,-lets-determine-the-CG-of-a-2D-space"&gt;Now, lets determine the CG of a 2D space&lt;a class="anchor-link" href="https://nagordon.github.io/ifcuriousthenlearn/blog/center-of-mass/#Now,-lets-determine-the-CG-of-a-2D-space"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;Lets add a 2nd dimension, on the y axis&lt;/p&gt;
 
 &lt;/div&gt;
 &lt;/div&gt;
@@ -966,7 +966,7 @@ $$ \bar{x}=\frac{\sum_{i=0}^{n}{x_i*m_i}}{\sum_{i=0}^{n}{m_i}} $$$$ \bar{y}=\fra
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
 &lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;h3 id="Finally,-lets-determine-the-CG-of-a-3D-space"&gt;Finally, lets determine the CG of a 3D space&lt;a class="anchor-link" href="https://nagordon.github.io/ifcuriousthenlearn/posts/center-of-mass/#Finally,-lets-determine-the-CG-of-a-3D-space"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;Lets add a 3rd dimension, on the z axis.&lt;/p&gt;
+&lt;h3 id="Finally,-lets-determine-the-CG-of-a-3D-space"&gt;Finally, lets determine the CG of a 3D space&lt;a class="anchor-link" href="https://nagordon.github.io/ifcuriousthenlearn/blog/center-of-mass/#Finally,-lets-determine-the-CG-of-a-3D-space"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;Lets add a 3rd dimension, on the z axis.&lt;/p&gt;
 
 &lt;/div&gt;
 &lt;/div&gt;
@@ -1087,10 +1087,10 @@ $$ \bar{x}=\frac{\sum_{i=0}^{n}{x_i*m_i}}{\sum_{i=0}^{n}{m_i}} $$$$ \bar{y}=\fra
 &lt;/div&gt;
 &lt;/div&gt;
 
-&lt;/div&gt;&lt;/div&gt;</description><category>engineering</category><category>python</category><category>tutorial</category><guid>https://nagordon.github.io/ifcuriousthenlearn/posts/center-of-mass/</guid><pubDate>Thu, 18 Jun 2015 07:00:00 GMT</pubDate></item><item><title>Mechanical Vibrations with Python</title><link>https://nagordon.github.io/ifcuriousthenlearn/posts/mechanical-vibrations-with-python/</link><dc:creator>neal</dc:creator><description>&lt;div&gt;&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;&lt;/div&gt;</description><category>engineering</category><category>python</category><category>tutorial</category><guid>https://nagordon.github.io/ifcuriousthenlearn/blog/center-of-mass/</guid><pubDate>Thu, 18 Jun 2015 07:00:00 GMT</pubDate></item><item><title>Mechanical Vibrations with Python</title><link>https://nagordon.github.io/ifcuriousthenlearn/blog/mechanical-vibrations-with-python/</link><dc:creator>neal</dc:creator><description>&lt;div&gt;&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
 &lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;h2 id="Mechanical-Vibrations-with-Python-[updated]"&gt;Mechanical Vibrations with Python [updated]&lt;a class="anchor-link" href="https://nagordon.github.io/ifcuriousthenlearn/posts/mechanical-vibrations-with-python/#Mechanical-Vibrations-with-Python-%5Bupdated%5D"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;Thanks to a comment I had the equation for xdd incorrect, but has been updated, thanks guest&lt;/p&gt;
+&lt;h2 id="Mechanical-Vibrations-with-Python-[updated]"&gt;Mechanical Vibrations with Python [updated]&lt;a class="anchor-link" href="https://nagordon.github.io/ifcuriousthenlearn/blog/mechanical-vibrations-with-python/#Mechanical-Vibrations-with-Python-%5Bupdated%5D"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;Thanks to a comment I had the equation for xdd incorrect, but has been updated, thanks guest&lt;/p&gt;
 &lt;p&gt;Solving second-order differential equations is a common problem in mechanical engineering, and although it is improtant to understand how to solve these problems analytically, using software to solve them is mor practical, especially when considering the parameters are often unknown and need to be tested.&lt;/p&gt;
 &lt;p&gt;This is a simple example of solving a second-order differential equation representing a spring-damper system with python programming language. Python is a powerful tool for science and engineering and is relativley easy to use and free!&lt;/p&gt;
 &lt;p&gt;The system that this is modeling is based on a spring and damper in parallel attached to a mass.&lt;/p&gt;
@@ -1355,10 +1355,10 @@ $$ \bar{x}=\frac{\sum_{i=0}^{n}{x_i*m_i}}{\sum_{i=0}^{n}{m_i}} $$$$ \bar{y}=\fra
 &lt;/div&gt;
 &lt;/div&gt;
 
-&lt;/div&gt;&lt;/div&gt;</description><category>engineering</category><category>math</category><category>python</category><guid>https://nagordon.github.io/ifcuriousthenlearn/posts/mechanical-vibrations-with-python/</guid><pubDate>Tue, 09 Jun 2015 21:05:06 GMT</pubDate></item><item><title>MATLAB to python conversion</title><link>https://nagordon.github.io/ifcuriousthenlearn/posts/matlab-to-python-conversion/</link><dc:creator>neal</dc:creator><description>&lt;div&gt;&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;&lt;/div&gt;</description><category>engineering</category><category>math</category><category>python</category><guid>https://nagordon.github.io/ifcuriousthenlearn/blog/mechanical-vibrations-with-python/</guid><pubDate>Tue, 09 Jun 2015 21:05:06 GMT</pubDate></item><item><title>MATLAB to python conversion</title><link>https://nagordon.github.io/ifcuriousthenlearn/blog/matlab-to-python-conversion/</link><dc:creator>neal</dc:creator><description>&lt;div&gt;&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
 &lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;h2 id="Matlab-to-Python-conversion"&gt;Matlab to Python conversion&lt;a class="anchor-link" href="https://nagordon.github.io/ifcuriousthenlearn/posts/matlab-to-python-conversion/#Matlab-to-Python-conversion"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;There seems to be an natural progression that occurs for users of data anaylsis programs. I believe the forces guiding those changes are not coincidental, but out of necessity based on the ease of learning, functionality, extensibility, scalability and cost. In my opinion, the best method for theory is still handwritten, but when more advanced concepts are learned, more powerful tools make those concepts easier to understand.&lt;/p&gt;
+&lt;h2 id="Matlab-to-Python-conversion"&gt;Matlab to Python conversion&lt;a class="anchor-link" href="https://nagordon.github.io/ifcuriousthenlearn/blog/matlab-to-python-conversion/#Matlab-to-Python-conversion"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;There seems to be an natural progression that occurs for users of data anaylsis programs. I believe the forces guiding those changes are not coincidental, but out of necessity based on the ease of learning, functionality, extensibility, scalability and cost. In my opinion, the best method for theory is still handwritten, but when more advanced concepts are learned, more powerful tools make those concepts easier to understand.&lt;/p&gt;
 &lt;p&gt;Anectdotally, everyone seems to start with a spreadsheet application for data analysis and plotting, which, at least 3 or 4 years ago would have been a Microsoft product. Excel works well for simple plotting, small datasets, and the software is ubiqutous but not free.&lt;/p&gt;
 &lt;p&gt;Some users may have had the curosity to investigate the macro tool and discovered programming by way of Visual Basic for Applications (VBA) in Excel. This gives the user a bit more control over data creation and processing with loops.&lt;/p&gt;
 &lt;p&gt;Once at a university, many students, especially engineering students, will discover MATLAB, and realized that VBA is very tedious compared to MATLAB syntax. The student will spend hundreds of hours learning programming fundamentals with this great new tool, and create many programs with it.&lt;/p&gt;
@@ -1373,7 +1373,7 @@ $$ \bar{x}=\frac{\sum_{i=0}^{n}{x_i*m_i}}{\sum_{i=0}^{n}{m_i}} $$$$ \bar{y}=\fra
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
 &lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;h3 id="Option-1---Manual-Conversion"&gt;Option 1 - Manual Conversion&lt;a class="anchor-link" href="https://nagordon.github.io/ifcuriousthenlearn/posts/matlab-to-python-conversion/#Option-1---Manual-Conversion"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;There are a few options for converting code. The most reliable is probably by hand. To covert by hand requires a through understanding of python and matlab. I am assuming matlab syntax is well understood, but python less so. scipy provides a &lt;a href="http://wiki.scipy.org/NumPy_for_Matlab_Users"&gt;python for matlab users&lt;/a&gt; which describes to similarities and differences well, but the devil is in the details. Many other comparisions exist for python and matlab, like &lt;a href="http://www.pyzo.org/python_vs_matlab.html"&gt;here on pyzo's website&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id="Option-1---Manual-Conversion"&gt;Option 1 - Manual Conversion&lt;a class="anchor-link" href="https://nagordon.github.io/ifcuriousthenlearn/blog/matlab-to-python-conversion/#Option-1---Manual-Conversion"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;There are a few options for converting code. The most reliable is probably by hand. To covert by hand requires a through understanding of python and matlab. I am assuming matlab syntax is well understood, but python less so. scipy provides a &lt;a href="http://wiki.scipy.org/NumPy_for_Matlab_Users"&gt;python for matlab users&lt;/a&gt; which describes to similarities and differences well, but the devil is in the details. Many other comparisions exist for python and matlab, like &lt;a href="http://www.pyzo.org/python_vs_matlab.html"&gt;here on pyzo's website&lt;/a&gt;&lt;/p&gt;
 
 &lt;/div&gt;
 &lt;/div&gt;
@@ -1381,7 +1381,7 @@ $$ \bar{x}=\frac{\sum_{i=0}^{n}{x_i*m_i}}{\sum_{i=0}^{n}{m_i}} $$$$ \bar{y}=\fra
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
 &lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;h3 id="Option-2---Reuse-old-code-with-Octave"&gt;Option 2 - Reuse old code with Octave&lt;a class="anchor-link" href="https://nagordon.github.io/ifcuriousthenlearn/posts/matlab-to-python-conversion/#Option-2---Reuse-old-code-with-Octave"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;h3 id="oct2py-,-source-code"&gt;&lt;a href="https://pypi.python.org/pypi/oct2py"&gt;oct2py&lt;/a&gt; , &lt;a href="http://blink1073.github.io/oct2py/"&gt;source code&lt;/a&gt;&lt;a class="anchor-link" href="https://nagordon.github.io/ifcuriousthenlearn/posts/matlab-to-python-conversion/#oct2py-,-source-code"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;This is a neat module that is based on &lt;a href="http://www.gnu.org/software/octave/"&gt;octave&lt;/a&gt;, which is an open-source matlab clone. It allows a simple translation of matlab/octave syntax to python directly.&lt;/p&gt;
+&lt;h3 id="Option-2---Reuse-old-code-with-Octave"&gt;Option 2 - Reuse old code with Octave&lt;a class="anchor-link" href="https://nagordon.github.io/ifcuriousthenlearn/blog/matlab-to-python-conversion/#Option-2---Reuse-old-code-with-Octave"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;h3 id="oct2py-,-source-code"&gt;&lt;a href="https://pypi.python.org/pypi/oct2py"&gt;oct2py&lt;/a&gt; , &lt;a href="http://blink1073.github.io/oct2py/"&gt;source code&lt;/a&gt;&lt;a class="anchor-link" href="https://nagordon.github.io/ifcuriousthenlearn/blog/matlab-to-python-conversion/#oct2py-,-source-code"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;This is a neat module that is based on &lt;a href="http://www.gnu.org/software/octave/"&gt;octave&lt;/a&gt;, which is an open-source matlab clone. It allows a simple translation of matlab/octave syntax to python directly.&lt;/p&gt;
 
 &lt;/div&gt;
 &lt;/div&gt;
@@ -1426,7 +1426,7 @@ $$ \bar{x}=\frac{\sum_{i=0}^{n}{x_i*m_i}}{\sum_{i=0}^{n}{m_i}} $$$$ \bar{y}=\fra
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
 &lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;h4 id="Matrix-creation"&gt;Matrix creation&lt;a class="anchor-link" href="https://nagordon.github.io/ifcuriousthenlearn/posts/matlab-to-python-conversion/#Matrix-creation"&gt;¶&lt;/a&gt;&lt;/h4&gt;
+&lt;h4 id="Matrix-creation"&gt;Matrix creation&lt;a class="anchor-link" href="https://nagordon.github.io/ifcuriousthenlearn/blog/matlab-to-python-conversion/#Matrix-creation"&gt;¶&lt;/a&gt;&lt;/h4&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
@@ -1693,7 +1693,7 @@ $$ \bar{x}=\frac{\sum_{i=0}^{n}{x_i*m_i}}{\sum_{i=0}^{n}{m_i}} $$$$ \bar{y}=\fra
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
 &lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;h4 id="Plotting-with-oct2py"&gt;Plotting with oct2py&lt;a class="anchor-link" href="https://nagordon.github.io/ifcuriousthenlearn/posts/matlab-to-python-conversion/#Plotting-with-oct2py"&gt;¶&lt;/a&gt;&lt;/h4&gt;&lt;p&gt;Just using oct2py, we can plot using &lt;a href="http://www.gnuplot.info/"&gt;gnuplot&lt;/a&gt;, I haven't been able to find a way to plot them inline, but they still look good in the gnuplot window&lt;/p&gt;
+&lt;h4 id="Plotting-with-oct2py"&gt;Plotting with oct2py&lt;a class="anchor-link" href="https://nagordon.github.io/ifcuriousthenlearn/blog/matlab-to-python-conversion/#Plotting-with-oct2py"&gt;¶&lt;/a&gt;&lt;/h4&gt;&lt;p&gt;Just using oct2py, we can plot using &lt;a href="http://www.gnuplot.info/"&gt;gnuplot&lt;/a&gt;, I haven't been able to find a way to plot them inline, but they still look good in the gnuplot window&lt;/p&gt;
 
 &lt;/div&gt;
 &lt;/div&gt;
@@ -1733,7 +1733,7 @@ $$ \bar{x}=\frac{\sum_{i=0}^{n}{x_i*m_i}}{\sum_{i=0}^{n}{m_i}} $$$$ \bar{y}=\fra
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
 &lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;h3 id="More-matlab-execution"&gt;More matlab execution&lt;a class="anchor-link" href="https://nagordon.github.io/ifcuriousthenlearn/posts/matlab-to-python-conversion/#More-matlab-execution"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;Although this doesn't convert the code to python, it executes it very well. Here is a MATLAB code snippet for LU Decomposition. We can create a python string with the contents of this and evaluate it as octave code&lt;/p&gt;
+&lt;h3 id="More-matlab-execution"&gt;More matlab execution&lt;a class="anchor-link" href="https://nagordon.github.io/ifcuriousthenlearn/blog/matlab-to-python-conversion/#More-matlab-execution"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;Although this doesn't convert the code to python, it executes it very well. Here is a MATLAB code snippet for LU Decomposition. We can create a python string with the contents of this and evaluate it as octave code&lt;/p&gt;
 
 &lt;/div&gt;
 &lt;/div&gt;
@@ -2514,7 +2514,7 @@ U =
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
 &lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;h3 id="Option-3---SMOP"&gt;Option 3 - SMOP&lt;a class="anchor-link" href="https://nagordon.github.io/ifcuriousthenlearn/posts/matlab-to-python-conversion/#Option-3---SMOP"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;h4 id="SMOP-(Small-Matlab-and-Octave-to-Python-Converter)-or-here"&gt;&lt;a href="https://pypi.python.org/pypi/smop"&gt;SMOP&lt;/a&gt; (Small Matlab and Octave to Python Converter) or &lt;a href="https://github.com/victorlei/smop"&gt;here&lt;/a&gt;&lt;a class="anchor-link" href="https://nagordon.github.io/ifcuriousthenlearn/posts/matlab-to-python-conversion/#SMOP-(Small-Matlab-and-Octave-to-Python-Converter)-or-here"&gt;¶&lt;/a&gt;&lt;/h4&gt;&lt;p&gt;The smop package seems impressive, and works well for an actual conversion of MATLAB code. Lets see how it works&lt;/p&gt;
+&lt;h3 id="Option-3---SMOP"&gt;Option 3 - SMOP&lt;a class="anchor-link" href="https://nagordon.github.io/ifcuriousthenlearn/blog/matlab-to-python-conversion/#Option-3---SMOP"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;h4 id="SMOP-(Small-Matlab-and-Octave-to-Python-Converter)-or-here"&gt;&lt;a href="https://pypi.python.org/pypi/smop"&gt;SMOP&lt;/a&gt; (Small Matlab and Octave to Python Converter) or &lt;a href="https://github.com/victorlei/smop"&gt;here&lt;/a&gt;&lt;a class="anchor-link" href="https://nagordon.github.io/ifcuriousthenlearn/blog/matlab-to-python-conversion/#SMOP-(Small-Matlab-and-Octave-to-Python-Converter)-or-here"&gt;¶&lt;/a&gt;&lt;/h4&gt;&lt;p&gt;The smop package seems impressive, and works well for an actual conversion of MATLAB code. Lets see how it works&lt;/p&gt;
 
 &lt;/div&gt;
 &lt;/div&gt;
@@ -2622,7 +2622,7 @@ U =
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
 &lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;h3 id="Option-4---LibreMat"&gt;Option 4 - LibreMat&lt;a class="anchor-link" href="https://nagordon.github.io/ifcuriousthenlearn/posts/matlab-to-python-conversion/#Option-4---LibreMat"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;h4 id="LibreMate"&gt;&lt;a href="http://sourceforge.net/projects/libermate/"&gt;LibreMate&lt;/a&gt;&lt;a class="anchor-link" href="https://nagordon.github.io/ifcuriousthenlearn/posts/matlab-to-python-conversion/#LibreMate"&gt;¶&lt;/a&gt;&lt;/h4&gt;&lt;p&gt;I didn't install LibreMat because of the dependent packages, so I'll leave a review to someone else&lt;/p&gt;
+&lt;h3 id="Option-4---LibreMat"&gt;Option 4 - LibreMat&lt;a class="anchor-link" href="https://nagordon.github.io/ifcuriousthenlearn/blog/matlab-to-python-conversion/#Option-4---LibreMat"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;h4 id="LibreMate"&gt;&lt;a href="http://sourceforge.net/projects/libermate/"&gt;LibreMate&lt;/a&gt;&lt;a class="anchor-link" href="https://nagordon.github.io/ifcuriousthenlearn/blog/matlab-to-python-conversion/#LibreMate"&gt;¶&lt;/a&gt;&lt;/h4&gt;&lt;p&gt;I didn't install LibreMat because of the dependent packages, so I'll leave a review to someone else&lt;/p&gt;
 
 &lt;/div&gt;
 &lt;/div&gt;
@@ -2630,7 +2630,7 @@ U =
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
 &lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;h3 id="Option-5---OMPC"&gt;Option 5 - OMPC&lt;a class="anchor-link" href="https://nagordon.github.io/ifcuriousthenlearn/posts/matlab-to-python-conversion/#Option-5---OMPC"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;h4 id="OMPC-(open-source-matlab-to-python-converter)"&gt;&lt;a href="http://ompc.juricap.com/"&gt;OMPC&lt;/a&gt; (open-source matlab to python converter)&lt;a class="anchor-link" href="https://nagordon.github.io/ifcuriousthenlearn/posts/matlab-to-python-conversion/#OMPC-(open-source-matlab-to-python-converter)"&gt;¶&lt;/a&gt;&lt;/h4&gt;&lt;p&gt;The &lt;a href="http://ompc.juricap.com/Examples"&gt;examples&lt;/a&gt; are descriptive and explain many user cases. When you are ready to convert, check out the &lt;a href="http://ompclib.appspot.com/m2py"&gt;live web converter&lt;/a&gt; which is great for processing snippets. However, when I tried to convert the LU function above, I get this, which creates a wierd A array and an undeclared vector mslice. There may be an explanation of this in the documentation, but it isn't obvious I didn't look very much&lt;/p&gt;
+&lt;h3 id="Option-5---OMPC"&gt;Option 5 - OMPC&lt;a class="anchor-link" href="https://nagordon.github.io/ifcuriousthenlearn/blog/matlab-to-python-conversion/#Option-5---OMPC"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;h4 id="OMPC-(open-source-matlab-to-python-converter)"&gt;&lt;a href="http://ompc.juricap.com/"&gt;OMPC&lt;/a&gt; (open-source matlab to python converter)&lt;a class="anchor-link" href="https://nagordon.github.io/ifcuriousthenlearn/blog/matlab-to-python-conversion/#OMPC-(open-source-matlab-to-python-converter)"&gt;¶&lt;/a&gt;&lt;/h4&gt;&lt;p&gt;The &lt;a href="http://ompc.juricap.com/Examples"&gt;examples&lt;/a&gt; are descriptive and explain many user cases. When you are ready to convert, check out the &lt;a href="http://ompclib.appspot.com/m2py"&gt;live web converter&lt;/a&gt; which is great for processing snippets. However, when I tried to convert the LU function above, I get this, which creates a wierd A array and an undeclared vector mslice. There may be an explanation of this in the documentation, but it isn't obvious I didn't look very much&lt;/p&gt;
 
 &lt;pre&gt;&lt;code&gt;A = mcat([1, 5, 3, 5, OMPCSEMI, 2, 5, 6, 7, OMPCSEMI, 9, 0, 3, 4, OMPCSEMI, 9, 4, 7, 6])
 A()
@@ -2660,9 +2660,9 @@ for i in mslice[1:R]:
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
 &lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;h3 id="Summary"&gt;Summary&lt;a class="anchor-link" href="https://nagordon.github.io/ifcuriousthenlearn/posts/matlab-to-python-conversion/#Summary"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;I definitely prefer the oct2py package, I can run my native MATLAB code in a python environment, and surely there will be support for other languages in the ipython notebook (bash, R, Julia, etc)&lt;/p&gt;
+&lt;h3 id="Summary"&gt;Summary&lt;a class="anchor-link" href="https://nagordon.github.io/ifcuriousthenlearn/blog/matlab-to-python-conversion/#Summary"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;I definitely prefer the oct2py package, I can run my native MATLAB code in a python environment, and surely there will be support for other languages in the ipython notebook (bash, R, Julia, etc)&lt;/p&gt;
 &lt;p&gt;Now that we have some options for running MATLAB/Octave code in python, the conversion process should be easier. I will be posting projects as I convert them, so stay tuned.&lt;/p&gt;
 
 &lt;/div&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;/div&gt;</description><category>math</category><category>matlab</category><category>python</category><guid>https://nagordon.github.io/ifcuriousthenlearn/posts/matlab-to-python-conversion/</guid><pubDate>Tue, 05 May 2015 21:05:06 GMT</pubDate></item></channel></rss>
+&lt;/div&gt;&lt;/div&gt;</description><category>math</category><category>matlab</category><category>python</category><guid>https://nagordon.github.io/ifcuriousthenlearn/blog/matlab-to-python-conversion/</guid><pubDate>Tue, 05 May 2015 21:05:06 GMT</pubDate></item></channel></rss>

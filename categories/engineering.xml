@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<?xml-stylesheet type="text/xsl" href="../assets/xml/rss.xsl" media="all"?><rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>ifcuriousthenlearn (Posts about engineering)</title><link>https://nagordon.github.io/ifcuriousthenlearn/</link><description></description><atom:link href="https://nagordon.github.io/ifcuriousthenlearn/categories/engineering.xml" rel="self" type="application/rss+xml"></atom:link><language>en</language><copyright>Contents © 2021 &lt;a href="mailto:"&gt;neal&lt;/a&gt; </copyright><lastBuildDate>Tue, 27 Jul 2021 04:55:55 GMT</lastBuildDate><generator>Nikola (getnikola.com)</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>An investigation of the Brick Stacking Problem</title><link>https://nagordon.github.io/ifcuriousthenlearn/posts/brick-stacking/</link><dc:creator>neal</dc:creator><description>&lt;div&gt;&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+<?xml-stylesheet type="text/xsl" href="../assets/xml/rss.xsl" media="all"?><rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>ifcuriousthenlearn (Posts about engineering)</title><link>https://nagordon.github.io/ifcuriousthenlearn/</link><description></description><atom:link href="https://nagordon.github.io/ifcuriousthenlearn/categories/engineering.xml" rel="self" type="application/rss+xml"></atom:link><language>en</language><copyright>Contents © 2021 &lt;a href="mailto:"&gt;neal&lt;/a&gt; copyright Neal Gordon</copyright><lastBuildDate>Sun, 12 Sep 2021 14:17:20 GMT</lastBuildDate><generator>Nikola (getnikola.com)</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>An investigation of the Brick Stacking Problem</title><link>https://nagordon.github.io/ifcuriousthenlearn/blog/brick-stacking/</link><dc:creator>neal</dc:creator><description>&lt;div&gt;&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
 &lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;The original question I posed to myself is this. Can you stack bricks of equal dimensions and mass such that the top-most brick does not overlap the bottom-most brick? Or more generally, how far can bricks be stacked to generate the largest overhang?&lt;/p&gt;
@@ -241,10 +241,10 @@
 
 &lt;/div&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;/div&gt;</description><category>engineering</category><category>python</category><category>tutorial</category><guid>https://nagordon.github.io/ifcuriousthenlearn/posts/brick-stacking/</guid><pubDate>Mon, 29 May 2017 21:05:06 GMT</pubDate></item><item><title>Finding the Center of Mass from Point Masses with Python</title><link>https://nagordon.github.io/ifcuriousthenlearn/posts/center-of-mass/</link><dc:creator>neal</dc:creator><description>&lt;div&gt;&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;&lt;/div&gt;</description><category>engineering</category><category>python</category><category>tutorial</category><guid>https://nagordon.github.io/ifcuriousthenlearn/blog/brick-stacking/</guid><pubDate>Mon, 29 May 2017 21:05:06 GMT</pubDate></item><item><title>Finding the Center of Mass from Point Masses with Python</title><link>https://nagordon.github.io/ifcuriousthenlearn/blog/center-of-mass/</link><dc:creator>neal</dc:creator><description>&lt;div&gt;&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
 &lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;h2 id="Finding-the-Center-of-Gravity(CG)-of-a-point-mass-in-1,-2-and-3-Dimensions"&gt;Finding the Center of Gravity(CG) of a point mass in 1, 2 and 3 Dimensions&lt;a class="anchor-link" href="https://nagordon.github.io/ifcuriousthenlearn/posts/center-of-mass/#Finding-the-Center-of-Gravity(CG)-of-a-point-mass-in-1,-2-and-3-Dimensions"&gt;¶&lt;/a&gt;&lt;/h2&gt;
+&lt;h2 id="Finding-the-Center-of-Gravity(CG)-of-a-point-mass-in-1,-2-and-3-Dimensions"&gt;Finding the Center of Gravity(CG) of a point mass in 1, 2 and 3 Dimensions&lt;a class="anchor-link" href="https://nagordon.github.io/ifcuriousthenlearn/blog/center-of-mass/#Finding-the-Center-of-Gravity(CG)-of-a-point-mass-in-1,-2-and-3-Dimensions"&gt;¶&lt;/a&gt;&lt;/h2&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
@@ -311,7 +311,7 @@
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
 &lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;h3 id="First,-lets-determine-the-CG-of-a-1D-space"&gt;First, lets determine the CG of a 1D space&lt;a class="anchor-link" href="https://nagordon.github.io/ifcuriousthenlearn/posts/center-of-mass/#First,-lets-determine-the-CG-of-a-1D-space"&gt;¶&lt;/a&gt;&lt;/h3&gt;
+&lt;h3 id="First,-lets-determine-the-CG-of-a-1D-space"&gt;First, lets determine the CG of a 1D space&lt;a class="anchor-link" href="https://nagordon.github.io/ifcuriousthenlearn/blog/center-of-mass/#First,-lets-determine-the-CG-of-a-1D-space"&gt;¶&lt;/a&gt;&lt;/h3&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
@@ -506,7 +506,7 @@ $$ \bar{x}=\frac{\sum_{i=0}^{n}{x_i*m_i}}{\sum_{i=0}^{n}{m_i}} $$
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
 &lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;h3 id="Now,-lets-determine-the-CG-of-a-2D-space"&gt;Now, lets determine the CG of a 2D space&lt;a class="anchor-link" href="https://nagordon.github.io/ifcuriousthenlearn/posts/center-of-mass/#Now,-lets-determine-the-CG-of-a-2D-space"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;Lets add a 2nd dimension, on the y axis&lt;/p&gt;
+&lt;h3 id="Now,-lets-determine-the-CG-of-a-2D-space"&gt;Now, lets determine the CG of a 2D space&lt;a class="anchor-link" href="https://nagordon.github.io/ifcuriousthenlearn/blog/center-of-mass/#Now,-lets-determine-the-CG-of-a-2D-space"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;Lets add a 2nd dimension, on the y axis&lt;/p&gt;
 
 &lt;/div&gt;
 &lt;/div&gt;
@@ -603,7 +603,7 @@ $$ \bar{x}=\frac{\sum_{i=0}^{n}{x_i*m_i}}{\sum_{i=0}^{n}{m_i}} $$$$ \bar{y}=\fra
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
 &lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;h3 id="Finally,-lets-determine-the-CG-of-a-3D-space"&gt;Finally, lets determine the CG of a 3D space&lt;a class="anchor-link" href="https://nagordon.github.io/ifcuriousthenlearn/posts/center-of-mass/#Finally,-lets-determine-the-CG-of-a-3D-space"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;Lets add a 3rd dimension, on the z axis.&lt;/p&gt;
+&lt;h3 id="Finally,-lets-determine-the-CG-of-a-3D-space"&gt;Finally, lets determine the CG of a 3D space&lt;a class="anchor-link" href="https://nagordon.github.io/ifcuriousthenlearn/blog/center-of-mass/#Finally,-lets-determine-the-CG-of-a-3D-space"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;Lets add a 3rd dimension, on the z axis.&lt;/p&gt;
 
 &lt;/div&gt;
 &lt;/div&gt;
@@ -724,10 +724,10 @@ $$ \bar{x}=\frac{\sum_{i=0}^{n}{x_i*m_i}}{\sum_{i=0}^{n}{m_i}} $$$$ \bar{y}=\fra
 &lt;/div&gt;
 &lt;/div&gt;
 
-&lt;/div&gt;&lt;/div&gt;</description><category>engineering</category><category>python</category><category>tutorial</category><guid>https://nagordon.github.io/ifcuriousthenlearn/posts/center-of-mass/</guid><pubDate>Thu, 18 Jun 2015 07:00:00 GMT</pubDate></item><item><title>Mechanical Vibrations with Python</title><link>https://nagordon.github.io/ifcuriousthenlearn/posts/mechanical-vibrations-with-python/</link><dc:creator>neal</dc:creator><description>&lt;div&gt;&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;&lt;/div&gt;</description><category>engineering</category><category>python</category><category>tutorial</category><guid>https://nagordon.github.io/ifcuriousthenlearn/blog/center-of-mass/</guid><pubDate>Thu, 18 Jun 2015 07:00:00 GMT</pubDate></item><item><title>Mechanical Vibrations with Python</title><link>https://nagordon.github.io/ifcuriousthenlearn/blog/mechanical-vibrations-with-python/</link><dc:creator>neal</dc:creator><description>&lt;div&gt;&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
 &lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;h2 id="Mechanical-Vibrations-with-Python-[updated]"&gt;Mechanical Vibrations with Python [updated]&lt;a class="anchor-link" href="https://nagordon.github.io/ifcuriousthenlearn/posts/mechanical-vibrations-with-python/#Mechanical-Vibrations-with-Python-%5Bupdated%5D"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;Thanks to a comment I had the equation for xdd incorrect, but has been updated, thanks guest&lt;/p&gt;
+&lt;h2 id="Mechanical-Vibrations-with-Python-[updated]"&gt;Mechanical Vibrations with Python [updated]&lt;a class="anchor-link" href="https://nagordon.github.io/ifcuriousthenlearn/blog/mechanical-vibrations-with-python/#Mechanical-Vibrations-with-Python-%5Bupdated%5D"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;Thanks to a comment I had the equation for xdd incorrect, but has been updated, thanks guest&lt;/p&gt;
 &lt;p&gt;Solving second-order differential equations is a common problem in mechanical engineering, and although it is improtant to understand how to solve these problems analytically, using software to solve them is mor practical, especially when considering the parameters are often unknown and need to be tested.&lt;/p&gt;
 &lt;p&gt;This is a simple example of solving a second-order differential equation representing a spring-damper system with python programming language. Python is a powerful tool for science and engineering and is relativley easy to use and free!&lt;/p&gt;
 &lt;p&gt;The system that this is modeling is based on a spring and damper in parallel attached to a mass.&lt;/p&gt;
@@ -992,4 +992,4 @@ $$ \bar{x}=\frac{\sum_{i=0}^{n}{x_i*m_i}}{\sum_{i=0}^{n}{m_i}} $$$$ \bar{y}=\fra
 &lt;/div&gt;
 &lt;/div&gt;
 
-&lt;/div&gt;&lt;/div&gt;</description><category>engineering</category><category>math</category><category>python</category><guid>https://nagordon.github.io/ifcuriousthenlearn/posts/mechanical-vibrations-with-python/</guid><pubDate>Tue, 09 Jun 2015 21:05:06 GMT</pubDate></item></channel></rss>
+&lt;/div&gt;&lt;/div&gt;</description><category>engineering</category><category>math</category><category>python</category><guid>https://nagordon.github.io/ifcuriousthenlearn/blog/mechanical-vibrations-with-python/</guid><pubDate>Tue, 09 Jun 2015 21:05:06 GMT</pubDate></item></channel></rss>

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<?xml-stylesheet type="text/xsl" href="../assets/xml/rss.xsl" media="all"?><rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>ifcuriousthenlearn (Posts about python)</title><link>https://nagordon.github.io/ifcuriousthenlearn/</link><description></description><atom:link href="https://nagordon.github.io/ifcuriousthenlearn/categories/python.xml" rel="self" type="application/rss+xml"></atom:link><language>en</language><copyright>Contents © 2021 &lt;a href="mailto:"&gt;neal&lt;/a&gt; </copyright><lastBuildDate>Tue, 27 Jul 2021 04:55:56 GMT</lastBuildDate><generator>Nikola (getnikola.com)</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>An investigation of the Brick Stacking Problem</title><link>https://nagordon.github.io/ifcuriousthenlearn/posts/brick-stacking/</link><dc:creator>neal</dc:creator><description>&lt;div&gt;&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+<?xml-stylesheet type="text/xsl" href="../assets/xml/rss.xsl" media="all"?><rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>ifcuriousthenlearn (Posts about python)</title><link>https://nagordon.github.io/ifcuriousthenlearn/</link><description></description><atom:link href="https://nagordon.github.io/ifcuriousthenlearn/categories/python.xml" rel="self" type="application/rss+xml"></atom:link><language>en</language><copyright>Contents © 2021 &lt;a href="mailto:"&gt;neal&lt;/a&gt; copyright Neal Gordon</copyright><lastBuildDate>Sun, 12 Sep 2021 14:17:23 GMT</lastBuildDate><generator>Nikola (getnikola.com)</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>An investigation of the Brick Stacking Problem</title><link>https://nagordon.github.io/ifcuriousthenlearn/blog/brick-stacking/</link><dc:creator>neal</dc:creator><description>&lt;div&gt;&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
 &lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;The original question I posed to myself is this. Can you stack bricks of equal dimensions and mass such that the top-most brick does not overlap the bottom-most brick? Or more generally, how far can bricks be stacked to generate the largest overhang?&lt;/p&gt;
@@ -241,10 +241,10 @@
 
 &lt;/div&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;/div&gt;</description><category>engineering</category><category>python</category><category>tutorial</category><guid>https://nagordon.github.io/ifcuriousthenlearn/posts/brick-stacking/</guid><pubDate>Mon, 29 May 2017 21:05:06 GMT</pubDate></item><item><title>Calculations with Python Code or Excel Spreadsheets</title><link>https://nagordon.github.io/ifcuriousthenlearn/posts/pythoncode-vs-excel/</link><dc:creator>neal</dc:creator><description>&lt;div&gt;&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;&lt;/div&gt;</description><category>engineering</category><category>python</category><category>tutorial</category><guid>https://nagordon.github.io/ifcuriousthenlearn/blog/brick-stacking/</guid><pubDate>Mon, 29 May 2017 21:05:06 GMT</pubDate></item><item><title>Calculations with Python Code or Excel Spreadsheets</title><link>https://nagordon.github.io/ifcuriousthenlearn/blog/pythoncode-vs-excel/</link><dc:creator>neal</dc:creator><description>&lt;div&gt;&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
 &lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;h2 id="To-code-or-not-to-code"&gt;To code or not to code&lt;a class="anchor-link" href="https://nagordon.github.io/ifcuriousthenlearn/posts/pythoncode-vs-excel/#To-code-or-not-to-code"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;When faced with a technical challenge or problem solving, conceptual understanding is an important first step, and I almost always start with hand calculations. Once I feel that I have a grasp of the concept, then I turn to a digital approach which often involves using excel or python and running some numbers, and re-running them, and fiddling until I really understand. I always feel like, especially in engineering, that using the right tool for the right job can make a big difference in the results. &lt;a href="https://products.office.com/en-us/excel"&gt;Microsoft Excel&lt;/a&gt; or &lt;a href="https://www.libreoffice.org/discover/calc/"&gt;Libre Calc&lt;/a&gt; spreadsheet programs are a great way to plug some numbers in and perform simple calculations with nearly no learning curve to get an answer. But as the complexity and quantity of the data and compuation increases, spreadsheets start to not make sense. That's where I feel a code based calculation method is important tool in everyones analysis toolbox. Classicaly, good old pencil and paper was the only way to model and work out problems. But, with the availability of the personal computer, software has allowed us to do more work with less effort. I find it very fascinating to see how people solve problems. This post will explore that idea and hopefully give you an idea to go beyond excel the next time you need to run some numbers.&lt;/p&gt;
+&lt;h2 id="To-code-or-not-to-code"&gt;To code or not to code&lt;a class="anchor-link" href="https://nagordon.github.io/ifcuriousthenlearn/blog/pythoncode-vs-excel/#To-code-or-not-to-code"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;When faced with a technical challenge or problem solving, conceptual understanding is an important first step, and I almost always start with hand calculations. Once I feel that I have a grasp of the concept, then I turn to a digital approach which often involves using excel or python and running some numbers, and re-running them, and fiddling until I really understand. I always feel like, especially in engineering, that using the right tool for the right job can make a big difference in the results. &lt;a href="https://products.office.com/en-us/excel"&gt;Microsoft Excel&lt;/a&gt; or &lt;a href="https://www.libreoffice.org/discover/calc/"&gt;Libre Calc&lt;/a&gt; spreadsheet programs are a great way to plug some numbers in and perform simple calculations with nearly no learning curve to get an answer. But as the complexity and quantity of the data and compuation increases, spreadsheets start to not make sense. That's where I feel a code based calculation method is important tool in everyones analysis toolbox. Classicaly, good old pencil and paper was the only way to model and work out problems. But, with the availability of the personal computer, software has allowed us to do more work with less effort. I find it very fascinating to see how people solve problems. This post will explore that idea and hopefully give you an idea to go beyond excel the next time you need to run some numbers.&lt;/p&gt;
 &lt;p&gt;There are many ways to solve engineering problems. The main tools that I have found critical  are:&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;strong&gt;hand calculations&lt;/strong&gt;  &lt;ul&gt;
@@ -274,7 +274,7 @@
 &lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;These are a few methods for solving computational problems. Each one has a time and place, but recognizing when you are trying to put a square peg in a round hole can help keep you sane.&lt;/p&gt;
-&lt;h2 id="An-Example---python-and-Excel-to-understand-loans"&gt;An Example - python and Excel to understand loans&lt;a class="anchor-link" href="https://nagordon.github.io/ifcuriousthenlearn/posts/pythoncode-vs-excel/#An-Example---python-and-Excel-to-understand-loans"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;OK, so we discussed some different approaches to problem solving. Lets look at an example of using an spreadsheet and python code to understand and determine the cost of an loan. Some terms are listed below if you aren't familiar with a compound interest loan.&lt;/p&gt;
+&lt;h2 id="An-Example---python-and-Excel-to-understand-loans"&gt;An Example - python and Excel to understand loans&lt;a class="anchor-link" href="https://nagordon.github.io/ifcuriousthenlearn/blog/pythoncode-vs-excel/#An-Example---python-and-Excel-to-understand-loans"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;OK, so we discussed some different approaches to problem solving. Lets look at an example of using an spreadsheet and python code to understand and determine the cost of an loan. Some terms are listed below if you aren't familiar with a compound interest loan.&lt;/p&gt;
 &lt;blockquote&gt;&lt;p&gt;apr - annual percentage rate&lt;br&gt;
 r   - monthly percentge rate, apr/12&lt;br&gt;
 per - the peroid for which you want to find an interest&lt;br&gt;
@@ -310,7 +310,7 @@ payments due at the end of the period&lt;/p&gt;
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
 &lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;h3 id="Hand-Calculation"&gt;Hand Calculation&lt;a class="anchor-link" href="https://nagordon.github.io/ifcuriousthenlearn/posts/pythoncode-vs-excel/#Hand-Calculation"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;If we are to hand calculate our loan payments, we can use the following equation (found in Engineering Economy, Blank et al, pg 58)&lt;/p&gt;
+&lt;h3 id="Hand-Calculation"&gt;Hand Calculation&lt;a class="anchor-link" href="https://nagordon.github.io/ifcuriousthenlearn/blog/pythoncode-vs-excel/#Hand-Calculation"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;If we are to hand calculate our loan payments, we can use the following equation (found in Engineering Economy, Blank et al, pg 58)&lt;/p&gt;
 $$
 payment = PV \bigg[  \frac{r(1+r)^n}{(1+r)^n-1} \bigg]
 $$
@@ -359,7 +359,7 @@ $$
 &lt;p&gt;&lt;strong&gt;Update&lt;/strong&gt; - I found out that Excel has a great Loan Amortization spreadsheet built in, and it even includes early payoff, which is not that easy to calculate. I have included it in the spreadsheet below or you can make a new one by doing the following.&lt;/p&gt;
 &lt;blockquote&gt;&lt;p&gt;&lt;em&gt;right-click on a new sheet -&amp;gt; Insert -&amp;gt; Spreadsheet Solutions -&amp;gt; Loan Amortization&lt;/em&gt;&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;h3 id="Spreadsheet"&gt;Spreadsheet&lt;a class="anchor-link" href="https://nagordon.github.io/ifcuriousthenlearn/posts/pythoncode-vs-excel/#Spreadsheet"&gt;¶&lt;/a&gt;&lt;/h3&gt;
+&lt;h3 id="Spreadsheet"&gt;Spreadsheet&lt;a class="anchor-link" href="https://nagordon.github.io/ifcuriousthenlearn/blog/pythoncode-vs-excel/#Spreadsheet"&gt;¶&lt;/a&gt;&lt;/h3&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
@@ -374,7 +374,7 @@ $$
 &lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;But, if we want to change, say the term length, well then we have to change the layout of the table and mess with it, so the spreadsheet isn't as robust as we had hoped. How about a code solution? Here are the steps to get some python code going to do the same exact calcuation, and being very robust, and can be used for many different finanical applications.&lt;/p&gt;
-&lt;h3 id="Code"&gt;Code&lt;a class="anchor-link" href="https://nagordon.github.io/ifcuriousthenlearn/posts/pythoncode-vs-excel/#Code"&gt;¶&lt;/a&gt;&lt;/h3&gt;
+&lt;h3 id="Code"&gt;Code&lt;a class="anchor-link" href="https://nagordon.github.io/ifcuriousthenlearn/blog/pythoncode-vs-excel/#Code"&gt;¶&lt;/a&gt;&lt;/h3&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
@@ -484,12 +484,12 @@ If you need any help with the functions, use the help function to show the input
 &lt;span class="n"&gt;help&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;ppmt&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;Try playing around with the code and see what happens when the terms of the loan are changed. The code is more robust to changes, where the spreadsheet has to be reworked&lt;/p&gt;
-&lt;h2 id="Summary"&gt;Summary&lt;a class="anchor-link" href="https://nagordon.github.io/ifcuriousthenlearn/posts/pythoncode-vs-excel/#Summary"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;A simple demo compared spreadsheets versus code with an example of a common calcualtion problem, loans! When pursuing future projects, think about what tools would be the best for the given problem, as well as you, and possibly your team.&lt;/p&gt;
+&lt;h2 id="Summary"&gt;Summary&lt;a class="anchor-link" href="https://nagordon.github.io/ifcuriousthenlearn/blog/pythoncode-vs-excel/#Summary"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;A simple demo compared spreadsheets versus code with an example of a common calcualtion problem, loans! When pursuing future projects, think about what tools would be the best for the given problem, as well as you, and possibly your team.&lt;/p&gt;
 &lt;p&gt;Stay curious!&lt;/p&gt;
 
 &lt;/div&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;/div&gt;</description><category>excel</category><category>python</category><guid>https://nagordon.github.io/ifcuriousthenlearn/posts/pythoncode-vs-excel/</guid><pubDate>Sat, 20 Aug 2016 07:00:00 GMT</pubDate></item><item><title>Sage Math Tool</title><link>https://nagordon.github.io/ifcuriousthenlearn/posts/sage-embed/</link><dc:creator>neal</dc:creator><description>&lt;div&gt;&lt;p&gt;I have been really impressed with the sage math application. It's based on python and is very powerful. Check out the documentation &lt;a href="http://www.sagemath.org/"&gt;here&lt;/a&gt; or try out the cloud service &lt;a href="https://cloud.sagemath.com/"&gt;here&lt;/a&gt;&lt;/p&gt;
+&lt;/div&gt;&lt;/div&gt;</description><category>excel</category><category>python</category><guid>https://nagordon.github.io/ifcuriousthenlearn/blog/pythoncode-vs-excel/</guid><pubDate>Sat, 20 Aug 2016 07:00:00 GMT</pubDate></item><item><title>Sage Math Tool</title><link>https://nagordon.github.io/ifcuriousthenlearn/blog/sage-embed/</link><dc:creator>neal</dc:creator><description>&lt;div&gt;&lt;p&gt;I have been really impressed with the sage math application. It's based on python and is very powerful. Check out the documentation &lt;a href="http://www.sagemath.org/"&gt;here&lt;/a&gt; or try out the cloud service &lt;a href="https://cloud.sagemath.com/"&gt;here&lt;/a&gt;&lt;/p&gt;
 &lt;script src="https://sagecell.sagemath.org/static/jquery.min.js"&gt;&lt;/script&gt;
 
 &lt;script src="https://sagecell.sagemath.org/static/embedded_sagecell.js"&gt;&lt;/script&gt;
@@ -499,11 +499,11 @@ If you need any help with the functions, use the help function to show the input
 &lt;p&gt;&lt;link rel="stylesheet" type="text/css" href="https://sagecell.sagemath.org/static/sagecell_embed.css"&gt;
 &lt;/p&gt;&lt;div class="sage"&gt;
   &lt;script type="text/x-sage"&gt;x = var('x') ; parametric_plot((cos(x),sin(x)^3),(x,0,2*pi),rgbcolor=hue(0.6))&lt;/script&gt;
-&lt;/div&gt;&lt;/div&gt;</description><category>math</category><category>python</category><guid>https://nagordon.github.io/ifcuriousthenlearn/posts/sage-embed/</guid><pubDate>Sun, 05 Jun 2016 08:00:00 GMT</pubDate></item><item><title>Python Tutor, and interactive execution tool</title><link>https://nagordon.github.io/ifcuriousthenlearn/posts/python-tutor/</link><dc:creator>neal</dc:creator><description>&lt;div&gt;&lt;p&gt;yet another neat tool I found online for understanding python execution&lt;/p&gt;
-&lt;iframe width="800" height="600" frameborder="0" src="http://pythontutor.com/iframe-embed.html#code=x+%3D+%5B1,+2,+3%5D%0Ay+%3D+%5B4,+5,+6%5D%0Az+%3D+y%0Ay+%3D+x%0Ax+%3D+z%0A%0Ax+%3D+%5B1,+2,+3%5D+%23+a+different+%5B1,+2,+3%5D+list!%0Ay+%3D+x%0Ax.append(4%29%0Ay.append(5%29%0Az+%3D+%5B1,+2,+3,+4,+5%5D+%23+a+different+list!%0Ax.append(6%29%0Ay.append(7%29%0Ay+%3D+%22hello%22%0A%0A%0Adef+foo(lst%29%3A%0A++++lst.append(%22hello%22%29%0A++++bar(lst%29%0A%0Adef+bar(myLst%29%3A%0A++++print(myLst%29%0A%0Afoo(x%29%0Afoo(z%29&amp;amp;origin=opt-frontend.js&amp;amp;cumulative=false&amp;amp;heapPrimitives=false&amp;amp;textReferences=false&amp;amp;py=2&amp;amp;rawInputLstJSON=%5B%5D&amp;amp;curInstr=0&amp;amp;codeDivWidth=350&amp;amp;codeDivHeight=400"&gt; &lt;/iframe&gt;&lt;/div&gt;</description><category>code</category><category>python</category><guid>https://nagordon.github.io/ifcuriousthenlearn/posts/python-tutor/</guid><pubDate>Fri, 06 May 2016 08:00:00 GMT</pubDate></item><item><title>Finding the Center of Mass from Point Masses with Python</title><link>https://nagordon.github.io/ifcuriousthenlearn/posts/center-of-mass/</link><dc:creator>neal</dc:creator><description>&lt;div&gt;&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;&lt;/div&gt;</description><category>math</category><category>python</category><guid>https://nagordon.github.io/ifcuriousthenlearn/blog/sage-embed/</guid><pubDate>Sun, 05 Jun 2016 08:00:00 GMT</pubDate></item><item><title>Python Tutor, and interactive execution tool</title><link>https://nagordon.github.io/ifcuriousthenlearn/blog/python-tutor/</link><dc:creator>neal</dc:creator><description>&lt;div&gt;&lt;p&gt;yet another neat tool I found online for understanding python execution&lt;/p&gt;
+&lt;iframe width="800" height="600" frameborder="0" src="http://pythontutor.com/iframe-embed.html#code=x+%3D+%5B1,+2,+3%5D%0Ay+%3D+%5B4,+5,+6%5D%0Az+%3D+y%0Ay+%3D+x%0Ax+%3D+z%0A%0Ax+%3D+%5B1,+2,+3%5D+%23+a+different+%5B1,+2,+3%5D+list!%0Ay+%3D+x%0Ax.append(4%29%0Ay.append(5%29%0Az+%3D+%5B1,+2,+3,+4,+5%5D+%23+a+different+list!%0Ax.append(6%29%0Ay.append(7%29%0Ay+%3D+%22hello%22%0A%0A%0Adef+foo(lst%29%3A%0A++++lst.append(%22hello%22%29%0A++++bar(lst%29%0A%0Adef+bar(myLst%29%3A%0A++++print(myLst%29%0A%0Afoo(x%29%0Afoo(z%29&amp;amp;origin=opt-frontend.js&amp;amp;cumulative=false&amp;amp;heapPrimitives=false&amp;amp;textReferences=false&amp;amp;py=2&amp;amp;rawInputLstJSON=%5B%5D&amp;amp;curInstr=0&amp;amp;codeDivWidth=350&amp;amp;codeDivHeight=400"&gt; &lt;/iframe&gt;&lt;/div&gt;</description><category>code</category><category>python</category><guid>https://nagordon.github.io/ifcuriousthenlearn/blog/python-tutor/</guid><pubDate>Fri, 06 May 2016 08:00:00 GMT</pubDate></item><item><title>Finding the Center of Mass from Point Masses with Python</title><link>https://nagordon.github.io/ifcuriousthenlearn/blog/center-of-mass/</link><dc:creator>neal</dc:creator><description>&lt;div&gt;&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
 &lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;h2 id="Finding-the-Center-of-Gravity(CG)-of-a-point-mass-in-1,-2-and-3-Dimensions"&gt;Finding the Center of Gravity(CG) of a point mass in 1, 2 and 3 Dimensions&lt;a class="anchor-link" href="https://nagordon.github.io/ifcuriousthenlearn/posts/center-of-mass/#Finding-the-Center-of-Gravity(CG)-of-a-point-mass-in-1,-2-and-3-Dimensions"&gt;¶&lt;/a&gt;&lt;/h2&gt;
+&lt;h2 id="Finding-the-Center-of-Gravity(CG)-of-a-point-mass-in-1,-2-and-3-Dimensions"&gt;Finding the Center of Gravity(CG) of a point mass in 1, 2 and 3 Dimensions&lt;a class="anchor-link" href="https://nagordon.github.io/ifcuriousthenlearn/blog/center-of-mass/#Finding-the-Center-of-Gravity(CG)-of-a-point-mass-in-1,-2-and-3-Dimensions"&gt;¶&lt;/a&gt;&lt;/h2&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
@@ -570,7 +570,7 @@ If you need any help with the functions, use the help function to show the input
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
 &lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;h3 id="First,-lets-determine-the-CG-of-a-1D-space"&gt;First, lets determine the CG of a 1D space&lt;a class="anchor-link" href="https://nagordon.github.io/ifcuriousthenlearn/posts/center-of-mass/#First,-lets-determine-the-CG-of-a-1D-space"&gt;¶&lt;/a&gt;&lt;/h3&gt;
+&lt;h3 id="First,-lets-determine-the-CG-of-a-1D-space"&gt;First, lets determine the CG of a 1D space&lt;a class="anchor-link" href="https://nagordon.github.io/ifcuriousthenlearn/blog/center-of-mass/#First,-lets-determine-the-CG-of-a-1D-space"&gt;¶&lt;/a&gt;&lt;/h3&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
@@ -765,7 +765,7 @@ $$ \bar{x}=\frac{\sum_{i=0}^{n}{x_i*m_i}}{\sum_{i=0}^{n}{m_i}} $$
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
 &lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;h3 id="Now,-lets-determine-the-CG-of-a-2D-space"&gt;Now, lets determine the CG of a 2D space&lt;a class="anchor-link" href="https://nagordon.github.io/ifcuriousthenlearn/posts/center-of-mass/#Now,-lets-determine-the-CG-of-a-2D-space"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;Lets add a 2nd dimension, on the y axis&lt;/p&gt;
+&lt;h3 id="Now,-lets-determine-the-CG-of-a-2D-space"&gt;Now, lets determine the CG of a 2D space&lt;a class="anchor-link" href="https://nagordon.github.io/ifcuriousthenlearn/blog/center-of-mass/#Now,-lets-determine-the-CG-of-a-2D-space"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;Lets add a 2nd dimension, on the y axis&lt;/p&gt;
 
 &lt;/div&gt;
 &lt;/div&gt;
@@ -862,7 +862,7 @@ $$ \bar{x}=\frac{\sum_{i=0}^{n}{x_i*m_i}}{\sum_{i=0}^{n}{m_i}} $$$$ \bar{y}=\fra
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
 &lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;h3 id="Finally,-lets-determine-the-CG-of-a-3D-space"&gt;Finally, lets determine the CG of a 3D space&lt;a class="anchor-link" href="https://nagordon.github.io/ifcuriousthenlearn/posts/center-of-mass/#Finally,-lets-determine-the-CG-of-a-3D-space"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;Lets add a 3rd dimension, on the z axis.&lt;/p&gt;
+&lt;h3 id="Finally,-lets-determine-the-CG-of-a-3D-space"&gt;Finally, lets determine the CG of a 3D space&lt;a class="anchor-link" href="https://nagordon.github.io/ifcuriousthenlearn/blog/center-of-mass/#Finally,-lets-determine-the-CG-of-a-3D-space"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;Lets add a 3rd dimension, on the z axis.&lt;/p&gt;
 
 &lt;/div&gt;
 &lt;/div&gt;
@@ -983,10 +983,10 @@ $$ \bar{x}=\frac{\sum_{i=0}^{n}{x_i*m_i}}{\sum_{i=0}^{n}{m_i}} $$$$ \bar{y}=\fra
 &lt;/div&gt;
 &lt;/div&gt;
 
-&lt;/div&gt;&lt;/div&gt;</description><category>engineering</category><category>python</category><category>tutorial</category><guid>https://nagordon.github.io/ifcuriousthenlearn/posts/center-of-mass/</guid><pubDate>Thu, 18 Jun 2015 07:00:00 GMT</pubDate></item><item><title>Mechanical Vibrations with Python</title><link>https://nagordon.github.io/ifcuriousthenlearn/posts/mechanical-vibrations-with-python/</link><dc:creator>neal</dc:creator><description>&lt;div&gt;&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;&lt;/div&gt;</description><category>engineering</category><category>python</category><category>tutorial</category><guid>https://nagordon.github.io/ifcuriousthenlearn/blog/center-of-mass/</guid><pubDate>Thu, 18 Jun 2015 07:00:00 GMT</pubDate></item><item><title>Mechanical Vibrations with Python</title><link>https://nagordon.github.io/ifcuriousthenlearn/blog/mechanical-vibrations-with-python/</link><dc:creator>neal</dc:creator><description>&lt;div&gt;&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
 &lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;h2 id="Mechanical-Vibrations-with-Python-[updated]"&gt;Mechanical Vibrations with Python [updated]&lt;a class="anchor-link" href="https://nagordon.github.io/ifcuriousthenlearn/posts/mechanical-vibrations-with-python/#Mechanical-Vibrations-with-Python-%5Bupdated%5D"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;Thanks to a comment I had the equation for xdd incorrect, but has been updated, thanks guest&lt;/p&gt;
+&lt;h2 id="Mechanical-Vibrations-with-Python-[updated]"&gt;Mechanical Vibrations with Python [updated]&lt;a class="anchor-link" href="https://nagordon.github.io/ifcuriousthenlearn/blog/mechanical-vibrations-with-python/#Mechanical-Vibrations-with-Python-%5Bupdated%5D"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;Thanks to a comment I had the equation for xdd incorrect, but has been updated, thanks guest&lt;/p&gt;
 &lt;p&gt;Solving second-order differential equations is a common problem in mechanical engineering, and although it is improtant to understand how to solve these problems analytically, using software to solve them is mor practical, especially when considering the parameters are often unknown and need to be tested.&lt;/p&gt;
 &lt;p&gt;This is a simple example of solving a second-order differential equation representing a spring-damper system with python programming language. Python is a powerful tool for science and engineering and is relativley easy to use and free!&lt;/p&gt;
 &lt;p&gt;The system that this is modeling is based on a spring and damper in parallel attached to a mass.&lt;/p&gt;
@@ -1251,18 +1251,18 @@ $$ \bar{x}=\frac{\sum_{i=0}^{n}{x_i*m_i}}{\sum_{i=0}^{n}{m_i}} $$$$ \bar{y}=\fra
 &lt;/div&gt;
 &lt;/div&gt;
 
-&lt;/div&gt;&lt;/div&gt;</description><category>engineering</category><category>math</category><category>python</category><guid>https://nagordon.github.io/ifcuriousthenlearn/posts/mechanical-vibrations-with-python/</guid><pubDate>Tue, 09 Jun 2015 21:05:06 GMT</pubDate></item><item><title>Learn Latex, markdown and html with doconce</title><link>https://nagordon.github.io/ifcuriousthenlearn/posts/doconce-intro/</link><dc:creator>neal</dc:creator><description>&lt;div&gt;&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;&lt;/div&gt;</description><category>engineering</category><category>math</category><category>python</category><guid>https://nagordon.github.io/ifcuriousthenlearn/blog/mechanical-vibrations-with-python/</guid><pubDate>Tue, 09 Jun 2015 21:05:06 GMT</pubDate></item><item><title>Learn Latex, markdown and html with doconce</title><link>https://nagordon.github.io/ifcuriousthenlearn/blog/doconce-intro/</link><dc:creator>neal</dc:creator><description>&lt;div&gt;&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
 &lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;h2 id="Neals-First-DocOnce-Publication"&gt;Neals First DocOnce Publication&lt;a class="anchor-link" href="https://nagordon.github.io/ifcuriousthenlearn/posts/doconce-intro/#Neals-First-DocOnce-Publication"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;&lt;strong&gt;Jun 4, 2015&lt;/strong&gt;&lt;/p&gt;
+&lt;h2 id="Neals-First-DocOnce-Publication"&gt;Neals First DocOnce Publication&lt;a class="anchor-link" href="https://nagordon.github.io/ifcuriousthenlearn/blog/doconce-intro/#Neals-First-DocOnce-Publication"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;&lt;strong&gt;Jun 4, 2015&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Summary.&lt;/strong&gt; My goal here is to learn the package &lt;a href="http://hplgit.github.io/doconce/doc/web/index.html"&gt;doconce&lt;/a&gt;, which is a markup syntax for creating scientific documents with many different types of outputs, including markdown, html, ipython notebooks, pdfs, and docx files. What's wrong with markdown? The short answer is nothing, it is great and important to know, however, some features that a needed for more advanced features, like figure/equation references, as well as including citations is needed, and haven't any good solution for that. 
 All the up-to-date source code and various document formats can be found on the &lt;a href="https://github.com/nagordon/technotes/tree/master/doconce"&gt;github repository&lt;/a&gt;.&lt;/p&gt;
-&lt;h3 id="Introduction"&gt;Introduction&lt;a class="anchor-link" href="https://nagordon.github.io/ifcuriousthenlearn/posts/doconce-intro/#Introduction"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;div id="sec:intro"&gt;&lt;/div&gt;&lt;p&gt;DocOnce is a lightweight markup language that is pure python, tso that it will work on any OS
+&lt;h3 id="Introduction"&gt;Introduction&lt;a class="anchor-link" href="https://nagordon.github.io/ifcuriousthenlearn/blog/doconce-intro/#Introduction"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;div id="sec:intro"&gt;&lt;/div&gt;&lt;p&gt;DocOnce is a lightweight markup language that is pure python, tso that it will work on any OS
 the source markdown files have extension *.do.txt
 each document should have the structure with a fig and src directory to keep images and code. The make.sh file is used to generate various documents with a lot of of custom settings.&lt;/p&gt;
-&lt;h4 id="SubIntro"&gt;SubIntro&lt;a class="anchor-link" href="https://nagordon.github.io/ifcuriousthenlearn/posts/doconce-intro/#SubIntro"&gt;¶&lt;/a&gt;&lt;/h4&gt;&lt;p&gt;Since I have began blogging, I realized the importance of learning html, markdown, etc and now have been trying my best to learn tex and LaTeX. While doconce is a little buggy, it is still under active development and have found it very useful for learning how all the various markups work together. I still find microsoft products very handy, especially v2013, but when working with the web and version control systems, plain text sources files are great! So, if you haven't heard of doconce yet, check it out!&lt;/p&gt;
-&lt;h5 id="SubSubIntro"&gt;SubSubIntro&lt;a class="anchor-link" href="https://nagordon.github.io/ifcuriousthenlearn/posts/doconce-intro/#SubSubIntro"&gt;¶&lt;/a&gt;&lt;/h5&gt;&lt;p&gt;The main goal here is to generate an example document to help me learn and show you the syntax of doconce. Hopefully it will make sense and the errors are minimal! This is still a work in progress.&lt;/p&gt;
-&lt;h3 id="Headings,-Labels,-and-References"&gt;Headings, Labels, and References&lt;a class="anchor-link" href="https://nagordon.github.io/ifcuriousthenlearn/posts/doconce-intro/#Headings,-Labels,-and-References"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;div id="sec:hlr"&gt;&lt;/div&gt;&lt;p&gt;For simple documents, chapters are not necessary, so only 7= are necessary to create a header for the section.&lt;/p&gt;
+&lt;h4 id="SubIntro"&gt;SubIntro&lt;a class="anchor-link" href="https://nagordon.github.io/ifcuriousthenlearn/blog/doconce-intro/#SubIntro"&gt;¶&lt;/a&gt;&lt;/h4&gt;&lt;p&gt;Since I have began blogging, I realized the importance of learning html, markdown, etc and now have been trying my best to learn tex and LaTeX. While doconce is a little buggy, it is still under active development and have found it very useful for learning how all the various markups work together. I still find microsoft products very handy, especially v2013, but when working with the web and version control systems, plain text sources files are great! So, if you haven't heard of doconce yet, check it out!&lt;/p&gt;
+&lt;h5 id="SubSubIntro"&gt;SubSubIntro&lt;a class="anchor-link" href="https://nagordon.github.io/ifcuriousthenlearn/blog/doconce-intro/#SubSubIntro"&gt;¶&lt;/a&gt;&lt;/h5&gt;&lt;p&gt;The main goal here is to generate an example document to help me learn and show you the syntax of doconce. Hopefully it will make sense and the errors are minimal! This is still a work in progress.&lt;/p&gt;
+&lt;h3 id="Headings,-Labels,-and-References"&gt;Headings, Labels, and References&lt;a class="anchor-link" href="https://nagordon.github.io/ifcuriousthenlearn/blog/doconce-intro/#Headings,-Labels,-and-References"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;div id="sec:hlr"&gt;&lt;/div&gt;&lt;p&gt;For simple documents, chapters are not necessary, so only 7= are necessary to create a header for the section.&lt;/p&gt;
 
 &lt;/div&gt;
 &lt;/div&gt;
@@ -1286,7 +1286,7 @@ each document should have the structure with a fig and src directory to keep ima
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
 &lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;p&gt;Labels are created with any text in curly braces and prefixed with label and then referenced with prefix ref. The ref must be enclosed with paranthesis. References can be made within the document with (&lt;a href="https://nagordon.github.io/ifcuriousthenlearn/posts/doconce-intro/#sec:intro"&gt;Introduction&lt;/a&gt;). Figures are referenced using , and to reference a section of the document like the code the section &lt;a href="https://nagordon.github.io/ifcuriousthenlearn/posts/doconce-intro/#sec:code"&gt;Code&lt;/a&gt;  or the bibliography can be created using the prefix cite. One example of what doconce can be used for is an entire book &lt;a href="https://nagordon.github.io/ifcuriousthenlearn/posts/doconce-intro/#Langtangen"&gt;[Langtangen]&lt;/a&gt;. Also, equations can be referenced in a similar fashion, such as &lt;a href="https://nagordon.github.io/ifcuriousthenlearn/posts/doconce-intro/#eqn:tsaihill"&gt;(1)&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Labels are created with any text in curly braces and prefixed with label and then referenced with prefix ref. The ref must be enclosed with paranthesis. References can be made within the document with (&lt;a href="https://nagordon.github.io/ifcuriousthenlearn/blog/doconce-intro/#sec:intro"&gt;Introduction&lt;/a&gt;). Figures are referenced using , and to reference a section of the document like the code the section &lt;a href="https://nagordon.github.io/ifcuriousthenlearn/blog/doconce-intro/#sec:code"&gt;Code&lt;/a&gt;  or the bibliography can be created using the prefix cite. One example of what doconce can be used for is an entire book &lt;a href="https://nagordon.github.io/ifcuriousthenlearn/blog/doconce-intro/#Langtangen"&gt;[Langtangen]&lt;/a&gt;. Also, equations can be referenced in a similar fashion, such as &lt;a href="https://nagordon.github.io/ifcuriousthenlearn/blog/doconce-intro/#eqn:tsaihill"&gt;(1)&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;Index of keywords can be defined with&lt;/p&gt;
 
 &lt;/div&gt;
@@ -1328,11 +1328,11 @@ each document should have the structure with a fig and src directory to keep ima
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
 &lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;h4 id="my-subheading"&gt;my subheading&lt;a class="anchor-link" href="https://nagordon.github.io/ifcuriousthenlearn/posts/doconce-intro/#my-subheading"&gt;¶&lt;/a&gt;&lt;/h4&gt;&lt;p&gt;testing the subheading&lt;/p&gt;
-&lt;h5 id="my-subsubheading"&gt;my subsubheading&lt;a class="anchor-link" href="https://nagordon.github.io/ifcuriousthenlearn/posts/doconce-intro/#my-subsubheading"&gt;¶&lt;/a&gt;&lt;/h5&gt;&lt;p&gt;finally, the smallest heading we can have&lt;/p&gt;
+&lt;h4 id="my-subheading"&gt;my subheading&lt;a class="anchor-link" href="https://nagordon.github.io/ifcuriousthenlearn/blog/doconce-intro/#my-subheading"&gt;¶&lt;/a&gt;&lt;/h4&gt;&lt;p&gt;testing the subheading&lt;/p&gt;
+&lt;h5 id="my-subsubheading"&gt;my subsubheading&lt;a class="anchor-link" href="https://nagordon.github.io/ifcuriousthenlearn/blog/doconce-intro/#my-subsubheading"&gt;¶&lt;/a&gt;&lt;/h5&gt;&lt;p&gt;finally, the smallest heading we can have&lt;/p&gt;
 &lt;!-- Lines beginning with # are comment lines --&gt;
 
-&lt;h3 id="Code"&gt;Code&lt;a class="anchor-link" href="https://nagordon.github.io/ifcuriousthenlearn/posts/doconce-intro/#Code"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;div id="sec:code"&gt;&lt;/div&gt;&lt;p&gt;Code can be identified in the text by enclosing the text in single back quotes, as in&lt;/p&gt;
+&lt;h3 id="Code"&gt;Code&lt;a class="anchor-link" href="https://nagordon.github.io/ifcuriousthenlearn/blog/doconce-intro/#Code"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;div id="sec:code"&gt;&lt;/div&gt;&lt;p&gt;Code can be identified in the text by enclosing the text in single back quotes, as in&lt;/p&gt;
 
 &lt;/div&gt;
 &lt;/div&gt;
@@ -1506,7 +1506,7 @@ each document should have the structure with a fig and src directory to keep ima
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
 &lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;h3 id="Lists"&gt;Lists&lt;a class="anchor-link" href="https://nagordon.github.io/ifcuriousthenlearn/posts/doconce-intro/#Lists"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;Here are some examples of lists directly from the &lt;a href="http://hplgit.github.io/doconce/doc/pub/quickref/quickref.html"&gt;documentation&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id="Lists"&gt;Lists&lt;a class="anchor-link" href="https://nagordon.github.io/ifcuriousthenlearn/blog/doconce-intro/#Lists"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;Here are some examples of lists directly from the &lt;a href="http://hplgit.github.io/doconce/doc/pub/quickref/quickref.html"&gt;documentation&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;Here is a bullet list:&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;p&gt;item1&lt;/p&gt;
@@ -1558,14 +1558,14 @@ multiple lines&lt;/p&gt;
 &lt;p&gt;keyword3:
   :&lt;br&gt;
    and its description may fit on one line&lt;/p&gt;
-&lt;h3 id="Comments-and-Footnotes"&gt;Comments and Footnotes&lt;a class="anchor-link" href="https://nagordon.github.io/ifcuriousthenlearn/posts/doconce-intro/#Comments-and-Footnotes"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;div id="sec:com"&gt;&lt;/div&gt;&lt;p&gt;Creating comments in the text is a handy way to supplement with optional information, one way is to use an inline comment such as [hpl 1: here I will make some
-remarks to the text]. Another way to add content is to add a footnote &lt;sup class="footnote-ref" id="fnref-footnote"&gt;&lt;a href="https://nagordon.github.io/ifcuriousthenlearn/posts/doconce-intro/#fn-footnote"&gt;1&lt;/a&gt;&lt;/sup&gt; is also possible.&lt;/p&gt;
-&lt;h3 id="Math,-Latex"&gt;Math, Latex&lt;a class="anchor-link" href="https://nagordon.github.io/ifcuriousthenlearn/posts/doconce-intro/#Math,-Latex"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;div id="sec:math"&gt;&lt;/div&gt;&lt;p&gt;inline latex can look like this 
+&lt;h3 id="Comments-and-Footnotes"&gt;Comments and Footnotes&lt;a class="anchor-link" href="https://nagordon.github.io/ifcuriousthenlearn/blog/doconce-intro/#Comments-and-Footnotes"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;div id="sec:com"&gt;&lt;/div&gt;&lt;p&gt;Creating comments in the text is a handy way to supplement with optional information, one way is to use an inline comment such as [hpl 1: here I will make some
+remarks to the text]. Another way to add content is to add a footnote &lt;sup class="footnote-ref" id="fnref-footnote"&gt;&lt;a href="https://nagordon.github.io/ifcuriousthenlearn/blog/doconce-intro/#fn-footnote"&gt;1&lt;/a&gt;&lt;/sup&gt; is also possible.&lt;/p&gt;
+&lt;h3 id="Math,-Latex"&gt;Math, Latex&lt;a class="anchor-link" href="https://nagordon.github.io/ifcuriousthenlearn/blog/doconce-intro/#Math,-Latex"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;div id="sec:math"&gt;&lt;/div&gt;&lt;p&gt;inline latex can look like this 
 $x = a_0 + \frac{1}{\displaystyle a_1 + \frac{1}{\displaystyle a_2 + \frac{1}{\displaystyle a_3 + a_4}}}$
 and another block&lt;/p&gt;
 &lt;div class="footnotes"&gt;
 &lt;hr&gt;
-&lt;ol&gt;&lt;li id="fn-footnote"&gt;&lt;p&gt;The syntax for footnotes is borrowed from Extended Markdown.&lt;a href="https://nagordon.github.io/ifcuriousthenlearn/posts/doconce-intro/#fnref-footnote" class="footnote"&gt;↩&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;ol&gt;&lt;li id="fn-footnote"&gt;&lt;p&gt;The syntax for footnotes is borrowed from Extended Markdown.&lt;a href="https://nagordon.github.io/ifcuriousthenlearn/blog/doconce-intro/#fnref-footnote" class="footnote"&gt;↩&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
 &lt;/ol&gt;
 &lt;/div&gt;
 
@@ -1605,14 +1605,14 @@ $$
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
 &lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;h3 id="Images"&gt;Images&lt;a class="anchor-link" href="https://nagordon.github.io/ifcuriousthenlearn/posts/doconce-intro/#Images"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;div id="sec:img"&gt;&lt;/div&gt;&lt;p&gt;This section explains how to create images. The size can be adjusted with frac and the width adjusts the width when exporting to html&lt;/p&gt;
+&lt;h3 id="Images"&gt;Images&lt;a class="anchor-link" href="https://nagordon.github.io/ifcuriousthenlearn/blog/doconce-intro/#Images"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;div id="sec:img"&gt;&lt;/div&gt;&lt;p&gt;This section explains how to create images. The size can be adjusted with frac and the width adjusts the width when exporting to html&lt;/p&gt;
 &lt;p&gt;for a really tiny image, we can use&lt;/p&gt;
 &lt;div id="fig:myfig1"&gt;&lt;/div&gt;&lt;p&gt;&lt;/p&gt;&lt;p&gt;My favorite linux desktop with frac-0.1.&lt;/p&gt;
 &lt;img src="https://nagordon.github.io/ifcuriousthenlearn/images/Learn-Latex-markdown-and-html-with-doconce/mint.png" width="650"&gt;
 &lt;p&gt;and for a figure that is a bit bigger, we can increase the fraction size&lt;/p&gt;
 &lt;div id="fig:myfig2"&gt;&lt;/div&gt;&lt;p&gt;&lt;/p&gt;&lt;p&gt;My favorite linux desktop with frac-0.9.&lt;/p&gt;
 &lt;img src="https://nagordon.github.io/ifcuriousthenlearn/images/Learn-Latex-markdown-and-html-with-doconce/mint.png" width="650"&gt;
-&lt;h3 id="File-Structure"&gt;File Structure&lt;a class="anchor-link" href="https://nagordon.github.io/ifcuriousthenlearn/posts/doconce-intro/#File-Structure"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;div id="sec:fil"&gt;&lt;/div&gt;&lt;p&gt;each document should have the structure with a fig and src directory to keep images and code. The make.sh file is used to generate various documents with a lot of of custom settings&lt;/p&gt;
+&lt;h3 id="File-Structure"&gt;File Structure&lt;a class="anchor-link" href="https://nagordon.github.io/ifcuriousthenlearn/blog/doconce-intro/#File-Structure"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;div id="sec:fil"&gt;&lt;/div&gt;&lt;p&gt;each document should have the structure with a fig and src directory to keep images and code. The make.sh file is used to generate various documents with a lot of of custom settings&lt;/p&gt;
 
 &lt;/div&gt;
 &lt;/div&gt;
@@ -1636,8 +1636,8 @@ $$
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
 &lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;h3 id="Help"&gt;Help&lt;a class="anchor-link" href="https://nagordon.github.io/ifcuriousthenlearn/posts/doconce-intro/#Help"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;help can be gotten from &lt;code&gt;doconce format --help&lt;/code&gt;&lt;/p&gt;
-&lt;h3 id="Coverting-Files"&gt;Coverting Files&lt;a class="anchor-link" href="https://nagordon.github.io/ifcuriousthenlearn/posts/doconce-intro/#Coverting-Files"&gt;¶&lt;/a&gt;&lt;/h3&gt;
+&lt;h3 id="Help"&gt;Help&lt;a class="anchor-link" href="https://nagordon.github.io/ifcuriousthenlearn/blog/doconce-intro/#Help"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;help can be gotten from &lt;code&gt;doconce format --help&lt;/code&gt;&lt;/p&gt;
+&lt;h3 id="Coverting-Files"&gt;Coverting Files&lt;a class="anchor-link" href="https://nagordon.github.io/ifcuriousthenlearn/blog/doconce-intro/#Coverting-Files"&gt;¶&lt;/a&gt;&lt;/h3&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
@@ -1698,7 +1698,7 @@ $$
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
 &lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;h3 id="Installation"&gt;Installation&lt;a class="anchor-link" href="https://nagordon.github.io/ifcuriousthenlearn/posts/doconce-intro/#Installation"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;div id="sec:install"&gt;&lt;/div&gt;&lt;p&gt;I am using a Windows 7 laptop with&lt;/p&gt;
+&lt;h3 id="Installation"&gt;Installation&lt;a class="anchor-link" href="https://nagordon.github.io/ifcuriousthenlearn/blog/doconce-intro/#Installation"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;div id="sec:install"&gt;&lt;/div&gt;&lt;p&gt;I am using a Windows 7 laptop with&lt;/p&gt;
 &lt;p&gt;&lt;a href="https://www.virtualbox.org/wiki/Downloads"&gt;VirtualBox&lt;/a&gt;
 &lt;a href="http://www.linuxmint.com/edition.php?id=172"&gt;Linux Mint 17.1&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;Make sure your machine is up to date&lt;/p&gt;
@@ -1828,8 +1828,8 @@ $$
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
 &lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;h3 id="Sundries"&gt;Sundries&lt;a class="anchor-link" href="https://nagordon.github.io/ifcuriousthenlearn/posts/doconce-intro/#Sundries"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;DO NOT USE UNDERSCORES IN ANY PART OF YOUR DOCUMENT, ONLY FOR MARKDOWN.&lt;/p&gt;
-&lt;h3 id="Handy-Links"&gt;Handy Links&lt;a class="anchor-link" href="https://nagordon.github.io/ifcuriousthenlearn/posts/doconce-intro/#Handy-Links"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;div id="sec:links"&gt;&lt;/div&gt;&lt;p&gt;Examples of a couple of the output files can be found here
+&lt;h3 id="Sundries"&gt;Sundries&lt;a class="anchor-link" href="https://nagordon.github.io/ifcuriousthenlearn/blog/doconce-intro/#Sundries"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;DO NOT USE UNDERSCORES IN ANY PART OF YOUR DOCUMENT, ONLY FOR MARKDOWN.&lt;/p&gt;
+&lt;h3 id="Handy-Links"&gt;Handy Links&lt;a class="anchor-link" href="https://nagordon.github.io/ifcuriousthenlearn/blog/doconce-intro/#Handy-Links"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;div id="sec:links"&gt;&lt;/div&gt;&lt;p&gt;Examples of a couple of the output files can be found here
 &lt;a href="https://github.com/nagordon/technotes/blob/master/doconce/doconce_notes.1col.pdf"&gt;doconcenotes1colpdf&lt;/a&gt; , &lt;a href="https://github.com/nagordon/technotes/blob/master/doconce/doconce_notes.2col.pdf"&gt;doconcenotes2colpdf&lt;/a&gt; , &lt;a href="https://github.com/nagordon/technotes/blob/master/doconce/doconce_notes.html.pdf"&gt;htmlblack&lt;/a&gt;, &lt;a href="https://github.com/nagordon/technotes/blob/master/doconce/doconce_notes.ipynb.pdf"&gt;htmlipynb&lt;/a&gt;, and, although not great, &lt;a href="https://github.com/nagordon/technotes/blob/master/doconce/doconce_notes.md.docx"&gt;doconcedocx&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;main site &lt;a href="https://github.com/hplgit/doconce"&gt;https://github.com/hplgit/doconce&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;&lt;a href="http://hplgit.github.io/doconce/doc/pub/tutorial/tutorial.html"&gt;tutorial&lt;/a&gt;&lt;/p&gt;
@@ -1839,7 +1839,7 @@ $$
 &lt;p&gt;&lt;a href="http://hplgit.github.io/doconce/doc/web/index.html"&gt;github website&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;&lt;a href="http://hplgit.github.io/doconce/doc/pub/slides/scientific_writing-1.html"&gt;scientific writing&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;&lt;a href="https://github.com/hplgit/hplgit.github.com/tree/master/teamods"&gt;more examples&lt;/a&gt;&lt;/p&gt;
-&lt;h3 id="References"&gt;References&lt;a class="anchor-link" href="https://nagordon.github.io/ifcuriousthenlearn/posts/doconce-intro/#References"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;div id="sec:ref"&gt;&lt;/div&gt;&lt;ol&gt;
+&lt;h3 id="References"&gt;References&lt;a class="anchor-link" href="https://nagordon.github.io/ifcuriousthenlearn/blog/doconce-intro/#References"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;div id="sec:ref"&gt;&lt;/div&gt;&lt;ol&gt;
 &lt;li&gt;&lt;div id="Langtangen"&gt;&lt;/div&gt; &lt;strong&gt;H. P. Langtangen&lt;/strong&gt;. 
 &lt;em&gt;A Primer on Scientific Programming With Python&lt;/em&gt;,
 4 edition,
@@ -1850,10 +1850,10 @@ Springer,
 
 &lt;/div&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;/div&gt;</description><category>doconce</category><category>latex</category><category>markdown</category><category>python</category><guid>https://nagordon.github.io/ifcuriousthenlearn/posts/doconce-intro/</guid><pubDate>Sat, 06 Jun 2015 07:00:00 GMT</pubDate></item><item><title>MATLAB to python conversion</title><link>https://nagordon.github.io/ifcuriousthenlearn/posts/matlab-to-python-conversion/</link><dc:creator>neal</dc:creator><description>&lt;div&gt;&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;&lt;/div&gt;</description><category>doconce</category><category>latex</category><category>markdown</category><category>python</category><guid>https://nagordon.github.io/ifcuriousthenlearn/blog/doconce-intro/</guid><pubDate>Sat, 06 Jun 2015 07:00:00 GMT</pubDate></item><item><title>MATLAB to python conversion</title><link>https://nagordon.github.io/ifcuriousthenlearn/blog/matlab-to-python-conversion/</link><dc:creator>neal</dc:creator><description>&lt;div&gt;&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
 &lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;h2 id="Matlab-to-Python-conversion"&gt;Matlab to Python conversion&lt;a class="anchor-link" href="https://nagordon.github.io/ifcuriousthenlearn/posts/matlab-to-python-conversion/#Matlab-to-Python-conversion"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;There seems to be an natural progression that occurs for users of data anaylsis programs. I believe the forces guiding those changes are not coincidental, but out of necessity based on the ease of learning, functionality, extensibility, scalability and cost. In my opinion, the best method for theory is still handwritten, but when more advanced concepts are learned, more powerful tools make those concepts easier to understand.&lt;/p&gt;
+&lt;h2 id="Matlab-to-Python-conversion"&gt;Matlab to Python conversion&lt;a class="anchor-link" href="https://nagordon.github.io/ifcuriousthenlearn/blog/matlab-to-python-conversion/#Matlab-to-Python-conversion"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;There seems to be an natural progression that occurs for users of data anaylsis programs. I believe the forces guiding those changes are not coincidental, but out of necessity based on the ease of learning, functionality, extensibility, scalability and cost. In my opinion, the best method for theory is still handwritten, but when more advanced concepts are learned, more powerful tools make those concepts easier to understand.&lt;/p&gt;
 &lt;p&gt;Anectdotally, everyone seems to start with a spreadsheet application for data analysis and plotting, which, at least 3 or 4 years ago would have been a Microsoft product. Excel works well for simple plotting, small datasets, and the software is ubiqutous but not free.&lt;/p&gt;
 &lt;p&gt;Some users may have had the curosity to investigate the macro tool and discovered programming by way of Visual Basic for Applications (VBA) in Excel. This gives the user a bit more control over data creation and processing with loops.&lt;/p&gt;
 &lt;p&gt;Once at a university, many students, especially engineering students, will discover MATLAB, and realized that VBA is very tedious compared to MATLAB syntax. The student will spend hundreds of hours learning programming fundamentals with this great new tool, and create many programs with it.&lt;/p&gt;
@@ -1868,7 +1868,7 @@ Springer,
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
 &lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;h3 id="Option-1---Manual-Conversion"&gt;Option 1 - Manual Conversion&lt;a class="anchor-link" href="https://nagordon.github.io/ifcuriousthenlearn/posts/matlab-to-python-conversion/#Option-1---Manual-Conversion"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;There are a few options for converting code. The most reliable is probably by hand. To covert by hand requires a through understanding of python and matlab. I am assuming matlab syntax is well understood, but python less so. scipy provides a &lt;a href="http://wiki.scipy.org/NumPy_for_Matlab_Users"&gt;python for matlab users&lt;/a&gt; which describes to similarities and differences well, but the devil is in the details. Many other comparisions exist for python and matlab, like &lt;a href="http://www.pyzo.org/python_vs_matlab.html"&gt;here on pyzo's website&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id="Option-1---Manual-Conversion"&gt;Option 1 - Manual Conversion&lt;a class="anchor-link" href="https://nagordon.github.io/ifcuriousthenlearn/blog/matlab-to-python-conversion/#Option-1---Manual-Conversion"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;There are a few options for converting code. The most reliable is probably by hand. To covert by hand requires a through understanding of python and matlab. I am assuming matlab syntax is well understood, but python less so. scipy provides a &lt;a href="http://wiki.scipy.org/NumPy_for_Matlab_Users"&gt;python for matlab users&lt;/a&gt; which describes to similarities and differences well, but the devil is in the details. Many other comparisions exist for python and matlab, like &lt;a href="http://www.pyzo.org/python_vs_matlab.html"&gt;here on pyzo's website&lt;/a&gt;&lt;/p&gt;
 
 &lt;/div&gt;
 &lt;/div&gt;
@@ -1876,7 +1876,7 @@ Springer,
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
 &lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;h3 id="Option-2---Reuse-old-code-with-Octave"&gt;Option 2 - Reuse old code with Octave&lt;a class="anchor-link" href="https://nagordon.github.io/ifcuriousthenlearn/posts/matlab-to-python-conversion/#Option-2---Reuse-old-code-with-Octave"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;h3 id="oct2py-,-source-code"&gt;&lt;a href="https://pypi.python.org/pypi/oct2py"&gt;oct2py&lt;/a&gt; , &lt;a href="http://blink1073.github.io/oct2py/"&gt;source code&lt;/a&gt;&lt;a class="anchor-link" href="https://nagordon.github.io/ifcuriousthenlearn/posts/matlab-to-python-conversion/#oct2py-,-source-code"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;This is a neat module that is based on &lt;a href="http://www.gnu.org/software/octave/"&gt;octave&lt;/a&gt;, which is an open-source matlab clone. It allows a simple translation of matlab/octave syntax to python directly.&lt;/p&gt;
+&lt;h3 id="Option-2---Reuse-old-code-with-Octave"&gt;Option 2 - Reuse old code with Octave&lt;a class="anchor-link" href="https://nagordon.github.io/ifcuriousthenlearn/blog/matlab-to-python-conversion/#Option-2---Reuse-old-code-with-Octave"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;h3 id="oct2py-,-source-code"&gt;&lt;a href="https://pypi.python.org/pypi/oct2py"&gt;oct2py&lt;/a&gt; , &lt;a href="http://blink1073.github.io/oct2py/"&gt;source code&lt;/a&gt;&lt;a class="anchor-link" href="https://nagordon.github.io/ifcuriousthenlearn/blog/matlab-to-python-conversion/#oct2py-,-source-code"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;This is a neat module that is based on &lt;a href="http://www.gnu.org/software/octave/"&gt;octave&lt;/a&gt;, which is an open-source matlab clone. It allows a simple translation of matlab/octave syntax to python directly.&lt;/p&gt;
 
 &lt;/div&gt;
 &lt;/div&gt;
@@ -1921,7 +1921,7 @@ Springer,
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
 &lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;h4 id="Matrix-creation"&gt;Matrix creation&lt;a class="anchor-link" href="https://nagordon.github.io/ifcuriousthenlearn/posts/matlab-to-python-conversion/#Matrix-creation"&gt;¶&lt;/a&gt;&lt;/h4&gt;
+&lt;h4 id="Matrix-creation"&gt;Matrix creation&lt;a class="anchor-link" href="https://nagordon.github.io/ifcuriousthenlearn/blog/matlab-to-python-conversion/#Matrix-creation"&gt;¶&lt;/a&gt;&lt;/h4&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
@@ -2188,7 +2188,7 @@ Springer,
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
 &lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;h4 id="Plotting-with-oct2py"&gt;Plotting with oct2py&lt;a class="anchor-link" href="https://nagordon.github.io/ifcuriousthenlearn/posts/matlab-to-python-conversion/#Plotting-with-oct2py"&gt;¶&lt;/a&gt;&lt;/h4&gt;&lt;p&gt;Just using oct2py, we can plot using &lt;a href="http://www.gnuplot.info/"&gt;gnuplot&lt;/a&gt;, I haven't been able to find a way to plot them inline, but they still look good in the gnuplot window&lt;/p&gt;
+&lt;h4 id="Plotting-with-oct2py"&gt;Plotting with oct2py&lt;a class="anchor-link" href="https://nagordon.github.io/ifcuriousthenlearn/blog/matlab-to-python-conversion/#Plotting-with-oct2py"&gt;¶&lt;/a&gt;&lt;/h4&gt;&lt;p&gt;Just using oct2py, we can plot using &lt;a href="http://www.gnuplot.info/"&gt;gnuplot&lt;/a&gt;, I haven't been able to find a way to plot them inline, but they still look good in the gnuplot window&lt;/p&gt;
 
 &lt;/div&gt;
 &lt;/div&gt;
@@ -2228,7 +2228,7 @@ Springer,
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
 &lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;h3 id="More-matlab-execution"&gt;More matlab execution&lt;a class="anchor-link" href="https://nagordon.github.io/ifcuriousthenlearn/posts/matlab-to-python-conversion/#More-matlab-execution"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;Although this doesn't convert the code to python, it executes it very well. Here is a MATLAB code snippet for LU Decomposition. We can create a python string with the contents of this and evaluate it as octave code&lt;/p&gt;
+&lt;h3 id="More-matlab-execution"&gt;More matlab execution&lt;a class="anchor-link" href="https://nagordon.github.io/ifcuriousthenlearn/blog/matlab-to-python-conversion/#More-matlab-execution"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;Although this doesn't convert the code to python, it executes it very well. Here is a MATLAB code snippet for LU Decomposition. We can create a python string with the contents of this and evaluate it as octave code&lt;/p&gt;
 
 &lt;/div&gt;
 &lt;/div&gt;
@@ -3009,7 +3009,7 @@ U =
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
 &lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;h3 id="Option-3---SMOP"&gt;Option 3 - SMOP&lt;a class="anchor-link" href="https://nagordon.github.io/ifcuriousthenlearn/posts/matlab-to-python-conversion/#Option-3---SMOP"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;h4 id="SMOP-(Small-Matlab-and-Octave-to-Python-Converter)-or-here"&gt;&lt;a href="https://pypi.python.org/pypi/smop"&gt;SMOP&lt;/a&gt; (Small Matlab and Octave to Python Converter) or &lt;a href="https://github.com/victorlei/smop"&gt;here&lt;/a&gt;&lt;a class="anchor-link" href="https://nagordon.github.io/ifcuriousthenlearn/posts/matlab-to-python-conversion/#SMOP-(Small-Matlab-and-Octave-to-Python-Converter)-or-here"&gt;¶&lt;/a&gt;&lt;/h4&gt;&lt;p&gt;The smop package seems impressive, and works well for an actual conversion of MATLAB code. Lets see how it works&lt;/p&gt;
+&lt;h3 id="Option-3---SMOP"&gt;Option 3 - SMOP&lt;a class="anchor-link" href="https://nagordon.github.io/ifcuriousthenlearn/blog/matlab-to-python-conversion/#Option-3---SMOP"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;h4 id="SMOP-(Small-Matlab-and-Octave-to-Python-Converter)-or-here"&gt;&lt;a href="https://pypi.python.org/pypi/smop"&gt;SMOP&lt;/a&gt; (Small Matlab and Octave to Python Converter) or &lt;a href="https://github.com/victorlei/smop"&gt;here&lt;/a&gt;&lt;a class="anchor-link" href="https://nagordon.github.io/ifcuriousthenlearn/blog/matlab-to-python-conversion/#SMOP-(Small-Matlab-and-Octave-to-Python-Converter)-or-here"&gt;¶&lt;/a&gt;&lt;/h4&gt;&lt;p&gt;The smop package seems impressive, and works well for an actual conversion of MATLAB code. Lets see how it works&lt;/p&gt;
 
 &lt;/div&gt;
 &lt;/div&gt;
@@ -3117,7 +3117,7 @@ U =
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
 &lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;h3 id="Option-4---LibreMat"&gt;Option 4 - LibreMat&lt;a class="anchor-link" href="https://nagordon.github.io/ifcuriousthenlearn/posts/matlab-to-python-conversion/#Option-4---LibreMat"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;h4 id="LibreMate"&gt;&lt;a href="http://sourceforge.net/projects/libermate/"&gt;LibreMate&lt;/a&gt;&lt;a class="anchor-link" href="https://nagordon.github.io/ifcuriousthenlearn/posts/matlab-to-python-conversion/#LibreMate"&gt;¶&lt;/a&gt;&lt;/h4&gt;&lt;p&gt;I didn't install LibreMat because of the dependent packages, so I'll leave a review to someone else&lt;/p&gt;
+&lt;h3 id="Option-4---LibreMat"&gt;Option 4 - LibreMat&lt;a class="anchor-link" href="https://nagordon.github.io/ifcuriousthenlearn/blog/matlab-to-python-conversion/#Option-4---LibreMat"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;h4 id="LibreMate"&gt;&lt;a href="http://sourceforge.net/projects/libermate/"&gt;LibreMate&lt;/a&gt;&lt;a class="anchor-link" href="https://nagordon.github.io/ifcuriousthenlearn/blog/matlab-to-python-conversion/#LibreMate"&gt;¶&lt;/a&gt;&lt;/h4&gt;&lt;p&gt;I didn't install LibreMat because of the dependent packages, so I'll leave a review to someone else&lt;/p&gt;
 
 &lt;/div&gt;
 &lt;/div&gt;
@@ -3125,7 +3125,7 @@ U =
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
 &lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;h3 id="Option-5---OMPC"&gt;Option 5 - OMPC&lt;a class="anchor-link" href="https://nagordon.github.io/ifcuriousthenlearn/posts/matlab-to-python-conversion/#Option-5---OMPC"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;h4 id="OMPC-(open-source-matlab-to-python-converter)"&gt;&lt;a href="http://ompc.juricap.com/"&gt;OMPC&lt;/a&gt; (open-source matlab to python converter)&lt;a class="anchor-link" href="https://nagordon.github.io/ifcuriousthenlearn/posts/matlab-to-python-conversion/#OMPC-(open-source-matlab-to-python-converter)"&gt;¶&lt;/a&gt;&lt;/h4&gt;&lt;p&gt;The &lt;a href="http://ompc.juricap.com/Examples"&gt;examples&lt;/a&gt; are descriptive and explain many user cases. When you are ready to convert, check out the &lt;a href="http://ompclib.appspot.com/m2py"&gt;live web converter&lt;/a&gt; which is great for processing snippets. However, when I tried to convert the LU function above, I get this, which creates a wierd A array and an undeclared vector mslice. There may be an explanation of this in the documentation, but it isn't obvious I didn't look very much&lt;/p&gt;
+&lt;h3 id="Option-5---OMPC"&gt;Option 5 - OMPC&lt;a class="anchor-link" href="https://nagordon.github.io/ifcuriousthenlearn/blog/matlab-to-python-conversion/#Option-5---OMPC"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;h4 id="OMPC-(open-source-matlab-to-python-converter)"&gt;&lt;a href="http://ompc.juricap.com/"&gt;OMPC&lt;/a&gt; (open-source matlab to python converter)&lt;a class="anchor-link" href="https://nagordon.github.io/ifcuriousthenlearn/blog/matlab-to-python-conversion/#OMPC-(open-source-matlab-to-python-converter)"&gt;¶&lt;/a&gt;&lt;/h4&gt;&lt;p&gt;The &lt;a href="http://ompc.juricap.com/Examples"&gt;examples&lt;/a&gt; are descriptive and explain many user cases. When you are ready to convert, check out the &lt;a href="http://ompclib.appspot.com/m2py"&gt;live web converter&lt;/a&gt; which is great for processing snippets. However, when I tried to convert the LU function above, I get this, which creates a wierd A array and an undeclared vector mslice. There may be an explanation of this in the documentation, but it isn't obvious I didn't look very much&lt;/p&gt;
 
 &lt;pre&gt;&lt;code&gt;A = mcat([1, 5, 3, 5, OMPCSEMI, 2, 5, 6, 7, OMPCSEMI, 9, 0, 3, 4, OMPCSEMI, 9, 4, 7, 6])
 A()
@@ -3155,9 +3155,9 @@ for i in mslice[1:R]:
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
 &lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;h3 id="Summary"&gt;Summary&lt;a class="anchor-link" href="https://nagordon.github.io/ifcuriousthenlearn/posts/matlab-to-python-conversion/#Summary"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;I definitely prefer the oct2py package, I can run my native MATLAB code in a python environment, and surely there will be support for other languages in the ipython notebook (bash, R, Julia, etc)&lt;/p&gt;
+&lt;h3 id="Summary"&gt;Summary&lt;a class="anchor-link" href="https://nagordon.github.io/ifcuriousthenlearn/blog/matlab-to-python-conversion/#Summary"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;I definitely prefer the oct2py package, I can run my native MATLAB code in a python environment, and surely there will be support for other languages in the ipython notebook (bash, R, Julia, etc)&lt;/p&gt;
 &lt;p&gt;Now that we have some options for running MATLAB/Octave code in python, the conversion process should be easier. I will be posting projects as I convert them, so stay tuned.&lt;/p&gt;
 
 &lt;/div&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;/div&gt;</description><category>math</category><category>matlab</category><category>python</category><guid>https://nagordon.github.io/ifcuriousthenlearn/posts/matlab-to-python-conversion/</guid><pubDate>Tue, 05 May 2015 21:05:06 GMT</pubDate></item></channel></rss>
+&lt;/div&gt;&lt;/div&gt;</description><category>math</category><category>matlab</category><category>python</category><guid>https://nagordon.github.io/ifcuriousthenlearn/blog/matlab-to-python-conversion/</guid><pubDate>Tue, 05 May 2015 21:05:06 GMT</pubDate></item></channel></rss>

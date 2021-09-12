@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="description" content="A introduction presenting the R programming language and an open-source solution for designing and analyzing Design of Experiments (DOE)">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Industrial Design of Experiments with R | ifcuriousthenlearn</title>
+<link href="../../assets/css/all-nocdn.css" rel="stylesheet" type="text/css">
+<link href="../../assets/css/ipython.min.css" rel="stylesheet" type="text/css">
+<link href="../../assets/css/nikola_ipython.css" rel="stylesheet" type="text/css">
+<meta name="theme-color" content="#5670d4">
+<meta name="generator" content="Nikola (getnikola.com)">
+<link rel="alternate" type="application/rss+xml" title="RSS" hreflang="en" href="../../rss.xml">
+<link rel="canonical" href="https://nagordon.github.io/ifcuriousthenlearn/blog/Industrial-Design-of-Experiments-with-r/">
+<!--[if lt IE 9]><script src="../../assets/js/html5.js"></script><![endif]--><meta name="author" content="neal">
+<link rel="prev" href="../python-tutor/" title="Python Tutor, and interactive execution tool" type="text/html">
+<link rel="next" href="../what-open-source-means/" title="Understanding and using technology" type="text/html">
+<meta property="og:site_name" content="ifcuriousthenlearn">
+<meta property="og:title" content="Industrial Design of Experiments with R">
+<meta property="og:url" content="https://nagordon.github.io/ifcuriousthenlearn/blog/Industrial-Design-of-Experiments-with-r/">
+<meta property="og:description" content="A introduction presenting the R programming language and an open-source solution for designing and analyzing Design of Experiments (DOE)">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2016-05-06T00:00:00-08:00">
+<meta property="article:tag" content="DOE">
+<meta property="article:tag" content="R">
+<meta property="article:tag" content="statistics">
+</head>
+<body>
+<a href="#content" class="sr-only sr-only-focusable">Skip to main content</a>
+
+<!-- Menubar -->
+
+<nav class="navbar navbar-inverse navbar-static-top"><div class="container">
+<!-- This keeps the margins nice -->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-navbar" aria-controls="bs-navbar" aria-expanded="false">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="https://nagordon.github.io/ifcuriousthenlearn/">
+
+                <span id="blog-title">ifcuriousthenlearn</span>
+            </a>
+        </div>
+<!-- /.navbar-header -->
+        <div class="collapse navbar-collapse" id="bs-navbar" aria-expanded="false">
+            <ul class="nav navbar-nav">
+<li>
+<a href="../../index.html">Home</a>
+                </li>
+<li>
+<a href="../../archive.html">Blog</a>
+                </li>
+<li>
+<a href="../../about/index.html">About</a>
+                </li>
+<li>
+<a href="../../categories/index.html">Tags</a>
+
+                
+            </li>
+</ul>
+<ul class="nav navbar-nav navbar-right">
+<li>
+    <a href="index.md" id="sourcelink">Source</a>
+    </li>
+
+                
+            </ul>
+</div>
+<!-- /.navbar-collapse -->
+    </div>
+<!-- /.container -->
+</nav><!-- End of Menubar --><div class="container" id="content" role="main">
+    <div class="body-content">
+        <!--Body content-->
+        <div class="row">
+            
+            
+<article class="post-text h-entry hentry postpage" itemscope="itemscope" itemtype="http://schema.org/Article"><header><h1 class="p-name entry-title" itemprop="headline name"><a href="." class="u-url">Industrial Design of Experiments with R</a></h1>
+
+        <div class="metadata">
+            <p class="byline author vcard p-author h-card"><span class="byline-name fn p-name" itemprop="author">
+                    neal
+            </span></p>
+            <p class="dateline">
+            <a href="." rel="bookmark">
+            <time class="published dt-published" datetime="2016-05-06T00:00:00-08:00" itemprop="datePublished" title="2016-05-06 00:00">2016-05-06 00:00</time><span class="updated"> (updated
+                    <time class="updated dt-updated" datetime="2017-05-29T00:00:00-08:00" itemprop="dateUpdated" title="2017-05-29 00:00">2017-05-29 00:00</time>)</span>
+            </a>
+            </p>
+            
+        <p class="sourceline"><a href="index.md" class="sourcelink">Source</a></p>
+
+        </div>
+        
+
+    </header><div class="e-content entry-content" itemprop="articleBody text">
+    <div>
+<h2>Motivation</h2>
+<p>Python is my favorite language. But, I also practice polyglottery(using multiple languages...I know, I had to use that word!). For the years of using python, I have rarely come across a problem that I haven't been able to solve or hasn't been solved yet in python. Well, today is the day.</p>
+<p>I enjoy statistics, and a very useful tool in the statisticians toolbox is the Experimental Design, or DOE (Design of Experiments). I searched for hours trying to find an open-source alternative to the Minitab DOE package, which is nice if you have a license, and found limited options. I evaluated <a href="http://pythonhosted.org/pyDOE/">pyDOE</a>, but it only designs experiments, not analyzes them. There are a couple open-source statistics packages, such as <a href="http://www.sofastatistics.com/home.php">sofa</a>, but why would you use anything other than R? Yes, I know the answer, because it is a programming language, not a nice GUI. Well, I encourage you to make the plunge, because I haven't been impressed with a programming language in a long time, and R has impressed me.</p>
+<p>I assume you are familiar with DOE principles. If not, check out a <a href="https://www.crcpress.com/Design-and-Analysis-of-Experiments-with-R/Lawson/9781439868133">R-DOE-book</a> or for theory, <a href="http://www.wiley.com/WileyCDA/WileyTitle/productCd-EHEP002024.html">Design and Analysis of Experiments by Montgomery</a> is a classic. As for R, you don't need to be an expert, but it helps to play around with it, perhaps some <a href="http://codegolf.stackexchange.com/questions/tagged/r">golf</a>.</p>
+<h2>Installation</h2>
+<h3>R Base install and RStudio</h3>
+<p>To get started, I am using Windows 7. To install R, check out <a href="https://cran.r-project.org/bin/windows/base/">R-Base Package</a>.</p>
+<p>R does not come with a GUI. It is just a command line for executing R-code that is an ascii file with the extension <strong>*.r</strong></p>
+<p><img alt="R_GUI" src="../../images/Industrial-Design-of-Experiments-with-R/R_GUI.png" title="Default R Interface"></p>
+<p>Fortunately some awesome GUI's already exist. <a href="https://rkward.kde.org/">rkward</a> is cool, but I prefer <a href="https://www.rstudio.com/">Rstudio</a>. RStudio has a built in script editor, a console for running commands, a plot window, a file explorer, and a help window. What more could you ask for? Take some time and familiarize yourself with RStudio.</p>
+<p><img alt="R_Studio" src="../../images/Industrial-Design-of-Experiments-with-R/R_Studio.png" title="Awesome RGUI RStudio"></p>
+<p>For more information on the R DOE package we will be using, check out <a href="http://prof.beuth-hochschule.de/groemping/software/design-of-experiments/project-industrial-doe-in-r/">Prof. Dr. Ulrike Grömpings page</a>. The walk-through here is derived from <a href="http://www1.beuth-hochschule.de/FB_II/reports/Report-2011-004.pdf">this document</a>.</p>
+<p>Open up RStudio and familiarze yourself with the tools. I am really impressed with all the extra features with reporting and html/markdown exporting, and am excited to check those features out in the future.
+I found three hotkeys that I use all the time are:<br>
+To restart the R console <strong>ctrl+shift+F10</strong><br>
+To run the current line, <strong>ctrl+enter</strong><br>
+To run the script, <strong>ctrl+alt+r</strong>  </p>
+<p>If the installtion gives you trouble, or you want to start using R immediatley, check out the <a href="http://www.r-fiddle.org/#/">R-Fiddle</a></p>
+<h3>R Packages</h3>
+<p>Custom R packages are really easy to install if you know how. The packages are stored and managed by users in the CRAN(The Comprehensive R Archive Network). For example, the <a href="https://cran.r-project.org/web/views/ExperimentalDesign.html">DOE Package</a> website shows information on the package. Luckily, we don't need to read all of that. We can install all the packages from our R program.</p>
+<p>For the DOE we will create and analze, we need to first install the required packages. I don't know if all these packages are needed, but I pulled these from the CRAN site. Once you have RStudio open, copy and paste these install commands in a new script and hit <strong>ctrl+alt+r</strong></p>
+<pre class="code literal-block"><span></span><code><span class="nf">install.packages</span><span class="p">(</span><span class="s">"DoE.base"</span><span class="p">)</span>
+<span class="nf">install.packages</span><span class="p">(</span><span class="s">"FrF2"</span><span class="p">)</span>
+<span class="nf">install.packages</span><span class="p">(</span><span class="s">"DoE.wrapper"</span><span class="p">)</span>
+<span class="nf">install.packages</span><span class="p">(</span><span class="s">"RcmdrPlugin.DoE"</span><span class="p">)</span>
+<span class="nf">install.packages</span><span class="p">(</span><span class="s">"RcmdrPlugin.Export"</span><span class="p">)</span> <span class="c1"># Graphically export objects to LaTeX or HTML</span>
+<span class="nf">install.packages</span><span class="p">(</span><span class="s">"RcmdrPlugin.FactoMineR"</span><span class="p">)</span> <span class="c1"># Graphical User Interface for FactoMineR</span>
+<span class="nf">install.packages</span><span class="p">(</span><span class="s">"RcmdrPlugin.HH"</span><span class="p">)</span> <span class="c1"># Rcmdr support for the HH package</span>
+<span class="nf">install.packages</span><span class="p">(</span><span class="s">"RcmdrPlugin.IPSUR"</span><span class="p">)</span> <span class="c1"># Introduction to Probability and Statistics Using R</span>
+<span class="nf">install.packages</span><span class="p">(</span><span class="s">"RcmdrPlugin.SurvivalT"</span><span class="p">)</span> <span class="c1"># Rcmdr Survival Plug-In</span>
+<span class="nf">install.packages</span><span class="p">(</span><span class="s">"RcmdrPlugin.TeachingDemos"</span><span class="p">)</span> <span class="c1"># Rcmdr Teaching Demos Plug-In</span>
+<span class="nf">install.packages</span><span class="p">(</span><span class="s">"RcmdrPlugin.epack"</span><span class="p">)</span> <span class="c1"># Rcmdr plugin for time series</span>
+<span class="nf">install.packages</span><span class="p">(</span><span class="s">"RcmdrPlugin.orloca"</span><span class="p">)</span> <span class="c1"># orloca Rcmdr Plug-in</span>
+<span class="nf">install.packages</span><span class="p">(</span><span class="s">"Rcmdr"</span><span class="p">)</span> <span class="c1"># at the R prompt</span>
+<span class="nf">install.packages</span><span class="p">(</span><span class="s">"conf.design"</span><span class="p">)</span>
+<span class="nf">install.packages</span><span class="p">(</span><span class="s">"lhs"</span><span class="p">)</span>
+<span class="nf">install.packages</span><span class="p">(</span><span class="s">"AlgDesign"</span><span class="p">)</span>
+<span class="nf">install.packages</span><span class="p">(</span><span class="s">"DiceDesign"</span><span class="p">)</span>
+<span class="nf">install.packages</span><span class="p">(</span><span class="s">"rsm"</span><span class="p">)</span>
+</code></pre>
+
+
+<p>Once that finishes, you will need to restart the R console, so hit <strong>ctrl+shift+F10</strong> or just restart RStudio.</p>
+<h2>Design of Experiements</h2>
+<p>For the total newbie, a experimental design is a statical method for modeling a system, especially a complex system that is not easily analytically modeled. The system will have some given inputs, or factors, and outputs, or responses. The goal is to determine what factors are significant in the contribution to the effect of the response(s). Since our experiment is empirical, we expect some error, but that is OK because the statistical significance will be one of the results we will obtain.
+For DOE experts, sorry about my simple explaination. I am an engineer, not a statistician.  </p>
+<p>The screening experiment we will be running is to model the factors or variables when operating a potato gun to functionally understand the distance it can shoot. We will do a handful of runs, or shots with the gun, and see what is contributing to the distance, positivley or negatively. This allows us to run as few runs as possible to find any significant factors. We will start with 8 factors, with 2 levels, and one response, distance. That may seem like a lot of runs to the naive experimenter, actually $2^8=256$ combinations, or full-factorial. If that is done, you will quickly lose interest, money, or supporters by taking so long. So, before we run an experiment that detailed, we should screen out the insignificant factors first. The details of screening experiments can be found in the help documents in Rstudio or any DOE textbook.</p>
+<table>
+<thead><tr>
+<th>Factor</th>
+<th>Low Setting</th>
+<th>High Setting</th>
+</tr></thead>
+<tbody>
+<tr>
+<td>AirVolume</td>
+<td>198</td>
+<td>672</td>
+</tr>
+<tr>
+<td>Valve</td>
+<td>1</td>
+<td>2</td>
+</tr>
+<tr>
+<td>Barrel</td>
+<td>4</td>
+<td>6</td>
+</tr>
+<tr>
+<td>Angle</td>
+<td>45</td>
+<td>60</td>
+</tr>
+<tr>
+<td>Pressure</td>
+<td>20</td>
+<td>40</td>
+</tr>
+<tr>
+<td>WadType</td>
+<td>paper</td>
+<td>cloth</td>
+</tr>
+<tr>
+<td>Voltage</td>
+<td>9</td>
+<td>27</td>
+</tr>
+<tr>
+<td>BallType</td>
+<td>pink</td>
+<td>white</td>
+</tr>
+</tbody>
+</table>
+<p>The general workflow (with menu paths) when doing experiments in R is:
+* <strong>Design -&gt; Create Deasign -&gt; Screening Design</strong>
+ * Set Name, number of runs, factors, and factor details
+* Select Button View data set and review the experiment
+* <strong>Design -&gt; Export -&gt; Export Experiment</strong>
+ * Export a rda, html, and csv file.
+* In a spreadsheet application, eg <a href="https://www.libreoffice.org/download/libreoffice-fresh/">Libreoffice</a>, add a column to the csv file with the response variable(s)
+* <strong>Design -&gt; Re-import experiment from csv and rda</strong>
+ * perform analysis and generate plots and report</p>
+<h3>DOE Setup</h3>
+<p>Now we can start our DOE! We can do everything with the R command line or a script, but lets use RCommander to create the DOE. To launch RCommander, which is the GUI designed to be used with the DOE package, in the RStudio console, type:</p>
+<pre class="code literal-block"><span></span><code><span class="nf">require</span><span class="p">(</span><span class="n">RcmdrPlugin.DoE</span><span class="p">)</span>
+</code></pre>
+
+
+<p>This should launch RCommander, which will run alongside RStudio and use the console for output.</p>
+<p><img alt="Rcmdr" src="../../images/Industrial-Design-of-Experiments-with-R/Rcmdr.png" title="Rcommander DOE interface"></p>
+<p>From the RCommander menu. we will be using the <strong>Design</strong> menu for the DOE setup, experiment, and analysis. Lets setup our experiment.</p>
+<p><img alt="doe_create" src="../../images/Industrial-Design-of-Experiments-with-R/doe_create.png" title="DOE Setup"></p>
+<p>From the interface here, filling the information manually or use the provided csv file.</p>
+<p><img alt="doe_setup" src="../../images/Industrial-Design-of-Experiments-with-R/doe_setup.png" title="DOE Setup"></p>
+<p>This will generate a randomized screening experiemnt experiement with 12 runs. There are 3 dummy factors, e1,e2,e3 which are necessary for screening experiments. They can be ignored or see the manual for more details.</p>
+<table>
+<thead><tr>
+<th>Run</th>
+<th>AirVolume</th>
+<th>Valve</th>
+<th>Barrel</th>
+<th>Angle</th>
+<th>Pressure</th>
+<th>WadType</th>
+<th>Voltage</th>
+<th>BallType</th>
+<th>e1</th>
+<th>e2</th>
+<th>e3</th>
+<th>distance</th>
+</tr></thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>198</td>
+<td>2</td>
+<td>4ft</td>
+<td>60</td>
+<td>40</td>
+<td>paper</td>
+<td>27</td>
+<td>pink</td>
+<td>-1</td>
+<td>-1</td>
+<td>1</td>
+<td>203.771</td>
+</tr>
+<tr>
+<td>2</td>
+<td>672</td>
+<td>1</td>
+<td>6ft</td>
+<td>60</td>
+<td>20</td>
+<td>paper</td>
+<td>27</td>
+<td>pink</td>
+<td>-1</td>
+<td>1</td>
+<td>-1</td>
+<td>140.046</td>
+</tr>
+<tr>
+<td>3</td>
+<td>672</td>
+<td>2</td>
+<td>4ft</td>
+<td>45</td>
+<td>40</td>
+<td>paper</td>
+<td>27</td>
+<td>white</td>
+<td>1</td>
+<td>1</td>
+<td>-1</td>
+<td>424.479</td>
+</tr>
+<tr>
+<td>4</td>
+<td>198</td>
+<td>1</td>
+<td>4ft</td>
+<td>45</td>
+<td>20</td>
+<td>cloth</td>
+<td>27</td>
+<td>pink</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>127.875</td>
+</tr>
+<tr>
+<td>5</td>
+<td>198</td>
+<td>2</td>
+<td>6ft</td>
+<td>60</td>
+<td>20</td>
+<td>cloth</td>
+<td>27</td>
+<td>white</td>
+<td>1</td>
+<td>-1</td>
+<td>-1</td>
+<td>78.667</td>
+</tr>
+<tr>
+<td>6</td>
+<td>672</td>
+<td>2</td>
+<td>6ft</td>
+<td>45</td>
+<td>20</td>
+<td>paper</td>
+<td>9</td>
+<td>pink</td>
+<td>1</td>
+<td>-1</td>
+<td>1</td>
+<td>167.979</td>
+</tr>
+<tr>
+<td>7</td>
+<td>198</td>
+<td>1</td>
+<td>4ft</td>
+<td>45</td>
+<td>20</td>
+<td>paper</td>
+<td>9</td>
+<td>white</td>
+<td>-1</td>
+<td>-1</td>
+<td>-1</td>
+<td>85.521</td>
+</tr>
+<tr>
+<td>8</td>
+<td>198</td>
+<td>1</td>
+<td>6ft</td>
+<td>60</td>
+<td>40</td>
+<td>paper</td>
+<td>9</td>
+<td>white</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>208</td>
+</tr>
+<tr>
+<td>9</td>
+<td>198</td>
+<td>2</td>
+<td>6ft</td>
+<td>45</td>
+<td>40</td>
+<td>cloth</td>
+<td>9</td>
+<td>pink</td>
+<td>-1</td>
+<td>1</td>
+<td>-1</td>
+<td>313.813</td>
+</tr>
+<tr>
+<td>10</td>
+<td>672</td>
+<td>2</td>
+<td>4ft</td>
+<td>60</td>
+<td>20</td>
+<td>cloth</td>
+<td>9</td>
+<td>white</td>
+<td>-1</td>
+<td>1</td>
+<td>1</td>
+<td>166.021</td>
+</tr>
+<tr>
+<td>11</td>
+<td>672</td>
+<td>1</td>
+<td>6ft</td>
+<td>45</td>
+<td>40</td>
+<td>cloth</td>
+<td>27</td>
+<td>white</td>
+<td>-1</td>
+<td>-1</td>
+<td>1</td>
+<td>466.771</td>
+</tr>
+<tr>
+<td>12</td>
+<td>672</td>
+<td>1</td>
+<td>4ft</td>
+<td>60</td>
+<td>40</td>
+<td>cloth</td>
+<td>9</td>
+<td>pink</td>
+<td>1</td>
+<td>-1</td>
+<td>-1</td>
+<td>389.958</td>
+</tr>
+</tbody>
+</table>
+<h3>DOE Experiment</h3>
+<p>To run your experiment, go through each run, set-up the system as prescribed by the factors, and record the response. Once you run the experiment and enter your results in the csv, re-import the csv to analyze.
+<img alt="doe_reimport" src="../../images/Industrial-Design-of-Experiments-with-R/import_results.png" title="DOE Reimport"></p>
+<h3>DOE Results</h3>
+<p>The visualizations that are generated using R for DOE are great! The results should tell us which factors should be studied with higher fidelity, and which factors are not necessary to continue studying.</p>
+<p>Without going into great detail, here are some examples.</p>
+<h4>Half-Normal Plot</h4>
+<p><strong>Design -&gt; Analyze design -&gt; Effects (Half) Normal Plots</strong>  </p>
+<p>Ensure the dummy factors e1,e2,e3 are included
+<img alt="half-normal-plot" src="../../images/Industrial-Design-of-Experiments-with-R/half-normal-plot.png" title="half-normal-plot">
+Observe that Pressure, Airvolume, Angle, WadType have the largest absolute effect, respectivley</p>
+<h4>Linear-Model</h4>
+<p><strong>Design -&gt; Analyze design -&gt; Default Linear Model</strong>  </p>
+<p>Ensure the dummy factors e1,e2,e3 are removed</p>
+<pre class="code literal-block"><span></span><code><span class="n">Coefficients</span><span class="o">:</span>
+            <span class="n">Estimate</span> <span class="n">Std</span><span class="o">.</span> <span class="n">Error</span> <span class="n">t</span> <span class="n">value</span> <span class="n">Pr</span><span class="o">(&gt;|</span><span class="n">t</span><span class="o">|)</span>    
+<span class="o">(</span><span class="n">Intercept</span><span class="o">)</span>  <span class="mf">231.075</span>      <span class="mf">4.583</span>  <span class="mf">50.423</span> <span class="mf">1.72</span><span class="n">e</span><span class="o">-</span><span class="mi">05</span> <span class="o">***</span>
+<span class="n">AirVolume1</span>    <span class="mf">61.467</span>      <span class="mf">4.583</span>  <span class="mf">13.413</span> <span class="mf">0.000896</span> <span class="o">***</span>
+<span class="n">Valve1</span>        <span class="o">-</span><span class="mf">5.287</span>      <span class="mf">4.583</span>  <span class="o">-</span><span class="mf">1.154</span> <span class="mf">0.332219</span>    
+<span class="n">Barrel1</span>       <span class="o">-</span><span class="mf">1.862</span>      <span class="mf">4.583</span>  <span class="o">-</span><span class="mf">0.406</span> <span class="mf">0.711701</span>    
+<span class="n">Angle1</span>       <span class="o">-</span><span class="mf">33.331</span>      <span class="mf">4.583</span>  <span class="o">-</span><span class="mf">7.273</span> <span class="mf">0.005364</span> <span class="o">**</span>
+<span class="n">Pressure1</span>    <span class="mf">103.390</span>      <span class="mf">4.583</span>  <span class="mf">22.561</span> <span class="mf">0.000191</span> <span class="o">***</span>
+<span class="n">WadType1</span>      <span class="mf">26.109</span>      <span class="mf">4.583</span>   <span class="mf">5.697</span> <span class="mf">0.010722</span> <span class="o">*</span>  
+<span class="n">Voltage1</span>       <span class="mf">9.193</span>      <span class="mf">4.583</span>   <span class="mf">2.006</span> <span class="mf">0.138514</span>    
+<span class="n">BallType1</span>     <span class="o">-</span><span class="mf">7.168</span>      <span class="mf">4.583</span>  <span class="o">-</span><span class="mf">1.564</span> <span class="mf">0.215736</span>    
+<span class="o">---</span>
+<span class="n">Signif</span><span class="o">.</span> <span class="n">codes</span><span class="o">:</span>  <span class="mi">0</span> <span class="s1">'***'</span> <span class="mf">0.001</span> <span class="s1">'**'</span> <span class="mf">0.01</span> <span class="s1">'*'</span> <span class="mf">0.05</span> <span class="s1">'.'</span> <span class="mf">0.1</span> <span class="s1">' '</span> <span class="mi">1</span>
+
+<span class="n">Residual</span> <span class="n">standard</span> <span class="n">error</span><span class="o">:</span> <span class="mf">15.87</span> <span class="n">on</span> <span class="mi">3</span> <span class="n">degrees</span> <span class="n">of</span> <span class="n">freedom</span>
+<span class="n">Multiple</span> <span class="n">R</span><span class="o">-</span><span class="n">squared</span><span class="o">:</span>  <span class="mf">0.9962</span><span class="o">,</span>    <span class="n">Adjusted</span> <span class="n">R</span><span class="o">-</span><span class="n">squared</span><span class="o">:</span>  <span class="mf">0.986</span>
+<span class="n">F</span><span class="o">-</span><span class="n">statistic</span><span class="o">:</span> <span class="mf">97.78</span> <span class="n">on</span> <span class="mi">8</span> <span class="n">and</span> <span class="mi">3</span> <span class="n">DF</span><span class="o">,</span>  <span class="n">p</span><span class="o">-</span><span class="n">value</span><span class="o">:</span> <span class="mf">0.001539</span>
+</code></pre>
+
+
+<p>Again the Pressure, Airvolume, Angle, WadType have the largest absolute effect, respectivley. Those factors are also less than our p-value, which we defined as 0.1, which tells us that the results are significant. Since this is a screening experiment, interactions are not computed.</p>
+<h3>Main-Effects Plot</h3>
+<p><strong>Design -&gt; Analyze design -&gt; Main Effects and Interactions Plots</strong>
+<img alt="main-effects-plot" src="../../images/Industrial-Design-of-Experiments-with-R/main-effects-plot.png" title="main-effects-plot"></p>
+<p>The main effects plot is a great visual to qualitativley grasp the results of the experiment. We can tell the how much the factor contributes to the response by the slope and whether it is positive or negative by the slope. Flat lines indicate that the factor with the selected levels is insignificant in the model we have created.</p>
+<h2>Conclusion</h2>
+<p>A simple example was shown how to use an open-source solution for creating and analzying statistical experiments using R. This is the only open-source tool I have found, so if anyone knows of another, please let me know. I have found R to be a great lanugage to know. The syntax is fine, the packages are numerous, and the community is good.
+Running experiments with DOE methods can be a great tool to have in nearly any industry. My background in Industrial and Systems Engineering exposed me to DOE for traditional manufacturing studies, but the concepts can be used in nearly any situation where understand of cause-and-effect is desired.</p>
+<p>Stay Curious!</p>
+</div>
+    </div>
+    <aside class="postpromonav"><nav><ul itemprop="keywords" class="tags">
+<li><a class="tag p-category" href="../../categories/doe/" rel="tag">DOE</a></li>
+            <li><a class="tag p-category" href="../../categories/r/" rel="tag">R</a></li>
+            <li><a class="tag p-category" href="../../categories/statistics/" rel="tag">statistics</a></li>
+        </ul>
+<ul class="pager hidden-print">
+<li class="previous">
+                <a href="../python-tutor/" rel="prev" title="Python Tutor, and interactive execution tool">Previous post</a>
+            </li>
+            <li class="next">
+                <a href="../what-open-source-means/" rel="next" title="Understanding and using technology">Next post</a>
+            </li>
+        </ul></nav></aside></article>
+</div>
+        <!--End of body content-->
+
+        <footer id="footer">
+            Contents © 2021         <a href="mailto:">neal</a> - Powered by         <a href="https://getnikola.com" rel="nofollow">Nikola</a>         copyright Neal Gordon
+            
+        </footer>
+</div>
+</div>
+
+
+            <script src="../../assets/js/all-nocdn.js"></script><!-- fancy dates --><script>
+    moment.locale("en");
+    fancydates(0, "YYYY-MM-DD HH:mm");
+    </script><!-- end fancy dates --><script>
+    baguetteBox.run('div#content', {
+        ignoreClass: 'islink',
+        captions: function(element) {
+            return element.getElementsByTagName('img')[0].alt;
+    }});
+    </script>
+</body>
+</html>

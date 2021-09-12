@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<?xml-stylesheet type="text/xsl" href="../assets/xml/rss.xsl" media="all"?><rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>ifcuriousthenlearn (Posts about latex)</title><link>https://nagordon.github.io/ifcuriousthenlearn/</link><description></description><atom:link href="https://nagordon.github.io/ifcuriousthenlearn/categories/latex.xml" rel="self" type="application/rss+xml"></atom:link><language>en</language><copyright>Contents © 2021 &lt;a href="mailto:"&gt;neal&lt;/a&gt; </copyright><lastBuildDate>Tue, 27 Jul 2021 04:55:56 GMT</lastBuildDate><generator>Nikola (getnikola.com)</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>Learn Latex, markdown and html with doconce</title><link>https://nagordon.github.io/ifcuriousthenlearn/posts/doconce-intro/</link><dc:creator>neal</dc:creator><description>&lt;div&gt;&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+<?xml-stylesheet type="text/xsl" href="../assets/xml/rss.xsl" media="all"?><rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>ifcuriousthenlearn (Posts about latex)</title><link>https://nagordon.github.io/ifcuriousthenlearn/</link><description></description><atom:link href="https://nagordon.github.io/ifcuriousthenlearn/categories/latex.xml" rel="self" type="application/rss+xml"></atom:link><language>en</language><copyright>Contents © 2021 &lt;a href="mailto:"&gt;neal&lt;/a&gt; copyright Neal Gordon</copyright><lastBuildDate>Sun, 12 Sep 2021 14:17:24 GMT</lastBuildDate><generator>Nikola (getnikola.com)</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>Learn Latex, markdown and html with doconce</title><link>https://nagordon.github.io/ifcuriousthenlearn/blog/doconce-intro/</link><dc:creator>neal</dc:creator><description>&lt;div&gt;&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
 &lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;h2 id="Neals-First-DocOnce-Publication"&gt;Neals First DocOnce Publication&lt;a class="anchor-link" href="https://nagordon.github.io/ifcuriousthenlearn/posts/doconce-intro/#Neals-First-DocOnce-Publication"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;&lt;strong&gt;Jun 4, 2015&lt;/strong&gt;&lt;/p&gt;
+&lt;h2 id="Neals-First-DocOnce-Publication"&gt;Neals First DocOnce Publication&lt;a class="anchor-link" href="https://nagordon.github.io/ifcuriousthenlearn/blog/doconce-intro/#Neals-First-DocOnce-Publication"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;&lt;strong&gt;Jun 4, 2015&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Summary.&lt;/strong&gt; My goal here is to learn the package &lt;a href="http://hplgit.github.io/doconce/doc/web/index.html"&gt;doconce&lt;/a&gt;, which is a markup syntax for creating scientific documents with many different types of outputs, including markdown, html, ipython notebooks, pdfs, and docx files. What's wrong with markdown? The short answer is nothing, it is great and important to know, however, some features that a needed for more advanced features, like figure/equation references, as well as including citations is needed, and haven't any good solution for that. 
 All the up-to-date source code and various document formats can be found on the &lt;a href="https://github.com/nagordon/technotes/tree/master/doconce"&gt;github repository&lt;/a&gt;.&lt;/p&gt;
-&lt;h3 id="Introduction"&gt;Introduction&lt;a class="anchor-link" href="https://nagordon.github.io/ifcuriousthenlearn/posts/doconce-intro/#Introduction"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;div id="sec:intro"&gt;&lt;/div&gt;&lt;p&gt;DocOnce is a lightweight markup language that is pure python, tso that it will work on any OS
+&lt;h3 id="Introduction"&gt;Introduction&lt;a class="anchor-link" href="https://nagordon.github.io/ifcuriousthenlearn/blog/doconce-intro/#Introduction"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;div id="sec:intro"&gt;&lt;/div&gt;&lt;p&gt;DocOnce is a lightweight markup language that is pure python, tso that it will work on any OS
 the source markdown files have extension *.do.txt
 each document should have the structure with a fig and src directory to keep images and code. The make.sh file is used to generate various documents with a lot of of custom settings.&lt;/p&gt;
-&lt;h4 id="SubIntro"&gt;SubIntro&lt;a class="anchor-link" href="https://nagordon.github.io/ifcuriousthenlearn/posts/doconce-intro/#SubIntro"&gt;¶&lt;/a&gt;&lt;/h4&gt;&lt;p&gt;Since I have began blogging, I realized the importance of learning html, markdown, etc and now have been trying my best to learn tex and LaTeX. While doconce is a little buggy, it is still under active development and have found it very useful for learning how all the various markups work together. I still find microsoft products very handy, especially v2013, but when working with the web and version control systems, plain text sources files are great! So, if you haven't heard of doconce yet, check it out!&lt;/p&gt;
-&lt;h5 id="SubSubIntro"&gt;SubSubIntro&lt;a class="anchor-link" href="https://nagordon.github.io/ifcuriousthenlearn/posts/doconce-intro/#SubSubIntro"&gt;¶&lt;/a&gt;&lt;/h5&gt;&lt;p&gt;The main goal here is to generate an example document to help me learn and show you the syntax of doconce. Hopefully it will make sense and the errors are minimal! This is still a work in progress.&lt;/p&gt;
-&lt;h3 id="Headings,-Labels,-and-References"&gt;Headings, Labels, and References&lt;a class="anchor-link" href="https://nagordon.github.io/ifcuriousthenlearn/posts/doconce-intro/#Headings,-Labels,-and-References"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;div id="sec:hlr"&gt;&lt;/div&gt;&lt;p&gt;For simple documents, chapters are not necessary, so only 7= are necessary to create a header for the section.&lt;/p&gt;
+&lt;h4 id="SubIntro"&gt;SubIntro&lt;a class="anchor-link" href="https://nagordon.github.io/ifcuriousthenlearn/blog/doconce-intro/#SubIntro"&gt;¶&lt;/a&gt;&lt;/h4&gt;&lt;p&gt;Since I have began blogging, I realized the importance of learning html, markdown, etc and now have been trying my best to learn tex and LaTeX. While doconce is a little buggy, it is still under active development and have found it very useful for learning how all the various markups work together. I still find microsoft products very handy, especially v2013, but when working with the web and version control systems, plain text sources files are great! So, if you haven't heard of doconce yet, check it out!&lt;/p&gt;
+&lt;h5 id="SubSubIntro"&gt;SubSubIntro&lt;a class="anchor-link" href="https://nagordon.github.io/ifcuriousthenlearn/blog/doconce-intro/#SubSubIntro"&gt;¶&lt;/a&gt;&lt;/h5&gt;&lt;p&gt;The main goal here is to generate an example document to help me learn and show you the syntax of doconce. Hopefully it will make sense and the errors are minimal! This is still a work in progress.&lt;/p&gt;
+&lt;h3 id="Headings,-Labels,-and-References"&gt;Headings, Labels, and References&lt;a class="anchor-link" href="https://nagordon.github.io/ifcuriousthenlearn/blog/doconce-intro/#Headings,-Labels,-and-References"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;div id="sec:hlr"&gt;&lt;/div&gt;&lt;p&gt;For simple documents, chapters are not necessary, so only 7= are necessary to create a header for the section.&lt;/p&gt;
 
 &lt;/div&gt;
 &lt;/div&gt;
@@ -34,7 +34,7 @@ each document should have the structure with a fig and src directory to keep ima
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
 &lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;p&gt;Labels are created with any text in curly braces and prefixed with label and then referenced with prefix ref. The ref must be enclosed with paranthesis. References can be made within the document with (&lt;a href="https://nagordon.github.io/ifcuriousthenlearn/posts/doconce-intro/#sec:intro"&gt;Introduction&lt;/a&gt;). Figures are referenced using , and to reference a section of the document like the code the section &lt;a href="https://nagordon.github.io/ifcuriousthenlearn/posts/doconce-intro/#sec:code"&gt;Code&lt;/a&gt;  or the bibliography can be created using the prefix cite. One example of what doconce can be used for is an entire book &lt;a href="https://nagordon.github.io/ifcuriousthenlearn/posts/doconce-intro/#Langtangen"&gt;[Langtangen]&lt;/a&gt;. Also, equations can be referenced in a similar fashion, such as &lt;a href="https://nagordon.github.io/ifcuriousthenlearn/posts/doconce-intro/#eqn:tsaihill"&gt;(1)&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Labels are created with any text in curly braces and prefixed with label and then referenced with prefix ref. The ref must be enclosed with paranthesis. References can be made within the document with (&lt;a href="https://nagordon.github.io/ifcuriousthenlearn/blog/doconce-intro/#sec:intro"&gt;Introduction&lt;/a&gt;). Figures are referenced using , and to reference a section of the document like the code the section &lt;a href="https://nagordon.github.io/ifcuriousthenlearn/blog/doconce-intro/#sec:code"&gt;Code&lt;/a&gt;  or the bibliography can be created using the prefix cite. One example of what doconce can be used for is an entire book &lt;a href="https://nagordon.github.io/ifcuriousthenlearn/blog/doconce-intro/#Langtangen"&gt;[Langtangen]&lt;/a&gt;. Also, equations can be referenced in a similar fashion, such as &lt;a href="https://nagordon.github.io/ifcuriousthenlearn/blog/doconce-intro/#eqn:tsaihill"&gt;(1)&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;Index of keywords can be defined with&lt;/p&gt;
 
 &lt;/div&gt;
@@ -76,11 +76,11 @@ each document should have the structure with a fig and src directory to keep ima
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
 &lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;h4 id="my-subheading"&gt;my subheading&lt;a class="anchor-link" href="https://nagordon.github.io/ifcuriousthenlearn/posts/doconce-intro/#my-subheading"&gt;¶&lt;/a&gt;&lt;/h4&gt;&lt;p&gt;testing the subheading&lt;/p&gt;
-&lt;h5 id="my-subsubheading"&gt;my subsubheading&lt;a class="anchor-link" href="https://nagordon.github.io/ifcuriousthenlearn/posts/doconce-intro/#my-subsubheading"&gt;¶&lt;/a&gt;&lt;/h5&gt;&lt;p&gt;finally, the smallest heading we can have&lt;/p&gt;
+&lt;h4 id="my-subheading"&gt;my subheading&lt;a class="anchor-link" href="https://nagordon.github.io/ifcuriousthenlearn/blog/doconce-intro/#my-subheading"&gt;¶&lt;/a&gt;&lt;/h4&gt;&lt;p&gt;testing the subheading&lt;/p&gt;
+&lt;h5 id="my-subsubheading"&gt;my subsubheading&lt;a class="anchor-link" href="https://nagordon.github.io/ifcuriousthenlearn/blog/doconce-intro/#my-subsubheading"&gt;¶&lt;/a&gt;&lt;/h5&gt;&lt;p&gt;finally, the smallest heading we can have&lt;/p&gt;
 &lt;!-- Lines beginning with # are comment lines --&gt;
 
-&lt;h3 id="Code"&gt;Code&lt;a class="anchor-link" href="https://nagordon.github.io/ifcuriousthenlearn/posts/doconce-intro/#Code"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;div id="sec:code"&gt;&lt;/div&gt;&lt;p&gt;Code can be identified in the text by enclosing the text in single back quotes, as in&lt;/p&gt;
+&lt;h3 id="Code"&gt;Code&lt;a class="anchor-link" href="https://nagordon.github.io/ifcuriousthenlearn/blog/doconce-intro/#Code"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;div id="sec:code"&gt;&lt;/div&gt;&lt;p&gt;Code can be identified in the text by enclosing the text in single back quotes, as in&lt;/p&gt;
 
 &lt;/div&gt;
 &lt;/div&gt;
@@ -254,7 +254,7 @@ each document should have the structure with a fig and src directory to keep ima
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
 &lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;h3 id="Lists"&gt;Lists&lt;a class="anchor-link" href="https://nagordon.github.io/ifcuriousthenlearn/posts/doconce-intro/#Lists"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;Here are some examples of lists directly from the &lt;a href="http://hplgit.github.io/doconce/doc/pub/quickref/quickref.html"&gt;documentation&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id="Lists"&gt;Lists&lt;a class="anchor-link" href="https://nagordon.github.io/ifcuriousthenlearn/blog/doconce-intro/#Lists"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;Here are some examples of lists directly from the &lt;a href="http://hplgit.github.io/doconce/doc/pub/quickref/quickref.html"&gt;documentation&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;Here is a bullet list:&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;p&gt;item1&lt;/p&gt;
@@ -306,14 +306,14 @@ multiple lines&lt;/p&gt;
 &lt;p&gt;keyword3:
   :&lt;br&gt;
    and its description may fit on one line&lt;/p&gt;
-&lt;h3 id="Comments-and-Footnotes"&gt;Comments and Footnotes&lt;a class="anchor-link" href="https://nagordon.github.io/ifcuriousthenlearn/posts/doconce-intro/#Comments-and-Footnotes"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;div id="sec:com"&gt;&lt;/div&gt;&lt;p&gt;Creating comments in the text is a handy way to supplement with optional information, one way is to use an inline comment such as [hpl 1: here I will make some
-remarks to the text]. Another way to add content is to add a footnote &lt;sup class="footnote-ref" id="fnref-footnote"&gt;&lt;a href="https://nagordon.github.io/ifcuriousthenlearn/posts/doconce-intro/#fn-footnote"&gt;1&lt;/a&gt;&lt;/sup&gt; is also possible.&lt;/p&gt;
-&lt;h3 id="Math,-Latex"&gt;Math, Latex&lt;a class="anchor-link" href="https://nagordon.github.io/ifcuriousthenlearn/posts/doconce-intro/#Math,-Latex"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;div id="sec:math"&gt;&lt;/div&gt;&lt;p&gt;inline latex can look like this 
+&lt;h3 id="Comments-and-Footnotes"&gt;Comments and Footnotes&lt;a class="anchor-link" href="https://nagordon.github.io/ifcuriousthenlearn/blog/doconce-intro/#Comments-and-Footnotes"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;div id="sec:com"&gt;&lt;/div&gt;&lt;p&gt;Creating comments in the text is a handy way to supplement with optional information, one way is to use an inline comment such as [hpl 1: here I will make some
+remarks to the text]. Another way to add content is to add a footnote &lt;sup class="footnote-ref" id="fnref-footnote"&gt;&lt;a href="https://nagordon.github.io/ifcuriousthenlearn/blog/doconce-intro/#fn-footnote"&gt;1&lt;/a&gt;&lt;/sup&gt; is also possible.&lt;/p&gt;
+&lt;h3 id="Math,-Latex"&gt;Math, Latex&lt;a class="anchor-link" href="https://nagordon.github.io/ifcuriousthenlearn/blog/doconce-intro/#Math,-Latex"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;div id="sec:math"&gt;&lt;/div&gt;&lt;p&gt;inline latex can look like this 
 $x = a_0 + \frac{1}{\displaystyle a_1 + \frac{1}{\displaystyle a_2 + \frac{1}{\displaystyle a_3 + a_4}}}$
 and another block&lt;/p&gt;
 &lt;div class="footnotes"&gt;
 &lt;hr&gt;
-&lt;ol&gt;&lt;li id="fn-footnote"&gt;&lt;p&gt;The syntax for footnotes is borrowed from Extended Markdown.&lt;a href="https://nagordon.github.io/ifcuriousthenlearn/posts/doconce-intro/#fnref-footnote" class="footnote"&gt;↩&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;ol&gt;&lt;li id="fn-footnote"&gt;&lt;p&gt;The syntax for footnotes is borrowed from Extended Markdown.&lt;a href="https://nagordon.github.io/ifcuriousthenlearn/blog/doconce-intro/#fnref-footnote" class="footnote"&gt;↩&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
 &lt;/ol&gt;
 &lt;/div&gt;
 
@@ -353,14 +353,14 @@ $$
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
 &lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;h3 id="Images"&gt;Images&lt;a class="anchor-link" href="https://nagordon.github.io/ifcuriousthenlearn/posts/doconce-intro/#Images"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;div id="sec:img"&gt;&lt;/div&gt;&lt;p&gt;This section explains how to create images. The size can be adjusted with frac and the width adjusts the width when exporting to html&lt;/p&gt;
+&lt;h3 id="Images"&gt;Images&lt;a class="anchor-link" href="https://nagordon.github.io/ifcuriousthenlearn/blog/doconce-intro/#Images"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;div id="sec:img"&gt;&lt;/div&gt;&lt;p&gt;This section explains how to create images. The size can be adjusted with frac and the width adjusts the width when exporting to html&lt;/p&gt;
 &lt;p&gt;for a really tiny image, we can use&lt;/p&gt;
 &lt;div id="fig:myfig1"&gt;&lt;/div&gt;&lt;p&gt;&lt;/p&gt;&lt;p&gt;My favorite linux desktop with frac-0.1.&lt;/p&gt;
 &lt;img src="https://nagordon.github.io/ifcuriousthenlearn/images/Learn-Latex-markdown-and-html-with-doconce/mint.png" width="650"&gt;
 &lt;p&gt;and for a figure that is a bit bigger, we can increase the fraction size&lt;/p&gt;
 &lt;div id="fig:myfig2"&gt;&lt;/div&gt;&lt;p&gt;&lt;/p&gt;&lt;p&gt;My favorite linux desktop with frac-0.9.&lt;/p&gt;
 &lt;img src="https://nagordon.github.io/ifcuriousthenlearn/images/Learn-Latex-markdown-and-html-with-doconce/mint.png" width="650"&gt;
-&lt;h3 id="File-Structure"&gt;File Structure&lt;a class="anchor-link" href="https://nagordon.github.io/ifcuriousthenlearn/posts/doconce-intro/#File-Structure"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;div id="sec:fil"&gt;&lt;/div&gt;&lt;p&gt;each document should have the structure with a fig and src directory to keep images and code. The make.sh file is used to generate various documents with a lot of of custom settings&lt;/p&gt;
+&lt;h3 id="File-Structure"&gt;File Structure&lt;a class="anchor-link" href="https://nagordon.github.io/ifcuriousthenlearn/blog/doconce-intro/#File-Structure"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;div id="sec:fil"&gt;&lt;/div&gt;&lt;p&gt;each document should have the structure with a fig and src directory to keep images and code. The make.sh file is used to generate various documents with a lot of of custom settings&lt;/p&gt;
 
 &lt;/div&gt;
 &lt;/div&gt;
@@ -384,8 +384,8 @@ $$
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
 &lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;h3 id="Help"&gt;Help&lt;a class="anchor-link" href="https://nagordon.github.io/ifcuriousthenlearn/posts/doconce-intro/#Help"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;help can be gotten from &lt;code&gt;doconce format --help&lt;/code&gt;&lt;/p&gt;
-&lt;h3 id="Coverting-Files"&gt;Coverting Files&lt;a class="anchor-link" href="https://nagordon.github.io/ifcuriousthenlearn/posts/doconce-intro/#Coverting-Files"&gt;¶&lt;/a&gt;&lt;/h3&gt;
+&lt;h3 id="Help"&gt;Help&lt;a class="anchor-link" href="https://nagordon.github.io/ifcuriousthenlearn/blog/doconce-intro/#Help"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;help can be gotten from &lt;code&gt;doconce format --help&lt;/code&gt;&lt;/p&gt;
+&lt;h3 id="Coverting-Files"&gt;Coverting Files&lt;a class="anchor-link" href="https://nagordon.github.io/ifcuriousthenlearn/blog/doconce-intro/#Coverting-Files"&gt;¶&lt;/a&gt;&lt;/h3&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
@@ -446,7 +446,7 @@ $$
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
 &lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;h3 id="Installation"&gt;Installation&lt;a class="anchor-link" href="https://nagordon.github.io/ifcuriousthenlearn/posts/doconce-intro/#Installation"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;div id="sec:install"&gt;&lt;/div&gt;&lt;p&gt;I am using a Windows 7 laptop with&lt;/p&gt;
+&lt;h3 id="Installation"&gt;Installation&lt;a class="anchor-link" href="https://nagordon.github.io/ifcuriousthenlearn/blog/doconce-intro/#Installation"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;div id="sec:install"&gt;&lt;/div&gt;&lt;p&gt;I am using a Windows 7 laptop with&lt;/p&gt;
 &lt;p&gt;&lt;a href="https://www.virtualbox.org/wiki/Downloads"&gt;VirtualBox&lt;/a&gt;
 &lt;a href="http://www.linuxmint.com/edition.php?id=172"&gt;Linux Mint 17.1&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;Make sure your machine is up to date&lt;/p&gt;
@@ -576,8 +576,8 @@ $$
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
 &lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;h3 id="Sundries"&gt;Sundries&lt;a class="anchor-link" href="https://nagordon.github.io/ifcuriousthenlearn/posts/doconce-intro/#Sundries"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;DO NOT USE UNDERSCORES IN ANY PART OF YOUR DOCUMENT, ONLY FOR MARKDOWN.&lt;/p&gt;
-&lt;h3 id="Handy-Links"&gt;Handy Links&lt;a class="anchor-link" href="https://nagordon.github.io/ifcuriousthenlearn/posts/doconce-intro/#Handy-Links"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;div id="sec:links"&gt;&lt;/div&gt;&lt;p&gt;Examples of a couple of the output files can be found here
+&lt;h3 id="Sundries"&gt;Sundries&lt;a class="anchor-link" href="https://nagordon.github.io/ifcuriousthenlearn/blog/doconce-intro/#Sundries"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;DO NOT USE UNDERSCORES IN ANY PART OF YOUR DOCUMENT, ONLY FOR MARKDOWN.&lt;/p&gt;
+&lt;h3 id="Handy-Links"&gt;Handy Links&lt;a class="anchor-link" href="https://nagordon.github.io/ifcuriousthenlearn/blog/doconce-intro/#Handy-Links"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;div id="sec:links"&gt;&lt;/div&gt;&lt;p&gt;Examples of a couple of the output files can be found here
 &lt;a href="https://github.com/nagordon/technotes/blob/master/doconce/doconce_notes.1col.pdf"&gt;doconcenotes1colpdf&lt;/a&gt; , &lt;a href="https://github.com/nagordon/technotes/blob/master/doconce/doconce_notes.2col.pdf"&gt;doconcenotes2colpdf&lt;/a&gt; , &lt;a href="https://github.com/nagordon/technotes/blob/master/doconce/doconce_notes.html.pdf"&gt;htmlblack&lt;/a&gt;, &lt;a href="https://github.com/nagordon/technotes/blob/master/doconce/doconce_notes.ipynb.pdf"&gt;htmlipynb&lt;/a&gt;, and, although not great, &lt;a href="https://github.com/nagordon/technotes/blob/master/doconce/doconce_notes.md.docx"&gt;doconcedocx&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;main site &lt;a href="https://github.com/hplgit/doconce"&gt;https://github.com/hplgit/doconce&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;&lt;a href="http://hplgit.github.io/doconce/doc/pub/tutorial/tutorial.html"&gt;tutorial&lt;/a&gt;&lt;/p&gt;
@@ -587,7 +587,7 @@ $$
 &lt;p&gt;&lt;a href="http://hplgit.github.io/doconce/doc/web/index.html"&gt;github website&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;&lt;a href="http://hplgit.github.io/doconce/doc/pub/slides/scientific_writing-1.html"&gt;scientific writing&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;&lt;a href="https://github.com/hplgit/hplgit.github.com/tree/master/teamods"&gt;more examples&lt;/a&gt;&lt;/p&gt;
-&lt;h3 id="References"&gt;References&lt;a class="anchor-link" href="https://nagordon.github.io/ifcuriousthenlearn/posts/doconce-intro/#References"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;div id="sec:ref"&gt;&lt;/div&gt;&lt;ol&gt;
+&lt;h3 id="References"&gt;References&lt;a class="anchor-link" href="https://nagordon.github.io/ifcuriousthenlearn/blog/doconce-intro/#References"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;div id="sec:ref"&gt;&lt;/div&gt;&lt;ol&gt;
 &lt;li&gt;&lt;div id="Langtangen"&gt;&lt;/div&gt; &lt;strong&gt;H. P. Langtangen&lt;/strong&gt;. 
 &lt;em&gt;A Primer on Scientific Programming With Python&lt;/em&gt;,
 4 edition,
@@ -598,4 +598,4 @@ Springer,
 
 &lt;/div&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;/div&gt;</description><category>doconce</category><category>latex</category><category>markdown</category><category>python</category><guid>https://nagordon.github.io/ifcuriousthenlearn/posts/doconce-intro/</guid><pubDate>Sat, 06 Jun 2015 07:00:00 GMT</pubDate></item></channel></rss>
+&lt;/div&gt;&lt;/div&gt;</description><category>doconce</category><category>latex</category><category>markdown</category><category>python</category><guid>https://nagordon.github.io/ifcuriousthenlearn/blog/doconce-intro/</guid><pubDate>Sat, 06 Jun 2015 07:00:00 GMT</pubDate></item></channel></rss>
