@@ -236,8 +236,21 @@ TIMEZONE = "America/Los_Angeles"
 # One or more folders containing files to be copied as-is into the output.
 # The format is a dictionary of {source: relative destination}.
 # Default is:
+FILES_FOLDERS = {'posts/files': 'files'}
 # FILES_FOLDERS = {'files': ''}
 # Which means copy 'files' into 'output'
+
+# note, for markdown files (ie md, insert images as so)
+# ![main-effects-plot](/files/Industrial-Design-of-Experiments-with-R/images/main-effects-plot.png "main-effects-plot")
+# Image(filename = "files/matlab-to-python-conversion/images/octave.png", width=400, height=100)
+
+# but for ipynb notebooks, you have to go two levels up
+# <img src="../../files/matlab-to-python-conversion/images/octave.png">  
+
+# or use the ipython Image command
+# Image(filename = "files/matlab-to-python-conversion/images/octave.png", width=400, height=100)
+
+
 
 # One or more folders containing code listings to be processed and published on
 # the site. The format is a dictionary of {source: relative destination}.
