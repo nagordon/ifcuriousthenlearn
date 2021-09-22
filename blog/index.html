@@ -12,7 +12,7 @@
 <meta name="generator" content="Nikola (getnikola.com)">
 <link rel="alternate" type="application/rss+xml" title="RSS" hreflang="en" href="../rss.xml">
 <link rel="canonical" href="https://nagordon.github.io/ifcuriousthenlearn/blog/">
-<link rel="next" href="index-1.html" type="text/html">
+<link rel="next" href="index-2.html" type="text/html">
 <!--[if lt IE 9]><script src="../assets/js/html5.js"></script><![endif]-->
 </head>
 <body>
@@ -69,7 +69,25 @@
 
     
 <div class="postindex">
-    <article class="h-entry post-text" itemscope="itemscope" itemtype="http://schema.org/Article"><header><h1 class="p-name entry-title"><a href="brick-stacking/" class="u-url">An investigation of the Brick Stacking Problem</a></h1>
+    <article class="h-entry post-text" itemscope="itemscope" itemtype="http://schema.org/Article"><header><h1 class="p-name entry-title"><a href="rebuilding-the-site-with-nikola/" class="u-url">Rebuilding the site with nikola</a></h1>
+        <div class="metadata">
+            <p class="byline author vcard"><span class="byline-name fn" itemprop="author">
+                neal
+            </span></p>
+            <p class="dateline">
+            <a href="rebuilding-the-site-with-nikola/" rel="bookmark">
+            <time class="published dt-published" datetime="2021-09-20T19:46:55-07:00" itemprop="datePublished" title="2021-09-20 19:46">2021-09-20 19:46</time></a>
+            </p>
+        </div>
+    </header><div class="e-content entry-content">
+    <div>
+<p>After a long hiatus, I have decided to revive my blog, ifcuriousthenlearn. Part of the reason why I stopped is that static site builder I has used, pelican, became unwieldy to use, especially with the jupyter notebook support. It was a real pain to add more posts, so I got tired of posting.</p>
+<p>In addition to that, my domain name ifcuriousthenlearn.com, expired and it went from a few dollars a year to $60/year! So, I let it go, and someone, for some reason, bought the domain, and republished my old static site. I do not know why, but this is my new blog and ifcuriousthenlearn.com is a copy of my old blog. Hopefully they are not up to anything nefarious.</p>
+<p>So far, I am really impressed with nikola with excited to start posting more with some of my current projects. I hope you'll enjoy my work and soon I hope to add disqus comments again to have some interaction with readers.</p>
+<p>Enjoy and stay curious!</p>
+</div>
+    </div>
+    </article><article class="h-entry post-text" itemscope="itemscope" itemtype="http://schema.org/Article"><header><h1 class="p-name entry-title"><a href="brick-stacking/" class="u-url">An investigation of the Brick Stacking Problem</a></h1>
         <div class="metadata">
             <p class="byline author vcard"><span class="byline-name fn" itemprop="author">
                 neal
@@ -1937,54 +1955,12 @@ To add this path variable, type</p>
 <p>Stay Curious!</p>
 </div>
     </div>
-    </article><article class="h-entry post-text" itemscope="itemscope" itemtype="http://schema.org/Article"><header><h1 class="p-name entry-title"><a href="windows-chocolatey/" class="u-url">Windows package management with Chocolatey</a></h1>
-        <div class="metadata">
-            <p class="byline author vcard"><span class="byline-name fn" itemprop="author">
-                neal
-            </span></p>
-            <p class="dateline">
-            <a href="windows-chocolatey/" rel="bookmark">
-            <time class="published dt-published" datetime="2016-05-06T00:00:00-08:00" itemprop="datePublished" title="2016-05-06 00:00">2016-05-06 00:00</time></a>
-            </p>
-        </div>
-    </header><div class="e-content entry-content">
-    <div>
-<p>For most of us, using software is an everyday activity. Many of us use lots of different packages of software, especially those that does not come pre-installed, like notepad++, chrome or firefox, ebook managers, your favorite video player, etc. Installing that software every time you get a new computer or keeping all those packages up-to-date can be a challenge. Being a Windows user for most of my life, I've accepted the tedious, risky business of finding, installing and not getting viruses from Windows software. Not until I started using Linux did I realize that it can be easier and safer. Linux uses package management, that changes from distribution, but the popular Debian based Linux uses <code>apt-get</code> to install software from the command line. Installing software can be as easy as <code>apt-get install firefox</code>, and updating all software on the computing can be done with <code>apt-get update</code>. Really easy right?</p>
-<p>Well, I still use Windows a lot, and installating and managing software on Windows can be be much easier using <a href="https://github.com/chocolatey/choco/wiki">chocolatey</a>. Chocolatey is a Windows command line tool to manage software, including searching, installing, updataing and removing.</p>
-<p>Installation is a cinch. Copy and paste this code into a windows command line access by searching for <code>cmd</code> in the windows start. If possible, run as administrator (cmd, right-click, run as administrator)</p>
-<pre class="code literal-block"><span></span><code><span class="err">@powershell -NoProfile -ExecutionPolicy Bypass -Command "iex ((new-object net.webclient).DownloadString('https://chocolatey.org/install.ps1'))" &amp;&amp; SET PATH=%PATH%;%ALLUSERSPROFILE%\chocolatey\bin</span>
-</code></pre>
-
-
-<p>I typically just search the chocolatey website for the package I want to install and type that into the command line. The example I want to share is my favorite ebook manager, calibre. One of the reasons I enjoy chocolatey with calibre is because calibre is updated a lot, and to keep up with them, you have to go download the calibre exe, and follow the prompts for the installation. Or a simple command will do it all! The <code>-y</code> is a flag to indicate <code>yes</code> to eliminate the need to confirm the installation.</p>
-<pre class="code literal-block"><span></span><code><span class="err">choco install calibre -y</span>
-</code></pre>
-
-
-<p>Updating calibre is as easy as this</p>
-<pre class="code literal-block"><span></span><code><span class="err">choco update calibre -y</span>
-</code></pre>
-
-
-<p>Multiple packages can be installed by leaving a space between the names</p>
-<pre class="code literal-block"><span></span><code><span class="err">choco install notepadplusplus googlechrome atom 7zip</span>
-</code></pre>
-
-
-<p>And to update all the packages that were install with chocolatey, this command will take care of it all</p>
-<pre class="code literal-block"><span></span><code><span class="err">choco upgrade all -y</span>
-</code></pre>
-
-
-<p>I think chocolatey is a really neat, useful package that has saved me a lot of time, and I hope it helps alleviate some of your windows woes.</p>
-</div>
-    </div>
     </article>
 </div>
 
         <nav class="postindexpager"><ul class="pager">
 <li class="next">
-                <a href="index-1.html" rel="next">Older posts</a>
+                <a href="index-2.html" rel="next">Older posts</a>
             </li>
         </ul></nav><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML" integrity="sha384-3lJUsx1TJHt7BA4udB5KPnDrlkO8T6J6v/op7ui0BbCjvZ9WqV4Xm6DTP6kQ/iBH" crossorigin="anonymous"></script><script type="text/x-mathjax-config">
         MathJax.Hub.Config({tex2jax: {inlineMath: [['$latex ','$'], ['\\(','\\)']]}});

@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="description" content="a blog of engineering and technology">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ifcuriousthenlearn (old posts, page 2) | ifcuriousthenlearn</title>
+<link href="../assets/css/all-nocdn.css" rel="stylesheet" type="text/css">
+<link href="../assets/css/ipython.min.css" rel="stylesheet" type="text/css">
+<link href="../assets/css/nikola_ipython.css" rel="stylesheet" type="text/css">
+<meta name="theme-color" content="#5670d4">
+<meta name="generator" content="Nikola (getnikola.com)">
+<link rel="alternate" type="application/rss+xml" title="RSS" hreflang="en" href="../rss.xml">
+<link rel="canonical" href="https://nagordon.github.io/ifcuriousthenlearn/blog/index-2.html">
+<link rel="prev" href="." type="text/html">
+<link rel="next" href="index-1.html" type="text/html">
+<!--[if lt IE 9]><script src="../assets/js/html5.js"></script><![endif]-->
+</head>
+<body>
+<a href="#content" class="sr-only sr-only-focusable">Skip to main content</a>
+
+<!-- Menubar -->
+
+<nav class="navbar navbar-inverse navbar-static-top"><div class="container">
+<!-- This keeps the margins nice -->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-navbar" aria-controls="bs-navbar" aria-expanded="false">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="https://nagordon.github.io/ifcuriousthenlearn/">
+
+                <span id="blog-title">ifcuriousthenlearn</span>
+            </a>
+        </div>
+<!-- /.navbar-header -->
+        <div class="collapse navbar-collapse" id="bs-navbar" aria-expanded="false">
+            <ul class="nav navbar-nav">
+<li>
+<a href="../index.html">Home</a>
+                </li>
+<li>
+<a href="../archive.html">Blog</a>
+                </li>
+<li>
+<a href="../about/index.html">About</a>
+                </li>
+<li>
+<a href="../categories/index.html">Tags</a>
+
+                
+            </li>
+</ul>
+<ul class="nav navbar-nav navbar-right"></ul>
+</div>
+<!-- /.navbar-collapse -->
+    </div>
+<!-- /.container -->
+</nav><!-- End of Menubar --><div class="container" id="content" role="main">
+    <div class="body-content">
+        <!--Body content-->
+        <div class="row">
+            
+            
+
+    
+
+
+    
+<div class="postindex">
+    <article class="h-entry post-text" itemscope="itemscope" itemtype="http://schema.org/Article"><header><h1 class="p-name entry-title"><a href="windows-chocolatey/" class="u-url">Windows package management with Chocolatey</a></h1>
+        <div class="metadata">
+            <p class="byline author vcard"><span class="byline-name fn" itemprop="author">
+                neal
+            </span></p>
+            <p class="dateline">
+            <a href="windows-chocolatey/" rel="bookmark">
+            <time class="published dt-published" datetime="2016-05-06T00:00:00-08:00" itemprop="datePublished" title="2016-05-06 00:00">2016-05-06 00:00</time></a>
+            </p>
+        </div>
+    </header><div class="e-content entry-content">
+    <div>
+<p>For most of us, using software is an everyday activity. Many of us use lots of different packages of software, especially those that does not come pre-installed, like notepad++, chrome or firefox, ebook managers, your favorite video player, etc. Installing that software every time you get a new computer or keeping all those packages up-to-date can be a challenge. Being a Windows user for most of my life, I've accepted the tedious, risky business of finding, installing and not getting viruses from Windows software. Not until I started using Linux did I realize that it can be easier and safer. Linux uses package management, that changes from distribution, but the popular Debian based Linux uses <code>apt-get</code> to install software from the command line. Installing software can be as easy as <code>apt-get install firefox</code>, and updating all software on the computing can be done with <code>apt-get update</code>. Really easy right?</p>
+<p>Well, I still use Windows a lot, and installating and managing software on Windows can be be much easier using <a href="https://github.com/chocolatey/choco/wiki">chocolatey</a>. Chocolatey is a Windows command line tool to manage software, including searching, installing, updataing and removing.</p>
+<p>Installation is a cinch. Copy and paste this code into a windows command line access by searching for <code>cmd</code> in the windows start. If possible, run as administrator (cmd, right-click, run as administrator)</p>
+<pre class="code literal-block"><span></span><code><span class="err">@powershell -NoProfile -ExecutionPolicy Bypass -Command "iex ((new-object net.webclient).DownloadString('https://chocolatey.org/install.ps1'))" &amp;&amp; SET PATH=%PATH%;%ALLUSERSPROFILE%\chocolatey\bin</span>
+</code></pre>
+
+
+<p>I typically just search the chocolatey website for the package I want to install and type that into the command line. The example I want to share is my favorite ebook manager, calibre. One of the reasons I enjoy chocolatey with calibre is because calibre is updated a lot, and to keep up with them, you have to go download the calibre exe, and follow the prompts for the installation. Or a simple command will do it all! The <code>-y</code> is a flag to indicate <code>yes</code> to eliminate the need to confirm the installation.</p>
+<pre class="code literal-block"><span></span><code><span class="err">choco install calibre -y</span>
+</code></pre>
+
+
+<p>Updating calibre is as easy as this</p>
+<pre class="code literal-block"><span></span><code><span class="err">choco update calibre -y</span>
+</code></pre>
+
+
+<p>Multiple packages can be installed by leaving a space between the names</p>
+<pre class="code literal-block"><span></span><code><span class="err">choco install notepadplusplus googlechrome atom 7zip</span>
+</code></pre>
+
+
+<p>And to update all the packages that were install with chocolatey, this command will take care of it all</p>
+<pre class="code literal-block"><span></span><code><span class="err">choco upgrade all -y</span>
+</code></pre>
+
+
+<p>I think chocolatey is a really neat, useful package that has saved me a lot of time, and I hope it helps alleviate some of your windows woes.</p>
+</div>
+    </div>
+    </article>
+</div>
+
+        <nav class="postindexpager"><ul class="pager">
+<li class="previous">
+                <a href="." rel="prev">Newer posts</a>
+            </li>
+            <li class="next">
+                <a href="index-1.html" rel="next">Older posts</a>
+            </li>
+        </ul></nav>
+</div>
+        <!--End of body content-->
+
+        <footer id="footer">
+            Contents © 2021         <a href="mailto:">neal</a> - Powered by         <a href="https://getnikola.com" rel="nofollow">Nikola</a>         copyright Neal Gordon
+            
+        </footer>
+</div>
+</div>
+
+
+            <script src="../assets/js/all-nocdn.js"></script><!-- fancy dates --><script>
+    moment.locale("en");
+    fancydates(0, "YYYY-MM-DD HH:mm");
+    </script><!-- end fancy dates --><script>
+    baguetteBox.run('div#content', {
+        ignoreClass: 'islink',
+        captions: function(element) {
+            return element.getElementsByTagName('img')[0].alt;
+    }});
+    </script>
+</body>
+</html>
