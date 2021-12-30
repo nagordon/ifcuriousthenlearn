@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<?xml-stylesheet type="text/xsl" href="../assets/xml/rss.xsl" media="all"?><rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>ifcuriousthenlearn (Posts about python)</title><link>https://nagordon.github.io/ifcuriousthenlearn/</link><description></description><atom:link href="https://nagordon.github.io/ifcuriousthenlearn/categories/python.xml" rel="self" type="application/rss+xml"></atom:link><language>en</language><copyright>Contents © 2021 &lt;a href="mailto:"&gt;neal&lt;/a&gt; copyright Neal Gordon</copyright><lastBuildDate>Wed, 22 Sep 2021 01:11:00 GMT</lastBuildDate><generator>Nikola (getnikola.com)</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>An investigation of the Brick Stacking Problem</title><link>https://nagordon.github.io/ifcuriousthenlearn/blog/brick-stacking/</link><dc:creator>neal</dc:creator><description>&lt;div&gt;&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+<?xml-stylesheet type="text/xsl" href="../assets/xml/rss.xsl" media="all"?><rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>ifcuriousthenlearn (Posts about python)</title><link>https://nagordon.github.io/ifcuriousthenlearn/</link><description></description><atom:link href="https://nagordon.github.io/ifcuriousthenlearn/categories/python.xml" rel="self" type="application/rss+xml"></atom:link><language>en</language><copyright>Contents © 2021 &lt;a href="mailto:"&gt;neal&lt;/a&gt; copyright Neal Gordon</copyright><lastBuildDate>Thu, 30 Dec 2021 17:02:59 GMT</lastBuildDate><generator>Nikola (getnikola.com)</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>An investigation of the Brick Stacking Problem</title><link>https://nagordon.github.io/ifcuriousthenlearn/blog/brick-stacking/</link><dc:creator>neal</dc:creator><description>&lt;div&gt;&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
 &lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;h3 id="An-investigation-of-the-Brick-Stacking-Problem"&gt;An investigation of the Brick Stacking Problem&lt;a class="anchor-link" href="https://nagordon.github.io/ifcuriousthenlearn/blog/brick-stacking/#An-investigation-of-the-Brick-Stacking-Problem"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;The original question I posed to myself is this. Can you stack bricks of equal dimensions and mass such that the top-most brick does not overlap the bottom-most brick? Or more generally, how far can bricks be stacked to generate the largest overhang?&lt;/p&gt;
@@ -242,7 +242,10 @@ $$&lt;p&gt;OK, lets get started. First run the code to create the &lt;code&gt;br
 
 &lt;/div&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;/div&gt;</description><category>engineering</category><category>python</category><category>tutorial</category><guid>https://nagordon.github.io/ifcuriousthenlearn/blog/brick-stacking/</guid><pubDate>Mon, 29 May 2017 21:05:06 GMT</pubDate></item><item><title>Calculations with Python Code or Excel Spreadsheets</title><link>https://nagordon.github.io/ifcuriousthenlearn/blog/pythoncode-vs-excel/</link><dc:creator>neal</dc:creator><description>&lt;div&gt;&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;&lt;/div&gt;
+&lt;/body&gt;&lt;/html&gt;
+
+</description><category>engineering</category><category>python</category><category>tutorial</category><guid>https://nagordon.github.io/ifcuriousthenlearn/blog/brick-stacking/</guid><pubDate>Mon, 29 May 2017 21:05:06 GMT</pubDate></item><item><title>Calculations with Python Code or Excel Spreadsheets</title><link>https://nagordon.github.io/ifcuriousthenlearn/blog/pythoncode-vs-excel/</link><dc:creator>neal</dc:creator><description>&lt;div&gt;&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
 &lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;h2 id="To-code-or-not-to-code"&gt;To code or not to code&lt;a class="anchor-link" href="https://nagordon.github.io/ifcuriousthenlearn/blog/pythoncode-vs-excel/#To-code-or-not-to-code"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;When faced with a technical challenge or problem solving, conceptual understanding is an important first step, and I almost always start with hand calculations. Once I feel that I have a grasp of the concept, then I turn to a digital approach which often involves using excel or python and running some numbers, and re-running them, and fiddling until I really understand. I always feel like, especially in engineering, that using the right tool for the right job can make a big difference in the results. &lt;a href="https://products.office.com/en-us/excel"&gt;Microsoft Excel&lt;/a&gt; or &lt;a href="https://www.libreoffice.org/discover/calc/"&gt;Libre Calc&lt;/a&gt; spreadsheet programs are a great way to plug some numbers in and perform simple calculations with nearly no learning curve to get an answer. But as the complexity and quantity of the data and compuation increases, spreadsheets start to not make sense. That's where I feel a code based calculation method is important tool in everyones analysis toolbox. Classicaly, good old pencil and paper was the only way to model and work out problems. But, with the availability of the personal computer, software has allowed us to do more work with less effort. I find it very fascinating to see how people solve problems. This post will explore that idea and hopefully give you an idea to go beyond excel the next time you need to run some numbers.&lt;/p&gt;
@@ -490,7 +493,10 @@ If you need any help with the functions, use the help function to show the input
 
 &lt;/div&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;/div&gt;</description><category>excel</category><category>python</category><guid>https://nagordon.github.io/ifcuriousthenlearn/blog/pythoncode-vs-excel/</guid><pubDate>Sat, 20 Aug 2016 07:00:00 GMT</pubDate></item><item><title>Logical Indexing with Python and Excel</title><link>https://nagordon.github.io/ifcuriousthenlearn/blog/logical-indexing-with-python-excel/</link><dc:creator>neal</dc:creator><description>&lt;div&gt;&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;&lt;/div&gt;
+&lt;/body&gt;&lt;/html&gt;
+
+</description><category>excel</category><category>python</category><guid>https://nagordon.github.io/ifcuriousthenlearn/blog/pythoncode-vs-excel/</guid><pubDate>Sat, 20 Aug 2016 07:00:00 GMT</pubDate></item><item><title>Logical Indexing with Python and Excel</title><link>https://nagordon.github.io/ifcuriousthenlearn/blog/logical-indexing-with-python-excel/</link><dc:creator>neal</dc:creator><description>&lt;div&gt;&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
 &lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;A powerful data sorting method called logical indexing can be a great way to clean up huge datasets. Programming languages Octave/MATLAB, python, and R to name a few all are capable of logical indexing.&lt;/p&gt;
@@ -695,8 +701,7 @@ If you need any help with the functions, use the help function to show the input
 
 
 
-&lt;div class="output_html rendered_html output_subarea output_execute_result"&gt;
-&lt;div&gt;
+&lt;div class="output_html rendered_html output_subarea output_execute_result"&gt;&lt;div&gt;
 &lt;table border="1" class="dataframe"&gt;
   &lt;thead&gt;
     &lt;tr style="text-align: right;"&gt;
@@ -763,8 +768,7 @@ If you need any help with the functions, use the help function to show the input
     &lt;/tr&gt;
   &lt;/tbody&gt;
 &lt;/table&gt;
-&lt;/div&gt;
-&lt;/div&gt;
+&lt;/div&gt;&lt;/div&gt;
 
 &lt;/div&gt;
 
@@ -846,8 +850,7 @@ Name: Color, dtype: bool&lt;/pre&gt;
 
 
 
-&lt;div class="output_html rendered_html output_subarea output_execute_result"&gt;
-&lt;div&gt;
+&lt;div class="output_html rendered_html output_subarea output_execute_result"&gt;&lt;div&gt;
 &lt;table border="1" class="dataframe"&gt;
   &lt;thead&gt;
     &lt;tr style="text-align: right;"&gt;
@@ -878,8 +881,7 @@ Name: Color, dtype: bool&lt;/pre&gt;
     &lt;/tr&gt;
   &lt;/tbody&gt;
 &lt;/table&gt;
-&lt;/div&gt;
-&lt;/div&gt;
+&lt;/div&gt;&lt;/div&gt;
 
 &lt;/div&gt;
 
@@ -917,8 +919,7 @@ Name: Color, dtype: bool&lt;/pre&gt;
 
 
 
-&lt;div class="output_html rendered_html output_subarea output_execute_result"&gt;
-&lt;div&gt;
+&lt;div class="output_html rendered_html output_subarea output_execute_result"&gt;&lt;div&gt;
 &lt;table border="1" class="dataframe"&gt;
   &lt;thead&gt;
     &lt;tr style="text-align: right;"&gt;
@@ -961,8 +962,7 @@ Name: Color, dtype: bool&lt;/pre&gt;
     &lt;/tr&gt;
   &lt;/tbody&gt;
 &lt;/table&gt;
-&lt;/div&gt;
-&lt;/div&gt;
+&lt;/div&gt;&lt;/div&gt;
 
 &lt;/div&gt;
 
@@ -1000,8 +1000,7 @@ Name: Color, dtype: bool&lt;/pre&gt;
 
 
 
-&lt;div class="output_html rendered_html output_subarea output_execute_result"&gt;
-&lt;div&gt;
+&lt;div class="output_html rendered_html output_subarea output_execute_result"&gt;&lt;div&gt;
 &lt;table border="1" class="dataframe"&gt;
   &lt;thead&gt;
     &lt;tr style="text-align: right;"&gt;
@@ -1050,8 +1049,7 @@ Name: Color, dtype: bool&lt;/pre&gt;
     &lt;/tr&gt;
   &lt;/tbody&gt;
 &lt;/table&gt;
-&lt;/div&gt;
-&lt;/div&gt;
+&lt;/div&gt;&lt;/div&gt;
 
 &lt;/div&gt;
 
@@ -1090,8 +1088,7 @@ Name: Color, dtype: bool&lt;/pre&gt;
 
 
 
-&lt;div class="output_html rendered_html output_subarea output_execute_result"&gt;
-&lt;div&gt;
+&lt;div class="output_html rendered_html output_subarea output_execute_result"&gt;&lt;div&gt;
 &lt;table border="1" class="dataframe"&gt;
   &lt;thead&gt;
     &lt;tr style="text-align: right;"&gt;
@@ -1116,8 +1113,7 @@ Name: Color, dtype: bool&lt;/pre&gt;
     &lt;/tr&gt;
   &lt;/tbody&gt;
 &lt;/table&gt;
-&lt;/div&gt;
-&lt;/div&gt;
+&lt;/div&gt;&lt;/div&gt;
 
 &lt;/div&gt;
 
@@ -1168,7 +1164,10 @@ Name: Color, dtype: bool&lt;/pre&gt;
 
 &lt;/div&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;/div&gt;</description><category>excel</category><category>python</category><guid>https://nagordon.github.io/ifcuriousthenlearn/blog/logical-indexing-with-python-excel/</guid><pubDate>Sat, 20 Aug 2016 07:00:00 GMT</pubDate></item><item><title>Sage Math Tool</title><link>https://nagordon.github.io/ifcuriousthenlearn/blog/sage-embed/</link><dc:creator>neal</dc:creator><description>&lt;div&gt;&lt;p&gt;I have been really impressed with the sage math application. It's based on python and is very powerful. Check out the documentation &lt;a href="http://www.sagemath.org/"&gt;here&lt;/a&gt; or try out the cloud service &lt;a href="https://cloud.sagemath.com/"&gt;here&lt;/a&gt;&lt;/p&gt;
+&lt;/div&gt;&lt;/div&gt;
+&lt;/body&gt;&lt;/html&gt;
+
+</description><category>excel</category><category>python</category><guid>https://nagordon.github.io/ifcuriousthenlearn/blog/logical-indexing-with-python-excel/</guid><pubDate>Sat, 20 Aug 2016 07:00:00 GMT</pubDate></item><item><title>Sage Math Tool</title><link>https://nagordon.github.io/ifcuriousthenlearn/blog/sage-embed/</link><dc:creator>neal</dc:creator><description>&lt;div&gt;&lt;p&gt;I have been really impressed with the sage math application. It's based on python and is very powerful. Check out the documentation &lt;a href="http://www.sagemath.org/"&gt;here&lt;/a&gt; or try out the cloud service &lt;a href="https://cloud.sagemath.com/"&gt;here&lt;/a&gt;&lt;/p&gt;
 &lt;script src="https://sagecell.sagemath.org/static/jquery.min.js"&gt;&lt;/script&gt;
 
 &lt;script src="https://sagecell.sagemath.org/static/embedded_sagecell.js"&gt;&lt;/script&gt;
@@ -1178,9 +1177,18 @@ Name: Color, dtype: bool&lt;/pre&gt;
 &lt;p&gt;&lt;link rel="stylesheet" type="text/css" href="https://sagecell.sagemath.org/static/sagecell_embed.css"&gt;
 &lt;/p&gt;&lt;div class="sage"&gt;
   &lt;script type="text/x-sage"&gt;x = var('x') ; parametric_plot((cos(x),sin(x)^3),(x,0,2*pi),rgbcolor=hue(0.6))&lt;/script&gt;
-&lt;/div&gt;&lt;/div&gt;</description><category>math</category><category>python</category><guid>https://nagordon.github.io/ifcuriousthenlearn/blog/sage-embed/</guid><pubDate>Sun, 05 Jun 2016 08:00:00 GMT</pubDate></item><item><title>Python Trinket, another interactive execution tool</title><link>https://nagordon.github.io/ifcuriousthenlearn/blog/python-trinket/</link><dc:creator>neal</dc:creator><description>&lt;div&gt;&lt;p&gt;another neat tool for debugging python code.&lt;/p&gt;
-&lt;iframe src="https://trinket.io/embed/python/90b0702a6a" width="100%" height="500" frameborder="0" marginwidth="0" marginheight="0" allowfullscreen&gt;&lt;/iframe&gt;&lt;/div&gt;</description><category>code</category><category>python</category><guid>https://nagordon.github.io/ifcuriousthenlearn/blog/python-trinket/</guid><pubDate>Fri, 06 May 2016 08:00:00 GMT</pubDate></item><item><title>Python Tutor, and interactive execution tool</title><link>https://nagordon.github.io/ifcuriousthenlearn/blog/python-tutor/</link><dc:creator>neal</dc:creator><description>&lt;div&gt;&lt;p&gt;yet another neat tool I found online for understanding python execution&lt;/p&gt;
-&lt;iframe width="800" height="600" frameborder="0" src="http://pythontutor.com/iframe-embed.html#code=x+%3D+%5B1,+2,+3%5D%0Ay+%3D+%5B4,+5,+6%5D%0Az+%3D+y%0Ay+%3D+x%0Ax+%3D+z%0A%0Ax+%3D+%5B1,+2,+3%5D+%23+a+different+%5B1,+2,+3%5D+list!%0Ay+%3D+x%0Ax.append(4%29%0Ay.append(5%29%0Az+%3D+%5B1,+2,+3,+4,+5%5D+%23+a+different+list!%0Ax.append(6%29%0Ay.append(7%29%0Ay+%3D+%22hello%22%0A%0A%0Adef+foo(lst%29%3A%0A++++lst.append(%22hello%22%29%0A++++bar(lst%29%0A%0Adef+bar(myLst%29%3A%0A++++print(myLst%29%0A%0Afoo(x%29%0Afoo(z%29&amp;amp;origin=opt-frontend.js&amp;amp;cumulative=false&amp;amp;heapPrimitives=false&amp;amp;textReferences=false&amp;amp;py=2&amp;amp;rawInputLstJSON=%5B%5D&amp;amp;curInstr=0&amp;amp;codeDivWidth=350&amp;amp;codeDivHeight=400"&gt; &lt;/iframe&gt;&lt;/div&gt;</description><category>code</category><category>python</category><guid>https://nagordon.github.io/ifcuriousthenlearn/blog/python-tutor/</guid><pubDate>Fri, 06 May 2016 08:00:00 GMT</pubDate></item><item><title>Finding the Center of Mass from Point Masses with Python</title><link>https://nagordon.github.io/ifcuriousthenlearn/blog/center-of-mass/</link><dc:creator>neal</dc:creator><description>&lt;div&gt;&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;&lt;/div&gt;
+&lt;/body&gt;&lt;/html&gt;
+
+</description><category>math</category><category>python</category><guid>https://nagordon.github.io/ifcuriousthenlearn/blog/sage-embed/</guid><pubDate>Sun, 05 Jun 2016 08:00:00 GMT</pubDate></item><item><title>Python Trinket, another interactive execution tool</title><link>https://nagordon.github.io/ifcuriousthenlearn/blog/python-trinket/</link><dc:creator>neal</dc:creator><description>&lt;div&gt;&lt;p&gt;another neat tool for debugging python code.&lt;/p&gt;
+&lt;iframe src="https://trinket.io/embed/python/90b0702a6a" width="100%" height="500" frameborder="0" marginwidth="0" marginheight="0" allowfullscreen&gt;&lt;/iframe&gt;&lt;/div&gt;
+&lt;/body&gt;&lt;/html&gt;
+
+</description><category>code</category><category>python</category><guid>https://nagordon.github.io/ifcuriousthenlearn/blog/python-trinket/</guid><pubDate>Fri, 06 May 2016 08:00:00 GMT</pubDate></item><item><title>Python Tutor, and interactive execution tool</title><link>https://nagordon.github.io/ifcuriousthenlearn/blog/python-tutor/</link><dc:creator>neal</dc:creator><description>&lt;div&gt;&lt;p&gt;yet another neat tool I found online for understanding python execution&lt;/p&gt;
+&lt;iframe width="800" height="600" frameborder="0" src="http://pythontutor.com/iframe-embed.html#code=x+%3D+%5B1,+2,+3%5D%0Ay+%3D+%5B4,+5,+6%5D%0Az+%3D+y%0Ay+%3D+x%0Ax+%3D+z%0A%0Ax+%3D+%5B1,+2,+3%5D+%23+a+different+%5B1,+2,+3%5D+list!%0Ay+%3D+x%0Ax.append(4%29%0Ay.append(5%29%0Az+%3D+%5B1,+2,+3,+4,+5%5D+%23+a+different+list!%0Ax.append(6%29%0Ay.append(7%29%0Ay+%3D+%22hello%22%0A%0A%0Adef+foo(lst%29%3A%0A++++lst.append(%22hello%22%29%0A++++bar(lst%29%0A%0Adef+bar(myLst%29%3A%0A++++print(myLst%29%0A%0Afoo(x%29%0Afoo(z%29&amp;amp;origin=opt-frontend.js&amp;amp;cumulative=false&amp;amp;heapPrimitives=false&amp;amp;textReferences=false&amp;amp;py=2&amp;amp;rawInputLstJSON=%5B%5D&amp;amp;curInstr=0&amp;amp;codeDivWidth=350&amp;amp;codeDivHeight=400"&gt; &lt;/iframe&gt;&lt;/div&gt;
+&lt;/body&gt;&lt;/html&gt;
+
+</description><category>code</category><category>python</category><guid>https://nagordon.github.io/ifcuriousthenlearn/blog/python-tutor/</guid><pubDate>Fri, 06 May 2016 08:00:00 GMT</pubDate></item><item><title>Finding the Center of Mass from Point Masses with Python</title><link>https://nagordon.github.io/ifcuriousthenlearn/blog/center-of-mass/</link><dc:creator>neal</dc:creator><description>&lt;div&gt;&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
 &lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;h2 id="Finding-the-Center-of-Gravity(CG)-of-a-point-mass-in-1,-2-and-3-Dimensions"&gt;Finding the Center of Gravity(CG) of a point mass in 1, 2 and 3 Dimensions&lt;a class="anchor-link" href="https://nagordon.github.io/ifcuriousthenlearn/blog/center-of-mass/#Finding-the-Center-of-Gravity(CG)-of-a-point-mass-in-1,-2-and-3-Dimensions"&gt;¶&lt;/a&gt;&lt;/h2&gt;
@@ -1663,10 +1671,13 @@ $$ \bar{x}=\frac{\sum_{i=0}^{n}{x_i*m_i}}{\sum_{i=0}^{n}{m_i}} $$$$ \bar{y}=\fra
 &lt;/div&gt;
 &lt;/div&gt;
 
-&lt;/div&gt;&lt;/div&gt;</description><category>engineering</category><category>python</category><category>tutorial</category><guid>https://nagordon.github.io/ifcuriousthenlearn/blog/center-of-mass/</guid><pubDate>Thu, 18 Jun 2015 07:00:00 GMT</pubDate></item><item><title>Mechanical Vibrations with Python</title><link>https://nagordon.github.io/ifcuriousthenlearn/blog/mechanical-vibrations-with-python/</link><dc:creator>neal</dc:creator><description>&lt;div&gt;&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;&lt;/div&gt;
+&lt;/body&gt;&lt;/html&gt;
+
+</description><category>engineering</category><category>python</category><category>tutorial</category><guid>https://nagordon.github.io/ifcuriousthenlearn/blog/center-of-mass/</guid><pubDate>Thu, 18 Jun 2015 07:00:00 GMT</pubDate></item><item><title>Mechanical Vibrations with Python</title><link>https://nagordon.github.io/ifcuriousthenlearn/blog/mechanical-vibrations-with-python/</link><dc:creator>neal</dc:creator><description>&lt;div&gt;&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
 &lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;h2 id="Mechanical-Vibrations-with-Python-[updated]"&gt;Mechanical Vibrations with Python [updated]&lt;a class="anchor-link" href="https://nagordon.github.io/ifcuriousthenlearn/blog/mechanical-vibrations-with-python/#Mechanical-Vibrations-with-Python-%5Bupdated%5D"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;Thanks to a comment I had the equation for xdd incorrect, but has been updated, thanks guest&lt;/p&gt;
+&lt;h2 id="Mechanical-Vibrations-with-Python-%5Bupdated%5D"&gt;Mechanical Vibrations with Python [updated]&lt;a class="anchor-link" href="https://nagordon.github.io/ifcuriousthenlearn/blog/mechanical-vibrations-with-python/#Mechanical-Vibrations-with-Python-%5Bupdated%5D"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;Thanks to a comment I had the equation for xdd incorrect, but has been updated, thanks guest&lt;/p&gt;
 &lt;p&gt;Solving second-order differential equations is a common problem in mechanical engineering, and although it is improtant to understand how to solve these problems analytically, using software to solve them is mor practical, especially when considering the parameters are often unknown and need to be tested.&lt;/p&gt;
 &lt;p&gt;This is a simple example of solving a second-order differential equation representing a spring-damper system with python programming language. Python is a powerful tool for science and engineering and is relativley easy to use and free!&lt;/p&gt;
 &lt;p&gt;The system that this is modeling is based on a spring and damper in parallel attached to a mass.&lt;/p&gt;
@@ -1931,7 +1942,10 @@ $$ \bar{x}=\frac{\sum_{i=0}^{n}{x_i*m_i}}{\sum_{i=0}^{n}{m_i}} $$$$ \bar{y}=\fra
 &lt;/div&gt;
 &lt;/div&gt;
 
-&lt;/div&gt;&lt;/div&gt;</description><category>engineering</category><category>math</category><category>python</category><guid>https://nagordon.github.io/ifcuriousthenlearn/blog/mechanical-vibrations-with-python/</guid><pubDate>Tue, 09 Jun 2015 21:05:06 GMT</pubDate></item><item><title>MATLAB to python conversion</title><link>https://nagordon.github.io/ifcuriousthenlearn/blog/matlab-to-python-conversion/</link><dc:creator>neal</dc:creator><description>&lt;div&gt;&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;&lt;/div&gt;
+&lt;/body&gt;&lt;/html&gt;
+
+</description><category>engineering</category><category>math</category><category>python</category><guid>https://nagordon.github.io/ifcuriousthenlearn/blog/mechanical-vibrations-with-python/</guid><pubDate>Tue, 09 Jun 2015 21:05:06 GMT</pubDate></item><item><title>MATLAB to python conversion</title><link>https://nagordon.github.io/ifcuriousthenlearn/blog/matlab-to-python-conversion/</link><dc:creator>neal</dc:creator><description>&lt;div&gt;&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
 &lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;h2 id="Matlab-to-Python-conversion"&gt;Matlab to Python conversion&lt;a class="anchor-link" href="https://nagordon.github.io/ifcuriousthenlearn/blog/matlab-to-python-conversion/#Matlab-to-Python-conversion"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;There seems to be an natural progression that occurs for users of data anaylsis programs. I believe the forces guiding those changes are not coincidental, but out of necessity based on the ease of learning, functionality, extensibility, scalability and cost. In my opinion, the best method for theory is still handwritten, but when more advanced concepts are learned, more powerful tools make those concepts easier to understand.&lt;/p&gt;
@@ -3244,4 +3258,7 @@ for i in mslice[1:R]:
 
 &lt;/div&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;/div&gt;</description><category>math</category><category>matlab</category><category>python</category><guid>https://nagordon.github.io/ifcuriousthenlearn/blog/matlab-to-python-conversion/</guid><pubDate>Tue, 05 May 2015 21:05:06 GMT</pubDate></item></channel></rss>
+&lt;/div&gt;&lt;/div&gt;
+&lt;/body&gt;&lt;/html&gt;
+
+</description><category>math</category><category>matlab</category><category>python</category><guid>https://nagordon.github.io/ifcuriousthenlearn/blog/matlab-to-python-conversion/</guid><pubDate>Tue, 05 May 2015 21:05:06 GMT</pubDate></item></channel></rss>

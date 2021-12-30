@@ -1,0 +1,713 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="description" content="Build your own IR tachometer for propellor RPM">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>DIY Arduino Tachometer for your RC Airplane | ifcuriousthenlearn</title>
+<link href="../../assets/css/all-nocdn.css" rel="stylesheet" type="text/css">
+<link href="../../assets/css/ipython.min.css" rel="stylesheet" type="text/css">
+<link href="../../assets/css/nikola_ipython.css" rel="stylesheet" type="text/css">
+<meta name="theme-color" content="#5670d4">
+<meta name="generator" content="Nikola (getnikola.com)">
+<link rel="alternate" type="application/rss+xml" title="RSS" hreflang="en" href="../../rss.xml">
+<link rel="canonical" href="https://nagordon.github.io/ifcuriousthenlearn/blog/diy-arduino-tachometer-for-your-rc-airplane/">
+<!--[if lt IE 9]><script src="../../assets/js/html5.js"></script><![endif]--><meta name="author" content="neal">
+<link rel="prev" href="../rebuilding-the-site-with-nikola/" title="Rebuilding the site with nikola" type="text/html">
+<meta property="og:site_name" content="ifcuriousthenlearn">
+<meta property="og:title" content="DIY Arduino Tachometer for your RC Airplane">
+<meta property="og:url" content="https://nagordon.github.io/ifcuriousthenlearn/blog/diy-arduino-tachometer-for-your-rc-airplane/">
+<meta property="og:description" content="Build your own IR tachometer for propellor RPM">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2021-12-29T17:11:39-08:00">
+<meta property="article:tag" content="electronics">
+</head>
+<body>
+<a href="#content" class="sr-only sr-only-focusable">Skip to main content</a>
+
+<!-- Menubar -->
+
+<nav class="navbar navbar-inverse navbar-static-top"><div class="container">
+<!-- This keeps the margins nice -->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-navbar" aria-controls="bs-navbar" aria-expanded="false">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="https://nagordon.github.io/ifcuriousthenlearn/">
+
+                <span id="blog-title">ifcuriousthenlearn</span>
+            </a>
+        </div>
+<!-- /.navbar-header -->
+        <div class="collapse navbar-collapse" id="bs-navbar" aria-expanded="false">
+            <ul class="nav navbar-nav">
+<li>
+<a href="../../index.html">Home</a>
+                </li>
+<li>
+<a href="../../archive.html">Blog</a>
+                </li>
+<li>
+<a href="../../about/index.html">About</a>
+                </li>
+<li>
+<a href="../../categories/index.html">Tags</a>
+
+                
+            </li>
+</ul>
+<ul class="nav navbar-nav navbar-right">
+<li>
+    <a href="index.rst" id="sourcelink">Source</a>
+    </li>
+
+                
+            </ul>
+</div>
+<!-- /.navbar-collapse -->
+    </div>
+<!-- /.container -->
+</nav><!-- End of Menubar --><div class="container" id="content" role="main">
+    <div class="body-content">
+        <!--Body content-->
+        <div class="row">
+            
+            
+<article class="post-text h-entry hentry postpage" itemscope="itemscope" itemtype="http://schema.org/Article"><header><h1 class="p-name entry-title" itemprop="headline name"><a href="." class="u-url">DIY Arduino Tachometer for your RC Airplane</a></h1>
+
+        <div class="metadata">
+            <p class="byline author vcard p-author h-card"><span class="byline-name fn p-name" itemprop="author">
+                    neal
+            </span></p>
+            <p class="dateline">
+            <a href="." rel="bookmark">
+            <time class="published dt-published" datetime="2021-12-29T17:11:39-08:00" itemprop="datePublished" title="2021-12-29 17:11">2021-12-29 17:11</time></a>
+            </p>
+                <p class="commentline">
+        
+    <a href="#disqus_thread" data-disqus-identifier="cache/posts/diy-arduino-tachometer-for-your-rc-airplane.html">Comments</a>
+
+
+            
+        </p>
+<p class="sourceline"><a href="index.rst" class="sourcelink">Source</a></p>
+
+        </div>
+        
+
+    </header><div class="e-content entry-content" itemprop="articleBody text">
+    <div>
+<!-- change status from my notes and comments, draft, published -->
+<section id="the-project"><h2>The Project</h2>
+<p>To properly tune a small gas airplane engine, a tach is essential. I was just going to buy a tower hobbies tachometer for tuning my new Yak 54 gas RC airplane, but instead I spent an entire day build my own, and you can too!</p>
+<p>There are some good products out there that work, but you don't have the sastifaction of making it yourself.</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://www.towerhobbies.com/product/on-board-digital-tachometer/DLEG5525.html">https://www.towerhobbies.com/product/on-board-digital-tachometer/DLEG5525.html</a></p></li>
+<li><p><a class="reference external" href="https://www.amazon.com/gp/product/B07N77H8D4/ref=ox_sc_act_title_1?smid=A21F9KBNUKR8LM&amp;psc=1">https://www.amazon.com/gp/product/B07N77H8D4/ref=ox_sc_act_title_1?smid=A21F9KBNUKR8LM&amp;psc=1</a></p></li>
+</ul>
+<p>This will show you how to build your own with hopefully a lot less time than it took me. Also, once you get a ground unit working well, you can add an airplane unit and get RPM telemetry when you are flying, but we will leave that for another day.</p>
+<p>The ardupilot documentation has a nice overview of what the software is doing, but we are using an IR sensor instead of a hall effect sensor which requires a magnet, but has less noise.</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://ardupilot.org/plane/docs/common-rpm.html">https://ardupilot.org/plane/docs/common-rpm.html</a></p></li>
+</ul>
+<p>I roughly followed this tutorial to create mine</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://automaticaddison.com/how-to-develop-an-arduino-based-optical-tachometer/">https://automaticaddison.com/how-to-develop-an-arduino-based-optical-tachometer/</a></p></li>
+</ul>
+<p>The library for the OLED is here</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://github.com/olikraus/U8g2_Arduino">https://github.com/olikraus/U8g2_Arduino</a></p></li>
+</ul>
+<p>The sensor is not perfect and has about 500-1000 RPMs of noise, which isn't great but not sure how you make it better. One thing I noticed is that if you point the IR transmitter and reciever in a little there seems to be less noise.</p>
+</section><section id="materials"><h2>Materials</h2>
+<ul class="simple">
+<li>
+<p>ardunio pro mini 5v</p>
+<ul>
+<li><p><a class="reference external" href="https://www.sparkfun.com/products/11113">https://www.sparkfun.com/products/11113</a></p></li>
+</ul>
+</li>
+<li>
+<p>IR obstacle sensor HW-201 module</p>
+<ul>
+<li><p><a class="reference external" href="https://www.amazon.com/HiLetgo-Infrared-Avoidance-Reflective-Photoelectric/dp/B07W97H2WS/ref=sr_1_13?keywords=line+follower+sensor&amp;qid=1640830855&amp;sr=8-13">https://www.amazon.com/HiLetgo-Infrared-Avoidance-Reflective-Photoelectric/dp/B07W97H2WS/ref=sr_1_13?keywords=line+follower+sensor&amp;qid=1640830855&amp;sr=8-13</a></p></li>
+</ul>
+</li>
+<li>
+<p>SSD1306 oled screen</p>
+<ul>
+<li><p><a class="reference external" href="https://www.uctronics.com/uctronics-0-96-inch-oled-module-12864-128x64-yellow-blue-ssd1306-driver-i2c-serial-self-luminous-display-board-for-arduino-raspberry-pi.html">https://www.uctronics.com/uctronics-0-96-inch-oled-module-12864-128x64-yellow-blue-ssd1306-driver-i2c-serial-self-luminous-display-board-for-arduino-raspberry-pi.html</a></p></li>
+</ul>
+</li>
+<li><p>9v battery</p></li>
+</ul></section><section id="images"><h2>Images</h2>
+<section id="wiring-diagram"><h3>Wiring Diagram</h3>
+<img alt="/files/diy-arduino-tachometer-for-your-rc-airplane/gallery/Propellor_Tachometer_Using_Arduino_Wiring_Diagram.jpg" src="../../files/diy-arduino-tachometer-for-your-rc-airplane/gallery/Propellor_Tachometer_Using_Arduino_Wiring_Diagram.jpg" style="width: 500px;"></section><section id="finished"><h3>Finished!</h3>
+<p>Everything is soldered together and ready to test.</p>
+<img alt="/files/diy-arduino-tachometer-for-your-rc-airplane/gallery/finished_tach2.jpg" src="../../files/diy-arduino-tachometer-for-your-rc-airplane/gallery/finished_tach2.jpg" style="width: 500px;"><p>I mounted everything on a piece of balsa wood and added shrink wrap for durability. The battery is simply taped on for easy changing.</p>
+<img alt="/files/diy-arduino-tachometer-for-your-rc-airplane/gallery/mounted_tach_screen.jpg" src="../../files/diy-arduino-tachometer-for-your-rc-airplane/gallery/mounted_tach_screen.jpg" style="width: 500px;"><!-- /image:: /files/diy-arduino-tachometer-for/your-rc-airplane/gallery/tach_screen.jpg
+:width: 500 --><p></p>
+<img alt="/files/diy-arduino-tachometer-for-your-rc-airplane/gallery/mounted_tach_battery.jpg" src="../../files/diy-arduino-tachometer-for-your-rc-airplane/gallery/mounted_tach_battery.jpg" style="width: 500px;"></section></section><section id="the-code"><h2>The code</h2>
+<div class="code"><table class="codetable">
+<tr>
+<td class="linenos linenodiv"><a href="#rest_code_3c23f22487d3404dbbeea3736f2313d9-1"><code data-line-number="  1"></code></a></td>
+<td class="code"><code><a id="rest_code_3c23f22487d3404dbbeea3736f2313d9-1" name="rest_code_3c23f22487d3404dbbeea3736f2313d9-1"></a><span class="w"> </span><span class="cm">/*</span>
+</code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#rest_code_3c23f22487d3404dbbeea3736f2313d9-2"><code data-line-number="  2"></code></a></td>
+<td class="code"><code><a id="rest_code_3c23f22487d3404dbbeea3736f2313d9-2" name="rest_code_3c23f22487d3404dbbeea3736f2313d9-2"></a><span class="cm"> PropTach v0.2</span>
+</code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#rest_code_3c23f22487d3404dbbeea3736f2313d9-3"><code data-line-number="  3"></code></a></td>
+<td class="code"><code><a id="rest_code_3c23f22487d3404dbbeea3736f2313d9-3" name="rest_code_3c23f22487d3404dbbeea3736f2313d9-3"></a><span class="cm"> Neal Gordon</span>
+</code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#rest_code_3c23f22487d3404dbbeea3736f2313d9-4"><code data-line-number="  4"></code></a></td>
+<td class="code"><code><a id="rest_code_3c23f22487d3404dbbeea3736f2313d9-4" name="rest_code_3c23f22487d3404dbbeea3736f2313d9-4"></a><span class="cm"> */</span><span class="w"></span>
+</code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#rest_code_3c23f22487d3404dbbeea3736f2313d9-5"><code data-line-number="  5"></code></a></td>
+<td class="code"><code><a id="rest_code_3c23f22487d3404dbbeea3736f2313d9-5" name="rest_code_3c23f22487d3404dbbeea3736f2313d9-5"></a>
+</code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#rest_code_3c23f22487d3404dbbeea3736f2313d9-6"><code data-line-number="  6"></code></a></td>
+<td class="code"><code><a id="rest_code_3c23f22487d3404dbbeea3736f2313d9-6" name="rest_code_3c23f22487d3404dbbeea3736f2313d9-6"></a><span class="w"> </span><span class="c1">// Import OLED library</span>
+</code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#rest_code_3c23f22487d3404dbbeea3736f2313d9-7"><code data-line-number="  7"></code></a></td>
+<td class="code"><code><a id="rest_code_3c23f22487d3404dbbeea3736f2313d9-7" name="rest_code_3c23f22487d3404dbbeea3736f2313d9-7"></a><span class="w"> </span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;Arduino.h&gt;</span><span class="cp"></span>
+</code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#rest_code_3c23f22487d3404dbbeea3736f2313d9-8"><code data-line-number="  8"></code></a></td>
+<td class="code"><code><a id="rest_code_3c23f22487d3404dbbeea3736f2313d9-8" name="rest_code_3c23f22487d3404dbbeea3736f2313d9-8"></a><span class="w"> </span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;U8x8lib.h&gt;</span><span class="cp"></span>
+</code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#rest_code_3c23f22487d3404dbbeea3736f2313d9-9"><code data-line-number="  9"></code></a></td>
+<td class="code"><code><a id="rest_code_3c23f22487d3404dbbeea3736f2313d9-9" name="rest_code_3c23f22487d3404dbbeea3736f2313d9-9"></a>
+</code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#rest_code_3c23f22487d3404dbbeea3736f2313d9-10"><code data-line-number=" 10"></code></a></td>
+<td class="code"><code><a id="rest_code_3c23f22487d3404dbbeea3736f2313d9-10" name="rest_code_3c23f22487d3404dbbeea3736f2313d9-10"></a><span class="w"> </span><span class="cp">#ifdef U8X8_HAVE_HW_SPI</span>
+</code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#rest_code_3c23f22487d3404dbbeea3736f2313d9-11"><code data-line-number=" 11"></code></a></td>
+<td class="code"><code><a id="rest_code_3c23f22487d3404dbbeea3736f2313d9-11" name="rest_code_3c23f22487d3404dbbeea3736f2313d9-11"></a><span class="w"> </span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;SPI.h&gt;</span><span class="cp"></span>
+</code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#rest_code_3c23f22487d3404dbbeea3736f2313d9-12"><code data-line-number=" 12"></code></a></td>
+<td class="code"><code><a id="rest_code_3c23f22487d3404dbbeea3736f2313d9-12" name="rest_code_3c23f22487d3404dbbeea3736f2313d9-12"></a><span class="w"> </span><span class="cp">#endif</span>
+</code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#rest_code_3c23f22487d3404dbbeea3736f2313d9-13"><code data-line-number=" 13"></code></a></td>
+<td class="code"><code><a id="rest_code_3c23f22487d3404dbbeea3736f2313d9-13" name="rest_code_3c23f22487d3404dbbeea3736f2313d9-13"></a>
+</code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#rest_code_3c23f22487d3404dbbeea3736f2313d9-14"><code data-line-number=" 14"></code></a></td>
+<td class="code"><code><a id="rest_code_3c23f22487d3404dbbeea3736f2313d9-14" name="rest_code_3c23f22487d3404dbbeea3736f2313d9-14"></a><span class="w"> </span><span class="c1">// The complete list is available here: https://github.com/olikraus/u8g2/wiki/u8x8setupcpp</span>
+</code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#rest_code_3c23f22487d3404dbbeea3736f2313d9-15"><code data-line-number=" 15"></code></a></td>
+<td class="code"><code><a id="rest_code_3c23f22487d3404dbbeea3736f2313d9-15" name="rest_code_3c23f22487d3404dbbeea3736f2313d9-15"></a><span class="w"> </span><span class="n">U8X8_SSD1306_128X64_NONAME_HW_I2C</span><span class="w"> </span><span class="nf">u8x8</span><span class="p">(</span><span class="cm">/* reset=*/</span><span class="w"> </span><span class="n">U8X8_PIN_NONE</span><span class="p">);</span><span class="w"></span>
+</code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#rest_code_3c23f22487d3404dbbeea3736f2313d9-16"><code data-line-number=" 16"></code></a></td>
+<td class="code"><code><a id="rest_code_3c23f22487d3404dbbeea3736f2313d9-16" name="rest_code_3c23f22487d3404dbbeea3736f2313d9-16"></a>
+</code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#rest_code_3c23f22487d3404dbbeea3736f2313d9-17"><code data-line-number=" 17"></code></a></td>
+<td class="code"><code><a id="rest_code_3c23f22487d3404dbbeea3736f2313d9-17" name="rest_code_3c23f22487d3404dbbeea3736f2313d9-17"></a><span class="w"> </span><span class="c1">// The number of blades on the propeller. Adjust accordingly.</span>
+</code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#rest_code_3c23f22487d3404dbbeea3736f2313d9-18"><code data-line-number=" 18"></code></a></td>
+<td class="code"><code><a id="rest_code_3c23f22487d3404dbbeea3736f2313d9-18" name="rest_code_3c23f22487d3404dbbeea3736f2313d9-18"></a><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="kt">unsigned</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">BLADE_COUNT</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="p">;</span><span class="w"></span>
+</code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#rest_code_3c23f22487d3404dbbeea3736f2313d9-19"><code data-line-number=" 19"></code></a></td>
+<td class="code"><code><a id="rest_code_3c23f22487d3404dbbeea3736f2313d9-19" name="rest_code_3c23f22487d3404dbbeea3736f2313d9-19"></a>
+</code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#rest_code_3c23f22487d3404dbbeea3736f2313d9-20"><code data-line-number=" 20"></code></a></td>
+<td class="code"><code><a id="rest_code_3c23f22487d3404dbbeea3736f2313d9-20" name="rest_code_3c23f22487d3404dbbeea3736f2313d9-20"></a><span class="w"> </span><span class="c1">// Volatile keyword is used with interrupts</span>
+</code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#rest_code_3c23f22487d3404dbbeea3736f2313d9-21"><code data-line-number=" 21"></code></a></td>
+<td class="code"><code><a id="rest_code_3c23f22487d3404dbbeea3736f2313d9-21" name="rest_code_3c23f22487d3404dbbeea3736f2313d9-21"></a><span class="w"> </span><span class="c1">// This variable is subject to change inside an interrupt</span>
+</code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#rest_code_3c23f22487d3404dbbeea3736f2313d9-22"><code data-line-number=" 22"></code></a></td>
+<td class="code"><code><a id="rest_code_3c23f22487d3404dbbeea3736f2313d9-22" name="rest_code_3c23f22487d3404dbbeea3736f2313d9-22"></a><span class="w"> </span><span class="c1">// service routine</span>
+</code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#rest_code_3c23f22487d3404dbbeea3736f2313d9-23"><code data-line-number=" 23"></code></a></td>
+<td class="code"><code><a id="rest_code_3c23f22487d3404dbbeea3736f2313d9-23" name="rest_code_3c23f22487d3404dbbeea3736f2313d9-23"></a><span class="w"> </span><span class="k">volatile</span><span class="w"> </span><span class="kt">unsigned</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">myinterrupts</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
+</code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#rest_code_3c23f22487d3404dbbeea3736f2313d9-24"><code data-line-number=" 24"></code></a></td>
+<td class="code"><code><a id="rest_code_3c23f22487d3404dbbeea3736f2313d9-24" name="rest_code_3c23f22487d3404dbbeea3736f2313d9-24"></a><span class="w"> </span><span class="kt">unsigned</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">myinterrupts_print</span><span class="p">;</span><span class="w"></span>
+</code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#rest_code_3c23f22487d3404dbbeea3736f2313d9-25"><code data-line-number=" 25"></code></a></td>
+<td class="code"><code><a id="rest_code_3c23f22487d3404dbbeea3736f2313d9-25" name="rest_code_3c23f22487d3404dbbeea3736f2313d9-25"></a>
+</code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#rest_code_3c23f22487d3404dbbeea3736f2313d9-26"><code data-line-number=" 26"></code></a></td>
+<td class="code"><code><a id="rest_code_3c23f22487d3404dbbeea3736f2313d9-26" name="rest_code_3c23f22487d3404dbbeea3736f2313d9-26"></a>
+</code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#rest_code_3c23f22487d3404dbbeea3736f2313d9-27"><code data-line-number=" 27"></code></a></td>
+<td class="code"><code><a id="rest_code_3c23f22487d3404dbbeea3736f2313d9-27" name="rest_code_3c23f22487d3404dbbeea3736f2313d9-27"></a><span class="w"> </span><span class="c1">// Used for capturing the rpm (revolutions per minute)</span>
+</code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#rest_code_3c23f22487d3404dbbeea3736f2313d9-28"><code data-line-number=" 28"></code></a></td>
+<td class="code"><code><a id="rest_code_3c23f22487d3404dbbeea3736f2313d9-28" name="rest_code_3c23f22487d3404dbbeea3736f2313d9-28"></a><span class="w"> </span><span class="kt">unsigned</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">rpm</span><span class="p">;</span><span class="w"></span>
+</code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#rest_code_3c23f22487d3404dbbeea3736f2313d9-29"><code data-line-number=" 29"></code></a></td>
+<td class="code"><code><a id="rest_code_3c23f22487d3404dbbeea3736f2313d9-29" name="rest_code_3c23f22487d3404dbbeea3736f2313d9-29"></a><span class="w"> </span><span class="kt">unsigned</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">rpm_print</span><span class="p">;</span><span class="w"></span>
+</code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#rest_code_3c23f22487d3404dbbeea3736f2313d9-30"><code data-line-number=" 30"></code></a></td>
+<td class="code"><code><a id="rest_code_3c23f22487d3404dbbeea3736f2313d9-30" name="rest_code_3c23f22487d3404dbbeea3736f2313d9-30"></a>
+</code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#rest_code_3c23f22487d3404dbbeea3736f2313d9-31"><code data-line-number=" 31"></code></a></td>
+<td class="code"><code><a id="rest_code_3c23f22487d3404dbbeea3736f2313d9-31" name="rest_code_3c23f22487d3404dbbeea3736f2313d9-31"></a><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">setup</span><span class="p">()</span><span class="w"></span>
+</code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#rest_code_3c23f22487d3404dbbeea3736f2313d9-32"><code data-line-number=" 32"></code></a></td>
+<td class="code"><code><a id="rest_code_3c23f22487d3404dbbeea3736f2313d9-32" name="rest_code_3c23f22487d3404dbbeea3736f2313d9-32"></a><span class="w">     </span><span class="p">{</span><span class="w"></span>
+</code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#rest_code_3c23f22487d3404dbbeea3736f2313d9-33"><code data-line-number=" 33"></code></a></td>
+<td class="code"><code><a id="rest_code_3c23f22487d3404dbbeea3736f2313d9-33" name="rest_code_3c23f22487d3404dbbeea3736f2313d9-33"></a><span class="w">     </span><span class="n">Serial</span><span class="p">.</span><span class="n">begin</span><span class="p">(</span><span class="mi">9600</span><span class="p">);</span><span class="w"></span>
+</code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#rest_code_3c23f22487d3404dbbeea3736f2313d9-34"><code data-line-number=" 34"></code></a></td>
+<td class="code"><code><a id="rest_code_3c23f22487d3404dbbeea3736f2313d9-34" name="rest_code_3c23f22487d3404dbbeea3736f2313d9-34"></a>
+</code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#rest_code_3c23f22487d3404dbbeea3736f2313d9-35"><code data-line-number=" 35"></code></a></td>
+<td class="code"><code><a id="rest_code_3c23f22487d3404dbbeea3736f2313d9-35" name="rest_code_3c23f22487d3404dbbeea3736f2313d9-35"></a><span class="w">     </span><span class="n">u8x8</span><span class="p">.</span><span class="n">begin</span><span class="p">();</span><span class="w"></span>
+</code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#rest_code_3c23f22487d3404dbbeea3736f2313d9-36"><code data-line-number=" 36"></code></a></td>
+<td class="code"><code><a id="rest_code_3c23f22487d3404dbbeea3736f2313d9-36" name="rest_code_3c23f22487d3404dbbeea3736f2313d9-36"></a><span class="w">     </span><span class="n">u8x8</span><span class="p">.</span><span class="n">setPowerSave</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span><span class="w"></span>
+</code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#rest_code_3c23f22487d3404dbbeea3736f2313d9-37"><code data-line-number=" 37"></code></a></td>
+<td class="code"><code><a id="rest_code_3c23f22487d3404dbbeea3736f2313d9-37" name="rest_code_3c23f22487d3404dbbeea3736f2313d9-37"></a><span class="w">     </span><span class="n">u8x8</span><span class="p">.</span><span class="n">setFont</span><span class="p">(</span><span class="n">u8x8_font_amstrad_cpc_extended_r</span><span class="p">);</span><span class="w">  </span><span class="c1">// u8x8_font_amstrad_cpc_extended_r , u8x8_font_chroma48medium8_r</span>
+</code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#rest_code_3c23f22487d3404dbbeea3736f2313d9-38"><code data-line-number=" 38"></code></a></td>
+<td class="code"><code><a id="rest_code_3c23f22487d3404dbbeea3736f2313d9-38" name="rest_code_3c23f22487d3404dbbeea3736f2313d9-38"></a><span class="w">     </span><span class="c1">// u8x8_font_amstrad_cpc_extended_f</span>
+</code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#rest_code_3c23f22487d3404dbbeea3736f2313d9-39"><code data-line-number=" 39"></code></a></td>
+<td class="code"><code><a id="rest_code_3c23f22487d3404dbbeea3736f2313d9-39" name="rest_code_3c23f22487d3404dbbeea3736f2313d9-39"></a><span class="w">     </span><span class="c1">// u8x8_font_chroma48medium8_r</span>
+</code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#rest_code_3c23f22487d3404dbbeea3736f2313d9-40"><code data-line-number=" 40"></code></a></td>
+<td class="code"><code><a id="rest_code_3c23f22487d3404dbbeea3736f2313d9-40" name="rest_code_3c23f22487d3404dbbeea3736f2313d9-40"></a>
+</code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#rest_code_3c23f22487d3404dbbeea3736f2313d9-41"><code data-line-number=" 41"></code></a></td>
+<td class="code"><code><a id="rest_code_3c23f22487d3404dbbeea3736f2313d9-41" name="rest_code_3c23f22487d3404dbbeea3736f2313d9-41"></a><span class="w">     </span><span class="n">u8x8</span><span class="p">.</span><span class="n">drawString</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="s">"PropTach v0.2"</span><span class="p">);</span><span class="w">  </span><span class="c1">// line 0</span>
+</code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#rest_code_3c23f22487d3404dbbeea3736f2313d9-42"><code data-line-number=" 42"></code></a></td>
+<td class="code"><code><a id="rest_code_3c23f22487d3404dbbeea3736f2313d9-42" name="rest_code_3c23f22487d3404dbbeea3736f2313d9-42"></a><span class="w">     </span><span class="n">u8x8</span><span class="p">.</span><span class="n">drawString</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="s">"-------------"</span><span class="p">);</span><span class="w">  </span><span class="c1">// line 1</span>
+</code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#rest_code_3c23f22487d3404dbbeea3736f2313d9-43"><code data-line-number=" 43"></code></a></td>
+<td class="code"><code><a id="rest_code_3c23f22487d3404dbbeea3736f2313d9-43" name="rest_code_3c23f22487d3404dbbeea3736f2313d9-43"></a><span class="w">     </span><span class="n">u8x8</span><span class="p">.</span><span class="n">drawString</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="s">"Blades"</span><span class="p">);</span><span class="w">         </span><span class="c1">// line 2</span>
+</code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#rest_code_3c23f22487d3404dbbeea3736f2313d9-44"><code data-line-number=" 44"></code></a></td>
+<td class="code"><code><a id="rest_code_3c23f22487d3404dbbeea3736f2313d9-44" name="rest_code_3c23f22487d3404dbbeea3736f2313d9-44"></a><span class="w">     </span><span class="n">u8x8</span><span class="p">.</span><span class="n">setCursor</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">);</span><span class="w">                  </span><span class="c1">// line 3</span>
+</code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#rest_code_3c23f22487d3404dbbeea3736f2313d9-45"><code data-line-number=" 45"></code></a></td>
+<td class="code"><code><a id="rest_code_3c23f22487d3404dbbeea3736f2313d9-45" name="rest_code_3c23f22487d3404dbbeea3736f2313d9-45"></a><span class="w">     </span><span class="n">u8x8</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="n">BLADE_COUNT</span><span class="p">);</span><span class="w">               </span><span class="c1">// line 3</span>
+</code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#rest_code_3c23f22487d3404dbbeea3736f2313d9-46"><code data-line-number=" 46"></code></a></td>
+<td class="code"><code><a id="rest_code_3c23f22487d3404dbbeea3736f2313d9-46" name="rest_code_3c23f22487d3404dbbeea3736f2313d9-46"></a><span class="w">     </span><span class="n">u8x8</span><span class="p">.</span><span class="n">drawString</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="s">"RPM"</span><span class="p">);</span><span class="w">            </span><span class="c1">// line 4</span>
+</code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#rest_code_3c23f22487d3404dbbeea3736f2313d9-47"><code data-line-number=" 47"></code></a></td>
+<td class="code"><code><a id="rest_code_3c23f22487d3404dbbeea3736f2313d9-47" name="rest_code_3c23f22487d3404dbbeea3736f2313d9-47"></a><span class="w">     </span><span class="n">u8x8</span><span class="p">.</span><span class="n">drawString</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">6</span><span class="p">,</span><span class="w"> </span><span class="s">"     "</span><span class="p">);</span><span class="w"></span>
+</code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#rest_code_3c23f22487d3404dbbeea3736f2313d9-48"><code data-line-number=" 48"></code></a></td>
+<td class="code"><code><a id="rest_code_3c23f22487d3404dbbeea3736f2313d9-48" name="rest_code_3c23f22487d3404dbbeea3736f2313d9-48"></a>
+</code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#rest_code_3c23f22487d3404dbbeea3736f2313d9-49"><code data-line-number=" 49"></code></a></td>
+<td class="code"><code><a id="rest_code_3c23f22487d3404dbbeea3736f2313d9-49" name="rest_code_3c23f22487d3404dbbeea3736f2313d9-49"></a>
+</code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#rest_code_3c23f22487d3404dbbeea3736f2313d9-50"><code data-line-number=" 50"></code></a></td>
+<td class="code"><code><a id="rest_code_3c23f22487d3404dbbeea3736f2313d9-50" name="rest_code_3c23f22487d3404dbbeea3736f2313d9-50"></a><span class="w">     </span><span class="c1">// The Infrared phototransistor is connected to pin 2.</span>
+</code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#rest_code_3c23f22487d3404dbbeea3736f2313d9-51"><code data-line-number=" 51"></code></a></td>
+<td class="code"><code><a id="rest_code_3c23f22487d3404dbbeea3736f2313d9-51" name="rest_code_3c23f22487d3404dbbeea3736f2313d9-51"></a><span class="w">     </span><span class="c1">// Interrupt triggers when signal goes from HIGH to LOW</span>
+</code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#rest_code_3c23f22487d3404dbbeea3736f2313d9-52"><code data-line-number=" 52"></code></a></td>
+<td class="code"><code><a id="rest_code_3c23f22487d3404dbbeea3736f2313d9-52" name="rest_code_3c23f22487d3404dbbeea3736f2313d9-52"></a><span class="w">     </span><span class="c1">// on pro mini arduino must use pins 2 or 3 for interrupts</span>
+</code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#rest_code_3c23f22487d3404dbbeea3736f2313d9-53"><code data-line-number=" 53"></code></a></td>
+<td class="code"><code><a id="rest_code_3c23f22487d3404dbbeea3736f2313d9-53" name="rest_code_3c23f22487d3404dbbeea3736f2313d9-53"></a><span class="w">     </span><span class="c1">// file:///C:/Program%20Files%20(x86)/Arduino/reference/www.arduino.cc/en/Reference/AttachInterrupt.html</span>
+</code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#rest_code_3c23f22487d3404dbbeea3736f2313d9-54"><code data-line-number=" 54"></code></a></td>
+<td class="code"><code><a id="rest_code_3c23f22487d3404dbbeea3736f2313d9-54" name="rest_code_3c23f22487d3404dbbeea3736f2313d9-54"></a><span class="w">     </span><span class="n">attachInterrupt</span><span class="p">(</span><span class="n">digitalPinToInterrupt</span><span class="p">(</span><span class="mi">3</span><span class="p">),</span><span class="w"> </span><span class="n">isr_break_count</span><span class="p">,</span><span class="w"> </span><span class="n">FALLING</span><span class="p">);</span><span class="w"></span>
+</code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#rest_code_3c23f22487d3404dbbeea3736f2313d9-55"><code data-line-number=" 55"></code></a></td>
+<td class="code"><code><a id="rest_code_3c23f22487d3404dbbeea3736f2313d9-55" name="rest_code_3c23f22487d3404dbbeea3736f2313d9-55"></a>
+</code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#rest_code_3c23f22487d3404dbbeea3736f2313d9-56"><code data-line-number=" 56"></code></a></td>
+<td class="code"><code><a id="rest_code_3c23f22487d3404dbbeea3736f2313d9-56" name="rest_code_3c23f22487d3404dbbeea3736f2313d9-56"></a><span class="w">     </span><span class="p">}</span><span class="w"></span>
+</code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#rest_code_3c23f22487d3404dbbeea3736f2313d9-57"><code data-line-number=" 57"></code></a></td>
+<td class="code"><code><a id="rest_code_3c23f22487d3404dbbeea3736f2313d9-57" name="rest_code_3c23f22487d3404dbbeea3736f2313d9-57"></a>
+</code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#rest_code_3c23f22487d3404dbbeea3736f2313d9-58"><code data-line-number=" 58"></code></a></td>
+<td class="code"><code><a id="rest_code_3c23f22487d3404dbbeea3736f2313d9-58" name="rest_code_3c23f22487d3404dbbeea3736f2313d9-58"></a>
+</code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#rest_code_3c23f22487d3404dbbeea3736f2313d9-59"><code data-line-number=" 59"></code></a></td>
+<td class="code"><code><a id="rest_code_3c23f22487d3404dbbeea3736f2313d9-59" name="rest_code_3c23f22487d3404dbbeea3736f2313d9-59"></a><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">isr_break_count</span><span class="p">()</span><span class="w"></span>
+</code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#rest_code_3c23f22487d3404dbbeea3736f2313d9-60"><code data-line-number=" 60"></code></a></td>
+<td class="code"><code><a id="rest_code_3c23f22487d3404dbbeea3736f2313d9-60" name="rest_code_3c23f22487d3404dbbeea3736f2313d9-60"></a><span class="w">     </span><span class="p">{</span><span class="w"></span>
+</code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#rest_code_3c23f22487d3404dbbeea3736f2313d9-61"><code data-line-number=" 61"></code></a></td>
+<td class="code"><code><a id="rest_code_3c23f22487d3404dbbeea3736f2313d9-61" name="rest_code_3c23f22487d3404dbbeea3736f2313d9-61"></a><span class="w">     </span><span class="n">myinterrupts</span><span class="o">++</span><span class="p">;</span><span class="w"></span>
+</code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#rest_code_3c23f22487d3404dbbeea3736f2313d9-62"><code data-line-number=" 62"></code></a></td>
+<td class="code"><code><a id="rest_code_3c23f22487d3404dbbeea3736f2313d9-62" name="rest_code_3c23f22487d3404dbbeea3736f2313d9-62"></a><span class="w">     </span><span class="p">}</span><span class="w"></span>
+</code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#rest_code_3c23f22487d3404dbbeea3736f2313d9-63"><code data-line-number=" 63"></code></a></td>
+<td class="code"><code><a id="rest_code_3c23f22487d3404dbbeea3736f2313d9-63" name="rest_code_3c23f22487d3404dbbeea3736f2313d9-63"></a>
+</code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#rest_code_3c23f22487d3404dbbeea3736f2313d9-64"><code data-line-number=" 64"></code></a></td>
+<td class="code"><code><a id="rest_code_3c23f22487d3404dbbeea3736f2313d9-64" name="rest_code_3c23f22487d3404dbbeea3736f2313d9-64"></a>
+</code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#rest_code_3c23f22487d3404dbbeea3736f2313d9-65"><code data-line-number=" 65"></code></a></td>
+<td class="code"><code><a id="rest_code_3c23f22487d3404dbbeea3736f2313d9-65" name="rest_code_3c23f22487d3404dbbeea3736f2313d9-65"></a>
+</code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#rest_code_3c23f22487d3404dbbeea3736f2313d9-66"><code data-line-number=" 66"></code></a></td>
+<td class="code"><code><a id="rest_code_3c23f22487d3404dbbeea3736f2313d9-66" name="rest_code_3c23f22487d3404dbbeea3736f2313d9-66"></a><span class="w"> </span><span class="c1">// the loop routine runs over and over again forever:</span>
+</code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#rest_code_3c23f22487d3404dbbeea3736f2313d9-67"><code data-line-number=" 67"></code></a></td>
+<td class="code"><code><a id="rest_code_3c23f22487d3404dbbeea3736f2313d9-67" name="rest_code_3c23f22487d3404dbbeea3736f2313d9-67"></a><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">loop</span><span class="p">()</span><span class="w"></span>
+</code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#rest_code_3c23f22487d3404dbbeea3736f2313d9-68"><code data-line-number=" 68"></code></a></td>
+<td class="code"><code><a id="rest_code_3c23f22487d3404dbbeea3736f2313d9-68" name="rest_code_3c23f22487d3404dbbeea3736f2313d9-68"></a><span class="w">     </span><span class="p">{</span><span class="w"></span>
+</code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#rest_code_3c23f22487d3404dbbeea3736f2313d9-69"><code data-line-number=" 69"></code></a></td>
+<td class="code"><code><a id="rest_code_3c23f22487d3404dbbeea3736f2313d9-69" name="rest_code_3c23f22487d3404dbbeea3736f2313d9-69"></a>
+</code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#rest_code_3c23f22487d3404dbbeea3736f2313d9-70"><code data-line-number=" 70"></code></a></td>
+<td class="code"><code><a id="rest_code_3c23f22487d3404dbbeea3736f2313d9-70" name="rest_code_3c23f22487d3404dbbeea3736f2313d9-70"></a><span class="w">     </span><span class="c1">// Update time and rpm every second</span>
+</code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#rest_code_3c23f22487d3404dbbeea3736f2313d9-71"><code data-line-number=" 71"></code></a></td>
+<td class="code"><code><a id="rest_code_3c23f22487d3404dbbeea3736f2313d9-71" name="rest_code_3c23f22487d3404dbbeea3736f2313d9-71"></a><span class="w">     </span><span class="n">delay</span><span class="p">(</span><span class="mi">300</span><span class="p">);</span><span class="w"></span>
+</code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#rest_code_3c23f22487d3404dbbeea3736f2313d9-72"><code data-line-number=" 72"></code></a></td>
+<td class="code"><code><a id="rest_code_3c23f22487d3404dbbeea3736f2313d9-72" name="rest_code_3c23f22487d3404dbbeea3736f2313d9-72"></a>
+</code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#rest_code_3c23f22487d3404dbbeea3736f2313d9-73"><code data-line-number=" 73"></code></a></td>
+<td class="code"><code><a id="rest_code_3c23f22487d3404dbbeea3736f2313d9-73" name="rest_code_3c23f22487d3404dbbeea3736f2313d9-73"></a><span class="w">     </span><span class="c1">// Don't process interrupts during this calculation</span>
+</code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#rest_code_3c23f22487d3404dbbeea3736f2313d9-74"><code data-line-number=" 74"></code></a></td>
+<td class="code"><code><a id="rest_code_3c23f22487d3404dbbeea3736f2313d9-74" name="rest_code_3c23f22487d3404dbbeea3736f2313d9-74"></a><span class="w">     </span><span class="n">noInterrupts</span><span class="p">();</span><span class="w"></span>
+</code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#rest_code_3c23f22487d3404dbbeea3736f2313d9-75"><code data-line-number=" 75"></code></a></td>
+<td class="code"><code><a id="rest_code_3c23f22487d3404dbbeea3736f2313d9-75" name="rest_code_3c23f22487d3404dbbeea3736f2313d9-75"></a>
+</code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#rest_code_3c23f22487d3404dbbeea3736f2313d9-76"><code data-line-number=" 76"></code></a></td>
+<td class="code"><code><a id="rest_code_3c23f22487d3404dbbeea3736f2313d9-76" name="rest_code_3c23f22487d3404dbbeea3736f2313d9-76"></a><span class="w">     </span><span class="c1">// Calculate the RPM. If a 3-blade propeller, 3 breaks</span>
+</code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#rest_code_3c23f22487d3404dbbeea3736f2313d9-77"><code data-line-number=" 77"></code></a></td>
+<td class="code"><code><a id="rest_code_3c23f22487d3404dbbeea3736f2313d9-77" name="rest_code_3c23f22487d3404dbbeea3736f2313d9-77"></a><span class="w">     </span><span class="c1">// per second would yield 1 rpm, which is 60 rpm.</span>
+</code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#rest_code_3c23f22487d3404dbbeea3736f2313d9-78"><code data-line-number=" 78"></code></a></td>
+<td class="code"><code><a id="rest_code_3c23f22487d3404dbbeea3736f2313d9-78" name="rest_code_3c23f22487d3404dbbeea3736f2313d9-78"></a><span class="w">     </span><span class="n">rpm</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="mi">60</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">myinterrupts</span><span class="p">)</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">BLADE_COUNT</span><span class="p">;</span><span class="w"></span>
+</code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#rest_code_3c23f22487d3404dbbeea3736f2313d9-79"><code data-line-number=" 79"></code></a></td>
+<td class="code"><code><a id="rest_code_3c23f22487d3404dbbeea3736f2313d9-79" name="rest_code_3c23f22487d3404dbbeea3736f2313d9-79"></a><span class="w">     </span><span class="n">rpm_print</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">rpm</span><span class="p">;</span><span class="w"></span>
+</code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#rest_code_3c23f22487d3404dbbeea3736f2313d9-80"><code data-line-number=" 80"></code></a></td>
+<td class="code"><code><a id="rest_code_3c23f22487d3404dbbeea3736f2313d9-80" name="rest_code_3c23f22487d3404dbbeea3736f2313d9-80"></a><span class="w">     </span><span class="n">myinterrupts_print</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">myinterrupts</span><span class="p">;</span><span class="w"></span>
+</code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#rest_code_3c23f22487d3404dbbeea3736f2313d9-81"><code data-line-number=" 81"></code></a></td>
+<td class="code"><code><a id="rest_code_3c23f22487d3404dbbeea3736f2313d9-81" name="rest_code_3c23f22487d3404dbbeea3736f2313d9-81"></a>
+</code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#rest_code_3c23f22487d3404dbbeea3736f2313d9-82"><code data-line-number=" 82"></code></a></td>
+<td class="code"><code><a id="rest_code_3c23f22487d3404dbbeea3736f2313d9-82" name="rest_code_3c23f22487d3404dbbeea3736f2313d9-82"></a><span class="w">     </span><span class="n">myinterrupts</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
+</code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#rest_code_3c23f22487d3404dbbeea3736f2313d9-83"><code data-line-number=" 83"></code></a></td>
+<td class="code"><code><a id="rest_code_3c23f22487d3404dbbeea3736f2313d9-83" name="rest_code_3c23f22487d3404dbbeea3736f2313d9-83"></a><span class="w">     </span><span class="n">rpm</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
+</code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#rest_code_3c23f22487d3404dbbeea3736f2313d9-84"><code data-line-number=" 84"></code></a></td>
+<td class="code"><code><a id="rest_code_3c23f22487d3404dbbeea3736f2313d9-84" name="rest_code_3c23f22487d3404dbbeea3736f2313d9-84"></a>
+</code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#rest_code_3c23f22487d3404dbbeea3736f2313d9-85"><code data-line-number=" 85"></code></a></td>
+<td class="code"><code><a id="rest_code_3c23f22487d3404dbbeea3736f2313d9-85" name="rest_code_3c23f22487d3404dbbeea3736f2313d9-85"></a><span class="w">     </span><span class="c1">// Restart interrupts</span>
+</code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#rest_code_3c23f22487d3404dbbeea3736f2313d9-86"><code data-line-number=" 86"></code></a></td>
+<td class="code"><code><a id="rest_code_3c23f22487d3404dbbeea3736f2313d9-86" name="rest_code_3c23f22487d3404dbbeea3736f2313d9-86"></a><span class="w">     </span><span class="n">interrupts</span><span class="p">();</span><span class="w"></span>
+</code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#rest_code_3c23f22487d3404dbbeea3736f2313d9-87"><code data-line-number=" 87"></code></a></td>
+<td class="code"><code><a id="rest_code_3c23f22487d3404dbbeea3736f2313d9-87" name="rest_code_3c23f22487d3404dbbeea3736f2313d9-87"></a>
+</code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#rest_code_3c23f22487d3404dbbeea3736f2313d9-88"><code data-line-number=" 88"></code></a></td>
+<td class="code"><code><a id="rest_code_3c23f22487d3404dbbeea3736f2313d9-88" name="rest_code_3c23f22487d3404dbbeea3736f2313d9-88"></a><span class="w">     </span><span class="c1">//  Serial.print("interrupts: ");</span>
+</code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#rest_code_3c23f22487d3404dbbeea3736f2313d9-89"><code data-line-number=" 89"></code></a></td>
+<td class="code"><code><a id="rest_code_3c23f22487d3404dbbeea3736f2313d9-89" name="rest_code_3c23f22487d3404dbbeea3736f2313d9-89"></a><span class="w">     </span><span class="c1">//  Serial.print(myinterrupts_print);</span>
+</code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#rest_code_3c23f22487d3404dbbeea3736f2313d9-90"><code data-line-number=" 90"></code></a></td>
+<td class="code"><code><a id="rest_code_3c23f22487d3404dbbeea3736f2313d9-90" name="rest_code_3c23f22487d3404dbbeea3736f2313d9-90"></a><span class="w">     </span><span class="c1">//  Serial.print("\t");</span>
+</code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#rest_code_3c23f22487d3404dbbeea3736f2313d9-91"><code data-line-number=" 91"></code></a></td>
+<td class="code"><code><a id="rest_code_3c23f22487d3404dbbeea3736f2313d9-91" name="rest_code_3c23f22487d3404dbbeea3736f2313d9-91"></a>
+</code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#rest_code_3c23f22487d3404dbbeea3736f2313d9-92"><code data-line-number=" 92"></code></a></td>
+<td class="code"><code><a id="rest_code_3c23f22487d3404dbbeea3736f2313d9-92" name="rest_code_3c23f22487d3404dbbeea3736f2313d9-92"></a><span class="w">     </span><span class="n">Serial</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="s">"rpm: "</span><span class="p">);</span><span class="w"></span>
+</code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#rest_code_3c23f22487d3404dbbeea3736f2313d9-93"><code data-line-number=" 93"></code></a></td>
+<td class="code"><code><a id="rest_code_3c23f22487d3404dbbeea3736f2313d9-93" name="rest_code_3c23f22487d3404dbbeea3736f2313d9-93"></a><span class="w">     </span><span class="n">Serial</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="n">rpm_print</span><span class="p">);</span><span class="w"></span>
+</code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#rest_code_3c23f22487d3404dbbeea3736f2313d9-94"><code data-line-number=" 94"></code></a></td>
+<td class="code"><code><a id="rest_code_3c23f22487d3404dbbeea3736f2313d9-94" name="rest_code_3c23f22487d3404dbbeea3736f2313d9-94"></a><span class="w">     </span><span class="n">Serial</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="s">"</span><span class="se">\t</span><span class="s">"</span><span class="p">);</span><span class="w"></span>
+</code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#rest_code_3c23f22487d3404dbbeea3736f2313d9-95"><code data-line-number=" 95"></code></a></td>
+<td class="code"><code><a id="rest_code_3c23f22487d3404dbbeea3736f2313d9-95" name="rest_code_3c23f22487d3404dbbeea3736f2313d9-95"></a>
+</code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#rest_code_3c23f22487d3404dbbeea3736f2313d9-96"><code data-line-number=" 96"></code></a></td>
+<td class="code"><code><a id="rest_code_3c23f22487d3404dbbeea3736f2313d9-96" name="rest_code_3c23f22487d3404dbbeea3736f2313d9-96"></a><span class="w">     </span><span class="n">Serial</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="s">"</span><span class="se">\r\n</span><span class="s">"</span><span class="p">);</span><span class="w"></span>
+</code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#rest_code_3c23f22487d3404dbbeea3736f2313d9-97"><code data-line-number=" 97"></code></a></td>
+<td class="code"><code><a id="rest_code_3c23f22487d3404dbbeea3736f2313d9-97" name="rest_code_3c23f22487d3404dbbeea3736f2313d9-97"></a>
+</code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#rest_code_3c23f22487d3404dbbeea3736f2313d9-98"><code data-line-number=" 98"></code></a></td>
+<td class="code"><code><a id="rest_code_3c23f22487d3404dbbeea3736f2313d9-98" name="rest_code_3c23f22487d3404dbbeea3736f2313d9-98"></a><span class="w">     </span><span class="n">u8x8</span><span class="p">.</span><span class="n">drawString</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">6</span><span class="p">,</span><span class="w"> </span><span class="s">"     "</span><span class="p">);</span><span class="w"></span>
+</code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#rest_code_3c23f22487d3404dbbeea3736f2313d9-99"><code data-line-number=" 99"></code></a></td>
+<td class="code"><code><a id="rest_code_3c23f22487d3404dbbeea3736f2313d9-99" name="rest_code_3c23f22487d3404dbbeea3736f2313d9-99"></a><span class="w">     </span><span class="n">u8x8</span><span class="p">.</span><span class="n">drawString</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">6</span><span class="p">,</span><span class="w"> </span><span class="n">String</span><span class="p">(</span><span class="n">rpm_print</span><span class="p">).</span><span class="n">c_str</span><span class="p">());</span><span class="w"></span>
+</code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#rest_code_3c23f22487d3404dbbeea3736f2313d9-100"><code data-line-number="100"></code></a></td>
+<td class="code"><code><a id="rest_code_3c23f22487d3404dbbeea3736f2313d9-100" name="rest_code_3c23f22487d3404dbbeea3736f2313d9-100"></a>
+</code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#rest_code_3c23f22487d3404dbbeea3736f2313d9-101"><code data-line-number="101"></code></a></td>
+<td class="code"><code><a id="rest_code_3c23f22487d3404dbbeea3736f2313d9-101" name="rest_code_3c23f22487d3404dbbeea3736f2313d9-101"></a><span class="w">     </span><span class="p">}</span><span class="w"></span>
+</code></td>
+</tr>
+</table></div>
+<p>Stay Curious!</p>
+</section>
+</div>
+</div></article>
+</div>
+</div>
+</div>
+</body>
+</html><html>
+<aside class="postpromonav"><nav><ul itemprop="keywords" class="tags">
+<li><a class="tag p-category" href="/categories/electronics/" rel="tag">electronics</a></li>
+        </ul>
+<ul class="pager hidden-print">
+<li class="previous">
+                <a href="/blog/rebuilding-the-site-with-nikola/" rel="prev" title="Rebuilding the site with nikola">Previous post</a>
+            </li>
+        </ul></nav></aside><section class="comments hidden-print"><h2>Comments</h2>
+        
+        
+        <div id="disqus_thread"></div>
+        <script>
+        var disqus_shortname ="ifcuriousthenlearn_nikola",
+            disqus_url="https://nagordon.github.io/ifcuriousthenlearn/blog/diy-arduino-tachometer-for-your-rc-airplane/",
+        disqus_title="DIY Arduino Tachometer for your RC Airplane",
+        disqus_identifier="cache/posts/diy-arduino-tachometer-for-your-rc-airplane.html",
+        disqus_config = function () {
+            this.language = "en";
+        };
+        (function() {
+            var dsq = document.createElement('script'); dsq.async = true;
+            dsq.src = 'https://' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script><noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a>
+</noscript>
+    <a href="https://disqus.com" class="dsq-brlink" rel="nofollow">Comments powered by <span class="logo-disqus">Disqus</span></a>
+
+
+        </section><script>var disqus_shortname="ifcuriousthenlearn_nikola";(function(){var a=document.createElement("script");a.async=true;a.src="https://"+disqus_shortname+".disqus.com/count.js";(document.getElementsByTagName("head")[0]||document.getElementsByTagName("body")[0]).appendChild(a)}());</script><!--End of body content--><footer id="footer">
+            Contents © 2021         <a href="mailto:">neal</a> - Powered by         <a href="https://getnikola.com" rel="nofollow">Nikola</a>         copyright Neal Gordon
+            
+        </footer><script src="/assets/js/all-nocdn.js"></script><!-- fancy dates --><script>
+    moment.locale("en");
+    fancydates(0, "YYYY-MM-DD HH:mm");
+    </script><!-- end fancy dates --><script>
+    baguetteBox.run('div#content', {
+        ignoreClass: 'islink',
+        captions: function(element) {
+            return element.getElementsByTagName('img')[0].alt;
+    }});
+    </script>
+</html>
+

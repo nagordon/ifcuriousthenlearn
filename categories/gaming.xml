@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<?xml-stylesheet type="text/xsl" href="../assets/xml/rss.xsl" media="all"?><rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>ifcuriousthenlearn (Posts about gaming)</title><link>https://nagordon.github.io/ifcuriousthenlearn/</link><description></description><atom:link href="https://nagordon.github.io/ifcuriousthenlearn/categories/gaming.xml" rel="self" type="application/rss+xml"></atom:link><language>en</language><copyright>Contents © 2021 &lt;a href="mailto:"&gt;neal&lt;/a&gt; copyright Neal Gordon</copyright><lastBuildDate>Wed, 22 Sep 2021 01:11:00 GMT</lastBuildDate><generator>Nikola (getnikola.com)</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>Team Fortress 2 Server Install for Dummies</title><link>https://nagordon.github.io/ifcuriousthenlearn/blog/tf2-server-setup/</link><dc:creator>neal</dc:creator><description>&lt;div&gt;&lt;p&gt;For those of us who remember playing games on dos, steam[http://store.steampowered.com/]
+<?xml-stylesheet type="text/xsl" href="../assets/xml/rss.xsl" media="all"?><rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>ifcuriousthenlearn (Posts about gaming)</title><link>https://nagordon.github.io/ifcuriousthenlearn/</link><description></description><atom:link href="https://nagordon.github.io/ifcuriousthenlearn/categories/gaming.xml" rel="self" type="application/rss+xml"></atom:link><language>en</language><copyright>Contents © 2021 &lt;a href="mailto:"&gt;neal&lt;/a&gt; copyright Neal Gordon</copyright><lastBuildDate>Thu, 30 Dec 2021 17:02:58 GMT</lastBuildDate><generator>Nikola (getnikola.com)</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>Team Fortress 2 Server Install for Dummies</title><link>https://nagordon.github.io/ifcuriousthenlearn/blog/tf2-server-setup/</link><dc:creator>neal</dc:creator><description>&lt;div&gt;&lt;p&gt;For those of us who remember playing games on dos, steam[http://store.steampowered.com/]
 is a nice program for purchasing, managing, and playing video games. I grew up playing LAN games because dial-up just wasn't fast enough for online gaming, and it is way more fun to play games in the same room with your friends rather than random people online.&lt;/p&gt;
 &lt;p&gt;Things have changed since those days. Internet speeds and just fine for online gaming, but I still prefer LAN games because, again, it is way more fun to game with your friends in the same room. So, I enjoy hosting LAN games, and I found setting up a local server a fun technical challenge, and If you are interested in doing the same, this should help you do it.&lt;/p&gt;
 &lt;p&gt;The cool things with steam servers is you don't even need an account. You can create an anonymous server that is not affiliated with you.&lt;/p&gt;
@@ -37,16 +37,16 @@ chmod +x tf2server
 &lt;p&gt;Type &lt;code&gt;./tf2server start&lt;/code&gt; to start the server&lt;/p&gt;
 &lt;h3&gt;&lt;strong&gt;Step 6&lt;/strong&gt; - Connect via LAN&lt;/h3&gt;
 &lt;p&gt;if you run &lt;code&gt;./tf2server details&lt;/code&gt; you will see a bunch of output  &lt;/p&gt;
-&lt;pre class="code literal-block"&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="n"&gt;Team&lt;/span&gt; &lt;span class="n"&gt;Fortress&lt;/span&gt; &lt;span class="mi"&gt;2&lt;/span&gt; &lt;span class="n"&gt;Server&lt;/span&gt; &lt;span class="n"&gt;Details&lt;/span&gt;
-&lt;span class="o"&gt;================================================================================================================================================&lt;/span&gt;
-&lt;span class="n"&gt;Server&lt;/span&gt; &lt;span class="n"&gt;name&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;    &lt;span class="n"&gt;tf2&lt;/span&gt; &lt;span class="n"&gt;server&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;
-&lt;span class="n"&gt;Server&lt;/span&gt; &lt;span class="n"&gt;IP&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;      &lt;span class="mi"&gt;192&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="mi"&gt;168&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="mi"&gt;196&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="mi"&gt;27015&lt;/span&gt;
-&lt;span class="n"&gt;RCON&lt;/span&gt; &lt;span class="n"&gt;password&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;  &lt;span class="n"&gt;tf2server&lt;/span&gt;
-&lt;span class="n"&gt;Status&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;         &lt;span class="n"&gt;ONLINE&lt;/span&gt;
+&lt;pre class="code literal-block"&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;Team Fortress 2 Server Details
+================================================================================================================================================
+Server name:    tf2 server 1
+Server IP:      192.168.1.196:27015
+RCON password:  tf2server
+Status:         ONLINE
 
-&lt;span class="n"&gt;Command&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;line&lt;/span&gt; &lt;span class="k"&gt;Parameters&lt;/span&gt;
-&lt;span class="o"&gt;================================================================================================================================================&lt;/span&gt;
-&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;srcds_run&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;game&lt;/span&gt; &lt;span class="n"&gt;tf&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;strictportbind&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;ip&lt;/span&gt; &lt;span class="mi"&gt;192&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="mi"&gt;168&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="mi"&gt;196&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;port&lt;/span&gt; &lt;span class="mi"&gt;27015&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt;&lt;span class="n"&gt;clientport&lt;/span&gt; &lt;span class="mi"&gt;27005&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt;&lt;span class="n"&gt;tv_port&lt;/span&gt; &lt;span class="mi"&gt;27020&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;tickrate&lt;/span&gt;  &lt;span class="o"&gt;+&lt;/span&gt;&lt;span class="k"&gt;map&lt;/span&gt; &lt;span class="n"&gt;pl_goldrush&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt;&lt;span class="n"&gt;servercfgfile&lt;/span&gt; &lt;span class="n"&gt;tf2&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;server&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;cfg&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;maxplayers&lt;/span&gt; &lt;span class="mi"&gt;16&lt;/span&gt;
+Command-line Parameters
+================================================================================================================================================
+./srcds_run -game tf -strictportbind -ip 192.168.1.196 -port 27015 +clientport 27005 +tv_port 27020 -tickrate  +map pl_goldrush +servercfgfile tf2-server.cfg -maxplayers 16
 &lt;/code&gt;&lt;/pre&gt;
 
 
@@ -57,8 +57,8 @@ chmod +x tf2server
 &lt;p&gt;After that, I access my default router IP via a web browser with &lt;code&gt;192.168.1.1&lt;/code&gt; and set up a port forward on the server IP and port&lt;/p&gt;
 &lt;p&gt;Now, restart the tf2server with &lt;code&gt;./tf2server restart&lt;/code&gt; and go to the console &lt;code&gt;./tf2server console&lt;/code&gt; and look at some of the output. Note, this script uses tmux, which allows us to log out of the server and keep the server running. Here, you can run all the comamnds to manage the server&lt;/p&gt;
 &lt;p&gt;You should see somewhere in the top the public ip address of the server computer&lt;/p&gt;
-&lt;pre class="code literal-block"&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="err"&gt;Connection to Steam servers successful.&lt;/span&gt;
-&lt;span class="err"&gt;   Public IP is 12.34.56.78.&lt;/span&gt;
+&lt;pre class="code literal-block"&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;Connection to Steam servers successful.
+   Public IP is 12.34.56.78.
 &lt;/code&gt;&lt;/pre&gt;
 
 
@@ -79,35 +79,35 @@ chmod +x tf2server
 &lt;p&gt;To customize your server there are a few files you should edit. Make sure you make a backup of each in case it gets messed up&lt;/p&gt;
 &lt;p&gt;The configuration file updates the server every time a new map loads. Here is mine.
 /home/tf2server/serverfiles/tf/cfg/tf2-server.cfg&lt;/p&gt;
-&lt;pre class="code literal-block"&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="err"&gt;mp_disable_respawn_times 0&lt;/span&gt;
-&lt;span class="err"&gt;tf_bot_quota 13&lt;/span&gt;
-&lt;span class="err"&gt;tf_bot_quota_mode "fill"&lt;/span&gt;
-&lt;span class="err"&gt;tf_bot_difficulty 1&lt;/span&gt;
-&lt;span class="err"&gt;mp_timelimit 15&lt;/span&gt;
-&lt;span class="err"&gt;mp_maxrounds 5&lt;/span&gt;
-&lt;span class="err"&gt;mp_winlimit&lt;/span&gt;
-&lt;span class="err"&gt;sv_cheats 0&lt;/span&gt;
-&lt;span class="err"&gt;tf_bot_melee_only 0&lt;/span&gt;
+&lt;pre class="code literal-block"&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;mp_disable_respawn_times 0
+tf_bot_quota 13
+tf_bot_quota_mode "fill"
+tf_bot_difficulty 1
+mp_timelimit 15
+mp_maxrounds 5
+mp_winlimit
+sv_cheats 0
+tf_bot_melee_only 0
 &lt;/code&gt;&lt;/pre&gt;
 
 
 &lt;p&gt;/home/tf2server/serverfiles/tf/cfg/mapcycle_default.txt
 The mapcycle file tells the server which map to go to next. if you use &lt;code&gt;changelevel pl_barnblitz&lt;/code&gt;, it will begin the cycle there&lt;/p&gt;
-&lt;pre class="code literal-block"&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="err"&gt;pl_badwater&lt;/span&gt;
-&lt;span class="err"&gt;pl_goldrush&lt;/span&gt;
-&lt;span class="err"&gt;pl_upward&lt;/span&gt;
-&lt;span class="err"&gt;pl_barnblitz&lt;/span&gt;
-&lt;span class="err"&gt;pl_hoodoo_final&lt;/span&gt;
-&lt;span class="err"&gt;koth_viaduct&lt;/span&gt;
-&lt;span class="err"&gt;koth_nucleus&lt;/span&gt;
-&lt;span class="err"&gt;koth_harvest_final&lt;/span&gt;
-&lt;span class="err"&gt;koth_lakeside_final&lt;/span&gt;
-&lt;span class="err"&gt;koth_badlands&lt;/span&gt;
-&lt;span class="err"&gt;koth_king&lt;/span&gt;
-&lt;span class="err"&gt;plr_pipeline&lt;/span&gt;
-&lt;span class="err"&gt;plr_hightower&lt;/span&gt;
-&lt;span class="err"&gt;pl_thundermountain&lt;/span&gt;
-&lt;span class="err"&gt;pl_frontier_final&lt;/span&gt;
+&lt;pre class="code literal-block"&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;pl_badwater
+pl_goldrush
+pl_upward
+pl_barnblitz
+pl_hoodoo_final
+koth_viaduct
+koth_nucleus
+koth_harvest_final
+koth_lakeside_final
+koth_badlands
+koth_king
+plr_pipeline
+plr_hightower
+pl_thundermountain
+pl_frontier_final
 &lt;/code&gt;&lt;/pre&gt;
 
 
@@ -121,4 +121,7 @@ https://developer.valvesoftware.com/wiki/List_of_TF2_console_commands_and_variab
 https://developer.valvesoftware.com/wiki/Console_Command_List&lt;br&gt;
 http://steamcommunity.com/sharedfiles/filedetails/?id=250332112&lt;br&gt;
 https://wiki.teamfortress.com/wiki/Linux_dedicated_server&lt;br&gt;
-https://wiki.teamfortress.com/wiki/Bots  &lt;/p&gt;&lt;/div&gt;</description><category>gaming</category><category>linux</category><guid>https://nagordon.github.io/ifcuriousthenlearn/blog/tf2-server-setup/</guid><pubDate>Sat, 14 Mar 2015 08:00:00 GMT</pubDate></item></channel></rss>
+https://wiki.teamfortress.com/wiki/Bots  &lt;/p&gt;&lt;/div&gt;
+&lt;/body&gt;&lt;/html&gt;
+
+</description><category>gaming</category><category>linux</category><guid>https://nagordon.github.io/ifcuriousthenlearn/blog/tf2-server-setup/</guid><pubDate>Sat, 14 Mar 2015 08:00:00 GMT</pubDate></item></channel></rss>

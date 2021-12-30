@@ -87,8 +87,14 @@
             <a href="." rel="bookmark">
             <time class="published dt-published" datetime="2016-05-06T00:00:00-08:00" itemprop="datePublished" title="2016-05-06 00:00">2016-05-06 00:00</time></a>
             </p>
+                <p class="commentline">
+        
+    <a href="#disqus_thread" data-disqus-identifier="cache/posts/Version_Control_for_Dummies.html">Comments</a>
+
+
             
-        <p class="sourceline"><a href="index.md" class="sourcelink">Source</a></p>
+        </p>
+<p class="sourceline"><a href="index.md" class="sourcelink">Source</a></p>
 
         </div>
         
@@ -114,7 +120,7 @@ There are a couple of other excellent options, but have a steep learning curve a
 <h2>Tutorial</h2>
 <p>To get started, lets do a quick demo in windows. Brace yourself, you are going to have to use the command line. In your current directory with the pyver.py file, open a command line with <code>shift+right_click</code> and in the menu select <code>Open command window here</code>. Another way to get a command window in your current directory is to type <code>alt+D</code> and type <code>powershell</code> or <code>cmd</code>.
 Now type</p>
-<pre class="code literal-block"><span></span><code><span class="err">python pyver.py</span>
+<pre class="code literal-block"><span></span><code>python pyver.py
 </code></pre>
 
 
@@ -127,57 +133,57 @@ To add this path variable, type</p>
 3) Add PATH variable or append with the path to the folder with your scripts    </p>
 </blockquote>
 <p>There are a few built in commands to interrogate the repository. The first is log, which shows the contents of a text file that keeps track of the commits that are made</p>
-<pre class="code literal-block"><span></span><code><span class="err">pyver log</span>
-<span class="err">Neal , 20160125210812 , 7kb ,  , pyver.py|README.md|pyver.bat</span>
-<span class="err">Neal , 20160125210814 , 7kb ,  , pyver.py|README.md|pyver.bat</span>
-<span class="err">Neal , 20160125210817 , 7kb ,  , pyver.py|README.md|pyver.bat</span>
-<span class="err">Neal , 20160125210854 , 7kb , making a comment for this commit , pyver.py|README.md|pyver.bat</span>
-<span class="err">Neal , 20160125210912 , 4kb , only adding one file , pyver.py</span>
+<pre class="code literal-block"><span></span><code><span class="nv">pyver</span> <span class="nv">log</span>
+<span class="nv">Neal</span> , <span class="mi">20160125210812</span> , <span class="mi">7</span><span class="nv">kb</span> ,  , <span class="nv">pyver</span>.<span class="nv">py</span><span class="o">|</span><span class="nv">README</span>.<span class="nv">md</span><span class="o">|</span><span class="nv">pyver</span>.<span class="nv">bat</span>
+<span class="nv">Neal</span> , <span class="mi">20160125210814</span> , <span class="mi">7</span><span class="nv">kb</span> ,  , <span class="nv">pyver</span>.<span class="nv">py</span><span class="o">|</span><span class="nv">README</span>.<span class="nv">md</span><span class="o">|</span><span class="nv">pyver</span>.<span class="nv">bat</span>
+<span class="nv">Neal</span> , <span class="mi">20160125210817</span> , <span class="mi">7</span><span class="nv">kb</span> ,  , <span class="nv">pyver</span>.<span class="nv">py</span><span class="o">|</span><span class="nv">README</span>.<span class="nv">md</span><span class="o">|</span><span class="nv">pyver</span>.<span class="nv">bat</span>
+<span class="nv">Neal</span> , <span class="mi">20160125210854</span> , <span class="mi">7</span><span class="nv">kb</span> , <span class="nv">making</span> <span class="nv">a</span> <span class="nv">comment</span> <span class="k">for</span> <span class="nv">this</span> <span class="nv">commit</span> , <span class="nv">pyver</span>.<span class="nv">py</span><span class="o">|</span><span class="nv">README</span>.<span class="nv">md</span><span class="o">|</span><span class="nv">pyver</span>.<span class="nv">bat</span>
+<span class="nv">Neal</span> , <span class="mi">20160125210912</span> , <span class="mi">4</span><span class="nv">kb</span> , <span class="nv">only</span> <span class="nv">adding</span> <span class="nv">one</span> <span class="nv">file</span> , <span class="nv">pyver</span>.<span class="nv">py</span>
 </code></pre>
 
 
 <p>The next is tree, which shows all the files in the repo.</p>
-<pre class="code literal-block"><span></span><code><span class="n">pyver</span> <span class="n">tree</span>
+<pre class="code literal-block"><span></span><code>pyver tree
 
-<span class="p">.</span><span class="o">/</span><span class="p">.</span><span class="n">archive</span>
-<span class="o">|</span>  <span class="p">.</span><span class="o">/</span><span class="mi">20160125210812</span>
-<span class="o">|</span>   <span class="o">|</span>     <span class="n">pyver</span><span class="p">.</span><span class="n">py</span>  
-<span class="o">|</span>   <span class="o">|</span>     <span class="n">README</span><span class="p">.</span><span class="n">md</span>  
-<span class="o">|</span>   <span class="o">|</span>     <span class="n">pyver</span><span class="p">.</span><span class="n">bat</span>  
-<span class="o">|</span>     <span class="n">pyver</span><span class="p">.</span><span class="n">log</span>  
-<span class="o">|</span>  <span class="p">.</span><span class="o">/</span><span class="mi">20160125210814</span>
-<span class="o">|</span>   <span class="o">|</span>     <span class="n">pyver</span><span class="p">.</span><span class="n">py</span>  
-<span class="o">|</span>   <span class="o">|</span>     <span class="n">README</span><span class="p">.</span><span class="n">md</span>  
-<span class="o">|</span>   <span class="o">|</span>     <span class="n">pyver</span><span class="p">.</span><span class="n">bat</span>  
-<span class="o">|</span>  <span class="p">.</span><span class="o">/</span><span class="mi">20160125210817</span>
-<span class="o">|</span>   <span class="o">|</span>     <span class="n">pyver</span><span class="p">.</span><span class="n">py</span>  
-<span class="o">|</span>   <span class="o">|</span>     <span class="n">README</span><span class="p">.</span><span class="n">md</span>  
-<span class="o">|</span>   <span class="o">|</span>     <span class="n">pyver</span><span class="p">.</span><span class="n">bat</span>  
-<span class="o">|</span>  <span class="p">.</span><span class="o">/</span><span class="mi">20160125210854</span>
-<span class="o">|</span>   <span class="o">|</span>     <span class="n">pyver</span><span class="p">.</span><span class="n">py</span>  
-<span class="o">|</span>   <span class="o">|</span>     <span class="n">README</span><span class="p">.</span><span class="n">md</span>  
-<span class="o">|</span>   <span class="o">|</span>     <span class="n">pyver</span><span class="p">.</span><span class="n">bat</span>  
-<span class="o">|</span>  <span class="p">.</span><span class="o">/</span><span class="mi">20160125210912</span>
-<span class="o">|</span>   <span class="o">|</span>     <span class="n">pyver</span><span class="p">.</span><span class="n">py</span>  
-  <span class="n">pyver</span><span class="p">.</span><span class="n">py</span>  
-  <span class="n">README</span><span class="p">.</span><span class="n">md</span>  
-  <span class="n">pyver</span><span class="p">.</span><span class="n">bat</span>  
+./.archive
+|  ./20160125210812
+|   |     pyver.py  
+|   |     README.md  
+|   |     pyver.bat  
+|     pyver.log  
+|  ./20160125210814
+|   |     pyver.py  
+|   |     README.md  
+|   |     pyver.bat  
+|  ./20160125210817
+|   |     pyver.py  
+|   |     README.md  
+|   |     pyver.bat  
+|  ./20160125210854
+|   |     pyver.py  
+|   |     README.md  
+|   |     pyver.bat  
+|  ./20160125210912
+|   |     pyver.py  
+  pyver.py  
+  README.md  
+  pyver.bat  
 </code></pre>
 
 
 <p>We also have some flags we can use to customize our commits. This commit adds only the files file1.txt and file2.docx and adds a comment. Note-none of the flag inputs can have spaces, so files are seperated by <code>|</code> and comments are written without spaces using <code>-</code></p>
-<pre class="code literal-block"><span></span><code><span class="err">pyver -f "file1.txt|file2.docx" -c "making a comment for this commit"</span>
+<pre class="code literal-block"><span></span><code><span class="nv">pyver</span> <span class="o">-</span><span class="nv">f</span> <span class="s2">"</span><span class="s">file1.txt|file2.docx</span><span class="s2">"</span> <span class="o">-</span><span class="nv">c</span> <span class="s2">"</span><span class="s">making a comment for this commit</span><span class="s2">"</span>
 </code></pre>
 
 
 <p>We can also use wildcards to add groups of files rather than listing each individual file.</p>
-<pre class="code literal-block"><span></span><code><span class="err">pyver -f "*.txt|*.docx" -c "I added all the txt and docx files to my archive"</span>
+<pre class="code literal-block"><span></span><code>pyver -f "*.txt|*.docx" -c "I added all the txt and docx files to my archive"
 </code></pre>
 
 
 <p>Also, by default, pyver will skip all files and directories that start with . and ~. These files are typically temporary, backup, or configuration files.</p>
 <p>I used pyinstaller to build my own windows executable</p>
-<pre class="code literal-block"><span></span><code><span class="err">pyinstaller pyver.py --onefile</span>
+<pre class="code literal-block"><span></span><code>pyinstaller pyver.py --onefile
 </code></pre>
 
 
@@ -186,30 +192,48 @@ To add this path variable, type</p>
 <p>This was a fun project to learn more about file manipulation with python and in the end, I now have a handy tool!</p>
 <p>Stay Curious!</p>
 </div>
-    </div>
-    <aside class="postpromonav"><nav><ul itemprop="keywords" class="tags">
-<li><a class="tag p-category" href="../../categories/computing/" rel="tag">computing</a></li>
+</div></article>
+</div>
+</div>
+</div>
+</body>
+</html><html>
+<aside class="postpromonav"><nav><ul itemprop="keywords" class="tags">
+<li><a class="tag p-category" href="/categories/computing/" rel="tag">computing</a></li>
         </ul>
 <ul class="pager hidden-print">
 <li class="previous">
-                <a href="../windows-chocolatey/" rel="prev" title="Windows package management with Chocolatey">Previous post</a>
+                <a href="/blog/windows-chocolatey/" rel="prev" title="Windows package management with Chocolatey">Previous post</a>
             </li>
             <li class="next">
-                <a href="../python-tutor/" rel="next" title="Python Tutor, and interactive execution tool">Next post</a>
+                <a href="/blog/python-tutor/" rel="next" title="Python Tutor, and interactive execution tool">Next post</a>
             </li>
-        </ul></nav></aside></article>
-</div>
-        <!--End of body content-->
+        </ul></nav></aside><section class="comments hidden-print"><h2>Comments</h2>
+        
+        
+        <div id="disqus_thread"></div>
+        <script>
+        var disqus_shortname ="ifcuriousthenlearn_nikola",
+            disqus_url="https://nagordon.github.io/ifcuriousthenlearn/blog/pyver-version-control/",
+        disqus_title="Pyver, Version Control For Dummies",
+        disqus_identifier="cache/posts/Version_Control_for_Dummies.html",
+        disqus_config = function () {
+            this.language = "en";
+        };
+        (function() {
+            var dsq = document.createElement('script'); dsq.async = true;
+            dsq.src = 'https://' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script><noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a>
+</noscript>
+    <a href="https://disqus.com" class="dsq-brlink" rel="nofollow">Comments powered by <span class="logo-disqus">Disqus</span></a>
 
-        <footer id="footer">
+
+        </section><script>var disqus_shortname="ifcuriousthenlearn_nikola";(function(){var a=document.createElement("script");a.async=true;a.src="https://"+disqus_shortname+".disqus.com/count.js";(document.getElementsByTagName("head")[0]||document.getElementsByTagName("body")[0]).appendChild(a)}());</script><!--End of body content--><footer id="footer">
             Contents © 2021         <a href="mailto:">neal</a> - Powered by         <a href="https://getnikola.com" rel="nofollow">Nikola</a>         copyright Neal Gordon
             
-        </footer>
-</div>
-</div>
-
-
-            <script src="../../assets/js/all-nocdn.js"></script><!-- fancy dates --><script>
+        </footer><script src="/assets/js/all-nocdn.js"></script><!-- fancy dates --><script>
     moment.locale("en");
     fancydates(0, "YYYY-MM-DD HH:mm");
     </script><!-- end fancy dates --><script>
@@ -219,5 +243,5 @@ To add this path variable, type</p>
             return element.getElementsByTagName('img')[0].alt;
     }});
     </script>
-</body>
 </html>
+

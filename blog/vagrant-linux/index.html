@@ -87,8 +87,14 @@
             <a href="." rel="bookmark">
             <time class="published dt-published" datetime="2015-08-18T00:00:00-08:00" itemprop="datePublished" title="2015-08-18 00:00">2015-08-18 00:00</time></a>
             </p>
+                <p class="commentline">
+        
+    <a href="#disqus_thread" data-disqus-identifier="cache/posts/The-Fastest-Way-To-Linux-on-Windows-using-Vagrant.html">Comments</a>
+
+
             
-        <p class="sourceline"><a href="index.md" class="sourcelink">Source</a></p>
+        </p>
+<p class="sourceline"><a href="index.md" class="sourcelink">Source</a></p>
 
         </div>
         
@@ -171,11 +177,11 @@ vagrant ssh
 <p>and that will enter an ssh shell into the vagrant box. Finally, we have a true linux bash command line or shell!! Horray. The hardest part is over, celebrate and get ready to actually hace some fun</p>
 <h4>6. Using File Sync</h4>
 <p>One of the most confusing and challenging parts of Linux is networking. Vagrant does an awesome job of transferring files to and from your vagrant session, ie, The VM syncs easily with the host machine. To test the sync feature, in your current bash shell,</p>
-<pre class="code literal-block"><span></span><code><span class="o">#</span> <span class="k">create</span> <span class="n">a</span> <span class="n">directory</span> <span class="k">called</span> <span class="n">test</span>
-<span class="n">mkdir</span> <span class="o">/</span><span class="n">vagrant</span><span class="o">/</span><span class="n">test</span>
+<pre class="code literal-block"><span></span><code># create a directory called test
+mkdir /vagrant/test
 
-<span class="o">#</span> <span class="k">create</span> <span class="n">a</span> <span class="n">file</span> <span class="k">called</span> <span class="n">test</span><span class="p">.</span><span class="n">txt</span> <span class="k">and</span> <span class="k">add</span> <span class="n">a</span> <span class="n">string</span> <span class="k">to</span> <span class="n">it</span>
-<span class="n">echo</span> <span class="ss">"testing the files sync in a vagrant VM"</span> <span class="o">&gt;&gt;</span> <span class="o">/</span><span class="n">vagrant</span><span class="o">/</span><span class="n">test</span><span class="o">/</span><span class="n">test</span><span class="p">.</span><span class="n">txt</span>
+# create a file called test.txt and add a string to it
+echo "testing the files sync in a vagrant VM" &gt;&gt; /vagrant/test/test.txt
 </code></pre>
 
 
@@ -245,30 +251,48 @@ conda install ipython-notebook -y
 <h3>Summary</h3>
 <p>In my experience, this is the fastest and easiest way to get from Windows to a real Linux environment. Now, practicing Linux operation from the command line should be easier and fast without having to mess around with the operting system interface. I hope you enjoy your foray into Linux as much as I have. Please let me know if you have any questions, comments, or suggestions. Thanks! Stay Curious!</p>
 </div>
-    </div>
-    <aside class="postpromonav"><nav><ul itemprop="keywords" class="tags">
-<li><a class="tag p-category" href="../../categories/linux/" rel="tag">linux</a></li>
+</div></article>
+</div>
+</div>
+</div>
+</body>
+</html><html>
+<aside class="postpromonav"><nav><ul itemprop="keywords" class="tags">
+<li><a class="tag p-category" href="/categories/linux/" rel="tag">linux</a></li>
         </ul>
 <ul class="pager hidden-print">
 <li class="previous">
-                <a href="../center-of-mass/" rel="prev" title="Finding the Center of Mass from Point Masses with Python">Previous post</a>
+                <a href="/blog/center-of-mass/" rel="prev" title="Finding the Center of Mass from Point Masses with Python">Previous post</a>
             </li>
             <li class="next">
-                <a href="../wget-downloads/" rel="next" title="Automating Website Downloads with wget">Next post</a>
+                <a href="/blog/wget-downloads/" rel="next" title="Automating Website Downloads with wget">Next post</a>
             </li>
-        </ul></nav></aside></article>
-</div>
-        <!--End of body content-->
+        </ul></nav></aside><section class="comments hidden-print"><h2>Comments</h2>
+        
+        
+        <div id="disqus_thread"></div>
+        <script>
+        var disqus_shortname ="ifcuriousthenlearn_nikola",
+            disqus_url="https://nagordon.github.io/ifcuriousthenlearn/blog/vagrant-linux/",
+        disqus_title="The Fastest Way To Linux on Windows using Vagrant",
+        disqus_identifier="cache/posts/The-Fastest-Way-To-Linux-on-Windows-using-Vagrant.html",
+        disqus_config = function () {
+            this.language = "en";
+        };
+        (function() {
+            var dsq = document.createElement('script'); dsq.async = true;
+            dsq.src = 'https://' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script><noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a>
+</noscript>
+    <a href="https://disqus.com" class="dsq-brlink" rel="nofollow">Comments powered by <span class="logo-disqus">Disqus</span></a>
 
-        <footer id="footer">
+
+        </section><script>var disqus_shortname="ifcuriousthenlearn_nikola";(function(){var a=document.createElement("script");a.async=true;a.src="https://"+disqus_shortname+".disqus.com/count.js";(document.getElementsByTagName("head")[0]||document.getElementsByTagName("body")[0]).appendChild(a)}());</script><!--End of body content--><footer id="footer">
             Contents © 2021         <a href="mailto:">neal</a> - Powered by         <a href="https://getnikola.com" rel="nofollow">Nikola</a>         copyright Neal Gordon
             
-        </footer>
-</div>
-</div>
-
-
-            <script src="../../assets/js/all-nocdn.js"></script><!-- fancy dates --><script>
+        </footer><script src="/assets/js/all-nocdn.js"></script><!-- fancy dates --><script>
     moment.locale("en");
     fancydates(0, "YYYY-MM-DD HH:mm");
     </script><!-- end fancy dates --><script>
@@ -278,5 +302,5 @@ conda install ipython-notebook -y
             return element.getElementsByTagName('img')[0].alt;
     }});
     </script>
-</body>
 </html>
+

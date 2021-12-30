@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<?xml-stylesheet type="text/xsl" href="../assets/xml/rss.xsl" media="all"?><rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>ifcuriousthenlearn (Posts about commandline)</title><link>https://nagordon.github.io/ifcuriousthenlearn/</link><description></description><atom:link href="https://nagordon.github.io/ifcuriousthenlearn/categories/commandline.xml" rel="self" type="application/rss+xml"></atom:link><language>en</language><copyright>Contents © 2021 &lt;a href="mailto:"&gt;neal&lt;/a&gt; copyright Neal Gordon</copyright><lastBuildDate>Wed, 22 Sep 2021 01:11:02 GMT</lastBuildDate><generator>Nikola (getnikola.com)</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>Intro to the Windows Command Line</title><link>https://nagordon.github.io/ifcuriousthenlearn/blog/intro-to-the-windows-command-line/</link><dc:creator>neal</dc:creator><description>&lt;div&gt;&lt;h3&gt;Introduction&lt;/h3&gt;
+<?xml-stylesheet type="text/xsl" href="../assets/xml/rss.xsl" media="all"?><rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>ifcuriousthenlearn (Posts about commandline)</title><link>https://nagordon.github.io/ifcuriousthenlearn/</link><description></description><atom:link href="https://nagordon.github.io/ifcuriousthenlearn/categories/commandline.xml" rel="self" type="application/rss+xml"></atom:link><language>en</language><copyright>Contents © 2021 &lt;a href="mailto:"&gt;neal&lt;/a&gt; copyright Neal Gordon</copyright><lastBuildDate>Thu, 30 Dec 2021 17:02:59 GMT</lastBuildDate><generator>Nikola (getnikola.com)</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>Intro to the Windows Command Line</title><link>https://nagordon.github.io/ifcuriousthenlearn/blog/intro-to-the-windows-command-line/</link><dc:creator>neal</dc:creator><description>&lt;div&gt;&lt;h3&gt;Introduction&lt;/h3&gt;
 &lt;p&gt;Side Note - I've searched online to find info on many things related to technology. A typical search will yield a lot of blogs and tutorials, and way down the list there is documentation from the company/team that created the product. All this is OK, but i've found if you really want to learn something, the best way is a good old-fashioned book (pdf or print). The ideas are whole and complete, and the quality is much higher than a typical blog post (..yea, I know, this is a blog, and no it is not as good as a book).
 And now for the big surprise. Most of my content is from books. I did not invent this stuff. And I think it is important to give credit where credit is due. For more information, check out an  A+ certification book (I got mine from goodwill for 3 bucks, isnb-9780071745154).&lt;/p&gt;
 &lt;p&gt;Ok, on to the post. This tutorial only applies to the windows command line, not powershell. To start out, I am not a huge Windows fan. It is expensive, and I am often disappointed in the stability. But, most of us use it at work and home, so we should be using to the best of our ability. So this should help extend your skills at doing basic stuff. There are a few things that I will show you that I prefer to use a mouse and keyboard with, but there are a few things I would rather use the command line with (eg, moving files, mouse, finding the ip address of the computer, keyboard). Also, I am using Windows 7.&lt;/p&gt;
 &lt;p&gt;Lets get started. To get to a command prompt, we can &lt;strong&gt;hold shift and right-click&lt;/strong&gt; and select &lt;strong&gt;open command window here&lt;/strong&gt;. This is nice because we do not have to change the directory to the our directory we want to work from. You can also just type &lt;code&gt;cmd&lt;/code&gt; in the start menu.&lt;/p&gt;
 &lt;p&gt;If you ever run a command and it is taking forever to finish, we can terminate the command with &lt;strong&gt;ctrl+c&lt;/strong&gt; while in the command prompt.&lt;/p&gt;
 &lt;p&gt;if you need general help on any command, use&lt;/p&gt;
-&lt;pre class="code literal-block"&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="err"&gt;help&lt;/span&gt;
+&lt;pre class="code literal-block"&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;help
 &lt;/code&gt;&lt;/pre&gt;
 
 
@@ -37,51 +37,51 @@ And now for the big surprise. Most of my content is from books. I did not invent
 
 
 &lt;p&gt;To get help on the command dir, use&lt;/p&gt;
-&lt;pre class="code literal-block"&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="err"&gt;dir /?&lt;/span&gt;
+&lt;pre class="code literal-block"&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;dir /?
 &lt;/code&gt;&lt;/pre&gt;
 
 
 &lt;p&gt;If you just want to see the filenames in 5 columns, we can use a &lt;em&gt;switch&lt;/em&gt; with the syntax &lt;em&gt;/W&lt;/em&gt;, which looks like this&lt;/p&gt;
-&lt;pre class="code literal-block"&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;dir&lt;/span&gt; &lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;W&lt;/span&gt;
- &lt;span class="n"&gt;Volume&lt;/span&gt; &lt;span class="k"&gt;in&lt;/span&gt; &lt;span class="n"&gt;drive&lt;/span&gt; &lt;span class="k"&gt;C&lt;/span&gt; &lt;span class="n"&gt;has&lt;/span&gt; &lt;span class="k"&gt;no&lt;/span&gt; &lt;span class="n"&gt;label&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;
- &lt;span class="n"&gt;Volume&lt;/span&gt; &lt;span class="nb"&gt;Serial&lt;/span&gt; &lt;span class="nb"&gt;Number&lt;/span&gt; &lt;span class="k"&gt;is&lt;/span&gt; &lt;span class="mi"&gt;5033&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;5&lt;/span&gt;&lt;span class="n"&gt;C23&lt;/span&gt;
+&lt;pre class="code literal-block"&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&amp;gt; dir /W
+ Volume in drive C has no label.
+ Volume Serial Number is 5033-5C23
 
- &lt;span class="n"&gt;Directory&lt;/span&gt; &lt;span class="k"&gt;of&lt;/span&gt; &lt;span class="k"&gt;C&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="err"&gt;\&lt;/span&gt;&lt;span class="n"&gt;Users&lt;/span&gt;&lt;span class="err"&gt;\&lt;/span&gt;&lt;span class="n"&gt;ngordon&lt;/span&gt;&lt;span class="err"&gt;\&lt;/span&gt;&lt;span class="n"&gt;Desktop&lt;/span&gt;&lt;span class="err"&gt;\&lt;/span&gt;&lt;span class="n"&gt;test&lt;/span&gt;
+ Directory of C:\Users\ngordon\Desktop\test
 
-&lt;span class="p"&gt;[.]&lt;/span&gt;            &lt;span class="p"&gt;[..]&lt;/span&gt;           &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;another&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;test&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="n"&gt;file1&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;txt&lt;/span&gt;      &lt;span class="n"&gt;file2&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;xlsx&lt;/span&gt;      &lt;span class="n"&gt;tmp&lt;/span&gt;            &lt;span class="n"&gt;tmp&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;txt&lt;/span&gt;        
-               &lt;span class="mi"&gt;4&lt;/span&gt; &lt;span class="n"&gt;File&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;s&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;          &lt;span class="mi"&gt;9&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;187&lt;/span&gt; &lt;span class="n"&gt;bytes&lt;/span&gt;
-               &lt;span class="mi"&gt;3&lt;/span&gt; &lt;span class="n"&gt;Dir&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;s&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;  &lt;span class="mi"&gt;38&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;019&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;055&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;616&lt;/span&gt; &lt;span class="n"&gt;bytes&lt;/span&gt; &lt;span class="k"&gt;free&lt;/span&gt;
+[.]            [..]           [another-test] file1.txt      file2.xlsx      tmp            tmp.txt        
+               4 File(s)          9,187 bytes
+               3 Dir(s)  38,019,055,616 bytes free
 &lt;/code&gt;&lt;/pre&gt;
 
 
 &lt;h4&gt;Wildcards&lt;/h4&gt;
 &lt;p&gt;If there are alot of files, using wildcards can reduce the clutter. Also note the &lt;code&gt;::&lt;/code&gt; are commets.&lt;/p&gt;
-&lt;pre class="code literal-block"&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="p"&gt;::&lt;/span&gt; &lt;span class="n"&gt;finds&lt;/span&gt; &lt;span class="k"&gt;all&lt;/span&gt; &lt;span class="n"&gt;files&lt;/span&gt;
-&lt;span class="n"&gt;dir&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;
+&lt;pre class="code literal-block"&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;:: finds all files
+dir *.*
 
-&lt;span class="p"&gt;::&lt;/span&gt; &lt;span class="n"&gt;finds&lt;/span&gt; &lt;span class="k"&gt;all&lt;/span&gt; &lt;span class="n"&gt;files&lt;/span&gt; &lt;span class="k"&gt;with&lt;/span&gt; &lt;span class="n"&gt;the&lt;/span&gt; &lt;span class="n"&gt;extension&lt;/span&gt; &lt;span class="n"&gt;xlsx&lt;/span&gt;
-&lt;span class="n"&gt;dir&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;xlsx&lt;/span&gt;
+:: finds all files with the extension xlsx
+dir *.xlsx
 
-&lt;span class="p"&gt;::&lt;/span&gt; &lt;span class="n"&gt;finds&lt;/span&gt; &lt;span class="k"&gt;all&lt;/span&gt; &lt;span class="n"&gt;files&lt;/span&gt; &lt;span class="n"&gt;that&lt;/span&gt; &lt;span class="k"&gt;start&lt;/span&gt; &lt;span class="k"&gt;with&lt;/span&gt; &lt;span class="n"&gt;a&lt;/span&gt;
-&lt;span class="n"&gt;dir&lt;/span&gt; &lt;span class="n"&gt;a&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;
+:: finds all files that start with a
+dir a*.*
 
-&lt;span class="p"&gt;::&lt;/span&gt; &lt;span class="n"&gt;finds&lt;/span&gt; &lt;span class="n"&gt;an&lt;/span&gt; &lt;span class="n"&gt;exact&lt;/span&gt; &lt;span class="n"&gt;file&lt;/span&gt;
-&lt;span class="n"&gt;dir&lt;/span&gt; &lt;span class="n"&gt;file1&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;txt&lt;/span&gt;
+:: finds an exact file
+dir file1.txt
 &lt;/code&gt;&lt;/pre&gt;
 
 
 &lt;h4&gt;Tree&lt;/h4&gt;
 &lt;p&gt;Another cool visual is with the &lt;strong&gt;tree&lt;/strong&gt; command. Just using the tree command only shows the folders in the current directory, which shows up fine in the command window, but is not ascii text.&lt;/p&gt;
-&lt;pre class="code literal-block"&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="err"&gt;&amp;gt; tree&lt;/span&gt;
-&lt;span class="err"&gt;Folder PATH listing&lt;/span&gt;
-&lt;span class="err"&gt;Volume serial number is 5033-5C23&lt;/span&gt;
-&lt;span class="c"&gt;C:.&lt;/span&gt;
-&lt;span class="err"&gt;\---another-test&lt;/span&gt;
+&lt;pre class="code literal-block"&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&amp;gt; tree
+Folder PATH listing
+Volume serial number is 5033-5C23
+C:.
+\---another-test
 &lt;/code&gt;&lt;/pre&gt;
 
 
 &lt;p&gt;If you want to see ALL the files on your current disk, use the backslash. This may take a while to run on your system drive (C), so remember &lt;strong&gt;ctrl+c&lt;/strong&gt; to cancel&lt;/p&gt;
-&lt;pre class="code literal-block"&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="err"&gt;tree \&lt;/span&gt;
+&lt;pre class="code literal-block"&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;tree \
 &lt;/code&gt;&lt;/pre&gt;
 
 
@@ -98,33 +98,33 @@ And now for the big surprise. Most of my content is from books. I did not invent
 
 
 &lt;p&gt;Ah ha. We need to add switches to do that. If you want to see the folders and files in the current directory, try&lt;/p&gt;
-&lt;pre class="code literal-block"&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;tree&lt;/span&gt; &lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;F&lt;/span&gt;
+&lt;pre class="code literal-block"&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&amp;gt; tree /F
 
-&lt;span class="n"&gt;Folder&lt;/span&gt; &lt;span class="n"&gt;PATH&lt;/span&gt; &lt;span class="n"&gt;listing&lt;/span&gt;
-&lt;span class="n"&gt;Volume&lt;/span&gt; &lt;span class="nb"&gt;serial&lt;/span&gt; &lt;span class="nb"&gt;number&lt;/span&gt; &lt;span class="k"&gt;is&lt;/span&gt; &lt;span class="mi"&gt;5033&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;5&lt;/span&gt;&lt;span class="n"&gt;C23&lt;/span&gt;
-&lt;span class="k"&gt;C&lt;/span&gt;&lt;span class="p"&gt;:.&lt;/span&gt;
-&lt;span class="err"&gt;│&lt;/span&gt;   &lt;span class="n"&gt;file1&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;txt&lt;/span&gt;
-&lt;span class="err"&gt;│&lt;/span&gt;   &lt;span class="n"&gt;file2&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;xlsx&lt;/span&gt;
-&lt;span class="err"&gt;│&lt;/span&gt;   &lt;span class="n"&gt;tmp&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;txt&lt;/span&gt;
-&lt;span class="err"&gt;│&lt;/span&gt;
-&lt;span class="err"&gt;└───&lt;/span&gt;&lt;span class="n"&gt;another&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;test&lt;/span&gt;
-        &lt;span class="n"&gt;file3&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;txt&lt;/span&gt;
+Folder PATH listing
+Volume serial number is 5033-5C23
+C:.
+│   file1.txt
+│   file2.xlsx
+│   tmp.txt
+│
+└───another-test
+        file3.txt
 &lt;/code&gt;&lt;/pre&gt;
 
 
 &lt;p&gt;Lastly, to create an ascii format list of all files and folders and dump it to a text file, try&lt;/p&gt;
-&lt;pre class="code literal-block"&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="err"&gt;tree /F /A &amp;gt; tree.txt&lt;/span&gt;
+&lt;pre class="code literal-block"&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;tree /F /A &amp;gt; tree.txt
 &lt;/code&gt;&lt;/pre&gt;
 
 
 &lt;h4&gt;attrib&lt;/h4&gt;
 &lt;p&gt;We can also use &lt;strong&gt;attrib&lt;/strong&gt; to get file information in the current directory. The &lt;em&gt;A&lt;/em&gt; stands for archive.&lt;/p&gt;
-&lt;pre class="code literal-block"&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;attrib&lt;/span&gt;
+&lt;pre class="code literal-block"&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&amp;gt; attrib
 
-&lt;span class="n"&gt;A&lt;/span&gt;            &lt;span class="k"&gt;C&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="err"&gt;\&lt;/span&gt;&lt;span class="n"&gt;Users&lt;/span&gt;&lt;span class="err"&gt;\&lt;/span&gt;&lt;span class="n"&gt;ngordon&lt;/span&gt;&lt;span class="err"&gt;\&lt;/span&gt;&lt;span class="n"&gt;Desktop&lt;/span&gt;&lt;span class="err"&gt;\&lt;/span&gt;&lt;span class="n"&gt;test&lt;/span&gt;&lt;span class="err"&gt;\&lt;/span&gt;&lt;span class="n"&gt;file1&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;txt&lt;/span&gt;
-&lt;span class="n"&gt;A&lt;/span&gt;            &lt;span class="k"&gt;C&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="err"&gt;\&lt;/span&gt;&lt;span class="n"&gt;Users&lt;/span&gt;&lt;span class="err"&gt;\&lt;/span&gt;&lt;span class="n"&gt;ngordon&lt;/span&gt;&lt;span class="err"&gt;\&lt;/span&gt;&lt;span class="n"&gt;Desktop&lt;/span&gt;&lt;span class="err"&gt;\&lt;/span&gt;&lt;span class="n"&gt;test&lt;/span&gt;&lt;span class="err"&gt;\&lt;/span&gt;&lt;span class="n"&gt;file2&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;xlsx&lt;/span&gt;
-&lt;span class="n"&gt;A&lt;/span&gt;            &lt;span class="k"&gt;C&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="err"&gt;\&lt;/span&gt;&lt;span class="n"&gt;Users&lt;/span&gt;&lt;span class="err"&gt;\&lt;/span&gt;&lt;span class="n"&gt;ngordon&lt;/span&gt;&lt;span class="err"&gt;\&lt;/span&gt;&lt;span class="n"&gt;Desktop&lt;/span&gt;&lt;span class="err"&gt;\&lt;/span&gt;&lt;span class="n"&gt;test&lt;/span&gt;&lt;span class="err"&gt;\&lt;/span&gt;&lt;span class="n"&gt;tmp&lt;/span&gt;
-&lt;span class="n"&gt;A&lt;/span&gt;            &lt;span class="k"&gt;C&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="err"&gt;\&lt;/span&gt;&lt;span class="n"&gt;Users&lt;/span&gt;&lt;span class="err"&gt;\&lt;/span&gt;&lt;span class="n"&gt;ngordon&lt;/span&gt;&lt;span class="err"&gt;\&lt;/span&gt;&lt;span class="n"&gt;Desktop&lt;/span&gt;&lt;span class="err"&gt;\&lt;/span&gt;&lt;span class="n"&gt;test&lt;/span&gt;&lt;span class="err"&gt;\&lt;/span&gt;&lt;span class="n"&gt;tmp&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;txt&lt;/span&gt;
+A            C:\Users\ngordon\Desktop\test\file1.txt
+A            C:\Users\ngordon\Desktop\test\file2.xlsx
+A            C:\Users\ngordon\Desktop\test\tmp
+A            C:\Users\ngordon\Desktop\test\tmp.txt
 &lt;/code&gt;&lt;/pre&gt;
 
 
@@ -143,92 +143,92 @@ And now for the big surprise. Most of my content is from books. I did not invent
 
 
 &lt;p&gt;and to go into another folder use&lt;/p&gt;
-&lt;pre class="code literal-block"&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="n"&gt;cd&lt;/span&gt; &lt;span class="n"&gt;test&lt;/span&gt;
+&lt;pre class="code literal-block"&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="nv"&gt;cd&lt;/span&gt; &lt;span class="nv"&gt;test&lt;/span&gt;
 
-&lt;span class="p"&gt;::&lt;/span&gt; &lt;span class="k"&gt;or&lt;/span&gt; &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;multiple&lt;/span&gt; &lt;span class="n"&gt;folders&lt;/span&gt;
+:: &lt;span class="nv"&gt;or&lt;/span&gt; &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="nv"&gt;multiple&lt;/span&gt; &lt;span class="nv"&gt;folders&lt;/span&gt;
 
-&lt;span class="n"&gt;cd&lt;/span&gt; &lt;span class="n"&gt;Desktop&lt;/span&gt;&lt;span class="err"&gt;\&lt;/span&gt;&lt;span class="n"&gt;test&lt;/span&gt;&lt;span class="err"&gt;\&lt;/span&gt;&lt;span class="n"&gt;another&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;test&lt;/span&gt;
+&lt;span class="nv"&gt;cd&lt;/span&gt; &lt;span class="nv"&gt;Desktop&lt;/span&gt;\&lt;span class="nv"&gt;test&lt;/span&gt;\&lt;span class="nv"&gt;another&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="nv"&gt;test&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;
 
 
 &lt;p&gt;This can become tedious, so I'd recommend using &lt;strong&gt;tab&lt;/strong&gt; when typing out names. It not only reduces the amount of typing you have to do but also reduced typos.&lt;/p&gt;
 &lt;p&gt;Lets say you want to search your usb drive. To switch to a different drive other than the default &lt;strong&gt;C:&lt;/strong&gt;, just type&lt;/p&gt;
-&lt;pre class="code literal-block"&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="c"&gt;E:&lt;/span&gt;
+&lt;pre class="code literal-block"&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;E:
 &lt;/code&gt;&lt;/pre&gt;
 
 
 &lt;p&gt;Another modern and handy way to navigate is typing &lt;code&gt;cd&lt;/code&gt; and dragging and dropping a folder into the command prompt and hitting enter. This can save some time on those deep folder structures.&lt;/p&gt;
 &lt;h3&gt;Managing Folders and Files&lt;/h3&gt;
 &lt;p&gt;OK, lets make some stuff. To create and destroy a new directory, use &lt;strong&gt;md&lt;/strong&gt; and &lt;strong&gt;rd&lt;/strong&gt;&lt;/p&gt;
-&lt;pre class="code literal-block"&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="p"&gt;::&lt;/span&gt; &lt;span class="k"&gt;create&lt;/span&gt; &lt;span class="n"&gt;directory&lt;/span&gt;
-&lt;span class="n"&gt;md&lt;/span&gt; &lt;span class="n"&gt;newfolder&lt;/span&gt;
+&lt;pre class="code literal-block"&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;:: create directory
+md newfolder
 
 
-&lt;span class="p"&gt;::&lt;/span&gt; &lt;span class="n"&gt;destory&lt;/span&gt; &lt;span class="n"&gt;an&lt;/span&gt; &lt;span class="n"&gt;empty&lt;/span&gt; &lt;span class="n"&gt;directory&lt;/span&gt;
-&lt;span class="n"&gt;rd&lt;/span&gt; &lt;span class="n"&gt;newfolder&lt;/span&gt;
+:: destory an empty directory
+rd newfolder
 
-&lt;span class="p"&gt;::&lt;/span&gt; &lt;span class="n"&gt;BE&lt;/span&gt; &lt;span class="n"&gt;CAREFUL&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt; &lt;span class="n"&gt;recursively&lt;/span&gt; &lt;span class="k"&gt;destroy&lt;/span&gt; &lt;span class="n"&gt;directory&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="k"&gt;and&lt;/span&gt; &lt;span class="k"&gt;all&lt;/span&gt; &lt;span class="n"&gt;files&lt;/span&gt; &lt;span class="k"&gt;and&lt;/span&gt; &lt;span class="n"&gt;subfolders&lt;/span&gt;
-&lt;span class="n"&gt;rd&lt;/span&gt; &lt;span class="n"&gt;newfolder&lt;/span&gt; &lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;S&lt;/span&gt;
+:: BE CAREFUL - recursively destroy directory, and all files and subfolders
+rd newfolder /S
 &lt;/code&gt;&lt;/pre&gt;
 
 
 &lt;p&gt;To copy a single file or groups of files, use &lt;strong&gt;copy&lt;/strong&gt;&lt;/p&gt;
-&lt;pre class="code literal-block"&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="k"&gt;copy&lt;/span&gt; &lt;span class="n"&gt;file1&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;txt&lt;/span&gt; &lt;span class="n"&gt;file10&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;txt&lt;/span&gt;
+&lt;pre class="code literal-block"&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;copy file1.txt file10.txt
 
-&lt;span class="p"&gt;::&lt;/span&gt; &lt;span class="k"&gt;or&lt;/span&gt; &lt;span class="k"&gt;to&lt;/span&gt; &lt;span class="k"&gt;copy&lt;/span&gt; &lt;span class="k"&gt;to&lt;/span&gt; &lt;span class="n"&gt;a&lt;/span&gt; &lt;span class="n"&gt;different&lt;/span&gt; &lt;span class="n"&gt;folder&lt;/span&gt;
+:: or to copy to a different folder
 
-&lt;span class="k"&gt;copy&lt;/span&gt; &lt;span class="n"&gt;file1&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;txt&lt;/span&gt; &lt;span class="n"&gt;another&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;test&lt;/span&gt;&lt;span class="err"&gt;\&lt;/span&gt;&lt;span class="n"&gt;file1&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;txt&lt;/span&gt;
+copy file1.txt another-test\file1.txt
 
-&lt;span class="p"&gt;::&lt;/span&gt; &lt;span class="k"&gt;or&lt;/span&gt; &lt;span class="k"&gt;copy&lt;/span&gt; &lt;span class="k"&gt;all&lt;/span&gt; &lt;span class="n"&gt;txt&lt;/span&gt; &lt;span class="n"&gt;files&lt;/span&gt; &lt;span class="k"&gt;to&lt;/span&gt; &lt;span class="n"&gt;the&lt;/span&gt; &lt;span class="n"&gt;subdirectory&lt;/span&gt; &lt;span class="n"&gt;another&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;test&lt;/span&gt;
+:: or copy all txt files to the subdirectory another-test
 
-&lt;span class="k"&gt;copy&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;txt&lt;/span&gt; &lt;span class="n"&gt;another&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;test&lt;/span&gt;
+copy *.txt another-test
 &lt;/code&gt;&lt;/pre&gt;
 
 
 &lt;p&gt;To copy an entire directory, we can use &lt;strong&gt;xcopy&lt;/strong&gt;&lt;/p&gt;
-&lt;pre class="code literal-block"&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="p"&gt;::&lt;/span&gt; &lt;span class="k"&gt;copy&lt;/span&gt; &lt;span class="n"&gt;directory&lt;/span&gt; &lt;span class="n"&gt;another&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;test&lt;/span&gt; &lt;span class="k"&gt;and&lt;/span&gt; &lt;span class="n"&gt;skips&lt;/span&gt; &lt;span class="n"&gt;empty&lt;/span&gt; &lt;span class="n"&gt;subdirectories&lt;/span&gt; &lt;span class="k"&gt;to&lt;/span&gt; &lt;span class="n"&gt;another&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;test2&lt;/span&gt;
-&lt;span class="n"&gt;xcopy&lt;/span&gt; &lt;span class="n"&gt;another&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;test&lt;/span&gt; &lt;span class="n"&gt;another&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;test2&lt;/span&gt;
+&lt;pre class="code literal-block"&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;:: &lt;span class="nv"&gt;copy&lt;/span&gt; &lt;span class="nv"&gt;directory&lt;/span&gt; &lt;span class="nv"&gt;another&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="nv"&gt;test&lt;/span&gt; &lt;span class="nv"&gt;and&lt;/span&gt; &lt;span class="nv"&gt;skips&lt;/span&gt; &lt;span class="nv"&gt;empty&lt;/span&gt; &lt;span class="nv"&gt;subdirectories&lt;/span&gt; &lt;span class="nv"&gt;to&lt;/span&gt; &lt;span class="nv"&gt;another&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="nv"&gt;test2&lt;/span&gt;
+&lt;span class="nv"&gt;xcopy&lt;/span&gt; &lt;span class="nv"&gt;another&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="nv"&gt;test&lt;/span&gt; &lt;span class="nv"&gt;another&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="nv"&gt;test2&lt;/span&gt;
 
-&lt;span class="p"&gt;::&lt;/span&gt; &lt;span class="k"&gt;to&lt;/span&gt; &lt;span class="n"&gt;include&lt;/span&gt; &lt;span class="n"&gt;empty&lt;/span&gt; &lt;span class="n"&gt;subdirectories&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;use&lt;/span&gt; &lt;span class="n"&gt;switch&lt;/span&gt;
-&lt;span class="n"&gt;xcopy&lt;/span&gt; &lt;span class="n"&gt;another&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;test&lt;/span&gt; &lt;span class="n"&gt;another&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;test3&lt;/span&gt; &lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;E&lt;/span&gt;
+:: &lt;span class="nv"&gt;to&lt;/span&gt; &lt;span class="k"&gt;include&lt;/span&gt; &lt;span class="nv"&gt;empty&lt;/span&gt; &lt;span class="nv"&gt;subdirectories&lt;/span&gt;, &lt;span class="nv"&gt;use&lt;/span&gt; &lt;span class="nv"&gt;switch&lt;/span&gt;
+&lt;span class="nv"&gt;xcopy&lt;/span&gt; &lt;span class="nv"&gt;another&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="nv"&gt;test&lt;/span&gt; &lt;span class="nv"&gt;another&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="nv"&gt;test3&lt;/span&gt; &lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="nv"&gt;E&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;
 
 
 &lt;p&gt;We can rename files or folders with &lt;strong&gt;ren&lt;/strong&gt;&lt;/p&gt;
-&lt;pre class="code literal-block"&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="n"&gt;ren&lt;/span&gt; &lt;span class="n"&gt;file1&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;txt&lt;/span&gt; &lt;span class="n"&gt;text1&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;txt&lt;/span&gt;
+&lt;pre class="code literal-block"&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;ren file1.txt text1.txt
 
-&lt;span class="p"&gt;::&lt;/span&gt; &lt;span class="k"&gt;or&lt;/span&gt; &lt;span class="k"&gt;more&lt;/span&gt; &lt;span class="n"&gt;complicated&lt;/span&gt; &lt;span class="k"&gt;names&lt;/span&gt; &lt;span class="k"&gt;with&lt;/span&gt; &lt;span class="n"&gt;spaces&lt;/span&gt;
-&lt;span class="n"&gt;ren&lt;/span&gt; &lt;span class="n"&gt;text1&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;txt&lt;/span&gt; &lt;span class="ss"&gt;"text 1.txt"&lt;/span&gt;
+:: or more complicated names with spaces
+ren text1.txt "text 1.txt"
 
-&lt;span class="p"&gt;::&lt;/span&gt;&lt;span class="n"&gt;change&lt;/span&gt; &lt;span class="n"&gt;directory&lt;/span&gt; &lt;span class="n"&gt;name&lt;/span&gt;
-&lt;span class="n"&gt;ren&lt;/span&gt; &lt;span class="n"&gt;another&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;test&lt;/span&gt; &lt;span class="n"&gt;another&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;test5&lt;/span&gt;
+::change directory name
+ren another-test another-test5
 &lt;/code&gt;&lt;/pre&gt;
 
 
 &lt;p&gt;To delete a file or files, use &lt;strong&gt;del&lt;/strong&gt;&lt;/p&gt;
-&lt;pre class="code literal-block"&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="n"&gt;del&lt;/span&gt; &lt;span class="n"&gt;tmp&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;txt&lt;/span&gt;
+&lt;pre class="code literal-block"&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;del tmp.txt
 
-&lt;span class="p"&gt;::&lt;/span&gt; &lt;span class="n"&gt;deletes&lt;/span&gt; &lt;span class="k"&gt;all&lt;/span&gt; &lt;span class="nb"&gt;text&lt;/span&gt; &lt;span class="n"&gt;files&lt;/span&gt; &lt;span class="k"&gt;in&lt;/span&gt; &lt;span class="n"&gt;the&lt;/span&gt; &lt;span class="k"&gt;current&lt;/span&gt; &lt;span class="n"&gt;directory&lt;/span&gt;
-&lt;span class="n"&gt;del&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;txt&lt;/span&gt;
+:: deletes all text files in the current directory
+del *.txt
 &lt;/code&gt;&lt;/pre&gt;
 
 
 &lt;h3&gt;Creating New files&lt;/h3&gt;
 &lt;p&gt;It appears that Microsoft deprecated &lt;em&gt;edit&lt;/em&gt;, the command line editor. For those of you familiar with &lt;a href="http://www.openvim.com/"&gt;vim&lt;/a&gt; or &lt;a href="http://www.nano-editor.org/"&gt;nano&lt;/a&gt;, this are available on windows, so check them out. But for now, we can use the echo command, to create text files and append them&lt;/p&gt;
 &lt;p&gt;We can use &lt;strong&gt;echo&lt;/strong&gt; to print text to the command window&lt;/p&gt;
-&lt;pre class="code literal-block"&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="err"&gt;echo hi there&lt;/span&gt;
+&lt;pre class="code literal-block"&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;echo hi there
 &lt;/code&gt;&lt;/pre&gt;
 
 
 &lt;p&gt;Or we can redirect the text to a file&lt;/p&gt;
-&lt;pre class="code literal-block"&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="err"&gt;echo this is my first command line text file &amp;gt; file8.txt&lt;/span&gt;
-&lt;span class="err"&gt;echo this is the second line &amp;gt;&amp;gt; file8.txt&lt;/span&gt;
-&lt;span class="err"&gt;echo this is the third line &amp;gt;&amp;gt; file8.txt&lt;/span&gt;
+&lt;pre class="code literal-block"&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;echo this is my first command line text file &amp;gt; file8.txt
+echo this is the second line &amp;gt;&amp;gt; file8.txt
+echo this is the third line &amp;gt;&amp;gt; file8.txt
 &lt;/code&gt;&lt;/pre&gt;
 
 
 &lt;p&gt;for more complicated stuff, we can always open the file with the default text editor notepad.&lt;/p&gt;
-&lt;pre class="code literal-block"&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="err"&gt;notepad file8.txt&lt;/span&gt;
+&lt;pre class="code literal-block"&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;notepad file8.txt
 &lt;/code&gt;&lt;/pre&gt;
 
 
@@ -239,27 +239,27 @@ And now for the big surprise. Most of my content is from books. I did not invent
 
 
 &lt;p&gt;Now we can run the batch file by simply typing the name and executing it&lt;/p&gt;
-&lt;pre class="code literal-block"&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="err"&gt;hello.bat&lt;/span&gt;
+&lt;pre class="code literal-block"&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;hello.bat
 &lt;/code&gt;&lt;/pre&gt;
 
 
 &lt;p&gt;To pause to execution of a bat file, add &lt;strong&gt;pause&lt;/strong&gt; to the end. This is nice if you have an error in the file and want to see what the error is, otherwise it will just close the window&lt;/p&gt;
-&lt;pre class="code literal-block"&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="err"&gt;:: waits for keyboard input from user&lt;/span&gt;
-&lt;span class="err"&gt;pause&lt;/span&gt;
+&lt;pre class="code literal-block"&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;:: &lt;span class="nv"&gt;waits&lt;/span&gt; &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="nv"&gt;keyboard&lt;/span&gt; &lt;span class="nv"&gt;input&lt;/span&gt; &lt;span class="nv"&gt;from&lt;/span&gt; &lt;span class="nv"&gt;user&lt;/span&gt;
+&lt;span class="k"&gt;pause&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;
 
 
 &lt;h3&gt;Advanced command line&lt;/h3&gt;
 &lt;p&gt;To see all the settings Windows loads by default, use&lt;/p&gt;
-&lt;pre class="code literal-block"&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="err"&gt;&amp;gt; set&lt;/span&gt;
-&lt;span class="err"&gt;ALLUSERSPROFILE=C:\ProgramData&lt;/span&gt;
-&lt;span class="err"&gt;CommonProgramFiles=C:\Program Files\Common Files&lt;/span&gt;
-&lt;span class="err"&gt;CommonProgramFiles(x86)=C:\Program Files (x86)\Common Files&lt;/span&gt;
-&lt;span class="err"&gt;CommonProgramW6432=C:\Program Files\Common Files&lt;/span&gt;
-&lt;span class="err"&gt;HOME=C:\Users\ngordon&lt;/span&gt;
-&lt;span class="err"&gt;HOMEDRIVE=C:&lt;/span&gt;
-&lt;span class="err"&gt;HOMEPATH=\&lt;/span&gt;
-&lt;span class="err"&gt;Path=C:\Program Files\Common Files\Microsoft Shared\Windows Live&lt;/span&gt;
+&lt;pre class="code literal-block"&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&amp;gt; set
+ALLUSERSPROFILE=C:\ProgramData
+CommonProgramFiles=C:\Program Files\Common Files
+CommonProgramFiles(x86)=C:\Program Files (x86)\Common Files
+CommonProgramW6432=C:\Program Files\Common Files
+HOME=C:\Users\ngordon
+HOMEDRIVE=C:
+HOMEPATH=\
+Path=C:\Program Files\Common Files\Microsoft Shared\Windows Live
 &lt;/code&gt;&lt;/pre&gt;
 
 
@@ -286,31 +286,34 @@ And now for the big surprise. Most of my content is from books. I did not invent
 
 
 &lt;p&gt;Now lets test and make sure the system knows where to look for my custom batch scripts.&lt;/p&gt;
-&lt;pre class="code literal-block"&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="err"&gt;&amp;gt; hello&lt;/span&gt;
-&lt;span class="err"&gt;hi there&lt;/span&gt;
+&lt;pre class="code literal-block"&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&amp;gt; hello
+hi there
 &lt;/code&gt;&lt;/pre&gt;
 
 
 &lt;p&gt;Excellent. We have covered the basics.&lt;/p&gt;
 &lt;h3&gt;Networking Information&lt;/h3&gt;
 &lt;p&gt;I have found myself using the command line alot when learning about networking. Here are some commands to help you get started with networking info.&lt;/p&gt;
-&lt;pre class="code literal-block"&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="p"&gt;::&lt;/span&gt; &lt;span class="n"&gt;robust&lt;/span&gt; &lt;span class="n"&gt;command&lt;/span&gt; &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;networking&lt;/span&gt; &lt;span class="k"&gt;options&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;such&lt;/span&gt; &lt;span class="k"&gt;as&lt;/span&gt; &lt;span class="n"&gt;seeing&lt;/span&gt; &lt;span class="n"&gt;things&lt;/span&gt; &lt;span class="k"&gt;on&lt;/span&gt; &lt;span class="n"&gt;the&lt;/span&gt; &lt;span class="n"&gt;network&lt;/span&gt;
-&lt;span class="n"&gt;net&lt;/span&gt; &lt;span class="k"&gt;view&lt;/span&gt;
+&lt;pre class="code literal-block"&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="p"&gt;::&lt;/span&gt; &lt;span class="n"&gt;robust&lt;/span&gt; &lt;span class="n"&gt;command&lt;/span&gt; &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;networking&lt;/span&gt; &lt;span class="n"&gt;options&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;such&lt;/span&gt; &lt;span class="k"&gt;as&lt;/span&gt; &lt;span class="n"&gt;seeing&lt;/span&gt; &lt;span class="n"&gt;things&lt;/span&gt; &lt;span class="n"&gt;on&lt;/span&gt; &lt;span class="n"&gt;the&lt;/span&gt; &lt;span class="n"&gt;network&lt;/span&gt;
+&lt;span class="n"&gt;net&lt;/span&gt; &lt;span class="n"&gt;view&lt;/span&gt;
 
-&lt;span class="p"&gt;::&lt;/span&gt; &lt;span class="n"&gt;test&lt;/span&gt; &lt;span class="n"&gt;the&lt;/span&gt; &lt;span class="n"&gt;communication&lt;/span&gt; &lt;span class="k"&gt;of&lt;/span&gt; &lt;span class="n"&gt;another&lt;/span&gt; &lt;span class="n"&gt;ip&lt;/span&gt; &lt;span class="n"&gt;address&lt;/span&gt;
-&lt;span class="n"&gt;ping&lt;/span&gt; &lt;span class="n"&gt;www&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;ifcuriousthenlearn&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;com&lt;/span&gt;
+&lt;span class="p"&gt;::&lt;/span&gt; &lt;span class="n"&gt;test&lt;/span&gt; &lt;span class="n"&gt;the&lt;/span&gt; &lt;span class="n"&gt;communication&lt;/span&gt; &lt;span class="n"&gt;of&lt;/span&gt; &lt;span class="n"&gt;another&lt;/span&gt; &lt;span class="n"&gt;ip&lt;/span&gt; &lt;span class="n"&gt;address&lt;/span&gt;
+&lt;span class="n"&gt;ping&lt;/span&gt; &lt;span class="n"&gt;www&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;ifcuriousthenlearn&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;com&lt;/span&gt;
 
-&lt;span class="p"&gt;::&lt;/span&gt; &lt;span class="k"&gt;show&lt;/span&gt; &lt;span class="n"&gt;network&lt;/span&gt; &lt;span class="n"&gt;settings&lt;/span&gt;
+&lt;span class="p"&gt;::&lt;/span&gt; &lt;span class="n"&gt;show&lt;/span&gt; &lt;span class="n"&gt;network&lt;/span&gt; &lt;span class="n"&gt;settings&lt;/span&gt;
 &lt;span class="n"&gt;ipconfig&lt;/span&gt;
 
-&lt;span class="p"&gt;::&lt;/span&gt; &lt;span class="n"&gt;tool&lt;/span&gt; &lt;span class="k"&gt;to&lt;/span&gt; &lt;span class="n"&gt;find&lt;/span&gt; &lt;span class="n"&gt;networking&lt;/span&gt; &lt;span class="n"&gt;information&lt;/span&gt;
-&lt;span class="n"&gt;nslookup&lt;/span&gt; &lt;span class="n"&gt;www&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;ifcuriousthenlearn&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;com&lt;/span&gt;
+&lt;span class="p"&gt;::&lt;/span&gt; &lt;span class="k"&gt;tool&lt;/span&gt; &lt;span class="n"&gt;to&lt;/span&gt; &lt;span class="n"&gt;find&lt;/span&gt; &lt;span class="n"&gt;networking&lt;/span&gt; &lt;span class="n"&gt;information&lt;/span&gt;
+&lt;span class="n"&gt;nslookup&lt;/span&gt; &lt;span class="n"&gt;www&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;ifcuriousthenlearn&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;com&lt;/span&gt;
 
-&lt;span class="p"&gt;::&lt;/span&gt; &lt;span class="n"&gt;traces&lt;/span&gt; &lt;span class="n"&gt;the&lt;/span&gt; &lt;span class="n"&gt;path&lt;/span&gt; &lt;span class="n"&gt;a&lt;/span&gt; &lt;span class="n"&gt;packet&lt;/span&gt; &lt;span class="n"&gt;takes&lt;/span&gt; &lt;span class="k"&gt;to&lt;/span&gt; &lt;span class="k"&gt;get&lt;/span&gt; &lt;span class="k"&gt;to&lt;/span&gt; &lt;span class="n"&gt;the&lt;/span&gt; &lt;span class="n"&gt;destination&lt;/span&gt;
-&lt;span class="n"&gt;tracert&lt;/span&gt; &lt;span class="n"&gt;www&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;ifcuriousthenlearn&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;com&lt;/span&gt;
+&lt;span class="p"&gt;::&lt;/span&gt; &lt;span class="n"&gt;traces&lt;/span&gt; &lt;span class="n"&gt;the&lt;/span&gt; &lt;span class="n"&gt;path&lt;/span&gt; &lt;span class="n"&gt;a&lt;/span&gt; &lt;span class="n"&gt;packet&lt;/span&gt; &lt;span class="n"&gt;takes&lt;/span&gt; &lt;span class="n"&gt;to&lt;/span&gt; &lt;span class="n"&gt;get&lt;/span&gt; &lt;span class="n"&gt;to&lt;/span&gt; &lt;span class="n"&gt;the&lt;/span&gt; &lt;span class="n"&gt;destination&lt;/span&gt;
+&lt;span class="n"&gt;tracert&lt;/span&gt; &lt;span class="n"&gt;www&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;ifcuriousthenlearn&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;com&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;
 
 
 &lt;h3&gt;Summary&lt;/h3&gt;
 &lt;p&gt;We have covered the basics to operate a windows command line. For a lot of work, it is faster than clicking a mouse around, but it takes some practice. There are also some great fundamental tools available found at the command line nearest you. Understanding what is going on in a computer is much easier when you can operate the command lines, as it is an integral part of any operating system. I hope you found this useful, and please comment with any suggestions.&lt;/p&gt;
-&lt;p&gt;Stay Curious!  &lt;/p&gt;&lt;/div&gt;</description><category>batch</category><category>commandline</category><category>windows</category><guid>https://nagordon.github.io/ifcuriousthenlearn/blog/intro-to-the-windows-command-line/</guid><pubDate>Fri, 28 Aug 2015 08:00:00 GMT</pubDate></item></channel></rss>
+&lt;p&gt;Stay Curious!  &lt;/p&gt;&lt;/div&gt;
+&lt;/body&gt;&lt;/html&gt;
+
+</description><category>batch</category><category>commandline</category><category>windows</category><guid>https://nagordon.github.io/ifcuriousthenlearn/blog/intro-to-the-windows-command-line/</guid><pubDate>Fri, 28 Aug 2015 08:00:00 GMT</pubDate></item></channel></rss>

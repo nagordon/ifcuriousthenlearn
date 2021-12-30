@@ -69,16 +69,607 @@
 
     
 <div class="postindex">
-    <article class="h-entry post-text" itemscope="itemscope" itemtype="http://schema.org/Article"><header><h1 class="p-name entry-title"><a href="rebuilding-the-site-with-nikola/" class="u-url">Rebuilding the site with nikola</a></h1>
+    <article class="h-entry post-text" itemscope="itemscope" itemtype="http://schema.org/Article"><header><h1 class="p-name entry-title"><a href="diy-arduino-tachometer-for-your-rc-airplane/" class="u-url">DIY Arduino Tachometer for your RC Airplane</a></h1>
         <div class="metadata">
             <p class="byline author vcard"><span class="byline-name fn" itemprop="author">
                 neal
             </span></p>
             <p class="dateline">
-            <a href="rebuilding-the-site-with-nikola/" rel="bookmark">
+            <a href="diy-arduino-tachometer-for-your-rc-airplane/" rel="bookmark">
+            <time class="published dt-published" datetime="2021-12-29T17:11:39-08:00" itemprop="datePublished" title="2021-12-29 17:11">2021-12-29 17:11</time></a>
+            </p>
+                <p class="commentline">
+        
+    <a href="diy-arduino-tachometer-for-your-rc-airplane/#disqus_thread" data-disqus-identifier="cache/posts/diy-arduino-tachometer-for-your-rc-airplane.html">Comments</a>
+
+
+        </p>
+</div>
+    </header><div class="e-content entry-content">
+    <div>
+<!-- change status from my notes and comments, draft, published -->
+<section id="the-project"><h2>The Project</h2>
+<p>To properly tune a small gas airplane engine, a tach is essential. I was just going to buy a tower hobbies tachometer for tuning my new Yak 54 gas RC airplane, but instead I spent an entire day build my own, and you can too!</p>
+<p>There are some good products out there that work, but you don't have the sastifaction of making it yourself.</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://www.towerhobbies.com/product/on-board-digital-tachometer/DLEG5525.html">https://www.towerhobbies.com/product/on-board-digital-tachometer/DLEG5525.html</a></p></li>
+<li><p><a class="reference external" href="https://www.amazon.com/gp/product/B07N77H8D4/ref=ox_sc_act_title_1?smid=A21F9KBNUKR8LM&amp;psc=1">https://www.amazon.com/gp/product/B07N77H8D4/ref=ox_sc_act_title_1?smid=A21F9KBNUKR8LM&amp;psc=1</a></p></li>
+</ul>
+<p>This will show you how to build your own with hopefully a lot less time than it took me. Also, once you get a ground unit working well, you can add an airplane unit and get RPM telemetry when you are flying, but we will leave that for another day.</p>
+<p>The ardupilot documentation has a nice overview of what the software is doing, but we are using an IR sensor instead of a hall effect sensor which requires a magnet, but has less noise.</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://ardupilot.org/plane/docs/common-rpm.html">https://ardupilot.org/plane/docs/common-rpm.html</a></p></li>
+</ul>
+<p>I roughly followed this tutorial to create mine</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://automaticaddison.com/how-to-develop-an-arduino-based-optical-tachometer/">https://automaticaddison.com/how-to-develop-an-arduino-based-optical-tachometer/</a></p></li>
+</ul>
+<p>The library for the OLED is here</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://github.com/olikraus/U8g2_Arduino">https://github.com/olikraus/U8g2_Arduino</a></p></li>
+</ul>
+<p>The sensor is not perfect and has about 500-1000 RPMs of noise, which isn't great but not sure how you make it better. One thing I noticed is that if you point the IR transmitter and reciever in a little there seems to be less noise.</p>
+</section><section id="materials"><h2>Materials</h2>
+<ul class="simple">
+<li>
+<p>ardunio pro mini 5v</p>
+<ul>
+<li><p><a class="reference external" href="https://www.sparkfun.com/products/11113">https://www.sparkfun.com/products/11113</a></p></li>
+</ul>
+</li>
+<li>
+<p>IR obstacle sensor HW-201 module</p>
+<ul>
+<li><p><a class="reference external" href="https://www.amazon.com/HiLetgo-Infrared-Avoidance-Reflective-Photoelectric/dp/B07W97H2WS/ref=sr_1_13?keywords=line+follower+sensor&amp;qid=1640830855&amp;sr=8-13">https://www.amazon.com/HiLetgo-Infrared-Avoidance-Reflective-Photoelectric/dp/B07W97H2WS/ref=sr_1_13?keywords=line+follower+sensor&amp;qid=1640830855&amp;sr=8-13</a></p></li>
+</ul>
+</li>
+<li>
+<p>SSD1306 oled screen</p>
+<ul>
+<li><p><a class="reference external" href="https://www.uctronics.com/uctronics-0-96-inch-oled-module-12864-128x64-yellow-blue-ssd1306-driver-i2c-serial-self-luminous-display-board-for-arduino-raspberry-pi.html">https://www.uctronics.com/uctronics-0-96-inch-oled-module-12864-128x64-yellow-blue-ssd1306-driver-i2c-serial-self-luminous-display-board-for-arduino-raspberry-pi.html</a></p></li>
+</ul>
+</li>
+<li><p>9v battery</p></li>
+</ul></section><section id="images"><h2>Images</h2>
+<section id="wiring-diagram"><h3>Wiring Diagram</h3>
+<img alt="/files/diy-arduino-tachometer-for-your-rc-airplane/gallery/Propellor_Tachometer_Using_Arduino_Wiring_Diagram.jpg" src="../files/diy-arduino-tachometer-for-your-rc-airplane/gallery/Propellor_Tachometer_Using_Arduino_Wiring_Diagram.jpg" style="width: 500px;"></section><section id="finished"><h3>Finished!</h3>
+<p>Everything is soldered together and ready to test.</p>
+<img alt="/files/diy-arduino-tachometer-for-your-rc-airplane/gallery/finished_tach2.jpg" src="../files/diy-arduino-tachometer-for-your-rc-airplane/gallery/finished_tach2.jpg" style="width: 500px;"><p>I mounted everything on a piece of balsa wood and added shrink wrap for durability. The battery is simply taped on for easy changing.</p>
+<img alt="/files/diy-arduino-tachometer-for-your-rc-airplane/gallery/mounted_tach_screen.jpg" src="../files/diy-arduino-tachometer-for-your-rc-airplane/gallery/mounted_tach_screen.jpg" style="width: 500px;"><!-- /image:: /files/diy-arduino-tachometer-for/your-rc-airplane/gallery/tach_screen.jpg
+:width: 500 --><p></p>
+<img alt="/files/diy-arduino-tachometer-for-your-rc-airplane/gallery/mounted_tach_battery.jpg" src="../files/diy-arduino-tachometer-for-your-rc-airplane/gallery/mounted_tach_battery.jpg" style="width: 500px;"></section></section><section id="the-code"><h2>The code</h2>
+<div class="code"><table class="codetable">
+<tr>
+<td class="linenos linenodiv"><a href="diy-arduino-tachometer-for-your-rc-airplane/#rest_code_3c23f22487d3404dbbeea3736f2313d9-1"><code data-line-number="  1"></code></a></td>
+<td class="code"><code><a id="rest_code_3c23f22487d3404dbbeea3736f2313d9-1" name="rest_code_3c23f22487d3404dbbeea3736f2313d9-1"></a><span class="w"> </span><span class="cm">/*</span>
+</code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="diy-arduino-tachometer-for-your-rc-airplane/#rest_code_3c23f22487d3404dbbeea3736f2313d9-2"><code data-line-number="  2"></code></a></td>
+<td class="code"><code><a id="rest_code_3c23f22487d3404dbbeea3736f2313d9-2" name="rest_code_3c23f22487d3404dbbeea3736f2313d9-2"></a><span class="cm"> PropTach v0.2</span>
+</code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="diy-arduino-tachometer-for-your-rc-airplane/#rest_code_3c23f22487d3404dbbeea3736f2313d9-3"><code data-line-number="  3"></code></a></td>
+<td class="code"><code><a id="rest_code_3c23f22487d3404dbbeea3736f2313d9-3" name="rest_code_3c23f22487d3404dbbeea3736f2313d9-3"></a><span class="cm"> Neal Gordon</span>
+</code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="diy-arduino-tachometer-for-your-rc-airplane/#rest_code_3c23f22487d3404dbbeea3736f2313d9-4"><code data-line-number="  4"></code></a></td>
+<td class="code"><code><a id="rest_code_3c23f22487d3404dbbeea3736f2313d9-4" name="rest_code_3c23f22487d3404dbbeea3736f2313d9-4"></a><span class="cm"> */</span><span class="w"></span>
+</code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="diy-arduino-tachometer-for-your-rc-airplane/#rest_code_3c23f22487d3404dbbeea3736f2313d9-5"><code data-line-number="  5"></code></a></td>
+<td class="code"><code><a id="rest_code_3c23f22487d3404dbbeea3736f2313d9-5" name="rest_code_3c23f22487d3404dbbeea3736f2313d9-5"></a>
+</code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="diy-arduino-tachometer-for-your-rc-airplane/#rest_code_3c23f22487d3404dbbeea3736f2313d9-6"><code data-line-number="  6"></code></a></td>
+<td class="code"><code><a id="rest_code_3c23f22487d3404dbbeea3736f2313d9-6" name="rest_code_3c23f22487d3404dbbeea3736f2313d9-6"></a><span class="w"> </span><span class="c1">// Import OLED library</span>
+</code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="diy-arduino-tachometer-for-your-rc-airplane/#rest_code_3c23f22487d3404dbbeea3736f2313d9-7"><code data-line-number="  7"></code></a></td>
+<td class="code"><code><a id="rest_code_3c23f22487d3404dbbeea3736f2313d9-7" name="rest_code_3c23f22487d3404dbbeea3736f2313d9-7"></a><span class="w"> </span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;Arduino.h&gt;</span><span class="cp"></span>
+</code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="diy-arduino-tachometer-for-your-rc-airplane/#rest_code_3c23f22487d3404dbbeea3736f2313d9-8"><code data-line-number="  8"></code></a></td>
+<td class="code"><code><a id="rest_code_3c23f22487d3404dbbeea3736f2313d9-8" name="rest_code_3c23f22487d3404dbbeea3736f2313d9-8"></a><span class="w"> </span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;U8x8lib.h&gt;</span><span class="cp"></span>
+</code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="diy-arduino-tachometer-for-your-rc-airplane/#rest_code_3c23f22487d3404dbbeea3736f2313d9-9"><code data-line-number="  9"></code></a></td>
+<td class="code"><code><a id="rest_code_3c23f22487d3404dbbeea3736f2313d9-9" name="rest_code_3c23f22487d3404dbbeea3736f2313d9-9"></a>
+</code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="diy-arduino-tachometer-for-your-rc-airplane/#rest_code_3c23f22487d3404dbbeea3736f2313d9-10"><code data-line-number=" 10"></code></a></td>
+<td class="code"><code><a id="rest_code_3c23f22487d3404dbbeea3736f2313d9-10" name="rest_code_3c23f22487d3404dbbeea3736f2313d9-10"></a><span class="w"> </span><span class="cp">#ifdef U8X8_HAVE_HW_SPI</span>
+</code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="diy-arduino-tachometer-for-your-rc-airplane/#rest_code_3c23f22487d3404dbbeea3736f2313d9-11"><code data-line-number=" 11"></code></a></td>
+<td class="code"><code><a id="rest_code_3c23f22487d3404dbbeea3736f2313d9-11" name="rest_code_3c23f22487d3404dbbeea3736f2313d9-11"></a><span class="w"> </span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;SPI.h&gt;</span><span class="cp"></span>
+</code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="diy-arduino-tachometer-for-your-rc-airplane/#rest_code_3c23f22487d3404dbbeea3736f2313d9-12"><code data-line-number=" 12"></code></a></td>
+<td class="code"><code><a id="rest_code_3c23f22487d3404dbbeea3736f2313d9-12" name="rest_code_3c23f22487d3404dbbeea3736f2313d9-12"></a><span class="w"> </span><span class="cp">#endif</span>
+</code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="diy-arduino-tachometer-for-your-rc-airplane/#rest_code_3c23f22487d3404dbbeea3736f2313d9-13"><code data-line-number=" 13"></code></a></td>
+<td class="code"><code><a id="rest_code_3c23f22487d3404dbbeea3736f2313d9-13" name="rest_code_3c23f22487d3404dbbeea3736f2313d9-13"></a>
+</code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="diy-arduino-tachometer-for-your-rc-airplane/#rest_code_3c23f22487d3404dbbeea3736f2313d9-14"><code data-line-number=" 14"></code></a></td>
+<td class="code"><code><a id="rest_code_3c23f22487d3404dbbeea3736f2313d9-14" name="rest_code_3c23f22487d3404dbbeea3736f2313d9-14"></a><span class="w"> </span><span class="c1">// The complete list is available here: https://github.com/olikraus/u8g2/wiki/u8x8setupcpp</span>
+</code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="diy-arduino-tachometer-for-your-rc-airplane/#rest_code_3c23f22487d3404dbbeea3736f2313d9-15"><code data-line-number=" 15"></code></a></td>
+<td class="code"><code><a id="rest_code_3c23f22487d3404dbbeea3736f2313d9-15" name="rest_code_3c23f22487d3404dbbeea3736f2313d9-15"></a><span class="w"> </span><span class="n">U8X8_SSD1306_128X64_NONAME_HW_I2C</span><span class="w"> </span><span class="nf">u8x8</span><span class="p">(</span><span class="cm">/* reset=*/</span><span class="w"> </span><span class="n">U8X8_PIN_NONE</span><span class="p">);</span><span class="w"></span>
+</code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="diy-arduino-tachometer-for-your-rc-airplane/#rest_code_3c23f22487d3404dbbeea3736f2313d9-16"><code data-line-number=" 16"></code></a></td>
+<td class="code"><code><a id="rest_code_3c23f22487d3404dbbeea3736f2313d9-16" name="rest_code_3c23f22487d3404dbbeea3736f2313d9-16"></a>
+</code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="diy-arduino-tachometer-for-your-rc-airplane/#rest_code_3c23f22487d3404dbbeea3736f2313d9-17"><code data-line-number=" 17"></code></a></td>
+<td class="code"><code><a id="rest_code_3c23f22487d3404dbbeea3736f2313d9-17" name="rest_code_3c23f22487d3404dbbeea3736f2313d9-17"></a><span class="w"> </span><span class="c1">// The number of blades on the propeller. Adjust accordingly.</span>
+</code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="diy-arduino-tachometer-for-your-rc-airplane/#rest_code_3c23f22487d3404dbbeea3736f2313d9-18"><code data-line-number=" 18"></code></a></td>
+<td class="code"><code><a id="rest_code_3c23f22487d3404dbbeea3736f2313d9-18" name="rest_code_3c23f22487d3404dbbeea3736f2313d9-18"></a><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="kt">unsigned</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">BLADE_COUNT</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="p">;</span><span class="w"></span>
+</code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="diy-arduino-tachometer-for-your-rc-airplane/#rest_code_3c23f22487d3404dbbeea3736f2313d9-19"><code data-line-number=" 19"></code></a></td>
+<td class="code"><code><a id="rest_code_3c23f22487d3404dbbeea3736f2313d9-19" name="rest_code_3c23f22487d3404dbbeea3736f2313d9-19"></a>
+</code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="diy-arduino-tachometer-for-your-rc-airplane/#rest_code_3c23f22487d3404dbbeea3736f2313d9-20"><code data-line-number=" 20"></code></a></td>
+<td class="code"><code><a id="rest_code_3c23f22487d3404dbbeea3736f2313d9-20" name="rest_code_3c23f22487d3404dbbeea3736f2313d9-20"></a><span class="w"> </span><span class="c1">// Volatile keyword is used with interrupts</span>
+</code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="diy-arduino-tachometer-for-your-rc-airplane/#rest_code_3c23f22487d3404dbbeea3736f2313d9-21"><code data-line-number=" 21"></code></a></td>
+<td class="code"><code><a id="rest_code_3c23f22487d3404dbbeea3736f2313d9-21" name="rest_code_3c23f22487d3404dbbeea3736f2313d9-21"></a><span class="w"> </span><span class="c1">// This variable is subject to change inside an interrupt</span>
+</code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="diy-arduino-tachometer-for-your-rc-airplane/#rest_code_3c23f22487d3404dbbeea3736f2313d9-22"><code data-line-number=" 22"></code></a></td>
+<td class="code"><code><a id="rest_code_3c23f22487d3404dbbeea3736f2313d9-22" name="rest_code_3c23f22487d3404dbbeea3736f2313d9-22"></a><span class="w"> </span><span class="c1">// service routine</span>
+</code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="diy-arduino-tachometer-for-your-rc-airplane/#rest_code_3c23f22487d3404dbbeea3736f2313d9-23"><code data-line-number=" 23"></code></a></td>
+<td class="code"><code><a id="rest_code_3c23f22487d3404dbbeea3736f2313d9-23" name="rest_code_3c23f22487d3404dbbeea3736f2313d9-23"></a><span class="w"> </span><span class="k">volatile</span><span class="w"> </span><span class="kt">unsigned</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">myinterrupts</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
+</code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="diy-arduino-tachometer-for-your-rc-airplane/#rest_code_3c23f22487d3404dbbeea3736f2313d9-24"><code data-line-number=" 24"></code></a></td>
+<td class="code"><code><a id="rest_code_3c23f22487d3404dbbeea3736f2313d9-24" name="rest_code_3c23f22487d3404dbbeea3736f2313d9-24"></a><span class="w"> </span><span class="kt">unsigned</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">myinterrupts_print</span><span class="p">;</span><span class="w"></span>
+</code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="diy-arduino-tachometer-for-your-rc-airplane/#rest_code_3c23f22487d3404dbbeea3736f2313d9-25"><code data-line-number=" 25"></code></a></td>
+<td class="code"><code><a id="rest_code_3c23f22487d3404dbbeea3736f2313d9-25" name="rest_code_3c23f22487d3404dbbeea3736f2313d9-25"></a>
+</code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="diy-arduino-tachometer-for-your-rc-airplane/#rest_code_3c23f22487d3404dbbeea3736f2313d9-26"><code data-line-number=" 26"></code></a></td>
+<td class="code"><code><a id="rest_code_3c23f22487d3404dbbeea3736f2313d9-26" name="rest_code_3c23f22487d3404dbbeea3736f2313d9-26"></a>
+</code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="diy-arduino-tachometer-for-your-rc-airplane/#rest_code_3c23f22487d3404dbbeea3736f2313d9-27"><code data-line-number=" 27"></code></a></td>
+<td class="code"><code><a id="rest_code_3c23f22487d3404dbbeea3736f2313d9-27" name="rest_code_3c23f22487d3404dbbeea3736f2313d9-27"></a><span class="w"> </span><span class="c1">// Used for capturing the rpm (revolutions per minute)</span>
+</code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="diy-arduino-tachometer-for-your-rc-airplane/#rest_code_3c23f22487d3404dbbeea3736f2313d9-28"><code data-line-number=" 28"></code></a></td>
+<td class="code"><code><a id="rest_code_3c23f22487d3404dbbeea3736f2313d9-28" name="rest_code_3c23f22487d3404dbbeea3736f2313d9-28"></a><span class="w"> </span><span class="kt">unsigned</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">rpm</span><span class="p">;</span><span class="w"></span>
+</code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="diy-arduino-tachometer-for-your-rc-airplane/#rest_code_3c23f22487d3404dbbeea3736f2313d9-29"><code data-line-number=" 29"></code></a></td>
+<td class="code"><code><a id="rest_code_3c23f22487d3404dbbeea3736f2313d9-29" name="rest_code_3c23f22487d3404dbbeea3736f2313d9-29"></a><span class="w"> </span><span class="kt">unsigned</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">rpm_print</span><span class="p">;</span><span class="w"></span>
+</code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="diy-arduino-tachometer-for-your-rc-airplane/#rest_code_3c23f22487d3404dbbeea3736f2313d9-30"><code data-line-number=" 30"></code></a></td>
+<td class="code"><code><a id="rest_code_3c23f22487d3404dbbeea3736f2313d9-30" name="rest_code_3c23f22487d3404dbbeea3736f2313d9-30"></a>
+</code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="diy-arduino-tachometer-for-your-rc-airplane/#rest_code_3c23f22487d3404dbbeea3736f2313d9-31"><code data-line-number=" 31"></code></a></td>
+<td class="code"><code><a id="rest_code_3c23f22487d3404dbbeea3736f2313d9-31" name="rest_code_3c23f22487d3404dbbeea3736f2313d9-31"></a><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">setup</span><span class="p">()</span><span class="w"></span>
+</code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="diy-arduino-tachometer-for-your-rc-airplane/#rest_code_3c23f22487d3404dbbeea3736f2313d9-32"><code data-line-number=" 32"></code></a></td>
+<td class="code"><code><a id="rest_code_3c23f22487d3404dbbeea3736f2313d9-32" name="rest_code_3c23f22487d3404dbbeea3736f2313d9-32"></a><span class="w">     </span><span class="p">{</span><span class="w"></span>
+</code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="diy-arduino-tachometer-for-your-rc-airplane/#rest_code_3c23f22487d3404dbbeea3736f2313d9-33"><code data-line-number=" 33"></code></a></td>
+<td class="code"><code><a id="rest_code_3c23f22487d3404dbbeea3736f2313d9-33" name="rest_code_3c23f22487d3404dbbeea3736f2313d9-33"></a><span class="w">     </span><span class="n">Serial</span><span class="p">.</span><span class="n">begin</span><span class="p">(</span><span class="mi">9600</span><span class="p">);</span><span class="w"></span>
+</code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="diy-arduino-tachometer-for-your-rc-airplane/#rest_code_3c23f22487d3404dbbeea3736f2313d9-34"><code data-line-number=" 34"></code></a></td>
+<td class="code"><code><a id="rest_code_3c23f22487d3404dbbeea3736f2313d9-34" name="rest_code_3c23f22487d3404dbbeea3736f2313d9-34"></a>
+</code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="diy-arduino-tachometer-for-your-rc-airplane/#rest_code_3c23f22487d3404dbbeea3736f2313d9-35"><code data-line-number=" 35"></code></a></td>
+<td class="code"><code><a id="rest_code_3c23f22487d3404dbbeea3736f2313d9-35" name="rest_code_3c23f22487d3404dbbeea3736f2313d9-35"></a><span class="w">     </span><span class="n">u8x8</span><span class="p">.</span><span class="n">begin</span><span class="p">();</span><span class="w"></span>
+</code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="diy-arduino-tachometer-for-your-rc-airplane/#rest_code_3c23f22487d3404dbbeea3736f2313d9-36"><code data-line-number=" 36"></code></a></td>
+<td class="code"><code><a id="rest_code_3c23f22487d3404dbbeea3736f2313d9-36" name="rest_code_3c23f22487d3404dbbeea3736f2313d9-36"></a><span class="w">     </span><span class="n">u8x8</span><span class="p">.</span><span class="n">setPowerSave</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span><span class="w"></span>
+</code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="diy-arduino-tachometer-for-your-rc-airplane/#rest_code_3c23f22487d3404dbbeea3736f2313d9-37"><code data-line-number=" 37"></code></a></td>
+<td class="code"><code><a id="rest_code_3c23f22487d3404dbbeea3736f2313d9-37" name="rest_code_3c23f22487d3404dbbeea3736f2313d9-37"></a><span class="w">     </span><span class="n">u8x8</span><span class="p">.</span><span class="n">setFont</span><span class="p">(</span><span class="n">u8x8_font_amstrad_cpc_extended_r</span><span class="p">);</span><span class="w">  </span><span class="c1">// u8x8_font_amstrad_cpc_extended_r , u8x8_font_chroma48medium8_r</span>
+</code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="diy-arduino-tachometer-for-your-rc-airplane/#rest_code_3c23f22487d3404dbbeea3736f2313d9-38"><code data-line-number=" 38"></code></a></td>
+<td class="code"><code><a id="rest_code_3c23f22487d3404dbbeea3736f2313d9-38" name="rest_code_3c23f22487d3404dbbeea3736f2313d9-38"></a><span class="w">     </span><span class="c1">// u8x8_font_amstrad_cpc_extended_f</span>
+</code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="diy-arduino-tachometer-for-your-rc-airplane/#rest_code_3c23f22487d3404dbbeea3736f2313d9-39"><code data-line-number=" 39"></code></a></td>
+<td class="code"><code><a id="rest_code_3c23f22487d3404dbbeea3736f2313d9-39" name="rest_code_3c23f22487d3404dbbeea3736f2313d9-39"></a><span class="w">     </span><span class="c1">// u8x8_font_chroma48medium8_r</span>
+</code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="diy-arduino-tachometer-for-your-rc-airplane/#rest_code_3c23f22487d3404dbbeea3736f2313d9-40"><code data-line-number=" 40"></code></a></td>
+<td class="code"><code><a id="rest_code_3c23f22487d3404dbbeea3736f2313d9-40" name="rest_code_3c23f22487d3404dbbeea3736f2313d9-40"></a>
+</code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="diy-arduino-tachometer-for-your-rc-airplane/#rest_code_3c23f22487d3404dbbeea3736f2313d9-41"><code data-line-number=" 41"></code></a></td>
+<td class="code"><code><a id="rest_code_3c23f22487d3404dbbeea3736f2313d9-41" name="rest_code_3c23f22487d3404dbbeea3736f2313d9-41"></a><span class="w">     </span><span class="n">u8x8</span><span class="p">.</span><span class="n">drawString</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="s">"PropTach v0.2"</span><span class="p">);</span><span class="w">  </span><span class="c1">// line 0</span>
+</code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="diy-arduino-tachometer-for-your-rc-airplane/#rest_code_3c23f22487d3404dbbeea3736f2313d9-42"><code data-line-number=" 42"></code></a></td>
+<td class="code"><code><a id="rest_code_3c23f22487d3404dbbeea3736f2313d9-42" name="rest_code_3c23f22487d3404dbbeea3736f2313d9-42"></a><span class="w">     </span><span class="n">u8x8</span><span class="p">.</span><span class="n">drawString</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="s">"-------------"</span><span class="p">);</span><span class="w">  </span><span class="c1">// line 1</span>
+</code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="diy-arduino-tachometer-for-your-rc-airplane/#rest_code_3c23f22487d3404dbbeea3736f2313d9-43"><code data-line-number=" 43"></code></a></td>
+<td class="code"><code><a id="rest_code_3c23f22487d3404dbbeea3736f2313d9-43" name="rest_code_3c23f22487d3404dbbeea3736f2313d9-43"></a><span class="w">     </span><span class="n">u8x8</span><span class="p">.</span><span class="n">drawString</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="s">"Blades"</span><span class="p">);</span><span class="w">         </span><span class="c1">// line 2</span>
+</code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="diy-arduino-tachometer-for-your-rc-airplane/#rest_code_3c23f22487d3404dbbeea3736f2313d9-44"><code data-line-number=" 44"></code></a></td>
+<td class="code"><code><a id="rest_code_3c23f22487d3404dbbeea3736f2313d9-44" name="rest_code_3c23f22487d3404dbbeea3736f2313d9-44"></a><span class="w">     </span><span class="n">u8x8</span><span class="p">.</span><span class="n">setCursor</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">);</span><span class="w">                  </span><span class="c1">// line 3</span>
+</code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="diy-arduino-tachometer-for-your-rc-airplane/#rest_code_3c23f22487d3404dbbeea3736f2313d9-45"><code data-line-number=" 45"></code></a></td>
+<td class="code"><code><a id="rest_code_3c23f22487d3404dbbeea3736f2313d9-45" name="rest_code_3c23f22487d3404dbbeea3736f2313d9-45"></a><span class="w">     </span><span class="n">u8x8</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="n">BLADE_COUNT</span><span class="p">);</span><span class="w">               </span><span class="c1">// line 3</span>
+</code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="diy-arduino-tachometer-for-your-rc-airplane/#rest_code_3c23f22487d3404dbbeea3736f2313d9-46"><code data-line-number=" 46"></code></a></td>
+<td class="code"><code><a id="rest_code_3c23f22487d3404dbbeea3736f2313d9-46" name="rest_code_3c23f22487d3404dbbeea3736f2313d9-46"></a><span class="w">     </span><span class="n">u8x8</span><span class="p">.</span><span class="n">drawString</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="s">"RPM"</span><span class="p">);</span><span class="w">            </span><span class="c1">// line 4</span>
+</code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="diy-arduino-tachometer-for-your-rc-airplane/#rest_code_3c23f22487d3404dbbeea3736f2313d9-47"><code data-line-number=" 47"></code></a></td>
+<td class="code"><code><a id="rest_code_3c23f22487d3404dbbeea3736f2313d9-47" name="rest_code_3c23f22487d3404dbbeea3736f2313d9-47"></a><span class="w">     </span><span class="n">u8x8</span><span class="p">.</span><span class="n">drawString</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">6</span><span class="p">,</span><span class="w"> </span><span class="s">"     "</span><span class="p">);</span><span class="w"></span>
+</code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="diy-arduino-tachometer-for-your-rc-airplane/#rest_code_3c23f22487d3404dbbeea3736f2313d9-48"><code data-line-number=" 48"></code></a></td>
+<td class="code"><code><a id="rest_code_3c23f22487d3404dbbeea3736f2313d9-48" name="rest_code_3c23f22487d3404dbbeea3736f2313d9-48"></a>
+</code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="diy-arduino-tachometer-for-your-rc-airplane/#rest_code_3c23f22487d3404dbbeea3736f2313d9-49"><code data-line-number=" 49"></code></a></td>
+<td class="code"><code><a id="rest_code_3c23f22487d3404dbbeea3736f2313d9-49" name="rest_code_3c23f22487d3404dbbeea3736f2313d9-49"></a>
+</code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="diy-arduino-tachometer-for-your-rc-airplane/#rest_code_3c23f22487d3404dbbeea3736f2313d9-50"><code data-line-number=" 50"></code></a></td>
+<td class="code"><code><a id="rest_code_3c23f22487d3404dbbeea3736f2313d9-50" name="rest_code_3c23f22487d3404dbbeea3736f2313d9-50"></a><span class="w">     </span><span class="c1">// The Infrared phototransistor is connected to pin 2.</span>
+</code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="diy-arduino-tachometer-for-your-rc-airplane/#rest_code_3c23f22487d3404dbbeea3736f2313d9-51"><code data-line-number=" 51"></code></a></td>
+<td class="code"><code><a id="rest_code_3c23f22487d3404dbbeea3736f2313d9-51" name="rest_code_3c23f22487d3404dbbeea3736f2313d9-51"></a><span class="w">     </span><span class="c1">// Interrupt triggers when signal goes from HIGH to LOW</span>
+</code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="diy-arduino-tachometer-for-your-rc-airplane/#rest_code_3c23f22487d3404dbbeea3736f2313d9-52"><code data-line-number=" 52"></code></a></td>
+<td class="code"><code><a id="rest_code_3c23f22487d3404dbbeea3736f2313d9-52" name="rest_code_3c23f22487d3404dbbeea3736f2313d9-52"></a><span class="w">     </span><span class="c1">// on pro mini arduino must use pins 2 or 3 for interrupts</span>
+</code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="diy-arduino-tachometer-for-your-rc-airplane/#rest_code_3c23f22487d3404dbbeea3736f2313d9-53"><code data-line-number=" 53"></code></a></td>
+<td class="code"><code><a id="rest_code_3c23f22487d3404dbbeea3736f2313d9-53" name="rest_code_3c23f22487d3404dbbeea3736f2313d9-53"></a><span class="w">     </span><span class="c1">// file:///C:/Program%20Files%20(x86)/Arduino/reference/www.arduino.cc/en/Reference/AttachInterrupt.html</span>
+</code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="diy-arduino-tachometer-for-your-rc-airplane/#rest_code_3c23f22487d3404dbbeea3736f2313d9-54"><code data-line-number=" 54"></code></a></td>
+<td class="code"><code><a id="rest_code_3c23f22487d3404dbbeea3736f2313d9-54" name="rest_code_3c23f22487d3404dbbeea3736f2313d9-54"></a><span class="w">     </span><span class="n">attachInterrupt</span><span class="p">(</span><span class="n">digitalPinToInterrupt</span><span class="p">(</span><span class="mi">3</span><span class="p">),</span><span class="w"> </span><span class="n">isr_break_count</span><span class="p">,</span><span class="w"> </span><span class="n">FALLING</span><span class="p">);</span><span class="w"></span>
+</code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="diy-arduino-tachometer-for-your-rc-airplane/#rest_code_3c23f22487d3404dbbeea3736f2313d9-55"><code data-line-number=" 55"></code></a></td>
+<td class="code"><code><a id="rest_code_3c23f22487d3404dbbeea3736f2313d9-55" name="rest_code_3c23f22487d3404dbbeea3736f2313d9-55"></a>
+</code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="diy-arduino-tachometer-for-your-rc-airplane/#rest_code_3c23f22487d3404dbbeea3736f2313d9-56"><code data-line-number=" 56"></code></a></td>
+<td class="code"><code><a id="rest_code_3c23f22487d3404dbbeea3736f2313d9-56" name="rest_code_3c23f22487d3404dbbeea3736f2313d9-56"></a><span class="w">     </span><span class="p">}</span><span class="w"></span>
+</code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="diy-arduino-tachometer-for-your-rc-airplane/#rest_code_3c23f22487d3404dbbeea3736f2313d9-57"><code data-line-number=" 57"></code></a></td>
+<td class="code"><code><a id="rest_code_3c23f22487d3404dbbeea3736f2313d9-57" name="rest_code_3c23f22487d3404dbbeea3736f2313d9-57"></a>
+</code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="diy-arduino-tachometer-for-your-rc-airplane/#rest_code_3c23f22487d3404dbbeea3736f2313d9-58"><code data-line-number=" 58"></code></a></td>
+<td class="code"><code><a id="rest_code_3c23f22487d3404dbbeea3736f2313d9-58" name="rest_code_3c23f22487d3404dbbeea3736f2313d9-58"></a>
+</code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="diy-arduino-tachometer-for-your-rc-airplane/#rest_code_3c23f22487d3404dbbeea3736f2313d9-59"><code data-line-number=" 59"></code></a></td>
+<td class="code"><code><a id="rest_code_3c23f22487d3404dbbeea3736f2313d9-59" name="rest_code_3c23f22487d3404dbbeea3736f2313d9-59"></a><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">isr_break_count</span><span class="p">()</span><span class="w"></span>
+</code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="diy-arduino-tachometer-for-your-rc-airplane/#rest_code_3c23f22487d3404dbbeea3736f2313d9-60"><code data-line-number=" 60"></code></a></td>
+<td class="code"><code><a id="rest_code_3c23f22487d3404dbbeea3736f2313d9-60" name="rest_code_3c23f22487d3404dbbeea3736f2313d9-60"></a><span class="w">     </span><span class="p">{</span><span class="w"></span>
+</code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="diy-arduino-tachometer-for-your-rc-airplane/#rest_code_3c23f22487d3404dbbeea3736f2313d9-61"><code data-line-number=" 61"></code></a></td>
+<td class="code"><code><a id="rest_code_3c23f22487d3404dbbeea3736f2313d9-61" name="rest_code_3c23f22487d3404dbbeea3736f2313d9-61"></a><span class="w">     </span><span class="n">myinterrupts</span><span class="o">++</span><span class="p">;</span><span class="w"></span>
+</code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="diy-arduino-tachometer-for-your-rc-airplane/#rest_code_3c23f22487d3404dbbeea3736f2313d9-62"><code data-line-number=" 62"></code></a></td>
+<td class="code"><code><a id="rest_code_3c23f22487d3404dbbeea3736f2313d9-62" name="rest_code_3c23f22487d3404dbbeea3736f2313d9-62"></a><span class="w">     </span><span class="p">}</span><span class="w"></span>
+</code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="diy-arduino-tachometer-for-your-rc-airplane/#rest_code_3c23f22487d3404dbbeea3736f2313d9-63"><code data-line-number=" 63"></code></a></td>
+<td class="code"><code><a id="rest_code_3c23f22487d3404dbbeea3736f2313d9-63" name="rest_code_3c23f22487d3404dbbeea3736f2313d9-63"></a>
+</code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="diy-arduino-tachometer-for-your-rc-airplane/#rest_code_3c23f22487d3404dbbeea3736f2313d9-64"><code data-line-number=" 64"></code></a></td>
+<td class="code"><code><a id="rest_code_3c23f22487d3404dbbeea3736f2313d9-64" name="rest_code_3c23f22487d3404dbbeea3736f2313d9-64"></a>
+</code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="diy-arduino-tachometer-for-your-rc-airplane/#rest_code_3c23f22487d3404dbbeea3736f2313d9-65"><code data-line-number=" 65"></code></a></td>
+<td class="code"><code><a id="rest_code_3c23f22487d3404dbbeea3736f2313d9-65" name="rest_code_3c23f22487d3404dbbeea3736f2313d9-65"></a>
+</code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="diy-arduino-tachometer-for-your-rc-airplane/#rest_code_3c23f22487d3404dbbeea3736f2313d9-66"><code data-line-number=" 66"></code></a></td>
+<td class="code"><code><a id="rest_code_3c23f22487d3404dbbeea3736f2313d9-66" name="rest_code_3c23f22487d3404dbbeea3736f2313d9-66"></a><span class="w"> </span><span class="c1">// the loop routine runs over and over again forever:</span>
+</code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="diy-arduino-tachometer-for-your-rc-airplane/#rest_code_3c23f22487d3404dbbeea3736f2313d9-67"><code data-line-number=" 67"></code></a></td>
+<td class="code"><code><a id="rest_code_3c23f22487d3404dbbeea3736f2313d9-67" name="rest_code_3c23f22487d3404dbbeea3736f2313d9-67"></a><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">loop</span><span class="p">()</span><span class="w"></span>
+</code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="diy-arduino-tachometer-for-your-rc-airplane/#rest_code_3c23f22487d3404dbbeea3736f2313d9-68"><code data-line-number=" 68"></code></a></td>
+<td class="code"><code><a id="rest_code_3c23f22487d3404dbbeea3736f2313d9-68" name="rest_code_3c23f22487d3404dbbeea3736f2313d9-68"></a><span class="w">     </span><span class="p">{</span><span class="w"></span>
+</code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="diy-arduino-tachometer-for-your-rc-airplane/#rest_code_3c23f22487d3404dbbeea3736f2313d9-69"><code data-line-number=" 69"></code></a></td>
+<td class="code"><code><a id="rest_code_3c23f22487d3404dbbeea3736f2313d9-69" name="rest_code_3c23f22487d3404dbbeea3736f2313d9-69"></a>
+</code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="diy-arduino-tachometer-for-your-rc-airplane/#rest_code_3c23f22487d3404dbbeea3736f2313d9-70"><code data-line-number=" 70"></code></a></td>
+<td class="code"><code><a id="rest_code_3c23f22487d3404dbbeea3736f2313d9-70" name="rest_code_3c23f22487d3404dbbeea3736f2313d9-70"></a><span class="w">     </span><span class="c1">// Update time and rpm every second</span>
+</code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="diy-arduino-tachometer-for-your-rc-airplane/#rest_code_3c23f22487d3404dbbeea3736f2313d9-71"><code data-line-number=" 71"></code></a></td>
+<td class="code"><code><a id="rest_code_3c23f22487d3404dbbeea3736f2313d9-71" name="rest_code_3c23f22487d3404dbbeea3736f2313d9-71"></a><span class="w">     </span><span class="n">delay</span><span class="p">(</span><span class="mi">300</span><span class="p">);</span><span class="w"></span>
+</code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="diy-arduino-tachometer-for-your-rc-airplane/#rest_code_3c23f22487d3404dbbeea3736f2313d9-72"><code data-line-number=" 72"></code></a></td>
+<td class="code"><code><a id="rest_code_3c23f22487d3404dbbeea3736f2313d9-72" name="rest_code_3c23f22487d3404dbbeea3736f2313d9-72"></a>
+</code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="diy-arduino-tachometer-for-your-rc-airplane/#rest_code_3c23f22487d3404dbbeea3736f2313d9-73"><code data-line-number=" 73"></code></a></td>
+<td class="code"><code><a id="rest_code_3c23f22487d3404dbbeea3736f2313d9-73" name="rest_code_3c23f22487d3404dbbeea3736f2313d9-73"></a><span class="w">     </span><span class="c1">// Don't process interrupts during this calculation</span>
+</code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="diy-arduino-tachometer-for-your-rc-airplane/#rest_code_3c23f22487d3404dbbeea3736f2313d9-74"><code data-line-number=" 74"></code></a></td>
+<td class="code"><code><a id="rest_code_3c23f22487d3404dbbeea3736f2313d9-74" name="rest_code_3c23f22487d3404dbbeea3736f2313d9-74"></a><span class="w">     </span><span class="n">noInterrupts</span><span class="p">();</span><span class="w"></span>
+</code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="diy-arduino-tachometer-for-your-rc-airplane/#rest_code_3c23f22487d3404dbbeea3736f2313d9-75"><code data-line-number=" 75"></code></a></td>
+<td class="code"><code><a id="rest_code_3c23f22487d3404dbbeea3736f2313d9-75" name="rest_code_3c23f22487d3404dbbeea3736f2313d9-75"></a>
+</code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="diy-arduino-tachometer-for-your-rc-airplane/#rest_code_3c23f22487d3404dbbeea3736f2313d9-76"><code data-line-number=" 76"></code></a></td>
+<td class="code"><code><a id="rest_code_3c23f22487d3404dbbeea3736f2313d9-76" name="rest_code_3c23f22487d3404dbbeea3736f2313d9-76"></a><span class="w">     </span><span class="c1">// Calculate the RPM. If a 3-blade propeller, 3 breaks</span>
+</code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="diy-arduino-tachometer-for-your-rc-airplane/#rest_code_3c23f22487d3404dbbeea3736f2313d9-77"><code data-line-number=" 77"></code></a></td>
+<td class="code"><code><a id="rest_code_3c23f22487d3404dbbeea3736f2313d9-77" name="rest_code_3c23f22487d3404dbbeea3736f2313d9-77"></a><span class="w">     </span><span class="c1">// per second would yield 1 rpm, which is 60 rpm.</span>
+</code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="diy-arduino-tachometer-for-your-rc-airplane/#rest_code_3c23f22487d3404dbbeea3736f2313d9-78"><code data-line-number=" 78"></code></a></td>
+<td class="code"><code><a id="rest_code_3c23f22487d3404dbbeea3736f2313d9-78" name="rest_code_3c23f22487d3404dbbeea3736f2313d9-78"></a><span class="w">     </span><span class="n">rpm</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="mi">60</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">myinterrupts</span><span class="p">)</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">BLADE_COUNT</span><span class="p">;</span><span class="w"></span>
+</code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="diy-arduino-tachometer-for-your-rc-airplane/#rest_code_3c23f22487d3404dbbeea3736f2313d9-79"><code data-line-number=" 79"></code></a></td>
+<td class="code"><code><a id="rest_code_3c23f22487d3404dbbeea3736f2313d9-79" name="rest_code_3c23f22487d3404dbbeea3736f2313d9-79"></a><span class="w">     </span><span class="n">rpm_print</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">rpm</span><span class="p">;</span><span class="w"></span>
+</code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="diy-arduino-tachometer-for-your-rc-airplane/#rest_code_3c23f22487d3404dbbeea3736f2313d9-80"><code data-line-number=" 80"></code></a></td>
+<td class="code"><code><a id="rest_code_3c23f22487d3404dbbeea3736f2313d9-80" name="rest_code_3c23f22487d3404dbbeea3736f2313d9-80"></a><span class="w">     </span><span class="n">myinterrupts_print</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">myinterrupts</span><span class="p">;</span><span class="w"></span>
+</code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="diy-arduino-tachometer-for-your-rc-airplane/#rest_code_3c23f22487d3404dbbeea3736f2313d9-81"><code data-line-number=" 81"></code></a></td>
+<td class="code"><code><a id="rest_code_3c23f22487d3404dbbeea3736f2313d9-81" name="rest_code_3c23f22487d3404dbbeea3736f2313d9-81"></a>
+</code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="diy-arduino-tachometer-for-your-rc-airplane/#rest_code_3c23f22487d3404dbbeea3736f2313d9-82"><code data-line-number=" 82"></code></a></td>
+<td class="code"><code><a id="rest_code_3c23f22487d3404dbbeea3736f2313d9-82" name="rest_code_3c23f22487d3404dbbeea3736f2313d9-82"></a><span class="w">     </span><span class="n">myinterrupts</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
+</code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="diy-arduino-tachometer-for-your-rc-airplane/#rest_code_3c23f22487d3404dbbeea3736f2313d9-83"><code data-line-number=" 83"></code></a></td>
+<td class="code"><code><a id="rest_code_3c23f22487d3404dbbeea3736f2313d9-83" name="rest_code_3c23f22487d3404dbbeea3736f2313d9-83"></a><span class="w">     </span><span class="n">rpm</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
+</code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="diy-arduino-tachometer-for-your-rc-airplane/#rest_code_3c23f22487d3404dbbeea3736f2313d9-84"><code data-line-number=" 84"></code></a></td>
+<td class="code"><code><a id="rest_code_3c23f22487d3404dbbeea3736f2313d9-84" name="rest_code_3c23f22487d3404dbbeea3736f2313d9-84"></a>
+</code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="diy-arduino-tachometer-for-your-rc-airplane/#rest_code_3c23f22487d3404dbbeea3736f2313d9-85"><code data-line-number=" 85"></code></a></td>
+<td class="code"><code><a id="rest_code_3c23f22487d3404dbbeea3736f2313d9-85" name="rest_code_3c23f22487d3404dbbeea3736f2313d9-85"></a><span class="w">     </span><span class="c1">// Restart interrupts</span>
+</code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="diy-arduino-tachometer-for-your-rc-airplane/#rest_code_3c23f22487d3404dbbeea3736f2313d9-86"><code data-line-number=" 86"></code></a></td>
+<td class="code"><code><a id="rest_code_3c23f22487d3404dbbeea3736f2313d9-86" name="rest_code_3c23f22487d3404dbbeea3736f2313d9-86"></a><span class="w">     </span><span class="n">interrupts</span><span class="p">();</span><span class="w"></span>
+</code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="diy-arduino-tachometer-for-your-rc-airplane/#rest_code_3c23f22487d3404dbbeea3736f2313d9-87"><code data-line-number=" 87"></code></a></td>
+<td class="code"><code><a id="rest_code_3c23f22487d3404dbbeea3736f2313d9-87" name="rest_code_3c23f22487d3404dbbeea3736f2313d9-87"></a>
+</code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="diy-arduino-tachometer-for-your-rc-airplane/#rest_code_3c23f22487d3404dbbeea3736f2313d9-88"><code data-line-number=" 88"></code></a></td>
+<td class="code"><code><a id="rest_code_3c23f22487d3404dbbeea3736f2313d9-88" name="rest_code_3c23f22487d3404dbbeea3736f2313d9-88"></a><span class="w">     </span><span class="c1">//  Serial.print("interrupts: ");</span>
+</code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="diy-arduino-tachometer-for-your-rc-airplane/#rest_code_3c23f22487d3404dbbeea3736f2313d9-89"><code data-line-number=" 89"></code></a></td>
+<td class="code"><code><a id="rest_code_3c23f22487d3404dbbeea3736f2313d9-89" name="rest_code_3c23f22487d3404dbbeea3736f2313d9-89"></a><span class="w">     </span><span class="c1">//  Serial.print(myinterrupts_print);</span>
+</code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="diy-arduino-tachometer-for-your-rc-airplane/#rest_code_3c23f22487d3404dbbeea3736f2313d9-90"><code data-line-number=" 90"></code></a></td>
+<td class="code"><code><a id="rest_code_3c23f22487d3404dbbeea3736f2313d9-90" name="rest_code_3c23f22487d3404dbbeea3736f2313d9-90"></a><span class="w">     </span><span class="c1">//  Serial.print("\t");</span>
+</code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="diy-arduino-tachometer-for-your-rc-airplane/#rest_code_3c23f22487d3404dbbeea3736f2313d9-91"><code data-line-number=" 91"></code></a></td>
+<td class="code"><code><a id="rest_code_3c23f22487d3404dbbeea3736f2313d9-91" name="rest_code_3c23f22487d3404dbbeea3736f2313d9-91"></a>
+</code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="diy-arduino-tachometer-for-your-rc-airplane/#rest_code_3c23f22487d3404dbbeea3736f2313d9-92"><code data-line-number=" 92"></code></a></td>
+<td class="code"><code><a id="rest_code_3c23f22487d3404dbbeea3736f2313d9-92" name="rest_code_3c23f22487d3404dbbeea3736f2313d9-92"></a><span class="w">     </span><span class="n">Serial</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="s">"rpm: "</span><span class="p">);</span><span class="w"></span>
+</code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="diy-arduino-tachometer-for-your-rc-airplane/#rest_code_3c23f22487d3404dbbeea3736f2313d9-93"><code data-line-number=" 93"></code></a></td>
+<td class="code"><code><a id="rest_code_3c23f22487d3404dbbeea3736f2313d9-93" name="rest_code_3c23f22487d3404dbbeea3736f2313d9-93"></a><span class="w">     </span><span class="n">Serial</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="n">rpm_print</span><span class="p">);</span><span class="w"></span>
+</code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="diy-arduino-tachometer-for-your-rc-airplane/#rest_code_3c23f22487d3404dbbeea3736f2313d9-94"><code data-line-number=" 94"></code></a></td>
+<td class="code"><code><a id="rest_code_3c23f22487d3404dbbeea3736f2313d9-94" name="rest_code_3c23f22487d3404dbbeea3736f2313d9-94"></a><span class="w">     </span><span class="n">Serial</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="s">"</span><span class="se">\t</span><span class="s">"</span><span class="p">);</span><span class="w"></span>
+</code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="diy-arduino-tachometer-for-your-rc-airplane/#rest_code_3c23f22487d3404dbbeea3736f2313d9-95"><code data-line-number=" 95"></code></a></td>
+<td class="code"><code><a id="rest_code_3c23f22487d3404dbbeea3736f2313d9-95" name="rest_code_3c23f22487d3404dbbeea3736f2313d9-95"></a>
+</code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="diy-arduino-tachometer-for-your-rc-airplane/#rest_code_3c23f22487d3404dbbeea3736f2313d9-96"><code data-line-number=" 96"></code></a></td>
+<td class="code"><code><a id="rest_code_3c23f22487d3404dbbeea3736f2313d9-96" name="rest_code_3c23f22487d3404dbbeea3736f2313d9-96"></a><span class="w">     </span><span class="n">Serial</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="s">"</span><span class="se">\r\n</span><span class="s">"</span><span class="p">);</span><span class="w"></span>
+</code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="diy-arduino-tachometer-for-your-rc-airplane/#rest_code_3c23f22487d3404dbbeea3736f2313d9-97"><code data-line-number=" 97"></code></a></td>
+<td class="code"><code><a id="rest_code_3c23f22487d3404dbbeea3736f2313d9-97" name="rest_code_3c23f22487d3404dbbeea3736f2313d9-97"></a>
+</code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="diy-arduino-tachometer-for-your-rc-airplane/#rest_code_3c23f22487d3404dbbeea3736f2313d9-98"><code data-line-number=" 98"></code></a></td>
+<td class="code"><code><a id="rest_code_3c23f22487d3404dbbeea3736f2313d9-98" name="rest_code_3c23f22487d3404dbbeea3736f2313d9-98"></a><span class="w">     </span><span class="n">u8x8</span><span class="p">.</span><span class="n">drawString</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">6</span><span class="p">,</span><span class="w"> </span><span class="s">"     "</span><span class="p">);</span><span class="w"></span>
+</code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="diy-arduino-tachometer-for-your-rc-airplane/#rest_code_3c23f22487d3404dbbeea3736f2313d9-99"><code data-line-number=" 99"></code></a></td>
+<td class="code"><code><a id="rest_code_3c23f22487d3404dbbeea3736f2313d9-99" name="rest_code_3c23f22487d3404dbbeea3736f2313d9-99"></a><span class="w">     </span><span class="n">u8x8</span><span class="p">.</span><span class="n">drawString</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">6</span><span class="p">,</span><span class="w"> </span><span class="n">String</span><span class="p">(</span><span class="n">rpm_print</span><span class="p">).</span><span class="n">c_str</span><span class="p">());</span><span class="w"></span>
+</code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="diy-arduino-tachometer-for-your-rc-airplane/#rest_code_3c23f22487d3404dbbeea3736f2313d9-100"><code data-line-number="100"></code></a></td>
+<td class="code"><code><a id="rest_code_3c23f22487d3404dbbeea3736f2313d9-100" name="rest_code_3c23f22487d3404dbbeea3736f2313d9-100"></a>
+</code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="diy-arduino-tachometer-for-your-rc-airplane/#rest_code_3c23f22487d3404dbbeea3736f2313d9-101"><code data-line-number="101"></code></a></td>
+<td class="code"><code><a id="rest_code_3c23f22487d3404dbbeea3736f2313d9-101" name="rest_code_3c23f22487d3404dbbeea3736f2313d9-101"></a><span class="w">     </span><span class="p">}</span><span class="w"></span>
+</code></td>
+</tr>
+</table></div>
+<p>Stay Curious!</p>
+</section>
+</div>
+</div></article>
+</div>
+</div>
+</div>
+</div>
+</body>
+</html><html><article class="h-entry post-text" itemscope="itemscope" itemtype="http://schema.org/Article"><header><h1 class="p-name entry-title"><a href="/blog/rebuilding-the-site-with-nikola/" class="u-url">Rebuilding the site with nikola</a></h1>
+        <div class="metadata">
+            <p class="byline author vcard"><span class="byline-name fn" itemprop="author">
+                neal
+            </span></p>
+            <p class="dateline">
+            <a href="/blog/rebuilding-the-site-with-nikola/" rel="bookmark">
             <time class="published dt-published" datetime="2021-09-20T19:46:55-07:00" itemprop="datePublished" title="2021-09-20 19:46">2021-09-20 19:46</time></a>
             </p>
-        </div>
+                <p class="commentline">
+        
+    <a href="/blog/rebuilding-the-site-with-nikola/#disqus_thread" data-disqus-identifier="cache/posts/rebuilding-the-site-with-nikola.html">Comments</a>
+
+
+        </p>
+</div>
     </header><div class="e-content entry-content">
     <div>
 <p>After a long hiatus, I have decided to revive my blog, ifcuriousthenlearn. Part of the reason why I stopped is that static site builder I has used, pelican, became unwieldy to use, especially with the jupyter notebook support. It was a real pain to add more posts, so I got tired of posting.</p>
@@ -86,17 +677,22 @@
 <p>So far, I am really impressed with nikola with excited to start posting more with some of my current projects. I hope you'll enjoy my work and soon I hope to add disqus comments again to have some interaction with readers.</p>
 <p>Enjoy and stay curious!</p>
 </div>
-    </div>
-    </article><article class="h-entry post-text" itemscope="itemscope" itemtype="http://schema.org/Article"><header><h1 class="p-name entry-title"><a href="brick-stacking/" class="u-url">An investigation of the Brick Stacking Problem</a></h1>
+</div></article></html><html><article class="h-entry post-text" itemscope="itemscope" itemtype="http://schema.org/Article"><header><h1 class="p-name entry-title"><a href="/blog/brick-stacking/" class="u-url">An investigation of the Brick Stacking Problem</a></h1>
         <div class="metadata">
             <p class="byline author vcard"><span class="byline-name fn" itemprop="author">
                 neal
             </span></p>
             <p class="dateline">
-            <a href="brick-stacking/" rel="bookmark">
+            <a href="/blog/brick-stacking/" rel="bookmark">
             <time class="published dt-published" datetime="2017-05-29T14:05:06-07:00" itemprop="datePublished" title="2017-05-29 14:05">2017-05-29 14:05</time></a>
             </p>
-        </div>
+                <p class="commentline">
+        
+    <a href="/blog/brick-stacking/#disqus_thread" data-disqus-identifier="cache/posts/An investigation of the Brick Stacking Problem.html">Comments</a>
+
+
+        </p>
+</div>
     </header><div class="e-content entry-content">
     <div>
 <div class="cell border-box-sizing text_cell rendered">
@@ -104,7 +700,7 @@
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="An-investigation-of-the-Brick-Stacking-Problem">An investigation of the Brick Stacking Problem<a class="anchor-link" href="brick-stacking/#An-investigation-of-the-Brick-Stacking-Problem">¶</a>
+<h3 id="An-investigation-of-the-Brick-Stacking-Problem">An investigation of the Brick Stacking Problem<a class="anchor-link" href="/blog/brick-stacking/#An-investigation-of-the-Brick-Stacking-Problem">¶</a>
 </h3>
 <p>The original question I posed to myself is this. Can you stack bricks of equal dimensions and mass such that the top-most brick does not overlap the bottom-most brick? Or more generally, how far can bricks be stacked to generate the largest overhang?</p>
 <p>I pondered the problem and deliberately avoided finding solutions. I struggled through a few hand-calculations and hacked out a bit of python code to visualize my solution.</p>
@@ -356,17 +952,22 @@ $$<p>OK, lets get started. First run the code to create the <code>brick_balance<
 </div>
 </div>
 </div>
-    </div>
-    </article><article class="h-entry post-text" itemscope="itemscope" itemtype="http://schema.org/Article"><header><h1 class="p-name entry-title"><a href="pythoncode-vs-excel/" class="u-url">Calculations with Python Code or Excel Spreadsheets</a></h1>
+</div></article></html><html><article class="h-entry post-text" itemscope="itemscope" itemtype="http://schema.org/Article"><header><h1 class="p-name entry-title"><a href="/blog/pythoncode-vs-excel/" class="u-url">Calculations with Python Code or Excel Spreadsheets</a></h1>
         <div class="metadata">
             <p class="byline author vcard"><span class="byline-name fn" itemprop="author">
                 neal
             </span></p>
             <p class="dateline">
-            <a href="pythoncode-vs-excel/" rel="bookmark">
+            <a href="/blog/pythoncode-vs-excel/" rel="bookmark">
             <time class="published dt-published" datetime="2016-08-20T00:00:00-07:00" itemprop="datePublished" title="2016-08-20 00:00">2016-08-20 00:00</time></a>
             </p>
-        </div>
+                <p class="commentline">
+        
+    <a href="/blog/pythoncode-vs-excel/#disqus_thread" data-disqus-identifier="cache/posts/Calculations with Python Code or Excel Spreadsheets.html">Comments</a>
+
+
+        </p>
+</div>
     </header><div class="e-content entry-content">
     <div>
 <div class="cell border-box-sizing text_cell rendered">
@@ -374,7 +975,7 @@ $$<p>OK, lets get started. First run the code to create the <code>brick_balance<
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="To-code-or-not-to-code">To code or not to code<a class="anchor-link" href="pythoncode-vs-excel/#To-code-or-not-to-code">¶</a>
+<h2 id="To-code-or-not-to-code">To code or not to code<a class="anchor-link" href="/blog/pythoncode-vs-excel/#To-code-or-not-to-code">¶</a>
 </h2>
 <p>When faced with a technical challenge or problem solving, conceptual understanding is an important first step, and I almost always start with hand calculations. Once I feel that I have a grasp of the concept, then I turn to a digital approach which often involves using excel or python and running some numbers, and re-running them, and fiddling until I really understand. I always feel like, especially in engineering, that using the right tool for the right job can make a big difference in the results. <a href="https://products.office.com/en-us/excel">Microsoft Excel</a> or <a href="https://www.libreoffice.org/discover/calc/">Libre Calc</a> spreadsheet programs are a great way to plug some numbers in and perform simple calculations with nearly no learning curve to get an answer. But as the complexity and quantity of the data and compuation increases, spreadsheets start to not make sense. That's where I feel a code based calculation method is important tool in everyones analysis toolbox. Classicaly, good old pencil and paper was the only way to model and work out problems. But, with the availability of the personal computer, software has allowed us to do more work with less effort. I find it very fascinating to see how people solve problems. This post will explore that idea and hopefully give you an idea to go beyond excel the next time you need to run some numbers.</p>
 <p>There are many ways to solve engineering problems. The main tools that I have found critical  are:</p>
@@ -409,7 +1010,7 @@ $$<p>OK, lets get started. First run the code to create the <code>brick_balance<
 </li>
 </ul>
 <p>These are a few methods for solving computational problems. Each one has a time and place, but recognizing when you are trying to put a square peg in a round hole can help keep you sane.</p>
-<h2 id="An-Example---python-and-Excel-to-understand-loans">An Example - python and Excel to understand loans<a class="anchor-link" href="pythoncode-vs-excel/#An-Example---python-and-Excel-to-understand-loans">¶</a>
+<h2 id="An-Example---python-and-Excel-to-understand-loans">An Example - python and Excel to understand loans<a class="anchor-link" href="/blog/pythoncode-vs-excel/#An-Example---python-and-Excel-to-understand-loans">¶</a>
 </h2>
 <p>OK, so we discussed some different approaches to problem solving. Lets look at an example of using an spreadsheet and python code to understand and determine the cost of an loan. Some terms are listed below if you aren't familiar with a compound interest loan.</p>
 <blockquote>
@@ -450,7 +1051,7 @@ payments due at the end of the period</p>
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Hand-Calculation">Hand Calculation<a class="anchor-link" href="pythoncode-vs-excel/#Hand-Calculation">¶</a>
+<h3 id="Hand-Calculation">Hand Calculation<a class="anchor-link" href="/blog/pythoncode-vs-excel/#Hand-Calculation">¶</a>
 </h3>
 <p>If we are to hand calculate our loan payments, we can use the following equation (found in Engineering Economy, Blank et al, pg 58)</p>
 $$
@@ -504,7 +1105,7 @@ $$
 <blockquote>
 <p><em>right-click on a new sheet -&gt; Insert -&gt; Spreadsheet Solutions -&gt; Loan Amortization</em></p>
 </blockquote>
-<h3 id="Spreadsheet">Spreadsheet<a class="anchor-link" href="pythoncode-vs-excel/#Spreadsheet">¶</a>
+<h3 id="Spreadsheet">Spreadsheet<a class="anchor-link" href="/blog/pythoncode-vs-excel/#Spreadsheet">¶</a>
 </h3>
 </div>
 </div>
@@ -524,7 +1125,7 @@ $$
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>But, if we want to change, say the term length, well then we have to change the layout of the table and mess with it, so the spreadsheet isn't as robust as we had hoped. How about a code solution? Here are the steps to get some python code going to do the same exact calcuation, and being very robust, and can be used for many different finanical applications.</p>
-<h3 id="Code">Code<a class="anchor-link" href="pythoncode-vs-excel/#Code">¶</a>
+<h3 id="Code">Code<a class="anchor-link" href="/blog/pythoncode-vs-excel/#Code">¶</a>
 </h3>
 </div>
 </div>
@@ -637,7 +1238,7 @@ If you need any help with the functions, use the help function to show the input
 <span class="n">help</span><span class="p">(</span><span class="n">ppmt</span><span class="p">)</span>
 </pre></div>
 <p>Try playing around with the code and see what happens when the terms of the loan are changed. The code is more robust to changes, where the spreadsheet has to be reworked</p>
-<h2 id="Summary">Summary<a class="anchor-link" href="pythoncode-vs-excel/#Summary">¶</a>
+<h2 id="Summary">Summary<a class="anchor-link" href="/blog/pythoncode-vs-excel/#Summary">¶</a>
 </h2>
 <p>A simple demo compared spreadsheets versus code with an example of a common calcualtion problem, loans! When pursuing future projects, think about what tools would be the best for the given problem, as well as you, and possibly your team.</p>
 <p>Stay curious!</p>
@@ -646,17 +1247,22 @@ If you need any help with the functions, use the help function to show the input
 </div>
 </div>
 </div>
-    </div>
-    </article><article class="h-entry post-text" itemscope="itemscope" itemtype="http://schema.org/Article"><header><h1 class="p-name entry-title"><a href="logical-indexing-with-python-excel/" class="u-url">Logical Indexing with Python and Excel</a></h1>
+</div></article></html><html><article class="h-entry post-text" itemscope="itemscope" itemtype="http://schema.org/Article"><header><h1 class="p-name entry-title"><a href="/blog/logical-indexing-with-python-excel/" class="u-url">Logical Indexing with Python and Excel</a></h1>
         <div class="metadata">
             <p class="byline author vcard"><span class="byline-name fn" itemprop="author">
                 neal
             </span></p>
             <p class="dateline">
-            <a href="logical-indexing-with-python-excel/" rel="bookmark">
+            <a href="/blog/logical-indexing-with-python-excel/" rel="bookmark">
             <time class="published dt-published" datetime="2016-08-20T00:00:00-07:00" itemprop="datePublished" title="2016-08-20 00:00">2016-08-20 00:00</time></a>
             </p>
-        </div>
+                <p class="commentline">
+        
+    <a href="/blog/logical-indexing-with-python-excel/#disqus_thread" data-disqus-identifier="cache/posts/logical indexing with python and excel.html">Comments</a>
+
+
+        </p>
+</div>
     </header><div class="e-content entry-content">
     <div>
 <div class="cell border-box-sizing text_cell rendered">
@@ -874,8 +1480,7 @@ If you need any help with the functions, use the help function to show the input
 
 
 
-<div class="output_html rendered_html output_subarea output_execute_result">
-<div>
+<div class="output_html rendered_html output_subarea output_execute_result"><div>
 <table border="1" class="dataframe">
 <thead><tr style="text-align: right;">
 <th></th>
@@ -940,8 +1545,7 @@ If you need any help with the functions, use the help function to show the input
     </tr>
 </tbody>
 </table>
-</div>
-</div>
+</div></div>
 
 </div>
 
@@ -1025,8 +1629,7 @@ Name: Color, dtype: bool</pre>
 
 
 
-<div class="output_html rendered_html output_subarea output_execute_result">
-<div>
+<div class="output_html rendered_html output_subarea output_execute_result"><div>
 <table border="1" class="dataframe">
 <thead><tr style="text-align: right;">
 <th></th>
@@ -1055,8 +1658,7 @@ Name: Color, dtype: bool</pre>
     </tr>
 </tbody>
 </table>
-</div>
-</div>
+</div></div>
 
 </div>
 
@@ -1096,8 +1698,7 @@ Name: Color, dtype: bool</pre>
 
 
 
-<div class="output_html rendered_html output_subarea output_execute_result">
-<div>
+<div class="output_html rendered_html output_subarea output_execute_result"><div>
 <table border="1" class="dataframe">
 <thead><tr style="text-align: right;">
 <th></th>
@@ -1138,8 +1739,7 @@ Name: Color, dtype: bool</pre>
     </tr>
 </tbody>
 </table>
-</div>
-</div>
+</div></div>
 
 </div>
 
@@ -1179,8 +1779,7 @@ Name: Color, dtype: bool</pre>
 
 
 
-<div class="output_html rendered_html output_subarea output_execute_result">
-<div>
+<div class="output_html rendered_html output_subarea output_execute_result"><div>
 <table border="1" class="dataframe">
 <thead><tr style="text-align: right;">
 <th></th>
@@ -1227,8 +1826,7 @@ Name: Color, dtype: bool</pre>
     </tr>
 </tbody>
 </table>
-</div>
-</div>
+</div></div>
 
 </div>
 
@@ -1269,8 +1867,7 @@ Name: Color, dtype: bool</pre>
 
 
 
-<div class="output_html rendered_html output_subarea output_execute_result">
-<div>
+<div class="output_html rendered_html output_subarea output_execute_result"><div>
 <table border="1" class="dataframe">
 <thead><tr style="text-align: right;">
 <th></th>
@@ -1293,8 +1890,7 @@ Name: Color, dtype: bool</pre>
     </tr>
 </tbody>
 </table>
-</div>
-</div>
+</div></div>
 
 </div>
 
@@ -1349,17 +1945,22 @@ Name: Color, dtype: bool</pre>
 </div>
 </div>
 </div>
-    </div>
-    </article><article class="h-entry post-text" itemscope="itemscope" itemtype="http://schema.org/Article"><header><h1 class="p-name entry-title"><a href="sage-embed/" class="u-url">Sage Math Tool</a></h1>
+</div></article></html><html><article class="h-entry post-text" itemscope="itemscope" itemtype="http://schema.org/Article"><header><h1 class="p-name entry-title"><a href="/blog/sage-embed/" class="u-url">Sage Math Tool</a></h1>
         <div class="metadata">
             <p class="byline author vcard"><span class="byline-name fn" itemprop="author">
                 neal
             </span></p>
             <p class="dateline">
-            <a href="sage-embed/" rel="bookmark">
+            <a href="/blog/sage-embed/" rel="bookmark">
             <time class="published dt-published" datetime="2016-06-05T00:00:00-08:00" itemprop="datePublished" title="2016-06-05 00:00">2016-06-05 00:00</time></a>
             </p>
-        </div>
+                <p class="commentline">
+        
+    <a href="/blog/sage-embed/#disqus_thread" data-disqus-identifier="cache/posts/sage.html">Comments</a>
+
+
+        </p>
+</div>
     </header><div class="e-content entry-content">
     <div>
 <p>I have been really impressed with the sage math application. It's based on python and is very powerful. Check out the documentation <a href="http://www.sagemath.org/">here</a> or try out the cloud service <a href="https://cloud.sagemath.com/">here</a></p>
@@ -1368,21 +1969,26 @@ Name: Color, dtype: bool</pre>
   <script type="text/x-sage">x = var('x') ; parametric_plot((cos(x),sin(x)^3),(x,0,2*pi),rgbcolor=hue(0.6))</script>
 </div>
 </div>
-    </div>
-    </article><article class="h-entry post-text" itemscope="itemscope" itemtype="http://schema.org/Article"><header><h1 class="p-name entry-title"><a href="what-open-source-means/" class="u-url">Understanding and using technology</a></h1>
+</div></article></html><html><article class="h-entry post-text" itemscope="itemscope" itemtype="http://schema.org/Article"><header><h1 class="p-name entry-title"><a href="/blog/what-open-source-means/" class="u-url">Understanding and using technology</a></h1>
         <div class="metadata">
             <p class="byline author vcard"><span class="byline-name fn" itemprop="author">
                 neal
             </span></p>
             <p class="dateline">
-            <a href="what-open-source-means/" rel="bookmark">
+            <a href="/blog/what-open-source-means/" rel="bookmark">
             <time class="published dt-published" datetime="2016-05-07T00:00:00-08:00" itemprop="datePublished" title="2016-05-07 00:00">2016-05-07 00:00</time></a>
             </p>
-        </div>
+                <p class="commentline">
+        
+    <a href="/blog/what-open-source-means/#disqus_thread" data-disqus-identifier="cache/posts/What Open-Source Means to Me.html">Comments</a>
+
+
+        </p>
+</div>
     </header><div class="e-content entry-content">
     <div>
 <p>The book <a href="http://www.catb.org/~esr/">The Cathedral and the Bazaar</a></p>
-<p><img alt="cathedralandbazaar" src="../images/cathedralandbazaar.jpg"></p>
+<p><img alt="cathedralandbazaar" src="/images/cathedralandbazaar.jpg"></p>
 <h2>What open-source means to me</h2>
 <p>The ideas expressed in this article are generally not my own, however, all the opinions are. And, those opinions are mostly a response from the book/manifesto of open-source, called The Cathedral and the Bazaar, by Eric Raymond.
 I stumbled across this book in my many random searches on the internet, and as I started reading it out of pure curiosity, and I immediately began correlating ideas behind the open software development strategies to many various activities in my life, including some epistemological interests in economics and philosophy. Being a US citizen, it is difficult to deny our ingrained capitalistic ideologies where companies are created and destroyed based on profit, and when you ask a typical person what their worth is, they often will give you a dollar value. It is a very slippery slope to think in terms of starting a company with a great idea with the hopes of one day making it big, but the open-source world says something different. It is a more humanitarian approach to creating great technology, rather than seeking fortunes through innovations.</p>
@@ -1442,19 +2048,24 @@ I cannot stress enough how important I have found it to eliminate my ego as a sc
 <p>I hope you get a chance to explore the ideas of open-source, because they go well beyond just computing.</p>
 <p>Stay Curious!</p>
 </div>
-    </div>
-    </article><article class="h-entry post-text" itemscope="itemscope" itemtype="http://schema.org/Article"><header><h1 class="p-name entry-title"><a href="Industrial-Design-of-Experiments-with-r/" class="u-url">Industrial Design of Experiments with R</a></h1>
+</div></article></html><html><article class="h-entry post-text" itemscope="itemscope" itemtype="http://schema.org/Article"><header><h1 class="p-name entry-title"><a href="/blog/Industrial-Design-of-Experiments-with-r/" class="u-url">Industrial Design of Experiments with R</a></h1>
         <div class="metadata">
             <p class="byline author vcard"><span class="byline-name fn" itemprop="author">
                 neal
             </span></p>
             <p class="dateline">
-            <a href="Industrial-Design-of-Experiments-with-r/" rel="bookmark">
+            <a href="/blog/Industrial-Design-of-Experiments-with-r/" rel="bookmark">
             <time class="published dt-published" datetime="2016-05-06T00:00:00-08:00" itemprop="datePublished" title="2016-05-06 00:00">2016-05-06 00:00</time><span class="updated"> (updated
                     <time class="dt-updated" datetime="2017-05-29T00:00:00-08:00" itemprop="dateUpdated" title="2017-05-29 00:00">2017-05-29 00:00</time>)</span>
             </a>
             </p>
-        </div>
+                <p class="commentline">
+        
+    <a href="/blog/Industrial-Design-of-Experiments-with-r/#disqus_thread" data-disqus-identifier="cache/posts/Industrial-Design-of-Experiments-with-R.html">Comments</a>
+
+
+        </p>
+</div>
     </header><div class="e-content entry-content">
     <div>
 <h2>Motivation</h2>
@@ -1465,9 +2076,9 @@ I cannot stress enough how important I have found it to eliminate my ego as a sc
 <h3>R Base install and RStudio</h3>
 <p>To get started, I am using Windows 7. To install R, check out <a href="https://cran.r-project.org/bin/windows/base/">R-Base Package</a>.</p>
 <p>R does not come with a GUI. It is just a command line for executing R-code that is an ascii file with the extension <strong>*.r</strong></p>
-<p><img alt="R_GUI" src="../files/Industrial-Design-of-Experiments-with-R/images/R_GUI.png" title="Default R Interface"></p>
+<p><img alt="R_GUI" src="/files/Industrial-Design-of-Experiments-with-R/images/R_GUI.png" title="Default R Interface"></p>
 <p>Fortunately some awesome GUI's already exist. <a href="https://rkward.kde.org/">rkward</a> is cool, but I prefer <a href="https://www.rstudio.com/">Rstudio</a>. RStudio has a built in script editor, a console for running commands, a plot window, a file explorer, and a help window. What more could you ask for? Take some time and familiarize yourself with RStudio.</p>
-<p><img alt="R_Studio" src="../files/Industrial-Design-of-Experiments-with-R/images/R_Studio.png" title="Awesome RGUI RStudio"></p>
+<p><img alt="R_Studio" src="/files/Industrial-Design-of-Experiments-with-R/images/R_Studio.png" title="Awesome RGUI RStudio"></p>
 <p>For more information on the R DOE package we will be using, check out <a href="http://prof.beuth-hochschule.de/groemping/software/design-of-experiments/project-industrial-doe-in-r/">Prof. Dr. Ulrike Grömpings page</a>. The walk-through here is derived from <a href="http://www1.beuth-hochschule.de/FB_II/reports/Report-2011-004.pdf">this document</a>.</p>
 <p>Open up RStudio and familiarze yourself with the tools. I am really impressed with all the extra features with reporting and html/markdown exporting, and am excited to check those features out in the future.
 I found three hotkeys that I use all the time are:<br>
@@ -1569,11 +2180,11 @@ For DOE experts, sorry about my simple explaination. I am an engineer, not a sta
 
 
 <p>This should launch RCommander, which will run alongside RStudio and use the console for output.</p>
-<p><img alt="Rcmdr" src="../files/Industrial-Design-of-Experiments-with-R/images/Rcmdr.png" title="Rcommander DOE interface"></p>
+<p><img alt="Rcmdr" src="/files/Industrial-Design-of-Experiments-with-R/images/Rcmdr.png" title="Rcommander DOE interface"></p>
 <p>From the RCommander menu. we will be using the <strong>Design</strong> menu for the DOE setup, experiment, and analysis. Lets setup our experiment.</p>
-<p><img alt="doe_create" src="../files/Industrial-Design-of-Experiments-with-R/images/doe_create.png" title="DOE Setup"></p>
+<p><img alt="doe_create" src="/files/Industrial-Design-of-Experiments-with-R/images/doe_create.png" title="DOE Setup"></p>
 <p>From the interface here, filling the information manually or use the provided csv file.</p>
-<p><img alt="doe_setup" src="../files/Industrial-Design-of-Experiments-with-R/images/doe_setup.png" title="DOE Setup"></p>
+<p><img alt="doe_setup" src="/files/Industrial-Design-of-Experiments-with-R/images/doe_setup.png" title="DOE Setup"></p>
 <p>This will generate a randomized screening experiemnt experiement with 12 runs. There are 3 dummy factors, e1,e2,e3 which are necessary for screening experiments. They can be ignored or see the manual for more details.</p>
 <table>
 <thead><tr>
@@ -1776,14 +2387,14 @@ For DOE experts, sorry about my simple explaination. I am an engineer, not a sta
 </table>
 <h3>DOE Experiment</h3>
 <p>To run your experiment, go through each run, set-up the system as prescribed by the factors, and record the response. Once you run the experiment and enter your results in the csv, re-import the csv to analyze.
-<img alt="doe_reimport" src="../files/Industrial-Design-of-Experiments-with-R/images/import_results.png" title="DOE Reimport"></p>
+<img alt="doe_reimport" src="/files/Industrial-Design-of-Experiments-with-R/images/import_results.png" title="DOE Reimport"></p>
 <h3>DOE Results</h3>
 <p>The visualizations that are generated using R for DOE are great! The results should tell us which factors should be studied with higher fidelity, and which factors are not necessary to continue studying.</p>
 <p>Without going into great detail, here are some examples.</p>
 <h4>Half-Normal Plot</h4>
 <p><strong>Design -&gt; Analyze design -&gt; Effects (Half) Normal Plots</strong>  </p>
 <p>Ensure the dummy factors e1,e2,e3 are included
-<img alt="half-normal-plot" src="../files/Industrial-Design-of-Experiments-with-R/images/half-normal-plot.png" title="half-normal-plot">
+<img alt="half-normal-plot" src="/files/Industrial-Design-of-Experiments-with-R/images/half-normal-plot.png" title="half-normal-plot">
 Observe that Pressure, Airvolume, Angle, WadType have the largest absolute effect, respectivley</p>
 <h4>Linear-Model</h4>
 <p><strong>Design -&gt; Analyze design -&gt; Default Linear Model</strong>  </p>
@@ -1811,172 +2422,66 @@ Observe that Pressure, Airvolume, Angle, WadType have the largest absolute effec
 <p>Again the Pressure, Airvolume, Angle, WadType have the largest absolute effect, respectivley. Those factors are also less than our p-value, which we defined as 0.1, which tells us that the results are significant. Since this is a screening experiment, interactions are not computed.</p>
 <h3>Main-Effects Plot</h3>
 <p><strong>Design -&gt; Analyze design -&gt; Main Effects and Interactions Plots</strong>
-<img alt="main-effects-plot" src="../files/Industrial-Design-of-Experiments-with-R/images/main-effects-plot.png" title="main-effects-plot"></p>
+<img alt="main-effects-plot" src="/files/Industrial-Design-of-Experiments-with-R/images/main-effects-plot.png" title="main-effects-plot"></p>
 <p>The main effects plot is a great visual to qualitativley grasp the results of the experiment. We can tell the how much the factor contributes to the response by the slope and whether it is positive or negative by the slope. Flat lines indicate that the factor with the selected levels is insignificant in the model we have created.</p>
 <h2>Conclusion</h2>
 <p>A simple example was shown how to use an open-source solution for creating and analzying statistical experiments using R. This is the only open-source tool I have found, so if anyone knows of another, please let me know. I have found R to be a great lanugage to know. The syntax is fine, the packages are numerous, and the community is good.
 Running experiments with DOE methods can be a great tool to have in nearly any industry. My background in Industrial and Systems Engineering exposed me to DOE for traditional manufacturing studies, but the concepts can be used in nearly any situation where understand of cause-and-effect is desired.</p>
 <p>Stay Curious!</p>
 </div>
-    </div>
-    </article><article class="h-entry post-text" itemscope="itemscope" itemtype="http://schema.org/Article"><header><h1 class="p-name entry-title"><a href="python-trinket/" class="u-url">Python Trinket, another interactive execution tool</a></h1>
+</div></article></html><html><article class="h-entry post-text" itemscope="itemscope" itemtype="http://schema.org/Article"><header><h1 class="p-name entry-title"><a href="/blog/python-trinket/" class="u-url">Python Trinket, another interactive execution tool</a></h1>
         <div class="metadata">
             <p class="byline author vcard"><span class="byline-name fn" itemprop="author">
                 neal
             </span></p>
             <p class="dateline">
-            <a href="python-trinket/" rel="bookmark">
+            <a href="/blog/python-trinket/" rel="bookmark">
             <time class="published dt-published" datetime="2016-05-06T00:00:00-08:00" itemprop="datePublished" title="2016-05-06 00:00">2016-05-06 00:00</time></a>
             </p>
-        </div>
+                <p class="commentline">
+        
+    <a href="/blog/python-trinket/#disqus_thread" data-disqus-identifier="cache/posts/Learn_Python_with_Trinket.html">Comments</a>
+
+
+        </p>
+</div>
     </header><div class="e-content entry-content">
     <div>
 <p>another neat tool for debugging python code.</p>
 <iframe src="https://trinket.io/embed/python/90b0702a6a" width="100%" height="500" frameborder="0" marginwidth="0" marginheight="0" allowfullscreen></iframe>
 </div>
-    </div>
-    </article><article class="h-entry post-text" itemscope="itemscope" itemtype="http://schema.org/Article"><header><h1 class="p-name entry-title"><a href="python-tutor/" class="u-url">Python Tutor, and interactive execution tool</a></h1>
+</div></article></html><html><article class="h-entry post-text" itemscope="itemscope" itemtype="http://schema.org/Article"><header><h1 class="p-name entry-title"><a href="/blog/python-tutor/" class="u-url">Python Tutor, and interactive execution tool</a></h1>
         <div class="metadata">
             <p class="byline author vcard"><span class="byline-name fn" itemprop="author">
                 neal
             </span></p>
             <p class="dateline">
-            <a href="python-tutor/" rel="bookmark">
+            <a href="/blog/python-tutor/" rel="bookmark">
             <time class="published dt-published" datetime="2016-05-06T00:00:00-08:00" itemprop="datePublished" title="2016-05-06 00:00">2016-05-06 00:00</time></a>
             </p>
-        </div>
+                <p class="commentline">
+        
+    <a href="/blog/python-tutor/#disqus_thread" data-disqus-identifier="cache/posts/Python-tutor.html">Comments</a>
+
+
+        </p>
+</div>
     </header><div class="e-content entry-content">
     <div>
 <p>yet another neat tool I found online for understanding python execution</p>
 <iframe width="800" height="600" frameborder="0" src="http://pythontutor.com/iframe-embed.html#code=x+%3D+%5B1,+2,+3%5D%0Ay+%3D+%5B4,+5,+6%5D%0Az+%3D+y%0Ay+%3D+x%0Ax+%3D+z%0A%0Ax+%3D+%5B1,+2,+3%5D+%23+a+different+%5B1,+2,+3%5D+list!%0Ay+%3D+x%0Ax.append(4%29%0Ay.append(5%29%0Az+%3D+%5B1,+2,+3,+4,+5%5D+%23+a+different+list!%0Ax.append(6%29%0Ay.append(7%29%0Ay+%3D+%22hello%22%0A%0A%0Adef+foo(lst%29%3A%0A++++lst.append(%22hello%22%29%0A++++bar(lst%29%0A%0Adef+bar(myLst%29%3A%0A++++print(myLst%29%0A%0Afoo(x%29%0Afoo(z%29&amp;origin=opt-frontend.js&amp;cumulative=false&amp;heapPrimitives=false&amp;textReferences=false&amp;py=2&amp;rawInputLstJSON=%5B%5D&amp;curInstr=0&amp;codeDivWidth=350&amp;codeDivHeight=400"> </iframe>
 </div>
-    </div>
-    </article><article class="h-entry post-text" itemscope="itemscope" itemtype="http://schema.org/Article"><header><h1 class="p-name entry-title"><a href="pyver-version-control/" class="u-url">Pyver, Version Control For Dummies</a></h1>
-        <div class="metadata">
-            <p class="byline author vcard"><span class="byline-name fn" itemprop="author">
-                neal
-            </span></p>
-            <p class="dateline">
-            <a href="pyver-version-control/" rel="bookmark">
-            <time class="published dt-published" datetime="2016-05-06T00:00:00-08:00" itemprop="datePublished" title="2016-05-06 00:00">2016-05-06 00:00</time></a>
-            </p>
-        </div>
-    </header><div class="e-content entry-content">
-    <div>
-<h3>Why pyver?</h3>
-<p>The movtiation behind pyver, which is to creating a version control method which is very, very simple to track the history of files. The work-flow of pyver is something I do anyway when working on something simple that uses binary files, especially ones that are linked through the software that is required to read them (eg CAD designs). I will create multiple directories, eg v1, v2 and copy the entire contents of my in-progress files in it that I want to preserve the history. The issue with this is that when file names are changed, it can break links to dependent files, so keeping a file identical is important for tracking files. It was also a goal to use this tool over a network drive where multiple users can archive files as they wish
-There are a couple of other excellent options, but have a steep learning curve and some do not perform well with large binary files. Also, most version control systems are designed for code or text files, not large binanry files, like word documents or cad files. If you need more functionality, I'd recommend checking out these programs in order os simplicity. <a href="https://bitbucket.org/mats_ekberg/boar/wiki/Home">boar VCS</a>, <a href="https://www.mercurial-scm.org/">mercurial SCM</a>, <a href="https://git-scm.com/">git</a> with the <a href="https://git-lfs.github.com/">large file extension</a></p>
-<h3>The basic operation of this program goes like this</h3>
-<p>1) create some files<br>
-2) run pyver and make a copy of your files<br>
-3) make as many revisions as you want<br>
-4) if you want to revert back to an older revision, grab files out of the dated .archive directories and put them in your current directory  </p>
-<h4>Criteria for design</h4>
-<ul>
-<li>Simplicity is your friend, obscurity is your enemy</li>
-<li>It is unacceptable to rename files to track versions. This accomplishes this by putting the files in different directories and keep your current file with the desired, persistent filename</li>
-<li>Can be used over a network drive. Does not require a central server.</li>
-<li>Be OS agnostic (written in Python)</li>
-<li>know when the changes were made, with a comment and who did it</li>
-</ul>
-<h2>Tutorial</h2>
-<p>To get started, lets do a quick demo in windows. Brace yourself, you are going to have to use the command line. In your current directory with the pyver.py file, open a command line with <code>shift+right_click</code> and in the menu select <code>Open command window here</code>. Another way to get a command window in your current directory is to type <code>alt+D</code> and type <code>powershell</code> or <code>cmd</code>.
-Now type</p>
-<pre class="code literal-block"><span></span><code><span class="err">python pyver.py</span>
-</code></pre>
-
-
-<p>Done. That's it. We have created a pyver repository and made a backup of all the files in our current directory in an archive naming year-month-day-hour-minute-second. Anytime we need to make another backup, just repeat the last step.</p>
-<p>OK, lets add a bit more work upfront to save us some typing for years to come. I would recommend having a windows folder that is added to the user PATH system variable where you can keep test or production scripts that you want to access from the command line. For example, I have <code>C:\Users\Neal\bin</code> that is in the system PATH variable which I can dump python scripts with the *.bat file. Now, all we have to type is <code>pyver</code> to get the same result as <code>python pyver.py</code>
-To add this path variable, type</p>
-<blockquote>
-<p>1) Start <br>
-2) search "variables" and select "Edit Enviornmental variables for your account"<br>
-3) Add PATH variable or append with the path to the folder with your scripts    </p>
-</blockquote>
-<p>There are a few built in commands to interrogate the repository. The first is log, which shows the contents of a text file that keeps track of the commits that are made</p>
-<pre class="code literal-block"><span></span><code><span class="err">pyver log</span>
-<span class="err">Neal , 20160125210812 , 7kb ,  , pyver.py|README.md|pyver.bat</span>
-<span class="err">Neal , 20160125210814 , 7kb ,  , pyver.py|README.md|pyver.bat</span>
-<span class="err">Neal , 20160125210817 , 7kb ,  , pyver.py|README.md|pyver.bat</span>
-<span class="err">Neal , 20160125210854 , 7kb , making a comment for this commit , pyver.py|README.md|pyver.bat</span>
-<span class="err">Neal , 20160125210912 , 4kb , only adding one file , pyver.py</span>
-</code></pre>
-
-
-<p>The next is tree, which shows all the files in the repo.</p>
-<pre class="code literal-block"><span></span><code><span class="n">pyver</span> <span class="n">tree</span>
-
-<span class="p">.</span><span class="o">/</span><span class="p">.</span><span class="n">archive</span>
-<span class="o">|</span>  <span class="p">.</span><span class="o">/</span><span class="mi">20160125210812</span>
-<span class="o">|</span>   <span class="o">|</span>     <span class="n">pyver</span><span class="p">.</span><span class="n">py</span>  
-<span class="o">|</span>   <span class="o">|</span>     <span class="n">README</span><span class="p">.</span><span class="n">md</span>  
-<span class="o">|</span>   <span class="o">|</span>     <span class="n">pyver</span><span class="p">.</span><span class="n">bat</span>  
-<span class="o">|</span>     <span class="n">pyver</span><span class="p">.</span><span class="n">log</span>  
-<span class="o">|</span>  <span class="p">.</span><span class="o">/</span><span class="mi">20160125210814</span>
-<span class="o">|</span>   <span class="o">|</span>     <span class="n">pyver</span><span class="p">.</span><span class="n">py</span>  
-<span class="o">|</span>   <span class="o">|</span>     <span class="n">README</span><span class="p">.</span><span class="n">md</span>  
-<span class="o">|</span>   <span class="o">|</span>     <span class="n">pyver</span><span class="p">.</span><span class="n">bat</span>  
-<span class="o">|</span>  <span class="p">.</span><span class="o">/</span><span class="mi">20160125210817</span>
-<span class="o">|</span>   <span class="o">|</span>     <span class="n">pyver</span><span class="p">.</span><span class="n">py</span>  
-<span class="o">|</span>   <span class="o">|</span>     <span class="n">README</span><span class="p">.</span><span class="n">md</span>  
-<span class="o">|</span>   <span class="o">|</span>     <span class="n">pyver</span><span class="p">.</span><span class="n">bat</span>  
-<span class="o">|</span>  <span class="p">.</span><span class="o">/</span><span class="mi">20160125210854</span>
-<span class="o">|</span>   <span class="o">|</span>     <span class="n">pyver</span><span class="p">.</span><span class="n">py</span>  
-<span class="o">|</span>   <span class="o">|</span>     <span class="n">README</span><span class="p">.</span><span class="n">md</span>  
-<span class="o">|</span>   <span class="o">|</span>     <span class="n">pyver</span><span class="p">.</span><span class="n">bat</span>  
-<span class="o">|</span>  <span class="p">.</span><span class="o">/</span><span class="mi">20160125210912</span>
-<span class="o">|</span>   <span class="o">|</span>     <span class="n">pyver</span><span class="p">.</span><span class="n">py</span>  
-  <span class="n">pyver</span><span class="p">.</span><span class="n">py</span>  
-  <span class="n">README</span><span class="p">.</span><span class="n">md</span>  
-  <span class="n">pyver</span><span class="p">.</span><span class="n">bat</span>  
-</code></pre>
-
-
-<p>We also have some flags we can use to customize our commits. This commit adds only the files file1.txt and file2.docx and adds a comment. Note-none of the flag inputs can have spaces, so files are seperated by <code>|</code> and comments are written without spaces using <code>-</code></p>
-<pre class="code literal-block"><span></span><code><span class="err">pyver -f "file1.txt|file2.docx" -c "making a comment for this commit"</span>
-</code></pre>
-
-
-<p>We can also use wildcards to add groups of files rather than listing each individual file.</p>
-<pre class="code literal-block"><span></span><code><span class="err">pyver -f "*.txt|*.docx" -c "I added all the txt and docx files to my archive"</span>
-</code></pre>
-
-
-<p>Also, by default, pyver will skip all files and directories that start with . and ~. These files are typically temporary, backup, or configuration files.</p>
-<p>I used pyinstaller to build my own windows executable</p>
-<pre class="code literal-block"><span></span><code><span class="err">pyinstaller pyver.py --onefile</span>
-</code></pre>
-
-
-<p>There you have it. The worlds easiest version control system that multiple users can use over a network, retrieving your old files is trivial, and now you don't have to change your file names to all the silly things people come up with.</p>
-<p>You can find the source code here. <a href="https://github.com/nagordon/pyver">https://github.com/nagordon/pyver</a></p>
-<p>This was a fun project to learn more about file manipulation with python and in the end, I now have a handy tool!</p>
-<p>Stay Curious!</p>
-</div>
-    </div>
-    </article>
-</div>
-
-        <nav class="postindexpager"><ul class="pager">
+</div></article></html><html>
+<nav class="postindexpager"><ul class="pager">
 <li class="next">
-                <a href="index-2.html" rel="next">Older posts</a>
+                <a href="/blog/index-2.html" rel="next">Older posts</a>
             </li>
-        </ul></nav><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML" integrity="sha384-3lJUsx1TJHt7BA4udB5KPnDrlkO8T6J6v/op7ui0BbCjvZ9WqV4Xm6DTP6kQ/iBH" crossorigin="anonymous"></script><script type="text/x-mathjax-config">
+        </ul></nav><script>var disqus_shortname="ifcuriousthenlearn_nikola";(function(){var a=document.createElement("script");a.async=true;a.src="https://"+disqus_shortname+".disqus.com/count.js";(document.getElementsByTagName("head")[0]||document.getElementsByTagName("body")[0]).appendChild(a)}());</script><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML" integrity="sha384-3lJUsx1TJHt7BA4udB5KPnDrlkO8T6J6v/op7ui0BbCjvZ9WqV4Xm6DTP6kQ/iBH" crossorigin="anonymous"></script><script type="text/x-mathjax-config">
         MathJax.Hub.Config({tex2jax: {inlineMath: [['$latex ','$'], ['\\(','\\)']]}});
-        </script>
-</div>
-        <!--End of body content-->
-
-        <footer id="footer">
+        </script><!--End of body content--><footer id="footer">
             Contents © 2021         <a href="mailto:">neal</a> - Powered by         <a href="https://getnikola.com" rel="nofollow">Nikola</a>         copyright Neal Gordon
             
-        </footer>
-</div>
-</div>
-
-
-            <script src="../assets/js/all-nocdn.js"></script><!-- fancy dates --><script>
+        </footer><script src="/assets/js/all-nocdn.js"></script><!-- fancy dates --><script>
     moment.locale("en");
     fancydates(0, "YYYY-MM-DD HH:mm");
     </script><!-- end fancy dates --><script>
@@ -1986,5 +2491,5 @@ To add this path variable, type</p>
             return element.getElementsByTagName('img')[0].alt;
     }});
     </script>
-</body>
 </html>
+

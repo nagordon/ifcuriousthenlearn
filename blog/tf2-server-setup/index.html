@@ -87,8 +87,14 @@
             <a href="." rel="bookmark">
             <time class="published dt-published" datetime="2015-03-14T00:00:00-08:00" itemprop="datePublished" title="2015-03-14 00:00">2015-03-14 00:00</time></a>
             </p>
+                <p class="commentline">
+        
+    <a href="#disqus_thread" data-disqus-identifier="cache/posts/Team Fortress 2 Server Install for Dummies.html">Comments</a>
+
+
             
-        <p class="sourceline"><a href="index.md" class="sourcelink">Source</a></p>
+        </p>
+<p class="sourceline"><a href="index.md" class="sourcelink">Source</a></p>
 
         </div>
         
@@ -139,16 +145,16 @@ chmod +x tf2server
 <h3>
 <strong>Step 6</strong> - Connect via LAN</h3>
 <p>if you run <code>./tf2server details</code> you will see a bunch of output  </p>
-<pre class="code literal-block"><span></span><code><span class="n">Team</span> <span class="n">Fortress</span> <span class="mi">2</span> <span class="n">Server</span> <span class="n">Details</span>
-<span class="o">================================================================================================================================================</span>
-<span class="n">Server</span> <span class="n">name</span><span class="p">:</span>    <span class="n">tf2</span> <span class="n">server</span> <span class="mi">1</span>
-<span class="n">Server</span> <span class="n">IP</span><span class="p">:</span>      <span class="mi">192</span><span class="p">.</span><span class="mi">168</span><span class="p">.</span><span class="mi">1</span><span class="p">.</span><span class="mi">196</span><span class="p">:</span><span class="mi">27015</span>
-<span class="n">RCON</span> <span class="n">password</span><span class="p">:</span>  <span class="n">tf2server</span>
-<span class="n">Status</span><span class="p">:</span>         <span class="n">ONLINE</span>
+<pre class="code literal-block"><span></span><code>Team Fortress 2 Server Details
+================================================================================================================================================
+Server name:    tf2 server 1
+Server IP:      192.168.1.196:27015
+RCON password:  tf2server
+Status:         ONLINE
 
-<span class="n">Command</span><span class="o">-</span><span class="n">line</span> <span class="k">Parameters</span>
-<span class="o">================================================================================================================================================</span>
-<span class="p">.</span><span class="o">/</span><span class="n">srcds_run</span> <span class="o">-</span><span class="n">game</span> <span class="n">tf</span> <span class="o">-</span><span class="n">strictportbind</span> <span class="o">-</span><span class="n">ip</span> <span class="mi">192</span><span class="p">.</span><span class="mi">168</span><span class="p">.</span><span class="mi">1</span><span class="p">.</span><span class="mi">196</span> <span class="o">-</span><span class="n">port</span> <span class="mi">27015</span> <span class="o">+</span><span class="n">clientport</span> <span class="mi">27005</span> <span class="o">+</span><span class="n">tv_port</span> <span class="mi">27020</span> <span class="o">-</span><span class="n">tickrate</span>  <span class="o">+</span><span class="k">map</span> <span class="n">pl_goldrush</span> <span class="o">+</span><span class="n">servercfgfile</span> <span class="n">tf2</span><span class="o">-</span><span class="n">server</span><span class="p">.</span><span class="n">cfg</span> <span class="o">-</span><span class="n">maxplayers</span> <span class="mi">16</span>
+Command-line Parameters
+================================================================================================================================================
+./srcds_run -game tf -strictportbind -ip 192.168.1.196 -port 27015 +clientport 27005 +tv_port 27020 -tickrate  +map pl_goldrush +servercfgfile tf2-server.cfg -maxplayers 16
 </code></pre>
 
 
@@ -160,8 +166,8 @@ chmod +x tf2server
 <p>After that, I access my default router IP via a web browser with <code>192.168.1.1</code> and set up a port forward on the server IP and port</p>
 <p>Now, restart the tf2server with <code>./tf2server restart</code> and go to the console <code>./tf2server console</code> and look at some of the output. Note, this script uses tmux, which allows us to log out of the server and keep the server running. Here, you can run all the comamnds to manage the server</p>
 <p>You should see somewhere in the top the public ip address of the server computer</p>
-<pre class="code literal-block"><span></span><code><span class="err">Connection to Steam servers successful.</span>
-<span class="err">   Public IP is 12.34.56.78.</span>
+<pre class="code literal-block"><span></span><code>Connection to Steam servers successful.
+   Public IP is 12.34.56.78.
 </code></pre>
 
 
@@ -183,35 +189,35 @@ chmod +x tf2server
 <p>To customize your server there are a few files you should edit. Make sure you make a backup of each in case it gets messed up</p>
 <p>The configuration file updates the server every time a new map loads. Here is mine.
 /home/tf2server/serverfiles/tf/cfg/tf2-server.cfg</p>
-<pre class="code literal-block"><span></span><code><span class="err">mp_disable_respawn_times 0</span>
-<span class="err">tf_bot_quota 13</span>
-<span class="err">tf_bot_quota_mode "fill"</span>
-<span class="err">tf_bot_difficulty 1</span>
-<span class="err">mp_timelimit 15</span>
-<span class="err">mp_maxrounds 5</span>
-<span class="err">mp_winlimit</span>
-<span class="err">sv_cheats 0</span>
-<span class="err">tf_bot_melee_only 0</span>
+<pre class="code literal-block"><span></span><code>mp_disable_respawn_times 0
+tf_bot_quota 13
+tf_bot_quota_mode "fill"
+tf_bot_difficulty 1
+mp_timelimit 15
+mp_maxrounds 5
+mp_winlimit
+sv_cheats 0
+tf_bot_melee_only 0
 </code></pre>
 
 
 <p>/home/tf2server/serverfiles/tf/cfg/mapcycle_default.txt
 The mapcycle file tells the server which map to go to next. if you use <code>changelevel pl_barnblitz</code>, it will begin the cycle there</p>
-<pre class="code literal-block"><span></span><code><span class="err">pl_badwater</span>
-<span class="err">pl_goldrush</span>
-<span class="err">pl_upward</span>
-<span class="err">pl_barnblitz</span>
-<span class="err">pl_hoodoo_final</span>
-<span class="err">koth_viaduct</span>
-<span class="err">koth_nucleus</span>
-<span class="err">koth_harvest_final</span>
-<span class="err">koth_lakeside_final</span>
-<span class="err">koth_badlands</span>
-<span class="err">koth_king</span>
-<span class="err">plr_pipeline</span>
-<span class="err">plr_hightower</span>
-<span class="err">pl_thundermountain</span>
-<span class="err">pl_frontier_final</span>
+<pre class="code literal-block"><span></span><code>pl_badwater
+pl_goldrush
+pl_upward
+pl_barnblitz
+pl_hoodoo_final
+koth_viaduct
+koth_nucleus
+koth_harvest_final
+koth_lakeside_final
+koth_badlands
+koth_king
+plr_pipeline
+plr_hightower
+pl_thundermountain
+pl_frontier_final
 </code></pre>
 
 
@@ -227,28 +233,46 @@ http://steamcommunity.com/sharedfiles/filedetails/?id=250332112<br>
 https://wiki.teamfortress.com/wiki/Linux_dedicated_server<br>
 https://wiki.teamfortress.com/wiki/Bots  </p>
 </div>
-    </div>
-    <aside class="postpromonav"><nav><ul itemprop="keywords" class="tags">
-<li><a class="tag p-category" href="../../categories/gaming/" rel="tag">gaming</a></li>
-            <li><a class="tag p-category" href="../../categories/linux/" rel="tag">linux</a></li>
+</div></article>
+</div>
+</div>
+</div>
+</body>
+</html><html>
+<aside class="postpromonav"><nav><ul itemprop="keywords" class="tags">
+<li><a class="tag p-category" href="/categories/gaming/" rel="tag">gaming</a></li>
+            <li><a class="tag p-category" href="/categories/linux/" rel="tag">linux</a></li>
         </ul>
 <ul class="pager hidden-print">
 <li class="next">
-                <a href="../matlab-to-python-conversion/" rel="next" title="MATLAB to python conversion">Next post</a>
+                <a href="/blog/matlab-to-python-conversion/" rel="next" title="MATLAB to python conversion">Next post</a>
             </li>
-        </ul></nav></aside></article>
-</div>
-        <!--End of body content-->
+        </ul></nav></aside><section class="comments hidden-print"><h2>Comments</h2>
+        
+        
+        <div id="disqus_thread"></div>
+        <script>
+        var disqus_shortname ="ifcuriousthenlearn_nikola",
+            disqus_url="https://nagordon.github.io/ifcuriousthenlearn/blog/tf2-server-setup/",
+        disqus_title="Team Fortress 2 Server Install for Dummies",
+        disqus_identifier="cache/posts/Team Fortress 2 Server Install for Dummies.html",
+        disqus_config = function () {
+            this.language = "en";
+        };
+        (function() {
+            var dsq = document.createElement('script'); dsq.async = true;
+            dsq.src = 'https://' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script><noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a>
+</noscript>
+    <a href="https://disqus.com" class="dsq-brlink" rel="nofollow">Comments powered by <span class="logo-disqus">Disqus</span></a>
 
-        <footer id="footer">
+
+        </section><script>var disqus_shortname="ifcuriousthenlearn_nikola";(function(){var a=document.createElement("script");a.async=true;a.src="https://"+disqus_shortname+".disqus.com/count.js";(document.getElementsByTagName("head")[0]||document.getElementsByTagName("body")[0]).appendChild(a)}());</script><!--End of body content--><footer id="footer">
             Contents © 2021         <a href="mailto:">neal</a> - Powered by         <a href="https://getnikola.com" rel="nofollow">Nikola</a>         copyright Neal Gordon
             
-        </footer>
-</div>
-</div>
-
-
-            <script src="../../assets/js/all-nocdn.js"></script><!-- fancy dates --><script>
+        </footer><script src="/assets/js/all-nocdn.js"></script><!-- fancy dates --><script>
     moment.locale("en");
     fancydates(0, "YYYY-MM-DD HH:mm");
     </script><!-- end fancy dates --><script>
@@ -258,5 +282,5 @@ https://wiki.teamfortress.com/wiki/Bots  </p>
             return element.getElementsByTagName('img')[0].alt;
     }});
     </script>
-</body>
 </html>
+
