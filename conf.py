@@ -14,6 +14,8 @@ GITHUB_SOURCE_BRANCH = 'src'
 GITHUB_REMOTE_NAME = 'https://github.com/nagordon/ifcuriousthenlearn.git'
 GITHUB_COMMIT_SOURCE = True
 
+# nice example 
+# https://jiaweizhuang.github.io/blog/nikola-guide/
 # ! Some settings can be different in different languages.
 # ! A comment stating (translatable) is used to denote those.
 # ! There are two ways to specify a translatable setting:
@@ -969,12 +971,12 @@ RSS_COPYRIGHT_FORMATS = CONTENT_FOOTER_FORMATS
 # systems.  The following comment systems are supported by Nikola:
 #   disqus, facebook, intensedebate, isso, muut, commento, utterances
 # You can leave this option blank to disable comments.
-COMMENT_SYSTEM = ""
+COMMENT_SYSTEM = "disqus"
 # And you also need to add your COMMENT_SYSTEM_ID which
 # depends on what comment system you use. The default is
 # "nikolademo" which is a test account for Disqus. More information
 # is in the manual.
-COMMENT_SYSTEM_ID = ""
+COMMENT_SYSTEM_ID = "ifcuriousthenlearn_nikola"
 
 # Create index.html for page folders?
 # WARNING: if a page would conflict with the index file (usually
