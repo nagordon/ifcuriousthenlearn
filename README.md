@@ -73,6 +73,15 @@ To add images to post, compress them first
 
 `GIMP -> Export As -> 30% Quality and uncheck Save Exif info`
 
+or  
+
+`nomacs -> Save As -> Bad Quality`
+
+## author contact
+
+`Neal`
+
+`3792276+nagordon@users.noreply.github.com`
 
 ## Helpful Links 
 
