@@ -14,6 +14,7 @@
 <link rel="canonical" href="https://nagordon.github.io/ifcuriousthenlearn/blog/diy-arduino-tachometer-for-your-rc-airplane/">
 <!--[if lt IE 9]><script src="../../assets/js/html5.js"></script><![endif]--><meta name="author" content="neal">
 <link rel="prev" href="../rebuilding-the-site-with-nikola/" title="Rebuilding the site with nikola" type="text/html">
+<link rel="next" href="../analog-airspeed-sensor-voltage-divider/" title="analog airspeed sensor voltage divider" type="text/html">
 <meta property="og:site_name" content="ifcuriousthenlearn">
 <meta property="og:title" content="DIY Arduino Tachometer for your RC Airplane">
 <meta property="og:url" content="https://nagordon.github.io/ifcuriousthenlearn/blog/diy-arduino-tachometer-for-your-rc-airplane/">
@@ -153,508 +154,508 @@
 <img alt="/files/diy-arduino-tachometer-for-your-rc-airplane/gallery/mounted_tach_battery.jpg" src="../../files/diy-arduino-tachometer-for-your-rc-airplane/gallery/mounted_tach_battery.jpg" style="width: 500px;"></section></section><section id="the-code"><h2>The code</h2>
 <div class="code"><table class="codetable">
 <tr>
-<td class="linenos linenodiv"><a href="#rest_code_3c23f22487d3404dbbeea3736f2313d9-1"><code data-line-number="  1"></code></a></td>
-<td class="code"><code><a id="rest_code_3c23f22487d3404dbbeea3736f2313d9-1" name="rest_code_3c23f22487d3404dbbeea3736f2313d9-1"></a><span class="w"> </span><span class="cm">/*</span>
+<td class="linenos linenodiv"><a href="#rest_code_ef7282a3102f4403ad6db869ad5d9429-1"><code data-line-number="  1"></code></a></td>
+<td class="code"><code><a id="rest_code_ef7282a3102f4403ad6db869ad5d9429-1" name="rest_code_ef7282a3102f4403ad6db869ad5d9429-1"></a><span class="w"> </span><span class="cm">/*</span>
 </code></td>
 </tr>
 <tr>
-<td class="linenos linenodiv"><a href="#rest_code_3c23f22487d3404dbbeea3736f2313d9-2"><code data-line-number="  2"></code></a></td>
-<td class="code"><code><a id="rest_code_3c23f22487d3404dbbeea3736f2313d9-2" name="rest_code_3c23f22487d3404dbbeea3736f2313d9-2"></a><span class="cm"> PropTach v0.2</span>
+<td class="linenos linenodiv"><a href="#rest_code_ef7282a3102f4403ad6db869ad5d9429-2"><code data-line-number="  2"></code></a></td>
+<td class="code"><code><a id="rest_code_ef7282a3102f4403ad6db869ad5d9429-2" name="rest_code_ef7282a3102f4403ad6db869ad5d9429-2"></a><span class="cm"> PropTach v0.2</span>
 </code></td>
 </tr>
 <tr>
-<td class="linenos linenodiv"><a href="#rest_code_3c23f22487d3404dbbeea3736f2313d9-3"><code data-line-number="  3"></code></a></td>
-<td class="code"><code><a id="rest_code_3c23f22487d3404dbbeea3736f2313d9-3" name="rest_code_3c23f22487d3404dbbeea3736f2313d9-3"></a><span class="cm"> Neal Gordon</span>
+<td class="linenos linenodiv"><a href="#rest_code_ef7282a3102f4403ad6db869ad5d9429-3"><code data-line-number="  3"></code></a></td>
+<td class="code"><code><a id="rest_code_ef7282a3102f4403ad6db869ad5d9429-3" name="rest_code_ef7282a3102f4403ad6db869ad5d9429-3"></a><span class="cm"> Neal Gordon</span>
 </code></td>
 </tr>
 <tr>
-<td class="linenos linenodiv"><a href="#rest_code_3c23f22487d3404dbbeea3736f2313d9-4"><code data-line-number="  4"></code></a></td>
-<td class="code"><code><a id="rest_code_3c23f22487d3404dbbeea3736f2313d9-4" name="rest_code_3c23f22487d3404dbbeea3736f2313d9-4"></a><span class="cm"> */</span><span class="w"></span>
+<td class="linenos linenodiv"><a href="#rest_code_ef7282a3102f4403ad6db869ad5d9429-4"><code data-line-number="  4"></code></a></td>
+<td class="code"><code><a id="rest_code_ef7282a3102f4403ad6db869ad5d9429-4" name="rest_code_ef7282a3102f4403ad6db869ad5d9429-4"></a><span class="cm"> */</span><span class="w"></span>
 </code></td>
 </tr>
 <tr>
-<td class="linenos linenodiv"><a href="#rest_code_3c23f22487d3404dbbeea3736f2313d9-5"><code data-line-number="  5"></code></a></td>
-<td class="code"><code><a id="rest_code_3c23f22487d3404dbbeea3736f2313d9-5" name="rest_code_3c23f22487d3404dbbeea3736f2313d9-5"></a>
+<td class="linenos linenodiv"><a href="#rest_code_ef7282a3102f4403ad6db869ad5d9429-5"><code data-line-number="  5"></code></a></td>
+<td class="code"><code><a id="rest_code_ef7282a3102f4403ad6db869ad5d9429-5" name="rest_code_ef7282a3102f4403ad6db869ad5d9429-5"></a>
 </code></td>
 </tr>
 <tr>
-<td class="linenos linenodiv"><a href="#rest_code_3c23f22487d3404dbbeea3736f2313d9-6"><code data-line-number="  6"></code></a></td>
-<td class="code"><code><a id="rest_code_3c23f22487d3404dbbeea3736f2313d9-6" name="rest_code_3c23f22487d3404dbbeea3736f2313d9-6"></a><span class="w"> </span><span class="c1">// Import OLED library</span>
+<td class="linenos linenodiv"><a href="#rest_code_ef7282a3102f4403ad6db869ad5d9429-6"><code data-line-number="  6"></code></a></td>
+<td class="code"><code><a id="rest_code_ef7282a3102f4403ad6db869ad5d9429-6" name="rest_code_ef7282a3102f4403ad6db869ad5d9429-6"></a><span class="w"> </span><span class="c1">// Import OLED library</span>
 </code></td>
 </tr>
 <tr>
-<td class="linenos linenodiv"><a href="#rest_code_3c23f22487d3404dbbeea3736f2313d9-7"><code data-line-number="  7"></code></a></td>
-<td class="code"><code><a id="rest_code_3c23f22487d3404dbbeea3736f2313d9-7" name="rest_code_3c23f22487d3404dbbeea3736f2313d9-7"></a><span class="w"> </span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;Arduino.h&gt;</span><span class="cp"></span>
+<td class="linenos linenodiv"><a href="#rest_code_ef7282a3102f4403ad6db869ad5d9429-7"><code data-line-number="  7"></code></a></td>
+<td class="code"><code><a id="rest_code_ef7282a3102f4403ad6db869ad5d9429-7" name="rest_code_ef7282a3102f4403ad6db869ad5d9429-7"></a><span class="w"> </span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;Arduino.h&gt;</span><span class="cp"></span>
 </code></td>
 </tr>
 <tr>
-<td class="linenos linenodiv"><a href="#rest_code_3c23f22487d3404dbbeea3736f2313d9-8"><code data-line-number="  8"></code></a></td>
-<td class="code"><code><a id="rest_code_3c23f22487d3404dbbeea3736f2313d9-8" name="rest_code_3c23f22487d3404dbbeea3736f2313d9-8"></a><span class="w"> </span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;U8x8lib.h&gt;</span><span class="cp"></span>
+<td class="linenos linenodiv"><a href="#rest_code_ef7282a3102f4403ad6db869ad5d9429-8"><code data-line-number="  8"></code></a></td>
+<td class="code"><code><a id="rest_code_ef7282a3102f4403ad6db869ad5d9429-8" name="rest_code_ef7282a3102f4403ad6db869ad5d9429-8"></a><span class="w"> </span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;U8x8lib.h&gt;</span><span class="cp"></span>
 </code></td>
 </tr>
 <tr>
-<td class="linenos linenodiv"><a href="#rest_code_3c23f22487d3404dbbeea3736f2313d9-9"><code data-line-number="  9"></code></a></td>
-<td class="code"><code><a id="rest_code_3c23f22487d3404dbbeea3736f2313d9-9" name="rest_code_3c23f22487d3404dbbeea3736f2313d9-9"></a>
+<td class="linenos linenodiv"><a href="#rest_code_ef7282a3102f4403ad6db869ad5d9429-9"><code data-line-number="  9"></code></a></td>
+<td class="code"><code><a id="rest_code_ef7282a3102f4403ad6db869ad5d9429-9" name="rest_code_ef7282a3102f4403ad6db869ad5d9429-9"></a>
 </code></td>
 </tr>
 <tr>
-<td class="linenos linenodiv"><a href="#rest_code_3c23f22487d3404dbbeea3736f2313d9-10"><code data-line-number=" 10"></code></a></td>
-<td class="code"><code><a id="rest_code_3c23f22487d3404dbbeea3736f2313d9-10" name="rest_code_3c23f22487d3404dbbeea3736f2313d9-10"></a><span class="w"> </span><span class="cp">#ifdef U8X8_HAVE_HW_SPI</span>
+<td class="linenos linenodiv"><a href="#rest_code_ef7282a3102f4403ad6db869ad5d9429-10"><code data-line-number=" 10"></code></a></td>
+<td class="code"><code><a id="rest_code_ef7282a3102f4403ad6db869ad5d9429-10" name="rest_code_ef7282a3102f4403ad6db869ad5d9429-10"></a><span class="w"> </span><span class="cp">#ifdef U8X8_HAVE_HW_SPI</span>
 </code></td>
 </tr>
 <tr>
-<td class="linenos linenodiv"><a href="#rest_code_3c23f22487d3404dbbeea3736f2313d9-11"><code data-line-number=" 11"></code></a></td>
-<td class="code"><code><a id="rest_code_3c23f22487d3404dbbeea3736f2313d9-11" name="rest_code_3c23f22487d3404dbbeea3736f2313d9-11"></a><span class="w"> </span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;SPI.h&gt;</span><span class="cp"></span>
+<td class="linenos linenodiv"><a href="#rest_code_ef7282a3102f4403ad6db869ad5d9429-11"><code data-line-number=" 11"></code></a></td>
+<td class="code"><code><a id="rest_code_ef7282a3102f4403ad6db869ad5d9429-11" name="rest_code_ef7282a3102f4403ad6db869ad5d9429-11"></a><span class="w"> </span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;SPI.h&gt;</span><span class="cp"></span>
 </code></td>
 </tr>
 <tr>
-<td class="linenos linenodiv"><a href="#rest_code_3c23f22487d3404dbbeea3736f2313d9-12"><code data-line-number=" 12"></code></a></td>
-<td class="code"><code><a id="rest_code_3c23f22487d3404dbbeea3736f2313d9-12" name="rest_code_3c23f22487d3404dbbeea3736f2313d9-12"></a><span class="w"> </span><span class="cp">#endif</span>
+<td class="linenos linenodiv"><a href="#rest_code_ef7282a3102f4403ad6db869ad5d9429-12"><code data-line-number=" 12"></code></a></td>
+<td class="code"><code><a id="rest_code_ef7282a3102f4403ad6db869ad5d9429-12" name="rest_code_ef7282a3102f4403ad6db869ad5d9429-12"></a><span class="w"> </span><span class="cp">#endif</span>
 </code></td>
 </tr>
 <tr>
-<td class="linenos linenodiv"><a href="#rest_code_3c23f22487d3404dbbeea3736f2313d9-13"><code data-line-number=" 13"></code></a></td>
-<td class="code"><code><a id="rest_code_3c23f22487d3404dbbeea3736f2313d9-13" name="rest_code_3c23f22487d3404dbbeea3736f2313d9-13"></a>
+<td class="linenos linenodiv"><a href="#rest_code_ef7282a3102f4403ad6db869ad5d9429-13"><code data-line-number=" 13"></code></a></td>
+<td class="code"><code><a id="rest_code_ef7282a3102f4403ad6db869ad5d9429-13" name="rest_code_ef7282a3102f4403ad6db869ad5d9429-13"></a>
 </code></td>
 </tr>
 <tr>
-<td class="linenos linenodiv"><a href="#rest_code_3c23f22487d3404dbbeea3736f2313d9-14"><code data-line-number=" 14"></code></a></td>
-<td class="code"><code><a id="rest_code_3c23f22487d3404dbbeea3736f2313d9-14" name="rest_code_3c23f22487d3404dbbeea3736f2313d9-14"></a><span class="w"> </span><span class="c1">// The complete list is available here: https://github.com/olikraus/u8g2/wiki/u8x8setupcpp</span>
+<td class="linenos linenodiv"><a href="#rest_code_ef7282a3102f4403ad6db869ad5d9429-14"><code data-line-number=" 14"></code></a></td>
+<td class="code"><code><a id="rest_code_ef7282a3102f4403ad6db869ad5d9429-14" name="rest_code_ef7282a3102f4403ad6db869ad5d9429-14"></a><span class="w"> </span><span class="c1">// The complete list is available here: https://github.com/olikraus/u8g2/wiki/u8x8setupcpp</span>
 </code></td>
 </tr>
 <tr>
-<td class="linenos linenodiv"><a href="#rest_code_3c23f22487d3404dbbeea3736f2313d9-15"><code data-line-number=" 15"></code></a></td>
-<td class="code"><code><a id="rest_code_3c23f22487d3404dbbeea3736f2313d9-15" name="rest_code_3c23f22487d3404dbbeea3736f2313d9-15"></a><span class="w"> </span><span class="n">U8X8_SSD1306_128X64_NONAME_HW_I2C</span><span class="w"> </span><span class="nf">u8x8</span><span class="p">(</span><span class="cm">/* reset=*/</span><span class="w"> </span><span class="n">U8X8_PIN_NONE</span><span class="p">);</span><span class="w"></span>
+<td class="linenos linenodiv"><a href="#rest_code_ef7282a3102f4403ad6db869ad5d9429-15"><code data-line-number=" 15"></code></a></td>
+<td class="code"><code><a id="rest_code_ef7282a3102f4403ad6db869ad5d9429-15" name="rest_code_ef7282a3102f4403ad6db869ad5d9429-15"></a><span class="w"> </span><span class="n">U8X8_SSD1306_128X64_NONAME_HW_I2C</span><span class="w"> </span><span class="nf">u8x8</span><span class="p">(</span><span class="cm">/* reset=*/</span><span class="w"> </span><span class="n">U8X8_PIN_NONE</span><span class="p">);</span><span class="w"></span>
 </code></td>
 </tr>
 <tr>
-<td class="linenos linenodiv"><a href="#rest_code_3c23f22487d3404dbbeea3736f2313d9-16"><code data-line-number=" 16"></code></a></td>
-<td class="code"><code><a id="rest_code_3c23f22487d3404dbbeea3736f2313d9-16" name="rest_code_3c23f22487d3404dbbeea3736f2313d9-16"></a>
+<td class="linenos linenodiv"><a href="#rest_code_ef7282a3102f4403ad6db869ad5d9429-16"><code data-line-number=" 16"></code></a></td>
+<td class="code"><code><a id="rest_code_ef7282a3102f4403ad6db869ad5d9429-16" name="rest_code_ef7282a3102f4403ad6db869ad5d9429-16"></a>
 </code></td>
 </tr>
 <tr>
-<td class="linenos linenodiv"><a href="#rest_code_3c23f22487d3404dbbeea3736f2313d9-17"><code data-line-number=" 17"></code></a></td>
-<td class="code"><code><a id="rest_code_3c23f22487d3404dbbeea3736f2313d9-17" name="rest_code_3c23f22487d3404dbbeea3736f2313d9-17"></a><span class="w"> </span><span class="c1">// The number of blades on the propeller. Adjust accordingly.</span>
+<td class="linenos linenodiv"><a href="#rest_code_ef7282a3102f4403ad6db869ad5d9429-17"><code data-line-number=" 17"></code></a></td>
+<td class="code"><code><a id="rest_code_ef7282a3102f4403ad6db869ad5d9429-17" name="rest_code_ef7282a3102f4403ad6db869ad5d9429-17"></a><span class="w"> </span><span class="c1">// The number of blades on the propeller. Adjust accordingly.</span>
 </code></td>
 </tr>
 <tr>
-<td class="linenos linenodiv"><a href="#rest_code_3c23f22487d3404dbbeea3736f2313d9-18"><code data-line-number=" 18"></code></a></td>
-<td class="code"><code><a id="rest_code_3c23f22487d3404dbbeea3736f2313d9-18" name="rest_code_3c23f22487d3404dbbeea3736f2313d9-18"></a><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="kt">unsigned</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">BLADE_COUNT</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="p">;</span><span class="w"></span>
+<td class="linenos linenodiv"><a href="#rest_code_ef7282a3102f4403ad6db869ad5d9429-18"><code data-line-number=" 18"></code></a></td>
+<td class="code"><code><a id="rest_code_ef7282a3102f4403ad6db869ad5d9429-18" name="rest_code_ef7282a3102f4403ad6db869ad5d9429-18"></a><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="kt">unsigned</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">BLADE_COUNT</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="p">;</span><span class="w"></span>
 </code></td>
 </tr>
 <tr>
-<td class="linenos linenodiv"><a href="#rest_code_3c23f22487d3404dbbeea3736f2313d9-19"><code data-line-number=" 19"></code></a></td>
-<td class="code"><code><a id="rest_code_3c23f22487d3404dbbeea3736f2313d9-19" name="rest_code_3c23f22487d3404dbbeea3736f2313d9-19"></a>
+<td class="linenos linenodiv"><a href="#rest_code_ef7282a3102f4403ad6db869ad5d9429-19"><code data-line-number=" 19"></code></a></td>
+<td class="code"><code><a id="rest_code_ef7282a3102f4403ad6db869ad5d9429-19" name="rest_code_ef7282a3102f4403ad6db869ad5d9429-19"></a>
 </code></td>
 </tr>
 <tr>
-<td class="linenos linenodiv"><a href="#rest_code_3c23f22487d3404dbbeea3736f2313d9-20"><code data-line-number=" 20"></code></a></td>
-<td class="code"><code><a id="rest_code_3c23f22487d3404dbbeea3736f2313d9-20" name="rest_code_3c23f22487d3404dbbeea3736f2313d9-20"></a><span class="w"> </span><span class="c1">// Volatile keyword is used with interrupts</span>
+<td class="linenos linenodiv"><a href="#rest_code_ef7282a3102f4403ad6db869ad5d9429-20"><code data-line-number=" 20"></code></a></td>
+<td class="code"><code><a id="rest_code_ef7282a3102f4403ad6db869ad5d9429-20" name="rest_code_ef7282a3102f4403ad6db869ad5d9429-20"></a><span class="w"> </span><span class="c1">// Volatile keyword is used with interrupts</span>
 </code></td>
 </tr>
 <tr>
-<td class="linenos linenodiv"><a href="#rest_code_3c23f22487d3404dbbeea3736f2313d9-21"><code data-line-number=" 21"></code></a></td>
-<td class="code"><code><a id="rest_code_3c23f22487d3404dbbeea3736f2313d9-21" name="rest_code_3c23f22487d3404dbbeea3736f2313d9-21"></a><span class="w"> </span><span class="c1">// This variable is subject to change inside an interrupt</span>
+<td class="linenos linenodiv"><a href="#rest_code_ef7282a3102f4403ad6db869ad5d9429-21"><code data-line-number=" 21"></code></a></td>
+<td class="code"><code><a id="rest_code_ef7282a3102f4403ad6db869ad5d9429-21" name="rest_code_ef7282a3102f4403ad6db869ad5d9429-21"></a><span class="w"> </span><span class="c1">// This variable is subject to change inside an interrupt</span>
 </code></td>
 </tr>
 <tr>
-<td class="linenos linenodiv"><a href="#rest_code_3c23f22487d3404dbbeea3736f2313d9-22"><code data-line-number=" 22"></code></a></td>
-<td class="code"><code><a id="rest_code_3c23f22487d3404dbbeea3736f2313d9-22" name="rest_code_3c23f22487d3404dbbeea3736f2313d9-22"></a><span class="w"> </span><span class="c1">// service routine</span>
+<td class="linenos linenodiv"><a href="#rest_code_ef7282a3102f4403ad6db869ad5d9429-22"><code data-line-number=" 22"></code></a></td>
+<td class="code"><code><a id="rest_code_ef7282a3102f4403ad6db869ad5d9429-22" name="rest_code_ef7282a3102f4403ad6db869ad5d9429-22"></a><span class="w"> </span><span class="c1">// service routine</span>
 </code></td>
 </tr>
 <tr>
-<td class="linenos linenodiv"><a href="#rest_code_3c23f22487d3404dbbeea3736f2313d9-23"><code data-line-number=" 23"></code></a></td>
-<td class="code"><code><a id="rest_code_3c23f22487d3404dbbeea3736f2313d9-23" name="rest_code_3c23f22487d3404dbbeea3736f2313d9-23"></a><span class="w"> </span><span class="k">volatile</span><span class="w"> </span><span class="kt">unsigned</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">myinterrupts</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
+<td class="linenos linenodiv"><a href="#rest_code_ef7282a3102f4403ad6db869ad5d9429-23"><code data-line-number=" 23"></code></a></td>
+<td class="code"><code><a id="rest_code_ef7282a3102f4403ad6db869ad5d9429-23" name="rest_code_ef7282a3102f4403ad6db869ad5d9429-23"></a><span class="w"> </span><span class="k">volatile</span><span class="w"> </span><span class="kt">unsigned</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">myinterrupts</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
 </code></td>
 </tr>
 <tr>
-<td class="linenos linenodiv"><a href="#rest_code_3c23f22487d3404dbbeea3736f2313d9-24"><code data-line-number=" 24"></code></a></td>
-<td class="code"><code><a id="rest_code_3c23f22487d3404dbbeea3736f2313d9-24" name="rest_code_3c23f22487d3404dbbeea3736f2313d9-24"></a><span class="w"> </span><span class="kt">unsigned</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">myinterrupts_print</span><span class="p">;</span><span class="w"></span>
+<td class="linenos linenodiv"><a href="#rest_code_ef7282a3102f4403ad6db869ad5d9429-24"><code data-line-number=" 24"></code></a></td>
+<td class="code"><code><a id="rest_code_ef7282a3102f4403ad6db869ad5d9429-24" name="rest_code_ef7282a3102f4403ad6db869ad5d9429-24"></a><span class="w"> </span><span class="kt">unsigned</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">myinterrupts_print</span><span class="p">;</span><span class="w"></span>
 </code></td>
 </tr>
 <tr>
-<td class="linenos linenodiv"><a href="#rest_code_3c23f22487d3404dbbeea3736f2313d9-25"><code data-line-number=" 25"></code></a></td>
-<td class="code"><code><a id="rest_code_3c23f22487d3404dbbeea3736f2313d9-25" name="rest_code_3c23f22487d3404dbbeea3736f2313d9-25"></a>
+<td class="linenos linenodiv"><a href="#rest_code_ef7282a3102f4403ad6db869ad5d9429-25"><code data-line-number=" 25"></code></a></td>
+<td class="code"><code><a id="rest_code_ef7282a3102f4403ad6db869ad5d9429-25" name="rest_code_ef7282a3102f4403ad6db869ad5d9429-25"></a>
 </code></td>
 </tr>
 <tr>
-<td class="linenos linenodiv"><a href="#rest_code_3c23f22487d3404dbbeea3736f2313d9-26"><code data-line-number=" 26"></code></a></td>
-<td class="code"><code><a id="rest_code_3c23f22487d3404dbbeea3736f2313d9-26" name="rest_code_3c23f22487d3404dbbeea3736f2313d9-26"></a>
+<td class="linenos linenodiv"><a href="#rest_code_ef7282a3102f4403ad6db869ad5d9429-26"><code data-line-number=" 26"></code></a></td>
+<td class="code"><code><a id="rest_code_ef7282a3102f4403ad6db869ad5d9429-26" name="rest_code_ef7282a3102f4403ad6db869ad5d9429-26"></a>
 </code></td>
 </tr>
 <tr>
-<td class="linenos linenodiv"><a href="#rest_code_3c23f22487d3404dbbeea3736f2313d9-27"><code data-line-number=" 27"></code></a></td>
-<td class="code"><code><a id="rest_code_3c23f22487d3404dbbeea3736f2313d9-27" name="rest_code_3c23f22487d3404dbbeea3736f2313d9-27"></a><span class="w"> </span><span class="c1">// Used for capturing the rpm (revolutions per minute)</span>
+<td class="linenos linenodiv"><a href="#rest_code_ef7282a3102f4403ad6db869ad5d9429-27"><code data-line-number=" 27"></code></a></td>
+<td class="code"><code><a id="rest_code_ef7282a3102f4403ad6db869ad5d9429-27" name="rest_code_ef7282a3102f4403ad6db869ad5d9429-27"></a><span class="w"> </span><span class="c1">// Used for capturing the rpm (revolutions per minute)</span>
 </code></td>
 </tr>
 <tr>
-<td class="linenos linenodiv"><a href="#rest_code_3c23f22487d3404dbbeea3736f2313d9-28"><code data-line-number=" 28"></code></a></td>
-<td class="code"><code><a id="rest_code_3c23f22487d3404dbbeea3736f2313d9-28" name="rest_code_3c23f22487d3404dbbeea3736f2313d9-28"></a><span class="w"> </span><span class="kt">unsigned</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">rpm</span><span class="p">;</span><span class="w"></span>
+<td class="linenos linenodiv"><a href="#rest_code_ef7282a3102f4403ad6db869ad5d9429-28"><code data-line-number=" 28"></code></a></td>
+<td class="code"><code><a id="rest_code_ef7282a3102f4403ad6db869ad5d9429-28" name="rest_code_ef7282a3102f4403ad6db869ad5d9429-28"></a><span class="w"> </span><span class="kt">unsigned</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">rpm</span><span class="p">;</span><span class="w"></span>
 </code></td>
 </tr>
 <tr>
-<td class="linenos linenodiv"><a href="#rest_code_3c23f22487d3404dbbeea3736f2313d9-29"><code data-line-number=" 29"></code></a></td>
-<td class="code"><code><a id="rest_code_3c23f22487d3404dbbeea3736f2313d9-29" name="rest_code_3c23f22487d3404dbbeea3736f2313d9-29"></a><span class="w"> </span><span class="kt">unsigned</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">rpm_print</span><span class="p">;</span><span class="w"></span>
+<td class="linenos linenodiv"><a href="#rest_code_ef7282a3102f4403ad6db869ad5d9429-29"><code data-line-number=" 29"></code></a></td>
+<td class="code"><code><a id="rest_code_ef7282a3102f4403ad6db869ad5d9429-29" name="rest_code_ef7282a3102f4403ad6db869ad5d9429-29"></a><span class="w"> </span><span class="kt">unsigned</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">rpm_print</span><span class="p">;</span><span class="w"></span>
 </code></td>
 </tr>
 <tr>
-<td class="linenos linenodiv"><a href="#rest_code_3c23f22487d3404dbbeea3736f2313d9-30"><code data-line-number=" 30"></code></a></td>
-<td class="code"><code><a id="rest_code_3c23f22487d3404dbbeea3736f2313d9-30" name="rest_code_3c23f22487d3404dbbeea3736f2313d9-30"></a>
+<td class="linenos linenodiv"><a href="#rest_code_ef7282a3102f4403ad6db869ad5d9429-30"><code data-line-number=" 30"></code></a></td>
+<td class="code"><code><a id="rest_code_ef7282a3102f4403ad6db869ad5d9429-30" name="rest_code_ef7282a3102f4403ad6db869ad5d9429-30"></a>
 </code></td>
 </tr>
 <tr>
-<td class="linenos linenodiv"><a href="#rest_code_3c23f22487d3404dbbeea3736f2313d9-31"><code data-line-number=" 31"></code></a></td>
-<td class="code"><code><a id="rest_code_3c23f22487d3404dbbeea3736f2313d9-31" name="rest_code_3c23f22487d3404dbbeea3736f2313d9-31"></a><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">setup</span><span class="p">()</span><span class="w"></span>
+<td class="linenos linenodiv"><a href="#rest_code_ef7282a3102f4403ad6db869ad5d9429-31"><code data-line-number=" 31"></code></a></td>
+<td class="code"><code><a id="rest_code_ef7282a3102f4403ad6db869ad5d9429-31" name="rest_code_ef7282a3102f4403ad6db869ad5d9429-31"></a><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">setup</span><span class="p">()</span><span class="w"></span>
 </code></td>
 </tr>
 <tr>
-<td class="linenos linenodiv"><a href="#rest_code_3c23f22487d3404dbbeea3736f2313d9-32"><code data-line-number=" 32"></code></a></td>
-<td class="code"><code><a id="rest_code_3c23f22487d3404dbbeea3736f2313d9-32" name="rest_code_3c23f22487d3404dbbeea3736f2313d9-32"></a><span class="w">     </span><span class="p">{</span><span class="w"></span>
+<td class="linenos linenodiv"><a href="#rest_code_ef7282a3102f4403ad6db869ad5d9429-32"><code data-line-number=" 32"></code></a></td>
+<td class="code"><code><a id="rest_code_ef7282a3102f4403ad6db869ad5d9429-32" name="rest_code_ef7282a3102f4403ad6db869ad5d9429-32"></a><span class="w">     </span><span class="p">{</span><span class="w"></span>
 </code></td>
 </tr>
 <tr>
-<td class="linenos linenodiv"><a href="#rest_code_3c23f22487d3404dbbeea3736f2313d9-33"><code data-line-number=" 33"></code></a></td>
-<td class="code"><code><a id="rest_code_3c23f22487d3404dbbeea3736f2313d9-33" name="rest_code_3c23f22487d3404dbbeea3736f2313d9-33"></a><span class="w">     </span><span class="n">Serial</span><span class="p">.</span><span class="n">begin</span><span class="p">(</span><span class="mi">9600</span><span class="p">);</span><span class="w"></span>
+<td class="linenos linenodiv"><a href="#rest_code_ef7282a3102f4403ad6db869ad5d9429-33"><code data-line-number=" 33"></code></a></td>
+<td class="code"><code><a id="rest_code_ef7282a3102f4403ad6db869ad5d9429-33" name="rest_code_ef7282a3102f4403ad6db869ad5d9429-33"></a><span class="w">     </span><span class="n">Serial</span><span class="p">.</span><span class="n">begin</span><span class="p">(</span><span class="mi">9600</span><span class="p">);</span><span class="w"></span>
 </code></td>
 </tr>
 <tr>
-<td class="linenos linenodiv"><a href="#rest_code_3c23f22487d3404dbbeea3736f2313d9-34"><code data-line-number=" 34"></code></a></td>
-<td class="code"><code><a id="rest_code_3c23f22487d3404dbbeea3736f2313d9-34" name="rest_code_3c23f22487d3404dbbeea3736f2313d9-34"></a>
+<td class="linenos linenodiv"><a href="#rest_code_ef7282a3102f4403ad6db869ad5d9429-34"><code data-line-number=" 34"></code></a></td>
+<td class="code"><code><a id="rest_code_ef7282a3102f4403ad6db869ad5d9429-34" name="rest_code_ef7282a3102f4403ad6db869ad5d9429-34"></a>
 </code></td>
 </tr>
 <tr>
-<td class="linenos linenodiv"><a href="#rest_code_3c23f22487d3404dbbeea3736f2313d9-35"><code data-line-number=" 35"></code></a></td>
-<td class="code"><code><a id="rest_code_3c23f22487d3404dbbeea3736f2313d9-35" name="rest_code_3c23f22487d3404dbbeea3736f2313d9-35"></a><span class="w">     </span><span class="n">u8x8</span><span class="p">.</span><span class="n">begin</span><span class="p">();</span><span class="w"></span>
+<td class="linenos linenodiv"><a href="#rest_code_ef7282a3102f4403ad6db869ad5d9429-35"><code data-line-number=" 35"></code></a></td>
+<td class="code"><code><a id="rest_code_ef7282a3102f4403ad6db869ad5d9429-35" name="rest_code_ef7282a3102f4403ad6db869ad5d9429-35"></a><span class="w">     </span><span class="n">u8x8</span><span class="p">.</span><span class="n">begin</span><span class="p">();</span><span class="w"></span>
 </code></td>
 </tr>
 <tr>
-<td class="linenos linenodiv"><a href="#rest_code_3c23f22487d3404dbbeea3736f2313d9-36"><code data-line-number=" 36"></code></a></td>
-<td class="code"><code><a id="rest_code_3c23f22487d3404dbbeea3736f2313d9-36" name="rest_code_3c23f22487d3404dbbeea3736f2313d9-36"></a><span class="w">     </span><span class="n">u8x8</span><span class="p">.</span><span class="n">setPowerSave</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span><span class="w"></span>
+<td class="linenos linenodiv"><a href="#rest_code_ef7282a3102f4403ad6db869ad5d9429-36"><code data-line-number=" 36"></code></a></td>
+<td class="code"><code><a id="rest_code_ef7282a3102f4403ad6db869ad5d9429-36" name="rest_code_ef7282a3102f4403ad6db869ad5d9429-36"></a><span class="w">     </span><span class="n">u8x8</span><span class="p">.</span><span class="n">setPowerSave</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span><span class="w"></span>
 </code></td>
 </tr>
 <tr>
-<td class="linenos linenodiv"><a href="#rest_code_3c23f22487d3404dbbeea3736f2313d9-37"><code data-line-number=" 37"></code></a></td>
-<td class="code"><code><a id="rest_code_3c23f22487d3404dbbeea3736f2313d9-37" name="rest_code_3c23f22487d3404dbbeea3736f2313d9-37"></a><span class="w">     </span><span class="n">u8x8</span><span class="p">.</span><span class="n">setFont</span><span class="p">(</span><span class="n">u8x8_font_amstrad_cpc_extended_r</span><span class="p">);</span><span class="w">  </span><span class="c1">// u8x8_font_amstrad_cpc_extended_r , u8x8_font_chroma48medium8_r</span>
+<td class="linenos linenodiv"><a href="#rest_code_ef7282a3102f4403ad6db869ad5d9429-37"><code data-line-number=" 37"></code></a></td>
+<td class="code"><code><a id="rest_code_ef7282a3102f4403ad6db869ad5d9429-37" name="rest_code_ef7282a3102f4403ad6db869ad5d9429-37"></a><span class="w">     </span><span class="n">u8x8</span><span class="p">.</span><span class="n">setFont</span><span class="p">(</span><span class="n">u8x8_font_amstrad_cpc_extended_r</span><span class="p">);</span><span class="w">  </span><span class="c1">// u8x8_font_amstrad_cpc_extended_r , u8x8_font_chroma48medium8_r</span>
 </code></td>
 </tr>
 <tr>
-<td class="linenos linenodiv"><a href="#rest_code_3c23f22487d3404dbbeea3736f2313d9-38"><code data-line-number=" 38"></code></a></td>
-<td class="code"><code><a id="rest_code_3c23f22487d3404dbbeea3736f2313d9-38" name="rest_code_3c23f22487d3404dbbeea3736f2313d9-38"></a><span class="w">     </span><span class="c1">// u8x8_font_amstrad_cpc_extended_f</span>
+<td class="linenos linenodiv"><a href="#rest_code_ef7282a3102f4403ad6db869ad5d9429-38"><code data-line-number=" 38"></code></a></td>
+<td class="code"><code><a id="rest_code_ef7282a3102f4403ad6db869ad5d9429-38" name="rest_code_ef7282a3102f4403ad6db869ad5d9429-38"></a><span class="w">     </span><span class="c1">// u8x8_font_amstrad_cpc_extended_f</span>
 </code></td>
 </tr>
 <tr>
-<td class="linenos linenodiv"><a href="#rest_code_3c23f22487d3404dbbeea3736f2313d9-39"><code data-line-number=" 39"></code></a></td>
-<td class="code"><code><a id="rest_code_3c23f22487d3404dbbeea3736f2313d9-39" name="rest_code_3c23f22487d3404dbbeea3736f2313d9-39"></a><span class="w">     </span><span class="c1">// u8x8_font_chroma48medium8_r</span>
+<td class="linenos linenodiv"><a href="#rest_code_ef7282a3102f4403ad6db869ad5d9429-39"><code data-line-number=" 39"></code></a></td>
+<td class="code"><code><a id="rest_code_ef7282a3102f4403ad6db869ad5d9429-39" name="rest_code_ef7282a3102f4403ad6db869ad5d9429-39"></a><span class="w">     </span><span class="c1">// u8x8_font_chroma48medium8_r</span>
 </code></td>
 </tr>
 <tr>
-<td class="linenos linenodiv"><a href="#rest_code_3c23f22487d3404dbbeea3736f2313d9-40"><code data-line-number=" 40"></code></a></td>
-<td class="code"><code><a id="rest_code_3c23f22487d3404dbbeea3736f2313d9-40" name="rest_code_3c23f22487d3404dbbeea3736f2313d9-40"></a>
+<td class="linenos linenodiv"><a href="#rest_code_ef7282a3102f4403ad6db869ad5d9429-40"><code data-line-number=" 40"></code></a></td>
+<td class="code"><code><a id="rest_code_ef7282a3102f4403ad6db869ad5d9429-40" name="rest_code_ef7282a3102f4403ad6db869ad5d9429-40"></a>
 </code></td>
 </tr>
 <tr>
-<td class="linenos linenodiv"><a href="#rest_code_3c23f22487d3404dbbeea3736f2313d9-41"><code data-line-number=" 41"></code></a></td>
-<td class="code"><code><a id="rest_code_3c23f22487d3404dbbeea3736f2313d9-41" name="rest_code_3c23f22487d3404dbbeea3736f2313d9-41"></a><span class="w">     </span><span class="n">u8x8</span><span class="p">.</span><span class="n">drawString</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="s">"PropTach v0.2"</span><span class="p">);</span><span class="w">  </span><span class="c1">// line 0</span>
+<td class="linenos linenodiv"><a href="#rest_code_ef7282a3102f4403ad6db869ad5d9429-41"><code data-line-number=" 41"></code></a></td>
+<td class="code"><code><a id="rest_code_ef7282a3102f4403ad6db869ad5d9429-41" name="rest_code_ef7282a3102f4403ad6db869ad5d9429-41"></a><span class="w">     </span><span class="n">u8x8</span><span class="p">.</span><span class="n">drawString</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="s">"PropTach v0.2"</span><span class="p">);</span><span class="w">  </span><span class="c1">// line 0</span>
 </code></td>
 </tr>
 <tr>
-<td class="linenos linenodiv"><a href="#rest_code_3c23f22487d3404dbbeea3736f2313d9-42"><code data-line-number=" 42"></code></a></td>
-<td class="code"><code><a id="rest_code_3c23f22487d3404dbbeea3736f2313d9-42" name="rest_code_3c23f22487d3404dbbeea3736f2313d9-42"></a><span class="w">     </span><span class="n">u8x8</span><span class="p">.</span><span class="n">drawString</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="s">"-------------"</span><span class="p">);</span><span class="w">  </span><span class="c1">// line 1</span>
+<td class="linenos linenodiv"><a href="#rest_code_ef7282a3102f4403ad6db869ad5d9429-42"><code data-line-number=" 42"></code></a></td>
+<td class="code"><code><a id="rest_code_ef7282a3102f4403ad6db869ad5d9429-42" name="rest_code_ef7282a3102f4403ad6db869ad5d9429-42"></a><span class="w">     </span><span class="n">u8x8</span><span class="p">.</span><span class="n">drawString</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="s">"-------------"</span><span class="p">);</span><span class="w">  </span><span class="c1">// line 1</span>
 </code></td>
 </tr>
 <tr>
-<td class="linenos linenodiv"><a href="#rest_code_3c23f22487d3404dbbeea3736f2313d9-43"><code data-line-number=" 43"></code></a></td>
-<td class="code"><code><a id="rest_code_3c23f22487d3404dbbeea3736f2313d9-43" name="rest_code_3c23f22487d3404dbbeea3736f2313d9-43"></a><span class="w">     </span><span class="n">u8x8</span><span class="p">.</span><span class="n">drawString</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="s">"Blades"</span><span class="p">);</span><span class="w">         </span><span class="c1">// line 2</span>
+<td class="linenos linenodiv"><a href="#rest_code_ef7282a3102f4403ad6db869ad5d9429-43"><code data-line-number=" 43"></code></a></td>
+<td class="code"><code><a id="rest_code_ef7282a3102f4403ad6db869ad5d9429-43" name="rest_code_ef7282a3102f4403ad6db869ad5d9429-43"></a><span class="w">     </span><span class="n">u8x8</span><span class="p">.</span><span class="n">drawString</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="s">"Blades"</span><span class="p">);</span><span class="w">         </span><span class="c1">// line 2</span>
 </code></td>
 </tr>
 <tr>
-<td class="linenos linenodiv"><a href="#rest_code_3c23f22487d3404dbbeea3736f2313d9-44"><code data-line-number=" 44"></code></a></td>
-<td class="code"><code><a id="rest_code_3c23f22487d3404dbbeea3736f2313d9-44" name="rest_code_3c23f22487d3404dbbeea3736f2313d9-44"></a><span class="w">     </span><span class="n">u8x8</span><span class="p">.</span><span class="n">setCursor</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">);</span><span class="w">                  </span><span class="c1">// line 3</span>
+<td class="linenos linenodiv"><a href="#rest_code_ef7282a3102f4403ad6db869ad5d9429-44"><code data-line-number=" 44"></code></a></td>
+<td class="code"><code><a id="rest_code_ef7282a3102f4403ad6db869ad5d9429-44" name="rest_code_ef7282a3102f4403ad6db869ad5d9429-44"></a><span class="w">     </span><span class="n">u8x8</span><span class="p">.</span><span class="n">setCursor</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">);</span><span class="w">                  </span><span class="c1">// line 3</span>
 </code></td>
 </tr>
 <tr>
-<td class="linenos linenodiv"><a href="#rest_code_3c23f22487d3404dbbeea3736f2313d9-45"><code data-line-number=" 45"></code></a></td>
-<td class="code"><code><a id="rest_code_3c23f22487d3404dbbeea3736f2313d9-45" name="rest_code_3c23f22487d3404dbbeea3736f2313d9-45"></a><span class="w">     </span><span class="n">u8x8</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="n">BLADE_COUNT</span><span class="p">);</span><span class="w">               </span><span class="c1">// line 3</span>
+<td class="linenos linenodiv"><a href="#rest_code_ef7282a3102f4403ad6db869ad5d9429-45"><code data-line-number=" 45"></code></a></td>
+<td class="code"><code><a id="rest_code_ef7282a3102f4403ad6db869ad5d9429-45" name="rest_code_ef7282a3102f4403ad6db869ad5d9429-45"></a><span class="w">     </span><span class="n">u8x8</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="n">BLADE_COUNT</span><span class="p">);</span><span class="w">               </span><span class="c1">// line 3</span>
 </code></td>
 </tr>
 <tr>
-<td class="linenos linenodiv"><a href="#rest_code_3c23f22487d3404dbbeea3736f2313d9-46"><code data-line-number=" 46"></code></a></td>
-<td class="code"><code><a id="rest_code_3c23f22487d3404dbbeea3736f2313d9-46" name="rest_code_3c23f22487d3404dbbeea3736f2313d9-46"></a><span class="w">     </span><span class="n">u8x8</span><span class="p">.</span><span class="n">drawString</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="s">"RPM"</span><span class="p">);</span><span class="w">            </span><span class="c1">// line 4</span>
+<td class="linenos linenodiv"><a href="#rest_code_ef7282a3102f4403ad6db869ad5d9429-46"><code data-line-number=" 46"></code></a></td>
+<td class="code"><code><a id="rest_code_ef7282a3102f4403ad6db869ad5d9429-46" name="rest_code_ef7282a3102f4403ad6db869ad5d9429-46"></a><span class="w">     </span><span class="n">u8x8</span><span class="p">.</span><span class="n">drawString</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="s">"RPM"</span><span class="p">);</span><span class="w">            </span><span class="c1">// line 4</span>
 </code></td>
 </tr>
 <tr>
-<td class="linenos linenodiv"><a href="#rest_code_3c23f22487d3404dbbeea3736f2313d9-47"><code data-line-number=" 47"></code></a></td>
-<td class="code"><code><a id="rest_code_3c23f22487d3404dbbeea3736f2313d9-47" name="rest_code_3c23f22487d3404dbbeea3736f2313d9-47"></a><span class="w">     </span><span class="n">u8x8</span><span class="p">.</span><span class="n">drawString</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">6</span><span class="p">,</span><span class="w"> </span><span class="s">"     "</span><span class="p">);</span><span class="w"></span>
+<td class="linenos linenodiv"><a href="#rest_code_ef7282a3102f4403ad6db869ad5d9429-47"><code data-line-number=" 47"></code></a></td>
+<td class="code"><code><a id="rest_code_ef7282a3102f4403ad6db869ad5d9429-47" name="rest_code_ef7282a3102f4403ad6db869ad5d9429-47"></a><span class="w">     </span><span class="n">u8x8</span><span class="p">.</span><span class="n">drawString</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">6</span><span class="p">,</span><span class="w"> </span><span class="s">"     "</span><span class="p">);</span><span class="w"></span>
 </code></td>
 </tr>
 <tr>
-<td class="linenos linenodiv"><a href="#rest_code_3c23f22487d3404dbbeea3736f2313d9-48"><code data-line-number=" 48"></code></a></td>
-<td class="code"><code><a id="rest_code_3c23f22487d3404dbbeea3736f2313d9-48" name="rest_code_3c23f22487d3404dbbeea3736f2313d9-48"></a>
+<td class="linenos linenodiv"><a href="#rest_code_ef7282a3102f4403ad6db869ad5d9429-48"><code data-line-number=" 48"></code></a></td>
+<td class="code"><code><a id="rest_code_ef7282a3102f4403ad6db869ad5d9429-48" name="rest_code_ef7282a3102f4403ad6db869ad5d9429-48"></a>
 </code></td>
 </tr>
 <tr>
-<td class="linenos linenodiv"><a href="#rest_code_3c23f22487d3404dbbeea3736f2313d9-49"><code data-line-number=" 49"></code></a></td>
-<td class="code"><code><a id="rest_code_3c23f22487d3404dbbeea3736f2313d9-49" name="rest_code_3c23f22487d3404dbbeea3736f2313d9-49"></a>
+<td class="linenos linenodiv"><a href="#rest_code_ef7282a3102f4403ad6db869ad5d9429-49"><code data-line-number=" 49"></code></a></td>
+<td class="code"><code><a id="rest_code_ef7282a3102f4403ad6db869ad5d9429-49" name="rest_code_ef7282a3102f4403ad6db869ad5d9429-49"></a>
 </code></td>
 </tr>
 <tr>
-<td class="linenos linenodiv"><a href="#rest_code_3c23f22487d3404dbbeea3736f2313d9-50"><code data-line-number=" 50"></code></a></td>
-<td class="code"><code><a id="rest_code_3c23f22487d3404dbbeea3736f2313d9-50" name="rest_code_3c23f22487d3404dbbeea3736f2313d9-50"></a><span class="w">     </span><span class="c1">// The Infrared phototransistor is connected to pin 2.</span>
+<td class="linenos linenodiv"><a href="#rest_code_ef7282a3102f4403ad6db869ad5d9429-50"><code data-line-number=" 50"></code></a></td>
+<td class="code"><code><a id="rest_code_ef7282a3102f4403ad6db869ad5d9429-50" name="rest_code_ef7282a3102f4403ad6db869ad5d9429-50"></a><span class="w">     </span><span class="c1">// The Infrared phototransistor is connected to pin 2.</span>
 </code></td>
 </tr>
 <tr>
-<td class="linenos linenodiv"><a href="#rest_code_3c23f22487d3404dbbeea3736f2313d9-51"><code data-line-number=" 51"></code></a></td>
-<td class="code"><code><a id="rest_code_3c23f22487d3404dbbeea3736f2313d9-51" name="rest_code_3c23f22487d3404dbbeea3736f2313d9-51"></a><span class="w">     </span><span class="c1">// Interrupt triggers when signal goes from HIGH to LOW</span>
+<td class="linenos linenodiv"><a href="#rest_code_ef7282a3102f4403ad6db869ad5d9429-51"><code data-line-number=" 51"></code></a></td>
+<td class="code"><code><a id="rest_code_ef7282a3102f4403ad6db869ad5d9429-51" name="rest_code_ef7282a3102f4403ad6db869ad5d9429-51"></a><span class="w">     </span><span class="c1">// Interrupt triggers when signal goes from HIGH to LOW</span>
 </code></td>
 </tr>
 <tr>
-<td class="linenos linenodiv"><a href="#rest_code_3c23f22487d3404dbbeea3736f2313d9-52"><code data-line-number=" 52"></code></a></td>
-<td class="code"><code><a id="rest_code_3c23f22487d3404dbbeea3736f2313d9-52" name="rest_code_3c23f22487d3404dbbeea3736f2313d9-52"></a><span class="w">     </span><span class="c1">// on pro mini arduino must use pins 2 or 3 for interrupts</span>
+<td class="linenos linenodiv"><a href="#rest_code_ef7282a3102f4403ad6db869ad5d9429-52"><code data-line-number=" 52"></code></a></td>
+<td class="code"><code><a id="rest_code_ef7282a3102f4403ad6db869ad5d9429-52" name="rest_code_ef7282a3102f4403ad6db869ad5d9429-52"></a><span class="w">     </span><span class="c1">// on pro mini arduino must use pins 2 or 3 for interrupts</span>
 </code></td>
 </tr>
 <tr>
-<td class="linenos linenodiv"><a href="#rest_code_3c23f22487d3404dbbeea3736f2313d9-53"><code data-line-number=" 53"></code></a></td>
-<td class="code"><code><a id="rest_code_3c23f22487d3404dbbeea3736f2313d9-53" name="rest_code_3c23f22487d3404dbbeea3736f2313d9-53"></a><span class="w">     </span><span class="c1">// file:///C:/Program%20Files%20(x86)/Arduino/reference/www.arduino.cc/en/Reference/AttachInterrupt.html</span>
+<td class="linenos linenodiv"><a href="#rest_code_ef7282a3102f4403ad6db869ad5d9429-53"><code data-line-number=" 53"></code></a></td>
+<td class="code"><code><a id="rest_code_ef7282a3102f4403ad6db869ad5d9429-53" name="rest_code_ef7282a3102f4403ad6db869ad5d9429-53"></a><span class="w">     </span><span class="c1">// file:///C:/Program%20Files%20(x86)/Arduino/reference/www.arduino.cc/en/Reference/AttachInterrupt.html</span>
 </code></td>
 </tr>
 <tr>
-<td class="linenos linenodiv"><a href="#rest_code_3c23f22487d3404dbbeea3736f2313d9-54"><code data-line-number=" 54"></code></a></td>
-<td class="code"><code><a id="rest_code_3c23f22487d3404dbbeea3736f2313d9-54" name="rest_code_3c23f22487d3404dbbeea3736f2313d9-54"></a><span class="w">     </span><span class="n">attachInterrupt</span><span class="p">(</span><span class="n">digitalPinToInterrupt</span><span class="p">(</span><span class="mi">3</span><span class="p">),</span><span class="w"> </span><span class="n">isr_break_count</span><span class="p">,</span><span class="w"> </span><span class="n">FALLING</span><span class="p">);</span><span class="w"></span>
+<td class="linenos linenodiv"><a href="#rest_code_ef7282a3102f4403ad6db869ad5d9429-54"><code data-line-number=" 54"></code></a></td>
+<td class="code"><code><a id="rest_code_ef7282a3102f4403ad6db869ad5d9429-54" name="rest_code_ef7282a3102f4403ad6db869ad5d9429-54"></a><span class="w">     </span><span class="n">attachInterrupt</span><span class="p">(</span><span class="n">digitalPinToInterrupt</span><span class="p">(</span><span class="mi">3</span><span class="p">),</span><span class="w"> </span><span class="n">isr_break_count</span><span class="p">,</span><span class="w"> </span><span class="n">FALLING</span><span class="p">);</span><span class="w"></span>
 </code></td>
 </tr>
 <tr>
-<td class="linenos linenodiv"><a href="#rest_code_3c23f22487d3404dbbeea3736f2313d9-55"><code data-line-number=" 55"></code></a></td>
-<td class="code"><code><a id="rest_code_3c23f22487d3404dbbeea3736f2313d9-55" name="rest_code_3c23f22487d3404dbbeea3736f2313d9-55"></a>
+<td class="linenos linenodiv"><a href="#rest_code_ef7282a3102f4403ad6db869ad5d9429-55"><code data-line-number=" 55"></code></a></td>
+<td class="code"><code><a id="rest_code_ef7282a3102f4403ad6db869ad5d9429-55" name="rest_code_ef7282a3102f4403ad6db869ad5d9429-55"></a>
 </code></td>
 </tr>
 <tr>
-<td class="linenos linenodiv"><a href="#rest_code_3c23f22487d3404dbbeea3736f2313d9-56"><code data-line-number=" 56"></code></a></td>
-<td class="code"><code><a id="rest_code_3c23f22487d3404dbbeea3736f2313d9-56" name="rest_code_3c23f22487d3404dbbeea3736f2313d9-56"></a><span class="w">     </span><span class="p">}</span><span class="w"></span>
+<td class="linenos linenodiv"><a href="#rest_code_ef7282a3102f4403ad6db869ad5d9429-56"><code data-line-number=" 56"></code></a></td>
+<td class="code"><code><a id="rest_code_ef7282a3102f4403ad6db869ad5d9429-56" name="rest_code_ef7282a3102f4403ad6db869ad5d9429-56"></a><span class="w">     </span><span class="p">}</span><span class="w"></span>
 </code></td>
 </tr>
 <tr>
-<td class="linenos linenodiv"><a href="#rest_code_3c23f22487d3404dbbeea3736f2313d9-57"><code data-line-number=" 57"></code></a></td>
-<td class="code"><code><a id="rest_code_3c23f22487d3404dbbeea3736f2313d9-57" name="rest_code_3c23f22487d3404dbbeea3736f2313d9-57"></a>
+<td class="linenos linenodiv"><a href="#rest_code_ef7282a3102f4403ad6db869ad5d9429-57"><code data-line-number=" 57"></code></a></td>
+<td class="code"><code><a id="rest_code_ef7282a3102f4403ad6db869ad5d9429-57" name="rest_code_ef7282a3102f4403ad6db869ad5d9429-57"></a>
 </code></td>
 </tr>
 <tr>
-<td class="linenos linenodiv"><a href="#rest_code_3c23f22487d3404dbbeea3736f2313d9-58"><code data-line-number=" 58"></code></a></td>
-<td class="code"><code><a id="rest_code_3c23f22487d3404dbbeea3736f2313d9-58" name="rest_code_3c23f22487d3404dbbeea3736f2313d9-58"></a>
+<td class="linenos linenodiv"><a href="#rest_code_ef7282a3102f4403ad6db869ad5d9429-58"><code data-line-number=" 58"></code></a></td>
+<td class="code"><code><a id="rest_code_ef7282a3102f4403ad6db869ad5d9429-58" name="rest_code_ef7282a3102f4403ad6db869ad5d9429-58"></a>
 </code></td>
 </tr>
 <tr>
-<td class="linenos linenodiv"><a href="#rest_code_3c23f22487d3404dbbeea3736f2313d9-59"><code data-line-number=" 59"></code></a></td>
-<td class="code"><code><a id="rest_code_3c23f22487d3404dbbeea3736f2313d9-59" name="rest_code_3c23f22487d3404dbbeea3736f2313d9-59"></a><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">isr_break_count</span><span class="p">()</span><span class="w"></span>
+<td class="linenos linenodiv"><a href="#rest_code_ef7282a3102f4403ad6db869ad5d9429-59"><code data-line-number=" 59"></code></a></td>
+<td class="code"><code><a id="rest_code_ef7282a3102f4403ad6db869ad5d9429-59" name="rest_code_ef7282a3102f4403ad6db869ad5d9429-59"></a><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">isr_break_count</span><span class="p">()</span><span class="w"></span>
 </code></td>
 </tr>
 <tr>
-<td class="linenos linenodiv"><a href="#rest_code_3c23f22487d3404dbbeea3736f2313d9-60"><code data-line-number=" 60"></code></a></td>
-<td class="code"><code><a id="rest_code_3c23f22487d3404dbbeea3736f2313d9-60" name="rest_code_3c23f22487d3404dbbeea3736f2313d9-60"></a><span class="w">     </span><span class="p">{</span><span class="w"></span>
+<td class="linenos linenodiv"><a href="#rest_code_ef7282a3102f4403ad6db869ad5d9429-60"><code data-line-number=" 60"></code></a></td>
+<td class="code"><code><a id="rest_code_ef7282a3102f4403ad6db869ad5d9429-60" name="rest_code_ef7282a3102f4403ad6db869ad5d9429-60"></a><span class="w">     </span><span class="p">{</span><span class="w"></span>
 </code></td>
 </tr>
 <tr>
-<td class="linenos linenodiv"><a href="#rest_code_3c23f22487d3404dbbeea3736f2313d9-61"><code data-line-number=" 61"></code></a></td>
-<td class="code"><code><a id="rest_code_3c23f22487d3404dbbeea3736f2313d9-61" name="rest_code_3c23f22487d3404dbbeea3736f2313d9-61"></a><span class="w">     </span><span class="n">myinterrupts</span><span class="o">++</span><span class="p">;</span><span class="w"></span>
+<td class="linenos linenodiv"><a href="#rest_code_ef7282a3102f4403ad6db869ad5d9429-61"><code data-line-number=" 61"></code></a></td>
+<td class="code"><code><a id="rest_code_ef7282a3102f4403ad6db869ad5d9429-61" name="rest_code_ef7282a3102f4403ad6db869ad5d9429-61"></a><span class="w">     </span><span class="n">myinterrupts</span><span class="o">++</span><span class="p">;</span><span class="w"></span>
 </code></td>
 </tr>
 <tr>
-<td class="linenos linenodiv"><a href="#rest_code_3c23f22487d3404dbbeea3736f2313d9-62"><code data-line-number=" 62"></code></a></td>
-<td class="code"><code><a id="rest_code_3c23f22487d3404dbbeea3736f2313d9-62" name="rest_code_3c23f22487d3404dbbeea3736f2313d9-62"></a><span class="w">     </span><span class="p">}</span><span class="w"></span>
+<td class="linenos linenodiv"><a href="#rest_code_ef7282a3102f4403ad6db869ad5d9429-62"><code data-line-number=" 62"></code></a></td>
+<td class="code"><code><a id="rest_code_ef7282a3102f4403ad6db869ad5d9429-62" name="rest_code_ef7282a3102f4403ad6db869ad5d9429-62"></a><span class="w">     </span><span class="p">}</span><span class="w"></span>
 </code></td>
 </tr>
 <tr>
-<td class="linenos linenodiv"><a href="#rest_code_3c23f22487d3404dbbeea3736f2313d9-63"><code data-line-number=" 63"></code></a></td>
-<td class="code"><code><a id="rest_code_3c23f22487d3404dbbeea3736f2313d9-63" name="rest_code_3c23f22487d3404dbbeea3736f2313d9-63"></a>
+<td class="linenos linenodiv"><a href="#rest_code_ef7282a3102f4403ad6db869ad5d9429-63"><code data-line-number=" 63"></code></a></td>
+<td class="code"><code><a id="rest_code_ef7282a3102f4403ad6db869ad5d9429-63" name="rest_code_ef7282a3102f4403ad6db869ad5d9429-63"></a>
 </code></td>
 </tr>
 <tr>
-<td class="linenos linenodiv"><a href="#rest_code_3c23f22487d3404dbbeea3736f2313d9-64"><code data-line-number=" 64"></code></a></td>
-<td class="code"><code><a id="rest_code_3c23f22487d3404dbbeea3736f2313d9-64" name="rest_code_3c23f22487d3404dbbeea3736f2313d9-64"></a>
+<td class="linenos linenodiv"><a href="#rest_code_ef7282a3102f4403ad6db869ad5d9429-64"><code data-line-number=" 64"></code></a></td>
+<td class="code"><code><a id="rest_code_ef7282a3102f4403ad6db869ad5d9429-64" name="rest_code_ef7282a3102f4403ad6db869ad5d9429-64"></a>
 </code></td>
 </tr>
 <tr>
-<td class="linenos linenodiv"><a href="#rest_code_3c23f22487d3404dbbeea3736f2313d9-65"><code data-line-number=" 65"></code></a></td>
-<td class="code"><code><a id="rest_code_3c23f22487d3404dbbeea3736f2313d9-65" name="rest_code_3c23f22487d3404dbbeea3736f2313d9-65"></a>
+<td class="linenos linenodiv"><a href="#rest_code_ef7282a3102f4403ad6db869ad5d9429-65"><code data-line-number=" 65"></code></a></td>
+<td class="code"><code><a id="rest_code_ef7282a3102f4403ad6db869ad5d9429-65" name="rest_code_ef7282a3102f4403ad6db869ad5d9429-65"></a>
 </code></td>
 </tr>
 <tr>
-<td class="linenos linenodiv"><a href="#rest_code_3c23f22487d3404dbbeea3736f2313d9-66"><code data-line-number=" 66"></code></a></td>
-<td class="code"><code><a id="rest_code_3c23f22487d3404dbbeea3736f2313d9-66" name="rest_code_3c23f22487d3404dbbeea3736f2313d9-66"></a><span class="w"> </span><span class="c1">// the loop routine runs over and over again forever:</span>
+<td class="linenos linenodiv"><a href="#rest_code_ef7282a3102f4403ad6db869ad5d9429-66"><code data-line-number=" 66"></code></a></td>
+<td class="code"><code><a id="rest_code_ef7282a3102f4403ad6db869ad5d9429-66" name="rest_code_ef7282a3102f4403ad6db869ad5d9429-66"></a><span class="w"> </span><span class="c1">// the loop routine runs over and over again forever:</span>
 </code></td>
 </tr>
 <tr>
-<td class="linenos linenodiv"><a href="#rest_code_3c23f22487d3404dbbeea3736f2313d9-67"><code data-line-number=" 67"></code></a></td>
-<td class="code"><code><a id="rest_code_3c23f22487d3404dbbeea3736f2313d9-67" name="rest_code_3c23f22487d3404dbbeea3736f2313d9-67"></a><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">loop</span><span class="p">()</span><span class="w"></span>
+<td class="linenos linenodiv"><a href="#rest_code_ef7282a3102f4403ad6db869ad5d9429-67"><code data-line-number=" 67"></code></a></td>
+<td class="code"><code><a id="rest_code_ef7282a3102f4403ad6db869ad5d9429-67" name="rest_code_ef7282a3102f4403ad6db869ad5d9429-67"></a><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">loop</span><span class="p">()</span><span class="w"></span>
 </code></td>
 </tr>
 <tr>
-<td class="linenos linenodiv"><a href="#rest_code_3c23f22487d3404dbbeea3736f2313d9-68"><code data-line-number=" 68"></code></a></td>
-<td class="code"><code><a id="rest_code_3c23f22487d3404dbbeea3736f2313d9-68" name="rest_code_3c23f22487d3404dbbeea3736f2313d9-68"></a><span class="w">     </span><span class="p">{</span><span class="w"></span>
+<td class="linenos linenodiv"><a href="#rest_code_ef7282a3102f4403ad6db869ad5d9429-68"><code data-line-number=" 68"></code></a></td>
+<td class="code"><code><a id="rest_code_ef7282a3102f4403ad6db869ad5d9429-68" name="rest_code_ef7282a3102f4403ad6db869ad5d9429-68"></a><span class="w">     </span><span class="p">{</span><span class="w"></span>
 </code></td>
 </tr>
 <tr>
-<td class="linenos linenodiv"><a href="#rest_code_3c23f22487d3404dbbeea3736f2313d9-69"><code data-line-number=" 69"></code></a></td>
-<td class="code"><code><a id="rest_code_3c23f22487d3404dbbeea3736f2313d9-69" name="rest_code_3c23f22487d3404dbbeea3736f2313d9-69"></a>
+<td class="linenos linenodiv"><a href="#rest_code_ef7282a3102f4403ad6db869ad5d9429-69"><code data-line-number=" 69"></code></a></td>
+<td class="code"><code><a id="rest_code_ef7282a3102f4403ad6db869ad5d9429-69" name="rest_code_ef7282a3102f4403ad6db869ad5d9429-69"></a>
 </code></td>
 </tr>
 <tr>
-<td class="linenos linenodiv"><a href="#rest_code_3c23f22487d3404dbbeea3736f2313d9-70"><code data-line-number=" 70"></code></a></td>
-<td class="code"><code><a id="rest_code_3c23f22487d3404dbbeea3736f2313d9-70" name="rest_code_3c23f22487d3404dbbeea3736f2313d9-70"></a><span class="w">     </span><span class="c1">// Update time and rpm every second</span>
+<td class="linenos linenodiv"><a href="#rest_code_ef7282a3102f4403ad6db869ad5d9429-70"><code data-line-number=" 70"></code></a></td>
+<td class="code"><code><a id="rest_code_ef7282a3102f4403ad6db869ad5d9429-70" name="rest_code_ef7282a3102f4403ad6db869ad5d9429-70"></a><span class="w">     </span><span class="c1">// Update time and rpm every second</span>
 </code></td>
 </tr>
 <tr>
-<td class="linenos linenodiv"><a href="#rest_code_3c23f22487d3404dbbeea3736f2313d9-71"><code data-line-number=" 71"></code></a></td>
-<td class="code"><code><a id="rest_code_3c23f22487d3404dbbeea3736f2313d9-71" name="rest_code_3c23f22487d3404dbbeea3736f2313d9-71"></a><span class="w">     </span><span class="n">delay</span><span class="p">(</span><span class="mi">300</span><span class="p">);</span><span class="w"></span>
+<td class="linenos linenodiv"><a href="#rest_code_ef7282a3102f4403ad6db869ad5d9429-71"><code data-line-number=" 71"></code></a></td>
+<td class="code"><code><a id="rest_code_ef7282a3102f4403ad6db869ad5d9429-71" name="rest_code_ef7282a3102f4403ad6db869ad5d9429-71"></a><span class="w">     </span><span class="n">delay</span><span class="p">(</span><span class="mi">300</span><span class="p">);</span><span class="w"></span>
 </code></td>
 </tr>
 <tr>
-<td class="linenos linenodiv"><a href="#rest_code_3c23f22487d3404dbbeea3736f2313d9-72"><code data-line-number=" 72"></code></a></td>
-<td class="code"><code><a id="rest_code_3c23f22487d3404dbbeea3736f2313d9-72" name="rest_code_3c23f22487d3404dbbeea3736f2313d9-72"></a>
+<td class="linenos linenodiv"><a href="#rest_code_ef7282a3102f4403ad6db869ad5d9429-72"><code data-line-number=" 72"></code></a></td>
+<td class="code"><code><a id="rest_code_ef7282a3102f4403ad6db869ad5d9429-72" name="rest_code_ef7282a3102f4403ad6db869ad5d9429-72"></a>
 </code></td>
 </tr>
 <tr>
-<td class="linenos linenodiv"><a href="#rest_code_3c23f22487d3404dbbeea3736f2313d9-73"><code data-line-number=" 73"></code></a></td>
-<td class="code"><code><a id="rest_code_3c23f22487d3404dbbeea3736f2313d9-73" name="rest_code_3c23f22487d3404dbbeea3736f2313d9-73"></a><span class="w">     </span><span class="c1">// Don't process interrupts during this calculation</span>
+<td class="linenos linenodiv"><a href="#rest_code_ef7282a3102f4403ad6db869ad5d9429-73"><code data-line-number=" 73"></code></a></td>
+<td class="code"><code><a id="rest_code_ef7282a3102f4403ad6db869ad5d9429-73" name="rest_code_ef7282a3102f4403ad6db869ad5d9429-73"></a><span class="w">     </span><span class="c1">// Don't process interrupts during this calculation</span>
 </code></td>
 </tr>
 <tr>
-<td class="linenos linenodiv"><a href="#rest_code_3c23f22487d3404dbbeea3736f2313d9-74"><code data-line-number=" 74"></code></a></td>
-<td class="code"><code><a id="rest_code_3c23f22487d3404dbbeea3736f2313d9-74" name="rest_code_3c23f22487d3404dbbeea3736f2313d9-74"></a><span class="w">     </span><span class="n">noInterrupts</span><span class="p">();</span><span class="w"></span>
+<td class="linenos linenodiv"><a href="#rest_code_ef7282a3102f4403ad6db869ad5d9429-74"><code data-line-number=" 74"></code></a></td>
+<td class="code"><code><a id="rest_code_ef7282a3102f4403ad6db869ad5d9429-74" name="rest_code_ef7282a3102f4403ad6db869ad5d9429-74"></a><span class="w">     </span><span class="n">noInterrupts</span><span class="p">();</span><span class="w"></span>
 </code></td>
 </tr>
 <tr>
-<td class="linenos linenodiv"><a href="#rest_code_3c23f22487d3404dbbeea3736f2313d9-75"><code data-line-number=" 75"></code></a></td>
-<td class="code"><code><a id="rest_code_3c23f22487d3404dbbeea3736f2313d9-75" name="rest_code_3c23f22487d3404dbbeea3736f2313d9-75"></a>
+<td class="linenos linenodiv"><a href="#rest_code_ef7282a3102f4403ad6db869ad5d9429-75"><code data-line-number=" 75"></code></a></td>
+<td class="code"><code><a id="rest_code_ef7282a3102f4403ad6db869ad5d9429-75" name="rest_code_ef7282a3102f4403ad6db869ad5d9429-75"></a>
 </code></td>
 </tr>
 <tr>
-<td class="linenos linenodiv"><a href="#rest_code_3c23f22487d3404dbbeea3736f2313d9-76"><code data-line-number=" 76"></code></a></td>
-<td class="code"><code><a id="rest_code_3c23f22487d3404dbbeea3736f2313d9-76" name="rest_code_3c23f22487d3404dbbeea3736f2313d9-76"></a><span class="w">     </span><span class="c1">// Calculate the RPM. If a 3-blade propeller, 3 breaks</span>
+<td class="linenos linenodiv"><a href="#rest_code_ef7282a3102f4403ad6db869ad5d9429-76"><code data-line-number=" 76"></code></a></td>
+<td class="code"><code><a id="rest_code_ef7282a3102f4403ad6db869ad5d9429-76" name="rest_code_ef7282a3102f4403ad6db869ad5d9429-76"></a><span class="w">     </span><span class="c1">// Calculate the RPM. If a 3-blade propeller, 3 breaks</span>
 </code></td>
 </tr>
 <tr>
-<td class="linenos linenodiv"><a href="#rest_code_3c23f22487d3404dbbeea3736f2313d9-77"><code data-line-number=" 77"></code></a></td>
-<td class="code"><code><a id="rest_code_3c23f22487d3404dbbeea3736f2313d9-77" name="rest_code_3c23f22487d3404dbbeea3736f2313d9-77"></a><span class="w">     </span><span class="c1">// per second would yield 1 rpm, which is 60 rpm.</span>
+<td class="linenos linenodiv"><a href="#rest_code_ef7282a3102f4403ad6db869ad5d9429-77"><code data-line-number=" 77"></code></a></td>
+<td class="code"><code><a id="rest_code_ef7282a3102f4403ad6db869ad5d9429-77" name="rest_code_ef7282a3102f4403ad6db869ad5d9429-77"></a><span class="w">     </span><span class="c1">// per second would yield 1 rpm, which is 60 rpm.</span>
 </code></td>
 </tr>
 <tr>
-<td class="linenos linenodiv"><a href="#rest_code_3c23f22487d3404dbbeea3736f2313d9-78"><code data-line-number=" 78"></code></a></td>
-<td class="code"><code><a id="rest_code_3c23f22487d3404dbbeea3736f2313d9-78" name="rest_code_3c23f22487d3404dbbeea3736f2313d9-78"></a><span class="w">     </span><span class="n">rpm</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="mi">60</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">myinterrupts</span><span class="p">)</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">BLADE_COUNT</span><span class="p">;</span><span class="w"></span>
+<td class="linenos linenodiv"><a href="#rest_code_ef7282a3102f4403ad6db869ad5d9429-78"><code data-line-number=" 78"></code></a></td>
+<td class="code"><code><a id="rest_code_ef7282a3102f4403ad6db869ad5d9429-78" name="rest_code_ef7282a3102f4403ad6db869ad5d9429-78"></a><span class="w">     </span><span class="n">rpm</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="mi">60</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">myinterrupts</span><span class="p">)</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">BLADE_COUNT</span><span class="p">;</span><span class="w"></span>
 </code></td>
 </tr>
 <tr>
-<td class="linenos linenodiv"><a href="#rest_code_3c23f22487d3404dbbeea3736f2313d9-79"><code data-line-number=" 79"></code></a></td>
-<td class="code"><code><a id="rest_code_3c23f22487d3404dbbeea3736f2313d9-79" name="rest_code_3c23f22487d3404dbbeea3736f2313d9-79"></a><span class="w">     </span><span class="n">rpm_print</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">rpm</span><span class="p">;</span><span class="w"></span>
+<td class="linenos linenodiv"><a href="#rest_code_ef7282a3102f4403ad6db869ad5d9429-79"><code data-line-number=" 79"></code></a></td>
+<td class="code"><code><a id="rest_code_ef7282a3102f4403ad6db869ad5d9429-79" name="rest_code_ef7282a3102f4403ad6db869ad5d9429-79"></a><span class="w">     </span><span class="n">rpm_print</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">rpm</span><span class="p">;</span><span class="w"></span>
 </code></td>
 </tr>
 <tr>
-<td class="linenos linenodiv"><a href="#rest_code_3c23f22487d3404dbbeea3736f2313d9-80"><code data-line-number=" 80"></code></a></td>
-<td class="code"><code><a id="rest_code_3c23f22487d3404dbbeea3736f2313d9-80" name="rest_code_3c23f22487d3404dbbeea3736f2313d9-80"></a><span class="w">     </span><span class="n">myinterrupts_print</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">myinterrupts</span><span class="p">;</span><span class="w"></span>
+<td class="linenos linenodiv"><a href="#rest_code_ef7282a3102f4403ad6db869ad5d9429-80"><code data-line-number=" 80"></code></a></td>
+<td class="code"><code><a id="rest_code_ef7282a3102f4403ad6db869ad5d9429-80" name="rest_code_ef7282a3102f4403ad6db869ad5d9429-80"></a><span class="w">     </span><span class="n">myinterrupts_print</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">myinterrupts</span><span class="p">;</span><span class="w"></span>
 </code></td>
 </tr>
 <tr>
-<td class="linenos linenodiv"><a href="#rest_code_3c23f22487d3404dbbeea3736f2313d9-81"><code data-line-number=" 81"></code></a></td>
-<td class="code"><code><a id="rest_code_3c23f22487d3404dbbeea3736f2313d9-81" name="rest_code_3c23f22487d3404dbbeea3736f2313d9-81"></a>
+<td class="linenos linenodiv"><a href="#rest_code_ef7282a3102f4403ad6db869ad5d9429-81"><code data-line-number=" 81"></code></a></td>
+<td class="code"><code><a id="rest_code_ef7282a3102f4403ad6db869ad5d9429-81" name="rest_code_ef7282a3102f4403ad6db869ad5d9429-81"></a>
 </code></td>
 </tr>
 <tr>
-<td class="linenos linenodiv"><a href="#rest_code_3c23f22487d3404dbbeea3736f2313d9-82"><code data-line-number=" 82"></code></a></td>
-<td class="code"><code><a id="rest_code_3c23f22487d3404dbbeea3736f2313d9-82" name="rest_code_3c23f22487d3404dbbeea3736f2313d9-82"></a><span class="w">     </span><span class="n">myinterrupts</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
+<td class="linenos linenodiv"><a href="#rest_code_ef7282a3102f4403ad6db869ad5d9429-82"><code data-line-number=" 82"></code></a></td>
+<td class="code"><code><a id="rest_code_ef7282a3102f4403ad6db869ad5d9429-82" name="rest_code_ef7282a3102f4403ad6db869ad5d9429-82"></a><span class="w">     </span><span class="n">myinterrupts</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
 </code></td>
 </tr>
 <tr>
-<td class="linenos linenodiv"><a href="#rest_code_3c23f22487d3404dbbeea3736f2313d9-83"><code data-line-number=" 83"></code></a></td>
-<td class="code"><code><a id="rest_code_3c23f22487d3404dbbeea3736f2313d9-83" name="rest_code_3c23f22487d3404dbbeea3736f2313d9-83"></a><span class="w">     </span><span class="n">rpm</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
+<td class="linenos linenodiv"><a href="#rest_code_ef7282a3102f4403ad6db869ad5d9429-83"><code data-line-number=" 83"></code></a></td>
+<td class="code"><code><a id="rest_code_ef7282a3102f4403ad6db869ad5d9429-83" name="rest_code_ef7282a3102f4403ad6db869ad5d9429-83"></a><span class="w">     </span><span class="n">rpm</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
 </code></td>
 </tr>
 <tr>
-<td class="linenos linenodiv"><a href="#rest_code_3c23f22487d3404dbbeea3736f2313d9-84"><code data-line-number=" 84"></code></a></td>
-<td class="code"><code><a id="rest_code_3c23f22487d3404dbbeea3736f2313d9-84" name="rest_code_3c23f22487d3404dbbeea3736f2313d9-84"></a>
+<td class="linenos linenodiv"><a href="#rest_code_ef7282a3102f4403ad6db869ad5d9429-84"><code data-line-number=" 84"></code></a></td>
+<td class="code"><code><a id="rest_code_ef7282a3102f4403ad6db869ad5d9429-84" name="rest_code_ef7282a3102f4403ad6db869ad5d9429-84"></a>
 </code></td>
 </tr>
 <tr>
-<td class="linenos linenodiv"><a href="#rest_code_3c23f22487d3404dbbeea3736f2313d9-85"><code data-line-number=" 85"></code></a></td>
-<td class="code"><code><a id="rest_code_3c23f22487d3404dbbeea3736f2313d9-85" name="rest_code_3c23f22487d3404dbbeea3736f2313d9-85"></a><span class="w">     </span><span class="c1">// Restart interrupts</span>
+<td class="linenos linenodiv"><a href="#rest_code_ef7282a3102f4403ad6db869ad5d9429-85"><code data-line-number=" 85"></code></a></td>
+<td class="code"><code><a id="rest_code_ef7282a3102f4403ad6db869ad5d9429-85" name="rest_code_ef7282a3102f4403ad6db869ad5d9429-85"></a><span class="w">     </span><span class="c1">// Restart interrupts</span>
 </code></td>
 </tr>
 <tr>
-<td class="linenos linenodiv"><a href="#rest_code_3c23f22487d3404dbbeea3736f2313d9-86"><code data-line-number=" 86"></code></a></td>
-<td class="code"><code><a id="rest_code_3c23f22487d3404dbbeea3736f2313d9-86" name="rest_code_3c23f22487d3404dbbeea3736f2313d9-86"></a><span class="w">     </span><span class="n">interrupts</span><span class="p">();</span><span class="w"></span>
+<td class="linenos linenodiv"><a href="#rest_code_ef7282a3102f4403ad6db869ad5d9429-86"><code data-line-number=" 86"></code></a></td>
+<td class="code"><code><a id="rest_code_ef7282a3102f4403ad6db869ad5d9429-86" name="rest_code_ef7282a3102f4403ad6db869ad5d9429-86"></a><span class="w">     </span><span class="n">interrupts</span><span class="p">();</span><span class="w"></span>
 </code></td>
 </tr>
 <tr>
-<td class="linenos linenodiv"><a href="#rest_code_3c23f22487d3404dbbeea3736f2313d9-87"><code data-line-number=" 87"></code></a></td>
-<td class="code"><code><a id="rest_code_3c23f22487d3404dbbeea3736f2313d9-87" name="rest_code_3c23f22487d3404dbbeea3736f2313d9-87"></a>
+<td class="linenos linenodiv"><a href="#rest_code_ef7282a3102f4403ad6db869ad5d9429-87"><code data-line-number=" 87"></code></a></td>
+<td class="code"><code><a id="rest_code_ef7282a3102f4403ad6db869ad5d9429-87" name="rest_code_ef7282a3102f4403ad6db869ad5d9429-87"></a>
 </code></td>
 </tr>
 <tr>
-<td class="linenos linenodiv"><a href="#rest_code_3c23f22487d3404dbbeea3736f2313d9-88"><code data-line-number=" 88"></code></a></td>
-<td class="code"><code><a id="rest_code_3c23f22487d3404dbbeea3736f2313d9-88" name="rest_code_3c23f22487d3404dbbeea3736f2313d9-88"></a><span class="w">     </span><span class="c1">//  Serial.print("interrupts: ");</span>
+<td class="linenos linenodiv"><a href="#rest_code_ef7282a3102f4403ad6db869ad5d9429-88"><code data-line-number=" 88"></code></a></td>
+<td class="code"><code><a id="rest_code_ef7282a3102f4403ad6db869ad5d9429-88" name="rest_code_ef7282a3102f4403ad6db869ad5d9429-88"></a><span class="w">     </span><span class="c1">//  Serial.print("interrupts: ");</span>
 </code></td>
 </tr>
 <tr>
-<td class="linenos linenodiv"><a href="#rest_code_3c23f22487d3404dbbeea3736f2313d9-89"><code data-line-number=" 89"></code></a></td>
-<td class="code"><code><a id="rest_code_3c23f22487d3404dbbeea3736f2313d9-89" name="rest_code_3c23f22487d3404dbbeea3736f2313d9-89"></a><span class="w">     </span><span class="c1">//  Serial.print(myinterrupts_print);</span>
+<td class="linenos linenodiv"><a href="#rest_code_ef7282a3102f4403ad6db869ad5d9429-89"><code data-line-number=" 89"></code></a></td>
+<td class="code"><code><a id="rest_code_ef7282a3102f4403ad6db869ad5d9429-89" name="rest_code_ef7282a3102f4403ad6db869ad5d9429-89"></a><span class="w">     </span><span class="c1">//  Serial.print(myinterrupts_print);</span>
 </code></td>
 </tr>
 <tr>
-<td class="linenos linenodiv"><a href="#rest_code_3c23f22487d3404dbbeea3736f2313d9-90"><code data-line-number=" 90"></code></a></td>
-<td class="code"><code><a id="rest_code_3c23f22487d3404dbbeea3736f2313d9-90" name="rest_code_3c23f22487d3404dbbeea3736f2313d9-90"></a><span class="w">     </span><span class="c1">//  Serial.print("\t");</span>
+<td class="linenos linenodiv"><a href="#rest_code_ef7282a3102f4403ad6db869ad5d9429-90"><code data-line-number=" 90"></code></a></td>
+<td class="code"><code><a id="rest_code_ef7282a3102f4403ad6db869ad5d9429-90" name="rest_code_ef7282a3102f4403ad6db869ad5d9429-90"></a><span class="w">     </span><span class="c1">//  Serial.print("\t");</span>
 </code></td>
 </tr>
 <tr>
-<td class="linenos linenodiv"><a href="#rest_code_3c23f22487d3404dbbeea3736f2313d9-91"><code data-line-number=" 91"></code></a></td>
-<td class="code"><code><a id="rest_code_3c23f22487d3404dbbeea3736f2313d9-91" name="rest_code_3c23f22487d3404dbbeea3736f2313d9-91"></a>
+<td class="linenos linenodiv"><a href="#rest_code_ef7282a3102f4403ad6db869ad5d9429-91"><code data-line-number=" 91"></code></a></td>
+<td class="code"><code><a id="rest_code_ef7282a3102f4403ad6db869ad5d9429-91" name="rest_code_ef7282a3102f4403ad6db869ad5d9429-91"></a>
 </code></td>
 </tr>
 <tr>
-<td class="linenos linenodiv"><a href="#rest_code_3c23f22487d3404dbbeea3736f2313d9-92"><code data-line-number=" 92"></code></a></td>
-<td class="code"><code><a id="rest_code_3c23f22487d3404dbbeea3736f2313d9-92" name="rest_code_3c23f22487d3404dbbeea3736f2313d9-92"></a><span class="w">     </span><span class="n">Serial</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="s">"rpm: "</span><span class="p">);</span><span class="w"></span>
+<td class="linenos linenodiv"><a href="#rest_code_ef7282a3102f4403ad6db869ad5d9429-92"><code data-line-number=" 92"></code></a></td>
+<td class="code"><code><a id="rest_code_ef7282a3102f4403ad6db869ad5d9429-92" name="rest_code_ef7282a3102f4403ad6db869ad5d9429-92"></a><span class="w">     </span><span class="n">Serial</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="s">"rpm: "</span><span class="p">);</span><span class="w"></span>
 </code></td>
 </tr>
 <tr>
-<td class="linenos linenodiv"><a href="#rest_code_3c23f22487d3404dbbeea3736f2313d9-93"><code data-line-number=" 93"></code></a></td>
-<td class="code"><code><a id="rest_code_3c23f22487d3404dbbeea3736f2313d9-93" name="rest_code_3c23f22487d3404dbbeea3736f2313d9-93"></a><span class="w">     </span><span class="n">Serial</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="n">rpm_print</span><span class="p">);</span><span class="w"></span>
+<td class="linenos linenodiv"><a href="#rest_code_ef7282a3102f4403ad6db869ad5d9429-93"><code data-line-number=" 93"></code></a></td>
+<td class="code"><code><a id="rest_code_ef7282a3102f4403ad6db869ad5d9429-93" name="rest_code_ef7282a3102f4403ad6db869ad5d9429-93"></a><span class="w">     </span><span class="n">Serial</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="n">rpm_print</span><span class="p">);</span><span class="w"></span>
 </code></td>
 </tr>
 <tr>
-<td class="linenos linenodiv"><a href="#rest_code_3c23f22487d3404dbbeea3736f2313d9-94"><code data-line-number=" 94"></code></a></td>
-<td class="code"><code><a id="rest_code_3c23f22487d3404dbbeea3736f2313d9-94" name="rest_code_3c23f22487d3404dbbeea3736f2313d9-94"></a><span class="w">     </span><span class="n">Serial</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="s">"</span><span class="se">\t</span><span class="s">"</span><span class="p">);</span><span class="w"></span>
+<td class="linenos linenodiv"><a href="#rest_code_ef7282a3102f4403ad6db869ad5d9429-94"><code data-line-number=" 94"></code></a></td>
+<td class="code"><code><a id="rest_code_ef7282a3102f4403ad6db869ad5d9429-94" name="rest_code_ef7282a3102f4403ad6db869ad5d9429-94"></a><span class="w">     </span><span class="n">Serial</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="s">"</span><span class="se">\t</span><span class="s">"</span><span class="p">);</span><span class="w"></span>
 </code></td>
 </tr>
 <tr>
-<td class="linenos linenodiv"><a href="#rest_code_3c23f22487d3404dbbeea3736f2313d9-95"><code data-line-number=" 95"></code></a></td>
-<td class="code"><code><a id="rest_code_3c23f22487d3404dbbeea3736f2313d9-95" name="rest_code_3c23f22487d3404dbbeea3736f2313d9-95"></a>
+<td class="linenos linenodiv"><a href="#rest_code_ef7282a3102f4403ad6db869ad5d9429-95"><code data-line-number=" 95"></code></a></td>
+<td class="code"><code><a id="rest_code_ef7282a3102f4403ad6db869ad5d9429-95" name="rest_code_ef7282a3102f4403ad6db869ad5d9429-95"></a>
 </code></td>
 </tr>
 <tr>
-<td class="linenos linenodiv"><a href="#rest_code_3c23f22487d3404dbbeea3736f2313d9-96"><code data-line-number=" 96"></code></a></td>
-<td class="code"><code><a id="rest_code_3c23f22487d3404dbbeea3736f2313d9-96" name="rest_code_3c23f22487d3404dbbeea3736f2313d9-96"></a><span class="w">     </span><span class="n">Serial</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="s">"</span><span class="se">\r\n</span><span class="s">"</span><span class="p">);</span><span class="w"></span>
+<td class="linenos linenodiv"><a href="#rest_code_ef7282a3102f4403ad6db869ad5d9429-96"><code data-line-number=" 96"></code></a></td>
+<td class="code"><code><a id="rest_code_ef7282a3102f4403ad6db869ad5d9429-96" name="rest_code_ef7282a3102f4403ad6db869ad5d9429-96"></a><span class="w">     </span><span class="n">Serial</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="s">"</span><span class="se">\r\n</span><span class="s">"</span><span class="p">);</span><span class="w"></span>
 </code></td>
 </tr>
 <tr>
-<td class="linenos linenodiv"><a href="#rest_code_3c23f22487d3404dbbeea3736f2313d9-97"><code data-line-number=" 97"></code></a></td>
-<td class="code"><code><a id="rest_code_3c23f22487d3404dbbeea3736f2313d9-97" name="rest_code_3c23f22487d3404dbbeea3736f2313d9-97"></a>
+<td class="linenos linenodiv"><a href="#rest_code_ef7282a3102f4403ad6db869ad5d9429-97"><code data-line-number=" 97"></code></a></td>
+<td class="code"><code><a id="rest_code_ef7282a3102f4403ad6db869ad5d9429-97" name="rest_code_ef7282a3102f4403ad6db869ad5d9429-97"></a>
 </code></td>
 </tr>
 <tr>
-<td class="linenos linenodiv"><a href="#rest_code_3c23f22487d3404dbbeea3736f2313d9-98"><code data-line-number=" 98"></code></a></td>
-<td class="code"><code><a id="rest_code_3c23f22487d3404dbbeea3736f2313d9-98" name="rest_code_3c23f22487d3404dbbeea3736f2313d9-98"></a><span class="w">     </span><span class="n">u8x8</span><span class="p">.</span><span class="n">drawString</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">6</span><span class="p">,</span><span class="w"> </span><span class="s">"     "</span><span class="p">);</span><span class="w"></span>
+<td class="linenos linenodiv"><a href="#rest_code_ef7282a3102f4403ad6db869ad5d9429-98"><code data-line-number=" 98"></code></a></td>
+<td class="code"><code><a id="rest_code_ef7282a3102f4403ad6db869ad5d9429-98" name="rest_code_ef7282a3102f4403ad6db869ad5d9429-98"></a><span class="w">     </span><span class="n">u8x8</span><span class="p">.</span><span class="n">drawString</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">6</span><span class="p">,</span><span class="w"> </span><span class="s">"     "</span><span class="p">);</span><span class="w"></span>
 </code></td>
 </tr>
 <tr>
-<td class="linenos linenodiv"><a href="#rest_code_3c23f22487d3404dbbeea3736f2313d9-99"><code data-line-number=" 99"></code></a></td>
-<td class="code"><code><a id="rest_code_3c23f22487d3404dbbeea3736f2313d9-99" name="rest_code_3c23f22487d3404dbbeea3736f2313d9-99"></a><span class="w">     </span><span class="n">u8x8</span><span class="p">.</span><span class="n">drawString</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">6</span><span class="p">,</span><span class="w"> </span><span class="n">String</span><span class="p">(</span><span class="n">rpm_print</span><span class="p">).</span><span class="n">c_str</span><span class="p">());</span><span class="w"></span>
+<td class="linenos linenodiv"><a href="#rest_code_ef7282a3102f4403ad6db869ad5d9429-99"><code data-line-number=" 99"></code></a></td>
+<td class="code"><code><a id="rest_code_ef7282a3102f4403ad6db869ad5d9429-99" name="rest_code_ef7282a3102f4403ad6db869ad5d9429-99"></a><span class="w">     </span><span class="n">u8x8</span><span class="p">.</span><span class="n">drawString</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">6</span><span class="p">,</span><span class="w"> </span><span class="n">String</span><span class="p">(</span><span class="n">rpm_print</span><span class="p">).</span><span class="n">c_str</span><span class="p">());</span><span class="w"></span>
 </code></td>
 </tr>
 <tr>
-<td class="linenos linenodiv"><a href="#rest_code_3c23f22487d3404dbbeea3736f2313d9-100"><code data-line-number="100"></code></a></td>
-<td class="code"><code><a id="rest_code_3c23f22487d3404dbbeea3736f2313d9-100" name="rest_code_3c23f22487d3404dbbeea3736f2313d9-100"></a>
+<td class="linenos linenodiv"><a href="#rest_code_ef7282a3102f4403ad6db869ad5d9429-100"><code data-line-number="100"></code></a></td>
+<td class="code"><code><a id="rest_code_ef7282a3102f4403ad6db869ad5d9429-100" name="rest_code_ef7282a3102f4403ad6db869ad5d9429-100"></a>
 </code></td>
 </tr>
 <tr>
-<td class="linenos linenodiv"><a href="#rest_code_3c23f22487d3404dbbeea3736f2313d9-101"><code data-line-number="101"></code></a></td>
-<td class="code"><code><a id="rest_code_3c23f22487d3404dbbeea3736f2313d9-101" name="rest_code_3c23f22487d3404dbbeea3736f2313d9-101"></a><span class="w">     </span><span class="p">}</span><span class="w"></span>
+<td class="linenos linenodiv"><a href="#rest_code_ef7282a3102f4403ad6db869ad5d9429-101"><code data-line-number="101"></code></a></td>
+<td class="code"><code><a id="rest_code_ef7282a3102f4403ad6db869ad5d9429-101" name="rest_code_ef7282a3102f4403ad6db869ad5d9429-101"></a><span class="w">     </span><span class="p">}</span><span class="w"></span>
 </code></td>
 </tr>
 </table></div>
@@ -673,6 +674,9 @@
 <ul class="pager hidden-print">
 <li class="previous">
                 <a href="/blog/rebuilding-the-site-with-nikola/" rel="prev" title="Rebuilding the site with nikola">Previous post</a>
+            </li>
+            <li class="next">
+                <a href="/blog/analog-airspeed-sensor-voltage-divider/" rel="next" title="analog airspeed sensor voltage divider">Next post</a>
             </li>
         </ul></nav></aside><section class="comments hidden-print"><h2>Comments</h2>
         
