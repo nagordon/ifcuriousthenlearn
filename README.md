@@ -60,6 +60,7 @@ to
 pip install -U "Nikola[extras]"  
 ```
 
+
 # deploy to github  
 
 ```
@@ -86,6 +87,8 @@ or
 ## Helpful Links 
 
 ### Rst formatting
+
+https://getnikola.com/quickref.html
 
 https://github.com/ralsina/rst-cheatsheet/blob/master/rst-cheatsheet.rst  
 https://www.sphinx-doc.org/en/master/usage/restructuredtext/basics.html#rst-primer  
