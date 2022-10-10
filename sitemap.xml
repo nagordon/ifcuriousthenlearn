@@ -7,7 +7,7 @@
                         http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
  <url>
   <loc>https://nagordon.github.io/ifcuriousthenlearn/</loc>
-  <lastmod>2021-12-31T17:14:00Z</lastmod>
+  <lastmod>2022-10-10T03:18:00Z</lastmod>
  </url>
  <url>
   <loc>https://nagordon.github.io/ifcuriousthenlearn/2015/</loc>
@@ -146,16 +146,28 @@
   <lastmod>2021-12-31T17:14:00Z</lastmod>
  </url>
  <url>
+  <loc>https://nagordon.github.io/ifcuriousthenlearn/2022/</loc>
+  <lastmod>2022-10-10T03:18:00Z</lastmod>
+ </url>
+ <url>
+  <loc>https://nagordon.github.io/ifcuriousthenlearn/2022/10/</loc>
+  <lastmod>2022-10-10T03:18:00Z</lastmod>
+ </url>
+ <url>
+  <loc>https://nagordon.github.io/ifcuriousthenlearn/2022/10/09/</loc>
+  <lastmod>2022-10-10T03:18:00Z</lastmod>
+ </url>
+ <url>
   <loc>https://nagordon.github.io/ifcuriousthenlearn/about/</loc>
   <lastmod>2021-12-31T17:14:00Z</lastmod>
  </url>
  <url>
   <loc>https://nagordon.github.io/ifcuriousthenlearn/archive.html</loc>
-  <lastmod>2021-12-31T19:24:00Z</lastmod>
+  <lastmod>2022-10-10T03:23:00Z</lastmod>
  </url>
  <url>
   <loc>https://nagordon.github.io/ifcuriousthenlearn/blog/</loc>
-  <lastmod>2021-12-31T17:14:00Z</lastmod>
+  <lastmod>2022-10-10T03:18:00Z</lastmod>
  </url>
  <url>
   <loc>https://nagordon.github.io/ifcuriousthenlearn/blog/Industrial-Design-of-Experiments-with-r/</loc>
@@ -183,15 +195,19 @@
  </url>
  <url>
   <loc>https://nagordon.github.io/ifcuriousthenlearn/blog/index-1.html</loc>
-  <lastmod>2021-12-31T17:14:00Z</lastmod>
+  <lastmod>2022-10-10T03:18:00Z</lastmod>
  </url>
  <url>
   <loc>https://nagordon.github.io/ifcuriousthenlearn/blog/index-2.html</loc>
-  <lastmod>2021-12-31T17:14:00Z</lastmod>
+  <lastmod>2022-10-10T03:18:00Z</lastmod>
  </url>
  <url>
   <loc>https://nagordon.github.io/ifcuriousthenlearn/blog/intro-to-the-windows-command-line/</loc>
   <lastmod>2021-12-31T17:14:00Z</lastmod>
+ </url>
+ <url>
+  <loc>https://nagordon.github.io/ifcuriousthenlearn/blog/learning-how-to-use-complex-numbers-with-python/</loc>
+  <lastmod>2022-10-10T03:18:00Z</lastmod>
  </url>
  <url>
   <loc>https://nagordon.github.io/ifcuriousthenlearn/blog/logical-indexing-with-python-excel/</loc>
@@ -259,7 +275,7 @@
  </url>
  <url>
   <loc>https://nagordon.github.io/ifcuriousthenlearn/categories/</loc>
-  <lastmod>2021-12-31T17:14:00Z</lastmod>
+  <lastmod>2022-10-10T03:23:00Z</lastmod>
  </url>
  <url>
   <loc>https://nagordon.github.io/ifcuriousthenlearn/categories/automation/</loc>
@@ -284,6 +300,10 @@
  <url>
   <loc>https://nagordon.github.io/ifcuriousthenlearn/categories/cat_engineering/</loc>
   <lastmod>2021-12-31T17:14:00Z</lastmod>
+ </url>
+ <url>
+  <loc>https://nagordon.github.io/ifcuriousthenlearn/categories/cat_math/</loc>
+  <lastmod>2022-10-10T03:23:00Z</lastmod>
  </url>
  <url>
   <loc>https://nagordon.github.io/ifcuriousthenlearn/categories/cat_tools/</loc>

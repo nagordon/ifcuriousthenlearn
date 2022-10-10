@@ -88,7 +88,7 @@
             <time class="published dt-published" datetime="2015-03-14T00:00:00-08:00" itemprop="datePublished" title="2015-03-14 00:00">2015-03-14 00:00</time></a>
             </p>
                 <p class="commentline">
-        
+    
     <a href="#disqus_thread" data-disqus-identifier="cache/posts/Team Fortress 2 Server Install for Dummies.html">Comments</a>
 
 
@@ -100,8 +100,7 @@
         
 
     </header><div class="e-content entry-content" itemprop="articleBody text">
-    <div>
-<p>For those of us who remember playing games on dos, steam[http://store.steampowered.com/]
+    <p>For those of us who remember playing games on dos, steam[http://store.steampowered.com/]
 is a nice program for purchasing, managing, and playing video games. I grew up playing LAN games because dial-up just wasn't fast enough for online gaming, and it is way more fun to play games in the same room with your friends rather than random people online.</p>
 <p>Things have changed since those days. Internet speeds and just fine for online gaming, but I still prefer LAN games because, again, it is way more fun to game with your friends in the same room. So, I enjoy hosting LAN games, and I found setting up a local server a fun technical challenge, and If you are interested in doing the same, this should help you do it.</p>
 <p>The cool things with steam servers is you don't even need an account. You can create an anonymous server that is not affiliated with you.</p>
@@ -115,37 +114,31 @@ is a nice program for purchasing, managing, and playing video games. I grew up p
 <h3>
 <strong>Step 3</strong> - Create server user account</h3>
 <p>Create a user for the server admin, assign a password, and login to tf2server account</p>
-<pre class="code literal-block"><span></span><code>adduser tf2server
+<pre class="code literal-block">adduser tf2server
 passwd tf2server
 su tf2server
-</code></pre>
-
-
+</pre>
 <h3>
 <strong>Step 4</strong> - Install steam server software</h3>
 <p>There are multiple ways of doing this. One is to follow the <a href="https://wiki.teamfortress.com/wiki/Linux_dedicated_server">steam installation</a> or another <a href="http://stevenbenner.com/2010/11/how-to-set-up-a-team-fortress-2-dedicated-server-on-ubuntu/">tutorial</a> or <a href="http://danielgibbs.co.uk/lgsm/tf2server/">another tutorial</a>, which is what I recommend and used.  </p>
 <p>This will download the script, make it executable, and execute the installation</p>
-<pre class="code literal-block"><span></span><code>wget http://danielgibbs.co.uk/dl/tf2server
+<pre class="code literal-block">wget http://danielgibbs.co.uk/dl/tf2server
 chmod +x tf2server
 ./tf2server install
-</code></pre>
-
-
+</pre>
 <h3>
 <strong>Step 5</strong> - Start the server</h3>
 <p>Go to the tf2server home directory <code>cd ~</code> which will take you to <code>/home/tf2server/</code> and use these commands to manage your server  </p>
-<pre class="code literal-block"><span></span><code>./tf2server start
+<pre class="code literal-block">./tf2server start
 ./tf2server stop
 ./tf2server restart
 ./tf2server details
-</code></pre>
-
-
+</pre>
 <p>Type <code>./tf2server start</code> to start the server</p>
 <h3>
 <strong>Step 6</strong> - Connect via LAN</h3>
 <p>if you run <code>./tf2server details</code> you will see a bunch of output  </p>
-<pre class="code literal-block"><span></span><code>Team Fortress 2 Server Details
+<pre class="code literal-block">Team Fortress 2 Server Details
 ================================================================================================================================================
 Server name:    tf2 server 1
 Server IP:      192.168.1.196:27015
@@ -155,9 +148,7 @@ Status:         ONLINE
 Command-line Parameters
 ================================================================================================================================================
 ./srcds_run -game tf -strictportbind -ip 192.168.1.196 -port 27015 +clientport 27005 +tv_port 27020 -tickrate  +map pl_goldrush +servercfgfile tf2-server.cfg -maxplayers 16
-</code></pre>
-
-
+</pre>
 <p>what we want here is the local ip and port <code>Server IP: 192.168.1.196:27015</code></p>
 <p>Now we can connect locally by launching Team Fortress 2, hit <code>~</code> to drop down the console and type <code>connect 192.168.1.196:27015</code> and that should connect you to the server locally</p>
 <h3>
@@ -166,16 +157,12 @@ Command-line Parameters
 <p>After that, I access my default router IP via a web browser with <code>192.168.1.1</code> and set up a port forward on the server IP and port</p>
 <p>Now, restart the tf2server with <code>./tf2server restart</code> and go to the console <code>./tf2server console</code> and look at some of the output. Note, this script uses tmux, which allows us to log out of the server and keep the server running. Here, you can run all the comamnds to manage the server</p>
 <p>You should see somewhere in the top the public ip address of the server computer</p>
-<pre class="code literal-block"><span></span><code>Connection to Steam servers successful.
+<pre class="code literal-block">Connection to Steam servers successful.
    Public IP is 12.34.56.78.
-</code></pre>
-
-
+</pre>
 <p>and</p>
-<pre class="code literal-block"><span></span><code>Network: IP <span class="m">192</span>.168.1.196, mode MP, dedicated Yes, ports <span class="m">27015</span> SV / <span class="m">27005</span> CL
-</code></pre>
-
-
+<pre class="code literal-block">Network: IP <span class="m">192</span>.168.1.196, mode MP, dedicated Yes, ports <span class="m">27015</span> SV / <span class="m">27005</span> CL
+</pre>
 <h3>
 <strong>Step 8</strong> - Connect to your public server</h3>
 <p>Now we have all the information we need to create public server, the public IP and the SV port it selected. Finally launch Steam and do</p>
@@ -189,7 +176,7 @@ Command-line Parameters
 <p>To customize your server there are a few files you should edit. Make sure you make a backup of each in case it gets messed up</p>
 <p>The configuration file updates the server every time a new map loads. Here is mine.
 /home/tf2server/serverfiles/tf/cfg/tf2-server.cfg</p>
-<pre class="code literal-block"><span></span><code>mp_disable_respawn_times 0
+<pre class="code literal-block">mp_disable_respawn_times 0
 tf_bot_quota 13
 tf_bot_quota_mode "fill"
 tf_bot_difficulty 1
@@ -198,12 +185,10 @@ mp_maxrounds 5
 mp_winlimit
 sv_cheats 0
 tf_bot_melee_only 0
-</code></pre>
-
-
+</pre>
 <p>/home/tf2server/serverfiles/tf/cfg/mapcycle_default.txt
 The mapcycle file tells the server which map to go to next. if you use <code>changelevel pl_barnblitz</code>, it will begin the cycle there</p>
-<pre class="code literal-block"><span></span><code>pl_badwater
+<pre class="code literal-block">pl_badwater
 pl_goldrush
 pl_upward
 pl_barnblitz
@@ -218,9 +203,7 @@ plr_pipeline
 plr_hightower
 pl_thundermountain
 pl_frontier_final
-</code></pre>
-
-
+</pre>
 <p>If you want to use your xbox controller, from the client computer access the console via <code>~</code> and run <code>exec 260controller</code></p>
 <p>Enjoy!</p>
 <p>Here are some links that I found helpful <br>
@@ -232,24 +215,18 @@ https://developer.valvesoftware.com/wiki/Console_Command_List<br>
 http://steamcommunity.com/sharedfiles/filedetails/?id=250332112<br>
 https://wiki.teamfortress.com/wiki/Linux_dedicated_server<br>
 https://wiki.teamfortress.com/wiki/Bots  </p>
-</div>
-</div></article>
-</div>
-</div>
-</div>
-</body>
-</html><html>
-<aside class="postpromonav"><nav><ul itemprop="keywords" class="tags">
-<li><a class="tag p-category" href="/categories/gaming/" rel="tag">gaming</a></li>
-            <li><a class="tag p-category" href="/categories/linux/" rel="tag">linux</a></li>
+    </div>
+    <aside class="postpromonav"><nav><ul itemprop="keywords" class="tags">
+<li><a class="tag p-category" href="../../categories/gaming/" rel="tag">gaming</a></li>
+            <li><a class="tag p-category" href="../../categories/linux/" rel="tag">linux</a></li>
         </ul>
 <ul class="pager hidden-print">
 <li class="next">
-                <a href="/blog/matlab-to-python-conversion/" rel="next" title="MATLAB to python conversion">Next post</a>
+                <a href="../matlab-to-python-conversion/" rel="next" title="MATLAB to python conversion">Next post</a>
             </li>
         </ul></nav></aside><section class="comments hidden-print"><h2>Comments</h2>
         
-        
+    
         <div id="disqus_thread"></div>
         <script>
         var disqus_shortname ="ifcuriousthenlearn-nickola",
@@ -269,10 +246,19 @@ https://wiki.teamfortress.com/wiki/Bots  </p>
     <a href="https://disqus.com" class="dsq-brlink" rel="nofollow">Comments powered by <span class="logo-disqus">Disqus</span></a>
 
 
-        </section><script>var disqus_shortname="ifcuriousthenlearn-nickola";(function(){var a=document.createElement("script");a.async=true;a.src="https://"+disqus_shortname+".disqus.com/count.js";(document.getElementsByTagName("head")[0]||document.getElementsByTagName("body")[0]).appendChild(a)}());</script><!--End of body content--><footer id="footer">
-            Contents © 2021         <a href="mailto:">neal</a> - Powered by         <a href="https://getnikola.com" rel="nofollow">Nikola</a>         copyright Neal Gordon
+        </section></article><script>var disqus_shortname="ifcuriousthenlearn-nickola";(function(){var a=document.createElement("script");a.async=true;a.src="https://"+disqus_shortname+".disqus.com/count.js";(document.getElementsByTagName("head")[0]||document.getElementsByTagName("body")[0]).appendChild(a)}());</script>
+</div>
+        <!--End of body content-->
+
+        <footer id="footer">
+            Contents © 2022         <a href="mailto:">neal</a> - Powered by         <a href="https://getnikola.com" rel="nofollow">Nikola</a>         copyright Neal Gordon
             
-        </footer><script src="/assets/js/all-nocdn.js"></script><!-- fancy dates --><script>
+        </footer>
+</div>
+</div>
+
+
+            <script src="../../assets/js/all-nocdn.js"></script><!-- fancy dates --><script>
     moment.locale("en");
     fancydates(0, "YYYY-MM-DD HH:mm");
     </script><!-- end fancy dates --><script>
@@ -282,5 +268,5 @@ https://wiki.teamfortress.com/wiki/Bots  </p>
             return element.getElementsByTagName('img')[0].alt;
     }});
     </script>
+</body>
 </html>
-

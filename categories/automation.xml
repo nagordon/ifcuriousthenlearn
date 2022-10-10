@@ -1,38 +1,204 @@
 <?xml version="1.0" encoding="utf-8"?>
-<?xml-stylesheet type="text/xsl" href="../assets/xml/rss.xsl" media="all"?><rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>ifcuriousthenlearn (Posts about automation)</title><link>https://nagordon.github.io/ifcuriousthenlearn/</link><description></description><atom:link href="https://nagordon.github.io/ifcuriousthenlearn/categories/automation.xml" rel="self" type="application/rss+xml"></atom:link><language>en</language><copyright>Contents © 2021 &lt;a href="mailto:"&gt;neal&lt;/a&gt; copyright Neal Gordon</copyright><lastBuildDate>Fri, 31 Dec 2021 17:14:36 GMT</lastBuildDate><generator>Nikola (getnikola.com)</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>Automating Website Downloads with wget</title><link>https://nagordon.github.io/ifcuriousthenlearn/blog/wget-downloads/</link><dc:creator>neal</dc:creator><description>&lt;div&gt;&lt;p&gt;Have you ever been browsing the internet and found a really cool website that has a bunch of files that you want, say pdfs or mp3s? In Windows it can be a pain to scrape through the site and download all the files. You may be able to write a slick python script to acomplish this, but why reinvent the wheel? Native in Linux is the program wget, which can also be used in windows, &lt;a href="http://www.gnu.org/software/wget/"&gt;GNU wget&lt;/a&gt;.&lt;/p&gt;
+<?xml-stylesheet type="text/xsl" href="../assets/xml/rss.xsl" media="all"?><rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>ifcuriousthenlearn (Posts about automation)</title><link>https://nagordon.github.io/ifcuriousthenlearn/</link><description></description><atom:link href="https://nagordon.github.io/ifcuriousthenlearn/categories/automation.xml" rel="self" type="application/rss+xml"></atom:link><language>en</language><copyright>Contents © 2022 &lt;a href="mailto:"&gt;neal&lt;/a&gt; copyright Neal Gordon</copyright><lastBuildDate>Sun, 29 May 2022 03:05:04 GMT</lastBuildDate><generator>Nikola (getnikola.com)</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>Automating Website Downloads with wget</title><link>https://nagordon.github.io/ifcuriousthenlearn/blog/wget-downloads/</link><dc:creator>neal</dc:creator><description>&lt;p&gt;Have you ever been browsing the internet and found a really cool website that has a bunch of files that you want, say pdfs or mp3s? In Windows it can be a pain to scrape through the site and download all the files. You may be able to write a slick python script to acomplish this, but why reinvent the wheel? Native in Linux is the program wget, which can also be used in windows, &lt;a href="http://www.gnu.org/software/wget/"&gt;GNU wget&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;To get started, on a Linux computer, open your terminal and type&lt;/p&gt;
-&lt;pre class="code literal-block"&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;man wget
-&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class="code literal-block"&gt;man wget
+&lt;/pre&gt;
+&lt;p&gt;This shows the manual for wget for when you get stuck. But for now, we don't need it, so type &lt;code&gt;q&lt;/code&gt; to quit. OK, time for the rubber to hit the road. Enter&lt;/p&gt;
+&lt;pre class="code literal-block"&gt;wget www.ifcuriousthenlearn.com
+&lt;/pre&gt;
+&lt;p&gt;This downloads the html file that is at that url. Easy huh? Lets try something a little more complicated, lets say download a pdf&lt;/p&gt;
+&lt;pre class="code literal-block"&gt;wget http://www.aopa.org/airports/CLE/kneeboard.pdf
+&lt;/pre&gt;
+&lt;p&gt;And this downloads the pdf from the url. Wow, can it really be this easy? YES, yes it can. It just takes a while to find cool tools like this.&lt;/p&gt;
+&lt;p&gt;Here is a more advanced example. This wget command searches recursivley and downloads the entire website given.  &lt;/p&gt;
+&lt;pre class="code literal-block"&gt;wget --recursive http://www.brown.edu/Departments/Engineering/Courses/En221/
+&lt;/pre&gt;
+&lt;p&gt;The problem with this is that it will follow any links as it recurses through the site, and we don't want that. So, by adding another flag, called &lt;code&gt;--domains&lt;/code&gt;, we limit the command to the domain of the main site.&lt;/p&gt;
+&lt;pre class="code literal-block"&gt;wget --domains www.brown.edu --recursive http://www.brown.edu/Departments/Engineering/Courses/En221/
+&lt;/pre&gt;
+&lt;p&gt;What if we just want to download certain file types? Here, use the &lt;code&gt;--accept&lt;/code&gt; flag with the file extension&lt;/p&gt;
+&lt;pre class="code literal-block"&gt;wget --accept .pdf --domains www.brown.edu --recursive http://www.brown.edu/Departments/Engineering/Courses/En221/
+&lt;/pre&gt;
+&lt;p&gt;There we have it. Have fun download the internet, saving time and exploring other awesome packages in Linux. I hope you found this useful. Please leave any comments below.&lt;/p&gt;
+&lt;p&gt;Stay Curious!&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;
 
+&lt;p&gt;To get started, on a Linux computer, open your terminal and type&lt;/p&gt;
+&lt;pre class="code literal-block"&gt;man wget
+&lt;/pre&gt;
+&lt;p&gt;This shows the manual for wget for when you get stuck. But for now, we don't need it, so type &lt;code&gt;q&lt;/code&gt; to quit. OK, time for the rubber to hit the road. Enter&lt;/p&gt;
+&lt;pre class="code literal-block"&gt;wget www.ifcuriousthenlearn.com
+&lt;/pre&gt;
+&lt;p&gt;This downloads the html file that is at that url. Easy huh? Lets try something a little more complicated, lets say download a pdf&lt;/p&gt;
+&lt;pre class="code literal-block"&gt;wget http://www.aopa.org/airports/CLE/kneeboard.pdf
+&lt;/pre&gt;
+&lt;p&gt;And this downloads the pdf from the url. Wow, can it really be this easy? YES, yes it can. It just takes a while to find cool tools like this.&lt;/p&gt;
+&lt;p&gt;Here is a more advanced example. This wget command searches recursivley and downloads the entire website given.  &lt;/p&gt;
+&lt;pre class="code literal-block"&gt;wget --recursive http://www.brown.edu/Departments/Engineering/Courses/En221/
+&lt;/pre&gt;
+&lt;p&gt;The problem with this is that it will follow any links as it recurses through the site, and we don't want that. So, by adding another flag, called &lt;code&gt;--domains&lt;/code&gt;, we limit the command to the domain of the main site.&lt;/p&gt;
+&lt;pre class="code literal-block"&gt;wget --domains www.brown.edu --recursive http://www.brown.edu/Departments/Engineering/Courses/En221/
+&lt;/pre&gt;
+&lt;p&gt;What if we just want to download certain file types? Here, use the &lt;code&gt;--accept&lt;/code&gt; flag with the file extension&lt;/p&gt;
+&lt;pre class="code literal-block"&gt;wget --accept .pdf --domains www.brown.edu --recursive http://www.brown.edu/Departments/Engineering/Courses/En221/
+&lt;/pre&gt;
+&lt;p&gt;There we have it. Have fun download the internet, saving time and exploring other awesome packages in Linux. I hope you found this useful. Please leave any comments below.&lt;/p&gt;
+&lt;p&gt;Stay Curious!&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;
+
+&lt;pre class="code literal-block"&gt;man wget
+&lt;/pre&gt;
+&lt;p&gt;This shows the manual for wget for when you get stuck. But for now, we don't need it, so type &lt;code&gt;q&lt;/code&gt; to quit. OK, time for the rubber to hit the road. Enter&lt;/p&gt;
+&lt;pre class="code literal-block"&gt;wget www.ifcuriousthenlearn.com
+&lt;/pre&gt;
+&lt;p&gt;This downloads the html file that is at that url. Easy huh? Lets try something a little more complicated, lets say download a pdf&lt;/p&gt;
+&lt;pre class="code literal-block"&gt;wget http://www.aopa.org/airports/CLE/kneeboard.pdf
+&lt;/pre&gt;
+&lt;p&gt;And this downloads the pdf from the url. Wow, can it really be this easy? YES, yes it can. It just takes a while to find cool tools like this.&lt;/p&gt;
+&lt;p&gt;Here is a more advanced example. This wget command searches recursivley and downloads the entire website given.  &lt;/p&gt;
+&lt;pre class="code literal-block"&gt;wget --recursive http://www.brown.edu/Departments/Engineering/Courses/En221/
+&lt;/pre&gt;
+&lt;p&gt;The problem with this is that it will follow any links as it recurses through the site, and we don't want that. So, by adding another flag, called &lt;code&gt;--domains&lt;/code&gt;, we limit the command to the domain of the main site.&lt;/p&gt;
+&lt;pre class="code literal-block"&gt;wget --domains www.brown.edu --recursive http://www.brown.edu/Departments/Engineering/Courses/En221/
+&lt;/pre&gt;
+&lt;p&gt;What if we just want to download certain file types? Here, use the &lt;code&gt;--accept&lt;/code&gt; flag with the file extension&lt;/p&gt;
+&lt;pre class="code literal-block"&gt;wget --accept .pdf --domains www.brown.edu --recursive http://www.brown.edu/Departments/Engineering/Courses/En221/
+&lt;/pre&gt;
+&lt;p&gt;There we have it. Have fun download the internet, saving time and exploring other awesome packages in Linux. I hope you found this useful. Please leave any comments below.&lt;/p&gt;
+&lt;p&gt;Stay Curious!&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;
 
 &lt;p&gt;This shows the manual for wget for when you get stuck. But for now, we don't need it, so type &lt;code&gt;q&lt;/code&gt; to quit. OK, time for the rubber to hit the road. Enter&lt;/p&gt;
-&lt;pre class="code literal-block"&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;wget www.ifcuriousthenlearn.com
-&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class="code literal-block"&gt;wget www.ifcuriousthenlearn.com
+&lt;/pre&gt;
+&lt;p&gt;This downloads the html file that is at that url. Easy huh? Lets try something a little more complicated, lets say download a pdf&lt;/p&gt;
+&lt;pre class="code literal-block"&gt;wget http://www.aopa.org/airports/CLE/kneeboard.pdf
+&lt;/pre&gt;
+&lt;p&gt;And this downloads the pdf from the url. Wow, can it really be this easy? YES, yes it can. It just takes a while to find cool tools like this.&lt;/p&gt;
+&lt;p&gt;Here is a more advanced example. This wget command searches recursivley and downloads the entire website given.  &lt;/p&gt;
+&lt;pre class="code literal-block"&gt;wget --recursive http://www.brown.edu/Departments/Engineering/Courses/En221/
+&lt;/pre&gt;
+&lt;p&gt;The problem with this is that it will follow any links as it recurses through the site, and we don't want that. So, by adding another flag, called &lt;code&gt;--domains&lt;/code&gt;, we limit the command to the domain of the main site.&lt;/p&gt;
+&lt;pre class="code literal-block"&gt;wget --domains www.brown.edu --recursive http://www.brown.edu/Departments/Engineering/Courses/En221/
+&lt;/pre&gt;
+&lt;p&gt;What if we just want to download certain file types? Here, use the &lt;code&gt;--accept&lt;/code&gt; flag with the file extension&lt;/p&gt;
+&lt;pre class="code literal-block"&gt;wget --accept .pdf --domains www.brown.edu --recursive http://www.brown.edu/Departments/Engineering/Courses/En221/
+&lt;/pre&gt;
+&lt;p&gt;There we have it. Have fun download the internet, saving time and exploring other awesome packages in Linux. I hope you found this useful. Please leave any comments below.&lt;/p&gt;
+&lt;p&gt;Stay Curious!&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;
 
+&lt;pre class="code literal-block"&gt;wget www.ifcuriousthenlearn.com
+&lt;/pre&gt;
+&lt;p&gt;This downloads the html file that is at that url. Easy huh? Lets try something a little more complicated, lets say download a pdf&lt;/p&gt;
+&lt;pre class="code literal-block"&gt;wget http://www.aopa.org/airports/CLE/kneeboard.pdf
+&lt;/pre&gt;
+&lt;p&gt;And this downloads the pdf from the url. Wow, can it really be this easy? YES, yes it can. It just takes a while to find cool tools like this.&lt;/p&gt;
+&lt;p&gt;Here is a more advanced example. This wget command searches recursivley and downloads the entire website given.  &lt;/p&gt;
+&lt;pre class="code literal-block"&gt;wget --recursive http://www.brown.edu/Departments/Engineering/Courses/En221/
+&lt;/pre&gt;
+&lt;p&gt;The problem with this is that it will follow any links as it recurses through the site, and we don't want that. So, by adding another flag, called &lt;code&gt;--domains&lt;/code&gt;, we limit the command to the domain of the main site.&lt;/p&gt;
+&lt;pre class="code literal-block"&gt;wget --domains www.brown.edu --recursive http://www.brown.edu/Departments/Engineering/Courses/En221/
+&lt;/pre&gt;
+&lt;p&gt;What if we just want to download certain file types? Here, use the &lt;code&gt;--accept&lt;/code&gt; flag with the file extension&lt;/p&gt;
+&lt;pre class="code literal-block"&gt;wget --accept .pdf --domains www.brown.edu --recursive http://www.brown.edu/Departments/Engineering/Courses/En221/
+&lt;/pre&gt;
+&lt;p&gt;There we have it. Have fun download the internet, saving time and exploring other awesome packages in Linux. I hope you found this useful. Please leave any comments below.&lt;/p&gt;
+&lt;p&gt;Stay Curious!&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;
 
 &lt;p&gt;This downloads the html file that is at that url. Easy huh? Lets try something a little more complicated, lets say download a pdf&lt;/p&gt;
-&lt;pre class="code literal-block"&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;wget http://www.aopa.org/airports/CLE/kneeboard.pdf
-&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class="code literal-block"&gt;wget http://www.aopa.org/airports/CLE/kneeboard.pdf
+&lt;/pre&gt;
+&lt;p&gt;And this downloads the pdf from the url. Wow, can it really be this easy? YES, yes it can. It just takes a while to find cool tools like this.&lt;/p&gt;
+&lt;p&gt;Here is a more advanced example. This wget command searches recursivley and downloads the entire website given.  &lt;/p&gt;
+&lt;pre class="code literal-block"&gt;wget --recursive http://www.brown.edu/Departments/Engineering/Courses/En221/
+&lt;/pre&gt;
+&lt;p&gt;The problem with this is that it will follow any links as it recurses through the site, and we don't want that. So, by adding another flag, called &lt;code&gt;--domains&lt;/code&gt;, we limit the command to the domain of the main site.&lt;/p&gt;
+&lt;pre class="code literal-block"&gt;wget --domains www.brown.edu --recursive http://www.brown.edu/Departments/Engineering/Courses/En221/
+&lt;/pre&gt;
+&lt;p&gt;What if we just want to download certain file types? Here, use the &lt;code&gt;--accept&lt;/code&gt; flag with the file extension&lt;/p&gt;
+&lt;pre class="code literal-block"&gt;wget --accept .pdf --domains www.brown.edu --recursive http://www.brown.edu/Departments/Engineering/Courses/En221/
+&lt;/pre&gt;
+&lt;p&gt;There we have it. Have fun download the internet, saving time and exploring other awesome packages in Linux. I hope you found this useful. Please leave any comments below.&lt;/p&gt;
+&lt;p&gt;Stay Curious!&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;
 
+&lt;pre class="code literal-block"&gt;wget http://www.aopa.org/airports/CLE/kneeboard.pdf
+&lt;/pre&gt;
+&lt;p&gt;And this downloads the pdf from the url. Wow, can it really be this easy? YES, yes it can. It just takes a while to find cool tools like this.&lt;/p&gt;
+&lt;p&gt;Here is a more advanced example. This wget command searches recursivley and downloads the entire website given.  &lt;/p&gt;
+&lt;pre class="code literal-block"&gt;wget --recursive http://www.brown.edu/Departments/Engineering/Courses/En221/
+&lt;/pre&gt;
+&lt;p&gt;The problem with this is that it will follow any links as it recurses through the site, and we don't want that. So, by adding another flag, called &lt;code&gt;--domains&lt;/code&gt;, we limit the command to the domain of the main site.&lt;/p&gt;
+&lt;pre class="code literal-block"&gt;wget --domains www.brown.edu --recursive http://www.brown.edu/Departments/Engineering/Courses/En221/
+&lt;/pre&gt;
+&lt;p&gt;What if we just want to download certain file types? Here, use the &lt;code&gt;--accept&lt;/code&gt; flag with the file extension&lt;/p&gt;
+&lt;pre class="code literal-block"&gt;wget --accept .pdf --domains www.brown.edu --recursive http://www.brown.edu/Departments/Engineering/Courses/En221/
+&lt;/pre&gt;
+&lt;p&gt;There we have it. Have fun download the internet, saving time and exploring other awesome packages in Linux. I hope you found this useful. Please leave any comments below.&lt;/p&gt;
+&lt;p&gt;Stay Curious!&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;
 
 &lt;p&gt;And this downloads the pdf from the url. Wow, can it really be this easy? YES, yes it can. It just takes a while to find cool tools like this.&lt;/p&gt;
 &lt;p&gt;Here is a more advanced example. This wget command searches recursivley and downloads the entire website given.  &lt;/p&gt;
-&lt;pre class="code literal-block"&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;wget --recursive http://www.brown.edu/Departments/Engineering/Courses/En221/
-&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class="code literal-block"&gt;wget --recursive http://www.brown.edu/Departments/Engineering/Courses/En221/
+&lt;/pre&gt;
+&lt;p&gt;The problem with this is that it will follow any links as it recurses through the site, and we don't want that. So, by adding another flag, called &lt;code&gt;--domains&lt;/code&gt;, we limit the command to the domain of the main site.&lt;/p&gt;
+&lt;pre class="code literal-block"&gt;wget --domains www.brown.edu --recursive http://www.brown.edu/Departments/Engineering/Courses/En221/
+&lt;/pre&gt;
+&lt;p&gt;What if we just want to download certain file types? Here, use the &lt;code&gt;--accept&lt;/code&gt; flag with the file extension&lt;/p&gt;
+&lt;pre class="code literal-block"&gt;wget --accept .pdf --domains www.brown.edu --recursive http://www.brown.edu/Departments/Engineering/Courses/En221/
+&lt;/pre&gt;
+&lt;p&gt;There we have it. Have fun download the internet, saving time and exploring other awesome packages in Linux. I hope you found this useful. Please leave any comments below.&lt;/p&gt;
+&lt;p&gt;Stay Curious!&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;
 
+&lt;p&gt;Here is a more advanced example. This wget command searches recursivley and downloads the entire website given.  &lt;/p&gt;
+&lt;pre class="code literal-block"&gt;wget --recursive http://www.brown.edu/Departments/Engineering/Courses/En221/
+&lt;/pre&gt;
+&lt;p&gt;The problem with this is that it will follow any links as it recurses through the site, and we don't want that. So, by adding another flag, called &lt;code&gt;--domains&lt;/code&gt;, we limit the command to the domain of the main site.&lt;/p&gt;
+&lt;pre class="code literal-block"&gt;wget --domains www.brown.edu --recursive http://www.brown.edu/Departments/Engineering/Courses/En221/
+&lt;/pre&gt;
+&lt;p&gt;What if we just want to download certain file types? Here, use the &lt;code&gt;--accept&lt;/code&gt; flag with the file extension&lt;/p&gt;
+&lt;pre class="code literal-block"&gt;wget --accept .pdf --domains www.brown.edu --recursive http://www.brown.edu/Departments/Engineering/Courses/En221/
+&lt;/pre&gt;
+&lt;p&gt;There we have it. Have fun download the internet, saving time and exploring other awesome packages in Linux. I hope you found this useful. Please leave any comments below.&lt;/p&gt;
+&lt;p&gt;Stay Curious!&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;
+
+&lt;pre class="code literal-block"&gt;wget --recursive http://www.brown.edu/Departments/Engineering/Courses/En221/
+&lt;/pre&gt;
+&lt;p&gt;The problem with this is that it will follow any links as it recurses through the site, and we don't want that. So, by adding another flag, called &lt;code&gt;--domains&lt;/code&gt;, we limit the command to the domain of the main site.&lt;/p&gt;
+&lt;pre class="code literal-block"&gt;wget --domains www.brown.edu --recursive http://www.brown.edu/Departments/Engineering/Courses/En221/
+&lt;/pre&gt;
+&lt;p&gt;What if we just want to download certain file types? Here, use the &lt;code&gt;--accept&lt;/code&gt; flag with the file extension&lt;/p&gt;
+&lt;pre class="code literal-block"&gt;wget --accept .pdf --domains www.brown.edu --recursive http://www.brown.edu/Departments/Engineering/Courses/En221/
+&lt;/pre&gt;
+&lt;p&gt;There we have it. Have fun download the internet, saving time and exploring other awesome packages in Linux. I hope you found this useful. Please leave any comments below.&lt;/p&gt;
+&lt;p&gt;Stay Curious!&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;
 
 &lt;p&gt;The problem with this is that it will follow any links as it recurses through the site, and we don't want that. So, by adding another flag, called &lt;code&gt;--domains&lt;/code&gt;, we limit the command to the domain of the main site.&lt;/p&gt;
-&lt;pre class="code literal-block"&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;wget --domains www.brown.edu --recursive http://www.brown.edu/Departments/Engineering/Courses/En221/
-&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class="code literal-block"&gt;wget --domains www.brown.edu --recursive http://www.brown.edu/Departments/Engineering/Courses/En221/
+&lt;/pre&gt;
+&lt;p&gt;What if we just want to download certain file types? Here, use the &lt;code&gt;--accept&lt;/code&gt; flag with the file extension&lt;/p&gt;
+&lt;pre class="code literal-block"&gt;wget --accept .pdf --domains www.brown.edu --recursive http://www.brown.edu/Departments/Engineering/Courses/En221/
+&lt;/pre&gt;
+&lt;p&gt;There we have it. Have fun download the internet, saving time and exploring other awesome packages in Linux. I hope you found this useful. Please leave any comments below.&lt;/p&gt;
+&lt;p&gt;Stay Curious!&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;
 
+&lt;pre class="code literal-block"&gt;wget --domains www.brown.edu --recursive http://www.brown.edu/Departments/Engineering/Courses/En221/
+&lt;/pre&gt;
+&lt;p&gt;What if we just want to download certain file types? Here, use the &lt;code&gt;--accept&lt;/code&gt; flag with the file extension&lt;/p&gt;
+&lt;pre class="code literal-block"&gt;wget --accept .pdf --domains www.brown.edu --recursive http://www.brown.edu/Departments/Engineering/Courses/En221/
+&lt;/pre&gt;
+&lt;p&gt;There we have it. Have fun download the internet, saving time and exploring other awesome packages in Linux. I hope you found this useful. Please leave any comments below.&lt;/p&gt;
+&lt;p&gt;Stay Curious!&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;
 
 &lt;p&gt;What if we just want to download certain file types? Here, use the &lt;code&gt;--accept&lt;/code&gt; flag with the file extension&lt;/p&gt;
-&lt;pre class="code literal-block"&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;wget --accept .pdf --domains www.brown.edu --recursive http://www.brown.edu/Departments/Engineering/Courses/En221/
-&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class="code literal-block"&gt;wget --accept .pdf --domains www.brown.edu --recursive http://www.brown.edu/Departments/Engineering/Courses/En221/
+&lt;/pre&gt;
+&lt;p&gt;There we have it. Have fun download the internet, saving time and exploring other awesome packages in Linux. I hope you found this useful. Please leave any comments below.&lt;/p&gt;
+&lt;p&gt;Stay Curious!&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;
 
+&lt;pre class="code literal-block"&gt;wget --accept .pdf --domains www.brown.edu --recursive http://www.brown.edu/Departments/Engineering/Courses/En221/
+&lt;/pre&gt;
+&lt;p&gt;There we have it. Have fun download the internet, saving time and exploring other awesome packages in Linux. I hope you found this useful. Please leave any comments below.&lt;/p&gt;
+&lt;p&gt;Stay Curious!&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;
 
 &lt;p&gt;There we have it. Have fun download the internet, saving time and exploring other awesome packages in Linux. I hope you found this useful. Please leave any comments below.&lt;/p&gt;
-&lt;p&gt;Stay Curious!&lt;/p&gt;&lt;/div&gt;
-&lt;/body&gt;&lt;/html&gt;
+&lt;p&gt;Stay Curious!&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;
 
+&lt;p&gt;Stay Curious!&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;
 </description><category>automation</category><category>linux</category><category>webscraping</category><guid>https://nagordon.github.io/ifcuriousthenlearn/blog/wget-downloads/</guid><pubDate>Wed, 19 Aug 2015 08:00:00 GMT</pubDate></item></channel></rss>

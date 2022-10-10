@@ -90,7 +90,7 @@
             <time class="published dt-published" datetime="2015-08-28T00:00:00-08:00" itemprop="datePublished" title="2015-08-28 00:00">2015-08-28 00:00</time></a>
             </p>
                 <p class="commentline">
-        
+    
     <a href="#disqus_thread" data-disqus-identifier="cache/posts/Intro-to-the-Windows-Command-Line.html">Comments</a>
 
 
@@ -102,22 +102,19 @@
         
 
     </header><div class="e-content entry-content" itemprop="articleBody text">
-    <div>
-<h3>Introduction</h3>
+    <h3>Introduction</h3>
 <p>Side Note - I've searched online to find info on many things related to technology. A typical search will yield a lot of blogs and tutorials, and way down the list there is documentation from the company/team that created the product. All this is OK, but i've found if you really want to learn something, the best way is a good old-fashioned book (pdf or print). The ideas are whole and complete, and the quality is much higher than a typical blog post (..yea, I know, this is a blog, and no it is not as good as a book).
 And now for the big surprise. Most of my content is from books. I did not invent this stuff. And I think it is important to give credit where credit is due. For more information, check out an  A+ certification book (I got mine from goodwill for 3 bucks, isnb-9780071745154).</p>
 <p>Ok, on to the post. This tutorial only applies to the windows command line, not powershell. To start out, I am not a huge Windows fan. It is expensive, and I am often disappointed in the stability. But, most of us use it at work and home, so we should be using to the best of our ability. So this should help extend your skills at doing basic stuff. There are a few things that I will show you that I prefer to use a mouse and keyboard with, but there are a few things I would rather use the command line with (eg, moving files, mouse, finding the ip address of the computer, keyboard). Also, I am using Windows 7.</p>
 <p>Lets get started. To get to a command prompt, we can <strong>hold shift and right-click</strong> and select <strong>open command window here</strong>. This is nice because we do not have to change the directory to the our directory we want to work from. You can also just type <code>cmd</code> in the start menu.</p>
 <p>If you ever run a command and it is taking forever to finish, we can terminate the command with <strong>ctrl+c</strong> while in the command prompt.</p>
 <p>if you need general help on any command, use</p>
-<pre class="code literal-block"><span></span><code>help
-</code></pre>
-
-
+<pre class="code literal-block">help
+</pre>
 <p>Now, lets get our keyboard hands "dirty".</p>
 <h3>File Information</h3>
 <p>The first command is <strong>dir</strong>. This shows the content of the directory (dir) you are in.</p>
-<pre class="code literal-block"><span></span><code><span class="p">&gt;</span> dir
+<pre class="code literal-block"><span class="p">&gt;</span> dir
 
  Volume in drive C has no label.
  Volume Serial Number is 5033-5C23
@@ -132,21 +129,15 @@ And now for the big surprise. Most of my content is from books. I did not invent
 08/28/2015  07:44 AM                72 tmp.txt
                3 File(s)          8,818 bytes
                3 Dir(s)  38,038,937,600 bytes free
-</code></pre>
-
-
+</pre>
 <p>This is an easy way to see all the files and folders in our current directory. If you want to preserve this information, we can redirect the output to a file <em>tmp.txt</em> with</p>
-<pre class="code literal-block"><span></span><code><span class="k">dir</span> <span class="p">&gt;</span> tmp.txt
-</code></pre>
-
-
+<pre class="code literal-block"><span class="k">dir</span> <span class="p">&gt;</span> tmp.txt
+</pre>
 <p>To get help on the command dir, use</p>
-<pre class="code literal-block"><span></span><code>dir /?
-</code></pre>
-
-
+<pre class="code literal-block">dir /?
+</pre>
 <p>If you just want to see the filenames in 5 columns, we can use a <em>switch</em> with the syntax <em>/W</em>, which looks like this</p>
-<pre class="code literal-block"><span></span><code>&gt; dir /W
+<pre class="code literal-block">&gt; dir /W
  Volume in drive C has no label.
  Volume Serial Number is 5033-5C23
 
@@ -155,12 +146,10 @@ And now for the big surprise. Most of my content is from books. I did not invent
 [.]            [..]           [another-test] file1.txt      file2.xlsx      tmp            tmp.txt        
                4 File(s)          9,187 bytes
                3 Dir(s)  38,019,055,616 bytes free
-</code></pre>
-
-
+</pre>
 <h4>Wildcards</h4>
 <p>If there are alot of files, using wildcards can reduce the clutter. Also note the <code>::</code> are commets.</p>
-<pre class="code literal-block"><span></span><code>:: finds all files
+<pre class="code literal-block">:: finds all files
 dir *.*
 
 :: finds all files with the extension xlsx
@@ -171,26 +160,20 @@ dir a*.*
 
 :: finds an exact file
 dir file1.txt
-</code></pre>
-
-
+</pre>
 <h4>Tree</h4>
 <p>Another cool visual is with the <strong>tree</strong> command. Just using the tree command only shows the folders in the current directory, which shows up fine in the command window, but is not ascii text.</p>
-<pre class="code literal-block"><span></span><code>&gt; tree
+<pre class="code literal-block">&gt; tree
 Folder PATH listing
 Volume serial number is 5033-5C23
 C:.
 \---another-test
-</code></pre>
-
-
+</pre>
 <p>If you want to see ALL the files on your current disk, use the backslash. This may take a while to run on your system drive (C), so remember <strong>ctrl+c</strong> to cancel</p>
-<pre class="code literal-block"><span></span><code>tree \
-</code></pre>
-
-
+<pre class="code literal-block">tree \
+</pre>
 <p>I prefer being able to copy and paste those results into documents. Lets try and figure out how to change the command to give me ascii characters.</p>
-<pre class="code literal-block"><span></span><code><span class="o">&gt;</span><span class="w"> </span><span class="n">tree</span><span class="w"> </span><span class="o">/</span><span class="vm">?</span><span class="w"></span>
+<pre class="code literal-block"><span class="o">&gt;</span><span class="w"> </span><span class="n">tree</span><span class="w"> </span><span class="o">/</span><span class="vm">?</span><span class="w"></span>
 <span class="nl">C</span><span class="p">:</span><span class="w"> </span><span class="o">/</span><span class="vm">?</span><span class="w"></span>
 <span class="n">Graphically</span><span class="w"> </span><span class="n">displays</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">folder</span><span class="w"> </span><span class="k">structure</span><span class="w"> </span><span class="k">of</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="n">drive</span><span class="w"> </span><span class="ow">or</span><span class="w"> </span><span class="k">path</span><span class="p">.</span><span class="w"></span>
 
@@ -198,11 +181,9 @@ C:.
 
 <span class="w">   </span><span class="o">/</span><span class="n">F</span><span class="w">   </span><span class="n">Display</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="k">names</span><span class="w"> </span><span class="k">of</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">files</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="k">each</span><span class="w"> </span><span class="n">folder</span><span class="p">.</span><span class="w"></span>
 <span class="w">   </span><span class="o">/</span><span class="n">A</span><span class="w">   </span><span class="k">Use</span><span class="w"> </span><span class="nf">ASCII</span><span class="w"> </span><span class="n">instead</span><span class="w"> </span><span class="k">of</span><span class="w"> </span><span class="n">extended</span><span class="w"> </span><span class="n">characters</span><span class="p">.</span><span class="w"></span>
-</code></pre>
-
-
+</pre>
 <p>Ah ha. We need to add switches to do that. If you want to see the folders and files in the current directory, try</p>
-<pre class="code literal-block"><span></span><code>&gt; tree /F
+<pre class="code literal-block">&gt; tree /F
 
 Folder PATH listing
 Volume serial number is 5033-5C23
@@ -213,28 +194,22 @@ C:.
 │
 └───another-test
         file3.txt
-</code></pre>
-
-
+</pre>
 <p>Lastly, to create an ascii format list of all files and folders and dump it to a text file, try</p>
-<pre class="code literal-block"><span></span><code>tree /F /A &gt; tree.txt
-</code></pre>
-
-
+<pre class="code literal-block">tree /F /A &gt; tree.txt
+</pre>
 <h4>attrib</h4>
 <p>We can also use <strong>attrib</strong> to get file information in the current directory. The <em>A</em> stands for archive.</p>
-<pre class="code literal-block"><span></span><code>&gt; attrib
+<pre class="code literal-block">&gt; attrib
 
 A            C:\Users\ngordon\Desktop\test\file1.txt
 A            C:\Users\ngordon\Desktop\test\file2.xlsx
 A            C:\Users\ngordon\Desktop\test\tmp
 A            C:\Users\ngordon\Desktop\test\tmp.txt
-</code></pre>
-
-
+</pre>
 <h3>Navigating</h3>
 <p>If you want to navigate your system, the cd command is the ticket, to go towards the root of the drive, use <strong>cd</strong></p>
-<pre class="code literal-block"><span></span><code><span class="n">cd</span><span class="w"> </span><span class="p">..</span><span class="w"></span>
+<pre class="code literal-block"><span class="n">cd</span><span class="w"> </span><span class="p">..</span><span class="w"></span>
 
 <span class="o">::</span><span class="w"> </span><span class="ow">or</span><span class="w"> </span><span class="k">to</span><span class="w"> </span><span class="k">go</span><span class="w"> </span><span class="n">directly</span><span class="w"> </span><span class="k">to</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">root</span><span class="w"></span>
 
@@ -243,28 +218,22 @@ A            C:\Users\ngordon\Desktop\test\tmp.txt
 <span class="o">::</span><span class="w"> </span><span class="ow">or</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">multiple</span><span class="w"> </span><span class="n">traverses</span><span class="w"></span>
 
 <span class="n">cd</span><span class="w"> </span><span class="p">..</span><span class="err">\</span><span class="p">..</span><span class="w"></span>
-</code></pre>
-
-
+</pre>
 <p>and to go into another folder use</p>
-<pre class="code literal-block"><span></span><code><span class="nv">cd</span> <span class="nv">test</span>
+<pre class="code literal-block"><span class="nv">cd</span> <span class="nv">test</span>
 
 :: <span class="nv">or</span> <span class="k">for</span> <span class="nv">multiple</span> <span class="nv">folders</span>
 
 <span class="nv">cd</span> <span class="nv">Desktop</span>\<span class="nv">test</span>\<span class="nv">another</span><span class="o">-</span><span class="nv">test</span>
-</code></pre>
-
-
+</pre>
 <p>This can become tedious, so I'd recommend using <strong>tab</strong> when typing out names. It not only reduces the amount of typing you have to do but also reduced typos.</p>
 <p>Lets say you want to search your usb drive. To switch to a different drive other than the default <strong>C:</strong>, just type</p>
-<pre class="code literal-block"><span></span><code>E:
-</code></pre>
-
-
+<pre class="code literal-block">E:
+</pre>
 <p>Another modern and handy way to navigate is typing <code>cd</code> and dragging and dropping a folder into the command prompt and hitting enter. This can save some time on those deep folder structures.</p>
 <h3>Managing Folders and Files</h3>
 <p>OK, lets make some stuff. To create and destroy a new directory, use <strong>md</strong> and <strong>rd</strong></p>
-<pre class="code literal-block"><span></span><code>:: create directory
+<pre class="code literal-block">:: create directory
 md newfolder
 
 
@@ -273,11 +242,9 @@ rd newfolder
 
 :: BE CAREFUL - recursively destroy directory, and all files and subfolders
 rd newfolder /S
-</code></pre>
-
-
+</pre>
 <p>To copy a single file or groups of files, use <strong>copy</strong></p>
-<pre class="code literal-block"><span></span><code>copy file1.txt file10.txt
+<pre class="code literal-block">copy file1.txt file10.txt
 
 :: or to copy to a different folder
 
@@ -286,76 +253,56 @@ copy file1.txt another-test\file1.txt
 :: or copy all txt files to the subdirectory another-test
 
 copy *.txt another-test
-</code></pre>
-
-
+</pre>
 <p>To copy an entire directory, we can use <strong>xcopy</strong></p>
-<pre class="code literal-block"><span></span><code>:: <span class="nv">copy</span> <span class="nv">directory</span> <span class="nv">another</span><span class="o">-</span><span class="nv">test</span> <span class="nv">and</span> <span class="nv">skips</span> <span class="nv">empty</span> <span class="nv">subdirectories</span> <span class="nv">to</span> <span class="nv">another</span><span class="o">-</span><span class="nv">test2</span>
+<pre class="code literal-block">:: <span class="nv">copy</span> <span class="nv">directory</span> <span class="nv">another</span><span class="o">-</span><span class="nv">test</span> <span class="nv">and</span> <span class="nv">skips</span> <span class="nv">empty</span> <span class="nv">subdirectories</span> <span class="nv">to</span> <span class="nv">another</span><span class="o">-</span><span class="nv">test2</span>
 <span class="nv">xcopy</span> <span class="nv">another</span><span class="o">-</span><span class="nv">test</span> <span class="nv">another</span><span class="o">-</span><span class="nv">test2</span>
 
 :: <span class="nv">to</span> <span class="k">include</span> <span class="nv">empty</span> <span class="nv">subdirectories</span>, <span class="nv">use</span> <span class="nv">switch</span>
 <span class="nv">xcopy</span> <span class="nv">another</span><span class="o">-</span><span class="nv">test</span> <span class="nv">another</span><span class="o">-</span><span class="nv">test3</span> <span class="o">/</span><span class="nv">E</span>
-</code></pre>
-
-
+</pre>
 <p>We can rename files or folders with <strong>ren</strong></p>
-<pre class="code literal-block"><span></span><code>ren file1.txt text1.txt
+<pre class="code literal-block">ren file1.txt text1.txt
 
 :: or more complicated names with spaces
 ren text1.txt "text 1.txt"
 
 ::change directory name
 ren another-test another-test5
-</code></pre>
-
-
+</pre>
 <p>To delete a file or files, use <strong>del</strong></p>
-<pre class="code literal-block"><span></span><code>del tmp.txt
+<pre class="code literal-block">del tmp.txt
 
 :: deletes all text files in the current directory
 del *.txt
-</code></pre>
-
-
+</pre>
 <h3>Creating New files</h3>
 <p>It appears that Microsoft deprecated <em>edit</em>, the command line editor. For those of you familiar with <a href="http://www.openvim.com/">vim</a> or <a href="http://www.nano-editor.org/">nano</a>, this are available on windows, so check them out. But for now, we can use the echo command, to create text files and append them</p>
 <p>We can use <strong>echo</strong> to print text to the command window</p>
-<pre class="code literal-block"><span></span><code>echo hi there
-</code></pre>
-
-
+<pre class="code literal-block">echo hi there
+</pre>
 <p>Or we can redirect the text to a file</p>
-<pre class="code literal-block"><span></span><code>echo this is my first command line text file &gt; file8.txt
+<pre class="code literal-block">echo this is my first command line text file &gt; file8.txt
 echo this is the second line &gt;&gt; file8.txt
 echo this is the third line &gt;&gt; file8.txt
-</code></pre>
-
-
+</pre>
 <p>for more complicated stuff, we can always open the file with the default text editor notepad.</p>
-<pre class="code literal-block"><span></span><code>notepad file8.txt
-</code></pre>
-
-
+<pre class="code literal-block">notepad file8.txt
+</pre>
 <h3>Automating commands with a batch file</h3>
 <p>A batch file (*.bat) is a simple windows script that can automate simple tasks.</p>
-<pre class="code literal-block"><span></span><code><span class="k">echo</span> echo hi there <span class="p">&gt;</span> hello.bat
-</code></pre>
-
-
+<pre class="code literal-block"><span class="k">echo</span> echo hi there <span class="p">&gt;</span> hello.bat
+</pre>
 <p>Now we can run the batch file by simply typing the name and executing it</p>
-<pre class="code literal-block"><span></span><code>hello.bat
-</code></pre>
-
-
+<pre class="code literal-block">hello.bat
+</pre>
 <p>To pause to execution of a bat file, add <strong>pause</strong> to the end. This is nice if you have an error in the file and want to see what the error is, otherwise it will just close the window</p>
-<pre class="code literal-block"><span></span><code>:: <span class="nv">waits</span> <span class="k">for</span> <span class="nv">keyboard</span> <span class="nv">input</span> <span class="nv">from</span> <span class="nv">user</span>
+<pre class="code literal-block">:: <span class="nv">waits</span> <span class="k">for</span> <span class="nv">keyboard</span> <span class="nv">input</span> <span class="nv">from</span> <span class="nv">user</span>
 <span class="k">pause</span>
-</code></pre>
-
-
+</pre>
 <h3>Advanced command line</h3>
 <p>To see all the settings Windows loads by default, use</p>
-<pre class="code literal-block"><span></span><code>&gt; set
+<pre class="code literal-block">&gt; set
 ALLUSERSPROFILE=C:\ProgramData
 CommonProgramFiles=C:\Program Files\Common Files
 CommonProgramFiles(x86)=C:\Program Files (x86)\Common Files
@@ -364,41 +311,35 @@ HOME=C:\Users\ngordon
 HOMEDRIVE=C:
 HOMEPATH=\
 Path=C:\Program Files\Common Files\Microsoft Shared\Windows Live
-</code></pre>
-
-
+</pre>
 <p>A common task is adding a program, exe or other, to the default list windows looks for when running. If we want to be able to run a program without executing the command from that directory, we have to add it to the path variable</p>
 <p>Lets switch to the root of our c drive and create a folder called batch, and create a batch file that says <em>hi there</em>, and add it to the path so we can be greeted anywhere we are</p>
-<pre class="code literal-block"><span></span><code><span class="p">::</span> <span class="k">go</span> <span class="nx">to</span> <span class="nx">the</span> <span class="nx">root</span> <span class="nx">of</span> <span class="nx">the</span> <span class="nx">c</span> <span class="nx">drive</span>
-<span class="nx">cd</span> \
+<pre class="code literal-block"><span class="o">::</span><span class="w"> </span><span class="k">go</span><span class="w"> </span><span class="k">to</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">root</span><span class="w"> </span><span class="k">of</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">c</span><span class="w"> </span><span class="n">drive</span><span class="w"></span>
+<span class="n">cd</span><span class="w"> </span><span class="err">\</span><span class="w"></span>
 
-<span class="p">::</span> <span class="nx">make</span> <span class="nx">a</span> <span class="nx">new</span> <span class="nx">directory</span>
-<span class="nx">md</span> <span class="nx">batch</span>
+<span class="o">::</span><span class="w"> </span><span class="n">make</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">directory</span><span class="w"></span>
+<span class="n">md</span><span class="w"> </span><span class="n">batch</span><span class="w"></span>
 
-<span class="p">::</span> <span class="k">go</span> <span class="nx">into</span> <span class="nx">the</span> <span class="nx">directory</span>
-<span class="nx">cd</span> <span class="nx">batch</span>
+<span class="o">::</span><span class="w"> </span><span class="k">go</span><span class="w"> </span><span class="k">into</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">directory</span><span class="w"></span>
+<span class="n">cd</span><span class="w"> </span><span class="n">batch</span><span class="w"></span>
 
-<span class="p">::</span> <span class="nx">create</span> <span class="nx">a</span> <span class="nx">new</span> <span class="nx">batch</span> <span class="nx">file</span> <span class="nx">that</span> <span class="nx">says</span> <span class="nx">hi</span> <span class="nx">there</span>
-<span class="nx">echo</span> <span class="nx">echo</span> <span class="nx">hi</span> <span class="nx">there</span> <span class="p">&gt;</span> <span class="nx">hello</span><span class="p">.</span><span class="nx">bat</span>
+<span class="o">::</span><span class="w"> </span><span class="k">create</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">batch</span><span class="w"> </span><span class="k">file</span><span class="w"> </span><span class="n">that</span><span class="w"> </span><span class="n">says</span><span class="w"> </span><span class="n">hi</span><span class="w"> </span><span class="n">there</span><span class="w"></span>
+<span class="n">echo</span><span class="w"> </span><span class="n">echo</span><span class="w"> </span><span class="n">hi</span><span class="w"> </span><span class="n">there</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">hello</span><span class="p">.</span><span class="n">bat</span><span class="w"></span>
 
-<span class="p">::</span> <span class="nx">add</span> <span class="nx">this</span> <span class="nx">new</span> <span class="nx">folder</span> <span class="nx">to</span> <span class="nx">the</span> <span class="nx">system</span> <span class="nx">path</span>
-<span class="nx">path</span><span class="p">=</span><span class="o">%</span><span class="nx">PATH</span><span class="o">%</span><span class="p">;</span><span class="nx">c</span><span class="p">:</span><span class="err">\</span><span class="nx">batch</span>
+<span class="o">::</span><span class="w"> </span><span class="k">add</span><span class="w"> </span><span class="n">this</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">folder</span><span class="w"> </span><span class="k">to</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="k">system</span><span class="w"> </span><span class="k">path</span><span class="w"></span>
+<span class="k">path</span><span class="o">=%</span><span class="k">PATH</span><span class="o">%</span><span class="p">;</span><span class="nl">c</span><span class="p">:</span><span class="err">\</span><span class="n">batch</span><span class="w"></span>
 
-<span class="p">::</span> <span class="nx">move</span> <span class="nx">out</span> <span class="nx">of</span> <span class="nx">the</span> <span class="nx">directory</span> <span class="nx">and</span> <span class="nx">check</span> <span class="nx">and</span> <span class="nx">make</span> <span class="nx">sure</span> <span class="nx">the</span> <span class="nx">system</span> <span class="nx">path</span> <span class="nx">works</span><span class="p">.</span> <span class="nx">This</span> <span class="nx">moves</span> <span class="nx">us</span> <span class="nx">to</span> <span class="nx">our</span> <span class="nx">home</span> <span class="nx">directory</span>
-<span class="nx">cd</span> <span class="o">%</span><span class="nx">HOME</span><span class="o">%</span>
-</code></pre>
-
-
+<span class="o">::</span><span class="w"> </span><span class="n">move</span><span class="w"> </span><span class="k">out</span><span class="w"> </span><span class="k">of</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">directory</span><span class="w"> </span><span class="ow">and</span><span class="w"> </span><span class="k">check</span><span class="w"> </span><span class="ow">and</span><span class="w"> </span><span class="n">make</span><span class="w"> </span><span class="n">sure</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="k">system</span><span class="w"> </span><span class="k">path</span><span class="w"> </span><span class="n">works</span><span class="p">.</span><span class="w"> </span><span class="n">This</span><span class="w"> </span><span class="n">moves</span><span class="w"> </span><span class="n">us</span><span class="w"> </span><span class="k">to</span><span class="w"> </span><span class="n">our</span><span class="w"> </span><span class="n">home</span><span class="w"> </span><span class="n">directory</span><span class="w"></span>
+<span class="n">cd</span><span class="w"> </span><span class="o">%</span><span class="n">HOME</span><span class="o">%</span><span class="w"></span>
+</pre>
 <p>Now lets test and make sure the system knows where to look for my custom batch scripts.</p>
-<pre class="code literal-block"><span></span><code>&gt; hello
+<pre class="code literal-block">&gt; hello
 hi there
-</code></pre>
-
-
+</pre>
 <p>Excellent. We have covered the basics.</p>
 <h3>Networking Information</h3>
 <p>I have found myself using the command line alot when learning about networking. Here are some commands to help you get started with networking info.</p>
-<pre class="code literal-block"><span></span><code><span class="p">::</span> <span class="n">robust</span> <span class="n">command</span> <span class="k">for</span> <span class="n">networking</span> <span class="n">options</span><span class="p">,</span> <span class="n">such</span> <span class="k">as</span> <span class="n">seeing</span> <span class="n">things</span> <span class="n">on</span> <span class="n">the</span> <span class="n">network</span>
+<pre class="code literal-block"><span class="p">::</span> <span class="n">robust</span> <span class="n">command</span> <span class="k">for</span> <span class="n">networking</span> <span class="n">options</span><span class="p">,</span> <span class="n">such</span> <span class="k">as</span> <span class="n">seeing</span> <span class="n">things</span> <span class="n">on</span> <span class="n">the</span> <span class="n">network</span>
 <span class="n">net</span> <span class="n">view</span>
 
 <span class="p">::</span> <span class="n">test</span> <span class="n">the</span> <span class="n">communication</span> <span class="n">of</span> <span class="n">another</span> <span class="n">ip</span> <span class="n">address</span>
@@ -412,34 +353,26 @@ hi there
 
 <span class="p">::</span> <span class="n">traces</span> <span class="n">the</span> <span class="n">path</span> <span class="n">a</span> <span class="n">packet</span> <span class="n">takes</span> <span class="n">to</span> <span class="n">get</span> <span class="n">to</span> <span class="n">the</span> <span class="n">destination</span>
 <span class="n">tracert</span> <span class="n">www</span><span class="o">.</span><span class="n">ifcuriousthenlearn</span><span class="o">.</span><span class="n">com</span>
-</code></pre>
-
-
+</pre>
 <h3>Summary</h3>
 <p>We have covered the basics to operate a windows command line. For a lot of work, it is faster than clicking a mouse around, but it takes some practice. There are also some great fundamental tools available found at the command line nearest you. Understanding what is going on in a computer is much easier when you can operate the command lines, as it is an integral part of any operating system. I hope you found this useful, and please comment with any suggestions.</p>
 <p>Stay Curious!  </p>
-</div>
-</div></article>
-</div>
-</div>
-</div>
-</body>
-</html><html>
-<aside class="postpromonav"><nav><ul itemprop="keywords" class="tags">
-<li><a class="tag p-category" href="/categories/batch/" rel="tag">batch</a></li>
-            <li><a class="tag p-category" href="/categories/commandline/" rel="tag">commandline</a></li>
-            <li><a class="tag p-category" href="/categories/windows/" rel="tag">windows</a></li>
+    </div>
+    <aside class="postpromonav"><nav><ul itemprop="keywords" class="tags">
+<li><a class="tag p-category" href="../../categories/batch/" rel="tag">batch</a></li>
+            <li><a class="tag p-category" href="../../categories/commandline/" rel="tag">commandline</a></li>
+            <li><a class="tag p-category" href="../../categories/windows/" rel="tag">windows</a></li>
         </ul>
 <ul class="pager hidden-print">
 <li class="previous">
-                <a href="/blog/wget-downloads/" rel="prev" title="Automating Website Downloads with wget">Previous post</a>
+                <a href="../wget-downloads/" rel="prev" title="Automating Website Downloads with wget">Previous post</a>
             </li>
             <li class="next">
-                <a href="/blog/weight-balance-cessna-175/" rel="next" title="Weight and Balance Calculations for a Cessna 175">Next post</a>
+                <a href="../weight-balance-cessna-175/" rel="next" title="Weight and Balance Calculations for a Cessna 175">Next post</a>
             </li>
         </ul></nav></aside><section class="comments hidden-print"><h2>Comments</h2>
         
-        
+    
         <div id="disqus_thread"></div>
         <script>
         var disqus_shortname ="ifcuriousthenlearn-nickola",
@@ -459,10 +392,19 @@ hi there
     <a href="https://disqus.com" class="dsq-brlink" rel="nofollow">Comments powered by <span class="logo-disqus">Disqus</span></a>
 
 
-        </section><script>var disqus_shortname="ifcuriousthenlearn-nickola";(function(){var a=document.createElement("script");a.async=true;a.src="https://"+disqus_shortname+".disqus.com/count.js";(document.getElementsByTagName("head")[0]||document.getElementsByTagName("body")[0]).appendChild(a)}());</script><!--End of body content--><footer id="footer">
-            Contents © 2021         <a href="mailto:">neal</a> - Powered by         <a href="https://getnikola.com" rel="nofollow">Nikola</a>         copyright Neal Gordon
+        </section></article><script>var disqus_shortname="ifcuriousthenlearn-nickola";(function(){var a=document.createElement("script");a.async=true;a.src="https://"+disqus_shortname+".disqus.com/count.js";(document.getElementsByTagName("head")[0]||document.getElementsByTagName("body")[0]).appendChild(a)}());</script>
+</div>
+        <!--End of body content-->
+
+        <footer id="footer">
+            Contents © 2022         <a href="mailto:">neal</a> - Powered by         <a href="https://getnikola.com" rel="nofollow">Nikola</a>         copyright Neal Gordon
             
-        </footer><script src="/assets/js/all-nocdn.js"></script><!-- fancy dates --><script>
+        </footer>
+</div>
+</div>
+
+
+            <script src="../../assets/js/all-nocdn.js"></script><!-- fancy dates --><script>
     moment.locale("en");
     fancydates(0, "YYYY-MM-DD HH:mm");
     </script><!-- end fancy dates --><script>
@@ -472,5 +414,5 @@ hi there
             return element.getElementsByTagName('img')[0].alt;
     }});
     </script>
+</body>
 </html>
-

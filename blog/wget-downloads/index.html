@@ -90,7 +90,7 @@
             <time class="published dt-published" datetime="2015-08-19T00:00:00-08:00" itemprop="datePublished" title="2015-08-19 00:00">2015-08-19 00:00</time></a>
             </p>
                 <p class="commentline">
-        
+    
     <a href="#disqus_thread" data-disqus-identifier="cache/posts/saving-websites-and-the-content-using-wget.html">Comments</a>
 
 
@@ -102,63 +102,44 @@
         
 
     </header><div class="e-content entry-content" itemprop="articleBody text">
-    <div>
-<p>Have you ever been browsing the internet and found a really cool website that has a bunch of files that you want, say pdfs or mp3s? In Windows it can be a pain to scrape through the site and download all the files. You may be able to write a slick python script to acomplish this, but why reinvent the wheel? Native in Linux is the program wget, which can also be used in windows, <a href="http://www.gnu.org/software/wget/">GNU wget</a>.</p>
+    <p>Have you ever been browsing the internet and found a really cool website that has a bunch of files that you want, say pdfs or mp3s? In Windows it can be a pain to scrape through the site and download all the files. You may be able to write a slick python script to acomplish this, but why reinvent the wheel? Native in Linux is the program wget, which can also be used in windows, <a href="http://www.gnu.org/software/wget/">GNU wget</a>.</p>
 <p>To get started, on a Linux computer, open your terminal and type</p>
-<pre class="code literal-block"><span></span><code>man wget
-</code></pre>
-
-
+<pre class="code literal-block">man wget
+</pre>
 <p>This shows the manual for wget for when you get stuck. But for now, we don't need it, so type <code>q</code> to quit. OK, time for the rubber to hit the road. Enter</p>
-<pre class="code literal-block"><span></span><code>wget www.ifcuriousthenlearn.com
-</code></pre>
-
-
+<pre class="code literal-block">wget www.ifcuriousthenlearn.com
+</pre>
 <p>This downloads the html file that is at that url. Easy huh? Lets try something a little more complicated, lets say download a pdf</p>
-<pre class="code literal-block"><span></span><code>wget http://www.aopa.org/airports/CLE/kneeboard.pdf
-</code></pre>
-
-
+<pre class="code literal-block">wget http://www.aopa.org/airports/CLE/kneeboard.pdf
+</pre>
 <p>And this downloads the pdf from the url. Wow, can it really be this easy? YES, yes it can. It just takes a while to find cool tools like this.</p>
 <p>Here is a more advanced example. This wget command searches recursivley and downloads the entire website given.  </p>
-<pre class="code literal-block"><span></span><code>wget --recursive http://www.brown.edu/Departments/Engineering/Courses/En221/
-</code></pre>
-
-
+<pre class="code literal-block">wget --recursive http://www.brown.edu/Departments/Engineering/Courses/En221/
+</pre>
 <p>The problem with this is that it will follow any links as it recurses through the site, and we don't want that. So, by adding another flag, called <code>--domains</code>, we limit the command to the domain of the main site.</p>
-<pre class="code literal-block"><span></span><code>wget --domains www.brown.edu --recursive http://www.brown.edu/Departments/Engineering/Courses/En221/
-</code></pre>
-
-
+<pre class="code literal-block">wget --domains www.brown.edu --recursive http://www.brown.edu/Departments/Engineering/Courses/En221/
+</pre>
 <p>What if we just want to download certain file types? Here, use the <code>--accept</code> flag with the file extension</p>
-<pre class="code literal-block"><span></span><code>wget --accept .pdf --domains www.brown.edu --recursive http://www.brown.edu/Departments/Engineering/Courses/En221/
-</code></pre>
-
-
+<pre class="code literal-block">wget --accept .pdf --domains www.brown.edu --recursive http://www.brown.edu/Departments/Engineering/Courses/En221/
+</pre>
 <p>There we have it. Have fun download the internet, saving time and exploring other awesome packages in Linux. I hope you found this useful. Please leave any comments below.</p>
 <p>Stay Curious!</p>
-</div>
-</div></article>
-</div>
-</div>
-</div>
-</body>
-</html><html>
-<aside class="postpromonav"><nav><ul itemprop="keywords" class="tags">
-<li><a class="tag p-category" href="/categories/automation/" rel="tag">automation</a></li>
-            <li><a class="tag p-category" href="/categories/linux/" rel="tag">linux</a></li>
-            <li><a class="tag p-category" href="/categories/webscraping/" rel="tag">webscraping</a></li>
+    </div>
+    <aside class="postpromonav"><nav><ul itemprop="keywords" class="tags">
+<li><a class="tag p-category" href="../../categories/automation/" rel="tag">automation</a></li>
+            <li><a class="tag p-category" href="../../categories/linux/" rel="tag">linux</a></li>
+            <li><a class="tag p-category" href="../../categories/webscraping/" rel="tag">webscraping</a></li>
         </ul>
 <ul class="pager hidden-print">
 <li class="previous">
-                <a href="/blog/vagrant-linux/" rel="prev" title="The Fastest Way To Linux on Windows using Vagrant">Previous post</a>
+                <a href="../vagrant-linux/" rel="prev" title="The Fastest Way To Linux on Windows using Vagrant">Previous post</a>
             </li>
             <li class="next">
-                <a href="/blog/intro-to-the-windows-command-line/" rel="next" title="Intro to the Windows Command Line">Next post</a>
+                <a href="../intro-to-the-windows-command-line/" rel="next" title="Intro to the Windows Command Line">Next post</a>
             </li>
         </ul></nav></aside><section class="comments hidden-print"><h2>Comments</h2>
         
-        
+    
         <div id="disqus_thread"></div>
         <script>
         var disqus_shortname ="ifcuriousthenlearn-nickola",
@@ -178,10 +159,19 @@
     <a href="https://disqus.com" class="dsq-brlink" rel="nofollow">Comments powered by <span class="logo-disqus">Disqus</span></a>
 
 
-        </section><script>var disqus_shortname="ifcuriousthenlearn-nickola";(function(){var a=document.createElement("script");a.async=true;a.src="https://"+disqus_shortname+".disqus.com/count.js";(document.getElementsByTagName("head")[0]||document.getElementsByTagName("body")[0]).appendChild(a)}());</script><!--End of body content--><footer id="footer">
-            Contents © 2021         <a href="mailto:">neal</a> - Powered by         <a href="https://getnikola.com" rel="nofollow">Nikola</a>         copyright Neal Gordon
+        </section></article><script>var disqus_shortname="ifcuriousthenlearn-nickola";(function(){var a=document.createElement("script");a.async=true;a.src="https://"+disqus_shortname+".disqus.com/count.js";(document.getElementsByTagName("head")[0]||document.getElementsByTagName("body")[0]).appendChild(a)}());</script>
+</div>
+        <!--End of body content-->
+
+        <footer id="footer">
+            Contents © 2022         <a href="mailto:">neal</a> - Powered by         <a href="https://getnikola.com" rel="nofollow">Nikola</a>         copyright Neal Gordon
             
-        </footer><script src="/assets/js/all-nocdn.js"></script><!-- fancy dates --><script>
+        </footer>
+</div>
+</div>
+
+
+            <script src="../../assets/js/all-nocdn.js"></script><!-- fancy dates --><script>
     moment.locale("en");
     fancydates(0, "YYYY-MM-DD HH:mm");
     </script><!-- end fancy dates --><script>
@@ -191,5 +181,5 @@
             return element.getElementsByTagName('img')[0].alt;
     }});
     </script>
+</body>
 </html>
-

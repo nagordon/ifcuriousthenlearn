@@ -88,7 +88,7 @@
             <time class="published dt-published" datetime="2015-08-18T00:00:00-08:00" itemprop="datePublished" title="2015-08-18 00:00">2015-08-18 00:00</time></a>
             </p>
                 <p class="commentline">
-        
+    
     <a href="#disqus_thread" data-disqus-identifier="cache/posts/The-Fastest-Way-To-Linux-on-Windows-using-Vagrant.html">Comments</a>
 
 
@@ -100,8 +100,7 @@
         
 
     </header><div class="e-content entry-content" itemprop="articleBody text">
-    <div>
-<h3>Introduction and Motivation</h3>
+    <h3>Introduction and Motivation</h3>
 <p>This article is written for Windows users that would like to extend their skill-set to Linux and assumes you are comfortable with the command line. Go brush up before reading this if you are unsure what a command line is:)</p>
 <p>I wish I would have spent more time as a kid learning Linux than all the time I wasted on Windows. That is my biggest regret when it comes to technology. Once I started to see all the amazing software available on Linux (for free), I realized the potential . The road to practical application wasn't easy, but it was fun. Now, with a few years under my belt, I am able to save time utilizing the tools that already exist, or having the capability to create my own without having to buy licenses for them!</p>
 <p>This post is designed for the intermediate Windows users that are ready to start using Linux for whatever reason you have. I think the easiest way (but not the most useful) to use Linux is to install <a href="http://www.linuxmint.com/edition.php?id=190">Mint</a>, install on a usb drive larger than 4 GB with <a href="http://sourceforge.net/projects/win32diskimager/">win32diskimager</a>, <a href="http://unetbootin.github.io/">unebootin</a>, or <a href="http://www.pendrivelinux.com/universal-usb-installer-easy-as-1-2-3/">pendrivelinux</a>. Now, just boot from the USB and you are ready for action. But, this is not a practical working solution, especially at work or at home if you need other windows applications. The ideal situation is if we can use Linux and Windows along side one another. <strong>Enter <a href="https://www.virtualbox.org/wiki/Downloads">VirtualBox</a></strong>. Virtualbox is a program that allows you to <em>virtualize</em> other operating systems on your current one, is open-source, and works great. You can collect a few ISO files of your favorite Linux operating systems (check out <a href="http://distrowatch.com/">distrowatch</a>), and install them on VirtualBox and use the operating system (OS) graphical user interface (GUI). This method has its time and place, like if you prefer using a GUI for everything, then there is no need to read further. But, I encourage you to learn command line operation, as it is faster and easier to operate many programs from a command line as it is to mouse-click through them. Or when you start developing your own software tools, it will become clear why command line operation is nice. Anyways, there is yet an easier way to use Linux. <strong>Enter <a href="https://www.vagrantup.com/">Vagrant</a></strong>. Vagrant is a command line tool that allows you to manage your Virtualbox operating systems from a command line and easily share files from Windows and Linux. The general workflow is:</p>
@@ -135,15 +134,13 @@ And lastly, after that nice explanation, don't use windows command line, use pow
 <h4>2. Download Base Image (~1 GB)</h4>
 <p>To make future deployments fast lets grab a base image of Linux Ubuntu 14.04. Go to your windows desktop and launch a windows command line as described previously, or, I prefer using gitbash. Note, comments in gitbash are #, so do not type those</p>
 <p>Lets add Ubuntu Server 14.04 LTS 62-bit image to our local vagrant images. Or browse the <a href="https://atlas.hashicorp.com/boxes/search">catalog</a> for your preferred image</p>
-<pre class="code literal-block"><span></span><code>vagrant box add ubuntu/trusty64
+<pre class="code literal-block">vagrant box add ubuntu/trusty64
 <span class="c1"># or hashicorp/precise64 for a 12.04 LTS 64 machine</span>
 <span class="c1"># or chef/ubuntu-14.04  for a base 14.04 LTS 64 ubuntu machine</span>
-</code></pre>
-
-
+</pre>
 <h4>3. Set up a work folder</h4>
 <p>This will take some time to download, but once complete. The rest of the operations are a matter of seconds.</p>
-<pre class="code literal-block"><span></span><code><span class="c1"># make a new folder called vagrant_test</span>
+<pre class="code literal-block"><span class="c1"># make a new folder called vagrant_test</span>
 mkdir vagrant_test
 
 <span class="c1"># change directory to vagrant test</span>
@@ -151,42 +148,34 @@ mkdir vagrant_test
 
 <span class="c1"># print working directory to check the file path</span>
 <span class="nb">pwd</span>
-</code></pre>
-
-
+</pre>
 <h4>4. Initialize a new Vagrant project</h4>
 <p>Now we have everything we need to start. After running the following commands, a config text file <em>Vagrantfile</em> will be created with a hidden file <em>.vagrant</em></p>
-<pre class="code literal-block"><span></span><code><span class="c1"># initializes this vagrant session with the image we downloaded</span>
+<pre class="code literal-block"><span class="c1"># initializes this vagrant session with the image we downloaded</span>
 vagrant init ubuntu/trusty64
 
 <span class="c1"># starts the virtual machine</span>
 vagrant up
-</code></pre>
-
-
+</pre>
 <p>Once the box is set up, make sure you have git install to access the MINGGW32 bash terminal in windows. From the <em>git bash</em> found when you right-click in an empty space in your <em>vagrant_test</em> folder, type</p>
 <h4>5. Access your brand new Linux machine on Windows!</h4>
-<pre class="code literal-block"><span></span><code><span class="c1"># using ssh to access the shell of your machine</span>
+<pre class="code literal-block"><span class="c1"># using ssh to access the shell of your machine</span>
 vagrant ssh
 
 <span class="c1"># and when finished exit ssh</span>
 <span class="nb">exit</span>
-</code></pre>
-
-
+</pre>
 <p>and that will enter an ssh shell into the vagrant box. Finally, we have a true linux bash command line or shell!! Horray. The hardest part is over, celebrate and get ready to actually hace some fun</p>
 <h4>6. Using File Sync</h4>
 <p>One of the most confusing and challenging parts of Linux is networking. Vagrant does an awesome job of transferring files to and from your vagrant session, ie, The VM syncs easily with the host machine. To test the sync feature, in your current bash shell,</p>
-<pre class="code literal-block"><span></span><code># create a directory called test
+<pre class="code literal-block"># create a directory called test
 mkdir /vagrant/test
 
 # create a file called test.txt and add a string to it
 echo "testing the files sync in a vagrant VM" &gt;&gt; /vagrant/test/test.txt
-</code></pre>
-
-
+</pre>
 <h4>7. Reloading, Stopping, and Starting</h4>
-<pre class="code literal-block"><span></span><code><span class="c1"># To reload a VM and reload any new changes in the Vagrantfile config run</span>
+<pre class="code literal-block"><span class="c1"># To reload a VM and reload any new changes in the Vagrantfile config run</span>
 vagrant reload
 
 <span class="c1"># When complete and want to exit, run</span>
@@ -194,28 +183,22 @@ vagrant halt
 
 <span class="c1"># When you are ready to start working again and starting fresh</span>
 vagrant up
-</code></pre>
-
-
+</pre>
 <h4>8. Running scripts and Installing programs</h4>
 <h5>Issues with writing bash scripts in windows</h5>
 <p>As you start editing install scripts and the Vagrantfile, I have found that using windows text editors messes up the character encoding, so use gitbash and vim, like <code>vim install.sh</code> to launch the in shell editor. If you do edit files in windows, you may need to convert them. I have found dos2unix to work well. To install and convert a shell script in place, use</p>
-<pre class="code literal-block"><span></span><code>sudo apt-get install dos2unix
+<pre class="code literal-block">sudo apt-get install dos2unix
 dos2unix script.sh
-</code></pre>
-
-
+</pre>
 <h5>Installing python</h5>
 <p>There are many ways to install python, but I really appreciate how well conda works. It has all the packages I want, and they just work. To get conda either install the full package <a href="http://continuum.io/downloads#all">anaconda</a> or, I prefer <a href="http://conda.pydata.org/miniconda.html">miniconda</a> because my internet is slow. Also, I attempted to create a silent install script but was not successful, so if anyone knows how to perform a silent install of miniconda on a vagrant machine, please let me know!</p>
-<pre class="code literal-block"><span></span><code>git clone https://github.com/nagordon/vagrant-miniconda.git
+<pre class="code literal-block">git clone https://github.com/nagordon/vagrant-miniconda.git
 <span class="nb">cd</span> vagrant-miniconda
 vagrant up
 vagrant ssh
-</code></pre>
-
-
+</pre>
 <p>copy and paste these commands line by line into the vagrant shell to manually install miniconda</p>
-<pre class="code literal-block"><span></span><code><span class="c1"># downloads miniconda</span>
+<pre class="code literal-block"><span class="c1"># downloads miniconda</span>
 wget http://repo.continuum.io/miniconda/Miniconda-latest-Linux-x86_64.sh
 
 <span class="c1"># makes the miniconda installation executable</span>
@@ -226,50 +209,38 @@ bash Miniconda-latest-Linux-x86_64.sh
 
 <span class="c1"># remove the downloaded fil</span>
 rm Miniconda-latest-Linux-x86_64.sh
-</code></pre>
-
-
+</pre>
 <p>now close the ssh connection and restart to access conda</p>
-<pre class="code literal-block"><span></span><code><span class="nb">exit</span>
+<pre class="code literal-block"><span class="nb">exit</span>
 vagrant ssh
-</code></pre>
-
-
+</pre>
 <p>Run the install script to get all the packages you want</p>
-<pre class="code literal-block"><span></span><code>conda install pip -y
+<pre class="code literal-block">conda install pip -y
 conda install numpy -y
 conda install ipython -y
 conda install matplotlib -y
 conda install pandas -y
 conda install numpy -y
 conda install ipython-notebook -y
-</code></pre>
-
-
+</pre>
 <h4>9. ENJOY</h4>
 <p>Now that we have everything running smoothly, go out an explore all the amazing software out there on Linux and enjoy.</p>
 <h3>Summary</h3>
 <p>In my experience, this is the fastest and easiest way to get from Windows to a real Linux environment. Now, practicing Linux operation from the command line should be easier and fast without having to mess around with the operting system interface. I hope you enjoy your foray into Linux as much as I have. Please let me know if you have any questions, comments, or suggestions. Thanks! Stay Curious!</p>
-</div>
-</div></article>
-</div>
-</div>
-</div>
-</body>
-</html><html>
-<aside class="postpromonav"><nav><ul itemprop="keywords" class="tags">
-<li><a class="tag p-category" href="/categories/linux/" rel="tag">linux</a></li>
+    </div>
+    <aside class="postpromonav"><nav><ul itemprop="keywords" class="tags">
+<li><a class="tag p-category" href="../../categories/linux/" rel="tag">linux</a></li>
         </ul>
 <ul class="pager hidden-print">
 <li class="previous">
-                <a href="/blog/center-of-mass/" rel="prev" title="Finding the Center of Mass from Point Masses with Python">Previous post</a>
+                <a href="../center-of-mass/" rel="prev" title="Finding the Center of Mass from Point Masses with Python">Previous post</a>
             </li>
             <li class="next">
-                <a href="/blog/wget-downloads/" rel="next" title="Automating Website Downloads with wget">Next post</a>
+                <a href="../wget-downloads/" rel="next" title="Automating Website Downloads with wget">Next post</a>
             </li>
         </ul></nav></aside><section class="comments hidden-print"><h2>Comments</h2>
         
-        
+    
         <div id="disqus_thread"></div>
         <script>
         var disqus_shortname ="ifcuriousthenlearn-nickola",
@@ -289,10 +260,19 @@ conda install ipython-notebook -y
     <a href="https://disqus.com" class="dsq-brlink" rel="nofollow">Comments powered by <span class="logo-disqus">Disqus</span></a>
 
 
-        </section><script>var disqus_shortname="ifcuriousthenlearn-nickola";(function(){var a=document.createElement("script");a.async=true;a.src="https://"+disqus_shortname+".disqus.com/count.js";(document.getElementsByTagName("head")[0]||document.getElementsByTagName("body")[0]).appendChild(a)}());</script><!--End of body content--><footer id="footer">
-            Contents © 2021         <a href="mailto:">neal</a> - Powered by         <a href="https://getnikola.com" rel="nofollow">Nikola</a>         copyright Neal Gordon
+        </section></article><script>var disqus_shortname="ifcuriousthenlearn-nickola";(function(){var a=document.createElement("script");a.async=true;a.src="https://"+disqus_shortname+".disqus.com/count.js";(document.getElementsByTagName("head")[0]||document.getElementsByTagName("body")[0]).appendChild(a)}());</script>
+</div>
+        <!--End of body content-->
+
+        <footer id="footer">
+            Contents © 2022         <a href="mailto:">neal</a> - Powered by         <a href="https://getnikola.com" rel="nofollow">Nikola</a>         copyright Neal Gordon
             
-        </footer><script src="/assets/js/all-nocdn.js"></script><!-- fancy dates --><script>
+        </footer>
+</div>
+</div>
+
+
+            <script src="../../assets/js/all-nocdn.js"></script><!-- fancy dates --><script>
     moment.locale("en");
     fancydates(0, "YYYY-MM-DD HH:mm");
     </script><!-- end fancy dates --><script>
@@ -302,5 +282,5 @@ conda install ipython-notebook -y
             return element.getElementsByTagName('img')[0].alt;
     }});
     </script>
+</body>
 </html>
-

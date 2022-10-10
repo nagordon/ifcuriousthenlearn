@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="description" content="buiding and using your own cheap oscilliscope for troubleshooting your RC Airplane PWM signals">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Measure PWM Signals for under 5 USD with a Pi Pico Oscillicope | ifcuriousthenlearn</title>
+<link href="../../assets/css/all-nocdn.css" rel="stylesheet" type="text/css">
+<link href="../../assets/css/ipython.min.css" rel="stylesheet" type="text/css">
+<link href="../../assets/css/nikola_ipython.css" rel="stylesheet" type="text/css">
+<meta name="theme-color" content="#5670d4">
+<meta name="generator" content="Nikola (getnikola.com)">
+<link rel="alternate" type="application/rss+xml" title="RSS" hreflang="en" href="../../rss.xml">
+<link rel="canonical" href="https://nagordon.github.io/ifcuriousthenlearn/blog/%20PWM-Signals-Pi-Pico/">
+<!--[if lt IE 9]><script src="../../assets/js/html5.js"></script><![endif]--><meta name="author" content="neal">
+<meta name="robots" content="noindex">
+<meta property="og:site_name" content="ifcuriousthenlearn">
+<meta property="og:title" content="Measure PWM Signals for under 5 USD with a Pi Pico Oscillicope">
+<meta property="og:url" content="https://nagordon.github.io/ifcuriousthenlearn/blog/%20PWM-Signals-Pi-Pico/">
+<meta property="og:description" content="buiding and using your own cheap oscilliscope for troubleshooting your RC Airplane PWM signals">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2022-02-14T10:49:58-08:00">
+<meta property="article:tag" content="electronics">
+</head>
+<body>
+<a href="#content" class="sr-only sr-only-focusable">Skip to main content</a>
+
+<!-- Menubar -->
+
+<nav class="navbar navbar-inverse navbar-static-top"><div class="container">
+<!-- This keeps the margins nice -->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-navbar" aria-controls="bs-navbar" aria-expanded="false">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="https://nagordon.github.io/ifcuriousthenlearn/">
+
+                <span id="blog-title">ifcuriousthenlearn</span>
+            </a>
+        </div>
+<!-- /.navbar-header -->
+        <div class="collapse navbar-collapse" id="bs-navbar" aria-expanded="false">
+            <ul class="nav navbar-nav">
+<li>
+<a href="../../index.html">Home</a>
+                </li>
+<li>
+<a href="../../archive.html">Blog</a>
+                </li>
+<li>
+<a href="../../about/index.html">About</a>
+                </li>
+<li>
+<a href="../../categories/index.html">Tags</a>
+
+                
+            </li>
+</ul>
+<ul class="nav navbar-nav navbar-right">
+<li>
+    <a href="../%20PWM-Signals-Pi-Pico/index.rst" id="sourcelink">Source</a>
+    </li>
+
+                
+            </ul>
+</div>
+<!-- /.navbar-collapse -->
+    </div>
+<!-- /.container -->
+</nav><!-- End of Menubar --><div class="container" id="content" role="main">
+    <div class="body-content">
+        <!--Body content-->
+        <div class="row">
+            
+            
+<article class="post-text h-entry hentry postpage" itemscope="itemscope" itemtype="http://schema.org/Article"><header><h1 class="p-name entry-title" itemprop="headline name"><a href="../%20PWM-Signals-Pi-Pico/" class="u-url">Measure PWM Signals for under 5 USD with a Pi Pico Oscillicope</a></h1>
+
+        <div class="metadata">
+            <p class="byline author vcard p-author h-card"><span class="byline-name fn p-name" itemprop="author">
+                    neal
+            </span></p>
+            <p class="dateline">
+            <a href="../%20PWM-Signals-Pi-Pico/" rel="bookmark">
+            <time class="published dt-published" datetime="2022-02-14T10:49:58-08:00" itemprop="datePublished" title="2022-02-14 10:49">2022-02-14 10:49</time></a>
+            </p>
+                <p class="commentline">
+    
+    <a href="../%20PWM-Signals-Pi-Pico/#disqus_thread" data-disqus-identifier="cache/posts/Measure PWM Signals for under 5 USD with a Pi Pico Oscillicope.html">Comments</a>
+
+
+            
+        </p>
+<p class="sourceline"><a href="../%20PWM-Signals-Pi-Pico/index.rst" class="sourcelink">Source</a></p>
+
+        </div>
+        
+
+    </header><div class="e-content entry-content" itemprop="articleBody text">
+    <p>If you've ever wondered how your RC car or airplane servos know where to move, then hopefully this will shed some light on the subject. I find electronics concepts are like magic, and when I finally understand them, they feel less like magic and more like superpowers! Unfortunaltey for mechanically minded people (myself included), electronics can be challenging to design and build, and even more challenging to troubleshoot. "If I could only see what is happening inside the wire" you might have found yourself saying. Well, the first step you should take is learn how to use a multimeter. This tool is essential for every electronics tinkerer for measuring voltage, current, and some can measure capcitance, temperature, etc, etc. However, this only gets you so far, as the sample rate of a multimeter is not fast enough to "see" common signals such as <a class="reference external" href="https://en.wikipedia.org/wiki/Pulse-width_modulation">PWM-Pulse Width Modulation</a>, PPM, SBUS, etc. You need an oscilliscope. A couple searches and you will realize that they are really expensive. I ended up buy and really cheap one on Amazon just to see if actually worked, and it does. It is probably limited to not very useful for the practicing electrical engineer, but for me to measure PWM servo signals, it worked. <a class="reference external" href="https://www.amazon.com/dp/B07QML4LJL?ref=ppx_pop_mob_ap_share">Quimat 2.4" TFT Digital</a>. If you expect to do more than just simple pwm measurment, I would save your money and buy a nicer one, OR build your own for a few dollars.</p>
+<p>Another goal of this project was to measure the voltage level of the RC receiver. Most modern electronics use 5v or 3.3v for serial communications or pwm signals. It's important to know what your hardware is generating or needs, and if it can only handle 3.3v, a 5v signal will damage it, soo it's best to check it.</p>
+<section id="hardware-and-software"><h2>Hardware and Software</h2>
+<p>Assuming you have an android device, here is the equipment you'll need to buy</p>
+<ul class="simple">
+<li><p>$4 - <a class="reference external" href="https://www.raspberrypi.com/products/raspberry-pi-pico/">https://www.raspberrypi.com/products/raspberry-pi-pico/</a></p></li>
+<li><p>$1.5 - <a class="reference external" href="https://play.google.com/store/apps/details?id=xyz.fhdm.scoppy">https://play.google.com/store/apps/details?id=xyz.fhdm.scoppy</a></p></li>
+</ul>
+<p>The software and instructions are here on github</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://github.com/fhdm-dev/scoppy">https://github.com/fhdm-dev/scoppy</a></p></li>
+</ul>
+<p>using the app wiki</p>
+<p><a class="reference external" href="https://oscilloscope.fhdm.xyz/wiki/Using-the-App">https://oscilloscope.fhdm.xyz/wiki/Using-the-App</a></p>
+</section><section id="the-math"><h2>The Math</h2>
+<p>Classic Analog servos operate on a 50Hz frequency. I am not sure why but thats what it is. this works out to</p>
+<p><cite>50Hz = 50 cycles per second, or 1/50 = 0.02 seconds per cycle = 20 millisecond peroid</cite></p>
+<p>in order to convey information through an analog signal it is done by the length of time the voltage is "on", or "high", and the servo can read that and convert it to a position. An example is when the signal is high for 1.5ms, the servo interprets that as middle.</p>
+<p>In summary, we have the following properties of out square wave PWM signal</p>
+<p>Duty Cycle = 1-2ms = 1000-2000us
+Peroid = 20 ms
+Frequency/Frame Rate = 1/20ms = 50 Hz</p>
+<p>If you have a true RMS multimeter (I recommend the <a class="reference external" href="https://www.sparkfun.com/products/18342">Artech A5030</a>
+), you can measure the logic voltage if you know the duty cycle of the signal. The A5030 also can measure frequency and duty cycle, so you really dont need an oscillicope for a lot of basic signal analysis.</p>
+<p>the math is</p>
+<p>logic voltage * duty cycle = measured voltage</p>
+<p>for example</p>
+<p>3.3v * 1ms/20ms = 0.165v
+or
+3.3v * 2ms/20ms = 0.33v</p>
+<p>The board looks like this</p>
+<img alt="/files/analog-airspeed-sensor-voltage-divider/back_of_sensor.jpg" src="../../files/analog-airspeed-sensor-voltage-divider/back_of_sensor.jpg" style="width: 500px;"><p>the setup to read the A0 voltage is like so</p>
+<img alt="/files/analog-airspeed-sensor-voltage-divider/read_5v_sensor.jpg" src="../../files/analog-airspeed-sensor-voltage-divider/read_5v_sensor.jpg" style="width: 500px;"><p>and the arduino code</p>
+<div class="code"><table class="codetable">
+<tr>
+<td class="linenos linenodiv"><a href="../%20PWM-Signals-Pi-Pico/#rest_code_8136d11016db42a980f6e98a4ea5863d-1"><code data-line-number=" 1"></code></a></td>
+<td class="code"><code><a id="rest_code_8136d11016db42a980f6e98a4ea5863d-1" name="rest_code_8136d11016db42a980f6e98a4ea5863d-1"></a><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">setup</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+</code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="../%20PWM-Signals-Pi-Pico/#rest_code_8136d11016db42a980f6e98a4ea5863d-2"><code data-line-number=" 2"></code></a></td>
+<td class="code"><code><a id="rest_code_8136d11016db42a980f6e98a4ea5863d-2" name="rest_code_8136d11016db42a980f6e98a4ea5863d-2"></a><span class="w"> </span><span class="n">Serial</span><span class="p">.</span><span class="n">begin</span><span class="p">(</span><span class="mi">9600</span><span class="p">);</span><span class="w"></span>
+</code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="../%20PWM-Signals-Pi-Pico/#rest_code_8136d11016db42a980f6e98a4ea5863d-3"><code data-line-number=" 3"></code></a></td>
+<td class="code"><code><a id="rest_code_8136d11016db42a980f6e98a4ea5863d-3" name="rest_code_8136d11016db42a980f6e98a4ea5863d-3"></a><span class="w">     </span><span class="p">}</span><span class="w"></span>
+</code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="../%20PWM-Signals-Pi-Pico/#rest_code_8136d11016db42a980f6e98a4ea5863d-4"><code data-line-number=" 4"></code></a></td>
+<td class="code"><code><a id="rest_code_8136d11016db42a980f6e98a4ea5863d-4" name="rest_code_8136d11016db42a980f6e98a4ea5863d-4"></a><span class="w">     </span><span class="kt">void</span><span class="w"> </span><span class="nf">loop</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+</code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="../%20PWM-Signals-Pi-Pico/#rest_code_8136d11016db42a980f6e98a4ea5863d-5"><code data-line-number=" 5"></code></a></td>
+<td class="code"><code><a id="rest_code_8136d11016db42a980f6e98a4ea5863d-5" name="rest_code_8136d11016db42a980f6e98a4ea5863d-5"></a><span class="w">     </span><span class="c1">// read the input on analog pin 0:</span>
+</code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="../%20PWM-Signals-Pi-Pico/#rest_code_8136d11016db42a980f6e98a4ea5863d-6"><code data-line-number=" 6"></code></a></td>
+<td class="code"><code><a id="rest_code_8136d11016db42a980f6e98a4ea5863d-6" name="rest_code_8136d11016db42a980f6e98a4ea5863d-6"></a><span class="w">     </span><span class="kt">int</span><span class="w"> </span><span class="n">sensorValue</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">analogRead</span><span class="p">(</span><span class="n">A0</span><span class="p">);</span><span class="w"></span>
+</code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="../%20PWM-Signals-Pi-Pico/#rest_code_8136d11016db42a980f6e98a4ea5863d-7"><code data-line-number=" 7"></code></a></td>
+<td class="code"><code><a id="rest_code_8136d11016db42a980f6e98a4ea5863d-7" name="rest_code_8136d11016db42a980f6e98a4ea5863d-7"></a>
+</code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="../%20PWM-Signals-Pi-Pico/#rest_code_8136d11016db42a980f6e98a4ea5863d-8"><code data-line-number=" 8"></code></a></td>
+<td class="code"><code><a id="rest_code_8136d11016db42a980f6e98a4ea5863d-8" name="rest_code_8136d11016db42a980f6e98a4ea5863d-8"></a><span class="w">     </span><span class="c1">// Convert the analog reading (which goes from 0 - 1023)</span>
+</code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="../%20PWM-Signals-Pi-Pico/#rest_code_8136d11016db42a980f6e98a4ea5863d-9"><code data-line-number=" 9"></code></a></td>
+<td class="code"><code><a id="rest_code_8136d11016db42a980f6e98a4ea5863d-9" name="rest_code_8136d11016db42a980f6e98a4ea5863d-9"></a><span class="w">     </span><span class="c1">//   to a voltage range (0 - 5V) of the pro mini 5v:</span>
+</code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="../%20PWM-Signals-Pi-Pico/#rest_code_8136d11016db42a980f6e98a4ea5863d-10"><code data-line-number="10"></code></a></td>
+<td class="code"><code><a id="rest_code_8136d11016db42a980f6e98a4ea5863d-10" name="rest_code_8136d11016db42a980f6e98a4ea5863d-10"></a><span class="w">     </span><span class="kt">float</span><span class="w"> </span><span class="n">voltage</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">sensorValue</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="p">(</span><span class="mf">5.0</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mf">1023.0</span><span class="p">);</span><span class="w"></span>
+</code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="../%20PWM-Signals-Pi-Pico/#rest_code_8136d11016db42a980f6e98a4ea5863d-11"><code data-line-number="11"></code></a></td>
+<td class="code"><code><a id="rest_code_8136d11016db42a980f6e98a4ea5863d-11" name="rest_code_8136d11016db42a980f6e98a4ea5863d-11"></a>
+</code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="../%20PWM-Signals-Pi-Pico/#rest_code_8136d11016db42a980f6e98a4ea5863d-12"><code data-line-number="12"></code></a></td>
+<td class="code"><code><a id="rest_code_8136d11016db42a980f6e98a4ea5863d-12" name="rest_code_8136d11016db42a980f6e98a4ea5863d-12"></a><span class="w">     </span><span class="n">Serial</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="s">"Voltage: "</span><span class="p">);</span><span class="w"></span>
+</code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="../%20PWM-Signals-Pi-Pico/#rest_code_8136d11016db42a980f6e98a4ea5863d-13"><code data-line-number="13"></code></a></td>
+<td class="code"><code><a id="rest_code_8136d11016db42a980f6e98a4ea5863d-13" name="rest_code_8136d11016db42a980f6e98a4ea5863d-13"></a><span class="w">     </span><span class="n">Serial</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="n">voltage</span><span class="p">);</span><span class="w"></span>
+</code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="../%20PWM-Signals-Pi-Pico/#rest_code_8136d11016db42a980f6e98a4ea5863d-14"><code data-line-number="14"></code></a></td>
+<td class="code"><code><a id="rest_code_8136d11016db42a980f6e98a4ea5863d-14" name="rest_code_8136d11016db42a980f6e98a4ea5863d-14"></a><span class="w">     </span><span class="n">Serial</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="s">"</span><span class="se">\t\r\n</span><span class="s">"</span><span class="p">);</span><span class="w"></span>
+</code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="../%20PWM-Signals-Pi-Pico/#rest_code_8136d11016db42a980f6e98a4ea5863d-15"><code data-line-number="15"></code></a></td>
+<td class="code"><code><a id="rest_code_8136d11016db42a980f6e98a4ea5863d-15" name="rest_code_8136d11016db42a980f6e98a4ea5863d-15"></a><span class="w">     </span><span class="p">}</span><span class="w"></span>
+</code></td>
+</tr>
+</table></div>
+<p>and using this code we get the raw values up to 5v, which the arduino is OK with but most hobby-grade flight controllers ADC ports are 3.3v and it will likely damage it.</p>
+<img alt="/files/analog-airspeed-sensor-voltage-divider/5v_sensor_analog_readplot.png" src="../../files/analog-airspeed-sensor-voltage-divider/5v_sensor_analog_readplot.png" style="width: 700px;"></section><section id="voltage-divider-design"><h2>Voltage Divider Design</h2>
+<p>To design our voltage divider, I referenced this amazing electronics resource,</p>
+<p><a class="reference external" href="https://ultimateelectronicsbook.com">https://ultimateelectronicsbook.com</a></p>
+<p>sparkfun also has a built-in calculator for checking your numbers and some good background.</p>
+<p><a class="reference external" href="https://learn.sparkfun.com/tutorials/voltage-dividers/all">https://learn.sparkfun.com/tutorials/voltage-dividers/all</a></p>
+<p>I used python for the calculation of the resistor values to use to get a voltage drop from 5v to 3.3v</p>
+<div class="code"><table class="codetable">
+<tr>
+<td class="linenos linenodiv"><a href="../%20PWM-Signals-Pi-Pico/#rest_code_a8399cfd281b4d4a83d8e787be7f8549-1"><code data-line-number=" 1"></code></a></td>
+<td class="code"><code><a id="rest_code_a8399cfd281b4d4a83d8e787be7f8549-1" name="rest_code_a8399cfd281b4d4a83d8e787be7f8549-1"></a> <span class="n">Vin</span> <span class="o">=</span> <span class="mi">5</span>
+</code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="../%20PWM-Signals-Pi-Pico/#rest_code_a8399cfd281b4d4a83d8e787be7f8549-2"><code data-line-number=" 2"></code></a></td>
+<td class="code"><code><a id="rest_code_a8399cfd281b4d4a83d8e787be7f8549-2" name="rest_code_a8399cfd281b4d4a83d8e787be7f8549-2"></a>
+</code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="../%20PWM-Signals-Pi-Pico/#rest_code_a8399cfd281b4d4a83d8e787be7f8549-3"><code data-line-number=" 3"></code></a></td>
+<td class="code"><code><a id="rest_code_a8399cfd281b4d4a83d8e787be7f8549-3" name="rest_code_a8399cfd281b4d4a83d8e787be7f8549-3"></a> <span class="n">R1</span> <span class="o">=</span> <span class="mf">2.2e3</span>
+</code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="../%20PWM-Signals-Pi-Pico/#rest_code_a8399cfd281b4d4a83d8e787be7f8549-4"><code data-line-number=" 4"></code></a></td>
+<td class="code"><code><a id="rest_code_a8399cfd281b4d4a83d8e787be7f8549-4" name="rest_code_a8399cfd281b4d4a83d8e787be7f8549-4"></a> <span class="n">R2</span> <span class="o">=</span> <span class="mf">2.2e3</span><span class="o">+</span><span class="mf">2.2e3</span> <span class="c1"># two in series</span>
+</code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="../%20PWM-Signals-Pi-Pico/#rest_code_a8399cfd281b4d4a83d8e787be7f8549-5"><code data-line-number=" 5"></code></a></td>
+<td class="code"><code><a id="rest_code_a8399cfd281b4d4a83d8e787be7f8549-5" name="rest_code_a8399cfd281b4d4a83d8e787be7f8549-5"></a>
+</code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="../%20PWM-Signals-Pi-Pico/#rest_code_a8399cfd281b4d4a83d8e787be7f8549-6"><code data-line-number=" 6"></code></a></td>
+<td class="code"><code><a id="rest_code_a8399cfd281b4d4a83d8e787be7f8549-6" name="rest_code_a8399cfd281b4d4a83d8e787be7f8549-6"></a> <span class="n">Vout</span> <span class="o">=</span> <span class="n">Vin</span> <span class="o">*</span> <span class="n">R2</span> <span class="o">/</span> <span class="p">(</span><span class="n">R1</span><span class="o">+</span><span class="n">R2</span><span class="p">)</span>
+</code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="../%20PWM-Signals-Pi-Pico/#rest_code_a8399cfd281b4d4a83d8e787be7f8549-7"><code data-line-number=" 7"></code></a></td>
+<td class="code"><code><a id="rest_code_a8399cfd281b4d4a83d8e787be7f8549-7" name="rest_code_a8399cfd281b4d4a83d8e787be7f8549-7"></a> <span class="nb">print</span><span class="p">(</span><span class="s2">"Vin = </span><span class="si">{}</span><span class="s2">"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">Vin</span><span class="p">))</span>
+</code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="../%20PWM-Signals-Pi-Pico/#rest_code_a8399cfd281b4d4a83d8e787be7f8549-8"><code data-line-number=" 8"></code></a></td>
+<td class="code"><code><a id="rest_code_a8399cfd281b4d4a83d8e787be7f8549-8" name="rest_code_a8399cfd281b4d4a83d8e787be7f8549-8"></a> <span class="nb">print</span><span class="p">(</span><span class="s2">"Vout = </span><span class="si">{}</span><span class="s2">"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">Vout</span><span class="p">))</span>
+</code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="../%20PWM-Signals-Pi-Pico/#rest_code_a8399cfd281b4d4a83d8e787be7f8549-9"><code data-line-number=" 9"></code></a></td>
+<td class="code"><code><a id="rest_code_a8399cfd281b4d4a83d8e787be7f8549-9" name="rest_code_a8399cfd281b4d4a83d8e787be7f8549-9"></a> <span class="nb">print</span><span class="p">(</span><span class="s2">" resistor ratio R2/R1 = </span><span class="si">{}</span><span class="s2">"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">R2</span><span class="o">/</span><span class="n">R1</span><span class="p">))</span>
+</code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="../%20PWM-Signals-Pi-Pico/#rest_code_a8399cfd281b4d4a83d8e787be7f8549-10"><code data-line-number="10"></code></a></td>
+<td class="code"><code><a id="rest_code_a8399cfd281b4d4a83d8e787be7f8549-10" name="rest_code_a8399cfd281b4d4a83d8e787be7f8549-10"></a>
+</code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="../%20PWM-Signals-Pi-Pico/#rest_code_a8399cfd281b4d4a83d8e787be7f8549-11"><code data-line-number="11"></code></a></td>
+<td class="code"><code><a id="rest_code_a8399cfd281b4d4a83d8e787be7f8549-11" name="rest_code_a8399cfd281b4d4a83d8e787be7f8549-11"></a> <span class="c1"># Vin = 5</span>
+</code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="../%20PWM-Signals-Pi-Pico/#rest_code_a8399cfd281b4d4a83d8e787be7f8549-12"><code data-line-number="12"></code></a></td>
+<td class="code"><code><a id="rest_code_a8399cfd281b4d4a83d8e787be7f8549-12" name="rest_code_a8399cfd281b4d4a83d8e787be7f8549-12"></a> <span class="c1"># Vout = 3.3333333333333335</span>
+</code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="../%20PWM-Signals-Pi-Pico/#rest_code_a8399cfd281b4d4a83d8e787be7f8549-13"><code data-line-number="13"></code></a></td>
+<td class="code"><code><a id="rest_code_a8399cfd281b4d4a83d8e787be7f8549-13" name="rest_code_a8399cfd281b4d4a83d8e787be7f8549-13"></a> <span class="c1"># resistor ratio R2/R1 = 2.0</span>
+</code></td>
+</tr>
+</table></div>
+<p>or try your own resistor values to get the desired voltage drop.</p>
+<embed><iframe src="https://trinket.io/embed/python/5e297f189f?showInstructions=true" width="100%" height="356" frameborder="0" marginwidth="0" marginheight="0" allowfullscreen></iframe>
+</embed><p>So it looks like we need n=3 2.2kOhm resistors to get a drop from 5v to 3.3v. We ultimatley want a 2:1 ratio of resistors, so any values with that ratio should work. And just for fun, because it's easy, I checked my math out with the circuitlab simulation, and everything looks good. Note I used 100 and 200 Ohms but as long as we maintain a 2:1 we will get the same voltage reduction.</p>
+<p><a class="reference external" href="https://www.circuitlab.com/editor/#?id=56c4dkqd8xyq">Circuitlab</a> , or <a class="reference external" href="https://www.circuitlab.com/editor/#?id=56c4dkqd8xyq">https://www.circuitlab.com/editor/#?id=56c4dkqd8xyq</a> is awesome and easy</p>
+<img alt="/files/analog-airspeed-sensor-voltage-divider/circultlab_simulation.png" src="../../files/analog-airspeed-sensor-voltage-divider/circultlab_simulation.png" style="width: 800px;"></section><section id="wiring-the-voltage-divider"><h2>Wiring the Voltage Divider</h2>
+<p>I first tested the circuit like so</p>
+<img alt="/files/analog-airspeed-sensor-voltage-divider/read_3_3v_sensor.jpg" src="../../files/analog-airspeed-sensor-voltage-divider/read_3_3v_sensor.jpg" style="width: 500px;"><p>and looking at the analog readings, it is giving me the voltages I expect, which is max=3.3v and min is 0 when you pull vacuum, with a nominal voltage of 1.7v at ambient pressure so it looks like the design is working as expected.</p>
+<img alt="/files/analog-airspeed-sensor-voltage-divider/5v_sensor_analog_readplot_converted_to_3_3v.png" src="../../files/analog-airspeed-sensor-voltage-divider/5v_sensor_analog_readplot_converted_to_3_3v.png" style="width: 700px;"><p>Everything Looks good, so I soldered together the resistors like so, installed some JR 2.54mm pin connectors, and we are ready to fly!</p>
+<img alt="/files/analog-airspeed-sensor-voltage-divider/voltage_divider.jpg" src="../../files/analog-airspeed-sensor-voltage-divider/voltage_divider.jpg" style="width: 200px;"><p>and the final designs for the arduino or to use with the Matek F405-SE controller are here!</p>
+<img alt="/files/analog-airspeed-sensor-voltage-divider/wiring_arduinopromini.png" src="../../files/analog-airspeed-sensor-voltage-divider/wiring_arduinopromini.png" style="width: 800px;"><p></p>
+<img alt="/files/analog-airspeed-sensor-voltage-divider/wiring_matekF450SE_controller.png" src="../../files/analog-airspeed-sensor-voltage-divider/wiring_matekF450SE_controller.png" style="width: 800px;"><p>A few observations are with this 2:1 voltage divider, the nominal no airspeed voltage is 1.7, and at max pressure, the max voltage is 3.06 , and the min voltage when I pull min negative pressure is zero. So, it is not exactly max of 3.3v, but thats OK. The main goal here is to not damage the ADC on the flight controller.</p>
+<p>Thanks for reading, happy flying, and Stay Curious!</p>
+</section>
+</div>
+    <aside class="postpromonav"><nav><ul itemprop="keywords" class="tags">
+<li><a class="tag p-category" href="../../categories/electronics/" rel="tag">electronics</a></li>
+        </ul></nav></aside><section class="comments hidden-print"><h2>Comments</h2>
+        
+    
+        <div id="disqus_thread"></div>
+        <script>
+        var disqus_shortname ="ifcuriousthenlearn-nickola",
+            disqus_url="https://nagordon.github.io/ifcuriousthenlearn/blog/%20PWM-Signals-Pi-Pico/",
+        disqus_title="Measure PWM Signals for under 5 USD with a Pi Pico Oscillicope",
+        disqus_identifier="cache/posts/Measure PWM Signals for under 5 USD with a Pi Pico Oscillicope.html",
+        disqus_config = function () {
+            this.language = "en";
+        };
+        (function() {
+            var dsq = document.createElement('script'); dsq.async = true;
+            dsq.src = 'https://' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script><noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a>
+</noscript>
+    <a href="https://disqus.com" class="dsq-brlink" rel="nofollow">Comments powered by <span class="logo-disqus">Disqus</span></a>
+
+
+        </section></article><script>var disqus_shortname="ifcuriousthenlearn-nickola";(function(){var a=document.createElement("script");a.async=true;a.src="https://"+disqus_shortname+".disqus.com/count.js";(document.getElementsByTagName("head")[0]||document.getElementsByTagName("body")[0]).appendChild(a)}());</script>
+</div>
+        <!--End of body content-->
+
+        <footer id="footer">
+            Contents © 2022         <a href="mailto:">neal</a> - Powered by         <a href="https://getnikola.com" rel="nofollow">Nikola</a>         copyright Neal Gordon
+            
+        </footer>
+</div>
+</div>
+
+
+            <script src="../../assets/js/all-nocdn.js"></script><!-- fancy dates --><script>
+    moment.locale("en");
+    fancydates(0, "YYYY-MM-DD HH:mm");
+    </script><!-- end fancy dates --><script>
+    baguetteBox.run('div#content', {
+        ignoreClass: 'islink',
+        captions: function(element) {
+            return element.getElementsByTagName('img')[0].alt;
+    }});
+    </script>
+</body>
+</html>

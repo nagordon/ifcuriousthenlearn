@@ -14,6 +14,7 @@
 <link rel="canonical" href="https://nagordon.github.io/ifcuriousthenlearn/blog/analog-airspeed-sensor-voltage-divider/">
 <!--[if lt IE 9]><script src="../../assets/js/html5.js"></script><![endif]--><meta name="author" content="neal">
 <link rel="prev" href="../diy-arduino-tachometer-for-your-rc-airplane/" title="DIY Arduino Tachometer for your RC Airplane" type="text/html">
+<link rel="next" href="../learning-how-to-use-complex-numbers-with-python/" title="Learning how to use complex numbers with python" type="text/html">
 <meta property="og:site_name" content="ifcuriousthenlearn">
 <meta property="og:title" content="analog airspeed sensor voltage divider for ardupilot">
 <meta property="og:url" content="https://nagordon.github.io/ifcuriousthenlearn/blog/analog-airspeed-sensor-voltage-divider/">
@@ -87,7 +88,7 @@
             <time class="published dt-published" datetime="2021-12-30T10:49:58-08:00" itemprop="datePublished" title="2021-12-30 10:49">2021-12-30 10:49</time></a>
             </p>
                 <p class="commentline">
-        
+    
     <a href="#disqus_thread" data-disqus-identifier="cache/posts/analog-airspeed-sensor-voltage-divider.html">Comments</a>
 
 
@@ -99,8 +100,7 @@
         
 
     </header><div class="e-content entry-content" itemprop="articleBody text">
-    <div>
-<p>I have a handful of old analog pitot airspeed sensors that I would like to use, but takes a little work to safely use them without frying your board. This was also a project to help me understand how to set up generic analog sensors using voltage dividers. I would not necessarily recommend buying analog sensors in 2021, as they are hard to find, and most new airspeed sensors are digital and use i2c protocol, and work great out of the box. I have adapted these old sensors to use the RSSI ADC port of newer controllers, but to do so safely we need to reduce the max signal volage to 3.3v. A simple voltage divider will take care of this.</p>
+    <p>I have a handful of old analog pitot airspeed sensors that I would like to use, but takes a little work to safely use them without frying your board. This was also a project to help me understand how to set up generic analog sensors using voltage dividers. I would not necessarily recommend buying analog sensors in 2021, as they are hard to find, and most new airspeed sensors are digital and use i2c protocol, and work great out of the box. I have adapted these old sensors to use the RSSI ADC port of newer controllers, but to do so safely we need to reduce the max signal volage to 3.3v. A simple voltage divider will take care of this.</p>
 <p>Note this concept can be used with any analog sesnors on arduino or ardupilot/INAV/PX4 flight controllers.</p>
 <p>I originally followed this tutorial to get started, but made a minor change to the resistors, and wanted to share my design. Thanks @pspychalski for your tutorial.</p>
 <ul class="simple">
@@ -129,78 +129,78 @@
 <img alt="/files/analog-airspeed-sensor-voltage-divider/read_5v_sensor.jpg" src="../../files/analog-airspeed-sensor-voltage-divider/read_5v_sensor.jpg" style="width: 500px;"><p>and the arduino code</p>
 <div class="code"><table class="codetable">
 <tr>
-<td class="linenos linenodiv"><a href="#rest_code_0b60b39a58d649619a80a8fcd09a1cb0-1"><code data-line-number=" 1"></code></a></td>
-<td class="code"><code><a id="rest_code_0b60b39a58d649619a80a8fcd09a1cb0-1" name="rest_code_0b60b39a58d649619a80a8fcd09a1cb0-1"></a><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">setup</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<td class="linenos linenodiv"><a href="#rest_code_959ad5c14fae42c28327492ce65b775f-1"><code data-line-number=" 1"></code></a></td>
+<td class="code"><code><a id="rest_code_959ad5c14fae42c28327492ce65b775f-1" name="rest_code_959ad5c14fae42c28327492ce65b775f-1"></a><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">setup</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
 </code></td>
 </tr>
 <tr>
-<td class="linenos linenodiv"><a href="#rest_code_0b60b39a58d649619a80a8fcd09a1cb0-2"><code data-line-number=" 2"></code></a></td>
-<td class="code"><code><a id="rest_code_0b60b39a58d649619a80a8fcd09a1cb0-2" name="rest_code_0b60b39a58d649619a80a8fcd09a1cb0-2"></a><span class="w"> </span><span class="n">Serial</span><span class="p">.</span><span class="n">begin</span><span class="p">(</span><span class="mi">9600</span><span class="p">);</span><span class="w"></span>
+<td class="linenos linenodiv"><a href="#rest_code_959ad5c14fae42c28327492ce65b775f-2"><code data-line-number=" 2"></code></a></td>
+<td class="code"><code><a id="rest_code_959ad5c14fae42c28327492ce65b775f-2" name="rest_code_959ad5c14fae42c28327492ce65b775f-2"></a><span class="w"> </span><span class="n">Serial</span><span class="p">.</span><span class="n">begin</span><span class="p">(</span><span class="mi">9600</span><span class="p">);</span><span class="w"></span>
 </code></td>
 </tr>
 <tr>
-<td class="linenos linenodiv"><a href="#rest_code_0b60b39a58d649619a80a8fcd09a1cb0-3"><code data-line-number=" 3"></code></a></td>
-<td class="code"><code><a id="rest_code_0b60b39a58d649619a80a8fcd09a1cb0-3" name="rest_code_0b60b39a58d649619a80a8fcd09a1cb0-3"></a><span class="w">     </span><span class="p">}</span><span class="w"></span>
+<td class="linenos linenodiv"><a href="#rest_code_959ad5c14fae42c28327492ce65b775f-3"><code data-line-number=" 3"></code></a></td>
+<td class="code"><code><a id="rest_code_959ad5c14fae42c28327492ce65b775f-3" name="rest_code_959ad5c14fae42c28327492ce65b775f-3"></a><span class="w">     </span><span class="p">}</span><span class="w"></span>
 </code></td>
 </tr>
 <tr>
-<td class="linenos linenodiv"><a href="#rest_code_0b60b39a58d649619a80a8fcd09a1cb0-4"><code data-line-number=" 4"></code></a></td>
-<td class="code"><code><a id="rest_code_0b60b39a58d649619a80a8fcd09a1cb0-4" name="rest_code_0b60b39a58d649619a80a8fcd09a1cb0-4"></a><span class="w">     </span><span class="kt">void</span><span class="w"> </span><span class="nf">loop</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<td class="linenos linenodiv"><a href="#rest_code_959ad5c14fae42c28327492ce65b775f-4"><code data-line-number=" 4"></code></a></td>
+<td class="code"><code><a id="rest_code_959ad5c14fae42c28327492ce65b775f-4" name="rest_code_959ad5c14fae42c28327492ce65b775f-4"></a><span class="w">     </span><span class="kt">void</span><span class="w"> </span><span class="nf">loop</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
 </code></td>
 </tr>
 <tr>
-<td class="linenos linenodiv"><a href="#rest_code_0b60b39a58d649619a80a8fcd09a1cb0-5"><code data-line-number=" 5"></code></a></td>
-<td class="code"><code><a id="rest_code_0b60b39a58d649619a80a8fcd09a1cb0-5" name="rest_code_0b60b39a58d649619a80a8fcd09a1cb0-5"></a><span class="w">     </span><span class="c1">// read the input on analog pin 0:</span>
+<td class="linenos linenodiv"><a href="#rest_code_959ad5c14fae42c28327492ce65b775f-5"><code data-line-number=" 5"></code></a></td>
+<td class="code"><code><a id="rest_code_959ad5c14fae42c28327492ce65b775f-5" name="rest_code_959ad5c14fae42c28327492ce65b775f-5"></a><span class="w">     </span><span class="c1">// read the input on analog pin 0:</span>
 </code></td>
 </tr>
 <tr>
-<td class="linenos linenodiv"><a href="#rest_code_0b60b39a58d649619a80a8fcd09a1cb0-6"><code data-line-number=" 6"></code></a></td>
-<td class="code"><code><a id="rest_code_0b60b39a58d649619a80a8fcd09a1cb0-6" name="rest_code_0b60b39a58d649619a80a8fcd09a1cb0-6"></a><span class="w">     </span><span class="kt">int</span><span class="w"> </span><span class="n">sensorValue</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">analogRead</span><span class="p">(</span><span class="n">A0</span><span class="p">);</span><span class="w"></span>
+<td class="linenos linenodiv"><a href="#rest_code_959ad5c14fae42c28327492ce65b775f-6"><code data-line-number=" 6"></code></a></td>
+<td class="code"><code><a id="rest_code_959ad5c14fae42c28327492ce65b775f-6" name="rest_code_959ad5c14fae42c28327492ce65b775f-6"></a><span class="w">     </span><span class="kt">int</span><span class="w"> </span><span class="n">sensorValue</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">analogRead</span><span class="p">(</span><span class="n">A0</span><span class="p">);</span><span class="w"></span>
 </code></td>
 </tr>
 <tr>
-<td class="linenos linenodiv"><a href="#rest_code_0b60b39a58d649619a80a8fcd09a1cb0-7"><code data-line-number=" 7"></code></a></td>
-<td class="code"><code><a id="rest_code_0b60b39a58d649619a80a8fcd09a1cb0-7" name="rest_code_0b60b39a58d649619a80a8fcd09a1cb0-7"></a>
+<td class="linenos linenodiv"><a href="#rest_code_959ad5c14fae42c28327492ce65b775f-7"><code data-line-number=" 7"></code></a></td>
+<td class="code"><code><a id="rest_code_959ad5c14fae42c28327492ce65b775f-7" name="rest_code_959ad5c14fae42c28327492ce65b775f-7"></a>
 </code></td>
 </tr>
 <tr>
-<td class="linenos linenodiv"><a href="#rest_code_0b60b39a58d649619a80a8fcd09a1cb0-8"><code data-line-number=" 8"></code></a></td>
-<td class="code"><code><a id="rest_code_0b60b39a58d649619a80a8fcd09a1cb0-8" name="rest_code_0b60b39a58d649619a80a8fcd09a1cb0-8"></a><span class="w">     </span><span class="c1">// Convert the analog reading (which goes from 0 - 1023)</span>
+<td class="linenos linenodiv"><a href="#rest_code_959ad5c14fae42c28327492ce65b775f-8"><code data-line-number=" 8"></code></a></td>
+<td class="code"><code><a id="rest_code_959ad5c14fae42c28327492ce65b775f-8" name="rest_code_959ad5c14fae42c28327492ce65b775f-8"></a><span class="w">     </span><span class="c1">// Convert the analog reading (which goes from 0 - 1023)</span>
 </code></td>
 </tr>
 <tr>
-<td class="linenos linenodiv"><a href="#rest_code_0b60b39a58d649619a80a8fcd09a1cb0-9"><code data-line-number=" 9"></code></a></td>
-<td class="code"><code><a id="rest_code_0b60b39a58d649619a80a8fcd09a1cb0-9" name="rest_code_0b60b39a58d649619a80a8fcd09a1cb0-9"></a><span class="w">     </span><span class="c1">//   to a voltage range (0 - 5V) of the pro mini 5v:</span>
+<td class="linenos linenodiv"><a href="#rest_code_959ad5c14fae42c28327492ce65b775f-9"><code data-line-number=" 9"></code></a></td>
+<td class="code"><code><a id="rest_code_959ad5c14fae42c28327492ce65b775f-9" name="rest_code_959ad5c14fae42c28327492ce65b775f-9"></a><span class="w">     </span><span class="c1">//   to a voltage range (0 - 5V) of the pro mini 5v:</span>
 </code></td>
 </tr>
 <tr>
-<td class="linenos linenodiv"><a href="#rest_code_0b60b39a58d649619a80a8fcd09a1cb0-10"><code data-line-number="10"></code></a></td>
-<td class="code"><code><a id="rest_code_0b60b39a58d649619a80a8fcd09a1cb0-10" name="rest_code_0b60b39a58d649619a80a8fcd09a1cb0-10"></a><span class="w">     </span><span class="kt">float</span><span class="w"> </span><span class="n">voltage</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">sensorValue</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="p">(</span><span class="mf">5.0</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mf">1023.0</span><span class="p">);</span><span class="w"></span>
+<td class="linenos linenodiv"><a href="#rest_code_959ad5c14fae42c28327492ce65b775f-10"><code data-line-number="10"></code></a></td>
+<td class="code"><code><a id="rest_code_959ad5c14fae42c28327492ce65b775f-10" name="rest_code_959ad5c14fae42c28327492ce65b775f-10"></a><span class="w">     </span><span class="kt">float</span><span class="w"> </span><span class="n">voltage</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">sensorValue</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="p">(</span><span class="mf">5.0</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mf">1023.0</span><span class="p">);</span><span class="w"></span>
 </code></td>
 </tr>
 <tr>
-<td class="linenos linenodiv"><a href="#rest_code_0b60b39a58d649619a80a8fcd09a1cb0-11"><code data-line-number="11"></code></a></td>
-<td class="code"><code><a id="rest_code_0b60b39a58d649619a80a8fcd09a1cb0-11" name="rest_code_0b60b39a58d649619a80a8fcd09a1cb0-11"></a>
+<td class="linenos linenodiv"><a href="#rest_code_959ad5c14fae42c28327492ce65b775f-11"><code data-line-number="11"></code></a></td>
+<td class="code"><code><a id="rest_code_959ad5c14fae42c28327492ce65b775f-11" name="rest_code_959ad5c14fae42c28327492ce65b775f-11"></a>
 </code></td>
 </tr>
 <tr>
-<td class="linenos linenodiv"><a href="#rest_code_0b60b39a58d649619a80a8fcd09a1cb0-12"><code data-line-number="12"></code></a></td>
-<td class="code"><code><a id="rest_code_0b60b39a58d649619a80a8fcd09a1cb0-12" name="rest_code_0b60b39a58d649619a80a8fcd09a1cb0-12"></a><span class="w">     </span><span class="n">Serial</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="s">"Voltage: "</span><span class="p">);</span><span class="w"></span>
+<td class="linenos linenodiv"><a href="#rest_code_959ad5c14fae42c28327492ce65b775f-12"><code data-line-number="12"></code></a></td>
+<td class="code"><code><a id="rest_code_959ad5c14fae42c28327492ce65b775f-12" name="rest_code_959ad5c14fae42c28327492ce65b775f-12"></a><span class="w">     </span><span class="n">Serial</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="s">"Voltage: "</span><span class="p">);</span><span class="w"></span>
 </code></td>
 </tr>
 <tr>
-<td class="linenos linenodiv"><a href="#rest_code_0b60b39a58d649619a80a8fcd09a1cb0-13"><code data-line-number="13"></code></a></td>
-<td class="code"><code><a id="rest_code_0b60b39a58d649619a80a8fcd09a1cb0-13" name="rest_code_0b60b39a58d649619a80a8fcd09a1cb0-13"></a><span class="w">     </span><span class="n">Serial</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="n">voltage</span><span class="p">);</span><span class="w"></span>
+<td class="linenos linenodiv"><a href="#rest_code_959ad5c14fae42c28327492ce65b775f-13"><code data-line-number="13"></code></a></td>
+<td class="code"><code><a id="rest_code_959ad5c14fae42c28327492ce65b775f-13" name="rest_code_959ad5c14fae42c28327492ce65b775f-13"></a><span class="w">     </span><span class="n">Serial</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="n">voltage</span><span class="p">);</span><span class="w"></span>
 </code></td>
 </tr>
 <tr>
-<td class="linenos linenodiv"><a href="#rest_code_0b60b39a58d649619a80a8fcd09a1cb0-14"><code data-line-number="14"></code></a></td>
-<td class="code"><code><a id="rest_code_0b60b39a58d649619a80a8fcd09a1cb0-14" name="rest_code_0b60b39a58d649619a80a8fcd09a1cb0-14"></a><span class="w">     </span><span class="n">Serial</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="s">"</span><span class="se">\t\r\n</span><span class="s">"</span><span class="p">);</span><span class="w"></span>
+<td class="linenos linenodiv"><a href="#rest_code_959ad5c14fae42c28327492ce65b775f-14"><code data-line-number="14"></code></a></td>
+<td class="code"><code><a id="rest_code_959ad5c14fae42c28327492ce65b775f-14" name="rest_code_959ad5c14fae42c28327492ce65b775f-14"></a><span class="w">     </span><span class="n">Serial</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="s">"</span><span class="se">\t\r\n</span><span class="s">"</span><span class="p">);</span><span class="w"></span>
 </code></td>
 </tr>
 <tr>
-<td class="linenos linenodiv"><a href="#rest_code_0b60b39a58d649619a80a8fcd09a1cb0-15"><code data-line-number="15"></code></a></td>
-<td class="code"><code><a id="rest_code_0b60b39a58d649619a80a8fcd09a1cb0-15" name="rest_code_0b60b39a58d649619a80a8fcd09a1cb0-15"></a><span class="w">     </span><span class="p">}</span><span class="w"></span>
+<td class="linenos linenodiv"><a href="#rest_code_959ad5c14fae42c28327492ce65b775f-15"><code data-line-number="15"></code></a></td>
+<td class="code"><code><a id="rest_code_959ad5c14fae42c28327492ce65b775f-15" name="rest_code_959ad5c14fae42c28327492ce65b775f-15"></a><span class="w">     </span><span class="p">}</span><span class="w"></span>
 </code></td>
 </tr>
 </table></div>
@@ -213,68 +213,68 @@
 <p>I used python for the calculation of the resistor values to use to get a voltage drop from 5v to 3.3v</p>
 <div class="code"><table class="codetable">
 <tr>
-<td class="linenos linenodiv"><a href="#rest_code_251dea2a38264f6d8132db5c01a5554a-1"><code data-line-number=" 1"></code></a></td>
-<td class="code"><code><a id="rest_code_251dea2a38264f6d8132db5c01a5554a-1" name="rest_code_251dea2a38264f6d8132db5c01a5554a-1"></a> <span class="n">Vin</span> <span class="o">=</span> <span class="mi">5</span>
+<td class="linenos linenodiv"><a href="#rest_code_ce7ce96311e44fabb456acc92c24b141-1"><code data-line-number=" 1"></code></a></td>
+<td class="code"><code><a id="rest_code_ce7ce96311e44fabb456acc92c24b141-1" name="rest_code_ce7ce96311e44fabb456acc92c24b141-1"></a> <span class="n">Vin</span> <span class="o">=</span> <span class="mi">5</span>
 </code></td>
 </tr>
 <tr>
-<td class="linenos linenodiv"><a href="#rest_code_251dea2a38264f6d8132db5c01a5554a-2"><code data-line-number=" 2"></code></a></td>
-<td class="code"><code><a id="rest_code_251dea2a38264f6d8132db5c01a5554a-2" name="rest_code_251dea2a38264f6d8132db5c01a5554a-2"></a>
+<td class="linenos linenodiv"><a href="#rest_code_ce7ce96311e44fabb456acc92c24b141-2"><code data-line-number=" 2"></code></a></td>
+<td class="code"><code><a id="rest_code_ce7ce96311e44fabb456acc92c24b141-2" name="rest_code_ce7ce96311e44fabb456acc92c24b141-2"></a>
 </code></td>
 </tr>
 <tr>
-<td class="linenos linenodiv"><a href="#rest_code_251dea2a38264f6d8132db5c01a5554a-3"><code data-line-number=" 3"></code></a></td>
-<td class="code"><code><a id="rest_code_251dea2a38264f6d8132db5c01a5554a-3" name="rest_code_251dea2a38264f6d8132db5c01a5554a-3"></a> <span class="n">R1</span> <span class="o">=</span> <span class="mf">2.2e3</span>
+<td class="linenos linenodiv"><a href="#rest_code_ce7ce96311e44fabb456acc92c24b141-3"><code data-line-number=" 3"></code></a></td>
+<td class="code"><code><a id="rest_code_ce7ce96311e44fabb456acc92c24b141-3" name="rest_code_ce7ce96311e44fabb456acc92c24b141-3"></a> <span class="n">R1</span> <span class="o">=</span> <span class="mf">2.2e3</span>
 </code></td>
 </tr>
 <tr>
-<td class="linenos linenodiv"><a href="#rest_code_251dea2a38264f6d8132db5c01a5554a-4"><code data-line-number=" 4"></code></a></td>
-<td class="code"><code><a id="rest_code_251dea2a38264f6d8132db5c01a5554a-4" name="rest_code_251dea2a38264f6d8132db5c01a5554a-4"></a> <span class="n">R2</span> <span class="o">=</span> <span class="mf">2.2e3</span><span class="o">+</span><span class="mf">2.2e3</span> <span class="c1"># two in series</span>
+<td class="linenos linenodiv"><a href="#rest_code_ce7ce96311e44fabb456acc92c24b141-4"><code data-line-number=" 4"></code></a></td>
+<td class="code"><code><a id="rest_code_ce7ce96311e44fabb456acc92c24b141-4" name="rest_code_ce7ce96311e44fabb456acc92c24b141-4"></a> <span class="n">R2</span> <span class="o">=</span> <span class="mf">2.2e3</span><span class="o">+</span><span class="mf">2.2e3</span> <span class="c1"># two in series</span>
 </code></td>
 </tr>
 <tr>
-<td class="linenos linenodiv"><a href="#rest_code_251dea2a38264f6d8132db5c01a5554a-5"><code data-line-number=" 5"></code></a></td>
-<td class="code"><code><a id="rest_code_251dea2a38264f6d8132db5c01a5554a-5" name="rest_code_251dea2a38264f6d8132db5c01a5554a-5"></a>
+<td class="linenos linenodiv"><a href="#rest_code_ce7ce96311e44fabb456acc92c24b141-5"><code data-line-number=" 5"></code></a></td>
+<td class="code"><code><a id="rest_code_ce7ce96311e44fabb456acc92c24b141-5" name="rest_code_ce7ce96311e44fabb456acc92c24b141-5"></a>
 </code></td>
 </tr>
 <tr>
-<td class="linenos linenodiv"><a href="#rest_code_251dea2a38264f6d8132db5c01a5554a-6"><code data-line-number=" 6"></code></a></td>
-<td class="code"><code><a id="rest_code_251dea2a38264f6d8132db5c01a5554a-6" name="rest_code_251dea2a38264f6d8132db5c01a5554a-6"></a> <span class="n">Vout</span> <span class="o">=</span> <span class="n">Vin</span> <span class="o">*</span> <span class="n">R2</span> <span class="o">/</span> <span class="p">(</span><span class="n">R1</span><span class="o">+</span><span class="n">R2</span><span class="p">)</span>
+<td class="linenos linenodiv"><a href="#rest_code_ce7ce96311e44fabb456acc92c24b141-6"><code data-line-number=" 6"></code></a></td>
+<td class="code"><code><a id="rest_code_ce7ce96311e44fabb456acc92c24b141-6" name="rest_code_ce7ce96311e44fabb456acc92c24b141-6"></a> <span class="n">Vout</span> <span class="o">=</span> <span class="n">Vin</span> <span class="o">*</span> <span class="n">R2</span> <span class="o">/</span> <span class="p">(</span><span class="n">R1</span><span class="o">+</span><span class="n">R2</span><span class="p">)</span>
 </code></td>
 </tr>
 <tr>
-<td class="linenos linenodiv"><a href="#rest_code_251dea2a38264f6d8132db5c01a5554a-7"><code data-line-number=" 7"></code></a></td>
-<td class="code"><code><a id="rest_code_251dea2a38264f6d8132db5c01a5554a-7" name="rest_code_251dea2a38264f6d8132db5c01a5554a-7"></a> <span class="nb">print</span><span class="p">(</span><span class="s2">"Vin = </span><span class="si">{}</span><span class="s2">"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">Vin</span><span class="p">))</span>
+<td class="linenos linenodiv"><a href="#rest_code_ce7ce96311e44fabb456acc92c24b141-7"><code data-line-number=" 7"></code></a></td>
+<td class="code"><code><a id="rest_code_ce7ce96311e44fabb456acc92c24b141-7" name="rest_code_ce7ce96311e44fabb456acc92c24b141-7"></a> <span class="nb">print</span><span class="p">(</span><span class="s2">"Vin = </span><span class="si">{}</span><span class="s2">"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">Vin</span><span class="p">))</span>
 </code></td>
 </tr>
 <tr>
-<td class="linenos linenodiv"><a href="#rest_code_251dea2a38264f6d8132db5c01a5554a-8"><code data-line-number=" 8"></code></a></td>
-<td class="code"><code><a id="rest_code_251dea2a38264f6d8132db5c01a5554a-8" name="rest_code_251dea2a38264f6d8132db5c01a5554a-8"></a> <span class="nb">print</span><span class="p">(</span><span class="s2">"Vout = </span><span class="si">{}</span><span class="s2">"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">Vout</span><span class="p">))</span>
+<td class="linenos linenodiv"><a href="#rest_code_ce7ce96311e44fabb456acc92c24b141-8"><code data-line-number=" 8"></code></a></td>
+<td class="code"><code><a id="rest_code_ce7ce96311e44fabb456acc92c24b141-8" name="rest_code_ce7ce96311e44fabb456acc92c24b141-8"></a> <span class="nb">print</span><span class="p">(</span><span class="s2">"Vout = </span><span class="si">{}</span><span class="s2">"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">Vout</span><span class="p">))</span>
 </code></td>
 </tr>
 <tr>
-<td class="linenos linenodiv"><a href="#rest_code_251dea2a38264f6d8132db5c01a5554a-9"><code data-line-number=" 9"></code></a></td>
-<td class="code"><code><a id="rest_code_251dea2a38264f6d8132db5c01a5554a-9" name="rest_code_251dea2a38264f6d8132db5c01a5554a-9"></a> <span class="nb">print</span><span class="p">(</span><span class="s2">" resistor ratio R2/R1 = </span><span class="si">{}</span><span class="s2">"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">R2</span><span class="o">/</span><span class="n">R1</span><span class="p">))</span>
+<td class="linenos linenodiv"><a href="#rest_code_ce7ce96311e44fabb456acc92c24b141-9"><code data-line-number=" 9"></code></a></td>
+<td class="code"><code><a id="rest_code_ce7ce96311e44fabb456acc92c24b141-9" name="rest_code_ce7ce96311e44fabb456acc92c24b141-9"></a> <span class="nb">print</span><span class="p">(</span><span class="s2">" resistor ratio R2/R1 = </span><span class="si">{}</span><span class="s2">"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">R2</span><span class="o">/</span><span class="n">R1</span><span class="p">))</span>
 </code></td>
 </tr>
 <tr>
-<td class="linenos linenodiv"><a href="#rest_code_251dea2a38264f6d8132db5c01a5554a-10"><code data-line-number="10"></code></a></td>
-<td class="code"><code><a id="rest_code_251dea2a38264f6d8132db5c01a5554a-10" name="rest_code_251dea2a38264f6d8132db5c01a5554a-10"></a>
+<td class="linenos linenodiv"><a href="#rest_code_ce7ce96311e44fabb456acc92c24b141-10"><code data-line-number="10"></code></a></td>
+<td class="code"><code><a id="rest_code_ce7ce96311e44fabb456acc92c24b141-10" name="rest_code_ce7ce96311e44fabb456acc92c24b141-10"></a>
 </code></td>
 </tr>
 <tr>
-<td class="linenos linenodiv"><a href="#rest_code_251dea2a38264f6d8132db5c01a5554a-11"><code data-line-number="11"></code></a></td>
-<td class="code"><code><a id="rest_code_251dea2a38264f6d8132db5c01a5554a-11" name="rest_code_251dea2a38264f6d8132db5c01a5554a-11"></a> <span class="c1"># Vin = 5</span>
+<td class="linenos linenodiv"><a href="#rest_code_ce7ce96311e44fabb456acc92c24b141-11"><code data-line-number="11"></code></a></td>
+<td class="code"><code><a id="rest_code_ce7ce96311e44fabb456acc92c24b141-11" name="rest_code_ce7ce96311e44fabb456acc92c24b141-11"></a> <span class="c1"># Vin = 5</span>
 </code></td>
 </tr>
 <tr>
-<td class="linenos linenodiv"><a href="#rest_code_251dea2a38264f6d8132db5c01a5554a-12"><code data-line-number="12"></code></a></td>
-<td class="code"><code><a id="rest_code_251dea2a38264f6d8132db5c01a5554a-12" name="rest_code_251dea2a38264f6d8132db5c01a5554a-12"></a> <span class="c1"># Vout = 3.3333333333333335</span>
+<td class="linenos linenodiv"><a href="#rest_code_ce7ce96311e44fabb456acc92c24b141-12"><code data-line-number="12"></code></a></td>
+<td class="code"><code><a id="rest_code_ce7ce96311e44fabb456acc92c24b141-12" name="rest_code_ce7ce96311e44fabb456acc92c24b141-12"></a> <span class="c1"># Vout = 3.3333333333333335</span>
 </code></td>
 </tr>
 <tr>
-<td class="linenos linenodiv"><a href="#rest_code_251dea2a38264f6d8132db5c01a5554a-13"><code data-line-number="13"></code></a></td>
-<td class="code"><code><a id="rest_code_251dea2a38264f6d8132db5c01a5554a-13" name="rest_code_251dea2a38264f6d8132db5c01a5554a-13"></a> <span class="c1"># resistor ratio R2/R1 = 2.0</span>
+<td class="linenos linenodiv"><a href="#rest_code_ce7ce96311e44fabb456acc92c24b141-13"><code data-line-number="13"></code></a></td>
+<td class="code"><code><a id="rest_code_ce7ce96311e44fabb456acc92c24b141-13" name="rest_code_ce7ce96311e44fabb456acc92c24b141-13"></a> <span class="c1"># resistor ratio R2/R1 = 2.0</span>
 </code></td>
 </tr>
 </table></div>
@@ -292,22 +292,19 @@
 <p>Thanks for reading, happy flying, and Stay Curious!</p>
 </section>
 </div>
-</div></article>
-</div>
-</div>
-</div>
-</body>
-</html><html>
-<aside class="postpromonav"><nav><ul itemprop="keywords" class="tags">
-<li><a class="tag p-category" href="/categories/electronics/" rel="tag">electronics</a></li>
+    <aside class="postpromonav"><nav><ul itemprop="keywords" class="tags">
+<li><a class="tag p-category" href="../../categories/electronics/" rel="tag">electronics</a></li>
         </ul>
 <ul class="pager hidden-print">
 <li class="previous">
-                <a href="/blog/diy-arduino-tachometer-for-your-rc-airplane/" rel="prev" title="DIY Arduino Tachometer for your RC Airplane">Previous post</a>
+                <a href="../diy-arduino-tachometer-for-your-rc-airplane/" rel="prev" title="DIY Arduino Tachometer for your RC Airplane">Previous post</a>
+            </li>
+            <li class="next">
+                <a href="../learning-how-to-use-complex-numbers-with-python/" rel="next" title="Learning how to use complex numbers with python">Next post</a>
             </li>
         </ul></nav></aside><section class="comments hidden-print"><h2>Comments</h2>
         
-        
+    
         <div id="disqus_thread"></div>
         <script>
         var disqus_shortname ="ifcuriousthenlearn-nickola",
@@ -327,10 +324,19 @@
     <a href="https://disqus.com" class="dsq-brlink" rel="nofollow">Comments powered by <span class="logo-disqus">Disqus</span></a>
 
 
-        </section><script>var disqus_shortname="ifcuriousthenlearn-nickola";(function(){var a=document.createElement("script");a.async=true;a.src="https://"+disqus_shortname+".disqus.com/count.js";(document.getElementsByTagName("head")[0]||document.getElementsByTagName("body")[0]).appendChild(a)}());</script><!--End of body content--><footer id="footer">
-            Contents © 2021         <a href="mailto:">neal</a> - Powered by         <a href="https://getnikola.com" rel="nofollow">Nikola</a>         copyright Neal Gordon
+        </section></article><script>var disqus_shortname="ifcuriousthenlearn-nickola";(function(){var a=document.createElement("script");a.async=true;a.src="https://"+disqus_shortname+".disqus.com/count.js";(document.getElementsByTagName("head")[0]||document.getElementsByTagName("body")[0]).appendChild(a)}());</script>
+</div>
+        <!--End of body content-->
+
+        <footer id="footer">
+            Contents © 2022         <a href="mailto:">neal</a> - Powered by         <a href="https://getnikola.com" rel="nofollow">Nikola</a>         copyright Neal Gordon
             
-        </footer><script src="/assets/js/all-nocdn.js"></script><!-- fancy dates --><script>
+        </footer>
+</div>
+</div>
+
+
+            <script src="../../assets/js/all-nocdn.js"></script><!-- fancy dates --><script>
     moment.locale("en");
     fancydates(0, "YYYY-MM-DD HH:mm");
     </script><!-- end fancy dates --><script>
@@ -340,5 +346,5 @@
             return element.getElementsByTagName('img')[0].alt;
     }});
     </script>
+</body>
 </html>
-

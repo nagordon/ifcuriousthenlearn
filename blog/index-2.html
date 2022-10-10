@@ -70,7 +70,27 @@
 
     
 <div class="postindex">
-    <article class="h-entry post-text" itemscope="itemscope" itemtype="http://schema.org/Article"><header><h1 class="p-name entry-title"><a href="python-tutor/" class="u-url">Python Tutor, and interactive execution tool</a></h1>
+    <article class="h-entry post-text" itemscope="itemscope" itemtype="http://schema.org/Article"><header><h1 class="p-name entry-title"><a href="python-trinket/" class="u-url">Python Trinket, another interactive execution tool</a></h1>
+        <div class="metadata">
+            <p class="byline author vcard"><span class="byline-name fn" itemprop="author">
+                neal
+            </span></p>
+            <p class="dateline">
+            <a href="python-trinket/" rel="bookmark">
+            <time class="published dt-published" datetime="2016-05-06T00:00:00-08:00" itemprop="datePublished" title="2016-05-06 00:00">2016-05-06 00:00</time></a>
+            </p>
+                <p class="commentline">
+    
+    <a href="python-trinket/#disqus_thread" data-disqus-identifier="cache/posts/Learn_Python_with_Trinket.html">Comments</a>
+
+
+        </p>
+</div>
+    </header><div class="e-content entry-content">
+    <p>another neat tool for debugging python code.</p>
+<iframe src="https://trinket.io/embed/python/90b0702a6a" width="100%" height="500" frameborder="0" marginwidth="0" marginheight="0" allowfullscreen></iframe>
+    </div>
+    </article><article class="h-entry post-text" itemscope="itemscope" itemtype="http://schema.org/Article"><header><h1 class="p-name entry-title"><a href="python-tutor/" class="u-url">Python Tutor, and interactive execution tool</a></h1>
         <div class="metadata">
             <p class="byline author vcard"><span class="byline-name fn" itemprop="author">
                 neal
@@ -80,42 +100,34 @@
             <time class="published dt-published" datetime="2016-05-06T00:00:00-08:00" itemprop="datePublished" title="2016-05-06 00:00">2016-05-06 00:00</time></a>
             </p>
                 <p class="commentline">
-        
+    
     <a href="python-tutor/#disqus_thread" data-disqus-identifier="cache/posts/Python-tutor.html">Comments</a>
 
 
         </p>
 </div>
     </header><div class="e-content entry-content">
-    <div>
-<p>yet another neat tool I found online for understanding python execution</p>
+    <p>yet another neat tool I found online for understanding python execution</p>
 <iframe width="800" height="600" frameborder="0" src="http://pythontutor.com/iframe-embed.html#code=x+%3D+%5B1,+2,+3%5D%0Ay+%3D+%5B4,+5,+6%5D%0Az+%3D+y%0Ay+%3D+x%0Ax+%3D+z%0A%0Ax+%3D+%5B1,+2,+3%5D+%23+a+different+%5B1,+2,+3%5D+list!%0Ay+%3D+x%0Ax.append(4%29%0Ay.append(5%29%0Az+%3D+%5B1,+2,+3,+4,+5%5D+%23+a+different+list!%0Ax.append(6%29%0Ay.append(7%29%0Ay+%3D+%22hello%22%0A%0A%0Adef+foo(lst%29%3A%0A++++lst.append(%22hello%22%29%0A++++bar(lst%29%0A%0Adef+bar(myLst%29%3A%0A++++print(myLst%29%0A%0Afoo(x%29%0Afoo(z%29&amp;origin=opt-frontend.js&amp;cumulative=false&amp;heapPrimitives=false&amp;textReferences=false&amp;py=2&amp;rawInputLstJSON=%5B%5D&amp;curInstr=0&amp;codeDivWidth=350&amp;codeDivHeight=400"> </iframe>
-</div>
-</div></article>
-</div>
-</div>
-</div>
-</div>
-</body>
-</html><html><article class="h-entry post-text" itemscope="itemscope" itemtype="http://schema.org/Article"><header><h1 class="p-name entry-title"><a href="/blog/pyver-version-control/" class="u-url">Pyver, Version Control For Dummies</a></h1>
+    </div>
+    </article><article class="h-entry post-text" itemscope="itemscope" itemtype="http://schema.org/Article"><header><h1 class="p-name entry-title"><a href="pyver-version-control/" class="u-url">Pyver, Version Control For Dummies</a></h1>
         <div class="metadata">
             <p class="byline author vcard"><span class="byline-name fn" itemprop="author">
                 neal
             </span></p>
             <p class="dateline">
-            <a href="/blog/pyver-version-control/" rel="bookmark">
+            <a href="pyver-version-control/" rel="bookmark">
             <time class="published dt-published" datetime="2016-05-06T00:00:00-08:00" itemprop="datePublished" title="2016-05-06 00:00">2016-05-06 00:00</time></a>
             </p>
                 <p class="commentline">
-        
-    <a href="/blog/pyver-version-control/#disqus_thread" data-disqus-identifier="cache/posts/Version_Control_for_Dummies.html">Comments</a>
+    
+    <a href="pyver-version-control/#disqus_thread" data-disqus-identifier="cache/posts/Version_Control_for_Dummies.html">Comments</a>
 
 
         </p>
 </div>
     </header><div class="e-content entry-content">
-    <div>
-<h3>Why pyver?</h3>
+    <h3>Why pyver?</h3>
 <p>The movtiation behind pyver, which is to creating a version control method which is very, very simple to track the history of files. The work-flow of pyver is something I do anyway when working on something simple that uses binary files, especially ones that are linked through the software that is required to read them (eg CAD designs). I will create multiple directories, eg v1, v2 and copy the entire contents of my in-progress files in it that I want to preserve the history. The issue with this is that when file names are changed, it can break links to dependent files, so keeping a file identical is important for tracking files. It was also a goal to use this tool over a network drive where multiple users can archive files as they wish
 There are a couple of other excellent options, but have a steep learning curve and some do not perform well with large binary files. Also, most version control systems are designed for code or text files, not large binanry files, like word documents or cad files. If you need more functionality, I'd recommend checking out these programs in order os simplicity. <a href="https://bitbucket.org/mats_ekberg/boar/wiki/Home">boar VCS</a>, <a href="https://www.mercurial-scm.org/">mercurial SCM</a>, <a href="https://git-scm.com/">git</a> with the <a href="https://git-lfs.github.com/">large file extension</a></p>
 <h3>The basic operation of this program goes like this</h3>
@@ -134,10 +146,8 @@ There are a couple of other excellent options, but have a steep learning curve a
 <h2>Tutorial</h2>
 <p>To get started, lets do a quick demo in windows. Brace yourself, you are going to have to use the command line. In your current directory with the pyver.py file, open a command line with <code>shift+right_click</code> and in the menu select <code>Open command window here</code>. Another way to get a command window in your current directory is to type <code>alt+D</code> and type <code>powershell</code> or <code>cmd</code>.
 Now type</p>
-<pre class="code literal-block"><span></span><code>python pyver.py
-</code></pre>
-
-
+<pre class="code literal-block">python pyver.py
+</pre>
 <p>Done. That's it. We have created a pyver repository and made a backup of all the files in our current directory in an archive naming year-month-day-hour-minute-second. Anytime we need to make another backup, just repeat the last step.</p>
 <p>OK, lets add a bit more work upfront to save us some typing for years to come. I would recommend having a windows folder that is added to the user PATH system variable where you can keep test or production scripts that you want to access from the command line. For example, I have <code>C:\Users\Neal\bin</code> that is in the system PATH variable which I can dump python scripts with the *.bat file. Now, all we have to type is <code>pyver</code> to get the same result as <code>python pyver.py</code>
 To add this path variable, type</p>
@@ -147,17 +157,15 @@ To add this path variable, type</p>
 3) Add PATH variable or append with the path to the folder with your scripts    </p>
 </blockquote>
 <p>There are a few built in commands to interrogate the repository. The first is log, which shows the contents of a text file that keeps track of the commits that are made</p>
-<pre class="code literal-block"><span></span><code><span class="nv">pyver</span> <span class="nv">log</span>
+<pre class="code literal-block"><span class="nv">pyver</span> <span class="nv">log</span>
 <span class="nv">Neal</span> , <span class="mi">20160125210812</span> , <span class="mi">7</span><span class="nv">kb</span> ,  , <span class="nv">pyver</span>.<span class="nv">py</span><span class="o">|</span><span class="nv">README</span>.<span class="nv">md</span><span class="o">|</span><span class="nv">pyver</span>.<span class="nv">bat</span>
 <span class="nv">Neal</span> , <span class="mi">20160125210814</span> , <span class="mi">7</span><span class="nv">kb</span> ,  , <span class="nv">pyver</span>.<span class="nv">py</span><span class="o">|</span><span class="nv">README</span>.<span class="nv">md</span><span class="o">|</span><span class="nv">pyver</span>.<span class="nv">bat</span>
 <span class="nv">Neal</span> , <span class="mi">20160125210817</span> , <span class="mi">7</span><span class="nv">kb</span> ,  , <span class="nv">pyver</span>.<span class="nv">py</span><span class="o">|</span><span class="nv">README</span>.<span class="nv">md</span><span class="o">|</span><span class="nv">pyver</span>.<span class="nv">bat</span>
 <span class="nv">Neal</span> , <span class="mi">20160125210854</span> , <span class="mi">7</span><span class="nv">kb</span> , <span class="nv">making</span> <span class="nv">a</span> <span class="nv">comment</span> <span class="k">for</span> <span class="nv">this</span> <span class="nv">commit</span> , <span class="nv">pyver</span>.<span class="nv">py</span><span class="o">|</span><span class="nv">README</span>.<span class="nv">md</span><span class="o">|</span><span class="nv">pyver</span>.<span class="nv">bat</span>
 <span class="nv">Neal</span> , <span class="mi">20160125210912</span> , <span class="mi">4</span><span class="nv">kb</span> , <span class="nv">only</span> <span class="nv">adding</span> <span class="nv">one</span> <span class="nv">file</span> , <span class="nv">pyver</span>.<span class="nv">py</span>
-</code></pre>
-
-
+</pre>
 <p>The next is tree, which shows all the files in the repo.</p>
-<pre class="code literal-block"><span></span><code>pyver tree
+<pre class="code literal-block">pyver tree
 
 ./.archive
 |  ./20160125210812
@@ -182,89 +190,81 @@ To add this path variable, type</p>
   pyver.py  
   README.md  
   pyver.bat  
-</code></pre>
-
-
+</pre>
 <p>We also have some flags we can use to customize our commits. This commit adds only the files file1.txt and file2.docx and adds a comment. Note-none of the flag inputs can have spaces, so files are seperated by <code>|</code> and comments are written without spaces using <code>-</code></p>
-<pre class="code literal-block"><span></span><code><span class="nv">pyver</span> <span class="o">-</span><span class="nv">f</span> <span class="s2">"</span><span class="s">file1.txt|file2.docx</span><span class="s2">"</span> <span class="o">-</span><span class="nv">c</span> <span class="s2">"</span><span class="s">making a comment for this commit</span><span class="s2">"</span>
-</code></pre>
-
-
+<pre class="code literal-block"><span class="nv">pyver</span> <span class="o">-</span><span class="nv">f</span> <span class="s2">"</span><span class="s">file1.txt|file2.docx</span><span class="s2">"</span> <span class="o">-</span><span class="nv">c</span> <span class="s2">"</span><span class="s">making a comment for this commit</span><span class="s2">"</span>
+</pre>
 <p>We can also use wildcards to add groups of files rather than listing each individual file.</p>
-<pre class="code literal-block"><span></span><code>pyver -f "*.txt|*.docx" -c "I added all the txt and docx files to my archive"
-</code></pre>
-
-
+<pre class="code literal-block">pyver -f "*.txt|*.docx" -c "I added all the txt and docx files to my archive"
+</pre>
 <p>Also, by default, pyver will skip all files and directories that start with . and ~. These files are typically temporary, backup, or configuration files.</p>
 <p>I used pyinstaller to build my own windows executable</p>
-<pre class="code literal-block"><span></span><code>pyinstaller pyver.py --onefile
-</code></pre>
-
-
+<pre class="code literal-block">pyinstaller pyver.py --onefile
+</pre>
 <p>There you have it. The worlds easiest version control system that multiple users can use over a network, retrieving your old files is trivial, and now you don't have to change your file names to all the silly things people come up with.</p>
 <p>You can find the source code here. <a href="https://github.com/nagordon/pyver">https://github.com/nagordon/pyver</a></p>
 <p>This was a fun project to learn more about file manipulation with python and in the end, I now have a handy tool!</p>
 <p>Stay Curious!</p>
-</div>
-</div></article></html><html><article class="h-entry post-text" itemscope="itemscope" itemtype="http://schema.org/Article"><header><h1 class="p-name entry-title"><a href="/blog/windows-chocolatey/" class="u-url">Windows package management with Chocolatey</a></h1>
+    </div>
+    </article><article class="h-entry post-text" itemscope="itemscope" itemtype="http://schema.org/Article"><header><h1 class="p-name entry-title"><a href="windows-chocolatey/" class="u-url">Windows package management with Chocolatey</a></h1>
         <div class="metadata">
             <p class="byline author vcard"><span class="byline-name fn" itemprop="author">
                 neal
             </span></p>
             <p class="dateline">
-            <a href="/blog/windows-chocolatey/" rel="bookmark">
+            <a href="windows-chocolatey/" rel="bookmark">
             <time class="published dt-published" datetime="2016-05-06T00:00:00-08:00" itemprop="datePublished" title="2016-05-06 00:00">2016-05-06 00:00</time></a>
             </p>
                 <p class="commentline">
-        
-    <a href="/blog/windows-chocolatey/#disqus_thread" data-disqus-identifier="cache/posts/Windows Package Management with Chocolatley.html">Comments</a>
+    
+    <a href="windows-chocolatey/#disqus_thread" data-disqus-identifier="cache/posts/Windows Package Management with Chocolatley.html">Comments</a>
 
 
         </p>
 </div>
     </header><div class="e-content entry-content">
-    <div>
-<p>For most of us, using software is an everyday activity. Many of us use lots of different packages of software, especially those that does not come pre-installed, like notepad++, chrome or firefox, ebook managers, your favorite video player, etc. Installing that software every time you get a new computer or keeping all those packages up-to-date can be a challenge. Being a Windows user for most of my life, I've accepted the tedious, risky business of finding, installing and not getting viruses from Windows software. Not until I started using Linux did I realize that it can be easier and safer. Linux uses package management, that changes from distribution, but the popular Debian based Linux uses <code>apt-get</code> to install software from the command line. Installing software can be as easy as <code>apt-get install firefox</code>, and updating all software on the computing can be done with <code>apt-get update</code>. Really easy right?</p>
+    <p>For most of us, using software is an everyday activity. Many of us use lots of different packages of software, especially those that does not come pre-installed, like notepad++, chrome or firefox, ebook managers, your favorite video player, etc. Installing that software every time you get a new computer or keeping all those packages up-to-date can be a challenge. Being a Windows user for most of my life, I've accepted the tedious, risky business of finding, installing and not getting viruses from Windows software. Not until I started using Linux did I realize that it can be easier and safer. Linux uses package management, that changes from distribution, but the popular Debian based Linux uses <code>apt-get</code> to install software from the command line. Installing software can be as easy as <code>apt-get install firefox</code>, and updating all software on the computing can be done with <code>apt-get update</code>. Really easy right?</p>
 <p>Well, I still use Windows a lot, and installating and managing software on Windows can be be much easier using <a href="https://github.com/chocolatey/choco/wiki">chocolatey</a>. Chocolatey is a Windows command line tool to manage software, including searching, installing, updataing and removing.</p>
 <p>Installation is a cinch. Copy and paste this code into a windows command line access by searching for <code>cmd</code> in the windows start. If possible, run as administrator (cmd, right-click, run as administrator)</p>
-<pre class="code literal-block"><span></span><code><span class="err">@</span><span class="n">powershell</span> <span class="o">-</span><span class="n">NoProfile</span> <span class="o">-</span><span class="n">ExecutionPolicy</span> <span class="n">Bypass</span> <span class="o">-</span><span class="n">Command</span> <span class="s2">"iex ((new-object net.webclient).DownloadString('https://chocolatey.org/install.ps1'))"</span> <span class="o">&amp;&amp;</span> <span class="n">SET</span> <span class="n">PATH</span><span class="o">=%</span><span class="n">PATH</span><span class="o">%</span><span class="p">;</span><span class="o">%</span><span class="n">ALLUSERSPROFILE</span><span class="o">%</span>\<span class="n">chocolatey</span>\<span class="n">bin</span>
-</code></pre>
-
-
+<pre class="code literal-block"><span class="err">@</span><span class="n">powershell</span> <span class="o">-</span><span class="n">NoProfile</span> <span class="o">-</span><span class="n">ExecutionPolicy</span> <span class="n">Bypass</span> <span class="o">-</span><span class="n">Command</span> <span class="s2">"iex ((new-object net.webclient).DownloadString('https://chocolatey.org/install.ps1'))"</span> <span class="o">&amp;&amp;</span> <span class="n">SET</span> <span class="n">PATH</span><span class="o">=%</span><span class="n">PATH</span><span class="o">%</span><span class="p">;</span><span class="o">%</span><span class="n">ALLUSERSPROFILE</span><span class="o">%</span>\<span class="n">chocolatey</span>\<span class="n">bin</span>
+</pre>
 <p>I typically just search the chocolatey website for the package I want to install and type that into the command line. The example I want to share is my favorite ebook manager, calibre. One of the reasons I enjoy chocolatey with calibre is because calibre is updated a lot, and to keep up with them, you have to go download the calibre exe, and follow the prompts for the installation. Or a simple command will do it all! The <code>-y</code> is a flag to indicate <code>yes</code> to eliminate the need to confirm the installation.</p>
-<pre class="code literal-block"><span></span><code>choco install calibre -y
-</code></pre>
-
-
+<pre class="code literal-block">choco install calibre -y
+</pre>
 <p>Updating calibre is as easy as this</p>
-<pre class="code literal-block"><span></span><code>choco update calibre -y
-</code></pre>
-
-
+<pre class="code literal-block">choco update calibre -y
+</pre>
 <p>Multiple packages can be installed by leaving a space between the names</p>
-<pre class="code literal-block"><span></span><code>choco install notepadplusplus googlechrome atom 7zip
-</code></pre>
-
-
+<pre class="code literal-block">choco install notepadplusplus googlechrome atom 7zip
+</pre>
 <p>And to update all the packages that were install with chocolatey, this command will take care of it all</p>
-<pre class="code literal-block"><span></span><code>choco upgrade all -y
-</code></pre>
-
-
+<pre class="code literal-block">choco upgrade all -y
+</pre>
 <p>I think chocolatey is a really neat, useful package that has saved me a lot of time, and I hope it helps alleviate some of your windows woes.</p>
+    </div>
+    </article>
 </div>
-</div></article></html><html>
-<nav class="postindexpager"><ul class="pager">
+
+        <nav class="postindexpager"><ul class="pager">
 <li class="previous">
-                <a href="/blog/" rel="prev">Newer posts</a>
+                <a href="." rel="prev">Newer posts</a>
             </li>
             <li class="next">
-                <a href="/blog/index-1.html" rel="next">Older posts</a>
+                <a href="index-1.html" rel="next">Older posts</a>
             </li>
-        </ul></nav><script>var disqus_shortname="ifcuriousthenlearn-nickola";(function(){var a=document.createElement("script");a.async=true;a.src="https://"+disqus_shortname+".disqus.com/count.js";(document.getElementsByTagName("head")[0]||document.getElementsByTagName("body")[0]).appendChild(a)}());</script><!--End of body content--><footer id="footer">
-            Contents © 2021         <a href="mailto:">neal</a> - Powered by         <a href="https://getnikola.com" rel="nofollow">Nikola</a>         copyright Neal Gordon
+        </ul></nav><script>var disqus_shortname="ifcuriousthenlearn-nickola";(function(){var a=document.createElement("script");a.async=true;a.src="https://"+disqus_shortname+".disqus.com/count.js";(document.getElementsByTagName("head")[0]||document.getElementsByTagName("body")[0]).appendChild(a)}());</script>
+</div>
+        <!--End of body content-->
+
+        <footer id="footer">
+            Contents © 2022         <a href="mailto:">neal</a> - Powered by         <a href="https://getnikola.com" rel="nofollow">Nikola</a>         copyright Neal Gordon
             
-        </footer><script src="/assets/js/all-nocdn.js"></script><!-- fancy dates --><script>
+        </footer>
+</div>
+</div>
+
+
+            <script src="../assets/js/all-nocdn.js"></script><!-- fancy dates --><script>
     moment.locale("en");
     fancydates(0, "YYYY-MM-DD HH:mm");
     </script><!-- end fancy dates --><script>
@@ -274,5 +274,5 @@ To add this path variable, type</p>
             return element.getElementsByTagName('img')[0].alt;
     }});
     </script>
+</body>
 </html>
-
