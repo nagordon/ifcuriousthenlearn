@@ -1,7 +1,7 @@
+# ifcuriousthenlearn  
 
 my blog about learning and technology  
 https://nagordon.github.io/ifcuriousthenlearn/  
-
 
 github page source code  
 https://github.com/nagordon/ifcuriousthenlearn  
@@ -34,9 +34,10 @@ To build the site once locally to see if it works
     # or build automatically
     nikola build -a
 
-To run a local webserver and open a browser
+To run a local webserver and open a browser, or view at http://127.0.0.1:8000/
 
     nikola serve -b
+
 
 or to do both build and serve automatically
     
@@ -85,6 +86,9 @@ or
 `3792276+nagordon@users.noreply.github.com`
 
 ## Helpful Links 
+
+### formatting tips  
+https://getnikola.com/creating-a-site-not-a-blog-with-nikola.html  
 
 ### Rst formatting
 
